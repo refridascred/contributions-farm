@@ -23,13 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long step)
         {
-            Closed,
-            Retry,
-            Active,
-            Dropped,
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(40 >= total))
+                {
+                    total = ((total * 5) + (step >> 3)) % 255;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = ((total * 3) + total) ^ (long)i2;
+                }
+                total = total - (392 + step);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the metric phase values.</summary>
