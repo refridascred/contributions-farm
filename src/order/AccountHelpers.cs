@@ -62,13 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
