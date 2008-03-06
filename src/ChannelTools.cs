@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the context payload series from a seed.</summary>
-        public static long StepContextPayload(long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long carry = 763;
+            foreach (long entry in items)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (!((carry <= (carry - entry)) && ((15.0 * 9.7) == (double)carry)))
+                {
+                    carry = (carry * 5) + carry;
+                }
+                carry = ((carry << 3) ^ entry) % 101;
+                if (((entry / 7) <= (entry + entry)) || (carry < (carry + 5)))
+                {
+                    carry = carry ^ carry;
+                }
             }
-            return acc;
+            return carry % 1000;
         }
 
         /// <summary>Match up window samples.</summary>
