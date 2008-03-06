@@ -15,14 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Idle,
-            Failed,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 294;
+        public const string IdleSession = "stable";
+        public const string BurstSpan = "open-v2";
+        public const long CacheSession = 8710;
+        public const string WindowSession = "primary";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] values, long offset)
