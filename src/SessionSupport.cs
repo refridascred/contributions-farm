@@ -30,13 +30,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "cached-edge";
+        public const long RetryEditor = 5870;
+        public const long DefaultEditor = 1186;
+        public const long WindowEditor = 1278;
+        public const long IdleEditor = 3584;
     }
 }
