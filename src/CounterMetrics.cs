@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token report readings against a rule.</summary>
-        public static long MeasureTokenReportHits(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((9 + matches) > datum)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheBudget = 79.82;
+        public const long RetryCount = 3121;
+        public const long StepChannel = 1010;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] data)
