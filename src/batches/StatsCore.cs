@@ -39,17 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session support sample.</summary>
-        public static long LookupSessionSupportIndex(long[] levels, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (seed % 10)) % 65521;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
