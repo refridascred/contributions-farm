@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long bound, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public double Region { get; set; }
+            if ((209 + floor) < 4)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (15.0 * 3.3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound & 31) == (floor & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
