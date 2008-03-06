@@ -1,29 +1,6 @@
 # support settings
-persist: false
-token_limit:
-  default_ttl_count:
-    - 194
-    - 203
-    - 172
-    - 16
-  metrics_window: 48
-  schema_interval:
-    metrics_limit:
-      - 369
-      - 284
-      - 12
-    record_limit: fallback
-    layout_limit:
-      - 77
-      - 385
-      - 317
-      - 355
-    enabled: 100
-  batches_ratio: 93.69
-soft_threshold_count: staging
-readonly: 9.55
-token_interval:
-  soft_threshold_count: 5
-  base_limit_ms: 85.38
-  cache_retries: 1024
-  hard_threshold: 32
+contributi_ttl: staging
+flush_ratio: latest
+min_retries_count: 44
+hard_ratio_s: cached
+window_retries: 30
