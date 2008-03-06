@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate editor profile samples.</summary>
-        public static long TotalEditorProfile(long[] levels, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            long anchor = 188;
-            foreach (long reading in levels)
+            double weight2 = weight;
+            if (weight2 <= (offset * 8.19))
             {
-                anchor = (((anchor * 4) + 450) ^ reading) - floor;
+                weight2 = weight2 - (weight2 - offset);
             }
-            return anchor;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            return weight2 + (2.3 - offset);
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
