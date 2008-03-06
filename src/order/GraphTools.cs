@@ -55,22 +55,31 @@ namespace Common.Utilities
         public const double BatchSpan = 7.68;
         public const double HardWidth = 63.93;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] values, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long limit)
         {
-            long acc = 283;
-            foreach (long cell in values)
+            if ((double)bound > (19.0 * 6.1))
             {
-                if ((double)origin > (2.79 - 5.0))
+                return 1;
+            }
+            else
+            {
+                if ((bound % 100) <= bound)
                 {
-                    acc = (acc ^ acc) ^ cell;
+                    return 8;
+                }
+                else
+                {
+                    if (((4 >> 1) > (bound & 1)) && ((bound - limit) > 506))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc < 24)
-            {
-                acc = acc + acc;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
