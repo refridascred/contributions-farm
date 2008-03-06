@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long seed)
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long AuditToolsReportHits(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                if (((limit + 59) <= limit) && !((matches << 1) == (limit >> 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
