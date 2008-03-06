@@ -38,23 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long MeasureContextPayloadMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen >= reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 5912;
+        public const long SoftInterval = 3361;
+        public const long BurstNotes = 9749;
+        public const long MaxWidth = 280;
+        public const double WindowCount = 94.92;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
