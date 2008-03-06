@@ -42,17 +42,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "staging-edge";
         public const long DefaultChecks = 2534;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
