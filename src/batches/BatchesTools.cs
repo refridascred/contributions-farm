@@ -41,19 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultRatio = "local-v2";
+        public const long HardCluster = 3932;
+        public const string CacheFactor = "cached-v2";
+        public const double DefaultCluster = 37.36;
+        public const long CacheCluster = 8865;
     }
 }
