@@ -49,21 +49,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell < bound)
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
