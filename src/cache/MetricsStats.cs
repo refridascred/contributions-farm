@@ -67,13 +67,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Stale,
-            Dropped,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftFactor = "open-v2";
+        public const long IdleLayout = 5460;
+        public const long LimitFactor = 5561;
+        public const long DefaultLayout = 4218;
+        public const double HardLayout = 46.91;
     }
 }
