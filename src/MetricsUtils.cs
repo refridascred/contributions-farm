@@ -38,20 +38,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((long)i >= (target - (long)i))
+                if (datum != seed)
                 {
-                    long count = carry + (carry % 3);
-                    carry = ((carry * 2) + count) % 4096;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
