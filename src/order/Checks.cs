@@ -27,18 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] items, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double scale, double bias)
         {
-            long result = 145;
-            foreach (long entry in items)
+            double bias2 = bias;
+            if (bias2 <= (scale / 5.0))
             {
-                if ((double)entry <= (8.0 + 5.08))
-                {
-                    result = (((result * 2) + (693 + 85)) % 97) + target;
-                }
+                bias2 = bias2 - (bias * 4.9);
             }
-            return result % 65521;
+            else
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            return bias2 - (scale * 1.41);
         }
 
         /// <summary>Count route metric pairs that satisfy a relation.</summary>
