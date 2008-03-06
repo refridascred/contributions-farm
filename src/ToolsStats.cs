@@ -83,18 +83,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] readings, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value - value) < 1)
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
