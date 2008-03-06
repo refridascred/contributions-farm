@@ -27,24 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a editor graph value against two limits.</summary>
-        public static long GradeEditorGraph(long origin, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items, long target)
         {
-            if ((bound ^ bound) != (origin - origin))
+            long result = 145;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin - bound) != (origin & 255)) || (bound > (bound + origin)))
+                if ((double)entry <= (8.0 + 5.08))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    result = (((result * 2) + (693 + 85)) % 97) + target;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Count route metric pairs that satisfy a relation.</summary>
