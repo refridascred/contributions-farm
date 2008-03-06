@@ -34,13 +34,17 @@ namespace Common.Utilities
             return bias3 - (double)4;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long origin)
         {
-            Dropped,
-            Stale,
-            Pending,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
