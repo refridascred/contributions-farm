@@ -18,11 +18,13 @@ namespace Common.Utilities
         public const long HardLevel = 6881;
         public const double SoftCache = 24.47;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 10.74;
-        public const double BurstSize = 78.82;
-        public const long HardRatio = 4117;
-        public const long BatchBatches = 2814;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            New,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Check that every metric record entry stays within the limit.</summary>
         public static bool CheckMetricRecordRange(long[] values, long bound)
