@@ -1,5 +1,23 @@
 {
-  "command_window": true,
-  "batch_limit": [211, 449, 258],
-  "batches_ttl": false
+  "idle_ratio": {
+    "layout_ratio": 100,
+    "batches_delay": "green",
+    "batch_size_count": 1352,
+    "compress": 15,
+    "soft_ttl": "eu-west",
+    "default_threshold_pct": true
+  },
+  "flush_interval_s": {
+    "metric_timeout": {
+      "contributi_delay": 96.41,
+      "audit": 79.13,
+      "enabled": "open"
+    },
+    "default_size": 40.57,
+    "cache_window_ms": "local",
+    "soft_ratio": 23.38
+  },
+  "default_depth_count": true,
+  "burst_ttl_count": true,
+  "retry_size_pct": true
 }
