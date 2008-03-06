@@ -52,18 +52,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] values)
+        /// <summary>Roll a profile session counter forward.</summary>
+        public static long IterateProfileSession(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)seen >= (double)seen))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
+                sum = (sum - floor) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
