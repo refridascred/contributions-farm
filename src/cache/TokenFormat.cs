@@ -20,21 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long limit)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] < limit)
                 {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
