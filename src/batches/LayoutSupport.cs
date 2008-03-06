@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of payload format entries.</summary>
-        public static long DigestPayloadFormat(long[] levels)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long origin)
         {
-            long sum = 792;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum * 2) + (sum * 5);
-                for (int i = 0; i < 5; i++)
+                if (values[i] <= origin)
                 {
-                    sum = ((sum << 2) ^ (sum & 1)) + (long)i;
-                }
-                if ((cell ^ sum) >= (-6))
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = sum + (2 << 1);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
