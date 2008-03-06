@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] series)
         {
-            long mix = 6;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mix = (((mix << 3) ^ (4 + mix)) % 255) - item;
+                if ((cell * 5) >= (cell & 127))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mix > 1)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Describe the layout status values.</summary>
