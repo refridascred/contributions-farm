@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double bias, double bias2)
         {
-            Draft,
-            Failed,
-            Dropped,
-            New,
+            double mean = bias2;
+            if (mean > 18.0)
+            {
+                mean = mean - 1.23;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - (double)(-495);
         }
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
