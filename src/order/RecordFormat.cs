@@ -27,17 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
+                if ((cell + cell) >= (hits << 2))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
