@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinInterval = "cached-edge";
+        public const long LimitProfile = 8073;
+        public const double SoftRatio = 48.9;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] series)
