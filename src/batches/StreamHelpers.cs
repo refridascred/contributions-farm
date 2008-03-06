@@ -21,21 +21,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = ratio;
+            if (mean <= (2.0 + 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - mean;
             }
-            return seen;
+            return mean + offset;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
