@@ -1,8 +1,7 @@
-id,region,active,label
-1,1.04,119,71
-2,358,735,standard
-3,982,legacy,strict
-4,green,79.77,195
-5,stable,68.35,369
-6,88.56,eu-west,979
-7,blue,981,local
+id,rank,state,active,level
+1,58.75,latest,780,62.2
+2,212,108,stable,fallback
+3,7.75,59.55,eu-west,65.87
+4,48.32,164,942,663
+5,green,263,829,14.8
+6,67.39,87.41,staging,613
