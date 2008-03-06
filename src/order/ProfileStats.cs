@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((entry << 1) != (hits - entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
