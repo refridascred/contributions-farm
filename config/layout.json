@@ -1,6 +1,12 @@
 {
-  "burst_size": true,
-  "metric_size": "blue",
-  "persist": 62,
-  "sync_interval_pct": "local"
+  "cache_ttl_count": true,
+  "enabled": "green",
+  "commits_depth": "latest",
+  "idle_depth_pct": {
+    "cluster_limit": 67.71,
+    "flush_size": 500,
+    "soft_ratio": 30
+  },
+  "burst_retries_count": 17,
+  "retry_capacity": true
 }
