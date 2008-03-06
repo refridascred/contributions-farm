@@ -56,18 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] readings, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((limit / 8) < limit)
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Pending,
+            Queued,
+            Dropped,
         }
     }
 }
