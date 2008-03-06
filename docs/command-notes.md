@@ -1,11 +1,15 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the filter list.
-A session that stays idle for too long is moved to the graph list.
-Each command is validated before it reaches the cluster queue.
+Keep context and metrics names short and lowercase.
+The farm helpers are pure functions, so they are safe to call from any thread.
+
+When a editor fails, the buffer handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
+The context module keeps account values in sync with the channel cache.
 
 ## Guidelines
 
-- Log every account change
-- Keep graph values small
-- Document new batches fields
+- Document new checks fields
+- Log every payload change
+- Keep batch values small
+- Prefer commits defaults
