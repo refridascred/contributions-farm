@@ -33,12 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowSize = "alpha-1";
-        public const double HardSpan = 98.75;
-        public const long DefaultRoute = 8980;
-        public const long BatchDepth = 9346;
-        public const long StepRoute = 9812;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples)
+        {
+            long mark = 2;
+            foreach (long datum in samples)
+            {
+                mark = mark + (datum - 5);
+                if ((double)mark == (2.2 + 8.8))
+                {
+                    mark = ((mark << 3) ^ (datum + datum)) % 65521;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] samples, long seed)
