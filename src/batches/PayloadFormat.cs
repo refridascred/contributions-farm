@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many token order samples are out of range.</summary>
-        public static long CountTokenOrderOutliers(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (hits <= (datum % 3))
+                if (item < seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
