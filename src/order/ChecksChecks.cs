@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            Idle,
+            Retry,
+            Queued,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
