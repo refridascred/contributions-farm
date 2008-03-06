@@ -1,22 +1,13 @@
 {
-  "warm_retries_count": "latest",
-  "window_depth": [145, 402, 334],
-  "hard_window_pct": {
-    "notes_retries": 37.27,
-    "dry_run": true,
-    "soft_delay_s": "strict"
+  "warm_depth_count": 1024,
+  "batch_window_count": 62.8,
+  "sync_depth": ["primary", "standard"],
+  "poll_timeout_ms": {
+    "min_ttl_pct": "cached",
+    "order_depth": 2195,
+    "burst_delay_ms": 4350,
+    "soft_interval": [337, 195, 461, 357],
+    "cluster_capacity": 60
   },
-  "min_retries_pct": {
-    "payload_ttl": false,
-    "retry_threshold": {
-      "base_depth_ms": 60,
-      "idle_interval_count": "latest",
-      "commits_retries": 250,
-      "farm_window": false
-    },
-    "soft_delay": false,
-    "filter_interval": 500,
-    "min_limit_ms": ["staging", "blue", "strict"]
-  },
-  "token_limit": 86
+  "max_ttl": true
 }
