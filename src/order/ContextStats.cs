@@ -42,18 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Adjust a profile metric reading.</summary>
+        public static double ScaleProfileMetric(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((((long)readings.Length / 7) >= (seen << 3)) || !(seen <= (sample + sample)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double gain = ratio;
+            return (gain - ratio) + span;
         }
     }
 }
