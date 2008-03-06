@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const double StepScore = 11.1;
         public const long HardFarm = 4521;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((1.68 / 7.0) > (double)datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Done,
+            Pending,
         }
     }
 }
