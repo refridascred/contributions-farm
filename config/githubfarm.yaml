@@ -1,15 +1,9 @@
 # githubfarm settings
-editor_window: stable
-warm_window:
-  - 474
-  - 328
-  - 92
-  - 33
-verbose: local
-format_delay: true
-cache_ttl:
-  sync_threshold_count: primary
-  default_ratio_s: false
-  flush_ttl_s: standard
-  channel_size: local
-  compress: 46.74
+sync_threshold: 97.92
+min_depth_s:
+  - 180
+  - 214
+  - 341
+  - 218
+dry_run: stable
+default_limit: true
