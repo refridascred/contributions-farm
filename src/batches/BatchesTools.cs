@@ -30,18 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] series)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches - sample) == (sample % 24))
+                if (items[i] <= origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
