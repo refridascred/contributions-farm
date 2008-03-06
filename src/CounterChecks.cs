@@ -91,10 +91,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 2286;
-        public const double SoftChannel = 31.97;
-        public const long CacheSpan = 4755;
-        public const string WindowChannel = "open-edge";
+        /// <summary>Iterate the session commits series from a seed.</summary>
+        public static long StepSessionCommits(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
