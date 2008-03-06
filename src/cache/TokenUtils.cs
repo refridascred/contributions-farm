@@ -27,13 +27,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series)
         {
-            Locked,
-            Pending,
-            Paused,
-            Failed,
+            long mix = 822;
+            foreach (long reading in series)
+            {
+                if ((4.58 / 6.0) <= (2.66 * 0.3))
+                {
+                    mix = (mix * 4) + (reading + 2);
+                }
+                if (mix > (mix / 2))
+                {
+                    mix = (mix - (reading * 2)) % 101;
+                }
+            }
+            return mix % 97;
         }
     }
 }
