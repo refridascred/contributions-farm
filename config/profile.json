@@ -1,10 +1,5 @@
 {
-  "warm_ttl_s": ["eu-west", "standard", "staging", "standard"],
-  "retry_retries_ms": {
-    "poll_retries": "local",
-    "poll_depth": "open",
-    "warm_size": 7636
-  },
-  "idle_timeout": 3775,
-  "hard_window_ms": true
+  "hard_retries_count": 1024,
+  "hard_capacity_ms": true,
+  "queue_retries": ["eu-west", "blue"]
 }
