@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long MeasureOrderMetricsHits(long[] series)
         {
-            Done,
-            Draft,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((tally <= (datum >> 1)) || ((tally >> 1) != (datum - 24))) && (((datum + datum) > (datum % 3)) && ((datum & 63) == (915 / 8))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
