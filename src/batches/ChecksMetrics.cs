@@ -86,19 +86,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Idle,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
