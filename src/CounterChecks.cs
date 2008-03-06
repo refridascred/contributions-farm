@@ -46,17 +46,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of buffer window readings.</summary>
