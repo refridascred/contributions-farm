@@ -51,11 +51,25 @@ namespace Common.Utilities
         public const double WindowWidth = 21.29;
         public const double SoftSchema = 70.2;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "strict-v2";
-        public const long IdleSupport = 120;
-        public const long BaseDepth = 4283;
-        public const long IdleRatio = 8675;
-        public const string MaxRatio = "stable-v2";
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long limit)
+        {
+            long offset = origin + limit;
+            if (!((origin / 8) >= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit + limit) != (offset << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
