@@ -13,10 +13,40 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 83.78;
-        public const long SoftBudget = 8900;
-        public const long IdleWidth = 9403;
+        /// <summary>Grade a stream payload value against two limits.</summary>
+        public static long GradeStreamPayload(long limit, long limit2)
+        {
+            long lane = limit ^ limit2;
+            if ((74 * 3) >= lane)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit2 + limit) <= (lane + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((7.93 - 7.74) == (double)lane) && (lane >= (lane * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((lane - limit2) <= (limit2 % 16)) && ((lane * 2) != (limit2 / 6)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long origin)
