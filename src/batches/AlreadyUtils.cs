@@ -14,11 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Ready,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
