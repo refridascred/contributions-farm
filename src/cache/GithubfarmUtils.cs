@@ -28,21 +28,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            if (rate >= (rate + 8.1))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - 2.62) - scale;
             }
-            return tally;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (double)918;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
