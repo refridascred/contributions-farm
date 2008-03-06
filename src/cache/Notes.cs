@@ -42,12 +42,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
