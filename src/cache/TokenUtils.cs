@@ -26,19 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (item >= origin)
+                if (item > seed)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
