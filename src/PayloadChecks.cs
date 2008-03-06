@@ -5,22 +5,35 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long mix = 562;
-            foreach (long item in items)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                if (((item - mix) > mix) || (mix < (mix - item)))
+                mix = (mix << 2) ^ (reading ^ mix);
+                for (int i = 0; i < 12; i++)
                 {
-                    mix = (mix << 3) ^ (mix - item);
+                    mix = ((mix * 2) + (715 + (long)i)) % 65521;
+                }
+                if ((6.9 / 5.0) >= (double)mix)
+                {
+                    mix = (mix * 3) + (mix + (long)series.Length);
+                }
+                else
+                {
+                    mix = (mix ^ (629 - reading)) % 4096;
+                }
+                if (((2.98 - 5.0) != (double)reading) || ((25 % 8) != (reading + 729)))
+                {
+                    break;
                 }
             }
-            if (mix < 564)
+            if (mix < 4)
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+                mix = (mix + (mix + mix)) % 101;
             }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
