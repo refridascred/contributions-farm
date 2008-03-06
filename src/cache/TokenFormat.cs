@@ -13,17 +13,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Combine profile queue values into a single score.</summary>
+        public static long CombineProfileQueue(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long mix = 31;
+            foreach (long entry in series)
             {
-                mark = ((mark * 4) + (60 >> 1)) % 97;
-                mark = mark - mark;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (!((7.0 + 4.66) >= (double)entry))
+                {
+                    mix = mix - mix;
+                }
+                if ((double)entry > 2.0)
+                {
+                    mix = ((mix * 2) + (mix + 0)) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 2) + (long)series.Length;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a batches info.</summary>
