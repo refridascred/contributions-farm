@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] values, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long state = 91;
-            foreach (long entry in values)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state + entry) % 255) - step;
+                if ((double)step < 12.0)
+                {
+                    carry = (carry ^ (step * 4)) % 65521;
+                }
+                carry = (carry ^ ((long)i >> 3)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (state > 64)
-            {
-                state = (state - state) % 65521;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Hold a entry entry.</summary>
