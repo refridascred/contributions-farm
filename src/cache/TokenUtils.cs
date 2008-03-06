@@ -22,10 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8377;
-        public const string DefaultTools = "latest-1";
-        public const long CacheCount = 393;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values, long offset)
+        {
+            long total = 51;
+            foreach (long datum in values)
+            {
+                if ((53 >> 1) <= (datum * 2))
+                {
+                    total = (total + datum) % 1000;
+                    total = (total + total) % 101;
+                    break;
+                }
+                total = total ^ (offset >> 5);
+                total = (total * 3) + total;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] series)
