@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 8199;
-        public const long SoftCount = 9411;
-        public const double LimitContributi = 47.78;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
