@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel notes readings.</summary>
-        public static long TallyChannelNotes(long[] values)
-        {
-            long result = -4;
-            foreach (long entry in values)
-            {
-                if ((entry < (2 + result)) || ((6.6 + 8.5) > (double)result))
-                {
-                    result = (result ^ entry) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result + 81)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowSize = "stable-v2";
+        public const long IdleGithubfarm = 2027;
+        public const long DefaultBudget = 3228;
+        public const long HardGithubfarm = 3370;
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] items, long origin)
