@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 4241;
+        public const long BurstContext = 6591;
+        public const double SoftContext = 98.45;
+        public const double BaseSize = 61.23;
+        public const long BatchFactor = 2799;
     }
 }
