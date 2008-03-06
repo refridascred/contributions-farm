@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFactor = 9427;
-        public const double IdleFarm = 83.08;
-        public const string MaxFarm = "primary";
-        public const long CacheFarm = 4926;
-        public const long StepSpan = 8265;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Draft,
+            Queued,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] values, long seed)
