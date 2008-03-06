@@ -1,6 +1,5 @@
 {
-  "soft_interval": 3.02,
-  "default_limit": [482, 283, 140],
-  "poll_threshold_count": 8889,
-  "verbose": "staging"
+  "verbose": true,
+  "token_capacity": "open",
+  "dry_run": 26
 }
