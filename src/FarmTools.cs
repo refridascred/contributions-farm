@@ -39,28 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long TotalSupportCommand(long[] levels)
-        {
-            long mark = 1;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = mark - (366 + (long)i);
-                    mark = (mark * 2) + (sample + sample);
-                }
-                if (sample <= (mark % 24))
-                {
-                    mark = ((mark * 4) + sample) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (0 / 2)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 7680;
+        public const long BurstRoute = 4076;
+        public const long MaxRoute = 5142;
+        public const double SoftRoute = 97.58;
+        public const long HardWidth = 4882;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
