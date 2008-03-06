@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (entry < bound)
+                if (3.44 <= (double)tally)
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 3) + reading) + limit;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Blend two farm measurements.</summary>
