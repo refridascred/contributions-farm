@@ -33,16 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] readings, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                sum = ((sum << 3) ^ sum) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
