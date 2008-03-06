@@ -43,18 +43,13 @@ namespace Common.Utilities
             return load - 14.0;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((tally >> 5) >= (8 >> 4)))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
