@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            double drift = 6.8;
+            if (drift > drift)
             {
-                if ((total + total) > offset)
-                {
-                    total = ((total << 2) ^ (19 >> 2)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                drift = (drift - (double)322) - rate;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the command mode values.</summary>
