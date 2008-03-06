@@ -21,12 +21,18 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] data, long origin)
         {
-            Failed,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)origin >= 6.0)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
     }
 }
