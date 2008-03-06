@@ -25,19 +25,22 @@ namespace Common.Utilities
             return weight2 + (2.3 - offset);
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] series, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (sample <= seed)
+                if ((double)hits == (6.1 * 15.0))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
