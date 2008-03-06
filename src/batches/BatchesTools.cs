@@ -22,16 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long diff = bound - origin;
+            if ((bound & 31) < (diff + origin))
             {
-                carry = (carry + (origin / 6)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (((origin % 100) > (bound - diff)) && ((17.0 + 4.28) <= (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
