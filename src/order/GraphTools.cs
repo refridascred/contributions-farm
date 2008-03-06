@@ -61,19 +61,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] items, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading >= step)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum + sum;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
