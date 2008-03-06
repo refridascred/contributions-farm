@@ -44,12 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "alpha-edge";
-        public const long SoftDepth = 2094;
-        public const double RetryCount = 16.57;
-        public const long LimitPayload = 1008;
-        public const long BurstSpan = 6263;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "stable-1";
+        public const string CacheNotes = "latest-edge";
+        public const long HardScore = 1820;
+        public const long SoftSpan = 3036;
+        public const long HardNotes = 2121;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
