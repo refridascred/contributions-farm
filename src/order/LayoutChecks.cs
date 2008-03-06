@@ -41,21 +41,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Digest a series of support stream entries.</summary>
+        public static long TallySupportStream(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 2;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix - 45) + entry;
             }
-            return matches;
+            if (mix < 65)
+            {
+                mix = (mix ^ (3 + origin)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of record entries.</summary>
