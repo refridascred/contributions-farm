@@ -15,12 +15,14 @@ namespace Common.Utilities
         public const string MaxPayload = "cached-v2";
         public const long SoftLevel = 3356;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 8024;
-        public const long DefaultCluster = 3849;
-        public const double MaxCluster = 90.37;
-        public const double IdleCluster = 91.4;
-        public const long LimitBudget = 2281;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsHits(long[] samples)
