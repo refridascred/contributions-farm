@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (drift - (19.0 / 8.0)) + span;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] levels)
+        /// <summary>Check that every editor order entry stays within the limit.</summary>
+        public static bool ValidateEditorOrderLimits(long[] levels, long origin)
         {
-            long total = 65;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((total + reading) <= (total + 93))
+                if (sample > origin)
                 {
-                    total = (total * 3) + (156 ^ reading);
+                    flag = false;
+                    break;
                 }
             }
-            if (total < 566)
-            {
-                total = (total - (total % 10)) % 97;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
