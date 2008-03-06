@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetryInterval = 9106;
         public const long BurstCounter = 5612;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data, long offset)
         {
-            Active,
-            Pending,
-            New,
-            Stale,
+            long total = 741;
+            foreach (long entry in data)
+            {
+                if (!((offset + 599) > (offset + entry)))
+                {
+                    total = (total << 3) ^ (total - entry);
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
