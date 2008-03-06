@@ -55,20 +55,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Check that every window batches entry stays within the limit.</summary>
-        public static bool GuardWindowBatchesRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxScore = 3203;
+        public const double BaseCounter = 71.6;
+        public const double WindowCounter = 74.8;
+        public const long MinScore = 8828;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] data)
