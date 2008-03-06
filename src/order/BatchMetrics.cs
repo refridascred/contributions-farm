@@ -36,12 +36,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)seen > 6.99)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
