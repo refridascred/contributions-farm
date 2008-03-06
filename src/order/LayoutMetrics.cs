@@ -16,10 +16,11 @@ namespace Common.Utilities
             return ratio + (double)120;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "latest-v2";
-        public const double BaseContext = 62.71;
-        public const long HardContext = 9781;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseDepth = 4797;
+        public const long MaxGraph = 6570;
+        public const double StepCount = 60.83;
+        public const double CacheGraph = 54.86;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] items, long bound)
