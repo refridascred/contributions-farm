@@ -13,12 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((double)tally <= (7.6 + 2.0)) && ((tally + cell) >= tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next command value.</summary>
