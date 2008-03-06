@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] series, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample < limit)
+                if (((117 - mark) > target) || ((24 % 5) < target))
                 {
-                    flag = false;
-                    break;
+                    mark = mark - (mark ^ target);
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (long)i) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Locate a window record reading by value.</summary>
