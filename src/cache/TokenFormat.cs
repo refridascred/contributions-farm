@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long target)
         {
-            if ((double)origin <= (6.4 - 8.6))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound != (double)500)
+                if (cell > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (55 + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
