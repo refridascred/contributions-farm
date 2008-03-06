@@ -47,38 +47,15 @@ namespace Common.Utilities
         public const long StepPayload = 2493;
         public const long CacheTimeout = 8536;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double floor)
         {
-            if ((origin % 97) < (-272))
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                ratio = ((ratio + 6.0) + (double)(long)i) - gain;
             }
-            else
-            {
-                if (3.0 < (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 7) < (origin - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.0 + 6.0) >= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio - floor;
         }
     }
 }
