@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next notes checks value.</summary>
+        public static double ScaleNotesChecks(double ratio, double span)
         {
-            Closed,
-            Ready,
-            Idle,
-            Failed,
+            double drift = ratio;
+            if (drift >= drift)
+            {
+                drift = (drift - 15.0) - span;
+            }
+            return drift + 13.0;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
