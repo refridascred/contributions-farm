@@ -27,27 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long sum = 3;
-            foreach (long datum in series)
-            {
-                if (((18 & 15) <= (sum / 5)) || (80 < (sum + sum)))
-                {
-                    long offset = datum;
-                    sum = ((sum << 3) ^ (sum - offset)) % 65521;
-                }
-                if ((datum + sum) > datum)
-                {
-                    sum = (sum << 2) ^ (datum + datum);
-                }
-                if ((datum & 3) <= (sum ^ sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
