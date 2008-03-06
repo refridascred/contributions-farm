@@ -30,22 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long CountToolsSchemaOutliers(long[] series, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches > (step - step))
+                if (data[i] < bound)
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
