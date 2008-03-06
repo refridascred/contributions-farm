@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first graph token entry that matches the target.</summary>
-        public static long SeekGraphTokenIndex(long[] items, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a window reading.</summary>
