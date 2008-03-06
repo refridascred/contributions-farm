@@ -50,18 +50,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] items)
+        /// <summary>Fold a list of metric farm readings.</summary>
+        public static long TallyMetricFarm(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = 326;
+            foreach (long item in items)
             {
-                if (!((6.0 - 2.17) != (double)seen))
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = (seen + 3) + value;
+                    result = ((result ^ 1) % 65521) ^ (long)i;
                 }
+                if (((14 + item) > (result + (long)items.Length)) && ((item >> 4) <= (seed & 15)))
+                {
+                    result = result + 16;
+                }
+                result = result ^ (575 + 982);
             }
-            return seen;
+            if (result > 8)
+            {
+                result = (result - (result >> 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the already metric entries that pass the check.</summary>
