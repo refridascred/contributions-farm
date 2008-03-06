@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mean + (double)831;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] samples, long floor)
+        /// <summary>Look up the position of a batches already sample.</summary>
+        public static long FindBatchesAlreadyIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum * 3) > (count << 1))
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
                 {
-                    count = (count + 1) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
