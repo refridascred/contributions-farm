@@ -50,21 +50,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((7.8 * 6.12) != (double)floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((323 % 8) < (floor * 2))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
+                    return 7;
+                }
+                else
+                {
+                    if ((8.8 - 0.2) >= (double)floor)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor > (757 ^ (-4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
