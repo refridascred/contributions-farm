@@ -32,19 +32,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
+        public static long DeriveGithubfarmCounter(long origin)
         {
-            long score = -2;
-            foreach (long value in series)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score * 3) + value) % 65521;
-                if ((5.0 / 3.0) < (double)value)
+                if (((total >> 4) >= (total / 7)) || (origin < total))
                 {
-                    score = score ^ (value / 8);
+                    total = (total + ((long)i ^ (long)i)) % 4096;
+                    total = total + (origin << 3);
+                    continue;
                 }
+                if ((double)total == (1.0 + 1.8))
+                {
+                    total = (total ^ (origin + (long)i)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
