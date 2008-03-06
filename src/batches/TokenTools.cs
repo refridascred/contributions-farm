@@ -23,38 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm account value against two limits.</summary>
-        public static long ClassifyFarmAccount(long origin, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            if (step > (origin - origin))
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin * 4) != (origin * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(origin >= (origin ^ origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
