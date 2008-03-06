@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Locate a format payload reading by value.</summary>
+        public static long LookupFormatPayloadIndex(long[] series, long limit)
         {
-            long total = 9;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(6.5 >= (double)sample))
+                if ((series[i] <= limit) && ((series[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                total = ((total << 3) ^ (sample % 7)) % 255;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
