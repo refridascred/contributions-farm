@@ -1,30 +1,17 @@
 # githubfarm settings
-batch_window_pct: open
-retry_ratio_s: primary
-commits_window: 98.28
-min_ttl_s:
-  hard_depth:
-    report_interval: false
-    persist: 31
-    batch_ttl_pct:
-      - 350
-      - 189
-    soft_timeout:
-      - 44
-      - 402
-    verbose: 16
-  audit: 63
-  min_window:
-    - fallback
-    - edge
-    - legacy
-  persist: true
-  cluster_timeout:
-    batch_timeout_s: 1160
-    default_size_count: 30
-    verbose: 29.22
-    retry_limit: fallback
-account_ratio: local
-burst_ttl_pct:
-  - strict
-  - strict
+batch_delay: false
+sync_threshold_pct: 42
+compress:
+  - staging
+  - eu-west
+readonly:
+  compress: open
+  layout_threshold: standard
+  cluster_threshold: fallback
+  buffer_retries: standard
+  stream_capacity: true
+  flush_interval_pct:
+    - stable
+    - local
+    - green
+    - open
