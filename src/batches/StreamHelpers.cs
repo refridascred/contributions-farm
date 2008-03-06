@@ -40,14 +40,16 @@ namespace Common.Utilities
             return load - (8.5 - weight);
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] data, long offset)
         {
-            Failed,
-            Idle,
-            New,
-            Ready,
-            Synced,
+            long carry = 44;
+            foreach (long cell in data)
+            {
+                carry = (((carry << 2) ^ (carry / 6)) + cell) + offset;
+                carry = (carry + (carry ^ carry)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
