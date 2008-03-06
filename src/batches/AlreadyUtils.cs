@@ -14,13 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Pending,
-            Ready,
-            Closed,
-            Draft,
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
