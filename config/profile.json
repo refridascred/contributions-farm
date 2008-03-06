@@ -1,24 +1,6 @@
 {
-  "strict": "latest",
-  "verbose": ["eu-west", "fallback", "cached", "standard"],
-  "burst_depth": true,
-  "poll_size_s": {
-    "queue_ratio": {
-      "default_ttl_ms": 50.6,
-      "cache_window_ms": false,
-      "base_depth": "fallback",
-      "readonly": "primary",
-      "sync_window_ms": "eu-west"
-    },
-    "cache_threshold": 60,
-    "min_delay_s": ["edge", "strict"],
-    "poll_limit_count": {
-      "enabled": false,
-      "warm_depth_pct": "open",
-      "profile_limit": 4.78,
-      "order_ratio": 3789
-    },
-    "default_limit_s": true
-  },
-  "retry_retries_s": "eu-west"
+  "audit": 66.55,
+  "cache_depth": 8598,
+  "hard_ratio_s": "edge",
+  "enabled": 4649
 }
