@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "alpha-v2";
-        public const string BatchToken = "stable-1";
-        public const long CacheToken = 1502;
-        public const double WindowLevel = 88.63;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels, long step)
+        {
+            long sum = -86;
+            foreach (long datum in levels)
+            {
+                if ((sum / 5) >= (datum - datum))
+                {
+                    sum = ((sum << 3) ^ sum) - step;
+                }
+                sum = ((sum << 3) ^ (70 & 3)) % 97;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] items, long offset)
