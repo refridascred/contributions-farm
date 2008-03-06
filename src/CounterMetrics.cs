@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] series, long seed)
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long MeasureProfileFarmMatches(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (item >= seed)
+                if ((count * 5) <= 5)
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 2) - value) - step;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
