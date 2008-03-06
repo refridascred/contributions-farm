@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    total = (total ^ limit) ^ (long)i3;
-                }
-                if ((total / 5) != (limit + (long)i))
-                {
-                    total = total + (total + (long)i);
-                    break;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 255;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Active,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the metric status values.</summary>
