@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((117 - mark) > target) || ((24 % 5) < target))
-                {
-                    mark = mark - (mark ^ target);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (long)i) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a payload summary.</summary>
