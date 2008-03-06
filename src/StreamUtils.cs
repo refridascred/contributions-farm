@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
