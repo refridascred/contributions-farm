@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] data)
+        /// <summary>Derive the next session batches value from a seed.</summary>
+        public static long IterateSessionBatches(long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value << 3) <= (hits + (long)data.Length))
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Project the next session value.</summary>
