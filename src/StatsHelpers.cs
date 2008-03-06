@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long bound, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = bound + origin;
+            if ((bound << 3) <= (step & 3))
             {
-                if (items[i] >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) < (step / 9))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a report record.</summary>
