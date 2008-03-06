@@ -1,6 +1,4 @@
 # support settings
-contributi_ttl: staging
-flush_ratio: latest
-min_retries_count: 44
-hard_ratio_s: cached
-window_retries: 30
+retry_depth: stable
+support_threshold: blue
+sync_depth_ms: 60
