@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowFactor = "strict-1";
-        public const long BatchSpan = 9798;
-        public const long MinCount = 229;
-        public const long BatchRatio = 9852;
-        public const long BaseBudget = 3842;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples)
+        {
+            long sum = 9;
+            foreach (long reading in samples)
+            {
+                if ((long)samples.Length >= 759)
+                {
+                    sum = (sum - (sum + sum)) ^ reading;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterHits(long[] values)
