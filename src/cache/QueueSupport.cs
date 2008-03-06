@@ -40,11 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryTimeout = 3628;
-        public const long SoftBudget = 9499;
-        public const long BaseRatio = 6452;
-        public const double LimitCount = 39.68;
-        public const long BaseFactor = 1790;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
