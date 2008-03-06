@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stats schema samples are out of range.</summary>
-        public static long TallyStatsSchemaOutliers(long[] items, long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (0 < reading)
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a entry header.</summary>
