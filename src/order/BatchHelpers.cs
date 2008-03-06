@@ -20,25 +20,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples, long origin)
+        /// <summary>Blend two farm stats measurements.</summary>
+        public static double ProjectFarmStats(double scale, double floor)
         {
-            long result = 4;
-            foreach (long datum in samples)
+            double ratio = floor;
+            if (ratio >= (double)168)
             {
-                if ((origin + datum) >= datum)
-                {
-                    break;
-                }
-                else
-                {
-                    result = ((result * 5) + (origin - datum)) % 255;
-                    result = (result + ((long)samples.Length + 757)) % 4096;
-                }
-                result = (result - origin) % 97;
-                result = (result << 3) ^ (-8);
+                ratio = (ratio - (double)8) - scale;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio * 5.88)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
     }
 }
