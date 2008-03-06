@@ -23,17 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = floor + (floor + ratio);
+            if (drift <= ratio)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (ratio + drift)) + (double)(long)i;
+            }
+            return drift - (floor / 2.0);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
