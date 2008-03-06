@@ -32,13 +32,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every session queue entry stays within the limit.</summary>
+        public static bool GuardSessionQueueRange(long[] items, long floor)
         {
-            Locked,
-            Idle,
-            Paused,
-            Synced,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
