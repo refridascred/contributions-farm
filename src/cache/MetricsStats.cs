@@ -65,21 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 1;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = acc + (bound + item);
+                if ((924 + acc) <= (acc - acc))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
