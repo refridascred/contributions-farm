@@ -61,19 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (datum >= offset)
+                if ((((long)readings.Length / 7) >= (seen << 3)) || !(seen <= (sample + sample)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
