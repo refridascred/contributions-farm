@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift < bias)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                drift = drift - gain;
             }
-            return -1;
+            return drift + (gain * 5.83);
         }
 
         /// <summary>Digest a series of already entries.</summary>
