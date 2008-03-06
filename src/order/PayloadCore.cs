@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 1) != (seen >> 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryWidth = 10.07;
+        public const long BaseLevel = 4524;
+        public const string WindowFarm = "standard";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
