@@ -22,14 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Iterate the checks metrics series from a seed.</summary>
+        public static long IterateChecksMetrics(long seed)
         {
-            Paused,
-            Draft,
-            Retry,
-            Dropped,
-            Failed,
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the context status values.</summary>
