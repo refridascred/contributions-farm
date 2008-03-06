@@ -37,17 +37,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (levels[i] > offset)
+                if (((cell * 3) == (cell & 63)) && ((cell >> 2) >= seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
