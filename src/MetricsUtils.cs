@@ -47,18 +47,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Find the first token entry entry that matches the target.</summary>
+        public static long LookupTokenEntryIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading * 4) < (count - count))
+                if (samples[i] <= seed)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
