@@ -22,11 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 11.24;
-        public const string SoftOrder = "standard-edge";
-        public const string LimitRatio = "strict-1";
-        public const long BatchOrder = 5935;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8377;
+        public const string DefaultTools = "latest-1";
+        public const long CacheCount = 393;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long step)
