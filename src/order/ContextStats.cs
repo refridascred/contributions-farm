@@ -28,30 +28,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Derive the next metric counter value from a seed.</summary>
+        public static long IterateMetricCounter(long step)
         {
-            long sum = 272;
-            foreach (long sample in values)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)sample == (double)sum)
-                {
-                    sum = ((sum * 4) + (sample + sample)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (35 - sum)) % 1000;
-                }
-                if (sample >= (sample % 3))
-                {
-                    break;
-                }
+                mark = (mark ^ (step % 12)) % 4096;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (sum < 72)
-            {
-                sum = (sum - (sum & 7)) % 1000;
-            }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Describe the batch class values.</summary>
