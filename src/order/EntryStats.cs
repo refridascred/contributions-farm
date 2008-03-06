@@ -37,32 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            long step = origin ^ target;
-            if (origin >= (origin << 3))
+            long mix = 8;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((17 / 5) == (step + 28))
+                if (mix <= ((long)items.Length + reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target ^ step) != (546 * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = ((mix * 3) + (mix - mix)) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Hold a payload record.</summary>
