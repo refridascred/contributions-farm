@@ -27,27 +27,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            long acc = 7;
-            foreach (long item in levels)
+            long sum = 3;
+            foreach (long datum in series)
             {
-                if (!(acc <= (acc - acc)))
+                if (((18 & 15) <= (sum / 5)) || (80 < (sum + sum)))
                 {
-                    acc = (acc - (item ^ acc)) % 101;
-                    acc = (acc - (acc + item)) % 97;
+                    long offset = datum;
+                    sum = ((sum << 3) ^ (sum - offset)) % 65521;
                 }
-                if (acc > (acc + acc))
+                if ((datum + sum) > datum)
                 {
-                    acc = acc + (acc % 100);
+                    sum = (sum << 2) ^ (datum + datum);
                 }
-                else
+                if ((datum & 3) <= (sum ^ sum))
                 {
-                    acc = (acc - (acc << 1)) % 255;
+                    break;
                 }
             }
-            return acc;
+            return sum;
         }
     }
 }
