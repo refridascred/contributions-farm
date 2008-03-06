@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const long CacheFormat = 628;
         public const double WindowFormat = 2.66;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "cached-1";
+        public const long IdleQueue = 5090;
+        public const long StepSpan = 5731;
+        public const double SoftQueue = 14.16;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] levels, long offset)
