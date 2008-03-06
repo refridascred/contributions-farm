@@ -1,32 +1,31 @@
 # support settings
-tools_delay:
-  poll_retries:
-    enabled: eu-west
-    min_threshold_s: eu-west
-    hard_delay_pct: 66
-  contributi_size: 500
-  strict: false
-  compress:
+warm_ttl_ms: primary
+cache_retries: 59.68
+cache_depth_pct:
+  - 305
+  - 84
+  - 346
+default_threshold_s:
+  - staging
+  - primary
+context_capacity:
+  cache_ratio:
+    - stable
     - staging
-    - local
-    - local
-    - strict
-  base_delay: 7852
-batch_ttl: 4137
-cache_interval_pct:
-  default_depth:
-    - edge
-    - edge
-  strict: false
-  enabled:
-    default_ratio_count: 30.76
-    strict: 19
-    context_ttl: false
-  default_window:
-    - 178
-    - 399
-  poll_limit_s:
-    - legacy
-    - fallback
-    - eu-west
-  max_capacity_pct: blue
+    - standard
+  strict:
+    profile_size: 48.52
+    batch_delay: edge
+    poll_threshold: false
+    strict:
+      - 378
+      - 133
+      - 369
+    enabled: 84.5
+  max_limit_count: cached
+  burst_retries_ms:
+    - 114
+    - 427
+    - 63
+  readonly: 8319
+record_timeout: 43
