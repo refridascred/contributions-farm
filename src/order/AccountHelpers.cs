@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a editor payload sample.</summary>
-        public static long LookupEditorPayloadIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == floor)
+                if ((data[i] == floor) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
