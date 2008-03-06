@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((95 / 8) != (sample - sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first checks contributi entry that matches the target.</summary>
