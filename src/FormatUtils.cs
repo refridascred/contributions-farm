@@ -41,12 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 3) == 0))
+                if ((series[i] > step) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
