@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((tally + entry) >= tally)
-                {
-                    tally = tally + 2;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the route level values.</summary>
