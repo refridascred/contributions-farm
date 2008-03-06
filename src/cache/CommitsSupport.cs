@@ -60,11 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double rate, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            double ratio = (bias * 9.92) / 3.0;
-            return (ratio + bias) + rate;
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((11.0 * 9.2) != (double)value) && !((3.0 - 6.21) != (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
