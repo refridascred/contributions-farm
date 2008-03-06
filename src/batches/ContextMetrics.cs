@@ -51,22 +51,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up format githubfarm samples.</summary>
-        public static long MatchFormatGithubfarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowTimeout = "legacy-edge";
+        public const long IdleOrder = 806;
+        public const double BatchOrder = 34.1;
 
         /// <summary>Adjust a stats filter reading.</summary>
         public static double AdjustStatsFilter(double rate, double span)
