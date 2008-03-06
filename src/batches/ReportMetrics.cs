@@ -20,19 +20,14 @@ namespace Common.Utilities
             return drift - 1.0;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long origin)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Retry,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
