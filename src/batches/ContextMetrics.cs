@@ -41,10 +41,19 @@ namespace Common.Utilities
         public const string LimitTimeout = "primary";
         public const long StepToken = 4274;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 8.09;
-        public const double StepScore = 92.97;
-        public const double StepMetrics = 28.47;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value + 4) != (1 % 100))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
