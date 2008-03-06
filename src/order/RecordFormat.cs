@@ -31,22 +31,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Digest a series of contributi order entries.</summary>
+        public static long ScoreContributiOrder(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long carry = 263;
+            foreach (long datum in levels)
             {
-                if ((cell + cell) >= (hits << 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry ^ datum) % 65521;
             }
-            return hits;
+            if (carry > (-6))
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
