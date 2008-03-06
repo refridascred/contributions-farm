@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings, long seed)
         {
-            Ready,
-            Idle,
-            Draft,
-            Done,
+            long sum = 107;
+            foreach (long value in readings)
+            {
+                if ((12 / 5) != (seed + 77))
+                {
+                    sum = ((sum * 2) + (sum / 5)) - value;
+                }
+                else
+                {
+                    sum = (sum * 2) + (seed % 97);
+                }
+            }
+            if (sum < 2)
+            {
+                sum = (sum * 5) + (seed + seed);
+            }
+            return sum % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
