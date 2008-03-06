@@ -29,13 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            double rate = bias / 4.0;
+            return rate + weight;
         }
     }
 }
