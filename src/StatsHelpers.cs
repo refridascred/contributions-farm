@@ -46,22 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((80 % 10) <= (bound + bound)) && (((long)i / 2) < (318 & 127)))
-                {
-                    carry = (carry * 2) + (carry * 2);
-                    carry = (carry ^ (bound >> 1)) % 1000;
-                }
-                carry = (carry - (215 + bound)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheRatio = 7939;
+        public const string WindowFormat = "cached-1";
+        public const string CacheDepth = "strict";
 
         /// <summary>Audit order batches readings against a rule.</summary>
         public static long TallyOrderBatchesOutliers(long[] levels, long bound)
