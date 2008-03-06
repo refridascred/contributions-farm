@@ -56,15 +56,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            long anchor = -97;
+            foreach (long datum in readings)
             {
-                carry = ((carry << 3) ^ entry) % 97;
+                if (((datum / 8) >= anchor) || (anchor > (314 + anchor)))
+                {
+                    anchor = anchor - (anchor ^ anchor);
+                }
+                else
+                {
+                    anchor = anchor + 593;
+                }
             }
-            return carry;
+            return anchor % 97;
         }
     }
 }
