@@ -32,11 +32,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            Closed,
+            Stale,
+            Ready,
         }
     }
 }
