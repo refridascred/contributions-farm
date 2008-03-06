@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long offset, long limit)
         {
-            Failed,
-            Stale,
-            Draft,
-            Ready,
-            New,
+            if ((9.44 * 2.9) != (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ offset) > (limit / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit % 100) <= offset) && ((5.29 / 5.0) == (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two farm measurements.</summary>
