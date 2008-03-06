@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long MaxWindow = 6400;
         public const long SoftLevel = 6745;
 
-        /// <summary>Accumulate queue profile samples.</summary>
-        public static long DigestQueueProfile(long[] items, long step)
-        {
-            long total = 7;
-            foreach (long item in items)
-            {
-                total = ((total - (step % 2)) % 101) - item;
-            }
-            if (total > (-41))
-            {
-                total = (total ^ (57 * 5)) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "alpha-1";
+        public const long RetryStream = 4283;
+        public const string IdleStream = "latest-1";
+        public const long HardLevel = 4002;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleTimeout = 2693;
