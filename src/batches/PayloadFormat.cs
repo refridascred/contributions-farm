@@ -34,13 +34,22 @@ namespace Common.Utilities
         public const double WindowRatio = 45.16;
         public const long WindowSize = 2695;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long MeasureContextPayloadMatches(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (seen >= reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
