@@ -49,15 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            long mix = -61;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix ^ mix) + sample) + origin;
+                if ((reading * 4) < (count - count))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
