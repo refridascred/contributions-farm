@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const string LimitTimeout = "standard-v2";
         public const double MaxBuffer = 93.03;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((entry * 5) < (matches + matches)) && ((matches + entry) > (entry + matches)))
+                if (((seen + 406) != (seen & 15)) && (((step & 255) < step) && ((item ^ step) >= (seen + item))))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the profile level values.</summary>
