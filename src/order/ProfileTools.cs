@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] values, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((((reading >> 2) >= ((-349) >> 5)) || (((long)values.Length >> 3) < (reading + 66))) || (((long)values.Length - reading) > seen))
+                if ((tally >> 1) >= (0 & 255))
                 {
-                    seen = (seen + 2) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 3) + datum) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the schema order series from a seed.</summary>
