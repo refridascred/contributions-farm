@@ -26,17 +26,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] values, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] > seed)
+                if ((long)i >= (target - (long)i))
                 {
-                    return (long)i;
+                    long count = carry + (carry % 3);
+                    carry = ((carry * 2) + count) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
