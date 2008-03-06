@@ -80,31 +80,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank payload entry input into a small class.</summary>
-        public static long GradePayloadEntry(long target, long floor)
+        /// <summary>Combine payload format values into a single score.</summary>
+        public static long DigestPayloadFormat(long[] samples)
         {
-            if (floor > (target * 3))
+            long carry = -39;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target >= 5.1)
+                if (!(carry < (value & 63)))
                 {
-                    return 8;
+                    carry = (carry + (carry & 127)) % 97;
                 }
-                else
+                if (((value + carry) >= (value / 4)) || (3.1 > (double)carry))
                 {
-                    if (floor <= 98)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return carry % 1000;
         }
     }
 }
