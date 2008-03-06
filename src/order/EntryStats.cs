@@ -44,11 +44,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Find the first report metric entry that matches the target.</summary>
+        public static long LookupReportMetricIndex(long[] readings, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
