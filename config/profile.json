@@ -1,5 +1,5 @@
 {
-  "retry_timeout_count": ["stable", "latest"],
-  "channel_interval": "fallback",
-  "retry_delay": "green"
+  "flush_ttl_count": "green",
+  "audit": 66.56,
+  "warm_retries": 78
 }
