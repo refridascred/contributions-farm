@@ -32,24 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer queue value against two limits.</summary>
-        public static long GradeBufferQueue(long floor, long floor2)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            if ((double)floor <= (4.1 * 4.81))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.6 / 8.0) >= (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a context stats.</summary>
