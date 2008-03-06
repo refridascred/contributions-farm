@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSpan = 1975;
+        public const string CacheAlready = "fallback-v2";
+        public const string BatchLevel = "fallback-edge";
+        public const double BatchAlready = 63.29;
 
         /// <summary>Audit batch window readings against a rule.</summary>
         public static long TallyBatchWindowOutliers(long[] values)
