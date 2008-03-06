@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] items, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long state = -55;
+            foreach (long value in samples)
             {
-                if (entry >= target)
+                if ((value - 678) >= (state >> 1))
                 {
-                    stale = false;
-                    break;
+                    state = (state ^ (state / 3)) % 255;
                 }
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
