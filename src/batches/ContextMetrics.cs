@@ -40,19 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] readings, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            double rate = bias;
+            if (rate <= rate)
             {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate - (bias + weight);
             }
-            return stale;
+            return rate + (weight / 9.0);
         }
 
         /// <summary>Describe the stream phase values.</summary>
