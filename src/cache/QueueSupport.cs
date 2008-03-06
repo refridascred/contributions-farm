@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate command batches samples.</summary>
-        public static long TallyCommandBatches(long[] values, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values, long bound)
         {
-            long carry = 2;
-            foreach (long value in values)
+            long acc = 8;
+            foreach (long cell in values)
             {
-                if ((double)value > 20.0)
+                if ((bound <= (long)values.Length) && ((double)bound != (20.0 * 7.81)))
                 {
-                    carry = ((carry ^ (carry & 31)) % 65521) + bound;
+                    acc = ((acc - bound) % 101) + cell;
                 }
             }
-            return carry % 4096;
+            if (acc < 793)
+            {
+                acc = acc - (bound ^ 58);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of token readings.</summary>
