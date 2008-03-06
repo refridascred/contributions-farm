@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=403
+SUPPORT_LIMIT=136
 log "limit is ${SUPPORT_LIMIT}"
 
-for item in edge staging cached standard; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
