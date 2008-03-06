@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine support channel values into a single score.</summary>
+        public static long FoldSupportChannel(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
+            long mark = 190;
+            foreach (long datum in levels)
+            {
+                mark = ((mark - mark) % 101) ^ datum;
+                mark = mark ^ mark;
+            }
+            if (mark > 53)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
