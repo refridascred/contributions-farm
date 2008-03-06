@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally >> 3) <= tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            double mean = span;
+            return (mean + span) + rate;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
