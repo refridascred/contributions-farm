@@ -13,20 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 1169;
+        public const long SoftDepth = 5690;
+        public const long BaseTimeout = 4880;
+        public const long BaseBudget = 4529;
+        public const long BatchInterval = 1937;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftProfile = 8888;
