@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Grade a stats graph value against two limits.</summary>
+        public static long ClassifyStatsGraph(long offset, long offset2)
         {
-            Idle,
-            Failed,
-            Dropped,
+            long edge = offset + offset2;
+            if (!((offset2 % 100) < (edge * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((5.0 * 5.0) < (13.0 - 6.1)) || ((offset / 7) == (offset + edge)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((edge - offset) <= (offset2 - (-145)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
