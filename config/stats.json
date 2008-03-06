@@ -1,8 +1,5 @@
 {
-  "min_timeout_count": "eu-west",
-  "default_retries_pct": 58,
-  "idle_depth": "staging",
-  "retry_ratio_ms": false,
-  "audit": ["stable", "primary", "eu-west", "cached"],
-  "burst_depth": [44, 271]
+  "githubfarm_size": ["eu-west", "legacy", "blue", "green"],
+  "commits_delay": false,
+  "max_limit_ms": 6784
 }
