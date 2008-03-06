@@ -30,19 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double ratio = 2.33 / 4.0;
-            if (ratio <= offset)
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio - bias;
+            Draft,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
