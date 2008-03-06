@@ -50,17 +50,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 8;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= step)
+                if ((entry > total) || ((entry * 4) < 9))
                 {
-                    return (long)i;
+                    total = total ^ (11 - entry);
                 }
             }
-            return -1;
+            return total % 4096;
         }
     }
 }
