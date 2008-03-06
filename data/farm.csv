@@ -1,6 +1,11 @@
-id,state,ratio,level
-1,43.64,local,723
-2,858,49,24.91
-3,477,143,14.75
-4,57.77,standard,legacy
-5,861,46.34,456
+id,active,owner
+1,open,local
+2,standard,65.11
+3,79.52,legacy
+4,455,standard
+5,495,135
+6,open,58.53
+7,47,legacy
+8,915,legacy
+9,703,cached
+10,34.83,open
