@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((234 - value) > (matches % 3))
-                {
-                    matches = matches + 1;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a cluster layout reading by value.</summary>
