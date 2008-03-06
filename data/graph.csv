@@ -1,8 +1,7 @@
-id,state,label,ratio
-1,63.33,85.23,eu-west
-2,stable,790,777
-3,stable,564,558
-4,660,2.68,82.25
-5,300,779,primary
-6,local,staging,257
-7,54.6,legacy,standard
+id,weight,token,label,state
+1,0,staging,892,blue
+2,standard,56.13,6.73,74
+3,617,159,247,blue
+4,297,eu-west,687,817
+5,94,green,489,989
+6,667,fallback,126,167
