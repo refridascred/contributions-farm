@@ -1,8 +1,5 @@
 {
-  "soft_ratio_pct": "stable",
-  "burst_retries_ms": "standard",
-  "enabled": 3708,
-  "verbose": "edge",
-  "cache_timeout": true,
-  "batch_threshold": 94.95
+  "retry_timeout_count": ["stable", "latest"],
+  "channel_interval": "fallback",
+  "retry_delay": "green"
 }
