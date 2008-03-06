@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] data, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if (floor2 >= (floor % 97))
             {
-                if (((long)data.Length / 5) < (seen + seen))
+                return 4;
+            }
+            else
+            {
+                if ((floor2 ^ floor) > ((-23) % 16))
                 {
-                    seen = ((seen + 2) ^ datum) - origin;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 >> 5) > (floor2 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor2 < floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
