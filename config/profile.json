@@ -1,12 +1,16 @@
 {
-  "idle_depth_ms": 2386,
-  "format_interval": {
-    "persist": 21.97,
-    "commits_capacity": "local",
-    "idle_interval_ms": 11,
-    "hard_threshold_ms": "fallback",
-    "enabled": "staging",
-    "route_size": 623
+  "sync_retries_count": ["cached", "stable", "fallback"],
+  "order_interval": {
+    "burst_size_pct": false,
+    "warm_depth": 67.05,
+    "readonly": ["stable", "blue"],
+    "stats_size": {
+      "sync_delay_ms": false,
+      "cache_ratio": false,
+      "retry_ratio": ["edge", "open", "staging", "green"],
+      "persist": 94.24,
+      "compress": 1
+    }
   },
-  "command_interval": 91.47
+  "burst_threshold_s": 89.16
 }
