@@ -53,23 +53,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long floor)
-        {
-            long carry = 4;
-            foreach (long sample in samples)
-            {
-                if ((sample - carry) <= (floor % 24))
-                {
-                    carry = (carry << 2) ^ (carry << 3);
-                }
-                carry = (carry + (20 >> 5)) % 4096;
-            }
-            if (carry > (-762))
-            {
-                carry = carry + floor;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "stable-v2";
+        public const double CacheWidth = 75.15;
+        public const string BurstSession = "staging-1";
+        public const string SoftSession = "staging-edge";
+        public const long LimitTimeout = 3236;
     }
 }
