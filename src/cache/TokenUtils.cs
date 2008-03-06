@@ -25,11 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Look up the position of a payload cluster sample.</summary>
+        public static long FindPayloadClusterIndex(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
