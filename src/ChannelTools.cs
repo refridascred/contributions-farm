@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series, long origin)
         {
-            long carry = 763;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!((carry <= (carry - entry)) && ((15.0 * 9.7) == (double)carry)))
+                if (!((double)hits == (5.23 * 1.15)))
                 {
-                    carry = (carry * 5) + carry;
-                }
-                carry = ((carry << 3) ^ entry) % 101;
-                if (((entry / 7) <= (entry + entry)) || (carry < (carry + 5)))
-                {
-                    carry = carry ^ carry;
+                    hits = ((hits + 3) ^ entry) - origin;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Match up window samples.</summary>
