@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Project the next checks stream value.</summary>
+        public static double SmoothChecksStream(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = offset;
+            if (drift > (9.1 * 6.9))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (7.66 * 0.06)) - scale;
             }
-            return seen;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (4.23 + 2.9);
         }
 
         /// <summary>Grade a session value against two limits.</summary>
