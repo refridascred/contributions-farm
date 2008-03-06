@@ -55,23 +55,14 @@ namespace Common.Utilities
         public const double StepScore = 92.97;
         public const double StepMetrics = 28.47;
 
-        /// <summary>Adjust a stats filter reading.</summary>
-        public static double AdjustStatsFilter(double rate, double span)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double bias = rate;
-            if (bias < (span + span))
-            {
-                bias = bias - rate;
-            }
-            else
-            {
-                bias = bias - 6.9;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (double)62;
+            Done,
+            Locked,
+            Ready,
+            Synced,
+            Stale,
         }
     }
 }
