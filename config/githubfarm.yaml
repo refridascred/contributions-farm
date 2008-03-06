@@ -1,13 +1,16 @@
 # githubfarm settings
-burst_retries_count: eu-west
-hard_interval_count: false
-soft_limit_s:
-  - 203
-  - 289
-  - 414
-default_ttl: standard
-batch_depth: 1934
-editor_window:
-  - primary
-  - open
-  - standard
+base_ratio_pct:
+  soft_threshold_s: 48.3
+  max_ratio_count: fallback
+  cache_window_pct: 67.32
+  retry_interval_pct: false
+flush_size_s:
+  verbose: 54.41
+  dry_run: cached
+  support_capacity:
+    - 463
+    - 401
+    - 441
+  retry_ratio_ms: 7042
+  burst_timeout: cached
+base_timeout: 90
