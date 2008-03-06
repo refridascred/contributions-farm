@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double gain, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            double rate = floor;
-            if (rate > (floor - rate))
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                rate = (rate + (rate - rate)) + gain;
+                if (((step + mix) <= step) || ((46 & 3) < (4 + mix)))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)i / 7)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return rate + 5.68;
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
