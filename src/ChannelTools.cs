@@ -24,16 +24,19 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
-        public static long IteratePayloadGithubfarm(long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long mark = 359;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 2) + (target - target)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((sample << 1) <= (sample + sample))
+                {
+                    mark = ((mark << 3) ^ sample) % 101;
+                }
+                mark = ((mark << 2) ^ (mark >> 4)) % 97;
             }
-            return anchor;
+            return mark % 4096;
         }
     }
 }
