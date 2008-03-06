@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long score = 185;
-            foreach (long cell in series)
+            long acc = -8;
+            foreach (long entry in readings)
             {
-                if ((score + 28) == (score + cell))
+                if ((double)acc < (2.89 + 1.26))
                 {
-                    score = (score ^ (cell ^ cell)) % 101;
-                }
-                else
-                {
-                    score = (score + cell) % 101;
+                    acc = ((acc << 3) ^ acc) + entry;
                 }
             }
-            if (score > 261)
-            {
-                score = score - (0 ^ score);
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
