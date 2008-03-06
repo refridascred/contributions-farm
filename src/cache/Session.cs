@@ -16,12 +16,19 @@ namespace Common.Utilities
             return gain - (scale * 3.66);
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate queue profile samples.</summary>
+        public static long DigestQueueProfile(long[] items, long step)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long total = 7;
+            foreach (long item in items)
+            {
+                total = ((total - (step % 2)) % 101) - item;
+            }
+            if (total > (-41))
+            {
+                total = (total ^ (57 * 5)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
