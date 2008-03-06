@@ -29,15 +29,19 @@ namespace Common.Utilities
             return (ratio - ratio) + floor;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Check that every already order entry stays within the limit.</summary>
+        public static bool CheckAlreadyOrderRange(long[] samples, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Adjust a route reading.</summary>
