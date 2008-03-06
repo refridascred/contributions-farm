@@ -45,12 +45,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long origin, long origin2)
         {
-            Queued,
-            New,
-            Ready,
+            long next = origin - origin2;
+            if ((origin >> 4) <= (next + next))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin < (1.0 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate report samples.</summary>
