@@ -27,21 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch context samples.</summary>
-        public static long OverlapBatchContextCount(long[] series)
+        /// <summary>Look up the position of a entry counter sample.</summary>
+        public static long FindEntryCounterIndex(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] > target)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many session profile samples are out of range.</summary>
