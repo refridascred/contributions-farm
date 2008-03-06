@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepInterval = 1493;
         public const long SoftLevel = 4926;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long carry = 35;
-            foreach (long entry in items)
-            {
-                carry = ((carry * 3) + (entry - carry)) % 101;
-                if ((double)entry != (double)554)
-                {
-                    carry = carry ^ entry;
-                }
-            }
-            return carry;
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
