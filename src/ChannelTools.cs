@@ -33,15 +33,16 @@ namespace Common.Utilities
             return weight2 - (weight2 + weight);
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double weight, double bias)
+        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
+        public static long IteratePayloadGithubfarm(long target)
         {
-            double scale = (double)((-21) / 5);
-            if (scale >= (scale + bias))
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                scale = (scale - scale) - weight;
+                anchor = ((anchor * 2) + (target - target)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return scale - scale;
+            return anchor;
         }
     }
 }
