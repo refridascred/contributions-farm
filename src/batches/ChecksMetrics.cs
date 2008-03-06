@@ -31,12 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleInterval = 7135;
-        public const long CacheToken = 9198;
-        public const long LimitSpan = 2528;
-        public const long RetryToken = 7974;
-        public const double IdleToken = 57.91;
+        /// <summary>Find the first channel cache entry that matches the target.</summary>
+        public static long LookupChannelCacheIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorOutliers(long[] readings)
