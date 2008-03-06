@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long RetryToken = 7974;
         public const double IdleToken = 57.91;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] readings)
         {
-            Stale,
-            Paused,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((2 - datum) != (datum + datum)) && ((8.8 - 7.6) > (double)datum)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
