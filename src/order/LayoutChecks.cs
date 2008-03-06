@@ -48,13 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of support stream entries.</summary>
