@@ -49,10 +49,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheRatio = 7939;
-        public const string WindowFormat = "cached-1";
-        public const string CacheDepth = "strict";
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Rank { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
