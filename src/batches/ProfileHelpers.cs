@@ -22,13 +22,12 @@ namespace Common.Utilities
         public const long CacheSession = 8710;
         public const string WindowSession = "primary";
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 678;
+        public const long SoftMetric = 2914;
+        public const long MinDepth = 5465;
+        public const long BurstMetric = 3532;
+        public const long DefaultScore = 290;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long offset, long floor)
