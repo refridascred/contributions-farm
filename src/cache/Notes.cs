@@ -86,9 +86,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseCount = 9561;
-        public const string IdleReport = "open-1";
-        public const double IdleBudget = 72.66;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
