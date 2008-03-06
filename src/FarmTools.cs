@@ -14,12 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Done,
+            Paused,
+            Draft,
             Retry,
-            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the contributi class values.</summary>
