@@ -1,6 +1,7 @@
 {
-  "entry_interval": false,
-  "default_delay_ms": "legacy",
-  "warm_timeout_ms": "fallback",
-  "audit": "local"
+  "idle_retries_s": [130, 44, 19],
+  "hard_ttl": "local",
+  "verbose": 95,
+  "audit": "blue",
+  "base_limit_ms": false
 }
