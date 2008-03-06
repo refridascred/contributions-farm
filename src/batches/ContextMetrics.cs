@@ -41,22 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values, long offset)
+        /// <summary>Fold a list of farm cluster readings.</summary>
+        public static long FoldFarmCluster(long[] series, long target)
         {
-            long mark = 978;
-            foreach (long datum in values)
+            long mix = 3;
+            foreach (long cell in series)
             {
-                if (offset > (datum + offset))
-                {
-                    mark = mark ^ (90 ^ datum);
-                }
+                mix = ((mix << 3) ^ (78 + cell)) - target;
             }
-            if (mark > 4)
-            {
-                mark = (mark + (offset ^ mark)) % 255;
-            }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Hold a commits info.</summary>
