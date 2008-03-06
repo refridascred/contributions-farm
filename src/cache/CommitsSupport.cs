@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] items, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)item > (4.2 * 4.2)) && (item < step))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
