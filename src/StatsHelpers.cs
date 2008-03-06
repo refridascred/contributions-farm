@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheRatio = "latest-v2";
-        public const long WindowSession = 8445;
-        public const string MaxSession = "primary-1";
-        public const long HardSession = 5389;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 1692;
+        public const long HardBudget = 1888;
+        public const string BatchTimeout = "legacy-v2";
+        public const string BurstSpan = "standard";
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
