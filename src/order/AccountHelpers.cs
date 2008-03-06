@@ -57,19 +57,22 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] items, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] series)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (item > limit)
+                if ((38 - seen) > 800)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
