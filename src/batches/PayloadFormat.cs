@@ -56,14 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Done,
-            Paused,
-            Pending,
+            Active,
+            Retry,
             Queued,
-            Dropped,
+            Done,
         }
     }
 }
