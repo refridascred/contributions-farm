@@ -40,15 +40,22 @@ namespace Common.Utilities
         public const double SoftFormat = 58.24;
         public const string CacheRatio = "legacy-1";
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double span)
+        /// <summary>Count the stats batch entries that pass the check.</summary>
+        public static long MeasureStatsBatchHits(long[] data)
         {
-            double rate = (double)(499 >> 3);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                rate = ((rate - (rate * 8.56)) + (double)(long)i) - span;
+                if ((double)hits >= (9.6 * 8.8))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate - (scale + scale);
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster batch readings.</summary>
