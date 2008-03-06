@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepDepth = 21.9;
+        public const long MaxQueue = 5142;
+        public const long MinDepth = 3134;
+        public const double HardQueue = 20.3;
 
         /// <summary>Measure how many cache commits samples are out of range.</summary>
         public static long AuditCacheCommitsOutliers(long[] items, long floor)
