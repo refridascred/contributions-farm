@@ -19,12 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long bound)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long prev = origin + bound;
+            if ((double)prev > (double)511)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(bound <= prev))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin * 3) <= (prev + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound >= (double)prev)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
