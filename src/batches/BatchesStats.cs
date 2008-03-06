@@ -33,15 +33,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings, long limit)
+        /// <summary>Classify a schema counter pair into a bucket.</summary>
+        public static long GradeSchemaCounter(long bound, long seed)
         {
-            long state = 60;
-            foreach (long cell in readings)
+            long prev = bound - seed;
+            if ((bound ^ 78) < (bound * 2))
             {
-                state = (((state << 2) ^ (cell + state)) % 101) + limit;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((bound ^ seed) == (bound & 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - bound) != (bound + prev))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (9.46 >= (double)prev)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
