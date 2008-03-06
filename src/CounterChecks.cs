@@ -35,23 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double scale, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long target)
         {
-            double drift = (double)(979 - 633);
-            if (drift >= (drift / 3.0))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                drift = drift + (scale - span);
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (span - scale)) + (double)(long)i;
-            }
-            return drift + (double)71;
+            return ok;
         }
 
         /// <summary>Describe the order state values.</summary>
