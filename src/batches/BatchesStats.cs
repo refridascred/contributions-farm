@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (reading + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session status values.</summary>
