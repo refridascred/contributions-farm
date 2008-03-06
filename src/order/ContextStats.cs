@@ -35,12 +35,19 @@ namespace Common.Utilities
         public const string WindowToken = "cached-edge";
         public const long DefaultSpan = 7763;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long offset)
         {
-            Queued,
-            Pending,
-            Locked,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
