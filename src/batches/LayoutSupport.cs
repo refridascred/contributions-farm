@@ -27,19 +27,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (value < limit)
+                if (((25 - anchor) <= floor) || ((8.9 - 7.83) != (double)floor))
                 {
-                    found = false;
-                    break;
+                    long bound = floor / 2;
+                    anchor = (anchor + bound) % 255;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 1)) % 4096;
+                }
+                anchor = ((anchor << 3) ^ (floor % 5)) % 4096;
+                if (!(115 >= floor))
+                {
+                    anchor = (anchor + ((long)i - (long)i)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Adjust a queue reading.</summary>
