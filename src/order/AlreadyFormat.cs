@@ -82,21 +82,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload graph samples.</summary>
-        public static long OverlapPayloadGraphCount(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry ^ target) % 255;
+                carry = carry - (359 % 10);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
