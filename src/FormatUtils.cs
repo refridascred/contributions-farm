@@ -53,13 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] levels, long step)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            long acc = 24;
+            foreach (long value in levels)
+            {
+                if ((value - 932) != (step + acc))
+                {
+                    acc = (acc * 5) + (acc ^ acc);
+                }
+                else
+                {
+                    acc = acc - (acc - acc);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
