@@ -49,17 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((data[i] <= floor) && ((data[i] % 5) != 0))
+                if (cell >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Combine context values into a single score.</summary>
