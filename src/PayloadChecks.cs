@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8298;
         public const long MaxGithubfarm = 6757;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!(((double)count != (0.3 * 15.0)) || ((count % 64) > item)))
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftRatio = 2091;
+        public const long RetryBudget = 2302;
+        public const double CacheAccount = 49.77;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BatchCount = 72.75;
