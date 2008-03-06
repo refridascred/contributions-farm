@@ -68,18 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading > 9.0)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Idle,
+            Draft,
+            Stale,
+            Dropped,
         }
     }
 }
