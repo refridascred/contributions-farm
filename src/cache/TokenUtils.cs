@@ -54,21 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Failed,
         }
     }
 }
