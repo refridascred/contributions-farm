@@ -1,8 +1,10 @@
 # githubfarm settings
-soft_timeout_s: 24.68
-farm_timeout: false
-warm_size:
-  - edge
-  - primary
-cache_depth: staging
-enabled: 250
+poll_threshold_pct: 60
+batch_ttl_s: 41.2
+retry_timeout_count: false
+entry_ratio:
+  min_ratio_count: fallback
+  hard_interval: 500
+  default_depth_ms: false
+poll_threshold_count: 21.13
+report_size: green
