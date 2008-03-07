@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] readings, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long limit)
         {
             bool stale = true;
-            foreach (long reading in readings)
+            foreach (long datum in levels)
             {
-                if (reading > offset)
+                if (datum > limit)
                 {
                     stale = false;
                     break;
