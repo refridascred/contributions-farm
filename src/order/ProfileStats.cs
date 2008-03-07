@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseCount = 10.28;
-        public const long DefaultInterval = 449;
-        public const long SoftFilter = 9892;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long floor)
+        {
+            if ((offset + offset) >= (1 + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor < (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)offset <= 1.39))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)floor != (double)50) || ((floor * 2) < (offset % 100)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepSize = 4194;
