@@ -27,12 +27,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Paused,
-            Stale,
-            Idle,
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
