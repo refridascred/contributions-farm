@@ -20,17 +20,18 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Look up the position of a metric entry sample.</summary>
-        public static long FindMetricEntryIndex(long[] samples, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
+                if ((value >> 3) < (value - value))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
