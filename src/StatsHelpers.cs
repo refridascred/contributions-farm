@@ -54,19 +54,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool VerifyToolsBufferLimits(long[] values, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long value in values)
+            if ((340 << 1) >= offset2)
             {
-                if (value <= origin)
+                return 2;
+            }
+            else
+            {
+                if (((4.78 / 2.0) >= (double)offset) && ((offset + offset2) != (offset ^ 3)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
