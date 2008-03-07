@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultTimeout = "open";
-        public const long StepLevel = 6329;
-        public const long CacheCommand = 6042;
-        public const double MinCommand = 54.37;
-        public const long StepCommand = 4443;
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long CombineTokenTools(long[] series)
+        {
+            long score = 32;
+            foreach (long sample in series)
+            {
+                score = ((score << 2) ^ (score ^ score)) % 255;
+                score = (score ^ (sample - sample)) % 97;
+                if (!(score >= (sample + sample)))
+                {
+                    score = (score * 3) + (sample + score);
+                }
+            }
+            if (score < 2)
+            {
+                score = (score + (score << 1)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long bound)
