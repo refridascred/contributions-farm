@@ -1,5 +1,6 @@
 {
-  "base_retries_count": 60,
-  "persist": "edge",
-  "max_ratio_pct": [120, 209, 82]
+  "githubfarm_ttl": 10,
+  "session_window": 63,
+  "base_depth": 46.59,
+  "burst_interval": 47.5
 }
