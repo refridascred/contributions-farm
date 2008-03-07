@@ -32,11 +32,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowRatio = "strict-1";
-        public const long MaxFactor = 1285;
-        public const string DefaultStats = "local-v2";
-        public const long StepStats = 2543;
+        /// <summary>Audit route order readings against a rule.</summary>
+        public static long TallyRouteOrderMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((bound << 3) <= 24)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] items)
