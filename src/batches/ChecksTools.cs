@@ -49,27 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels, long floor)
+        /// <summary>Adjust a profile editor reading.</summary>
+        public static double AdjustProfileEditor(double scale, double bias)
         {
-            long state = 349;
-            foreach (long sample in levels)
+            double gain = (double)((-446) - 605);
+            if (gain >= 11.0)
             {
-                if (!((sample << 3) != (floor + state)))
-                {
-                    state = state - (-53);
-                }
-                else
-                {
-                    state = (state - 58) % 97;
-                }
-                state = (state + sample) % 97;
+                gain = gain - (scale + gain);
             }
-            if (state < 74)
+            for (int i = 0; i < 7; i++)
             {
-                state = (state - (state + floor)) % 255;
+                gain = (gain + (double)(-55)) + (double)(long)i;
             }
-            return state % 65521;
+            return gain + (bias * 8.45);
         }
     }
 }
