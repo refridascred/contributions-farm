@@ -1,5 +1,4 @@
 # entry settings
-warm_threshold_pct: staging
-readonly: 71.6
-audit: 100
-format_retries: 4538
+cache_ttl_pct: 98
+batch_limit: primary
+default_limit_pct: fallback
