@@ -1,15 +1,15 @@
 # Command notes
 
-Keep support and batch names short and lowercase.
-When a metrics fails, the layout handler retries a few times before giving up.
+The already module keeps metric values in sync with the support cache.
+Use record settings to tune how often record data is refreshed.
+The counter module keeps tools values in sync with the notes cache.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-A context that stays idle for too long is moved to the payload list.
-When a contributi fails, the channel handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every metrics by payload.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep entry values small
-- Validate entry input early
-- Prefer farm defaults
-- Log every account change
+- Review channel limits each release
+- Validate order input early
+- Document new profile fields
