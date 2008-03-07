@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a githubfarm graph pair into a bucket.</summary>
-        public static long BucketGithubfarmGraph(long seed, long offset)
+        /// <summary>Combine channel queue values into a single score.</summary>
+        public static long TallyChannelQueue(long[] levels, long bound)
         {
-            if (!((seed + seed) >= (offset & 255)))
+            long mark = 13;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(0.3 >= (double)seed))
+                if (((mark + bound) > 36) || ((642 ^ bound) <= (bound + mark)))
                 {
-                    return 5;
+                    continue;
                 }
                 else
                 {
-                    if (seed <= (offset + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark ^ (value << 3)) % 1000;
+                }
+                if (!((mark - mark) == (970 >> 1)))
+                {
+                    mark = (mark << 2) ^ value;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ bound) % 255;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
