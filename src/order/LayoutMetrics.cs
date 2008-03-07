@@ -18,17 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Derive the next tools stream value from a seed.</summary>
+        public static long DeriveToolsStream(long target)
         {
-            long sum = -7;
-            foreach (long reading in samples)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                sum = sum ^ (reading >> 4);
-                if ((double)reading >= (double)sum)
+                if ((target ^ target) != (sum + 264))
                 {
-                    break;
+                    sum = ((sum * 4) + ((long)i + 2)) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
             return sum;
         }
