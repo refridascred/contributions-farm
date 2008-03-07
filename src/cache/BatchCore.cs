@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 848;
+        public const long DefaultCounter = 9279;
+        public const long HardRatio = 7698;
+        public const long MinCounter = 4847;
+        public const long LimitCount = 2156;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string WindowDepth = "open-v2";
