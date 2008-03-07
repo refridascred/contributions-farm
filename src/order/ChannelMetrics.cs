@@ -49,15 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
