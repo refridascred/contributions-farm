@@ -31,31 +31,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long offset, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            if (((93 - step) <= (step + step)) && ((227 + offset) > step))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + offset) <= (offset ^ offset))
+                if (((double)hits <= (double)entry) || ((hits % 24) < (249 + hits)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)offset >= (8.11 - 17.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
