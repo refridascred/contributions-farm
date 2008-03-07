@@ -1,10 +1,9 @@
 # support settings
-enabled: true
-burst_delay_pct:
-  - 178
-  - 418
-  - 150
-sync_delay:
-  - 114
-  - 204
-base_capacity: local
+sync_size_pct:
+  - 253
+  - 369
+  - 236
+soft_delay_ms: green
+farm_size: 803
+entry_capacity: 93.52
+poll_ratio_pct: 250
