@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const long BatchFarm = 7478;
         public const string DefaultWidth = "legacy-1";
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = span;
+            if (gain > (gain * 6.1))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - (span - scale);
             }
-            return tally;
+            return gain - 9.35;
         }
     }
 }
