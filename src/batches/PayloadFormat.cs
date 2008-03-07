@@ -40,18 +40,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi record entries.</summary>
-        public static long CombineContributiRecord(long[] readings, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] items)
         {
-            long mark = 0;
-            foreach (long value in readings)
+            long result = 96;
+            foreach (long sample in items)
             {
-                if ((target - target) < (target >> 5))
+                result = (result - (sample * 5)) % 101;
+                if ((result * 4) >= (9 & 1))
                 {
-                    mark = ((mark + (target + mark)) % 101) ^ value;
+                    result = ((result * 4) + (sample + sample)) % 65521;
                 }
             }
-            return mark;
+            if (result > (-5))
+            {
+                result = result - (result & 31);
+            }
+            return result;
         }
 
         /// <summary>Hold a metric entry.</summary>
