@@ -19,16 +19,10 @@ namespace Common.Utilities
         public const long LimitPayload = 1445;
         public const double RetryRatio = 53.08;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] items)
-        {
-            long mark = 80;
-            foreach (long item in items)
-            {
-                mark = ((mark - mark) % 101) + item;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 6702;
+        public const long BatchContext = 4136;
+        public const string MinContext = "legacy-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitDepth = 8878;
