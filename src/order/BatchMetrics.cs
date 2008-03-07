@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the stats account series from a seed.</summary>
-        public static long DeriveStatsAccount(long offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((mark <= (mark * 3)) || ((mark % 100) < (mark - offset)))
-                {
-                    mark = mark + (offset / 9);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of schema record readings.</summary>
