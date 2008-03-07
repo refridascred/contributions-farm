@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values)
         {
-            Draft,
-            Queued,
-            Stale,
+            long carry = 624;
+            foreach (long item in values)
+            {
+                carry = (((carry << 3) ^ (72 + carry)) % 101) ^ item;
+            }
+            return carry;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
