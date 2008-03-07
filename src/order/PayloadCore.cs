@@ -15,39 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a order layout value against two limits.</summary>
-        public static long ClassifyOrderLayout(long target, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] items, long limit)
         {
-            long offset = target + floor;
-            if ((102 >= target) && ((floor + target) >= 4))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((760 > (offset & 7)) && (floor < (floor << 1)))
+                if (item >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.0 < (double)target) && (3 <= (target + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((125 / 2) < (offset >> 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
