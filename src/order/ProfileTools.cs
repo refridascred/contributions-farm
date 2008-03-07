@@ -17,13 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
