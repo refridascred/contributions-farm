@@ -13,18 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ seen) >= (datum - 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of stream context readings.</summary>
