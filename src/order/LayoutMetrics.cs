@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values, long seed)
+        /// <summary>Validate counter cache readings against a bound.</summary>
+        public static bool CheckCounterCacheLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((tally >> 2) >= seed)
+                if (reading > bound)
                 {
-                    tally = (tally + 2) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
