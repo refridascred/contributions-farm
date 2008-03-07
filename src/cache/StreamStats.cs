@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long step, long origin)
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            if ((step % 64) > step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - step) >= 31)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 2) == (step % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
