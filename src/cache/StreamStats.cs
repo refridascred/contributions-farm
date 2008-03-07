@@ -43,13 +43,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] data, long origin)
         {
-            Synced,
-            Retry,
-            Stale,
-            Active,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
