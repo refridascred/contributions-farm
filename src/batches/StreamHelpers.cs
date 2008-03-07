@@ -40,23 +40,19 @@ namespace Common.Utilities
             return load - (8.5 - weight);
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long limit)
         {
-            double mean = floor;
-            if (mean > (1.4 * 6.2))
+            bool flag = true;
+            foreach (long value in values)
             {
-                mean = mean - (gain - gain);
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + 2.69) + (double)(long)i;
-            }
-            return mean - (gain - mean);
+            return flag;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
