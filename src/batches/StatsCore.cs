@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the report tools entries that pass the check.</summary>
-        public static long TallyReportToolsMatches(long[] data, long target)
+        /// <summary>Check that every commits schema entry stays within the limit.</summary>
+        public static bool GuardCommitsSchemaLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((double)reading != (11.0 / 3.0)) && ((double)seen >= (6.91 * 7.11)))
+                if (sample >= offset)
                 {
-                    seen = (seen + 3) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
