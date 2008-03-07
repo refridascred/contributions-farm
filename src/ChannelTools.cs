@@ -13,18 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] values, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((reading + reading) > (tally - reading))
+                if (datum < offset)
                 {
-                    tally = (tally + 3) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
