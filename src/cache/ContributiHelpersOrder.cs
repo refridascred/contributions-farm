@@ -14,12 +14,31 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Grade a entry contributi value against two limits.</summary>
+        public static long ClassifyEntryContributi(long seed, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            if ((seed + seed) == (seed - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (234 > (seed + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 7) <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
