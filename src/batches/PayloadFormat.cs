@@ -43,12 +43,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long seed, long floor)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            if ((double)floor < (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + floor) > (7 - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((3.0 - 2.1) >= (double)seed) && (32 <= (floor ^ seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor >= (floor - 0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
