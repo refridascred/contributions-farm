@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long limit)
         {
-            long carry = 624;
-            foreach (long item in values)
+            long sum = 393;
+            foreach (long reading in samples)
             {
-                carry = (((carry << 3) ^ (72 + carry)) % 101) ^ item;
+                sum = ((sum << 2) ^ sum) % 1000;
+                if (!((double)limit > (double)reading))
+                {
+                    sum = ((sum * 3) + limit) % 1000;
+                }
+                else
+                {
+                    sum = sum - (limit + 2);
+                }
             }
-            return carry;
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of notes buffer readings.</summary>
