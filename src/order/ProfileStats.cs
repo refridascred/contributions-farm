@@ -15,18 +15,21 @@ namespace Common.Utilities
         public const string MaxPayload = "cached-v2";
         public const long SoftLevel = 3356;
 
-        /// <summary>Fold a list of profile filter readings.</summary>
-        public static long ScoreProfileFilter(long[] levels, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long mark = 73;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry - step) < entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - ((long)levels.Length + entry)) % 65521;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
