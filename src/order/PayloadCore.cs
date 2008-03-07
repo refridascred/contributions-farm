@@ -15,15 +15,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a route counter counter forward.</summary>
-        public static long IterateRouteCounter(long bound)
+        /// <summary>Grade a order layout value against two limits.</summary>
+        public static long ClassifyOrderLayout(long target, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long offset = target + floor;
+            if ((102 >= target) && ((floor + target) >= 4))
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((760 > (offset & 7)) && (floor < (floor << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.0 < (double)target) && (3 <= (target + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((125 / 2) < (offset >> 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
