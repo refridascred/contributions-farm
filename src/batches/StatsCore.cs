@@ -68,18 +68,18 @@ namespace Common.Utilities
             return rate + (9.6 - rate);
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] data, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((6.0 + 2.96) <= (double)sample)
+                if (matches > (offset * 4))
                 {
-                    count = (count + 3) + floor;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
