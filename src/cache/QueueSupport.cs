@@ -27,12 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = 5;
+            foreach (long item in readings)
+            {
+                if ((double)item != (double)anchor)
+                {
+                    anchor = (anchor * 4) + (anchor / 3);
+                }
+            }
+            return anchor;
         }
     }
 }
