@@ -1,40 +1,17 @@
 # entry settings
-hard_timeout_s:
-  record_capacity:
-    - fallback
-    - open
-  warm_ratio_count: 26.83
-  soft_capacity_s: 44.7
-  readonly: latest
-  cache_size: true
-  compress: edge
-order_interval:
-  dry_run: 71
-  hard_retries_count: 49.46
-  window_threshold: 43.16
-  min_limit:
-    - 389
-    - 447
-    - 221
-    - 232
-warm_interval_count:
-  persist:
-    default_depth_count:
-      - edge
-      - stable
-      - green
-      - edge
-    burst_delay:
-      - open
-      - latest
-      - fallback
-    retry_ttl_s: 4892
-    batch_retries_s: 0.51
-  metric_window: 30
-  profile_retries: cached
-  dry_run: true
-  sync_timeout_ms: 18.55
-counter_delay: true
-idle_depth_ms:
-  - 262
-  - 429
+burst_interval_pct: open
+support_delay: edge
+poll_ttl:
+  readonly: false
+  hard_ratio: 56.02
+  idle_depth: open
+  graph_capacity:
+    burst_size_pct: latest
+    cache_ttl: true
+    cache_interval:
+      - 305
+      - 311
+      - 125
+      - 493
+  audit: 34.99
+  soft_window_count: 94.27
