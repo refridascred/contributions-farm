@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
