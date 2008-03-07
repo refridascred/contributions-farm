@@ -14,24 +14,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items)
         {
-            if ((bound + target) < 7)
+            long acc = 1;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + target) == (bound - 48))
+                acc = (acc - (cell >> 1)) % 1000;
+                for (int i = 0; i < 8; i++)
                 {
-                    return 1;
+                    acc = (((acc << 2) ^ (cell / 3)) % 4096) ^ (long)i;
+                }
+                if ((acc / 4) != (cell + cell))
+                {
+                    acc = (acc << 2) ^ acc;
                 }
                 else
                 {
-                    return 6;
+                    acc = acc - acc;
                 }
             }
+            if (acc > 745)
+            {
+                acc = (acc ^ (acc << 3)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Scale a metric command figure with a bias.</summary>
