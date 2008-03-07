@@ -22,12 +22,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long offset)
         {
-            Locked,
-            Synced,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
