@@ -1,13 +1,10 @@
 {
-  "cluster_capacity": {
-    "farm_ratio": ["legacy", "primary"],
-    "max_depth_pct": 500,
-    "cluster_limit": 76,
-    "order_window": 6787
+  "audit": ["fallback", "cached", "eu-west"],
+  "verbose": {
+    "flush_interval_pct": [322, 81, 430, 265],
+    "persist": false,
+    "default_interval": ["green", "cached"]
   },
-  "batches_limit": [26, 410, 469, 395],
-  "default_ttl_ms": true,
-  "already_threshold": "legacy",
-  "min_interval": "blue",
-  "enabled": "stable"
+  "layout_delay": 0.34,
+  "githubfarm_interval": "staging"
 }
