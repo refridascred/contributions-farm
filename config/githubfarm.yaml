@@ -1,18 +1,16 @@
 # githubfarm settings
-counter_timeout: 51.64
-idle_limit:
-  idle_capacity_s: edge
-  strict:
-    readonly: fallback
-    cache_size_s: primary
-    retry_interval: true
-    burst_capacity: 15
-    batch_ratio:
-      - 335
-      - 382
-      - 368
-    default_timeout_ms: 7881
-  poll_limit_count:
-    - 393
-    - 70
-record_size: true
+cache_delay: stable
+cache_size: 30
+layout_ratio:
+  filter_size: 500
+  max_threshold_ms: 30
+  base_retries:
+    flush_size_ms: 8863
+    warm_threshold_pct: staging
+    base_interval_ms:
+      - 490
+      - 288
+      - 248
+    flush_timeout_count: primary
+    warm_delay: 100
+  persist: 9806
