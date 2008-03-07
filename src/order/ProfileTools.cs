@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a tools token pair into a bucket.</summary>
-        public static long ClassifyToolsToken(long step, long floor)
+        /// <summary>Roll a entry buffer counter forward.</summary>
+        public static long RollEntryBuffer(long origin)
         {
-            if ((floor - floor) < (step + floor))
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (floor > (floor + 62))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step < (floor % 5)) || (step <= (step + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
