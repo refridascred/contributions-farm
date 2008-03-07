@@ -32,10 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "staging-1";
-        public const long MinCount = 628;
-        public const long MaxCommits = 2781;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] values, long limit)
