@@ -37,12 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 79.18;
-        public const long CacheCount = 2945;
-        public const long SoftFactor = 8799;
-        public const double SoftScore = 49.19;
-        public const double IdleFactor = 93.66;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)(long)samples.Length == (3.0 + 5.0))
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
