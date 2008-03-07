@@ -1,5 +1,13 @@
 {
-  "base_size_pct": "open",
-  "flush_timeout_ms": 25.19,
-  "audit": "standard"
+  "persist": "blue",
+  "hard_threshold": {
+    "idle_depth_count": 6610,
+    "flush_window_count": "green",
+    "default_interval": 500,
+    "batch_depth_s": "staging",
+    "base_delay_pct": "latest"
+  },
+  "cache_retries": "eu-west",
+  "base_window": 500,
+  "editor_threshold": "primary"
 }
