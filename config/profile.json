@@ -1,6 +1,9 @@
 {
-  "min_limit_ms": "green",
-  "support_threshold": 8616,
-  "cache_size_s": "legacy",
-  "cache_threshold": true
+  "stream_ttl": 39.41,
+  "dry_run": 9183,
+  "batch_ttl_count": {
+    "idle_delay_pct": 14.99,
+    "hard_delay_ms": "stable",
+    "token_interval": ["primary", "legacy", "cached", "stable"]
+  }
 }
