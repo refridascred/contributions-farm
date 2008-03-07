@@ -20,17 +20,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first format session entry that matches the target.</summary>
-        public static long LocateFormatSessionIndex(long[] items, long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] == seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metric summary.</summary>
