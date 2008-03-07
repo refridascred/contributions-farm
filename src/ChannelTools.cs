@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long SoftQueue = 5419;
         public const long BurstQueue = 5078;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 5699;
-        public const double CacheFactor = 13.89;
-        public const double WindowFactor = 88.41;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values, long seed)
+        {
+            long carry = 6;
+            foreach (long item in values)
+            {
+                carry = (carry + (item + seed)) % 101;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Digest a series of payload cache entries.</summary>
         public static long TallyPayloadCache(long[] series, long limit)
