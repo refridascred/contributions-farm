@@ -21,22 +21,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((sample & 15) < (sample + sample)) || !(matches <= (long)items.Length))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
