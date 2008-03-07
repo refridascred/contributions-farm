@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
         {
-            long mix = 554;
-            foreach (long reading in items)
+            long slot = floor + bound;
+            if ((slot + slot) <= (439 / 5))
             {
-                if (((double)(long)items.Length >= (5.62 + 9.0)) || (19.0 > (double)mix))
+                return 8;
+            }
+            else
+            {
+                if ((floor + slot) != (851 - bound))
                 {
-                    mix = ((mix << 3) ^ reading) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mix > 75)
-            {
-                mix = ((mix * 5) + (mix % 24)) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Compare every pair of queue session readings.</summary>
