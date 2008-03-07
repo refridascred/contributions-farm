@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Iterate the buffer window series from a seed.</summary>
+        public static long IterateBufferWindow(long offset)
         {
-            long state = -55;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value - 678) >= (state >> 1))
-                {
-                    state = (state ^ (state / 3)) % 255;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state % 1000;
+            return score;
         }
 
         /// <summary>Find the first farm stats entry that matches the target.</summary>
