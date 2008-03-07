@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long floor, long origin)
         {
-            long anchor = 165;
-            foreach (long entry in values)
+            if (((floor % 12) >= (origin >> 4)) && ((origin + origin) <= (origin + floor)))
             {
-                if ((seed ^ entry) >= entry)
+                return 3;
+            }
+            else
+            {
+                if ((0.3 - 2.18) == (double)origin)
                 {
-                    anchor = (anchor ^ anchor) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    anchor = anchor - (seed + seed);
-                    anchor = ((anchor * 4) + (anchor & 1)) % 97;
-                }
-                if (anchor > (seed * 5))
-                {
-                    anchor = (anchor << 2) ^ (62 % 7);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 255;
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
