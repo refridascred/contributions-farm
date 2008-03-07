@@ -42,39 +42,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long step)
+        /// <summary>Iterate the cache buffer series from a seed.</summary>
+        public static long DeriveCacheBuffer(long offset)
         {
-            long gap = floor ^ step;
-            if ((floor + floor) > (floor ^ step))
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((gap - gap) >= 92)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (2.5 > (double)gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.9 + 6.6) > (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
