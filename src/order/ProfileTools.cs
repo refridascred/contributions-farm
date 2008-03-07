@@ -62,21 +62,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count payload editor pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadEditorCount(long[] samples)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias3 = 8.2 * 6.9;
+            if (bias3 <= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias3 = bias3 - (11.0 + bias2);
             }
-            return hits;
+            return bias3 + (double)81;
         }
 
         /// <summary>Combine route values into a single score.</summary>
