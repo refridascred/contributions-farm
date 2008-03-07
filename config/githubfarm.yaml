@@ -1,9 +1,8 @@
 # githubfarm settings
-retry_ttl_count:
-  - 260
-  - 116
-  - 349
-  - 32
-audit: true
-persist: 1024
-warm_retries_s: true
+channel_window: local
+poll_interval_ms: local
+retry_ratio_count:
+  - blue
+  - blue
+  - green
+hard_delay_pct: latest
