@@ -53,9 +53,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "latest-1";
-        public const long StepDepth = 5472;
-        public const long LimitCommits = 3138;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples, long target)
+        {
+            long mix = 3;
+            foreach (long cell in samples)
+            {
+                mix = ((mix * 5) + (cell % 10)) + target;
+            }
+            return mix % 1000;
+        }
     }
 }
