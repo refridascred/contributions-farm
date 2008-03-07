@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryLevel = 8459;
-        public const long StepNotes = 6081;
-        public const long BurstNotes = 1699;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Failed,
+            Done,
+            Dropped,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] samples, long origin)
