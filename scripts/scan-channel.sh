@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in local primary legacy blue; do
+for item in strict standard staging; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=90
+CHANNEL_LIMIT=354
 log "limit is ${CHANNEL_LIMIT}"
