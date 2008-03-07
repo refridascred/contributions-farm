@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long score = 8;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)values.Length - score) == (60 + 644))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score + reading;
-                }
-                if ((reading << 2) > 538)
-                {
-                    score = (score ^ (60 << 3)) % 65521;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit notes account readings against a rule.</summary>
