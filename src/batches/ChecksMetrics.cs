@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "latest-edge";
-        public const long SoftFactor = 7941;
-        public const long BurstRatio = 1509;
-        public const long StepFactor = 8058;
-        public const string CacheFactor = "alpha-1";
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryGaps(long[] items, long target)
