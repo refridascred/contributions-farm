@@ -40,10 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 4386;
-        public const long StepRatio = 4793;
-        public const double RetryTimeout = 66.43;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long target)
+        {
+            if (((-2) + target) > (floor - 73))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4 - target) <= (target + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((15.0 / 5.0) == (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-8) + floor) > 62)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] samples, long seed)
