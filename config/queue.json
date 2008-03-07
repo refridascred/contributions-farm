@@ -1,7 +1,7 @@
 {
-  "format_threshold": 76.93,
-  "poll_retries_s": 645,
-  "format_size": 14.09,
-  "soft_size_count": 1024,
-  "min_ttl_count": false
+  "poll_window_ms": "legacy",
+  "route_ttl": "latest",
+  "idle_limit_pct": [130, 44],
+  "compress": 65,
+  "retry_capacity_pct": "latest"
 }
