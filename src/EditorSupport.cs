@@ -81,13 +81,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long anchor = 751;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = ((anchor + (sample - (long)series.Length)) % 65521) ^ (long)i;
+                }
+                if (((double)3 < (double)anchor) || ((sample >> 3) > (sample - sample)))
+                {
+                    anchor = anchor + (sample >> 1);
+                }
+                else
+                {
+                    anchor = (anchor - (sample + anchor)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
