@@ -14,11 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            Ready,
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
