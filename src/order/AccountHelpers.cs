@@ -67,18 +67,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the editor graph entries that pass the check.</summary>
-        public static long TallyEditorGraphHits(long[] samples, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((matches - value) <= (528 ^ 270)) || ((double)floor <= 6.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
