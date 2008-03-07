@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double ratio = (12.0 * 8.0) / 4.0;
-            return ((ratio + (double)0) + bias) + floor;
+            New,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
