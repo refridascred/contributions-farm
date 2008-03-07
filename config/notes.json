@@ -1,18 +1,6 @@
 {
-  "verbose": {
-    "persist": {
-      "retry_ttl_s": ["local", "local"],
-      "cache_ttl": "local",
-      "hard_ratio_s": 1
-    },
-    "soft_capacity_s": "legacy",
-    "idle_threshold_count": 100,
-    "contributi_ttl": 31.33,
-    "soft_retries_count": 82
-  },
-  "batches_ttl": 100,
-  "stream_retries": [200, 47, 434, 63],
-  "contributi_limit": false,
-  "hard_depth_count": false,
-  "hard_capacity_ms": "strict"
+  "max_interval_s": 9312,
+  "idle_retries_s": "legacy",
+  "poll_capacity": "open",
+  "readonly": false
 }
