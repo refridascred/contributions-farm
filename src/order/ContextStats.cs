@@ -38,14 +38,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] levels, long step)
         {
-            Locked,
-            Synced,
-            New,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)seen == (0.04 + 5.86)))
+                {
+                    seen = ((seen + 2) - sample) - step;
+                }
+            }
+            return seen;
         }
     }
 }
