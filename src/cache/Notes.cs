@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const string SoftScore = "latest-1";
         public const long BurstChecks = 6014;
 
-        /// <summary>Locate a context profile reading by value.</summary>
-        public static long LookupContextProfileIndex(long[] series, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
