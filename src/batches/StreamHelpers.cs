@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the editor buffer entries that pass the check.</summary>
+        public static long MeasureEditorBufferMatches(long[] samples, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value - value) >= value)
+                {
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
