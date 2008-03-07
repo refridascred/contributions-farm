@@ -1,15 +1,11 @@
 # entry settings
-hard_retries: 30
-default_timeout:
-  burst_timeout: fallback
-  idle_size_pct:
-    - eu-west
-    - standard
-  warm_size_pct:
-    poll_depth: 537
-    burst_timeout_s: fallback
-    sync_ratio_pct: 26
-    support_delay: 69.59
-  payload_window: 84
-  warm_size: latest
-soft_ratio: 500
+audit:
+  - legacy
+  - primary
+retry_ratio_count: eu-west
+default_depth_count:
+  - green
+  - primary
+checks_delay: stable
+max_limit_pct: 65
+base_ttl_pct: 16.8
