@@ -53,19 +53,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry > bound)
+                if (!(((seen - datum) >= datum) || ((bound + seen) < 6)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
