@@ -73,11 +73,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Retry,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Match up token samples.</summary>
