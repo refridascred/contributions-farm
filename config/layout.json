@@ -1,8 +1,8 @@
 {
-  "verbose": "primary",
-  "layout_size": "local",
-  "sync_limit": true,
-  "flush_delay_count": ["edge", "local", "cached"],
-  "default_threshold": false,
-  "warm_ratio_count": "fallback"
+  "strict": 70.54,
+  "filter_size": 10.93,
+  "min_window_ms": "cached",
+  "already_ratio": false,
+  "profile_timeout": "latest",
+  "already_timeout": "latest"
 }
