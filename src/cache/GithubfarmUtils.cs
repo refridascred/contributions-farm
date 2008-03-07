@@ -17,18 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a notes payload reading by value.</summary>
-        public static long SeekNotesPayloadIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 1670;
+        public const long StepOrder = 7160;
+        public const long WindowLevel = 9650;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string WindowStream = "open-1";
