@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the stream checks entries that pass the check.</summary>
-        public static long CountStreamChecksOutliers(long[] readings)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long diff = target + step;
+            if ((step > target) && ((0.3 - 4.0) >= (double)step))
             {
-                if (180 <= (item & 3))
+                return 8;
+            }
+            else
+            {
+                if ((step + target) <= diff)
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((8.2 / 9.0) > (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
