@@ -25,18 +25,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            long acc = 58;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((sample - 834) == (acc ^ sample))
+                if (((sample & 15) < (sample + sample)) || !(matches <= (long)items.Length))
                 {
-                    acc = (acc + 86) % 1000;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
