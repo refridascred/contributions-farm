@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = 3;
-            foreach (long cell in series)
-            {
-                if ((cell * 3) < anchor)
-                {
-                    anchor = (anchor ^ anchor) % 101;
-                }
-            }
-            return anchor;
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Combine commits queue values into a single score.</summary>
