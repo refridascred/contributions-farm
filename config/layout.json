@@ -1,8 +1,6 @@
 {
-  "strict": 70.54,
-  "filter_size": 10.93,
-  "min_window_ms": "cached",
-  "already_ratio": false,
-  "profile_timeout": "latest",
-  "already_timeout": "latest"
+  "sync_window_s": 74,
+  "base_retries": "eu-west",
+  "compress": "blue",
+  "batch_size": 500
 }
