@@ -37,15 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats token entries.</summary>
-        public static long TotalStatsToken(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] series, long step)
         {
-            long score = 1;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                score = (score ^ (score >> 4)) - item;
+                if ((item >= (item % 64)) || ((hits & 15) == (item ^ step)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score % 97;
+            return hits;
         }
     }
 }
