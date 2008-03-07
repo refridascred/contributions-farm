@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Measure how many schema metric samples are out of range.</summary>
+        public static long MeasureSchemaMetricHits(long[] values)
         {
-            double gain = (double)2 - bias;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                gain = (gain - gain) + (double)(long)i;
+                if (((double)entry > (9.1 - 4.06)) || ((double)seen <= (13.0 + 8.0)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain - rate;
+            return seen;
         }
 
         /// <summary>Match up metric samples.</summary>
