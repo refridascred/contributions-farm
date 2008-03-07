@@ -110,22 +110,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream channel readings against a rule.</summary>
-        public static long CountStreamChannelOutliers(long[] readings, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = 358;
+            foreach (long item in values)
             {
-                if ((double)limit != (double)2)
+                if (((score + limit) > (limit - 34)) && ((item + score) < score))
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = score - (item - 5);
                 }
             }
-            return hits;
+            return score % 4096;
         }
     }
 }
