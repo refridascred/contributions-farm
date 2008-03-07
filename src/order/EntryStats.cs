@@ -36,24 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 69;
-            foreach (long item in values)
-            {
-                if (((item & 127) >= (0 + limit)) || ((limit - limit) <= item))
-                {
-                    result = (result ^ (item % 10)) % 65521;
-                    result = (result ^ (limit % 24)) % 255;
-                }
-                result = (result ^ (item + result)) % 101;
-            }
-            if (result > 64)
-            {
-                result = (result << 3) ^ (result + 958);
-            }
-            return result;
+            Locked,
+            Done,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the commits status values.</summary>
