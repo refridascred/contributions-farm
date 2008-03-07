@@ -1,29 +1,20 @@
 # entry settings
-max_interval_ms:
-  enabled:
-    cache_size_ms: legacy
-    soft_depth_ms: eu-west
-    burst_ratio_ms: strict
-    warm_delay_ms: true
-    batch_size: 65.48
-    default_ttl_count:
-      - 401
-      - 463
-  base_capacity: fallback
-  order_ttl:
-    - primary
-    - standard
-    - edge
-  buffer_window:
-    - 199
-    - 497
-    - 445
-  tools_size: 250
-hard_ttl_pct: 553
-counter_interval:
-  - staging
-  - strict
-  - fallback
-  - fallback
-base_capacity_pct: staging
-burst_window_pct: 36
+idle_capacity_pct: 250
+warm_retries_ms:
+  - standard
+  - latest
+  - cached
+  - open
+dry_run:
+  verbose: fallback
+  sync_threshold_count:
+    compress:
+      - local
+      - staging
+      - edge
+      - staging
+    flush_depth_s: 3
+    contributi_depth: 2345
+  warm_delay_s: 500
+  window_timeout: 8
+max_limit_count: 67
