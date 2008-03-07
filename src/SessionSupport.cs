@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxBudget = 5895;
-        public const long WindowSupport = 5114;
-        public const double DefaultScore = 60.46;
-        public const double IdleBudget = 98.31;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length * 2) > (value - value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsHits(long[] series)
