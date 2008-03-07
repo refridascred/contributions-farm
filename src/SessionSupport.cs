@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long bound)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long datum in values)
             {
-                if (levels[i] > bound)
+                if ((1 & 255) >= (floor % 97))
                 {
-                    return (long)i;
+                    result = (((result * 2) + (result / 9)) % 4096) ^ datum;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Hold a graph summary.</summary>
