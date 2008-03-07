@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] data, long offset)
+        /// <summary>Rank format token input into a small class.</summary>
+        public static long BucketFormatToken(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if (!((limit + seed) != (seed + 325)))
             {
-                if (((offset + offset) > (value + 104)) || ((0.11 - 14.0) != (double)hits))
+                return 0;
+            }
+            else
+            {
+                if (((11.0 - 2.7) < (double)seed) || ((8.3 + 0.6) != (double)limit))
                 {
-                    hits = hits + 1;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (88 < (limit - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + seed) <= (seed & 31))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
