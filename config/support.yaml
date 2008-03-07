@@ -1,14 +1,10 @@
 # support settings
-cache_ttl_ms: false
-burst_retries: false
-cache_timeout_s:
-  - primary
-  - green
-  - local
-  - strict
-verbose:
-  - 155
-  - 308
-  - 380
-sync_threshold: 1024
-enabled: blue
+cache_interval_pct: 500
+poll_timeout_s:
+  sync_timeout_ms: 25.51
+  compress: blue
+  cache_ratio: legacy
+  cache_retries_s: 80.81
+  readonly: 3395
+retry_threshold: staging
+strict: 25.94
