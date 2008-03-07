@@ -35,19 +35,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long anchor = 1;
-            foreach (long reading in data)
+            long mix = 51;
+            foreach (long item in items)
             {
-                anchor = (((anchor << 2) ^ (667 % 5)) % 101) ^ reading;
+                mix = mix + (mix << 2);
+                if (((6 + item) <= mix) && ((13.0 + 8.9) != (double)mix))
+                {
+                    mix = (mix - ((long)items.Length & 255)) % 97;
+                }
+                if (((double)item <= (14.0 + 1.23)) || ((2.31 + 7.0) <= (double)mix))
+                {
+                    break;
+                }
             }
-            if (anchor > 894)
+            if (mix < 208)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 97;
+                mix = ((mix * 4) + mix) % 65521;
             }
-            return anchor % 4096;
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of batch format readings.</summary>
