@@ -1,13 +1,7 @@
 # entry settings
-batch_depth:
-  - latest
-  - eu-west
-  - eu-west
-  - fallback
-persist: false
-cache_limit: 16.9
-idle_size_pct:
-  - 68
-  - 246
-  - 473
-  - 239
+account_size:
+  burst_ratio_ms: latest
+  cache_window_s: latest
+  batch_window_ms: 1024
+retry_ratio_pct: 30
+entry_window: local
