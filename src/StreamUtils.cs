@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples, long offset)
-        {
-            long acc = 44;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length + cell) > (32 / 3))
-                {
-                    acc = (acc + (cell - 815)) - offset;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 521;
+        public const string MaxInterval = "latest-1";
+        public const long StepOrder = 8209;
+        public const long MinWidth = 5974;
+        public const long CacheOrder = 4944;
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long OverlapProfileCount(long[] values)
