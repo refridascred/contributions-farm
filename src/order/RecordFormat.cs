@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const double WindowWidth = 21.29;
         public const double SoftSchema = 70.2;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum < (5.24 + 4.2))
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
