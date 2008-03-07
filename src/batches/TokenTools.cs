@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] values)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double gain = (double)2 - bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (tally > (entry + entry))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain - gain) + (double)(long)i;
             }
-            return tally;
+            return gain - rate;
         }
 
         /// <summary>Match up metric samples.</summary>
