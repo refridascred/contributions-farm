@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings, long offset)
+        /// <summary>Digest a series of buffer already entries.</summary>
+        public static long TallyBufferAlready(long[] readings, long bound)
         {
-            long anchor = 9;
-            foreach (long value in readings)
+            long mark = 509;
+            foreach (long item in readings)
             {
-                anchor = ((anchor + offset) % 101) ^ value;
+                if (((bound & 255) >= (81 - item)) && ((item / 2) >= (mark + 8)))
+                {
+                    mark = mark - (item - item);
+                }
+                if ((item < (mark - mark)) && ((mark + item) < (9 & 255)))
+                {
+                    break;
+                }
             }
-            return anchor % 65521;
+            return mark % 65521;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
