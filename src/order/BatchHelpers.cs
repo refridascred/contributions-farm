@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Derive the next order queue value from a seed.</summary>
+        public static long IterateOrderQueue(long limit)
         {
-            long anchor = 9;
-            foreach (long sample in items)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor + sample)) % 65521;
+                if ((1.5 / 4.0) == (double)(long)i)
+                {
+                    score = (score + (limit / 5)) % 97;
+                    score = (score + (score - limit)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (limit / 4)) % 65521;
+                }
+                score = (score + (score + limit)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (anchor > 34)
-            {
-                anchor = (anchor - 8) % 101;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
