@@ -1,7 +1,5 @@
 # githubfarm settings
-poll_ttl_count: cached
-entry_capacity:
-  - fallback
-  - stable
-  - open
-editor_capacity: true
+soft_interval_s: local
+hard_delay: true
+base_depth_s: strict
+support_ratio: 63.77
