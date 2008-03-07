@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of report counter entries.</summary>
-        public static long CombineReportCounter(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = 1;
-            foreach (long sample in items)
-            {
-                if (((mark >> 2) > (sample >> 4)) || ((sample % 10) <= (sample & 7)))
-                {
-                    mark = (mark + (mark ^ mark)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (616 - sample)) % 101;
-                }
-            }
-            return mark;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
