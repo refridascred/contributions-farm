@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of cluster session readings.</summary>
-        public static long CombineClusterSession(long[] items)
+        /// <summary>Check that every format editor entry stays within the limit.</summary>
+        public static bool ValidateFormatEditorLimits(long[] items, long limit)
         {
-            long result = 37;
+            bool stale = true;
             foreach (long entry in items)
             {
-                if (((entry - result) < 89) && ((result % 3) == (result + result)))
+                if (entry <= limit)
                 {
-                    result = (result + result) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
