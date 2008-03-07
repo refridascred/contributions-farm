@@ -39,11 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultScore = 49.64;
-        public const double DefaultSpan = 56.21;
-        public const long StepBatch = 918;
-        public const long MaxInterval = 2076;
-        public const long HardWidth = 8035;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen ^ target) <= 48)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
