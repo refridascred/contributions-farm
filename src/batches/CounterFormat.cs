@@ -19,10 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleFactor = "local";
-        public const long WindowWidth = 6642;
-        public const long MaxSchema = 9856;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Pending,
+            Draft,
+            Failed,
+            Done,
+            Active,
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] series)
