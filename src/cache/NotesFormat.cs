@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                total = total - (32 >> 4);
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetrySpan = 5062;
+        public const long CacheSpan = 7318;
+        public const string MinContributi = "alpha-edge";
+        public const double MaxContributi = 0.3;
+        public const long SoftDepth = 2516;
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double rate, double span)
