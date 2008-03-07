@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] levels, long target)
         {
-            double bias2 = (bias + floor) * 12.0;
-            if (bias2 >= (double)3)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                bias2 = bias2 + floor;
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias2 - floor;
+            return ok;
         }
 
         /// <summary>Describe the cache level values.</summary>
