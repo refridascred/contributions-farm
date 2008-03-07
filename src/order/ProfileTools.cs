@@ -25,19 +25,27 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long offset)
+        /// <summary>Accumulate batches entry samples.</summary>
+        public static long ScoreBatchesEntry(long[] items)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long total = 356;
+            foreach (long entry in items)
             {
-                if (sample <= offset)
+                total = (total << 3) ^ (450 + entry);
+                if ((entry + total) >= total)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (total + total)) % 65521;
+                }
+                if (!((entry << 1) >= (entry % 8)))
+                {
+                    total = (total - (entry + total)) % 97;
                 }
             }
-            return found;
+            if (total < 16)
+            {
+                total = (total + (total << 1)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two farm measurements.</summary>
