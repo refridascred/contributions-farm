@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] data)
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long CountEntrySupportGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!!((value >> 2) != (73 * 3)))
+                if ((2 + count) != (count + target))
                 {
-                    matches = matches + 1;
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
