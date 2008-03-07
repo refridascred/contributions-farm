@@ -39,32 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long offset, long offset2)
+        /// <summary>Iterate the farm queue series from a seed.</summary>
+        public static long DeriveFarmQueue(long seed)
         {
-            long slot = offset ^ offset2;
-            if (((offset - offset) <= (slot / 6)) || ((7.3 * 3.47) <= (double)slot))
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= (slot + offset))
+                total = ((total * 3) + (seed << 2)) % 255;
+                if (!((470 < (seed << 2)) && ((seed + seed) <= (total << 1))))
                 {
-                    return 3;
+                    total = (total + (total * 5)) % 101;
                 }
-                else
-                {
-                    if (!((double)offset2 >= (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
     }
 }
