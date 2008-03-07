@@ -1,9 +1,4 @@
 # support settings
-sync_size_pct:
-  - 253
-  - 369
-  - 236
-soft_delay_ms: green
-farm_size: 803
-entry_capacity: 93.52
-poll_ratio_pct: 250
+cache_threshold_s: false
+poll_limit: 30
+hard_depth_pct: false
