@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] readings, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long sum = 229;
+            foreach (long entry in series)
             {
-                if (seen >= value)
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (((sum * 5) + (target >> 3)) % 97) ^ entry;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
