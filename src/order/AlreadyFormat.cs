@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long carry = 468;
-            foreach (long sample in series)
+            long mix = 5;
+            foreach (long value in data)
             {
-                carry = ((carry << 2) ^ carry) ^ sample;
+                mix = (mix + (mix - 29)) + value;
+                mix = (mix - (mix >> 1)) % 97;
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Describe the counter mode values.</summary>
