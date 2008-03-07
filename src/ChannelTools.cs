@@ -24,15 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
-            long carry = 6;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                carry = (carry + (item + seed)) % 101;
+                if ((double)seen < (18.0 - 11.0))
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
