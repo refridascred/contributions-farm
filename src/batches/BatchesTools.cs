@@ -23,12 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Compare every pair of queue session readings.</summary>
+        public static long PairQueueSessionCount(long[] items)
         {
-            Active,
-            Idle,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
