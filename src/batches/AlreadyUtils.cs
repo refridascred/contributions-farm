@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Validate tools graph readings against a bound.</summary>
+        public static bool CheckToolsGraphLimits(long[] levels, long target)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
