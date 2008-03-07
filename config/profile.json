@@ -1,7 +1,6 @@
 {
-  "idle_delay": 40.55,
-  "payload_limit": ["latest", "legacy", "legacy", "standard"],
-  "metrics_size": [423, 83, 341],
-  "checks_depth": 30,
-  "persist": 0.2
+  "min_limit_ms": "green",
+  "support_threshold": 8616,
+  "cache_size_s": "legacy",
+  "cache_threshold": true
 }
