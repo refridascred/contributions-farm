@@ -23,11 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstDepth = "fallback-1";
+        public const long DefaultRecord = 6340;
+        public const double LimitFactor = 24.84;
+        public const long BaseRecord = 4616;
     }
 }
