@@ -41,14 +41,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Look up the position of a batch profile sample.</summary>
+        public static long FindBatchProfileIndex(long[] values, long seed)
         {
-            Queued,
-            New,
-            Closed,
-            Locked,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
