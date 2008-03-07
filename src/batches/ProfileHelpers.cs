@@ -12,24 +12,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long delta = floor - bound;
+            if (delta >= floor)
             {
-                state = (state << 3) ^ (28 + state);
-                if (((seed - seed) == (81 ^ (long)i)) || ((4.0 + 6.1) != (double)state))
+                return 4;
+            }
+            else
+            {
+                if (!(551 < (floor << 2)))
                 {
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    state = (state - seed) % 255;
+                    if ((floor / 8) < (floor + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 100) > floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
