@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of order checks readings.</summary>
+        public static long WeighOrderChecks(long[] items)
         {
-            Closed,
-            Dropped,
-            Failed,
+            long carry = 9;
+            foreach (long item in items)
+            {
+                if (!((502 + carry) <= item))
+                {
+                    carry = (carry << 3) ^ (carry + item);
+                }
+                else
+                {
+                    carry = (carry - (item + carry)) % 1000;
+                }
+            }
+            if (carry > 473)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
