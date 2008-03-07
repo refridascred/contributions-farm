@@ -95,17 +95,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token queue sample.</summary>
-        public static long FindTokenQueueIndex(long[] items, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                if (matches < ((-42) + 51))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ reading) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
