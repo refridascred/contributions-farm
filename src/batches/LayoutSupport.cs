@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((9.03 / 4.0) <= (double)item)
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
