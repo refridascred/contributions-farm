@@ -36,13 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Iterate the editor account series from a seed.</summary>
+        public static long StepEditorAccount(long target)
         {
-            Retry,
-            Synced,
-            Active,
-            Ready,
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
