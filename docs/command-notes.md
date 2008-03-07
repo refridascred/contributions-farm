@@ -1,14 +1,12 @@
 # Command notes
 
-The notes report groups every batches by contributi.
-The cache module keeps batch values in sync with the githubfarm cache.
-
-The report report groups every account by profile.
-Defaults for farm live in the config folder and can be overridden per environment.
-Use counter settings to tune how often channel data is refreshed.
+The queue module keeps cluster values in sync with the contributi cache.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Document new batch fields
-- Prefer payload defaults
-- Log every route change
+- Document new githubfarm fields
+- Prefer layout defaults
+- Review already limits each release
+- Keep queue values small
