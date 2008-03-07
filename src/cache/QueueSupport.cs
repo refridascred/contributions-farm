@@ -27,18 +27,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long CountPayloadStatsMatches(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long result = 145;
+            foreach (long cell in values)
             {
-                if (!((hits * 3) <= 9))
+                if ((double)cell > (3.6 - 4.0))
                 {
-                    hits = (hits + 1) ^ value;
+                    result = ((result << 3) ^ 9) % 4096;
                 }
+                result = (result ^ (cell - cell)) % 97;
+                result = (result + step) % 255;
             }
-            return hits;
+            if (result < (-158))
+            {
+                result = ((result << 3) ^ result) % 65521;
+            }
+            return result;
         }
     }
 }
