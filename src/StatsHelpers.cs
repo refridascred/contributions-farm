@@ -26,19 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score * 2) + step;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
