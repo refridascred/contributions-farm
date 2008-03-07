@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] data, long limit)
+        /// <summary>Fold a list of cluster stream readings.</summary>
+        public static long CombineClusterStream(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long datum in levels)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (datum + mix)) % 97) - floor;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Describe the session mode values.</summary>
