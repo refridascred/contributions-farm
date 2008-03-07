@@ -1,24 +1,10 @@
 # entry settings
-soft_interval: 88
-cache_depth: local
-buffer_capacity: staging
-enabled: 1548
-persist: 65.37
-dry_run:
-  sync_ratio:
-    default_retries_count:
-      - 250
-      - 312
-    flush_interval: 250
-    audit: cached
-  dry_run: cached
-  burst_limit_pct:
-    - eu-west
-    - legacy
-    - blue
-  support_ttl: 25
-  min_interval_ms:
-    - 380
-    - 485
-    - 10
-  min_interval_s: false
+idle_limit: true
+soft_retries_pct: 3690
+readonly:
+  - standard
+  - cached
+  - stable
+profile_depth: false
+min_size_pct: 250
+githubfarm_size: 59
