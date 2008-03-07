@@ -31,13 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Stale,
-            New,
             Pending,
-            Idle,
+            Paused,
+            Draft,
+            Done,
+            New,
         }
     }
 }
