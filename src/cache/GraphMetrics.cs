@@ -49,18 +49,19 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] readings, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample <= 589) || ((sample - offset) >= offset))
+                if ((double)seed < (double)sum)
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
