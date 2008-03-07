@@ -27,12 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Grade a schema context value against two limits.</summary>
+        public static long SortSchemaContext(long limit, long floor)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            if ((floor & 127) <= (-13))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (double)1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + floor) > (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
