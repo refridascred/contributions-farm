@@ -58,16 +58,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark + floor) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Locked,
+            Pending,
+            Stale,
+            Dropped,
+            Failed,
         }
     }
 }
