@@ -32,18 +32,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples, long limit)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long carry = 6;
-            foreach (long entry in samples)
-            {
-                if ((entry * 5) > (94 + entry))
-                {
-                    carry = (((carry << 2) ^ entry) % 101) - limit;
-                }
-            }
-            return carry % 65521;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a order support value against two limits.</summary>
