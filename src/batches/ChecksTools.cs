@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long next = offset - seed;
-            if ((16.0 / 3.0) != (double)offset)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset > (seed << 3)) || ((double)offset == (double)next))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the cluster stats series from a seed.</summary>
