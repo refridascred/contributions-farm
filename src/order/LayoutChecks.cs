@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate layout profile readings against a bound.</summary>
-        public static bool VerifyLayoutProfileLimits(long[] samples, long target)
+        /// <summary>Fold a list of token editor readings.</summary>
+        public static long DigestTokenEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long state = 552;
+            foreach (long reading in levels)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 3) ^ ((long)levels.Length + reading)) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
