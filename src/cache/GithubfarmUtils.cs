@@ -27,22 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Digest a series of account channel entries.</summary>
+        public static long CombineAccountChannel(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long acc = 2;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                acc = (acc ^ acc) % 4096;
+                if (((long)series.Length / 8) < (cell - acc))
                 {
-                    acc = ((acc + acc) % 97) - (long)i2;
+                    acc = (acc - (acc * 2)) % 1000;
                 }
-                if (acc >= (217 + target))
-                {
-                    acc = (acc ^ target) % 101;
-                    acc = (acc - (target ^ target)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ (acc & 31)) % 4096;
             }
             return acc;
         }
