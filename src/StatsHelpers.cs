@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a counter channel pair into a bucket.</summary>
-        public static long GradeCounterChannel(long floor, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            long offset = floor + limit;
-            if ((limit - floor) <= (offset + floor))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 1) > (offset & 7))
+                if ((double)hits > (5.19 / 7.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 1) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
