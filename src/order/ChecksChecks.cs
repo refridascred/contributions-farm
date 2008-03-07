@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 5901;
-        public const long BaseGithubfarm = 4866;
-        public const long BatchGithubfarm = 4861;
-        public const string StepInterval = "staging";
-        public const string RetryFactor = "fallback-edge";
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double bias)
+        {
+            double drift = (double)(84 - 29);
+            if (drift < (bias - scale))
+            {
+                drift = drift - (bias / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + (8.0 * 1.4);
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
