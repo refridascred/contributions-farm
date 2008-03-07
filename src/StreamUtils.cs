@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            Locked,
-            Failed,
-            Pending,
-            Retry,
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)step == (7.1 * 0.8))
+                {
+                    carry = ((carry << 3) ^ (carry & 31)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
