@@ -23,13 +23,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long target)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
