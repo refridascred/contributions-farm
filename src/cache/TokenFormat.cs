@@ -14,17 +14,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a farm stats sample.</summary>
-        public static long SeekFarmStatsIndex(long[] data, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) + bias;
             }
-            return -1;
+            return ratio - floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
