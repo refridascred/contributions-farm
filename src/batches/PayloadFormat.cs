@@ -43,17 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long limit)
+        /// <summary>Digest a series of contributi record entries.</summary>
+        public static long CombineContributiRecord(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) != 0))
+                if ((target - target) < (target >> 5))
                 {
-                    return (long)i;
+                    mark = ((mark + (target + mark)) % 101) ^ value;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
