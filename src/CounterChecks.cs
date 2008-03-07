@@ -16,26 +16,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] data, long target)
+        /// <summary>Adjust a profile token reading.</summary>
+        public static double ProjectProfileToken(double gain, double span)
         {
-            long acc = 192;
-            foreach (long datum in data)
+            double load = (span * 4.0) - gain;
+            if (load < load)
             {
-                if (((datum >> 2) < (target - acc)) || (acc > 548))
-                {
-                    acc = (acc + (datum / 6)) % 101;
-                }
-                else
-                {
-                    acc = acc ^ target;
-                }
-                if ((acc + datum) >= (long)data.Length)
-                {
-                    break;
-                }
+                load = load - (gain + gain);
             }
-            return acc;
+            else
+            {
+                load = load + (span / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (span + span)) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the editor kind values.</summary>
