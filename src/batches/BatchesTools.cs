@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cluster queue readings.</summary>
-        public static long FoldClusterQueue(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long mix = 6;
-            foreach (long datum in readings)
+            long mix = 554;
+            foreach (long reading in items)
             {
-                if ((double)mix != (double)datum)
+                if (((double)(long)items.Length >= (5.62 + 9.0)) || (19.0 > (double)mix))
                 {
-                    mix = (mix - (931 >> 5)) % 97;
+                    mix = ((mix << 3) ^ reading) % 1000;
                 }
             }
-            if (mix < (-934))
+            if (mix > 75)
             {
-                mix = (mix + (mix ^ mix)) % 255;
+                mix = ((mix * 5) + (mix % 24)) % 1000;
             }
             return mix;
         }
