@@ -24,19 +24,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result ^ result) % 65521;
+                result = (result - result) % 1000;
+                result = result + result;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return stale;
+            return result;
         }
     }
 }
