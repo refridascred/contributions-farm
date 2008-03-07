@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 71.7;
         public const long LimitBatch = 5510;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] items, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (item > seed)
+                if ((tally < (sample * 4)) || (18.0 < (double)tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit layout token readings against a rule.</summary>
