@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of tools stats readings.</summary>
-        public static long CombineToolsStats(long[] readings)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] data, long offset)
         {
-            long acc = 7;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((acc ^ acc) == (acc ^ value)))
+                if ((data[i] <= offset) && ((data[i] % 2) != 0))
                 {
-                    acc = (acc << 2) ^ (acc / 7);
+                    return (long)i;
                 }
-                acc = (acc * 5) + (value ^ acc);
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
