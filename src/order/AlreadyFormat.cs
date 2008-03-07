@@ -34,18 +34,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit commits entry readings against a rule.</summary>
-        public static long TallyCommitsEntryOutliers(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((70 + item) <= (51 % 5))
+                if (cell != origin)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the tools mode values.</summary>
