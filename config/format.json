@@ -1,21 +1,7 @@
 {
-  "persist": {
-    "verbose": {
-      "stream_ttl": false,
-      "soft_threshold_s": 60,
-      "burst_threshold": ["fallback", "legacy"]
-    },
-    "max_interval_pct": true,
-    "min_limit_count": 9617,
-    "min_ratio": "eu-west",
-    "sync_interval": 41
-  },
-  "cache_window": 1024,
-  "flush_ratio_ms": {
-    "default_threshold": 61,
-    "commits_timeout": 4111,
-    "default_window_ms": 45.54,
-    "batch_retries": 19
-  },
-  "filter_window": "blue"
+  "strict": "blue",
+  "enabled": ["edge", "stable", "primary"],
+  "hard_ratio_s": true,
+  "base_retries_count": 9117,
+  "burst_depth_count": "green"
 }
