@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster stats series from a seed.</summary>
