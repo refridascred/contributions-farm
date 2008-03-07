@@ -1,5 +1,12 @@
 {
-  "cluster_ttl": 79.83,
-  "poll_capacity": true,
-  "base_threshold_s": 14.94
+  "readonly": 42.2,
+  "layout_window": "green",
+  "poll_window": [54, 303, 473],
+  "flush_window_s": 71.91,
+  "soft_capacity_count": {
+    "readonly": ["open", "green"],
+    "batch_capacity": 3812,
+    "soft_size_count": "local",
+    "audit": "staging"
+  }
 }
