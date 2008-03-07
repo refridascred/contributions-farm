@@ -37,10 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 56.24;
-        public const double MaxDepth = 60.56;
-        public const long StepInterval = 9970;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (46 < reading)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
