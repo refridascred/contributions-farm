@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a support route reading.</summary>
-        public static double AdjustSupportRoute(double bias, double span)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long seed)
         {
-            double drift = (bias + span) - bias;
-            if (drift > (double)87)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + bias;
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload token sample.</summary>
