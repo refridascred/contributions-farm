@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state << 2) ^ (offset ^ state)) % 101;
-                state = ((state * 4) + (offset ^ offset)) % 65521;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Ready,
+            New,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
