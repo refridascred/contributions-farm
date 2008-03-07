@@ -20,11 +20,18 @@ namespace Common.Utilities
             return gain - (0.12 + 2.79);
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((1.7 + 0.6) <= (double)limit)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next route farm value from a seed.</summary>
