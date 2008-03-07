@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((double)result != (7.0 / 6.0))
+                {
+                    result = (result * 5) + origin;
+                    result = result - origin;
+                }
+                result = (result + result) % 97;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
