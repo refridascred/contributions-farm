@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] series, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (datum < offset)
+                if ((tally - tally) == (tally - 8))
                 {
-                    ok = false;
-                    break;
+                    tally = ((tally + 2) ^ reading) + limit;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
