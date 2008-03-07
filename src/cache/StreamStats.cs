@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long step, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            if ((step % 64) > step)
+            double scale = offset;
+            if (scale <= (rate * 9.2))
             {
-                return 1;
+                scale = scale - (double)4;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((origin - step) >= 31)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 2) == (step % 24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                scale = (scale + scale) + (double)(long)i;
             }
+            return scale + (scale - offset);
         }
 
         /// <summary>Describe the payload class values.</summary>
