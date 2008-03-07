@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double ratio, double offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            double load = (ratio + ratio) + (offset * 6.02);
-            if (load >= (double)86)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                load = load + (double)361;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - (double)8;
-            }
-            return load + load;
+            return result;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
