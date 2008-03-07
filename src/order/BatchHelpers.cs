@@ -20,10 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 49.14;
-        public const long BurstCommand = 4913;
-        public const long StepCommand = 1346;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseMetrics = 6160;
