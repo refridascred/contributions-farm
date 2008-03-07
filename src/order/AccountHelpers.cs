@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Failed,
-            Done,
-            Dropped,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitSize = "cached";
+        public const long IdleWindow = 989;
+        public const long RetryWindow = 3467;
+        public const long WindowSize = 3875;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] samples, long origin)
