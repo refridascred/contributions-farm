@@ -34,25 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long limit, long seed)
+        /// <summary>Scale a metric command figure with a bias.</summary>
+        public static double BlendMetricCommand(double rate, double floor)
         {
-            long delta = limit - seed;
-            if (5 < (delta - seed))
+            double weight = (20.0 / 6.0) / 3.0;
+            if (weight < (rate * 0.28))
             {
-                return 2;
+                weight = weight - floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (limit < (seed - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                weight = (weight - (1.2 - floor)) + (double)(long)i;
             }
+            return weight + weight;
         }
     }
 }
