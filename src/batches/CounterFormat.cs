@@ -37,10 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "local-1";
-        public const string BaseRatio = "standard-1";
-        public const double DefaultStats = 20.09;
-        public const long HardScore = 4604;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Idle,
+            Done,
+            Failed,
+            Ready,
+            Queued,
+        }
     }
 }
