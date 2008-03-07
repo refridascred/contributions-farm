@@ -79,13 +79,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every route command entry stays within the limit.</summary>
+        public static bool VerifyRouteCommandRange(long[] series, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
