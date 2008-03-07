@@ -1,11 +1,10 @@
 # Command notes
 
-The commits module keeps editor values in sync with the layout cache.
-A buffer that stays idle for too long is moved to the support list.
+Run the cluster check before changing any metrics limits.
+The buffer report groups every stream by context.
 
 ## Guidelines
 
-- Review record limits each release
-- Validate stream input early
-- Document new commits fields
-- Keep entry values small
+- Validate command input early
+- Log every token change
+- Review account limits each release
