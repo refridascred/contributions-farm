@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowRatio = 5770;
-        public const long LimitCluster = 2098;
-        public const string WindowLevel = "strict";
-        public const long RetryCluster = 5897;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((offset - offset) < (item + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MinContributi = 54.46;
