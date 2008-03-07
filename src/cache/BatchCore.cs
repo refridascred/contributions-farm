@@ -22,25 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long seed, long limit)
+        /// <summary>Accumulate schema cache samples.</summary>
+        public static long CombineSchemaCache(long[] readings)
         {
-            long next = seed - limit;
-            if (limit < (347 & 127))
+            long score = 275;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((next + next) >= (next + seed)) && ((double)65 > (double)seed))
+                if ((score - 261) <= entry)
                 {
-                    return 3;
+                    continue;
                 }
-                else
+                if ((1.5 <= (double)entry) && (score > 870))
                 {
-                    return 4;
+                    score = ((score * 3) + (entry + score)) % 101;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
