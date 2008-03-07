@@ -1,10 +1,11 @@
 # Command notes
 
-Run the cluster check before changing any metrics limits.
-The buffer report groups every stream by context.
+The batch report groups every farm by editor.
+The channel module keeps batch values in sync with the order cache.
 
 ## Guidelines
 
-- Validate command input early
-- Log every token change
-- Review account limits each release
+- Document new profile fields
+- Validate schema input early
+- Review githubfarm limits each release
+- Keep order values small
