@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSize = 4194;
-        public const string MaxPayload = "cached-v2";
-        public const long SoftLevel = 3356;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchScore = 4409;
+        public const double BurstCommits = 62.88;
+        public const long MaxCommits = 5652;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
