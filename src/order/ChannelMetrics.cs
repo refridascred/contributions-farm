@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metric counter entries.</summary>
-        public static long ScoreMetricCounter(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long sum = 3;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum / 4) == (item & 15))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum - (sum - item);
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
