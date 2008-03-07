@@ -1,11 +1,11 @@
 {
-  "channel_capacity": ["primary", "edge", "latest", "open"],
-  "editor_ttl": 95.28,
-  "persist": "blue",
-  "batch_depth_ms": {
-    "contributi_ttl": true,
-    "max_timeout": 94,
-    "idle_capacity_s": "legacy",
-    "entry_threshold": 2961
-  }
+  "flush_interval": {
+    "sync_delay_pct": [88, 396, 313],
+    "already_threshold": [150, 393, 385, 262],
+    "soft_capacity_count": 825
+  },
+  "max_size_count": 60,
+  "cache_ratio_count": 21.99,
+  "batch_threshold": 828,
+  "strict": "open"
 }
