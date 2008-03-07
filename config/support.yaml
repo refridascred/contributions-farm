@@ -1,30 +1,11 @@
 # support settings
-retry_threshold_s: stable
-contributi_interval: 78.54
-base_size:
-  stream_capacity: true
-  context_window: 1453
-  enabled:
-    - stable
-    - eu-west
-    - strict
-  buffer_threshold: 46
-min_size_s:
-  warm_depth_s: 60
-  strict:
-    batch_delay: 59.03
-    base_timeout_ms: edge
-    retry_capacity_s:
-      - staging
-      - local
-      - standard
-      - fallback
-    readonly: false
-    base_limit_count: 250
-  poll_depth_ms:
-    - green
-    - edge
-    - latest
-    - blue
-stats_size: 33
-hard_ttl: 14.35
+enabled:
+  retry_depth_pct: true
+  audit: local
+  batch_threshold: 748
+  warm_delay:
+    - 231
+    - 85
+  buffer_size: blue
+hard_retries_s: primary
+flush_window_s: cached
