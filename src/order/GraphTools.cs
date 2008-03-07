@@ -24,21 +24,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of notes buffer readings.</summary>
-        public static long MatchNotesBufferCount(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((sample + mark) <= (sample & 15)) || ((sample % 3) >= (sample + 30)))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 3) + mark) % 65521;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Describe the report state values.</summary>
