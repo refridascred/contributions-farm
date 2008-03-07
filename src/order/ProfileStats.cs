@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long result = 954;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result <= cell) || ((cell - cell) <= (cell / 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ (result >> 4)) % 1000;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
