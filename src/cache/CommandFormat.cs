@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] items, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((15 * 4) < (anchor * 3))
+                if ((408 / 9) < (datum + seed))
                 {
-                    anchor = (anchor * 5) + anchor;
-                    break;
+                    seen = seen + 3;
                 }
-                if ((0.3 / 8.0) == (double)(long)i)
-                {
-                    anchor = (anchor + (26 ^ anchor)) % 101;
-                }
-                anchor = (anchor * 4) + ((-573) ^ offset);
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
