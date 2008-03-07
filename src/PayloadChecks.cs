@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 7165;
-        public const long WindowGraph = 8658;
-        public const string IdleSize = "legacy";
-        public const long CacheSize = 210;
-        public const long MinLevel = 3043;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
