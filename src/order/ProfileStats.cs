@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if ((offset + offset) >= (1 + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)offset <= 1.39))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)floor != (double)50) || ((floor * 2) < (offset % 100)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
