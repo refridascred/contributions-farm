@@ -1,16 +1,8 @@
 {
-  "base_delay_ms": {
-    "stream_window": {
-      "flush_retries_ms": 43.43,
-      "burst_retries": 96.62,
-      "cache_ratio_ms": "cached"
-    },
-    "readonly": ["eu-west", "latest", "eu-west"],
-    "sync_retries": "blue",
-    "poll_ttl": "cached",
-    "hard_interval_s": 12
-  },
-  "commits_retries": 28,
-  "idle_size_ms": "local",
-  "poll_threshold": 36.23
+  "command_delay": 50.88,
+  "verbose": 16.98,
+  "stream_window": "blue",
+  "retry_timeout_count": 1024,
+  "checks_ttl": "eu-west",
+  "idle_window_s": "cached"
 }
