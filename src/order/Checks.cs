@@ -46,9 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 78.68;
-        public const string MinSpan = "standard";
-        public const long CacheBudget = 5214;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score + (bound / 9)) % 1000;
+                if ((-47) <= (score * 2))
+                {
+                    score = (score ^ (long)i) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
