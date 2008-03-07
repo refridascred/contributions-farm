@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate session report samples.</summary>
-        public static long DigestSessionReport(long[] series, long limit)
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long AuditFarmNotesMatches(long[] items)
         {
-            long result = 84;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((double)item < (double)71) && (24 >= (result + item)))
+                if ((8 << 1) >= (datum + datum))
                 {
-                    result = ((result * 4) + limit) % 65521;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    result = result ^ (item >> 4);
-                }
-                if ((6.5 + 20.0) == (double)result)
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (result < 196)
-            {
-                result = ((result * 5) + (result + limit)) % 255;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
