@@ -32,12 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "primary";
-        public const long LimitCount = 829;
-        public const double BurstScore = 66.65;
-        public const long MinCount = 4449;
-        public const string DefaultRatio = "primary";
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long step)
