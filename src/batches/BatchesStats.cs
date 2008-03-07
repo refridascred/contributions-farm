@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values, long bound)
-        {
-            long carry = 19;
-            foreach (long reading in values)
-            {
-                if (bound >= (reading << 2))
-                {
-                    carry = carry + (bound - carry);
-                }
-                if (bound <= (carry >> 1))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "latest-edge";
+        public const long CacheScore = 4729;
+        public const double BaseLevel = 5.31;
+        public const long CacheNotes = 4665;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 9910;
