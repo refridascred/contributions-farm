@@ -41,18 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((10.0 * 15.0) == (double)matches)
+                if (((count + value) < 8) && !((value + 936) > (value & 255)))
                 {
-                    matches = (matches + 1) + cell;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
