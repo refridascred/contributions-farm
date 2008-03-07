@@ -37,19 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] values, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i3 = 0; i3 < 2; i3++)
+                if (values[i] <= seed)
                 {
-                    anchor = (anchor - anchor) ^ (long)i3;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
