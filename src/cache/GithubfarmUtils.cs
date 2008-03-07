@@ -22,10 +22,39 @@ namespace Common.Utilities
         public const long StepOrder = 7160;
         public const long WindowLevel = 9650;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "open-1";
-        public const string CacheSize = "alpha-1";
-        public const long BaseFactor = 5535;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long limit)
+        {
+            if (target < 620)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + target) <= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - target) < (target % 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((3.96 - 5.4) >= (double)target) || ((2.9 * 20.0) >= (double)target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchRange(long[] samples, long bound)
