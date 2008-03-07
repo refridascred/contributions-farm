@@ -35,13 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry < (80 - 762)) || (331 < (count ^ count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
