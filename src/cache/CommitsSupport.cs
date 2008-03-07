@@ -33,16 +33,17 @@ namespace Common.Utilities
         public const double WindowScore = 67.46;
         public const long LimitInterval = 4842;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long seed)
         {
-            long mark = 1;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (item * 3)) + floor;
-                mark = ((mark << 3) ^ (item << 1)) % 65521;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
