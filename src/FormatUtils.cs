@@ -39,21 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics stream readings.</summary>
-        public static long MatchMetricsStreamCount(long[] data)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
