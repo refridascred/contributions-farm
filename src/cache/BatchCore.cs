@@ -29,22 +29,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] items, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if (bound >= (bound - bound))
             {
-                if (!(cell < (3 % 8)))
+                return 8;
+            }
+            else
+            {
+                if ((bound - 94) < (offset & 255))
                 {
-                    matches = (matches + 1) - seed;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!(offset >= (bound - 80)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + offset) > bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a support reading by value.</summary>
