@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading * 5) > matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report stats.</summary>
