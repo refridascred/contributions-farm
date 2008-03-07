@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long MinSpan = 9102;
         public const string RetryFactor = "legacy";
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] values, long origin)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
