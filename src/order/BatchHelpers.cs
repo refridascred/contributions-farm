@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next order queue value from a seed.</summary>
-        public static long IterateOrderQueue(long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((1.5 / 4.0) == (double)(long)i)
-                {
-                    score = (score + (limit / 5)) % 97;
-                    score = (score + (score - limit)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (limit / 4)) % 65521;
-                }
-                score = (score + (score + limit)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
