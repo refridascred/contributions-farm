@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Dropped,
-            Failed,
-            Paused,
+            Idle,
+            Ready,
+            Stale,
             Queued,
+            Pending,
         }
 
         /// <summary>Describe the schema class values.</summary>
