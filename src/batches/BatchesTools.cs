@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const long DefaultStats = 7587;
         public const long MinScore = 8513;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Closed,
+            Locked,
         }
     }
 }
