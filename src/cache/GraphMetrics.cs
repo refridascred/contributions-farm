@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Rank farm metric input into a small class.</summary>
+        public static long SortFarmMetric(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long diff = bound + offset;
+            if (!((99 / 5) <= (bound % 3)))
             {
-                if (entry <= (entry - tally))
+                return 3;
+            }
+            else
+            {
+                if ((double)diff >= (3.0 / 9.0))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound == (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff ^ bound) >= 83)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
