@@ -30,18 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long MeasureToolsChannelHits(long[] samples)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((((long)samples.Length >> 5) <= (count - datum)) || (datum <= (count + datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Closed,
+            Stale,
         }
     }
 }
