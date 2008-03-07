@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long bound)
         {
-            double mean = floor;
-            if (mean <= mean)
+            if (bound > target)
             {
-                mean = mean - floor;
+                return 2;
             }
             else
             {
-                mean = mean + rate;
+                if (449 >= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.0 * 2.11) == (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((201 % 2) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean + (double)310;
         }
 
         /// <summary>Compare every pair of metrics stream readings.</summary>
