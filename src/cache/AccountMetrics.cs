@@ -36,15 +36,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double mean = bias;
-            if (mean < (double)77)
-            {
-                mean = mean - floor;
-            }
-            return mean - floor;
+            Dropped,
+            New,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
