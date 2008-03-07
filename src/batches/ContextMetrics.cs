@@ -56,17 +56,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 526;
+        public const long MaxCommand = 4815;
+        public const double SoftCommand = 91.89;
+        public const long StepSize = 6503;
+        public const long BurstSize = 6328;
     }
 }
