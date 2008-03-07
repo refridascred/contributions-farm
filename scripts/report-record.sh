@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=49
+RECORD_LIMIT=196
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    legacy)
+    fallback)
         log "fast path"
         ;;
     *)
