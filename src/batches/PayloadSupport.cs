@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] data, long floor)
         {
-            long score = 99;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((87 & 127) > (score - score))
+                if (!((hits >> 2) <= (587 - floor)))
                 {
-                    score = ((score - (4 & 255)) % 101) ^ value;
-                }
-                else
-                {
-                    score = (score * 2) + (score - (long)items.Length);
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
