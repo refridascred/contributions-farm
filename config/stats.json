@@ -1,6 +1,11 @@
 {
-  "soft_delay_ms": 31,
-  "persist": false,
-  "min_delay": 3,
-  "warm_limit_pct": false
+  "base_depth_ms": ["stable", "green"],
+  "verbose": 5110,
+  "context_ratio": "standard",
+  "audit": {
+    "warm_window_pct": 92.1,
+    "readonly": 68.83,
+    "filter_delay": 7.46
+  },
+  "max_size": ["staging", "standard", "open", "legacy"]
 }
