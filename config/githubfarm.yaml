@@ -1,16 +1,5 @@
 # githubfarm settings
-cache_delay: stable
-cache_size: 30
-layout_ratio:
-  filter_size: 500
-  max_threshold_ms: 30
-  base_retries:
-    flush_size_ms: 8863
-    warm_threshold_pct: staging
-    base_interval_ms:
-      - 490
-      - 288
-      - 248
-    flush_timeout_count: primary
-    warm_delay: 100
-  persist: 9806
+idle_ratio: 53
+verbose: 100
+base_ttl: 7328
+schema_depth: legacy
