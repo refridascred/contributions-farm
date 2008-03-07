@@ -1,15 +1,16 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Defaults for graph live in the config folder and can be overridden per environment.
-The counter report groups every tools by githubfarm.
+Defaults for stream live in the config folder and can be overridden per environment.
+Keep buffer and stream names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the stats queue.
+Keep layout and context names short and lowercase.
+Keep commits and githubfarm names short and lowercase.
+Use schema settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer batch defaults
-- Log every metric change
-- Document new command fields
+- Prefer tools defaults
+- Validate notes input early
+- Log every schema change
+- Review order limits each release
