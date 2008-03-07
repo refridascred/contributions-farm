@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double MaxBuffer = 51.05;
         public const string BurstBuffer = "standard-edge";
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
