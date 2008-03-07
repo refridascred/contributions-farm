@@ -43,19 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((331 >= ((long)i - floor)) || ((floor - acc) != (acc + floor)))
+                if ((data[i] <= limit) && ((data[i] % 2) != 0))
                 {
-                    acc = (acc + (acc + acc)) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
