@@ -1,6 +1,10 @@
 {
-  "burst_delay_count": "blue",
-  "enabled": 250,
-  "soft_depth": true,
-  "contributi_size": "latest"
+  "hard_threshold_s": {
+    "idle_ttl_pct": 250,
+    "command_retries": 9333,
+    "base_ttl": 30
+  },
+  "order_capacity": ["local", "open"],
+  "min_size_count": [460, 344],
+  "base_depth": ["staging", "blue", "local"]
 }
