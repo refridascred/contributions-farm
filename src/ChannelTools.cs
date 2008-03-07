@@ -34,15 +34,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long step)
         {
-            double scale = ratio + (floor - ratio);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - (double)98) + (double)(long)i;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (floor + floor);
+            return -1;
         }
     }
 }
