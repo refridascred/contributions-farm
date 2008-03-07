@@ -1,31 +1,8 @@
 # entry settings
-retry_retries_pct: eu-west
-audit:
-  audit: 35
-  dry_run: 95.39
-  payload_ratio: 45.7
-  batch_threshold:
-    - green
-    - fallback
-  already_depth:
-    cache_capacity: 77.48
-    verbose:
-      - 61
-      - 96
-    enabled: edge
-    persist: eu-west
-    default_threshold_count: 8202
-    min_ratio_count: latest
-token_window:
-  persist:
-    - 484
-    - 320
-    - 267
-  flush_threshold_count:
-    min_interval: 21.31
-    default_ratio_pct: staging
-    batch_threshold_count: 74.28
-    account_interval: edge
-    audit: staging
-  strict: 30
-  githubfarm_threshold: strict
+cluster_window: 95.71
+verbose: open
+burst_threshold:
+  hard_timeout_ms: 8.59
+  record_limit: 91.95
+  tools_timeout: staging
+sync_retries_ms: 22.11
