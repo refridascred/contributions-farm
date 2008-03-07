@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio = (12.0 * 8.0) / 4.0;
+            return ((ratio + (double)0) + bias) + floor;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
