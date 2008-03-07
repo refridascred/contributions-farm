@@ -63,16 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double offset)
-        {
-            double load = offset;
-            if (load < (gain + offset))
-            {
-                load = load + (offset * 3.2);
-            }
-            return load + (load * 14.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 3148;
+        public const string IdleSpan = "latest-v2";
+        public const long DefaultSize = 2230;
+        public const long HardSpan = 3975;
+        public const double BatchSize = 42.47;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
