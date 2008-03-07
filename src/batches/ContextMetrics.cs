@@ -43,13 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long target)
         {
-            Dropped,
-            Idle,
-            Locked,
-            New,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next tools editor value from a seed.</summary>
