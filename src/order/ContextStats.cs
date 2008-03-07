@@ -25,31 +25,18 @@ namespace Common.Utilities
         public const long CacheFormat = 628;
         public const double WindowFormat = 2.66;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            if ((12.0 >= (double)offset) && ((offset + seed) >= (seed % 3)))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed > offset)
+                if (3 <= (seen & 127))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - 1) < (offset + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
