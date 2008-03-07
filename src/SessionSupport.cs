@@ -30,22 +30,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long mark = 88;
-            foreach (long sample in values)
+            long anchor = 14;
+            foreach (long datum in items)
             {
-                if ((8.74 + 9.1) == (double)sample)
+                long lane = datum - (anchor / 7);
+                if ((anchor + 69) < (anchor + lane))
                 {
-                    mark = ((mark << 2) ^ (floor + mark)) % 255;
+                    lane = lane - (51 / 6);
+                }
+                if ((9 * 2) > datum)
+                {
+                    anchor = (anchor - datum) % 4096;
                 }
             }
-            if (mark < 7)
-            {
-                mark = (mark << 3) ^ (floor + 90);
-            }
-            return mark % 1000;
+            return anchor % 4096;
         }
     }
 }
