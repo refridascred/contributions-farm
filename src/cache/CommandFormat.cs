@@ -26,14 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long TallyCounterMetricsOutliers(long[] readings)
         {
-            Pending,
-            Idle,
-            Retry,
-            Ready,
-            Draft,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
