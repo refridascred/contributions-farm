@@ -63,18 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context session samples.</summary>
-        public static long TotalContextSession(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series)
         {
-            long total = 923;
+            long seen = 0;
             foreach (long value in series)
             {
-                if (((double)value != (0.82 + 5.7)) && (409 > total))
+                if (!((double)value < (4.05 / 7.0)))
                 {
-                    total = (total << 2) ^ (-339);
+                    seen = seen + 1;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Check that every support context entry stays within the limit.</summary>
