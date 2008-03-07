@@ -16,22 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 5306;
+        public const string MaxAccount = "staging-edge";
+        public const string IdleScore = "stable-1";
+        public const long RetryAccount = 1564;
 
         /// <summary>Audit route order readings against a rule.</summary>
         public static long TallyRouteOrderMatches(long[] items, long bound)
