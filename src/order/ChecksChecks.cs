@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long HardSize = 7754;
         public const string HardFactor = "legacy";
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long state = 77;
+            foreach (long sample in data)
             {
-                if ((offset - 0) >= (carry % 16))
+                if ((3.44 - 8.4) != (double)sample)
                 {
-                    continue;
+                    state = ((state << 3) ^ ((-8) / 4)) % 1000;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                else
+                {
+                    state = (state + (sample ^ sample)) % 255;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a buffer entry.</summary>
