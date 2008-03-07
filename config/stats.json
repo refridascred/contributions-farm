@@ -1,8 +1,6 @@
 {
-  "stream_depth": "stable",
-  "base_delay_count": [327, 180],
-  "batch_threshold_s": "eu-west",
-  "verbose": [270, 489, 194],
-  "command_interval": "edge",
-  "window_interval": 100
+  "metric_size": "staging",
+  "persist": "latest",
+  "compress": [428, 51, 475, 202],
+  "commits_threshold": "local"
 }
