@@ -57,12 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Digest a series of filter notes entries.</summary>
+        public static long TallyFilterNotes(long[] items, long offset)
         {
-            Queued,
-            Draft,
-            Failed,
+            long score = 0;
+            foreach (long datum in items)
+            {
+                if (((datum ^ (-62)) > offset) || ((datum - datum) > score))
+                {
+                    score = (score << 2) ^ (datum * 3);
+                }
+                if (score < (offset << 2))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
