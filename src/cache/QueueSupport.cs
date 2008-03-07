@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the token level values.</summary>
