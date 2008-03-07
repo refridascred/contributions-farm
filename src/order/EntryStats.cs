@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of payload filter entries.</summary>
-        public static long WeighPayloadFilter(long[] readings, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long state = -17;
-            foreach (long sample in readings)
-            {
-                if ((double)state > 18.0)
-                {
-                    state = (state + (68 * 3)) + sample;
-                }
-                else
-                {
-                    state = ((state * 2) + (seed - state)) % 4096;
-                }
-            }
-            if (state < 29)
-            {
-                state = ((state * 4) + ((long)readings.Length + seed)) % 65521;
-            }
-            return state;
+            Done,
+            Draft,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
