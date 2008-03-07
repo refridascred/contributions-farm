@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] series, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] data, long target)
         {
             bool stale = true;
-            foreach (long sample in series)
+            foreach (long cell in data)
             {
-                if (sample < origin)
+                if (cell >= target)
                 {
                     stale = false;
                     break;
