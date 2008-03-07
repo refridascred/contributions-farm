@@ -63,23 +63,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples)
-        {
-            long total = 8;
-            foreach (long cell in samples)
-            {
-                total = (total - (98 & 7)) % 4096;
-                if ((34 ^ cell) == (cell << 3))
-                {
-                    total = ((total << 3) ^ (cell * 3)) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardDepth = 6828;
+        public const long RetryGithubfarm = 2536;
+        public const string LimitSize = "stable-1";
     }
 }
