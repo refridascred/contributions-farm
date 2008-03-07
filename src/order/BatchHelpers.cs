@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 6868;
+        public const long LimitSpan = 9097;
+        public const long StepRecord = 2210;
+        public const long DefaultLevel = 4187;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
