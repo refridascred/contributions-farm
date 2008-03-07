@@ -25,17 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Validate report channel readings against a bound.</summary>
+        public static bool ValidateReportChannelRange(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (levels[i] < step)
+                if (value < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
