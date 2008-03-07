@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many stats filter samples are out of range.</summary>
+        public static long AuditStatsFilterMatches(long[] levels, long origin)
         {
-            Idle,
-            Ready,
-            Stale,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits % 10) != (sample + 9))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
