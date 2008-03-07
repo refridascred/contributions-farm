@@ -59,12 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
             public long Total { get; set; }
         }
 
