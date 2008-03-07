@@ -1,6 +1,10 @@
-id,level,weight,token
-1,680,87.79,standard
-2,112,legacy,72.59
-3,591,54.22,fallback
-4,staging,green,83.85
-5,25.2,786,blue
+id,state,active
+1,85,72.03
+2,strict,80.1
+3,71.15,18.09
+4,stable,standard
+5,blue,689
+6,688,213
+7,648,cached
+8,799,148
+9,581,367
