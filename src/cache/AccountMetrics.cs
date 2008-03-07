@@ -60,13 +60,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Failed,
-            Dropped,
-            Queued,
-            Paused,
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
