@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits filter readings against a bound.</summary>
-        public static bool ValidateCommitsFilterBounds(long[] samples, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading > floor)
+                if (!(tally <= (step + step)) && ((-38) <= ((long)samples.Length % 97)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Measure how many filter stats samples are out of range.</summary>
