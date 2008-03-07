@@ -5,18 +5,34 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = 63;
+            foreach (long entry in levels)
             {
-                if ((double)sample != (double)matches)
+                if ((acc * 5) >= (997 - 882))
                 {
-                    matches = matches + 1;
+                    acc = (acc - (2 + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (entry / 9)) % 1000;
+                }
+                if (acc >= (entry >> 1))
+                {
+                    acc = acc - (entry * 3);
+                }
+                else
+                {
+                    acc = ((acc * 2) + (entry & 7)) % 97;
                 }
             }
-            return matches;
+            if (acc > 73)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
