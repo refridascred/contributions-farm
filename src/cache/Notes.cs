@@ -16,16 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 8239;
+        public const long BaseChecks = 8625;
+        public const double DefaultCount = 35.53;
+        public const string SoftScore = "latest-1";
+        public const long BurstChecks = 6014;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsHits(long[] samples, long target)
