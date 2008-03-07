@@ -1,6 +1,6 @@
 {
-  "hard_depth_ms": 60.07,
-  "audit": false,
-  "burst_retries_count": 53.58,
-  "flush_timeout_pct": ["blue", "cached"]
+  "sync_interval_s": "standard",
+  "flush_window": 10,
+  "account_ratio": "staging",
+  "cache_threshold": "latest"
 }
