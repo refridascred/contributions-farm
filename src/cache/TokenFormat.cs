@@ -34,11 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
