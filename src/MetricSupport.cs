@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 8868;
-        public const long CacheChecks = 3095;
-        public const long BurstWidth = 3884;
-        public const double CacheDepth = 18.27;
-        public const long LimitDepth = 9699;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
