@@ -39,15 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data)
         {
-            long mix = 650;
-            foreach (long reading in series)
+            long score = 307;
+            foreach (long datum in data)
             {
-                mix = ((((mix * 2) + 58) % 101) + reading) + step;
+                score = ((score + 80) % 4096) + datum;
             }
-            return mix % 1000;
+            if (score < 9)
+            {
+                score = score ^ (score << 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
