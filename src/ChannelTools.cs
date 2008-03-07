@@ -13,12 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] values, long limit)
         {
-            Idle,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) > (tally - reading))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
