@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((1.6 * 4.0) <= (double)cell)
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of contributi record entries.</summary>
