@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long sum = 7;
-            foreach (long item in data)
-            {
-                if (!((double)sum <= 5.5))
-                {
-                    sum = ((sum << 3) ^ (sum / 4)) % 101;
-                }
-                sum = (sum - (item ^ item)) % 255;
-            }
-            if (sum < (-6))
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum % 65521;
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
