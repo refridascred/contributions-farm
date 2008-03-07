@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema batches readings against a bound.</summary>
-        public static bool CheckSchemaBatchesBounds(long[] samples, long offset)
+        /// <summary>Combine counter already values into a single score.</summary>
+        public static long FoldCounterAlready(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long mix = 898;
+            foreach (long entry in levels)
             {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (((mix << 2) ^ (origin % 2)) % 97) ^ entry;
             }
-            return found;
+            if (mix > 87)
+            {
+                mix = (mix * 5) + (origin >> 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a counter entry.</summary>
