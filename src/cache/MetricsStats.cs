@@ -59,11 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double weight = (double)(1 & 7);
-            return ((weight - weight) + rate) + span;
+            Pending,
+            Dropped,
+            Synced,
         }
     }
 }
