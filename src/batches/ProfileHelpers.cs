@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long offset, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] values)
         {
-            if (((double)seed != (3.2 + 0.51)) || ((seed % 97) != (offset << 1)))
+            long mix = 413;
+            foreach (long cell in values)
             {
-                return 1;
+                mix = (((mix << 3) ^ (60 >> 1)) % 101) ^ cell;
             }
-            else
-            {
-                if ((4.9 / 5.0) == (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 7) <= (offset ^ 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
