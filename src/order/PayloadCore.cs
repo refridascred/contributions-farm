@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            Queued,
-            Stale,
-            Draft,
-            Ready,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen >> 1) == (60 % 60))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a route counter counter forward.</summary>
