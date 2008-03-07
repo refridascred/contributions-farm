@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCount = "latest-edge";
+        public const long MinSize = 1142;
+        public const long LimitRatio = 3190;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmMatches(long[] series, long floor)
