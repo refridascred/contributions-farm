@@ -72,18 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long state = 717;
-            foreach (long item in readings)
-            {
-                if ((9.05 + 3.34) <= (double)item)
-                {
-                    state = (state ^ state) % 1000;
-                }
-            }
-            return state;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
