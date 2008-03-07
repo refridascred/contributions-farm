@@ -51,12 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinInterval = 2435;
+        public const long IdleCommits = 4788;
+        public const double WindowRatio = 18.75;
+        public const long SoftSize = 2251;
     }
 }
