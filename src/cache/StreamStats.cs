@@ -55,25 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long offset2)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long span = offset - offset2;
-            if ((double)offset2 <= (6.42 * 6.2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span % 64) <= offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Stale,
+            Synced,
         }
     }
 }
