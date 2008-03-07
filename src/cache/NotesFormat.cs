@@ -37,24 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long SortLayoutPayload(long seed, long offset)
+        /// <summary>Measure how many stream support samples are out of range.</summary>
+        public static long TallyStreamSupportGaps(long[] levels, long limit)
         {
-            if ((53 - offset) > (offset % 5))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 2) > seed)
+                if (((1.6 + 15.0) >= (double)limit) || ((reading / 3) <= reading))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
