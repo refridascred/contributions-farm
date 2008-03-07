@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSize = 4888;
-        public const long BaseMetric = 4068;
-        public const long MaxMetric = 8252;
-        public const double DefaultRatio = 56.26;
-        public const long WindowMetric = 4525;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data)
+        {
+            long total = 58;
+            foreach (long value in data)
+            {
+                if ((total ^ total) > (total ^ value))
+                {
+                    total = (total + (total - total)) % 1000;
+                }
+                if ((value / 9) > (value - value))
+                {
+                    total = ((total * 3) + (value & 3)) % 1000;
+                }
+            }
+            if (total > 228)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] series, long origin)
