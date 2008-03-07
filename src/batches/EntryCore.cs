@@ -16,11 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double gain = offset;
-            return (gain + offset) + rate;
+            New,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
