@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count * 5) >= (count / 5))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 3) + sample) - floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the editor account series from a seed.</summary>
