@@ -62,10 +62,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 4409;
-        public const string BurstTimeout = "alpha-v2";
-        public const long CacheRatio = 2925;
-        public const string RetryBatch = "legacy-edge";
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
