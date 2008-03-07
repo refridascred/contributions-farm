@@ -60,23 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry cluster readings.</summary>
-        public static long FoldEntryCluster(long[] items)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] items, long step)
         {
-            long carry = 8;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in items)
             {
-                carry = ((carry * 4) + (409 * 5)) % 97;
-                if (((long)items.Length >= reading) && ((reading % 100) <= (reading * 2)))
+                if (cell < step)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry * 3) + (carry - carry);
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
