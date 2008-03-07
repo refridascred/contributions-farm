@@ -21,22 +21,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of payload cache entries.</summary>
-        public static long TallyPayloadCache(long[] series, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] samples, long bound)
         {
-            long sum = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((double)limit > (9.7 + 15.0))
+                if (cell < bound)
                 {
-                    sum = (((sum * 2) + (limit % 16)) % 255) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum > 179)
-            {
-                sum = sum + (limit ^ limit);
-            }
-            return sum;
+            return valid;
         }
     }
 }
