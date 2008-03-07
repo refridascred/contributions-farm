@@ -1,16 +1,14 @@
 # support settings
-poll_size_count:
-  farm_threshold: 1024
-  persist: edge
-  warm_interval:
+strict: edge
+warm_timeout_pct: 1024
+max_ttl_ms:
+  base_timeout_count: 6431
+  strict: 11.09
+  layout_retries: 80.26
+  idle_limit_s:
+    - 387
+    - 237
+    - 459
     - 286
-    - 417
-  stats_interval: green
-  max_capacity: edge
-persist: 87.88
-editor_threshold: false
-hard_window_s:
-  - green
-  - cached
-soft_threshold_s: 44
-strict: latest
+  base_ttl_ms: stable
+  hard_size_s: standard
