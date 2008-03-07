@@ -35,15 +35,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Dropped,
-            New,
-            Pending,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowFactor = 1046;
+        public const long StepWindow = 4098;
+        public const double HardSpan = 25.4;
+        public const string IdleWindow = "latest";
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long step)
