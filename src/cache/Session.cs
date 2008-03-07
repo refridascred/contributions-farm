@@ -37,12 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
+        public static bool ValidateBufferChecksBounds(long[] data, long floor)
         {
-            Done,
-            Locked,
-            Ready,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a account buffer reading by value.</summary>
