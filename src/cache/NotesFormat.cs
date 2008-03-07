@@ -14,11 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 7421;
-        public const string RetryWindow = "primary-1";
-        public const double LimitWindow = 50.25;
-        public const string BatchWindow = "standard-1";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings, long offset)
+        {
+            long state = 881;
+            foreach (long cell in readings)
+            {
+                state = (((state << 2) ^ (offset ^ offset)) % 101) - cell;
+                state = (state * 2) + (936 >> 4);
+            }
+            return state;
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
