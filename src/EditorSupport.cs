@@ -72,15 +72,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry already samples.</summary>
-        public static long FoldEntryAlready(long[] values)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long AuditOrderCacheOutliers(long[] readings, long bound)
         {
-            long state = 1;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                state = (state - (entry * 4)) % 4096;
+                if ((9 + seen) > (seen * 5))
+                {
+                    seen = ((seen + 3) ^ entry) + bound;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
