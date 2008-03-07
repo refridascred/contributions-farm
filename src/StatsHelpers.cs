@@ -55,10 +55,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCount = "fallback";
-        public const long BurstCommand = 4191;
-        public const double CacheCount = 27.06;
+        /// <summary>Count route schema pairs that satisfy a relation.</summary>
+        public static long PairRouteSchemaCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] items)
