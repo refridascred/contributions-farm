@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftDepth = 34.94;
-        public const long LimitWindow = 1596;
-        public const double CacheFactor = 13.99;
-        public const long CacheSize = 8343;
-        public const long IdleTimeout = 4178;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxSize = "cached-edge";
+        public const double RetryTools = 85.53;
+        public const long HardTools = 8769;
+        public const double LimitTools = 71.92;
 
         /// <summary>Match up counter metric samples.</summary>
         public static long MatchCounterMetricCount(long[] samples)
