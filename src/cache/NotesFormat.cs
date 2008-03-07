@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Roll a tools report counter forward.</summary>
+        public static long SeriesToolsReport(long target)
         {
-            double weight = floor * 15.0;
-            if (weight < floor)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                weight = (weight + (weight + floor)) - scale;
+                if (!((score * 3) < ((long)i + score)))
+                {
+                    score = (score + ((long)i * 3)) % 97;
+                    score = (score ^ (target & 255)) % 4096;
+                }
+                score = ((score * 4) + target) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (weight / 4.0);
+            return score;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
