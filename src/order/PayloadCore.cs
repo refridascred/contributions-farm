@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long offset)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Draft,
-            Done,
+            long prev = bound ^ offset;
+            if (!((prev * 5) < 42))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.7 * 1.0) > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (4.75 <= (double)prev)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
