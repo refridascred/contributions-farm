@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((7.34 * 1.0) < (double)count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
