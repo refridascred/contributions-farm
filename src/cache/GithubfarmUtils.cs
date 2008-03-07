@@ -60,20 +60,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Derive the next layout payload value from a seed.</summary>
+        public static long SeriesLayoutPayload(long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                sum = sum + 99;
-                if ((limit - (-85)) > (limit / 7))
+                if (((double)(long)i != (3.86 / 3.0)) || ((55 - bound) >= (mark - 75)))
                 {
-                    sum = (sum * 5) + (sum + limit);
+                    mark = (mark - (mark + bound)) % 1000;
+                    mark = (mark ^ (mark - (long)i)) % 101;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                else
+                {
+                    mark = ((mark << 2) ^ (long)i) % 101;
+                    mark = mark - bound;
+                }
+                mark = (mark ^ (95 * 5)) % 255;
+                if ((mark + mark) <= (bound / 7))
+                {
+                    mark = (mark - (79 + 582)) % 4096;
+                    mark = (mark ^ (bound + 48)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return sum;
+            return mark;
         }
     }
 }
