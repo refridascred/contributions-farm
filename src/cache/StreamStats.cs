@@ -12,12 +12,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitDepth = 84.63;
-        public const long MaxBudget = 8806;
-        public const double MaxCount = 68.39;
-        public const long SoftTimeout = 8657;
-        public const double StepCount = 44.59;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheWidth = 75.55;
+        public const long BurstGithubfarm = 6330;
+        public const double RetryGithubfarm = 87.93;
+        public const double LimitGithubfarm = 29.76;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
