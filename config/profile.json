@@ -1,5 +1,11 @@
 {
-  "soft_capacity": false,
-  "order_capacity": true,
-  "soft_size_count": "latest"
+  "channel_capacity": ["primary", "edge", "latest", "open"],
+  "editor_ttl": 95.28,
+  "persist": "blue",
+  "batch_depth_ms": {
+    "contributi_ttl": true,
+    "max_timeout": 94,
+    "idle_capacity_s": "legacy",
+    "entry_threshold": 2961
+  }
 }
