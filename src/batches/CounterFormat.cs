@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Look up the position of a metric entry sample.</summary>
+        public static long FindMetricEntryIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + datum) >= tally)
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
