@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const string SoftQueue = "legacy-v2";
         public const long SoftLevel = 1275;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
