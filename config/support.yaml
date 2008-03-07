@@ -1,5 +1,17 @@
 # support settings
-cache_timeout: false
-verbose: latest
-cache_timeout_s: latest
-cache_ratio_ms: fallback
+persist: 35
+min_timeout_s: strict
+default_size_ms: 9210
+flush_delay_count: legacy
+burst_ratio_s:
+  already_depth: 8887
+  base_delay_count: blue
+  verbose: 87.78
+  cache_delay: 30
+  support_ratio: 60
+  schema_threshold: 500
+token_timeout:
+  - stable
+  - standard
+  - legacy
+  - fallback
