@@ -5,32 +5,29 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long step)
+        /// <summary>Combine stream schema values into a single score.</summary>
+        public static long TotalStreamSchema(long[] items, long offset)
         {
-            long diff = target + step;
-            if ((step > target) && ((0.3 - 4.0) >= (double)step))
+            long total = -60;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + target) <= diff)
+                if (!((13.0 * 9.8) != (double)total))
                 {
-                    return 3;
+                    total = ((total << 2) ^ (offset & 63)) % 1000;
+                    continue;
                 }
-                else
+                total = total - (267 + total);
+                total = (total + ((long)items.Length + (-50))) % 255;
+                if (((0.9 / 8.0) >= (double)reading) || ((offset >> 5) > 87))
                 {
-                    if ((8.2 / 9.0) > (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (total > 17)
+            {
+                total = (total + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
