@@ -24,24 +24,18 @@ namespace Common.Utilities
         public const long DefaultWidth = 6662;
         public const string DefaultProfile = "primary-edge";
 
-        /// <summary>Classify a already route pair into a bucket.</summary>
-        public static long RankAlreadyRoute(long offset, long bound)
+        /// <summary>Fold a list of batches schema readings.</summary>
+        public static long ScoreBatchesSchema(long[] series, long bound)
         {
-            if ((bound + offset) >= bound)
+            long mark = 589;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > (double)(-522))
+                if ((18.0 + 1.92) <= 4.2)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    mark = ((mark - (mark + bound)) % 255) - datum;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
