@@ -20,17 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long carry = 282;
+            foreach (long cell in levels)
             {
-                acc = (acc << 3) ^ (acc ^ acc);
-                acc = ((acc << 2) ^ (bound % 16)) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((carry / 4) < (0 >> 5))
+                {
+                    carry = (carry + (cell >> 3)) - limit;
+                }
             }
-            return acc;
+            if (carry < 32)
+            {
+                carry = (carry << 2) ^ (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next window value.</summary>
