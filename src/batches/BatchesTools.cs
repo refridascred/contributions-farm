@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long DefaultStats = 7587;
         public const long MinScore = 8513;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Done,
-            Stale,
-            Closed,
-            Locked,
+            Queued,
+            Ready,
+            New,
         }
     }
 }
