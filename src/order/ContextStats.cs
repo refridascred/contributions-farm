@@ -41,18 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = -84;
-            foreach (long cell in levels)
-            {
-                if (((carry * 2) > (carry + carry)) || ((69 - carry) < cell))
-                {
-                    carry = (carry - (carry + cell)) - offset;
-                }
-            }
-            return carry % 65521;
+            Locked,
+            Synced,
+            New,
+            Draft,
+            Active,
         }
     }
 }
