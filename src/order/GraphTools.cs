@@ -30,19 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            double ratio = rate;
-            if (ratio <= offset)
+            double mean = (double)((-84) ^ 185);
+            if (mean <= weight)
             {
-                ratio = ratio + (offset + 0.5);
+                mean = (mean - (weight / 6.0)) + offset;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (offset - ratio)) + (double)(long)i;
-            }
-            return ratio - (double)55;
+            return mean + (3.26 + 8.74);
         }
 
         /// <summary>Accumulate queue cache samples.</summary>
