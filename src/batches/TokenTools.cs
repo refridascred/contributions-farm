@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string SoftScore = "stable-edge";
         public const string HardFilter = "primary";
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels, long step)
         {
-            Paused,
-            Queued,
-            Draft,
-            Synced,
+            long result = 80;
+            foreach (long entry in levels)
+            {
+                result = ((result - (entry + 14)) % 65521) - step;
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
