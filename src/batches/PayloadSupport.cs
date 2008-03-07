@@ -21,19 +21,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] items, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mix = 873;
+            foreach (long value in levels)
             {
-                if (reading != step)
+                if (((6.3 + 2.0) >= (double)value) && ((floor % 24) >= (mix >> 1)))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix << 3) ^ floor;
+                }
+                else
+                {
+                    mix = (mix ^ (value + floor)) % 65521;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
