@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally >= (tally + datum)) && ((0.02 * 18.0) > (double)datum))
+                if (series[i] >= target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a farm summary.</summary>
