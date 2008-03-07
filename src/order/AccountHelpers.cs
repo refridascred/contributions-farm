@@ -71,12 +71,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 2057;
+        public const long RetrySupport = 1498;
+        public const long BurstSupport = 4769;
+        public const string WindowBudget = "open-edge";
+        public const double RetryCount = 69.72;
     }
 }
