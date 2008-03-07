@@ -1,5 +1,8 @@
 {
-  "checks_ratio": 878,
-  "contributi_limit": "local",
-  "window_retries": 35
+  "persist": "stable",
+  "max_timeout_ms": 87,
+  "cache_delay": [266, 288],
+  "sync_threshold_ms": 94.06,
+  "soft_depth_count": "eu-west",
+  "payload_timeout": "blue"
 }
