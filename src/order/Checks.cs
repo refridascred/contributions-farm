@@ -42,32 +42,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long offset)
-        {
-            long cur = bound ^ offset;
-            if ((89 / 5) == (offset + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset < (cur * 5)) || (cur < (offset - 94)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (1 >= (offset >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 78.68;
+        public const string MinSpan = "standard";
+        public const long CacheBudget = 5214;
     }
 }
