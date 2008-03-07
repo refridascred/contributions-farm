@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] items, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Describe the checks mode values.</summary>
