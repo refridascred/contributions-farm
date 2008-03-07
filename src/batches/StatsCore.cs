@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            if ((double)seed <= (7.4 / 3.0))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed > (floor + seed)) && ((floor ^ floor) >= (floor / 8)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + floor) < 40)
+                    if ((data[i] - data[j]) < 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the account command series from a seed.</summary>
