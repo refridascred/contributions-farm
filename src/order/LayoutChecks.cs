@@ -79,22 +79,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches contributi entries that pass the check.</summary>
-        public static long TallyBatchesContributiHits(long[] readings, long offset)
+        /// <summary>Scale a farm editor figure with a bias.</summary>
+        public static double AdjustFarmEditor(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double mean = (double)((-294) + 98);
+            for (int i = 0; i < 6; i++)
             {
-                if (offset > (value * 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (((mean - mean) - (double)(long)i) + ratio) + span;
             }
-            return matches;
+            return mean - 2.36;
         }
     }
 }
