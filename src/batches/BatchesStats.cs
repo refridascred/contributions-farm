@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Count the cache metrics entries that pass the check.</summary>
+        public static long AuditCacheMetricsMatches(long[] items)
         {
-            long carry = 547;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (reading >= 89)
+                if ((matches >> 2) <= (matches - cell))
                 {
-                    carry = ((carry * 3) + ((-445) * 5)) % 101;
+                    matches = matches + 1;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
