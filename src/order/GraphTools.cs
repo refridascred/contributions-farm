@@ -48,10 +48,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 27.74;
-        public const double DefaultDepth = 55.87;
-        public const string WindowCount = "legacy-v2";
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long CombineAlreadyCounter(long[] levels)
+        {
+            long score = 975;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ cell) < (cell + cell))
+                {
+                    score = (score << 2) ^ 566;
+                }
+                else
+                {
+                    score = (score ^ (cell >> 1)) % 255;
+                }
+            }
+            if (score < 98)
+            {
+                score = ((score << 2) ^ (score + score)) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
