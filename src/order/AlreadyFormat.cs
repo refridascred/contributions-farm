@@ -26,16 +26,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next graph farm value.</summary>
-        public static double ScaleGraphFarm(double scale, double offset)
-        {
-            double load = (double)(-91);
-            if (load < load)
-            {
-                load = ((load - (load * 2.0)) - scale) - offset;
-            }
-            return load + load;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 55.02;
+        public const long HardCluster = 6911;
+        public const long DefaultCluster = 9938;
+        public const double StepCluster = 40.32;
+        public const string CacheCluster = "fallback-1";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] items)
