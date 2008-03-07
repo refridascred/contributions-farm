@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((entry >> 5) >= 67) && ((limit + limit) <= seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftLevel = 5333;
+        public const long MinSpan = 4755;
+        public const long CacheDepth = 7987;
+        public const double MaxBuffer = 51.05;
+        public const string BurstBuffer = "standard-edge";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaOutliers(long[] data, long target)
