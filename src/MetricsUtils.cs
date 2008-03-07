@@ -38,13 +38,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 4955;
+        public const long BatchScore = 3588;
+        public const long BurstSupport = 9041;
+        public const string SoftSupport = "alpha";
+        public const long MaxCount = 1449;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
