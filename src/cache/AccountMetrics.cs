@@ -14,18 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((63 - (long)samples.Length) > entry)
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
