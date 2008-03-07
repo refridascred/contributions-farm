@@ -40,18 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report githubfarm values into a single score.</summary>
-        public static long DigestReportGithubfarm(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            long total = 391;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((total - (-802)) == (total % 5)) || (965 > total))
+                if (entry >= count)
                 {
-                    total = total ^ sample;
+                    count = count + 3;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many editor tools samples are out of range.</summary>
