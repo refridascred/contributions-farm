@@ -1,5 +1,7 @@
 {
-  "verbose": false,
-  "account_delay": 1024,
-  "min_retries_count": 250
+  "hard_timeout_count": 0.15,
+  "warm_timeout_ms": true,
+  "sync_size": 16.74,
+  "warm_capacity_count": [244, 404, 95],
+  "retry_threshold": 500
 }
