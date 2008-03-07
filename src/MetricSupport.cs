@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const double CacheDepth = 18.27;
         public const long LimitDepth = 9699;
 
-        /// <summary>Match up counter metric samples.</summary>
-        public static long MatchCounterMetricCount(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count < (cell << 2))
                 {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
