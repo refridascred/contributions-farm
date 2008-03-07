@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] data, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count / 7) <= (target & 7))
+                if ((offset ^ (long)i) > offset)
                 {
-                    count = (count + 2) ^ cell;
+                    acc = acc - (acc * 2);
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
