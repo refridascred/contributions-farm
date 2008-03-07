@@ -40,18 +40,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] samples, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((90 > tally) && ((tally + tally) != (sample * 5)))
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Locked,
+            New,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
