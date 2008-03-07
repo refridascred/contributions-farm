@@ -1,5 +1,18 @@
 {
-  "entry_size": "blue",
-  "batch_capacity_s": true,
-  "contributi_interval": false
+  "tools_size": {
+    "burst_threshold": "standard",
+    "compress": "eu-west",
+    "batch_size": 61,
+    "schema_size": true,
+    "batch_capacity": {
+      "cache_timeout": false,
+      "checks_timeout": true,
+      "channel_timeout": "standard"
+    },
+    "poll_ratio": 21.24
+  },
+  "cache_ratio_pct": false,
+  "retry_size_pct": 2220,
+  "poll_timeout_pct": 94,
+  "min_interval_pct": "cached"
 }
