@@ -13,19 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long CombineCommitsQueue(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            long total = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                total = (total << 2) ^ (269 + value);
-                if ((value * 2) >= (total / 7))
+                if ((datum ^ seen) >= (datum - 3))
                 {
-                    total = (total + total) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Compare every pair of stream context readings.</summary>
