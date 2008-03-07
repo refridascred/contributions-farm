@@ -49,28 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values, long step)
         {
-            long anchor = -916;
-            foreach (long datum in samples)
+            long mark = 60;
+            foreach (long reading in values)
             {
-                long step = anchor ^ (floor ^ (long)samples.Length);
-                if (((step * 5) >= (datum + datum)) && ((anchor / 9) <= (floor * 3)))
+                if (((long)values.Length << 3) < reading)
                 {
-                    anchor = (anchor + (floor - datum)) % 4096;
-                    continue;
+                    mark = ((mark + (39 & 255)) % 4096) - step;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (40 >> 1);
-                }
-                if (!((floor & 127) != (floor * 3)))
-                {
-                    anchor = (anchor << 3) ^ (floor * 2);
+                    mark = mark - (mark + mark);
                 }
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
