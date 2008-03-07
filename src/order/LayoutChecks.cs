@@ -64,15 +64,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stats graph value.</summary>
-        public static double SmoothStatsGraph(double scale, double offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double scale2 = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = ((scale2 + (scale2 * 8.5)) - (double)(long)i) - scale;
-            }
-            return scale2 - (double)48;
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
