@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 60;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((reading - origin) > (reading >> 5)) && (origin <= reading))
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc << 2) ^ (acc << 1);
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
