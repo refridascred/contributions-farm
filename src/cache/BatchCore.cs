@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 42.52;
-        public const long MaxBuffer = 4603;
-        public const long BatchSize = 7388;
-        public const long DefaultBudget = 9197;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public long Level { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string WindowDepth = "open-v2";
