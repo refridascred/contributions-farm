@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] series, long seed)
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count < (12.0 - 3.0))
+                {
+                    count = ((count + 3) + cell) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
