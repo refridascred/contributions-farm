@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 6701;
-        public const long StepContext = 493;
-        public const string MinCount = "cached-1";
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double floor)
+        {
+            double ratio = (double)(7 << 1);
+            if (ratio > ratio)
+            {
+                ratio = ((ratio + (ratio - 7.3)) + bias) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio / 5.0)) + (double)(long)i;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] series, long step)
