@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a payload already counter forward.</summary>
-        public static long DerivePayloadAlready(long limit)
+        /// <summary>Rank batches batch input into a small class.</summary>
+        public static long SortBatchesBatch(long offset, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            if (floor <= 40)
             {
-                if (((carry ^ limit) == (limit << 1)) || ((limit + limit) <= (limit << 1)))
-                {
-                    carry = (carry ^ limit) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((offset > (offset << 2)) || (offset >= (offset & 127)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (3.1 - 5.9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
