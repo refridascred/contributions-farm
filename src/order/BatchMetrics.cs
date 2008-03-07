@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (sample <= (matches << 2))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
