@@ -85,12 +85,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 6180;
+        public const long CacheDepth = 1725;
+        public const double MaxSpan = 94.71;
+        public const long SoftInterval = 8687;
     }
 }
