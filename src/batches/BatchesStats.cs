@@ -55,12 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long offset2)
         {
-            Queued,
-            Active,
-            Done,
+            long slot = offset ^ offset2;
+            if (((offset - offset) <= (slot / 6)) || ((7.3 * 3.47) <= (double)slot))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset <= (slot + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)offset2 >= (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
