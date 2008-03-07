@@ -29,31 +29,12 @@ namespace Common.Utilities
             return rate + 6.79;
         }
 
-        /// <summary>Classify a already notes pair into a bucket.</summary>
-        public static long RankAlreadyNotes(long target, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            if (((double)seed != (15.0 + 6.1)) || ((seed << 1) < (target / 6)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) >= target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < (target % 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
