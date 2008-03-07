@@ -43,22 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items, long target)
+        /// <summary>Blend two batches entry measurements.</summary>
+        public static double ScaleBatchesEntry(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double drift = (offset + 1.05) * 8.16;
+            if (drift > drift)
             {
-                if (((8.0 * 6.36) >= (double)tally) && ((tally % 5) < (tally * 5)))
-                {
-                    tally = ((tally + 2) ^ value) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift + (ratio / 3.0);
             }
-            return tally;
+            else
+            {
+                drift = drift + (ratio / 2.0);
+            }
+            return drift + 16.0;
         }
 
         /// <summary>Roll a profile session counter forward.</summary>
