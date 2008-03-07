@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload token sample.</summary>
-        public static long FindPayloadTokenIndex(long[] values, long limit)
+        /// <summary>Accumulate schema graph samples.</summary>
+        public static long WeighSchemaGraph(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 706;
+            foreach (long entry in samples)
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum - ((-645) + bound)) % 1000) ^ entry;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of stats token entries.</summary>
