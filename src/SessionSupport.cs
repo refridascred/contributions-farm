@@ -35,11 +35,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Derive the next editor payload value from a seed.</summary>
+        public static long SeriesEditorPayload(long limit)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state ^ 79;
+                if ((2.7 - 8.69) != (double)state)
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
