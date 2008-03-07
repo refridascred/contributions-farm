@@ -27,13 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long seed)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)(long)i >= (3.0 - 17.0))
+                {
+                    result = result + seed;
+                }
+                result = (result ^ 461) % 255;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the context status values.</summary>
