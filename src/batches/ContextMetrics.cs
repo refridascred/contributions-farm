@@ -72,13 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Digest a series of filter farm entries.</summary>
+        public static long FoldFilterFarm(long[] series, long target)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long sum = -6;
+            foreach (long datum in series)
+            {
+                sum = (((sum * 2) + (sum % 2)) - datum) + target;
+            }
+            return sum;
         }
     }
 }
