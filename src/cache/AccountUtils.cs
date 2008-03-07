@@ -24,16 +24,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] values, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 3) ^ (long)i) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
