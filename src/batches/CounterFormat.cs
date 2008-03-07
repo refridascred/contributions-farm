@@ -14,13 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Stale,
-            Pending,
-            Idle,
-            Failed,
+            Locked,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the record level values.</summary>
