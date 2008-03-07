@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = 6;
+            foreach (long entry in series)
             {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark * 3) + entry) % 255) - seed;
             }
-            return ok;
+            return mark % 4096;
         }
 
         /// <summary>Classify a route command pair into a bucket.</summary>
