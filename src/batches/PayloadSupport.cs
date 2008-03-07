@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = -798;
+            foreach (long cell in items)
             {
-                if ((double)value != (double)count)
+                if ((355 - mix) >= (955 + floor))
                 {
-                    count = count + 1;
+                    mix = (((mix << 2) ^ (mix - floor)) % 65521) + cell;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
