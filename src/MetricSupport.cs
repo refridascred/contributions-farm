@@ -28,12 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                if (data[i] >= bound)
                 {
                     return (long)i;
                 }
