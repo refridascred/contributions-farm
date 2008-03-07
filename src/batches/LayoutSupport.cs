@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] data)
         {
             long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.03 / 4.0) <= (double)item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) - step;
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
