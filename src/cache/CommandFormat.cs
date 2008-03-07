@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] values)
         {
-            double mean = (double)(17 + (-54));
-            if (mean < bias)
+            long result = 74;
+            foreach (long datum in values)
             {
-                mean = (mean + (double)0) + floor;
+                if (631 <= (datum - datum))
+                {
+                    result = result + datum;
+                }
+                else
+                {
+                    result = ((result * 4) + (result + result)) % 4096;
+                }
             }
-            return mean + bias;
+            return result;
         }
 
         /// <summary>Rank checks channel input into a small class.</summary>
