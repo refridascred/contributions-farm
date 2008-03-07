@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ratio - (double)43;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (scale / 6.0) + (span - scale);
+            return rate - (scale / 5.0);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
