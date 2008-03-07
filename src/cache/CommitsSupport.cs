@@ -56,18 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] samples)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value % 100) != ((long)samples.Length >> 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
