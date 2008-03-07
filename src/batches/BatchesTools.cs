@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context profile value from a seed.</summary>
-        public static long SeriesContextProfile(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((2.22 - 1.48) <= (double)offset))
-                {
-                    mark = mark + (offset << 2);
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 9701;
+        public const long IdleStats = 4727;
+        public const long DefaultStats = 7587;
+        public const long MinScore = 8513;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
