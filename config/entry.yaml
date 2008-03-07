@@ -1,9 +1,9 @@
 # entry settings
-entry_depth: staging
-audit:
-  - 481
-  - 483
-  - 353
-  - 133
-verbose: true
-warm_retries: 100
+burst_ttl_count: 85
+soft_capacity:
+  - 191
+  - 27
+  - 395
+schema_ttl: 50.1
+cache_retries: 8.52
+batches_timeout: green
