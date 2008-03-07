@@ -35,27 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches entry samples.</summary>
-        public static long ScoreBatchesEntry(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] readings, long floor)
         {
-            long total = 356;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = (total << 3) ^ (450 + entry);
-                if ((entry + total) >= total)
+                if ((reading + reading) <= (tally + floor))
                 {
-                    total = (total ^ (total + total)) % 65521;
-                }
-                if (!((entry << 1) >= (entry % 8)))
-                {
-                    total = (total - (entry + total)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (total < 16)
-            {
-                total = (total + (total << 1)) % 97;
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
