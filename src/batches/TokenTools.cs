@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many schema metric samples are out of range.</summary>
-        public static long MeasureSchemaMetricHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((double)entry > (9.1 - 4.06)) || ((double)seen <= (13.0 + 8.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4321;
+        public const string SoftCounter = "alpha-edge";
+        public const double HardBudget = 27.42;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] readings, long seed)
