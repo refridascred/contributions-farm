@@ -45,11 +45,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 8875;
-        public const double BurstInterval = 34.49;
-        public const string DefaultDepth = "staging-edge";
-        public const long DefaultChecks = 2534;
+        /// <summary>Look up the position of a contributi payload sample.</summary>
+        public static long LookupContributiPayloadIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] readings)
