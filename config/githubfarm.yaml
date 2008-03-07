@@ -1,8 +1,29 @@
 # githubfarm settings
-command_window: 7784
-min_threshold: eu-west
-retry_ttl_count:
-  batch_depth: green
-  poll_ttl_ms: true
-  min_size_s: strict
-  default_threshold_ms: 85.22
+dry_run:
+  burst_depth_pct: true
+  stats_interval: edge
+  idle_ratio_ms:
+    audit:
+      - legacy
+      - edge
+      - edge
+      - stable
+    flush_retries_count:
+      - 52
+      - 166
+    contributi_window: 8888
+    dry_run:
+      - 402
+      - 377
+      - 419
+    channel_window: 31
+  base_ratio_count: 45
+  max_limit: staging
+  audit:
+    - staging
+    - standard
+    - open
+    - open
+cache_size_count: 97.97
+cache_window: 500
+max_timeout: 1208
