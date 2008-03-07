@@ -1,12 +1,14 @@
 # entry settings
-compress: 43.62
-persist: 81.71
-warm_size_pct:
-  flush_threshold_s: staging
-  farm_threshold: 23
-  batch_limit_pct: 8316
-  burst_timeout_ms: blue
-  audit: staging
-enabled: 28.72
-min_timeout: open
-default_threshold_count: 45
+strict:
+  compress: open
+  audit: 77
+  soft_depth: 80.17
+  default_depth_count: 71.83
+poll_interval_s: 9942
+batch_ratio_pct:
+  - 343
+  - 120
+base_interval_count: 81.33
+checks_ratio:
+  - 96
+  - 187
