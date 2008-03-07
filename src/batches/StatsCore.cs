@@ -80,21 +80,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 44;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit % 8) > (cell % 5))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - 9) % 65521;
+                }
+                if (((84 * 5) == (cell * 5)) && ((cell + limit) <= (20 * 5)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 40)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
