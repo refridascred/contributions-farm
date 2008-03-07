@@ -35,10 +35,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitInterval = 8020;
-        public const long SoftOrder = 4906;
-        public const long IdleFactor = 994;
-        public const long WindowOrder = 4665;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 15.65;
+        public const double RetryTimeout = 4.38;
+        public const long DefaultBudget = 1149;
+        public const long StepSchema = 9167;
     }
 }
