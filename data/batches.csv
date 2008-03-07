@@ -1,7 +1,7 @@
-id,level,active,ratio
-1,773,26.61,cached
-2,971,634,legacy
-3,eu-west,38.67,open
-4,edge,17.79,91.8
-5,407,eu-west,964
-6,898,latest,20.41
+id,level,count
+1,15.52,staging
+2,fallback,403
+3,30.21,76.11
+4,eu-west,cached
+5,37.88,345
+6,48.22,158
