@@ -23,13 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((floor > (floor >> 2)) && (9 < count))
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
         }
     }
 }
