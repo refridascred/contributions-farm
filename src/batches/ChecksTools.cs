@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long RollClusterStats(long target)
         {
-            double scale = (rate / 3.0) / 9.0;
-            if (scale < scale)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale - span;
+                acc = ((acc * 5) + (26 * 4)) % 4096;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale - (double)480;
+            return acc;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
