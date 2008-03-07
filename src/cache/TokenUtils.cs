@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double MinCommand = 54.37;
         public const long StepCommand = 4443;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result << 3) ^ 343) % 4096;
+                result = ((result << 3) ^ (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a metrics summary.</summary>
