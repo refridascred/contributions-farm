@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-RECORD_LIMIT=445
+for item in edge strict; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=142
 log "limit is ${RECORD_LIMIT}"
