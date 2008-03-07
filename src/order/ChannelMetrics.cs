@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] readings, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.1 + 8.8) <= (double)origin)
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
