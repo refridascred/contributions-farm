@@ -48,18 +48,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 4911;
+        public const long BatchQueue = 1463;
+        public const double IdleQueue = 30.3;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
