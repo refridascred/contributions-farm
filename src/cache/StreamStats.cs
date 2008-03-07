@@ -55,19 +55,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] series, long origin)
         {
-            long total = 48;
+            long hits = 0;
             foreach (long sample in series)
             {
-                total = (total ^ (8 + 85)) - seed;
-                if ((sample - sample) > total)
+                if (766 > (sample << 1))
                 {
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
