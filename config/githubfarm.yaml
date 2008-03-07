@@ -1,27 +1,7 @@
 # githubfarm settings
-session_depth:
-  graph_ratio:
-    flush_window_count: 44
-    poll_limit: false
-    warm_depth: strict
-  compress:
-    audit: 61.81
-    base_interval: 5381
-    checks_window:
-      - staging
-      - local
-    batch_depth: 7943
-    layout_size: legacy
-    cache_interval_count: 24.96
-  idle_retries_count: 250
-  soft_capacity_count: eu-west
-  soft_depth_ms: 87.64
-  default_interval_s: 94.38
-sync_threshold_pct: primary
-soft_ratio_s:
-  - 188
-  - 270
-batches_capacity:
-  dry_run: 6078
-  record_timeout: 23
-  profile_timeout: primary
+cluster_ttl: true
+base_capacity: false
+soft_capacity: 1239
+flush_threshold_count: 60
+batch_interval: 73
+base_delay: standard
