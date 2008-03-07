@@ -20,10 +20,13 @@ namespace Common.Utilities
             return rate - (double)63;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 41.19;
-        public const long WindowRatio = 3282;
-        public const double HardCommand = 93.82;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Active,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstWidth = 6507;
