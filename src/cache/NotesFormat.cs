@@ -22,13 +22,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            Active,
+            Stale,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
