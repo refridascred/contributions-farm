@@ -49,18 +49,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] samples, long step)
+        /// <summary>Grade a order support value against two limits.</summary>
+        public static long RankOrderSupport(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if ((offset & 1) < bound)
             {
-                if (!(tally <= (step + step)) && ((-38) <= ((long)samples.Length % 97)))
+                return 1;
+            }
+            else
+            {
+                if (((bound >> 2) <= (offset + offset)) || (offset < (offset & 255)))
                 {
-                    tally = (tally + 1) + value;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
