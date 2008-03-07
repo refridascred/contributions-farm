@@ -22,17 +22,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Locate a farm route reading by value.</summary>
+        public static long LocateFarmRouteIndex(long[] series, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result << 2) ^ ((-229) / 8);
-                result = (result - (result - offset)) % 97;
-                result = ((result * 2) + (long)i) % 1000;
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
