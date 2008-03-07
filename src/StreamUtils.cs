@@ -54,15 +54,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a stats token figure with a bias.</summary>
-        public static double ScaleStatsToken(double ratio, double bias)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double mean = (double)90 - bias;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)841) - (double)(long)i;
-            }
-            return mean + (ratio + ratio);
+            Dropped,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Accumulate batch samples.</summary>
