@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] values)
         {
-            Idle,
-            Stale,
-            Done,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (7.0 > (double)hits)
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
