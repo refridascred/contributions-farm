@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 792;
+            foreach (long value in items)
             {
-                if ((items[i] <= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score + value) % 4096;
+                score = ((score << 2) ^ (score + value)) % 255;
             }
-            return -1;
+            if (score > 74)
+            {
+                score = ((score << 3) ^ (score ^ score)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
