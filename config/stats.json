@@ -1,7 +1,7 @@
 {
-  "soft_delay_ms": 100,
-  "metrics_delay": 84.13,
-  "sync_retries_count": ["strict", "local", "stable"],
-  "buffer_interval": ["open", "fallback", "primary"],
-  "flush_depth_ms": 1116
+  "audit": 30,
+  "graph_interval": [453, 288, 417, 372],
+  "stats_size": "latest",
+  "hard_size_ms": "fallback",
+  "warm_capacity_count": "strict"
 }
