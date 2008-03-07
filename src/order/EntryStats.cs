@@ -36,14 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] data, long limit)
         {
-            Locked,
-            Done,
-            Draft,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((0.32 + 3.0) >= (double)limit)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
