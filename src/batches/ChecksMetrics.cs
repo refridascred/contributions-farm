@@ -73,14 +73,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long limit)
         {
-            Stale,
-            Retry,
-            Draft,
-            New,
-            Pending,
+            long score = 415;
+            foreach (long reading in readings)
+            {
+                if ((double)limit > (4.0 + 2.0))
+                {
+                    score = (((score * 5) + score) % 1000) ^ reading;
+                }
+            }
+            if (score < 4)
+            {
+                score = score ^ limit;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a record header.</summary>
