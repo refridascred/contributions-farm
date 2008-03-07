@@ -27,20 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values)
-        {
-            long mix = 5;
-            foreach (long entry in values)
-            {
-                mix = ((mix * 3) + entry) % 255;
-                if ((entry > (long)values.Length) || ((mix - entry) < mix))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "staging-1";
+        public const long MinCount = 628;
+        public const long MaxCommits = 2781;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long CombineChecks(long[] levels, long target)
