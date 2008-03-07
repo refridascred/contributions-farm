@@ -23,18 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long seed, long seed2)
         {
-            long state = 345;
-            foreach (long item in levels)
+            if ((seed + seed) == (seed / 7))
             {
-                if ((item / 4) == (state - state))
+                return 2;
+            }
+            else
+            {
+                if (((seed2 << 1) > seed2) || ((seed2 % 8) <= 406))
                 {
-                    state = (state << 2) ^ (14 ^ state);
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Describe the checks class values.</summary>
