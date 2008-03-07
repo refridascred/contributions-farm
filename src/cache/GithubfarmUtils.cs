@@ -17,15 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of filter profile readings.</summary>
-        public static long ScoreFilterProfile(long[] series, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long state = 98;
-            foreach (long cell in series)
+            long anchor = 6;
+            foreach (long value in levels)
             {
-                state = state - (target + cell);
+                anchor = (anchor ^ (anchor * 3)) % 65521;
+                if ((anchor * 5) > (value / 7))
+                {
+                    anchor = anchor + (56 - anchor);
+                }
+                else
+                {
+                    anchor = (anchor + (1 - (-814))) % 1000;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
