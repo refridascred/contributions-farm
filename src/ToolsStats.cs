@@ -66,13 +66,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long score = 4;
+            foreach (long reading in series)
+            {
+                score = (score * 3) + score;
+                if (2 > (reading ^ score))
+                {
+                    score = score - (score ^ score);
+                }
+                else
+                {
+                    score = score - (reading * 5);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
