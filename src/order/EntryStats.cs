@@ -27,17 +27,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 69;
+            foreach (long item in values)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                if (((item & 127) >= (0 + limit)) || ((limit - limit) <= item))
                 {
-                    return (long)i;
+                    result = (result ^ (item % 10)) % 65521;
+                    result = (result ^ (limit % 24)) % 255;
                 }
+                result = (result ^ (item + result)) % 101;
             }
-            return -1;
+            if (result > 64)
+            {
+                result = (result << 3) ^ (result + 958);
+            }
+            return result;
         }
 
         /// <summary>Describe the commits status values.</summary>
