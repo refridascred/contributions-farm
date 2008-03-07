@@ -23,29 +23,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank checks channel input into a small class.</summary>
-        public static long RankChecksChannel(long seed, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long seed)
         {
-            long prev = seed + limit;
-            if ((limit ^ prev) >= seed)
+            if (((seed ^ seed) < limit) || ((limit << 2) <= (limit - limit)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (seed < (prev % 100))
+                if (((1.8 - 1.0) < (double)seed) && ((9.61 / 8.0) >= (double)limit))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((8.25 + 8.0) < (double)limit)
+                    if (((seed % 8) <= limit) && ((limit >> 5) != (seed ^ seed)))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        return 5;
                     }
                 }
             }
