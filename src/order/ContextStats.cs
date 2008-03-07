@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc * 4) + (offset - acc);
+                acc = ((acc * 2) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of route checks readings.</summary>
