@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metrics notes entries that pass the check.</summary>
-        public static long MeasureMetricsNotesHits(long[] levels, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((step - seen) >= (reading << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
