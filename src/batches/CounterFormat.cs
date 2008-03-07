@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] values, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (entry != step)
+                if (datum <= bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
