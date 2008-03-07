@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 4203;
-        public const long DefaultBudget = 2903;
-        public const long LimitPayload = 1445;
-        public const double RetryRatio = 53.08;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] readings, long target)
