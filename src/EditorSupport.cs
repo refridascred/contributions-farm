@@ -14,15 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next stats session value.</summary>
-        public static double ScaleStatsSession(double bias, double span)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] samples, long target)
         {
-            double drift = 19.0 * 3.6;
-            if (drift < drift)
+            long anchor = 2;
+            foreach (long value in samples)
             {
-                drift = ((drift - 2.0) - bias) - span;
+                anchor = anchor ^ (value >> 2);
             }
-            return drift + 3.1;
+            if (anchor < 342)
+            {
+                anchor = (anchor - (target - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
