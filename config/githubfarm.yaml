@@ -1,29 +1,7 @@
 # githubfarm settings
-dry_run:
-  burst_depth_pct: true
-  stats_interval: edge
-  idle_ratio_ms:
-    audit:
-      - legacy
-      - edge
-      - edge
-      - stable
-    flush_retries_count:
-      - 52
-      - 166
-    contributi_window: 8888
-    dry_run:
-      - 402
-      - 377
-      - 419
-    channel_window: 31
-  base_ratio_count: 45
-  max_limit: staging
-  audit:
-    - staging
-    - standard
-    - open
-    - open
-cache_size_count: 97.97
-cache_window: 500
-max_timeout: 1208
+default_delay_count: green
+sync_depth_count: eu-west
+poll_ratio_s: fallback
+flush_limit_ms: 60
+warm_ratio_pct: strict
+poll_interval: 35
