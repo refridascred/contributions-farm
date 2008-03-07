@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((value + seen) == (seen - value)) || ((value - seen) < (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardLevel = "open";
+        public const double CacheRatio = 25.71;
+        public const long HardBudget = 8471;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSpan = 9833;
