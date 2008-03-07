@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            Retry,
-            Ready,
-            Closed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((count + count) > (count * 2)) && ((sample - 9) <= (2 & 255)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
