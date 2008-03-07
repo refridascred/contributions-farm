@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the farm graph series from a seed.</summary>
-        public static long SeriesFarmGraph(long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = result + result;
-                if ((619 * 3) > result)
-                {
-                    continue;
-                }
-                result = (result + ((long)i - result)) % 101;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate record samples.</summary>
