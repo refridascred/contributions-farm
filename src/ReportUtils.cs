@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long TallySessionProfileOutliers(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((reading >> 4) <= reading)
+                if (value < limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Roll a report counter forward.</summary>
