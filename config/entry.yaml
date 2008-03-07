@@ -1,4 +1,6 @@
 # entry settings
-cache_ttl_pct: 98
-batch_limit: primary
-default_limit_pct: fallback
+warm_timeout_ms: 3912
+window_threshold:
+  - 321
+  - 22
+dry_run: 30
