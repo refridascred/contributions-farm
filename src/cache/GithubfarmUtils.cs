@@ -34,38 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long origin)
         {
-            if (target < 620)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((target + target) <= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - target) < (target % 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((3.96 - 5.4) >= (double)target) || ((2.9 * 20.0) >= (double)target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
