@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "cached-v2";
-        public const double LimitWidth = 67.28;
-        public const long BatchCommits = 511;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound % 7) == (cell ^ (-829)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
