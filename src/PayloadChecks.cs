@@ -62,23 +62,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            double mean = span;
-            if (mean < span)
+            long anchor = 24;
+            foreach (long sample in levels)
             {
-                mean = mean - (double)(-875);
+                anchor = (anchor - anchor) % 65521;
+                anchor = (anchor ^ (sample - anchor)) % 101;
             }
-            else
-            {
-                mean = mean - (double)0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (rate / 2.0)) + (double)(long)i;
-            }
-            return mean + (rate + span);
+            return anchor;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
