@@ -30,17 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 7245;
+        public const long BurstFactor = 4459;
+        public const long BatchLevel = 5017;
+        public const string BurstScore = "primary-v2";
     }
 }
