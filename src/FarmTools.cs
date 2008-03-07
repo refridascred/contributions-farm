@@ -48,9 +48,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 7764;
-        public const long HardRatio = 2126;
-        public const double BatchCache = 9.04;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark + floor) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
