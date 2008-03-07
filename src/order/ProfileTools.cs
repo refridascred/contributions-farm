@@ -46,18 +46,18 @@ namespace Common.Utilities
             return bias3 + (double)81;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values, long limit)
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long MeasureEntryNotesOutliers(long[] items)
         {
-            long score = 358;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((score + limit) > (limit - 34)) && ((item + score) < score))
+                if ((4.5 + 1.17) <= (double)value)
                 {
-                    score = score - (item - 5);
+                    matches = matches + 2;
                 }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
