@@ -1,7 +1,6 @@
 {
-  "sync_capacity_pct": [191, 347, 240, 119],
-  "contributi_retries": 7.43,
-  "compress": "strict",
-  "stream_window": [272, 69],
-  "profile_ratio": 74
+  "schema_ratio": "primary",
+  "compress": 65.47,
+  "idle_depth_ms": 1456,
+  "sync_interval_count": 74.5
 }
