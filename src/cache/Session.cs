@@ -53,10 +53,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitDepth = 2505;
-        public const string HardContext = "latest";
-        public const double BatchContext = 36.93;
-        public const long BaseBudget = 6679;
+        /// <summary>Locate a account buffer reading by value.</summary>
+        public static long SeekAccountBufferIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
