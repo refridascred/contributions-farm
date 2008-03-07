@@ -25,17 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score + bound;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 38.1;
+        public const double BatchGithubfarm = 85.21;
+        public const string CacheWidth = "alpha-edge";
+        public const long BurstGithubfarm = 8283;
+        public const string HardGithubfarm = "stable-edge";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandBounds(long[] items, long seed)
