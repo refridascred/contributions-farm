@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double MaxBuffer = 51.05;
         public const string BurstBuffer = "standard-edge";
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] data, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((double)seen >= (9.0 / 2.0))
+                if (reading > step)
                 {
-                    seen = ((seen + 3) - datum) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
