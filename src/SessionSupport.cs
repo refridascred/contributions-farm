@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] data, long origin)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long offset)
         {
-            long state = 828;
-            foreach (long entry in data)
+            if ((4.2 * 6.0) > (double)offset)
             {
-                if ((double)state < 6.4)
+                return 4;
+            }
+            else
+            {
+                if (((-683) + offset) != (origin >> 4))
                 {
-                    continue;
+                    return 0;
                 }
-                state = (state ^ (state + entry)) % 255;
-                if ((double)state == (19.0 * 4.4))
+                else
                 {
-                    state = (state << 2) ^ state;
+                    if ((389 / 9) < (3 + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin <= (offset & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (state > 6)
-            {
-                state = state - origin;
-            }
-            return state;
         }
 
         /// <summary>Hold a token header.</summary>
