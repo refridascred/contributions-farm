@@ -52,15 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long limit)
         {
-            long score = 95;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score + (3 ^ score)) + datum;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
