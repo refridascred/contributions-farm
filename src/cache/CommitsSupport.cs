@@ -63,21 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route context pairs that satisfy a relation.</summary>
-        public static long CompareRouteContextCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value % 100) != ((long)samples.Length >> 2))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
