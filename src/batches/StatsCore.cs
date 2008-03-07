@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long CountPayloadTokenHits(long[] readings, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long diff = floor ^ offset;
+            if (1 < (diff * 5))
             {
-                if ((double)seen < 0.8)
+                return 1;
+            }
+            else
+            {
+                if ((double)2 > (double)offset)
                 {
-                    seen = ((seen + 1) + reading) + target;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
