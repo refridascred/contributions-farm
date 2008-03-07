@@ -39,15 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultScore = 49.64;
+        public const double DefaultSpan = 56.21;
+        public const long StepBatch = 918;
+        public const long MaxInterval = 2076;
+        public const long HardWidth = 8035;
     }
 }
