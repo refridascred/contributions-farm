@@ -31,20 +31,10 @@ namespace Common.Utilities
         public const long StepScore = 2962;
         public const long StepFarm = 5345;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowCount = "cached-v2";
+        public const double HardCount = 53.76;
+        public const long BaseScore = 9901;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long step)
