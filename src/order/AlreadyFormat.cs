@@ -55,10 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowFactor = 4272;
-        public const long MinSize = 6083;
-        public const long BaseBudget = 7668;
-        public const long SoftCount = 8602;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
