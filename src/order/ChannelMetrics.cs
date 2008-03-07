@@ -60,12 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Done,
+            Paused,
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
