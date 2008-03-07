@@ -42,17 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a stats metric reading by value.</summary>
-        public static long FindStatsMetricIndex(long[] levels, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many entry order samples are out of range.</summary>
