@@ -43,15 +43,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Queued,
-            Paused,
-            Locked,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseWidth = 2636;
+        public const double CacheProfile = 73.79;
+        public const long MinProfile = 5101;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] series, long step)
