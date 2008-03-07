@@ -61,12 +61,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
