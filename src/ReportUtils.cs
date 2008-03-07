@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Ready,
-            Draft,
-            Closed,
-            Pending,
-            Stale,
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the command phase values.</summary>
