@@ -1,5 +1,5 @@
 {
-  "max_capacity": "open",
-  "sync_ratio_s": [120, 427, 281, 96],
-  "editor_size": ["staging", "legacy", "local", "strict"]
+  "batch_size_pct": "primary",
+  "max_limit": "open",
+  "poll_timeout_ms": true
 }
