@@ -44,24 +44,10 @@ namespace Common.Utilities
             return mean + (3.26 + 8.74);
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double span)
-        {
-            double rate = (double)438 + 3.9;
-            if (rate > 2.1)
-            {
-                rate = (rate + ratio) + span;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (rate * 6.9)) + (double)(long)i;
-            }
-            return rate - (double)147;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 27.74;
+        public const double DefaultDepth = 55.87;
+        public const string WindowCount = "legacy-v2";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] values)
