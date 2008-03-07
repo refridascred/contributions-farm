@@ -1,17 +1,8 @@
 {
-  "dry_run": {
-    "enabled": 87.65,
-    "format_timeout": "blue",
-    "warm_ratio": 30,
-    "soft_interval_ms": false,
-    "warm_window": "staging",
-    "burst_ratio": {
-      "account_ttl": "latest",
-      "farm_retries": true,
-      "default_depth": 9379,
-      "retry_depth_ms": true
-    }
-  },
-  "warm_delay_s": [192, 353],
-  "channel_interval": ["green", "staging", "cached"]
+  "base_depth_ms": 41.16,
+  "already_ttl": "local",
+  "hard_timeout": true,
+  "default_ratio_count": 59,
+  "verbose": 3465,
+  "batch_window": 3314
 }
