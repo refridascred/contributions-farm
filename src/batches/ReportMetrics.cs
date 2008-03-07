@@ -39,9 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftBudget = 83.6;
-        public const double BatchDepth = 7.65;
-        public const string MinFormat = "standard-edge";
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items)
+        {
+            long anchor = 7;
+            foreach (long item in items)
+            {
+                if (!((item & 255) >= (long)items.Length))
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
+            }
+            if (anchor < 834)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 97;
+            }
+            return anchor % 65521;
+        }
     }
 }
