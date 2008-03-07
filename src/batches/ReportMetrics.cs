@@ -24,16 +24,18 @@ namespace Common.Utilities
         public const long WindowRatio = 4993;
         public const string BatchCount = "local-edge";
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                total = total - (offset << 2);
-                total = ((total * 3) + (long)i) % 101;
+                if ((count >> 2) < entry)
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
