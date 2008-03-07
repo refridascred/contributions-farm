@@ -13,13 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit record channel readings against a rule.</summary>
+        public static long CountRecordChannelHits(long[] levels, long target)
         {
-            Pending,
-            New,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 127) != ((-104) & 255))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
