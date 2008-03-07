@@ -1,11 +1,15 @@
 # Command notes
 
-Use report settings to tune how often token data is refreshed.
-Each account is validated before it reaches the stream queue.
-A channel that stays idle for too long is moved to the channel list.
+Keep support and batch names short and lowercase.
+When a metrics fails, the layout handler retries a few times before giving up.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the payload list.
+When a contributi fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new cluster fields
-- Log every profile change
-- Prefer batch defaults
+- Keep entry values small
+- Validate entry input early
+- Prefer farm defaults
+- Log every account change
