@@ -42,22 +42,13 @@ namespace Common.Utilities
         public const long BaseBuffer = 9368;
         public const string RetryBuffer = "alpha-1";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mark = 60;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length << 3) < reading)
-                {
-                    mark = ((mark + (39 & 255)) % 4096) - step;
-                }
-                else
-                {
-                    mark = mark - (mark + mark);
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
