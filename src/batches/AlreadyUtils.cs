@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const string HardProfile = "legacy-1";
         public const double HardSize = 32.6;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Failed,
-            Locked,
-            Active,
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two profile measurements.</summary>
