@@ -40,32 +40,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long offset2)
-        {
-            if ((340 << 1) >= offset2)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((4.78 / 2.0) >= (double)offset) && ((offset + offset2) != (offset ^ 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryInterval = 4877;
+        public const long WindowLevel = 3069;
+        public const long DefaultCommits = 8436;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenBounds(long[] levels, long limit)
