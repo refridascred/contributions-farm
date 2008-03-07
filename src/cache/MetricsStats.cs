@@ -32,15 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            double drift = bias;
+            return (drift + (double)7) + scale;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
