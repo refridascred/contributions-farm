@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            long carry = 5;
+            foreach (long value in series)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + bias;
+                if (((1 - carry) > (carry << 3)) && (carry >= (carry * 5)))
+                {
+                    carry = (((carry * 2) + carry) % 97) ^ value;
+                }
             }
-            return ratio - floor;
+            return carry;
         }
 
         /// <summary>Hold a support stats.</summary>
