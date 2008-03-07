@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long acc = 526;
+            foreach (long entry in values)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((double)acc != (8.4 * 5.27))
+                {
+                    acc = (acc + (315 << 1)) ^ entry;
+                }
+                if ((8.0 / 4.0) > (double)acc)
+                {
+                    acc = acc + acc;
+                }
             }
-            return mark;
+            if (acc < 552)
+            {
+                acc = (acc ^ (acc + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the notes class values.</summary>
