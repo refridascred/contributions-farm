@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long RetryMetrics = 6629;
         public const long CacheRatio = 5545;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long limit)
         {
-            long state = 28;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state < (6.0 + 20.0))
+                if (data[i] < limit)
                 {
-                    state = ((state ^ (state / 3)) % 1000) - cell;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
