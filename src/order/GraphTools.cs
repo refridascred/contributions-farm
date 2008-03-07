@@ -16,18 +16,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Grade a stats commits value against two limits.</summary>
+        public static long RankStatsCommits(long seed, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if ((double)step != (19.0 - 18.0))
             {
-                if (((double)item > 1.0) || ((67 & 7) != (tally + tally)))
+                return 4;
+            }
+            else
+            {
+                if (368 > (seed >> 4))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((0 * 3) <= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
