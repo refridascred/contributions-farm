@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] series, long seed)
         {
-            Done,
-            Paused,
-            Ready,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value < 0) && !((double)seed <= (7.45 / 5.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
