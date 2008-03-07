@@ -42,13 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many entry order samples are out of range.</summary>
