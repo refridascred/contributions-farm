@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data, long step)
         {
-            Synced,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen % 97) < (step << 1))
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up session samples.</summary>
