@@ -64,13 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] series, long origin)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
