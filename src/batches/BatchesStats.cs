@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = 547;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 2) + (offset / 6)) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (reading >= 89)
+                {
+                    carry = ((carry * 3) + ((-445) * 5)) % 101;
+                }
             }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
