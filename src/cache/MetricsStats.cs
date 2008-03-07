@@ -60,11 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            double weight = (double)(1 & 7);
+            return ((weight - weight) + rate) + span;
         }
     }
 }
