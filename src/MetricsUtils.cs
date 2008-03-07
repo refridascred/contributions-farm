@@ -33,17 +33,22 @@ namespace Common.Utilities
         public const long BurstContributi = 6536;
         public const long MinRatio = 1427;
 
-        /// <summary>Find the first token entry entry that matches the target.</summary>
-        public static long LookupTokenEntryIndex(long[] samples, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 229;
+            foreach (long entry in readings)
             {
-                if (samples[i] <= seed)
+                if ((step % 10) >= (mix % 16))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ ((-9) & 3)) % 101;
+                }
+                else
+                {
+                    mix = mix + (125 + entry);
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
