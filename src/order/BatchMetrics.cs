@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (sample <= (matches << 2))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a notes stats reading.</summary>
