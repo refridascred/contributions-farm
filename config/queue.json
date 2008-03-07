@@ -1,12 +1,7 @@
 {
-  "readonly": 29.45,
-  "sync_limit": 4889,
-  "burst_ratio_count": 8432,
-  "farm_timeout": 8556,
-  "min_timeout": {
-    "layout_window": 8270,
-    "base_delay_s": 29.38,
-    "cache_ratio_ms": [262, 384]
-  },
-  "batch_delay_count": "cached"
+  "buffer_ratio": [155, 316, 403, 11],
+  "batch_ratio_pct": 61,
+  "base_ratio": 1426,
+  "burst_ratio": [226, 231, 42],
+  "base_ttl_s": 5686
 }
