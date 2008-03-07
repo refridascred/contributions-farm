@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up batch layout samples.</summary>
-        public static long OverlapBatchLayoutCount(long[] data)
+        /// <summary>Iterate the cluster command series from a seed.</summary>
+        public static long SeriesClusterCommand(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (total ^ ((long)i << 2)) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the session class values.</summary>
