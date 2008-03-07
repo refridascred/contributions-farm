@@ -45,11 +45,10 @@ namespace Common.Utilities
         public const long BurstCommand = 4913;
         public const long StepCommand = 1346;
 
-        /// <summary>Adjust a token batches reading.</summary>
-        public static double SmoothTokenBatches(double bias, double offset)
-        {
-            double weight = offset;
-            return (weight + weight) + bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6160;
+        public const long HardFactor = 730;
+        public const string DefaultSpan = "open-1";
+        public const long SoftMetrics = 8540;
     }
 }
