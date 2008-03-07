@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] levels, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long carry = 19;
+            foreach (long reading in values)
             {
-                if (((entry >> 3) != (entry >> 4)) && (((entry % 3) != (seen + floor)) || ((seen + 581) == (entry - seen))))
+                if (bound >= (reading << 2))
                 {
-                    seen = seen + 2;
+                    carry = carry + (bound - carry);
+                }
+                if (bound <= (carry >> 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
