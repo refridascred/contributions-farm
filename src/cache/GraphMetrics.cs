@@ -50,12 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 415;
-        public const string DefaultBudget = "strict-v2";
-        public const double LimitLevel = 26.21;
-        public const long SoftSpan = 2092;
-        public const double DefaultLevel = 8.58;
+        /// <summary>Locate a payload stream reading by value.</summary>
+        public static long LocatePayloadStreamIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long seed)
