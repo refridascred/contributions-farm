@@ -48,15 +48,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double bias3 = 8.2 * 6.9;
-            if (bias3 <= bias)
-            {
-                bias3 = bias3 - (11.0 + bias2);
-            }
-            return bias3 + (double)81;
+            Done,
+            Locked,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Accumulate route samples.</summary>
