@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Scale a order stream figure with a bias.</summary>
