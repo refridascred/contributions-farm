@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long RetryWindow = 3467;
         public const long WindowSize = 3875;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (4.0 >= (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
