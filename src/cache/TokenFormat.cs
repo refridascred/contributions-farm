@@ -16,18 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Accumulate commits report samples.</summary>
+        public static long CombineCommitsReport(long[] readings, long offset)
         {
-            long carry = 5;
-            foreach (long value in series)
+            long result = 2;
+            foreach (long entry in readings)
             {
-                if (((1 - carry) > (carry << 3)) && (carry >= (carry * 5)))
+                result = (((result * 2) + (result - result)) % 97) ^ entry;
+                if ((((long)readings.Length * 5) > result) || ((offset / 9) < offset))
                 {
-                    carry = (((carry * 2) + carry) % 97) ^ value;
+                    result = ((result * 5) + (offset << 3)) % 4096;
+                }
+                if ((offset << 3) > (result * 5))
+                {
+                    result = ((result * 5) + (result - result)) % 101;
                 }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a counter info.</summary>
