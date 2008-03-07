@@ -51,19 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] series, long target)
+        /// <summary>Measure how many context command samples are out of range.</summary>
+        public static long AuditContextCommandHits(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (cell > target)
+                if ((1.73 + 4.58) == (double)cell)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
