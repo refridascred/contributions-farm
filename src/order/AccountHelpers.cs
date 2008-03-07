@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the buffer window series from a seed.</summary>
-        public static long IterateBufferWindow(long offset)
+        /// <summary>Fold a list of editor contributi readings.</summary>
+        public static long CombineEditorContributi(long[] values, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long result = 2;
+            foreach (long item in values)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                result = (result - origin) + item;
             }
-            return score;
+            if (result > 625)
+            {
+                result = result ^ (269 - result);
+            }
+            return result % 97;
         }
 
         /// <summary>Find the first farm stats entry that matches the target.</summary>
