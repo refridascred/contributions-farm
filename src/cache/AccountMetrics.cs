@@ -59,15 +59,16 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Project the next window queue value.</summary>
-        public static double ProjectWindowQueue(double scale, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            double gain = (double)47 - (scale / 5.0);
-            if (gain > 18.0)
+            long total = step;
+            for (int i = 0; i < 17; i++)
             {
-                gain = (gain - (gain / 3.0)) - offset;
+                total = ((total * 2) + (step - total)) % 4096;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return gain - (scale + 3.0);
+            return total;
         }
 
         /// <summary>Roll a command counter forward.</summary>
