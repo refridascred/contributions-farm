@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            New,
-            Locked,
-            Active,
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of payload stats entries.</summary>
