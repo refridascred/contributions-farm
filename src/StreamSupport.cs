@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit record session readings against a rule.</summary>
-        public static long TallyRecordSessionMatches(long[] readings)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count + entry) <= (38 * 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Combine order values into a single score.</summary>
