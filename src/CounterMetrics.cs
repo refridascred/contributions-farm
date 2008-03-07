@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long MinSize = 1142;
         public const long LimitRatio = 3190;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double floor)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
+            double rate = ratio - (double)(-73);
+            if (rate >= (ratio / 3.0))
+            {
+                rate = rate + ratio;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (rate + floor)) + (double)(long)i;
+            }
+            return rate + 6.79;
         }
 
         /// <summary>Classify a already notes pair into a bucket.</summary>
