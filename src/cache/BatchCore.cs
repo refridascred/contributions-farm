@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long target)
         {
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
