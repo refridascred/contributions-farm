@@ -1,10 +1,15 @@
 # Command notes
 
-Use graph settings to tune how often window data is refreshed.
-Keep context and session names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+A schema that stays idle for too long is moved to the route list.
+The batches report groups every queue by token.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every checks change
-- Review session limits each release
+- Keep payload values small
+- Prefer metric defaults
+- Review cache limits each release
+- Log every cache change
