@@ -42,12 +42,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool ValidatePayloadStreamLimits(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
