@@ -1,17 +1,7 @@
 {
-  "hard_interval_s": [76, 388, 24, 377],
-  "profile_threshold": 9,
-  "min_depth_s": "standard",
-  "warm_capacity_count": {
-    "schema_threshold": 1076,
-    "burst_ratio_pct": 60,
-    "metric_timeout": 30,
-    "poll_retries": 500,
-    "soft_interval_s": {
-      "retry_capacity_ms": 30,
-      "flush_ratio_ms": "standard",
-      "stats_capacity": 1024
-    },
-    "batches_ttl": 60
-  }
+  "max_interval_s": 82.23,
+  "format_ttl": 17,
+  "batch_timeout_ms": "primary",
+  "token_capacity": 9242,
+  "max_ttl_ms": 6492
 }
