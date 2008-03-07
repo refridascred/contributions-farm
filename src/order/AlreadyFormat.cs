@@ -47,15 +47,26 @@ namespace Common.Utilities
         public const long StepPayload = 2493;
         public const long CacheTimeout = 8536;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double floor)
+        /// <summary>Combine record counter values into a single score.</summary>
+        public static long TotalRecordCounter(long[] items, long origin)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            long score = 741;
+            foreach (long value in items)
             {
-                ratio = ((ratio + 6.0) + (double)(long)i) - gain;
+                if ((double)value >= (8.0 + 11.0))
+                {
+                    score = score ^ (origin + (long)items.Length);
+                }
+                else
+                {
+                    score = (score + (score + value)) % 1000;
+                }
             }
-            return ratio - floor;
+            if (score < 4)
+            {
+                score = (score ^ (score - score)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
