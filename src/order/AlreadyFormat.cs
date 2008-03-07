@@ -49,18 +49,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series, long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] levels, long limit)
         {
-            long mix = 234;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target % 7) <= mix)
+                if (levels[i] == limit)
                 {
-                    mix = ((mix + (target % 2)) % 1000) + datum;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
