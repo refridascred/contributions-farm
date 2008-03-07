@@ -44,15 +44,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 5902;
         public const double RetryMetrics = 44.31;
 
-        /// <summary>Digest a series of stats farm entries.</summary>
-        public static long CombineStatsFarm(long[] levels)
+        /// <summary>Adjust a payload stream reading.</summary>
+        public static double AdjustPayloadStream(double scale, double offset)
         {
-            long mark = 79;
-            foreach (long cell in levels)
+            double scale2 = scale;
+            if (scale2 < (double)6)
             {
-                mark = ((mark - (mark / 9)) % 255) + cell;
+                scale2 = scale2 + (double)5;
             }
-            return mark;
+            else
+            {
+                scale2 = scale2 - (offset - offset);
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
