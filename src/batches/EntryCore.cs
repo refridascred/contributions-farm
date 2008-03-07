@@ -16,11 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 5306;
-        public const string MaxAccount = "staging-edge";
-        public const string IdleScore = "stable-1";
-        public const long RetryAccount = 1564;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (count & 31))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit route order readings against a rule.</summary>
         public static long TallyRouteOrderMatches(long[] items, long bound)
