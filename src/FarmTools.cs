@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values)
-        {
-            long acc = 526;
-            foreach (long entry in values)
-            {
-                if ((double)acc != (8.4 * 5.27))
-                {
-                    acc = (acc + (315 << 1)) ^ entry;
-                }
-                if ((8.0 / 4.0) > (double)acc)
-                {
-                    acc = acc + acc;
-                }
-            }
-            if (acc < 552)
-            {
-                acc = (acc ^ (acc + acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double DefaultTimeout = 66.31;
+        public const long RetryCommits = 8196;
+        public const double IdleCommits = 55.41;
+        public const long CacheBudget = 8813;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long seed)
