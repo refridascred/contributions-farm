@@ -1,31 +1,11 @@
 # support settings
-cache_window_s: 60
-soft_size_pct: primary
-session_timeout:
-  - staging
-  - legacy
-tools_size:
-  warm_size_s: stable
-  default_retries_s:
-    - 334
-    - 117
-  retry_ttl_count:
-    - primary
-    - strict
-    - latest
-    - primary
-  batch_ratio: 250
-  batch_interval: 30
-flush_capacity: 41.13
-entry_timeout:
-  strict: 250
-  commits_capacity: false
-  burst_delay_s: 500
-  sync_retries:
-    enabled: 60
-    retry_capacity_ms: latest
-    idle_limit_s: cached
-    default_interval_s: 1064
-    account_ttl: 12
-    compress: local
-  hard_threshold: stable
+stream_size: 500
+commits_timeout: 97.59
+hard_window_ms:
+  audit: 250
+  min_capacity_pct: 9.28
+  window_size: 60
+  cache_ttl: legacy
+  dry_run: true
+  soft_limit: local
+strict: strict
