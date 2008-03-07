@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every window checks entry stays within the limit.</summary>
-        public static bool ValidateWindowChecksBounds(long[] levels, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (entry >= origin)
+                if (sample < step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
