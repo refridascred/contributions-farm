@@ -32,22 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] samples, long floor)
         {
-            long mark = -894;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((0.6 - 11.0) < (double)mark) || ((5.08 / 9.0) >= (double)mark))
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
                 {
-                    mark = (((mark * 4) + (mark % 64)) ^ sample) + offset;
+                    return (long)i;
                 }
             }
-            if (mark < 443)
-            {
-                mark = ((mark * 5) + 2) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
