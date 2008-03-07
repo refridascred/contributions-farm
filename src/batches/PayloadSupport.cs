@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] data)
-        {
-            long score = 585;
-            foreach (long sample in data)
-            {
-                if (score >= (1 * 3))
-                {
-                    score = (score ^ (score ^ (long)data.Length)) + sample;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3712;
+        public const long BatchProfile = 9906;
+        public const long BurstProfile = 5509;
+        public const long HardCount = 8229;
+        public const long BurstWidth = 7659;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] values)
