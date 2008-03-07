@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue filter samples are out of range.</summary>
-        public static long MeasureQueueFilterOutliers(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((4.37 + 4.0) > (double)seen))
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
