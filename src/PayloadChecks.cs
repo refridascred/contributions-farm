@@ -33,13 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] samples, long limit)
         {
-            Locked,
-            Paused,
-            Active,
-            Retry,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
