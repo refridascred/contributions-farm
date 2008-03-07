@@ -12,20 +12,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every filter editor entry stays within the limit.</summary>
-        public static bool CheckFilterEditorBounds(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxWidth = "strict-edge";
+        public const long DefaultWidth = 6662;
+        public const string DefaultProfile = "primary-edge";
 
         /// <summary>Classify a already route pair into a bucket.</summary>
         public static long RankAlreadyRoute(long offset, long bound)
