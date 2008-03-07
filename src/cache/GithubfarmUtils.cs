@@ -31,10 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryWidth = 62.55;
-        public const string MaxTimeout = "alpha-1";
-        public const long StepCluster = 8883;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "open-1";
+        public const string CacheSize = "alpha-1";
+        public const long BaseFactor = 5535;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
