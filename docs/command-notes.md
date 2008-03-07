@@ -1,15 +1,16 @@
 # Command notes
 
-The already module keeps metric values in sync with the support cache.
-Use record settings to tune how often record data is refreshed.
-The counter module keeps tools values in sync with the notes cache.
+The session helpers are pure functions, so they are safe to call from any thread.
+Keep record and format names short and lowercase.
+Keep command and batch names short and lowercase.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every metrics by payload.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The order report groups every order by batches.
+Use support settings to tune how often commits data is refreshed.
+Each batch is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Review channel limits each release
-- Validate order input early
-- Document new profile fields
+- Review counter limits each release
+- Validate counter input early
+- Keep order values small
+- Prefer editor defaults
