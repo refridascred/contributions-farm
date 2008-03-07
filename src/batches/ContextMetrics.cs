@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count > (2.63 * 9.95))
-                {
-                    count = ((count + 1) + item) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultBudget = 886;
+        public const long BatchWidth = 3170;
+        public const long MaxFilter = 5400;
+        public const long RetryFilter = 187;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueOutliers(long[] items)
