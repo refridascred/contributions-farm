@@ -35,39 +35,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long bound, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long step = bound ^ offset;
-            if (step <= bound)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound != (3.45 - 9.59)) && (step <= (step ^ bound)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound + step) > (bound << 2)) && ((670 + offset) < (-821)))
+                    if ((series[i] ^ series[j]) > 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset < step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
