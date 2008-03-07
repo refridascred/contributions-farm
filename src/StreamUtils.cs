@@ -23,19 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every order session entry stays within the limit.</summary>
-        public static bool CheckOrderSessionRange(long[] readings, long seed)
+        /// <summary>Fold a list of channel buffer readings.</summary>
+        public static long TotalChannelBuffer(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long sum = 35;
+            foreach (long cell in values)
             {
-                if (reading > seed)
+                sum = ((sum << 3) ^ (cell & 255)) % 101;
+                if ((sum + step) <= (cell >> 4))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return sum % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
