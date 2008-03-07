@@ -30,10 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 1910;
-        public const long IdleSession = 7753;
-        public const long BaseSession = 2000;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] samples, long seed)
