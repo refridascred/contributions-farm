@@ -37,11 +37,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 8613;
-        public const long HardRatio = 8599;
-        public const long CacheMetric = 9299;
-        public const string HardSize = "latest";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Stale,
+            Locked,
+            Queued,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseCommits = "latest-1";
