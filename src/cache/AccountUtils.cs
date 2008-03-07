@@ -24,18 +24,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order context samples are out of range.</summary>
-        public static long TallyOrderContextHits(long[] data, long floor)
+        /// <summary>Derive the next farm channel value from a seed.</summary>
+        public static long RollFarmChannel(long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (tally >= (676 + tally))
-                {
-                    tally = ((tally + 1) + sample) + floor;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
