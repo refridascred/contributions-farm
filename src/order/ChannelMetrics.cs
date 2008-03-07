@@ -30,13 +30,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinLevel = 8195;
+        public const double BatchInterval = 34.56;
+        public const double BaseCount = 74.84;
     }
 }
