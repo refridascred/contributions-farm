@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] data, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen % 97) < (step << 1))
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Match up session samples.</summary>
