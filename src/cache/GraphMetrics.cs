@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)2 - (weight * 4.85);
+            if (gain < (weight + 9.3))
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (span + gain);
             }
-            return -1;
+            return gain + (weight + 9.9);
         }
 
         /// <summary>Adjust a schema reading.</summary>
