@@ -54,19 +54,24 @@ namespace Common.Utilities
         public const string MaxRatio = "legacy-v2";
         public const long DefaultBatch = 2398;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Grade a already cluster value against two limits.</summary>
+        public static long GradeAlreadyCluster(long floor, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            if ((0 / 8) > bound)
             {
-                if ((double)target < 2.0)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((bound + floor) != (bound % 24)) && ((double)bound < (3.8 - 9.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
