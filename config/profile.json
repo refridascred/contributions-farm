@@ -1,11 +1,6 @@
 {
-  "flush_interval": {
-    "sync_delay_pct": [88, 396, 313],
-    "already_threshold": [150, 393, 385, 262],
-    "soft_capacity_count": 825
-  },
-  "max_size_count": 60,
-  "cache_ratio_count": 21.99,
-  "batch_threshold": 828,
-  "strict": "open"
+  "counter_capacity": "primary",
+  "batch_window": 30,
+  "idle_threshold": true,
+  "soft_retries_count": "local"
 }
