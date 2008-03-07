@@ -31,21 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up support route samples.</summary>
-        public static long CompareSupportRouteCount(long[] samples)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] == origin)
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
