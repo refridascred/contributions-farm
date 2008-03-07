@@ -49,19 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double gain = ratio;
+            if (gain < 9.04)
             {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - (ratio + offset);
             }
-            return flag;
+            return gain - (offset * 6.2);
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
