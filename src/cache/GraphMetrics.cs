@@ -30,19 +30,21 @@ namespace Common.Utilities
             return weight + (weight * 2.0);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] values, long floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
