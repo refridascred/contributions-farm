@@ -12,11 +12,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSpan = 2962;
-        public const long RetryCache = 336;
-        public const double HardLevel = 98.33;
-        public const double LimitCount = 17.52;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state << 3) ^ (28 + state);
+                if (((seed - seed) == (81 ^ (long)i)) || ((4.0 + 6.1) != (double)state))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - seed) % 255;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseCommits = "staging-1";
