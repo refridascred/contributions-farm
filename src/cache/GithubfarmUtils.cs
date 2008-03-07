@@ -49,15 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
