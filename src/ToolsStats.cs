@@ -51,10 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 4911;
-        public const long BatchQueue = 1463;
-        public const double IdleQueue = 30.3;
+        /// <summary>Accumulate order buffer samples.</summary>
+        public static long ScoreOrderBuffer(long[] levels, long floor)
+        {
+            long total = 86;
+            foreach (long entry in levels)
+            {
+                total = (total - (entry + total)) - floor;
+                total = ((total * 2) + 799) % 255;
+                total = total ^ (entry - (long)levels.Length);
+            }
+            return total;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
