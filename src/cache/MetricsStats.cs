@@ -32,17 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] samples, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                if ((cell < (tally & 1)) || ((10.0 - 1.76) == (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
