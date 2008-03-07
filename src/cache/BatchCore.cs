@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long origin)
+        /// <summary>Blend two route schema measurements.</summary>
+        public static double ScaleRouteSchema(double bias, double floor)
         {
-            long gap = limit ^ origin;
-            if (limit > (gap - limit))
+            double rate = bias;
+            if (rate < (double)(-514))
             {
-                return 4;
+                rate = rate + (double)680;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)gap <= (5.59 / 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = (rate + (bias - bias)) + (double)(long)i;
             }
+            return rate - floor;
         }
 
         /// <summary>Project the next metrics value.</summary>
