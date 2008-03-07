@@ -12,11 +12,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheWidth = 75.55;
-        public const long BurstGithubfarm = 6330;
-        public const double RetryGithubfarm = 87.93;
-        public const double LimitGithubfarm = 29.76;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
