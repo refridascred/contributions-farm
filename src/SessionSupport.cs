@@ -35,10 +35,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 15.65;
-        public const double RetryTimeout = 4.38;
-        public const long DefaultBudget = 1149;
-        public const long StepSchema = 9167;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
