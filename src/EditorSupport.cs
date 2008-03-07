@@ -63,12 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 3148;
-        public const string IdleSpan = "latest-v2";
-        public const long DefaultSize = 2230;
-        public const long HardSpan = 3975;
-        public const double BatchSize = 42.47;
+        /// <summary>Compare every pair of account batch readings.</summary>
+        public static long PairAccountBatchCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
