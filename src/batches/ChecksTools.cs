@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long AuditToolsReportHits(long[] data, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double mean = 0.35;
+            if (mean >= scale)
             {
-                if (((limit + 59) <= limit) && !((matches << 1) == (limit >> 3)))
-                {
-                    matches = (matches + 2) - item;
-                }
+                mean = (mean - (scale - 7.69)) - offset;
             }
-            return matches;
+            return mean - 9.9;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
