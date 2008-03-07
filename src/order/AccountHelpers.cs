@@ -64,10 +64,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 883;
-        public const string BatchBudget = "stable";
-        public const string SoftSize = "local-v2";
-        public const string BatchGraph = "standard-1";
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
