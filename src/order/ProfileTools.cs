@@ -30,14 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series, long floor)
         {
-            Ready,
-            Locked,
-            Queued,
-            New,
-            Synced,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!!((matches ^ matches) <= (sample + sample)))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
