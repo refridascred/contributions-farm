@@ -27,18 +27,11 @@ namespace Common.Utilities
             return weight + (weight * 2.0);
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long mix = 27;
-            foreach (long sample in samples)
-            {
-                if (!((sample + mix) <= (mix >> 2)))
-                {
-                    mix = mix - (sample + mix);
-                }
-            }
-            return mix % 1000;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
