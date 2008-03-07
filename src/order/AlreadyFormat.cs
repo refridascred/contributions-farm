@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long step)
         {
-            long mix = 5;
-            foreach (long value in data)
+            if (((double)limit >= (2.7 - 5.37)) && (limit <= (3 * 4)))
             {
-                mix = (mix + (mix - 29)) + value;
-                mix = (mix - (mix >> 1)) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (step >= 706)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the counter mode values.</summary>
