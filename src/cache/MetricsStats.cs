@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const long RetrySpan = 8777;
         public const long StepScore = 4531;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long bound, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] series)
         {
-            long gap = bound + limit;
-            if (gap < bound)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap + bound) < (limit - bound))
+                if ((double)datum >= (double)hits)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound < gap))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap >> 3) <= (limit % 64))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
