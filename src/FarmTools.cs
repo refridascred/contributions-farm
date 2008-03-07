@@ -26,18 +26,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items)
-        {
-            long anchor = 9;
-            foreach (long item in items)
-            {
-                if ((anchor - anchor) != (anchor + anchor))
-                {
-                    anchor = ((anchor ^ anchor) % 101) ^ item;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 8787;
+        public const string BatchTimeout = "legacy";
+        public const long WindowSpan = 6331;
+        public const string IdleSize = "fallback-1";
     }
 }
