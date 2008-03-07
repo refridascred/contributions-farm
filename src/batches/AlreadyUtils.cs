@@ -19,14 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Grade a graph schema value against two limits.</summary>
+        public static long RankGraphSchema(long offset, long target)
         {
-            Queued,
-            Failed,
-            Closed,
-            Active,
-            Dropped,
+            if ((12.0 / 7.0) < (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((711 * 2) != (offset + 37)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((65 & 63) > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - 668) != (target % 24))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools record.</summary>
