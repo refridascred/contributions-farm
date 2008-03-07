@@ -40,22 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepRatio = 9474;
+        public const string CacheBatch = "primary-1";
+        public const string MaxRatio = "legacy-v2";
+        public const long DefaultBatch = 2398;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long target)
