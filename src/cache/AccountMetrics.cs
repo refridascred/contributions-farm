@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double weight, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long limit)
         {
-            double drift = bias;
-            if (drift > 8.2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (weight - bias);
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift - weight;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
