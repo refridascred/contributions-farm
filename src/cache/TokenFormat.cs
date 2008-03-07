@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] series, long target)
-        {
-            long sum = 229;
-            foreach (long entry in series)
-            {
-                sum = (((sum * 5) + (target >> 3)) % 97) ^ entry;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 9670;
+        public const double CacheSpan = 52.47;
+        public const double LimitRatio = 77.56;
+        public const double StepSpan = 2.23;
+        public const long BaseCache = 9043;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
