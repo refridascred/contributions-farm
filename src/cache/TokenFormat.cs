@@ -23,21 +23,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Look up the position of a farm stats sample.</summary>
+        public static long SeekFarmStatsIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] == origin) && ((data[i] % 5) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
