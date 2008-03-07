@@ -14,12 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
