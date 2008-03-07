@@ -30,31 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] items, long target)
         {
-            if (floor <= (6 ^ floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor / 2) < bound)
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + floor) > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
