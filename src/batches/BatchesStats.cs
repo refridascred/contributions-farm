@@ -39,23 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double weight, double span)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long offset)
         {
-            double load = weight * 7.0;
-            if (load > span)
+            long state = 4;
+            foreach (long reading in series)
             {
-                load = load - (span / 9.0);
+                if (((1.55 * 6.44) == (double)offset) && ((double)state < (15.0 / 8.0)))
+                {
+                    state = (((state * 3) + (state >> 5)) % 97) + reading;
+                }
             }
-            else
-            {
-                load = load + (double)920;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load + (double)673;
+            return state;
         }
     }
 }
