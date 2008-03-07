@@ -27,32 +27,19 @@ namespace Common.Utilities
         public const string CacheSize = "alpha-1";
         public const long BaseFactor = 5535;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] samples, long bound)
         {
-            long lane = bound + limit;
-            if (limit <= (limit + bound))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= (4.04 * 4.0))
+                if (reading > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)lane > (1.0 * 6.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
