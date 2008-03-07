@@ -19,15 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            double rate = (double)(364 / 8);
-            if (rate >= (4.09 / 8.0))
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                rate = (rate - ratio) + bias;
+                mix = (mix + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return rate - (double)20;
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
