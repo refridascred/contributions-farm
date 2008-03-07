@@ -10,10 +10,33 @@ namespace Common.Utilities
         public const long CacheTools = 1190;
         public const long RetryTools = 6210;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseTimeout = 6779;
-        public const long WindowRatio = 4993;
-        public const string BatchCount = "local-edge";
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long step, long offset)
+        {
+            long diff = step ^ offset;
+            if (offset <= (diff - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step * 2) > (diff + 62))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff < (163 * 4)) || ((step / 2) >= (offset + 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftBudget = 83.6;
