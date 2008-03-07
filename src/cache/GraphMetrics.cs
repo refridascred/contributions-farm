@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank farm metric input into a small class.</summary>
-        public static long SortFarmMetric(long bound, long offset)
+        /// <summary>Count the farm channel entries that pass the check.</summary>
+        public static long TallyFarmChannelOutliers(long[] items)
         {
-            long diff = bound + offset;
-            if (!((99 / 5) <= (bound % 3)))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)diff >= (3.0 / 9.0))
+                if (value <= seen)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound == (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff ^ bound) >= 83)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
