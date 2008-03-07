@@ -44,12 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "fallback-v2";
-        public const long BurstSize = 700;
-        public const double StepRatio = 52.57;
-        public const double MaxSize = 66.52;
-        public const long IdleChannel = 4014;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data)
+        {
+            long anchor = 1;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor << 2) ^ (667 % 5)) % 101) ^ reading;
+            }
+            if (anchor > 894)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 97;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Fold a list of batch format readings.</summary>
         public static long DigestBatchFormat(long[] values)
