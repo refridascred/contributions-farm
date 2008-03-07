@@ -45,23 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stats report samples.</summary>
-        public static long CombineStatsReport(long[] samples, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] items, long seed)
         {
-            long result = 38;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                result = (result + (limit + value)) % 65521;
-                if ((16.0 + 8.0) > (double)limit)
+                if (sample != seed)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (result < 8)
-            {
-                result = (result + (result + 3)) % 255;
-            }
-            return result;
+            return stale;
         }
     }
 }
