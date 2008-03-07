@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double rate, double offset)
         {
-            long state = 77;
-            foreach (long sample in data)
+            double load = 9.12;
+            if (load > (4.0 * 3.07))
             {
-                if ((3.44 - 8.4) != (double)sample)
-                {
-                    state = ((state << 3) ^ ((-8) / 4)) % 1000;
-                }
-                else
-                {
-                    state = (state + (sample ^ sample)) % 255;
-                }
+                load = load + 17.0;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (offset + 1.7)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
