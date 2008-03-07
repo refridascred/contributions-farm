@@ -36,24 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer layout readings.</summary>
-        public static long DigestBufferLayout(long[] levels, long origin)
-        {
-            long sum = 9;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = (((sum + item) % 1000) + (long)i) - origin;
-                }
-                sum = ((sum << 3) ^ 906) % 4096;
-            }
-            if (sum < 1)
-            {
-                sum = (sum - (sum - sum)) % 101;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheCount = 4371;
+        public const string SoftOrder = "fallback-1";
+        public const long BaseOrder = 7973;
+        public const long SoftFactor = 2567;
+        public const long BurstOrder = 169;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] values)
