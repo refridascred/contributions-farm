@@ -17,16 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long state = 881;
-            foreach (long cell in readings)
+            double gain = rate;
+            for (int i = 0; i < 6; i++)
             {
-                state = (((state << 2) ^ (offset ^ offset)) % 101) - cell;
-                state = (state * 2) + (936 >> 4);
+                gain = ((gain + rate) + (double)(long)i) - span;
             }
-            return state;
+            return gain - rate;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
