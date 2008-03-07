@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Locate a account profile reading by value.</summary>
+        public static long LookupAccountProfileIndex(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
