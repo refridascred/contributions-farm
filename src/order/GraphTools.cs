@@ -41,15 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double weight, double offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double mean = (double)((-84) ^ 185);
-            if (mean <= weight)
-            {
-                mean = (mean - (weight / 6.0)) + offset;
-            }
-            return mean + (3.26 + 8.74);
+            Dropped,
+            Queued,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
