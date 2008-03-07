@@ -35,18 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record channel readings against a rule.</summary>
-        public static long CountRecordChannelHits(long[] levels, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((value & 127) != ((-104) & 255))
+                if (sample >= limit)
                 {
-                    count = (count + 2) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
