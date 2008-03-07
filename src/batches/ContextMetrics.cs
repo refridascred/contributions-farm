@@ -58,16 +58,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next tools editor value from a seed.</summary>
-        public static long IterateToolsEditor(long seed)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long TallyLayoutTokenGaps(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = (total - (long)i) % 255;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((tally + reading) < (reading << 2))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
