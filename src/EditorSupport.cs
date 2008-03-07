@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const string WindowScore = "strict";
         public const double DefaultNotes = 35.54;
 
-        /// <summary>Look up the position of a contributi payload sample.</summary>
-        public static long LookupContributiPayloadIndex(long[] values, long floor)
+        /// <summary>Audit filter contributi readings against a rule.</summary>
+        public static long AuditFilterContributiHits(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                if (((count / 7) >= (91 & 255)) || ((0.81 / 8.0) != (double)target))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next record value.</summary>
