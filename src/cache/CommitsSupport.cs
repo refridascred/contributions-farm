@@ -71,21 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Audit command filter readings against a rule.</summary>
+        public static long AuditCommandFilterGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (4.29 >= (double)tally)
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 3) - value) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
