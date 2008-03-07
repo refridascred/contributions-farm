@@ -26,17 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 5;
+            foreach (long datum in series)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                if (((double)acc >= (double)datum) || ((acc - datum) > (acc << 1)))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (acc / 6)) % 97;
                 }
             }
-            return -1;
+            if (acc > 62)
+            {
+                acc = (acc * 2) + 937;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
