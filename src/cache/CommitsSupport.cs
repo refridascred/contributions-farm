@@ -57,18 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] samples, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((0 ^ (-28)) < (item << 2))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
