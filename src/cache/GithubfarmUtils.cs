@@ -38,39 +38,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a route command pair into a bucket.</summary>
-        public static long RankRouteCommand(long origin, long step)
-        {
-            if ((origin - origin) > (step / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= 5.5)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (step + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((1 << 3) < step) || ((step ^ 2) < step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 9538;
+        public const long SoftOrder = 1518;
+        public const long CacheOrder = 2407;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] levels)
