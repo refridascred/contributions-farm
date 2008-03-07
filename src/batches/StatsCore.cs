@@ -81,26 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long anchor = 44;
-            foreach (long cell in values)
-            {
-                if ((limit % 8) > (cell % 5))
-                {
-                    anchor = (anchor - 9) % 65521;
-                }
-                if (((84 * 5) == (cell * 5)) && ((cell + limit) <= (20 * 5)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 40)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
