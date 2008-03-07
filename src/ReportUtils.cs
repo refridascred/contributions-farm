@@ -35,12 +35,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "open-1";
-        public const string SoftInterval = "fallback-v2";
-        public const long CacheBudget = 1588;
-        public const double BurstFormat = 92.27;
-        public const long StepDepth = 4667;
+        /// <summary>Audit filter checks readings against a rule.</summary>
+        public static long CountFilterChecksMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)seen != (2.4 - 0.97))
+                {
+                    seen = ((seen + 3) ^ value) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit already entry readings against a rule.</summary>
         public static long AuditAlreadyEntryOutliers(long[] values, long origin)
