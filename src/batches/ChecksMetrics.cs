@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a token already value against two limits.</summary>
-        public static long SortTokenAlready(long origin, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if ((9 << 1) < step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin >= (step / 3)) && ((step + step) <= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step > (93 + 0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
