@@ -25,10 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 49.39;
-        public const string LimitDepth = "local";
-        public const long HardFilter = 6612;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
