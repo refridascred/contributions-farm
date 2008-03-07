@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] readings, long offset)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Synced,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the editor class values.</summary>
