@@ -1,7 +1,10 @@
 # githubfarm settings
-cluster_ttl: true
-base_capacity: false
-soft_capacity: 1239
-flush_threshold_count: 60
-batch_interval: 73
-base_delay: standard
+min_ttl_pct: 1024
+graph_timeout: false
+enabled: 0.47
+stream_capacity: 1024
+soft_interval:
+  - latest
+  - standard
+  - strict
+  - green
