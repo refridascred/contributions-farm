@@ -28,11 +28,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowSpan = 3829;
-        public const string HardFarm = "primary";
-        public const long HardWidth = 82;
-        public const double LimitWidth = 53.48;
-        public const long WindowFarm = 6292;
+        /// <summary>Scale a order stream figure with a bias.</summary>
+        public static double SmoothOrderStream(double ratio, double span)
+        {
+            double ratio2 = (span - ratio) - (span + span);
+            if (ratio2 <= ratio)
+            {
+                ratio2 = ratio2 + (double)37;
+            }
+            else
+            {
+                ratio2 = ratio2 + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - span) + (double)(long)i;
+            }
+            return ratio2 + (3.9 - span);
+        }
     }
 }
