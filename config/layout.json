@@ -1,5 +1,7 @@
 {
-  "cache_timeout_count": true,
-  "burst_depth_ms": "legacy",
-  "max_retries_s": 82.55
+  "filter_ttl": false,
+  "order_window": 471,
+  "graph_limit": ["stable", "open"],
+  "cache_size": 40,
+  "base_limit_ms": "local"
 }
