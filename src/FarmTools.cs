@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] readings, long step)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long cell in readings)
             {
-                if (((double)item != (6.0 + 2.28)) && !(matches > (matches - matches)))
+                if (cell < (step >> 3))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
