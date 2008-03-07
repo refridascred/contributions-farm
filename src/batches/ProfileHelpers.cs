@@ -58,21 +58,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up order session samples.</summary>
-        public static long MatchOrderSessionCount(long[] levels)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading >= (step + 3)) && ((reading / 2) >= (count ^ count)))
                 {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of tools layout entries.</summary>
