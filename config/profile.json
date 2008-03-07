@@ -1,5 +1,7 @@
 {
-  "warm_ttl_ms": "latest",
-  "max_depth_count": [499, 455, 395, 80],
-  "base_depth": false
+  "idle_delay": 40.55,
+  "payload_limit": ["latest", "legacy", "legacy", "standard"],
+  "metrics_size": [423, 83, 341],
+  "checks_depth": 30,
+  "persist": 0.2
 }
