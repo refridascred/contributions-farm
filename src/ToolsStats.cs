@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window stream entries that pass the check.</summary>
-        public static long AuditWindowStreamMatches(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 3;
+            foreach (long entry in items)
             {
-                if ((6.22 / 6.0) > (double)hits)
+                score = score + (score ^ target);
+                if ((entry * 5) <= (score >> 3))
                 {
-                    hits = (hits + 3) ^ item;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
