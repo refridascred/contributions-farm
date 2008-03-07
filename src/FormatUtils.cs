@@ -44,11 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardTimeout = 5659;
-        public const long IdleInterval = 1858;
-        public const long RetrySpan = 5415;
-        public const long MaxSpan = 5237;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state + ((long)i + state)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long RankQueue(long target, long seed)
