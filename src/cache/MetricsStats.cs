@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = 74;
+            foreach (long sample in readings)
             {
-                if ((entry <= tally) && ((25 - entry) > (entry * 3)))
+                if (acc >= (acc + sample))
                 {
-                    tally = tally + 1;
+                    acc = (acc + (acc - sample)) + limit;
                 }
+                else
+                {
+                    acc = (acc + (long)readings.Length) % 255;
+                }
+                acc = ((acc << 3) ^ (acc - acc)) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the cluster level values.</summary>
