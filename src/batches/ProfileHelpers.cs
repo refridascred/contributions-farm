@@ -45,19 +45,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] data, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long sum = 86;
+            foreach (long datum in levels)
             {
-                if (entry != offset)
+                sum = ((sum * 5) + 559) - datum;
+                if (((sum / 5) >= (target & 255)) && ((target ^ sum) < (-8)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return sum % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
