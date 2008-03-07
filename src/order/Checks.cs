@@ -20,21 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
