@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const long BurstContributi = 6536;
         public const long MinRatio = 1427;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] readings, long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 229;
-            foreach (long entry in readings)
-            {
-                if ((step % 10) >= (mix % 16))
-                {
-                    mix = ((mix << 2) ^ ((-9) & 3)) % 101;
-                }
-                else
-                {
-                    mix = mix + (125 + entry);
-                }
-            }
-            return mix % 65521;
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a schema options.</summary>
