@@ -36,19 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] samples, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (reading != target)
+                if (reading <= step)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
