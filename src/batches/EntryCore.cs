@@ -16,18 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= (count & 31))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Stale,
+            Failed,
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
