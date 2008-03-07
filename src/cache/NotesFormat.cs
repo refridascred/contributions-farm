@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] values)
+        /// <summary>Match up githubfarm batches samples.</summary>
+        public static long CompareGithubfarmBatchesCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((24 + matches) <= entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
