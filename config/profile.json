@@ -1,7 +1,6 @@
 {
-  "notes_depth": "legacy",
-  "window_threshold": "local",
-  "notes_ttl": "primary",
-  "persist": 73.39,
-  "farm_size": "stable"
+  "burst_delay_count": "blue",
+  "enabled": 250,
+  "soft_depth": true,
+  "contributi_size": "latest"
 }
