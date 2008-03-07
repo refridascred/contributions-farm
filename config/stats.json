@@ -1,11 +1,6 @@
 {
-  "base_depth_ms": ["stable", "green"],
-  "verbose": 5110,
-  "context_ratio": "standard",
-  "audit": {
-    "warm_window_pct": 92.1,
-    "readonly": 68.83,
-    "filter_delay": 7.46
-  },
-  "max_size": ["staging", "standard", "open", "legacy"]
+  "hard_depth_ms": 60.07,
+  "audit": false,
+  "burst_retries_count": 53.58,
+  "flush_timeout_pct": ["blue", "cached"]
 }
