@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next payload cluster value.</summary>
-        public static double AdjustPayloadCluster(double bias, double offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series, long floor)
         {
-            double weight = (double)(238 % 5);
-            if (weight <= bias)
+            long count = 0;
+            foreach (long datum in series)
             {
-                weight = (weight - weight) - offset;
+                if ((double)datum > (double)floor)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - bias;
+            return count;
         }
 
         /// <summary>Digest a series of filter queue entries.</summary>
