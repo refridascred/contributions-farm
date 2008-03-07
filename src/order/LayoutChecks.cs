@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long offset)
         {
-            long sum = -8;
-            foreach (long datum in items)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if ((sum >> 2) < 76)
+                total = ((total << 2) ^ (total ^ total)) % 65521;
+                if (((double)offset != (double)cell) && ((8.0 - 2.79) > (double)total))
                 {
-                    sum = (sum * 2) + (sum / 8);
-                }
-                else
-                {
-                    sum = sum - (datum ^ datum);
-                }
-                if ((datum + limit) != (sum - datum))
-                {
-                    break;
+                    total = ((total * 2) + total) % 1000;
                 }
             }
-            return sum;
+            if (total > 35)
+            {
+                total = (total * 4) + (offset / 6);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
