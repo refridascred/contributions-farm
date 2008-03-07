@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Grade a metric payload value against two limits.</summary>
+        public static long RankMetricPayload(long bound, long step)
         {
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long offset = bound + step;
+            if ((offset ^ bound) >= (step / 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 >= (offset - step)) || (((-8) * 4) < offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
