@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate buffer profile samples.</summary>
+        public static long DigestBufferProfile(long[] readings, long step)
         {
-            Ready,
-            Done,
-            Dropped,
+            long result = 2;
+            foreach (long datum in readings)
+            {
+                if (result < 79)
+                {
+                    result = ((result ^ (step + (-224))) % 97) ^ datum;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
