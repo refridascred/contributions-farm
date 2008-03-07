@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const string LimitDepth = "local";
         public const long HardFilter = 6612;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long step)
+        /// <summary>Accumulate command record samples.</summary>
+        public static long CombineCommandRecord(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long sum = 611;
+            foreach (long reading in items)
             {
-                if (item >= step)
+                if ((bound << 1) <= (bound ^ bound))
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 5) + bound) % 1000) ^ reading;
                 }
+                sum = sum ^ bound;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
