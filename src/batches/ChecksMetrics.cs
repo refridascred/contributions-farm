@@ -58,16 +58,22 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Roll a profile session counter forward.</summary>
-        public static long IterateProfileSession(long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long mark = 50;
+            foreach (long sample in data)
             {
-                sum = (sum - floor) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((sample + seed) != ((long)data.Length - 374))
+                {
+                    mark = mark + (seed >> 4);
+                }
+                if (mark < (sample * 4))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a channel summary.</summary>
