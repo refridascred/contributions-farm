@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const double BaseLevel = 5.31;
         public const long CacheNotes = 4665;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 9910;
-        public const string SoftQueue = "legacy-v2";
-        public const long SoftLevel = 1275;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long step, long target)
+        {
+            if ((step - target) <= target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target + step) < step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
