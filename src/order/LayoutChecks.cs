@@ -24,22 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] values, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values)
         {
-            long score = 90;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long item in values)
             {
-                if (!((datum >> 5) < origin))
+                if ((double)5 > (double)(long)values.Length)
                 {
-                    score = (score * 5) + (datum >> 1);
+                    anchor = (anchor - ((long)values.Length / 2)) ^ item;
                 }
             }
-            if (score < 8)
-            {
-                score = ((score * 5) + origin) % 1000;
-            }
-            return score % 65521;
+            return anchor % 4096;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
