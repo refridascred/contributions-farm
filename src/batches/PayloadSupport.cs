@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseInterval = "legacy-v2";
-        public const long DefaultMetrics = 3312;
-        public const double WindowLevel = 50.81;
-        public const long IdleMetrics = 9560;
-        public const double RetryMetrics = 76.14;
+        /// <summary>Fold a list of cluster session readings.</summary>
+        public static long CombineClusterSession(long[] items)
+        {
+            long result = 37;
+            foreach (long entry in items)
+            {
+                if (((entry - result) < 89) && ((result % 3) == (result + result)))
+                {
+                    result = (result + result) % 97;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long bound, long target)
