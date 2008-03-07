@@ -100,21 +100,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= limit)
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
