@@ -42,18 +42,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] values, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches + entry) <= matches)
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
