@@ -1,7 +1,5 @@
 {
-  "poll_window_ms": "legacy",
-  "route_ttl": "latest",
-  "idle_limit_pct": [130, 44],
-  "compress": 65,
-  "retry_capacity_pct": "latest"
+  "compress": 58.02,
+  "max_depth": 26.61,
+  "cache_ratio_count": 24.02
 }
