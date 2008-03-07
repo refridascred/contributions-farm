@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of cluster stream readings.</summary>
-        public static long CombineClusterStream(long[] levels, long floor)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long mix = 1;
-            foreach (long datum in levels)
-            {
-                mix = ((mix ^ (datum + mix)) % 97) - floor;
-            }
-            return mix % 97;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
