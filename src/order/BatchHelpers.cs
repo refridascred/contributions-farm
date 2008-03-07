@@ -27,10 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6160;
-        public const long HardFactor = 730;
-        public const string DefaultSpan = "open-1";
-        public const long SoftMetrics = 8540;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+        }
     }
 }
