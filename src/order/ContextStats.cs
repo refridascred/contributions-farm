@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of route checks readings.</summary>
