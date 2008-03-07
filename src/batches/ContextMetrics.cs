@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinScore = 5018;
-        public const long WindowAlready = 6886;
-        public const double WindowInterval = 17.71;
-        public const string BaseInterval = "primary-1";
-        public const string CacheScore = "legacy-v2";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsMatches(long[] items, long offset)
