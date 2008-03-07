@@ -49,23 +49,29 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long step)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long step)
         {
-            long diff = floor ^ step;
-            if (((diff + floor) <= 284) && ((diff - diff) == (449 * 4)))
+            if ((step << 2) < (bound + bound))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (((diff - 26) <= (25 - floor)) || (floor >= step))
+                if (!((bound * 2) < bound))
                 {
                     return 1;
                 }
                 else
                 {
-                    return 8;
+                    if (bound >= (5 / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
