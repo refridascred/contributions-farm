@@ -71,13 +71,22 @@ namespace Common.Utilities
             return rate2 + 16.0;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long TotalFarmMetrics(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long carry = 467;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length ^ 49) != (carry + carry))
+                {
+                    carry = (carry - entry) % 101;
+                }
+                if ((entry + carry) == (99 % 8))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
