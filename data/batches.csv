@@ -1,7 +1,6 @@
-id,level,count
-1,15.52,staging
-2,fallback,403
-3,30.21,76.11
-4,eu-west,cached
-5,37.88,345
-6,48.22,158
+id,weight,ratio
+1,17.3,357
+2,653,192
+3,72.12,495
+4,green,33.64
+5,local,73.76
