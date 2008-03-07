@@ -1,21 +1,8 @@
 {
-  "audit": 100,
-  "idle_timeout_ms": {
-    "batch_retries": "local",
-    "flush_limit_count": 49,
-    "command_retries": {
-      "flush_interval_count": "legacy",
-      "burst_timeout_pct": 41.01,
-      "enabled": 26.17,
-      "metrics_retries": 47,
-      "report_ratio": 7203
-    },
-    "persist": {
-      "burst_interval": 55,
-      "window_timeout": 60.52,
-      "warm_interval": "fallback",
-      "report_timeout": "staging"
-    }
-  },
-  "enabled": [409, 322, 375, 34]
+  "idle_interval_s": 6143,
+  "format_window": "eu-west",
+  "hard_retries": 5788,
+  "idle_interval": 48.53,
+  "stats_threshold": "eu-west",
+  "batch_ratio_count": 30
 }
