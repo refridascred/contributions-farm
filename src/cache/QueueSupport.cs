@@ -32,19 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxBudget = 4973;
+        public const double SoftFilter = 80.92;
+        public const long SoftSize = 6265;
+        public const long MaxTimeout = 3061;
     }
 }
