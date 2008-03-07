@@ -50,16 +50,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the metrics session series from a seed.</summary>
-        public static long IterateMetricsSession(long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long score = 17;
+            foreach (long cell in values)
             {
-                mix = ((mix << 2) ^ (floor + (long)i)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (!((cell - cell) >= score))
+                {
+                    score = score - (0 + score);
+                }
             }
-            return mix;
+            if (score > (-85))
+            {
+                score = score + score;
+            }
+            return score % 4096;
         }
     }
 }
