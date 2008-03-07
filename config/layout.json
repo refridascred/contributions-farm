@@ -1,10 +1,5 @@
 {
-  "window_interval": {
-    "cache_ttl_count": "cached",
-    "base_delay_ms": 6161,
-    "cache_capacity": false,
-    "audit": 3626
-  },
-  "route_limit": "staging",
-  "dry_run": ["open", "latest", "fallback", "open"]
+  "compress": 60,
+  "burst_window_ms": "fallback",
+  "max_window_s": 1024
 }
