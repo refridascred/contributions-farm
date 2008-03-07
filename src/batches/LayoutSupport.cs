@@ -53,16 +53,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long MeasureCounterClusterMatches(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                total = total ^ (total & 63);
-                total = ((total * 2) + (long)i) % 101;
+                if (value < (hits >> 4))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
