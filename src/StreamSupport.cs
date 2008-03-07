@@ -14,19 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] levels, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long limit)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > target)
+                if ((1.2 / 2.0) <= (double)limit)
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                acc = ((acc * 2) + (-2)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Hold a commits summary.</summary>
