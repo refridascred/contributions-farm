@@ -59,21 +59,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long lane = (mix / 5) % 97;
+                if (!((lane + lane) < step))
                 {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    lane = (lane ^ ((long)i ^ (long)i)) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a checks info.</summary>
