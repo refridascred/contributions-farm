@@ -1,20 +1,5 @@
 {
-  "min_size_pct": 85.19,
-  "tools_delay": {
-    "warm_retries": true,
-    "burst_capacity": false,
-    "hard_depth_pct": false,
-    "poll_ttl_s": 16.01,
-    "max_threshold_count": "blue",
-    "sync_size": ["latest", "eu-west", "open"]
-  },
-  "readonly": 66.66,
-  "flush_window": [387, 374, 125],
-  "warm_ratio_count": {
-    "retry_capacity": "open",
-    "warm_capacity_count": 78.33,
-    "compress": 60,
-    "verbose": "standard"
-  },
-  "retry_depth_ms": "legacy"
+  "warm_ttl_ms": "latest",
+  "max_depth_count": [499, 455, 395, 80],
+  "base_depth": false
 }
