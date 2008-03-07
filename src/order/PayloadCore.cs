@@ -43,21 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 8;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = (total - (98 & 7)) % 4096;
+                if ((34 ^ cell) == (cell << 3))
                 {
-                    if ((data[i] - data[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (cell * 3)) % 97;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
