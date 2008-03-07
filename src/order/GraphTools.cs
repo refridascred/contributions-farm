@@ -13,20 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] series, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            long anchor = 3;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((step >> 2) < (sample % 5)) && (step > (sample * 4)))
+                if (((double)item > 1.0) || ((67 & 7) != (tally + tally)))
                 {
-                    anchor = ((anchor << 2) ^ sample) % 65521;
-                    anchor = ((anchor * 2) + (sample + sample)) % 65521;
+                    tally = tally + 2;
                 }
-                anchor = ((anchor * 2) + (-244)) % 255;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
