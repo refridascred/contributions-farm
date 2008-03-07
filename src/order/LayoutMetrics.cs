@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long anchor = 235;
+            foreach (long value in samples)
+            {
+                anchor = anchor - (value - value);
+            }
+            if (anchor < (-7))
+            {
+                anchor = (anchor - (anchor - anchor)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
