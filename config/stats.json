@@ -1,14 +1,5 @@
 {
-  "batch_depth": {
-    "burst_threshold": "latest",
-    "verbose": 100,
-    "format_delay": true,
-    "token_ratio": 27.42,
-    "flush_size": true,
-    "burst_size_count": false
-  },
-  "payload_threshold": 7267,
-  "enabled": 63,
-  "sync_depth_ms": ["eu-west", "eu-west", "latest", "latest"],
-  "channel_interval": "fallback"
+  "hard_window_ms": 60,
+  "idle_size": "standard",
+  "dry_run": 38
 }
