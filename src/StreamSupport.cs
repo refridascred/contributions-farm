@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of account token readings.</summary>
-        public static long CompareAccountTokenCount(long[] series)
+        /// <summary>Audit record session readings against a rule.</summary>
+        public static long TallyRecordSessionMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + entry) <= (38 * 4))
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
