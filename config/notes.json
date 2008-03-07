@@ -1,6 +1,13 @@
 {
-  "max_interval_s": 9312,
-  "idle_retries_s": "legacy",
-  "poll_capacity": "open",
-  "readonly": false
+  "burst_retries_ms": {
+    "max_timeout_s": 9052,
+    "editor_timeout": "open",
+    "hard_retries_s": true,
+    "retry_capacity": 49.98,
+    "burst_threshold_pct": "strict",
+    "verbose": "strict"
+  },
+  "soft_capacity_ms": [306, 314, 104, 378],
+  "sync_limit": "edge",
+  "max_ratio": 250
 }
