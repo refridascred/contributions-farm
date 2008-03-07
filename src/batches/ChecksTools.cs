@@ -27,15 +27,31 @@ namespace Common.Utilities
         public const long BatchFarm = 7478;
         public const string DefaultWidth = "legacy-1";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long bound)
         {
-            double gain = span;
-            if (gain > (gain * 6.1))
+            if ((origin - bound) >= origin)
             {
-                gain = gain - (span - scale);
+                return 5;
             }
-            return gain - 9.35;
+            else
+            {
+                if ((origin >> 3) != (31 % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ origin) < (origin - 259))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
