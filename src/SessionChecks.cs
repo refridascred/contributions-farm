@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell * 3) < anchor)
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ anchor) % 101;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine commits queue values into a single score.</summary>
