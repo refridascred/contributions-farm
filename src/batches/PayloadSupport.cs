@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool ValidateFarmAccountLimits(long[] samples, long seed)
         {
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
