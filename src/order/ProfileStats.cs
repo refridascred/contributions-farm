@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long floor)
         {
-            Failed,
-            Queued,
-            Draft,
-            Ready,
-            Idle,
+            if ((floor + floor) > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.9 + 10.0) != (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor >> 4) != (target >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + target) < (target >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of support readings.</summary>
