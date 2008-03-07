@@ -64,24 +64,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long offset2)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long offset3 = offset - offset2;
+            if ((5.0 < (double)offset2) || (offset3 >= (offset2 << 1)))
             {
-                if (!((carry + (long)i) > (offset % 60)))
+                return 1;
+            }
+            else
+            {
+                if ((offset % 24) >= (offset2 + offset2))
                 {
-                    carry = ((carry << 3) ^ (carry + offset)) % 4096;
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (carry + 40)) % 65521;
+                    if ((double)offset != (7.0 - 17.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset3 & 7) <= (offset << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
         }
     }
 }
