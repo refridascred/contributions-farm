@@ -50,18 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many context command samples are out of range.</summary>
-        public static long AuditContextCommandHits(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((1.73 + 4.58) == (double)cell)
+                if (reading > (711 & 255))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
