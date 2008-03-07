@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            Draft,
-            Done,
-            Active,
-            Failed,
+            double drift = ratio / 4.0;
+            if (drift > (drift + drift))
+            {
+                drift = (drift - 3.1) - span;
+            }
+            return drift - 20.0;
         }
 
         /// <summary>Digest a series of order entries.</summary>
