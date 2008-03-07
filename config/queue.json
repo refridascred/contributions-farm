@@ -1,8 +1,21 @@
 {
-  "poll_ttl_s": 1024,
-  "idle_size_s": 100,
-  "filter_timeout": "open",
-  "default_size": "primary",
-  "base_delay_pct": "fallback",
-  "burst_ratio_pct": 14.57
+  "poll_threshold_count": "primary",
+  "warm_ttl": 8337,
+  "max_ttl": {
+    "strict": 1024,
+    "idle_timeout_count": {
+      "report_capacity": "open",
+      "default_limit": true,
+      "schema_retries": 30,
+      "audit": false,
+      "filter_size": 29.07,
+      "soft_capacity": [426, 110]
+    },
+    "dry_run": 250,
+    "hard_ratio_ms": "local",
+    "soft_ttl_ms": false,
+    "idle_ttl_count": 250
+  },
+  "batch_threshold_ms": 6209,
+  "window_capacity": "fallback"
 }
