@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings, long offset)
+        /// <summary>Validate layout profile readings against a bound.</summary>
+        public static bool VerifyLayoutProfileLimits(long[] samples, long target)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                total = ((total << 2) ^ (total ^ total)) % 65521;
-                if (((double)offset != (double)cell) && ((8.0 - 2.79) > (double)total))
+                if (sample <= target)
                 {
-                    total = ((total * 2) + total) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (total > 35)
-            {
-                total = (total * 4) + (offset / 6);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
