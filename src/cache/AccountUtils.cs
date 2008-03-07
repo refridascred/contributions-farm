@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6455;
-        public const double RetryTimeout = 72.63;
-        public const double HardContributi = 72.23;
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheTimeout = 2932;
