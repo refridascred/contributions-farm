@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] data)
+        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCacheCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches >= (6.8 - 7.1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
