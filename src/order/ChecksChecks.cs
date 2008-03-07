@@ -34,12 +34,13 @@ namespace Common.Utilities
             return drift + (8.0 * 1.4);
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
+            New,
+            Ready,
             Active,
-            Pending,
-            Synced,
+            Failed,
         }
     }
 }
