@@ -71,12 +71,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            Failed,
+            Done,
+            Synced,
+            Pending,
+            Draft,
         }
     }
 }
