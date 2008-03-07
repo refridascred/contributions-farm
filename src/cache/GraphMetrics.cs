@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double rate, double bias)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] series, long step)
         {
-            double weight = (rate / 6.0) / 7.0;
-            if (weight < weight)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                weight = (weight + weight) + bias;
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight + (weight * 2.0);
+            return valid;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
