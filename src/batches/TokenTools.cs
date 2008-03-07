@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleCount = "stable";
-        public const long RetrySize = 9494;
-        public const long BatchSpan = 1064;
-        public const long IdleScore = 8984;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the batch route entries that pass the check.</summary>
         public static long TallyBatchRouteHits(long[] items)
