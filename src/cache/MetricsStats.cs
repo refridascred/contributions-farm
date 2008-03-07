@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream already entries.</summary>
-        public static long ScoreStreamAlready(long[] series, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long score = 76;
-            foreach (long value in series)
-            {
-                if (score < (limit - limit))
-                {
-                    score = (score * 2) + (value + 86);
-                }
-            }
-            return score;
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
