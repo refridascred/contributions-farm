@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (200 < cell)
+                if (reading <= limit)
                 {
-                    count = (count + 2) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
