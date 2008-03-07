@@ -19,13 +19,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate account commits readings against a bound.</summary>
+        public static bool VerifyAccountCommitsRange(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
