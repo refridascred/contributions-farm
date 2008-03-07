@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long step)
         {
-            long total = 4;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((18.0 + 8.0) < (double)total)
+                if (values[i] > step)
                 {
-                    total = ((((total * 4) + 6) % 255) - sample) - seed;
-                }
-                else
-                {
-                    total = ((total * 5) + (total >> 5)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
