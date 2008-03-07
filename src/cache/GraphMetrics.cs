@@ -20,12 +20,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3780;
+        public const long BurstTimeout = 5902;
+        public const double RetryMetrics = 44.31;
 
         /// <summary>Digest a series of stats farm entries.</summary>
         public static long CombineStatsFarm(long[] levels)
