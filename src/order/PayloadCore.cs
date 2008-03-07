@@ -47,17 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Failed,
+            Synced,
+            New,
         }
     }
 }
