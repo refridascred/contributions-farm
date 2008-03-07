@@ -1,7 +1,8 @@
 {
-  "batch_delay": "cached",
-  "persist": [485, 261],
-  "audit": "cached",
-  "session_ratio": ["edge", "blue", "standard"],
-  "idle_interval": ["edge", "edge", "staging", "standard"]
+  "filter_depth": 65,
+  "audit": 5273,
+  "editor_threshold": "open",
+  "max_window_s": 63,
+  "poll_size_s": 39.24,
+  "warm_ttl": ["staging", "blue"]
 }
