@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 5639;
-        public const double LimitFactor = 52.06;
-        public const long LimitTools = 3133;
-        public const string MaxTimeout = "local-edge";
-        public const long BaseFactor = 3968;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] items, long step)
+        {
+            long score = 683;
+            foreach (long sample in items)
+            {
+                score = ((score << 3) ^ (step % 2)) - sample;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
