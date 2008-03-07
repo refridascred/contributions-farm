@@ -68,22 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] readings, long target)
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long TallyStreamFarmHits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (sample <= (target ^ sample))
+                if ((double)step > (4.61 - 3.35))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
