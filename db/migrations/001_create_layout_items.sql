@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
+    label TEXT,
+    rank INTEGER,
     state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP,
-    owner TEXT NOT NULL,
-    token TEXT
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
+
+INSERT INTO layout_items (active, label, rank, state) VALUES (99, 'eu-west', 98, 'primary');
