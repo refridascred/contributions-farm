@@ -27,11 +27,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double gain = 13.0 / 6.0;
-            return ((gain + gain) + rate) + span;
+            public bool Count { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
