@@ -32,20 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long result = 448;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result ^ reading) <= result)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result << 3) ^ target) % 65521;
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result << 3) ^ (928 * 5);
-                result = ((result * 4) + (target + reading)) % 255;
             }
-            return result % 97;
+            return seen;
         }
     }
 }
