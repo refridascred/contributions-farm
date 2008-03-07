@@ -86,18 +86,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Scale a payload support figure with a bias.</summary>
+        public static double AdjustPayloadSupport(double weight, double bias)
         {
-            long score = 77;
-            foreach (long datum in levels)
+            double weight2 = 3.94;
+            if (weight2 >= (weight2 / 9.0))
             {
-                if ((double)5 > (double)score)
-                {
-                    score = (((score << 2) ^ (score - 710)) % 101) ^ datum;
-                }
+                weight2 = (weight2 + (double)5) + weight;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + bias) - (double)(long)i;
+            }
+            return weight2 - (weight2 - 13.0);
         }
     }
 }
