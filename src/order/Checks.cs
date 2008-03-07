@@ -33,11 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "standard-1";
-        public const long BaseGithubfarm = 1668;
-        public const long BatchDepth = 3350;
-        public const double LimitGithubfarm = 35.2;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Synced,
+            Paused,
+            Dropped,
+            Done,
+            New,
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
