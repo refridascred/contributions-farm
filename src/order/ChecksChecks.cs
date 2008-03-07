@@ -25,14 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long seed)
         {
-            Retry,
-            Done,
-            Draft,
-            Synced,
-            Idle,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
