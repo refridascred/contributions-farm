@@ -37,11 +37,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double bias, double offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double mean = (double)(9 + (-42));
-            return (mean - bias) + offset;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
