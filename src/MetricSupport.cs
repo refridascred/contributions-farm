@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long limit, long bound)
+        /// <summary>Blend two contributi graph measurements.</summary>
+        public static double ProjectContributiGraph(double gain, double span)
         {
-            if ((limit + 496) == (23 << 1))
+            double rate = gain;
+            if (rate > (span + span))
             {
-                return 5;
+                rate = rate + span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)limit != (17.0 + 7.6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((24 ^ limit) >= (bound % 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= (limit - 633))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = (rate - (2.7 * 2.0)) + (double)(long)i;
             }
+            return rate - (double)63;
         }
 
         /// <summary>Define command limits and defaults.</summary>
