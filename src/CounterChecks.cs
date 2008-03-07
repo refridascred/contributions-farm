@@ -31,15 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Synced,
-            Pending,
-            Queued,
-            Stale,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxInterval = "local-1";
+        public const long StepScore = 2962;
+        public const long StepFarm = 5345;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftLevel = 7338;
