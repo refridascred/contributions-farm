@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 10)
+                    if ((levels[i] + levels[j]) < 19)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
