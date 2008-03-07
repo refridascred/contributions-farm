@@ -24,18 +24,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long target)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result ^ result) % 65521;
-                result = (result - result) % 1000;
-                result = result + result;
-                result = ((result * 5) + (long)i) % 101;
+                mark = ((mark << 3) ^ (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
     }
 }
