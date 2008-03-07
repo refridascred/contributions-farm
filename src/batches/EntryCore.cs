@@ -54,24 +54,12 @@ namespace Common.Utilities
         public const string MaxRatio = "legacy-v2";
         public const long DefaultBatch = 2398;
 
-        /// <summary>Grade a already cluster value against two limits.</summary>
-        public static long GradeAlreadyCluster(long floor, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if ((0 / 8) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound + floor) != (bound % 24)) && ((double)bound < (3.8 - 9.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Paused,
+            Idle,
         }
     }
 }
