@@ -42,27 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long anchor = 7;
-            foreach (long value in data)
-            {
-                anchor = (anchor << 3) ^ (offset ^ offset);
-                if ((double)offset > (18.0 * 19.0))
-                {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ offset;
-                }
-                if (0 <= (value - value))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Locate a account buffer reading by value.</summary>
