@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Measure how many batch batches samples are out of range.</summary>
+        public static long TallyBatchBatchesHits(long[] data, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((9.0 / 5.0) < (double)floor)
+                if ((double)(long)data.Length > (double)matches)
                 {
-                    total = (total + (total - floor)) % 65521;
-                    total = total - (total & 15);
+                    matches = ((matches + 3) + datum) + floor;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (0 ^ total)) % 65521;
+                    matches = matches - 1;
                 }
-                total = (total ^ (total * 3)) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
