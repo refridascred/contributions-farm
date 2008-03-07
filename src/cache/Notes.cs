@@ -32,21 +32,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 6;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry * 5) > (94 + entry))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry << 2) ^ entry) % 101) - limit;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Grade a order support value against two limits.</summary>
