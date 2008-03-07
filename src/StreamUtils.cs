@@ -64,18 +64,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((71 * 5) >= (item / 8))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
