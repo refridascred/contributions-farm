@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank window account input into a small class.</summary>
-        public static long RankWindowAccount(long offset, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if ((seed > (offset + seed)) && ((seed / 7) == (offset + seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 1) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
