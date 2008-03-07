@@ -23,20 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels, long origin)
+        /// <summary>Combine tools command values into a single score.</summary>
+        public static long FoldToolsCommand(long[] readings)
         {
-            long anchor = 93;
-            foreach (long reading in levels)
+            long state = 119;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor * 5) + (origin + 720)) % 255) + reading;
-                anchor = anchor ^ anchor;
+                state = state - sample;
+                state = (state + (219 % 8)) % 1000;
+                if ((double)state <= (7.81 - 0.1))
+                {
+                    break;
+                }
             }
-            if (anchor < 531)
+            if (state < 31)
             {
-                anchor = (anchor + origin) % 101;
+                state = (state * 3) + state;
             }
-            return anchor;
+            return state % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
