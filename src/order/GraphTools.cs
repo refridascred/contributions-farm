@@ -35,10 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 65.82;
-        public const double SoftFormat = 58.24;
-        public const string CacheRatio = "legacy-1";
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double offset)
+        {
+            double ratio = rate;
+            if (ratio <= offset)
+            {
+                ratio = ratio + (offset + 0.5);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (offset - ratio)) + (double)(long)i;
+            }
+            return ratio - (double)55;
+        }
 
         /// <summary>Count the stats batch entries that pass the check.</summary>
         public static long MeasureStatsBatchHits(long[] data)
