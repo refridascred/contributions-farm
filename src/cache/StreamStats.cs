@@ -42,16 +42,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batches contributi series from a seed.</summary>
-        public static long IterateBatchesContributi(long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] items, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (bound - 61)) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
