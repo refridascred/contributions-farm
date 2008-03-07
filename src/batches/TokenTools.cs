@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 7789;
-        public const string BatchNotes = "staging-1";
-        public const long BaseNotes = 1772;
-        public const double MinInterval = 56.15;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowHits(long[] series)
