@@ -39,19 +39,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] levels, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((origin % 5) <= (anchor ^ (long)i)))
+                if (cell >= offset)
                 {
-                    anchor = anchor ^ (anchor - origin);
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
