@@ -74,12 +74,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 27.35;
-        public const long BurstQueue = 8901;
-        public const long CacheWidth = 3117;
-        public const double BatchQueue = 74.62;
-        public const long IdleLevel = 3883;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of tools layout entries.</summary>
         public static long ScoreToolsLayout(long[] items)
