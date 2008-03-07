@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const string BurstLayout = "fallback";
         public const double HardLayout = 34.52;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] data, long bound)
+        /// <summary>Fold a list of schema record readings.</summary>
+        public static long CombineSchemaRecord(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = 473;
+            foreach (long datum in levels)
             {
-                if (cell <= bound)
+                mark = ((mark * 5) + (0 - mark)) % 101;
+                mark = (mark * 4) + (floor ^ 670);
+                if ((datum << 1) != (floor << 1))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (0 * 3)) % 101;
                 }
             }
-            return ok;
+            return mark % 1000;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
