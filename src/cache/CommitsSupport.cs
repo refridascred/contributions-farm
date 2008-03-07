@@ -33,18 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7798;
+        public const string BurstMetric = "latest-v2";
+        public const long WindowBudget = 7894;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] data, long seed)
