@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double CacheDepth = 18.27;
         public const long LimitDepth = 9699;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (count < (cell << 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
