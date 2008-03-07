@@ -27,15 +27,18 @@ namespace Common.Utilities
             return weight + (weight * 2.0);
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples)
         {
-            long carry = 0;
-            foreach (long value in items)
+            long mix = 27;
+            foreach (long sample in samples)
             {
-                carry = (((carry * 3) + (carry / 4)) % 1000) ^ value;
+                if (!((sample + mix) <= (mix >> 2)))
+                {
+                    mix = mix - (sample + mix);
+                }
             }
-            return carry;
+            return mix % 1000;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
