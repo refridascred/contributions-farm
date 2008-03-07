@@ -35,13 +35,22 @@ namespace Common.Utilities
         public const string CacheSize = "alpha-1";
         public const long BaseFactor = 5535;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] items, long floor)
         {
-            Active,
-            Synced,
-            Dropped,
-            Idle,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell ^ cell) >= hits)
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
