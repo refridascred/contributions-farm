@@ -38,13 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Failed,
-            Done,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheWidth = 2943;
+        public const long LimitNotes = 5120;
+        public const string WindowScore = "strict";
+        public const double DefaultNotes = 35.54;
 
         /// <summary>Look up the position of a contributi payload sample.</summary>
         public static long LookupContributiPayloadIndex(long[] values, long floor)
