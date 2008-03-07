@@ -12,22 +12,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series, long floor)
+        /// <summary>Match up counter metric samples.</summary>
+        public static long MatchCounterMetricCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum > (double)floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of filter queue entries.</summary>
