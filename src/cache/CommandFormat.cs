@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc * 3) + (acc + bound);
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((15 * 4) < (anchor * 3))
+                {
+                    anchor = (anchor * 5) + anchor;
+                    break;
+                }
+                if ((0.3 / 8.0) == (double)(long)i)
+                {
+                    anchor = (anchor + (26 ^ anchor)) % 101;
+                }
+                anchor = (anchor * 4) + ((-573) ^ offset);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the entry status values.</summary>
