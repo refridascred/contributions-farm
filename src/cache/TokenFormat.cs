@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (9.07 > (double)seed)
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc - acc;
                 }
+                else
+                {
+                    acc = ((acc * 2) + seed) % 65521;
+                }
+                acc = (acc - (seed - (long)i)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
