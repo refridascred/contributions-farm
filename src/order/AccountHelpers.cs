@@ -28,13 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] series, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] items, long target)
         {
             bool ready = true;
-            foreach (long sample in series)
+            foreach (long cell in items)
             {
-                if (sample < step)
+                if (cell >= target)
                 {
                     ready = false;
                     break;
