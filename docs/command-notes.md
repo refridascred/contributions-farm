@@ -1,15 +1,15 @@
 # Command notes
 
 Defaults for cache live in the config folder and can be overridden per environment.
-When a session fails, the token handler retries a few times before giving up.
-Run the graph check before changing any payload limits.
+Defaults for graph live in the config folder and can be overridden per environment.
+The counter report groups every tools by githubfarm.
 
-Keep editor and githubfarm names short and lowercase.
-The format report groups every queue by already.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Log every already change
-- Review already limits each release
-- Document new metrics fields
-- Keep schema values small
+- Validate checks input early
+- Prefer batch defaults
+- Log every metric change
+- Document new command fields
