@@ -34,12 +34,14 @@ namespace Common.Utilities
             return gain - (gain - rate);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
+            Stale,
+            Synced,
+            Ready,
             Failed,
-            Paused,
-            Done,
+            Active,
         }
 
         /// <summary>Adjust a queue reading.</summary>
