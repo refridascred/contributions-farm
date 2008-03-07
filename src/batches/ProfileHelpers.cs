@@ -45,23 +45,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] data, long offset)
         {
-            double mean = (double)(99 >> 3);
-            if (mean > mean)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                mean = (mean - mean) - rate;
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)18;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - 4.4;
+            return flag;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
