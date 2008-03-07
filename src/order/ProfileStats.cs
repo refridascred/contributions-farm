@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long offset)
         {
-            if ((floor + floor) > floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.9 + 10.0) != (double)floor)
+                if (samples[i] == offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor >> 4) != (target >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + target) < (target >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
