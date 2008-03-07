@@ -47,13 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] data, long floor)
         {
-            Paused,
-            Locked,
-            Idle,
-            Queued,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
