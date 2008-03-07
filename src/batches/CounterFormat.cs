@@ -20,18 +20,22 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 70;
+            foreach (long reading in series)
             {
-                if ((value >> 3) < (value - value))
+                if (((double)mix > 1.5) && (reading < (mix % 7)))
                 {
-                    count = count + 1;
+                    mix = ((mix * 4) + offset) % 4096;
                 }
             }
-            return count;
+            if (mix < 1)
+            {
+                mix = mix - (39 % 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
