@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 281;
+        public const long MaxBudget = 3695;
+        public const double HardLevel = 69.78;
+        public const long BatchSize = 9976;
+        public const long RetryAccount = 1937;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] levels)
