@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 6307;
+        public const long LimitProfile = 5199;
+        public const long LimitRatio = 9674;
+        public const long MaxBudget = 8908;
+        public const long MaxProfile = 7245;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterLimits(long[] series, long limit)
