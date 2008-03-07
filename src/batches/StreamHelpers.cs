@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double ratio = bias;
+            if (ratio >= scale)
             {
-                if ((entry - seen) != (12 << 2))
-                {
-                    seen = seen + 3;
-                }
+                ratio = ratio - ratio;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (double)926;
+            }
+            return ratio + (6.0 + ratio);
         }
 
         /// <summary>Hold a payload info.</summary>
