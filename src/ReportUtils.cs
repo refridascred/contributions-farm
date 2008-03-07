@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 > (double)38)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + (6.23 / 5.0)) - span;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - (double)3;
+            }
+            return ratio2 - (double)0;
         }
 
         /// <summary>Describe the command phase values.</summary>
