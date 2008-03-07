@@ -81,14 +81,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double offset)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Queued,
-            Done,
+            double ratio = offset - 2.0;
+            if (ratio > (double)6)
+            {
+                ratio = (ratio - (double)943) - scale;
+            }
+            return ratio - (double)80;
         }
     }
 }
