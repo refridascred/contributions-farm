@@ -16,38 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if ((5 << 1) >= (floor + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor & 31) <= target) || ((-963) >= (floor >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (floor << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + target) <= (floor ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
