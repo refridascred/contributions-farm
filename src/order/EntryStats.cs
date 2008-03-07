@@ -58,30 +58,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Fold a list of batch format readings.</summary>
-        public static long DigestBatchFormat(long[] values)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mark = 2;
-            foreach (long datum in values)
-            {
-                if (!((double)datum < (7.7 * 7.0)))
-                {
-                    mark = (mark << 2) ^ ((-7) % 8);
-                }
-                else
-                {
-                    mark = (mark + (datum + mark)) % 101;
-                }
-                if ((datum ^ datum) < (mark - mark))
-                {
-                    break;
-                }
-            }
-            if (mark > (-2))
-            {
-                mark = mark ^ (mark / 7);
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
