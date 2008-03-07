@@ -32,15 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Retry,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Iterate the batches contributi series from a seed.</summary>
