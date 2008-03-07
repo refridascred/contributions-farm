@@ -65,19 +65,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] readings, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > seed)
+                if (levels[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
