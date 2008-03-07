@@ -1,8 +1,6 @@
 # githubfarm settings
-record_limit: 53.49
-sync_ttl:
-  - standard
-  - blue
-  - legacy
-min_threshold_count: fallback
-support_capacity: true
+batch_timeout_count: strict
+max_depth: legacy
+support_size: true
+max_ttl: 500
+warm_depth_s: 56.49
