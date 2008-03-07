@@ -1,8 +1,29 @@
 # support settings
-order_depth: 52.38
-soft_threshold_ms:
-  - green
-  - green
-  - green
-  - cached
-strict: 60
+editor_interval:
+  base_retries_pct: cached
+  commits_window:
+    - standard
+    - blue
+    - fallback
+    - latest
+  session_threshold: latest
+  stream_ratio:
+    persist:
+      - 274
+      - 487
+      - 77
+      - 416
+    max_limit_s: 5
+    notes_ratio: 62.46
+  idle_depth_count: 100
+  retry_ratio_ms:
+    farm_delay: true
+    poll_window: latest
+    strict: false
+    persist: false
+soft_interval_s: strict
+profile_threshold:
+  - latest
+  - strict
+  - fallback
+  - staging
