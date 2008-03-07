@@ -1,17 +1,5 @@
 {
-  "poll_limit_count": false,
-  "soft_timeout_pct": {
-    "format_ttl": [104, 328, 4, 144],
-    "editor_retries": false,
-    "max_interval_s": {
-      "schema_delay": 96,
-      "checks_ratio": true,
-      "cache_interval": 83,
-      "enabled": false,
-      "warm_limit_pct": 1024
-    },
-    "base_retries_count": 250,
-    "channel_timeout": [156, 375, 444]
-  },
-  "readonly": 20
+  "support_depth": "edge",
+  "batch_threshold": 30,
+  "cache_retries_pct": "staging"
 }
