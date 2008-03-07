@@ -25,15 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Active,
-            Draft,
-            New,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 74.74;
+        public const long HardSpan = 1307;
+        public const long BaseSize = 4758;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] series)
