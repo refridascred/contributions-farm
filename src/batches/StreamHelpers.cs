@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Dropped,
-            Locked,
+            Stale,
+            Done,
+            Queued,
             Pending,
         }
 
