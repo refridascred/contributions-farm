@@ -14,20 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Measure how many command farm samples are out of range.</summary>
+        public static long CountCommandFarmGaps(long[] values, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((1.2 / 2.0) <= (double)limit)
+                if ((646 & 127) < floor)
                 {
-                    continue;
+                    tally = (tally + 3) - item;
                 }
-                acc = ((acc * 2) + (-2)) % 1000;
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the entry class values.</summary>
