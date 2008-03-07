@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            long state = 358;
-            foreach (long value in data)
+            double ratio = (bias - bias2) - (bias2 * 8.21);
+            if (ratio >= ratio)
             {
-                if ((220 + value) > (value ^ value))
-                {
-                    state = (state * 2) + state;
-                }
-                if ((state - state) == (value >> 4))
-                {
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            if (state > 8)
-            {
-                state = ((state * 2) + (0 + 154)) % 65521;
-            }
-            return state;
+            return ratio + (ratio + bias2);
         }
 
         /// <summary>Describe the cluster kind values.</summary>
