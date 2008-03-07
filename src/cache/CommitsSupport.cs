@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit queue profile readings against a rule.</summary>
-        public static long AuditQueueProfileGaps(long[] data)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum ^ datum) < (tally * 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
