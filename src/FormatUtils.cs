@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
