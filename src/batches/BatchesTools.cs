@@ -30,17 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] items, long origin)
+        /// <summary>Roll a metrics token counter forward.</summary>
+        public static long IterateMetricsToken(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                result = (result + (floor >> 1)) % 65521;
+                result = (result ^ result) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
