@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const long CacheBudget = 2420;
         public const long HardWindow = 654;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings)
-        {
-            long anchor = 5;
-            foreach (long item in readings)
-            {
-                if ((double)item != (double)anchor)
-                {
-                    anchor = (anchor * 4) + (anchor / 3);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxTimeout = 9496;
+        public const long BatchRatio = 1826;
+        public const long BatchSize = 1506;
+        public const long DefaultFactor = 8246;
     }
 }
