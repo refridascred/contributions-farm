@@ -26,18 +26,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] items, long bound)
+        /// <summary>Classify a route command pair into a bucket.</summary>
+        public static long RankRouteCommand(long origin, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((origin - origin) > (step / 6))
             {
-                if ((matches / 7) < (bound << 3))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= 5.5)
                 {
-                    matches = (matches + 2) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (step + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((1 << 3) < step) || ((step ^ 2) < step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
