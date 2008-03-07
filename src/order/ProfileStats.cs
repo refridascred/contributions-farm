@@ -29,18 +29,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((seen - datum) >= datum) || ((bound + seen) < 6)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchBudget = 2639;
+        public const string CacheCommand = "alpha-1";
+        public const long CacheTimeout = 1894;
+        public const string MaxFactor = "cached-v2";
+        public const long BurstCommand = 6653;
     }
 }
