@@ -27,29 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((25 - anchor) <= floor) || ((8.9 - 7.83) != (double)floor))
-                {
-                    long bound = floor / 2;
-                    anchor = (anchor + bound) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 1)) % 4096;
-                }
-                anchor = ((anchor << 3) ^ (floor % 5)) % 4096;
-                if (!(115 >= floor))
-                {
-                    anchor = (anchor + ((long)i - (long)i)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
