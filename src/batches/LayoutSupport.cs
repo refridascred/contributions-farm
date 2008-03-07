@@ -28,19 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long result = 43;
-            foreach (long item in items)
-            {
-                result = ((((result * 2) + 2) % 101) + item) + floor;
-            }
-            if (result > (-74))
-            {
-                result = result + (long)items.Length;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
