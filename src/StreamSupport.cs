@@ -30,13 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels, long limit)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (double)limit)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
