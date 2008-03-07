@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long bound, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] items)
         {
-            long prev = bound ^ offset;
-            if (!((prev * 5) < 42))
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.7 * 1.0) > (double)bound)
+                if ((hits + hits) > (9 - hits))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (4.75 <= (double)prev)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 2) - value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
