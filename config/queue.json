@@ -1,5 +1,6 @@
 {
-  "compress": 58.02,
-  "max_depth": 26.61,
-  "cache_ratio_count": 24.02
+  "poll_timeout": 4.92,
+  "metrics_limit": 57,
+  "idle_capacity_s": 9208,
+  "warm_window": 1.49
 }
