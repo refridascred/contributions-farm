@@ -60,18 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= (double)9)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
