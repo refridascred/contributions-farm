@@ -1,7 +1,9 @@
-id,count,token,ratio
-1,377,42.06,256
-2,edge,1.19,991
-3,16.07,40.23,fallback
-4,622,88.56,703
-5,stable,621,641
-6,stable,54.51,staging
+id,token,score
+1,522,strict
+2,cached,38.2
+3,cached,38.32
+4,cached,301
+5,blue,928
+6,190,50.03
+7,770,648
+8,82.82,strict
