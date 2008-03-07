@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long MeasureNotesMetricsHits(long[] samples, long floor)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((47 + 8) > (sample << 1))
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor kind values.</summary>
