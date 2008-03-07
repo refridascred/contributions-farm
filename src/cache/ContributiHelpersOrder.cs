@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftLevel = 5333;
-        public const long MinSpan = 4755;
-        public const long CacheDepth = 7987;
-        public const double MaxBuffer = 51.05;
-        public const string BurstBuffer = "standard-edge";
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Retry,
+            Pending,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
