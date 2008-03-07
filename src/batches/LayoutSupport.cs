@@ -53,18 +53,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long MeasureCounterClusterMatches(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < (hits >> 4))
+                if ((values[i] == target) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
