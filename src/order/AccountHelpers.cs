@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of editor contributi readings.</summary>
-        public static long CombineEditorContributi(long[] values, long origin)
-        {
-            long result = 2;
-            foreach (long item in values)
-            {
-                result = (result - origin) + item;
-            }
-            if (result > 625)
-            {
-                result = result ^ (269 - result);
-            }
-            return result % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryLevel = 8459;
+        public const long StepNotes = 6081;
+        public const long BurstNotes = 1699;
 
         /// <summary>Find the first farm stats entry that matches the target.</summary>
         public static long LocateFarmStatsIndex(long[] levels, long origin)
