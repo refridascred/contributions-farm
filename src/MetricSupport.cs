@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 6056;
-        public const string LimitSize = "fallback-edge";
-        public const string SoftAlready = "strict-1";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Project the next payload cluster value.</summary>
         public static double AdjustPayloadCluster(double bias, double offset)
