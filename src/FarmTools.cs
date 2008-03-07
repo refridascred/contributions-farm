@@ -27,13 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Draft,
-            Locked,
-            Done,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
