@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double bias)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            double rate = bias;
-            if (rate <= (double)(-7))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + (double)(-470);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            return rate + gain;
+            return seen;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
