@@ -37,22 +37,23 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            long state = 94;
-            foreach (long value in values)
+            double ratio = span * 4.99;
+            if (ratio > rate)
             {
-                if (((value << 3) == (state - state)) || ((double)state < (double)62))
-                {
-                    state = ((state << 2) ^ state) % 1000;
-                }
+                ratio = ratio + (double)0;
             }
-            if (state > 65)
+            else
             {
-                state = (state << 3) ^ (state - state);
+                ratio = ratio + (span * 0.6);
             }
-            return state % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
