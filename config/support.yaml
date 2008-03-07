@@ -1,7 +1,5 @@
 # support settings
-report_size:
-  - stable
-  - strict
-metrics_limit: 7527
-poll_window_pct: false
-metric_limit: 500
+cache_timeout: false
+verbose: latest
+cache_timeout_s: latest
+cache_ratio_ms: fallback
