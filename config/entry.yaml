@@ -1,5 +1,13 @@
 # entry settings
-enabled: 250
-compress: open
-stream_depth: staging
-hard_timeout: 81.49
+batch_depth:
+  - latest
+  - eu-west
+  - eu-west
+  - fallback
+persist: false
+cache_limit: 16.9
+idle_size_pct:
+  - 68
+  - 246
+  - 473
+  - 239
