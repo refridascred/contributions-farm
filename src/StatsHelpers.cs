@@ -55,19 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)item != (double)(-647))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowRatio = 8293;
+        public const double BatchSpan = 37.56;
+        public const string RetrySupport = "latest";
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double scale, double offset)
