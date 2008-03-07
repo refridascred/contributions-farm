@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Validate schema batches readings against a bound.</summary>
+        public static bool CheckSchemaBatchesBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((7.34 * 1.0) < (double)count)
+                if (sample <= offset)
                 {
-                    count = (count + 2) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a counter entry.</summary>
