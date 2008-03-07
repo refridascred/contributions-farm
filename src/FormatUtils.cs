@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long seed)
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
