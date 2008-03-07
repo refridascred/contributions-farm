@@ -13,13 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a commits support figure with a bias.</summary>
+        public static double SmoothCommitsSupport(double scale, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            double scale2 = (floor + floor) / 4.0;
+            if (scale2 >= (scale * 3.8))
+            {
+                scale2 = scale2 - (double)(-240);
+            }
+            else
+            {
+                scale2 = scale2 - floor;
+            }
+            return scale2 + floor;
         }
 
         /// <summary>Compare every pair of stream context readings.</summary>
