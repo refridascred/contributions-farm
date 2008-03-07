@@ -71,17 +71,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a batch stream reading by value.</summary>
-        public static long FindBatchStreamIndex(long[] data, long seed)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (weight + weight) - floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (rate - weight)) + (double)(long)i;
             }
-            return -1;
+            return rate - floor;
         }
     }
 }
