@@ -31,12 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                if (samples[i] < floor)
                 {
                     return (long)i;
                 }
