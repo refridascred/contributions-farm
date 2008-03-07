@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] samples, long step)
         {
             bool flag = true;
-            foreach (long reading in items)
+            foreach (long cell in samples)
             {
-                if (reading < step)
+                if (cell >= step)
                 {
                     flag = false;
                     break;
