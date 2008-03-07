@@ -45,13 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            Failed,
-            Stale,
-            Draft,
-            Done,
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
