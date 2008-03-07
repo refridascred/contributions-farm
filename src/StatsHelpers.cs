@@ -63,25 +63,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            double mean = offset + (double)472;
+            if (mean <= (mean / 8.0))
             {
-                if ((5.3 / 4.0) <= (double)floor)
-                {
-                    result = (result << 2) ^ ((long)i + result);
-                    break;
-                }
-                result = ((result << 2) ^ floor) % 4096;
-                if (!(((long)i & 3) > ((long)i * 5)))
-                {
-                    result = ((result * 5) + (long)i) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                mean = (mean - (double)266) - scale;
             }
-            return result;
+            else
+            {
+                mean = mean - (0.81 / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)20;
         }
     }
 }
