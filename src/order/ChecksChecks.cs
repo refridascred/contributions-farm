@@ -25,19 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
