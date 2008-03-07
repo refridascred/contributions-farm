@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Look up the position of a order commits sample.</summary>
+        public static long LocateOrderCommitsIndex(long[] data, long step)
         {
-            long sum = 58;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum & 7) != (sum << 1))
+                if (data[i] > step)
                 {
-                    sum = (sum + (datum >> 1)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < (-813))
-            {
-                sum = ((sum * 4) + (sum ^ sum)) % 65521;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
