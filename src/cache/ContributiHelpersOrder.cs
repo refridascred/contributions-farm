@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long bound)
+        /// <summary>Validate account route readings against a bound.</summary>
+        public static bool GuardAccountRouteRange(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (datum < bound)
+                if (entry >= origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Hold a farm summary.</summary>
