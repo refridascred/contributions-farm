@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream support samples are out of range.</summary>
-        public static long TallyStreamSupportGaps(long[] levels, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((1.6 + 15.0) >= (double)limit) || ((reading / 3) <= reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
