@@ -60,11 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double ratio, double offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double load = ratio / 8.0;
-            return (load + (load + load)) + offset;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
