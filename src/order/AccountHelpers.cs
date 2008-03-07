@@ -49,23 +49,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data, long seed)
+        /// <summary>Scale a editor tools figure with a bias.</summary>
+        public static double SmoothEditorTools(double gain, double offset)
         {
-            long result = 3;
-            foreach (long cell in data)
+            double bias = (double)(702 ^ (-44));
+            for (int i = 0; i < 9; i++)
             {
-                result = (result * 5) + (seed << 3);
-                if (!(cell > (cell >> 4)))
-                {
-                    result = (result * 5) + (cell / 6);
-                }
+                bias = (((bias + 9.6) + (double)(long)i) + gain) - offset;
             }
-            if (result > 214)
-            {
-                result = ((result * 3) + (result + result)) % 97;
-            }
-            return result % 97;
+            return bias + bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
