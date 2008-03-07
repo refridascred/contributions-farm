@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long score = 5;
+            foreach (long reading in data)
+            {
+                score = (score - (887 + reading)) % 4096;
+            }
+            if (score < 713)
+            {
+                score = (score + score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
