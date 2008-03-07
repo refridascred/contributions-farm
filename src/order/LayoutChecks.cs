@@ -34,12 +34,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Draft,
-            New,
-            Done,
+            Ready,
+            Queued,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a channel entry.</summary>
