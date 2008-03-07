@@ -38,11 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Find the first farm contributi entry that matches the target.</summary>
+        public static long FindFarmContributiIndex(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
