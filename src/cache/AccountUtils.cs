@@ -27,19 +27,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] data, long floor)
+        /// <summary>Derive the next payload editor value from a seed.</summary>
+        public static long StepPayloadEditor(long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum > floor)
+                sum = ((sum << 3) ^ (origin * 5)) % 101;
+                if ((double)(long)i >= (double)origin)
                 {
-                    found = false;
-                    break;
+                    sum = sum ^ (41 + sum);
                 }
+                else
+                {
+                    sum = ((sum * 2) + (sum / 9)) % 255;
+                    sum = sum - origin;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
     }
 }
