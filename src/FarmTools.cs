@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long cur = limit - floor;
+            if (((9.3 + 7.5) <= (double)floor) || ((567 * 5) > cur))
             {
-                if (item >= limit)
+                return 4;
+            }
+            else
+            {
+                if (floor < (floor / 2))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((4.0 > (double)limit) || ((cur + limit) >= (91 * 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the contributi status values.</summary>
