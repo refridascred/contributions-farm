@@ -48,11 +48,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long seed, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            if ((double)seed == (4.1 - 17.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 1) < (seed >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + 49) > (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
