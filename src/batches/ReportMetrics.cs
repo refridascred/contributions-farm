@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 38.1;
-        public const double BatchGithubfarm = 85.21;
-        public const string CacheWidth = "alpha-edge";
-        public const long BurstGithubfarm = 8283;
-        public const string HardGithubfarm = "stable-edge";
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Stale,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] values, long seed)
