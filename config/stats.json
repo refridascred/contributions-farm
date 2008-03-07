@@ -1,5 +1,11 @@
 {
-  "min_interval_ms": 52.99,
-  "cache_retries": true,
-  "poll_depth_pct": true
+  "graph_ratio": {
+    "soft_retries_ms": 50.3,
+    "audit": 37.79,
+    "idle_retries_s": 13.65
+  },
+  "burst_ttl_count": "open",
+  "poll_ratio_s": 61.65,
+  "min_ratio_pct": [232, 310, 434],
+  "channel_delay": false
 }
