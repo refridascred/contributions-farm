@@ -76,19 +76,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 4462;
+        public const long RetryWidth = 1638;
+        public const long IdleInterval = 1359;
+        public const long BurstWidth = 4353;
+        public const long CacheFactor = 4402;
     }
 }
