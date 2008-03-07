@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long mark = 78;
+            foreach (long reading in values)
             {
-                if (entry != bound)
+                if ((double)mark > 2.0)
                 {
-                    stale = false;
-                    break;
+                    mark = (((mark * 4) + (offset * 2)) % 4096) + reading;
                 }
             }
-            return stale;
+            return mark % 65521;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
