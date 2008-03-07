@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Derive the next context profile value from a seed.</summary>
+        public static long SeriesContextProfile(long offset)
         {
-            Locked,
-            Dropped,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((2.22 - 1.48) <= (double)offset))
+                {
+                    mark = mark + (offset << 2);
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a order header.</summary>
