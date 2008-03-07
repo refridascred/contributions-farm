@@ -69,19 +69,17 @@ namespace Common.Utilities
             return ratio + (ratio * 1.0);
         }
 
-        /// <summary>Check that every route command entry stays within the limit.</summary>
-        public static bool VerifyRouteCommandRange(long[] series, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < floor)
+                if (samples[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
