@@ -34,12 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 4955;
-        public const long BatchScore = 3588;
-        public const long BurstSupport = 9041;
-        public const string SoftSupport = "alpha";
-        public const long MaxCount = 1449;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
+        {
+            long result = 1;
+            foreach (long sample in levels)
+            {
+                result = (((result << 2) ^ (33 % 24)) % 65521) + sample;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
