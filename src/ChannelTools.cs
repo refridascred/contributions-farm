@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double ratio = weight;
-            if (ratio > (double)241)
-            {
-                ratio = ratio + (double)84;
-            }
-            else
-            {
-                ratio = ratio - (span / 8.0);
-            }
-            return ratio - (double)43;
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up filter samples.</summary>
