@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] data, long seed)
+        /// <summary>Adjust a notes stats reading.</summary>
+        public static double AdjustNotesStats(double rate, double offset)
         {
-            long carry = 33;
-            foreach (long item in data)
+            double gain = (double)75 - offset;
+            if (gain >= (gain / 4.0))
             {
-                if (seed <= (seed % 7))
-                {
-                    carry = (((carry << 2) ^ (seed / 3)) % 101) ^ item;
-                }
+                gain = gain + rate;
             }
-            return carry;
+            return gain - (gain - rate);
         }
 
         /// <summary>Describe the record class values.</summary>
