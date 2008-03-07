@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the session report entries that pass the check.</summary>
-        public static long TallySessionReportHits(long[] readings)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.8 + 4.2) != (double)reading)
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry * 2) + (offset / 6)) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
