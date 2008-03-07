@@ -33,12 +33,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 37.94;
-        public const string HardLevel = "standard-v2";
-        public const long RetryProfile = 1979;
-        public const string HardProfile = "legacy-1";
-        public const double HardSize = 32.6;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] data, long origin)
+        {
+            long sum = 82;
+            foreach (long item in data)
+            {
+                if ((715 / 3) > origin)
+                {
+                    sum = sum + (item << 2);
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] samples, long floor)
