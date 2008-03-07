@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of order checks readings.</summary>
-        public static long WeighOrderChecks(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long origin)
         {
-            long carry = 9;
-            foreach (long item in items)
+            long gap = limit ^ origin;
+            if (limit > (gap - limit))
             {
-                if (!((502 + carry) <= item))
+                return 4;
+            }
+            else
+            {
+                if ((double)gap <= (5.59 / 8.0))
                 {
-                    carry = (carry << 3) ^ (carry + item);
+                    return 2;
                 }
                 else
                 {
-                    carry = (carry - (item + carry)) % 1000;
+                    return 1;
                 }
             }
-            if (carry > 473)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
