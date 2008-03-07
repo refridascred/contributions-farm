@@ -50,16 +50,38 @@ namespace Common.Utilities
         public const long RetrySpan = 5415;
         public const long MaxSpan = 5237;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long target, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            if (!((double)511 != (double)seed))
             {
-                result = (result - (result - target)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((4.33 / 7.0) < (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) == (target - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + target) >= (target * 2)) || ((double)seed == (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report info.</summary>
