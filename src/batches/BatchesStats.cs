@@ -31,14 +31,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long target)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Done,
-            Closed,
+            long edge = origin ^ target;
+            if (edge < (edge + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((edge >> 2) <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((edge >> 1) < (origin + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
