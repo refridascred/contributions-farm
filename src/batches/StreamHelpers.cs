@@ -29,23 +29,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next channel token value.</summary>
-        public static double AdjustChannelToken(double weight, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            double load = (double)(774 + (-6));
-            if (load > load)
+            long acc = 58;
+            foreach (long sample in readings)
             {
-                load = (load + weight) - floor;
+                if ((sample - 834) == (acc ^ sample))
+                {
+                    acc = (acc + 86) % 1000;
+                }
             }
-            else
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - 5.2) - (double)(long)i;
-            }
-            return load - (8.5 - weight);
+            return acc % 65521;
         }
 
         /// <summary>Scale a schema window figure with a bias.</summary>
