@@ -38,18 +38,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] levels, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)seen == (0.04 + 5.86)))
+                if (series[i] < target)
                 {
-                    seen = ((seen + 2) - sample) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
