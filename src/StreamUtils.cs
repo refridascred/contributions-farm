@@ -12,17 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a cluster layout reading by value.</summary>
-        public static long LocateClusterLayoutIndex(long[] levels, long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
