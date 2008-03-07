@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long state = 78;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - (entry % 8)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
