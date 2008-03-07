@@ -36,12 +36,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc << 2) ^ (offset ^ offset);
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Project the next stats graph value.</summary>
