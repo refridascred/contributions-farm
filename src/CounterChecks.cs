@@ -16,22 +16,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((2.8 + 6.3) > (double)limit)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
