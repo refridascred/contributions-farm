@@ -1,6 +1,7 @@
-id,state,rank
-1,552,16.96
-2,88.35,28.74
-3,cached,standard
-4,eu-west,strict
-5,795,97.56
+id,ratio,region,token
+1,514,staging,78.81
+2,13.5,55.19,996
+3,standard,71.56,67.16
+4,946,9.99,68.42
+5,0.69,standard,18
+6,30.37,65.33,legacy
