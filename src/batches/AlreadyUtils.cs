@@ -19,38 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph schema value against two limits.</summary>
-        public static long RankGraphSchema(long offset, long target)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            if ((12.0 / 7.0) < (double)target)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((711 * 2) != (offset + 37)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((65 & 63) > offset)
+                    if ((levels[i] - levels[j]) < 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - 668) != (target % 24))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a commits context sample.</summary>
