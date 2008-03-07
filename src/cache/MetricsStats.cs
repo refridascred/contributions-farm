@@ -32,18 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((cell < (tally & 1)) || ((10.0 - 1.76) == (double)tally))
-                {
-                    tally = tally + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
