@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Draft,
+            Paused,
+            Stale,
+            Failed,
             Active,
-            Synced,
-            Closed,
         }
 
         /// <summary>Hold a profile record.</summary>
