@@ -37,22 +37,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long origin, long origin2)
         {
-            long total = 66;
-            foreach (long entry in items)
+            long delta = origin + origin2;
+            if ((delta / 5) >= (origin % 7))
             {
-                if (!(entry >= (entry * 5)))
+                return 5;
+            }
+            else
+            {
+                if ((delta & 15) > (delta << 3))
                 {
-                    total = total ^ total;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin * 2) != (origin % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.19 > (double)origin2) && (4.8 <= (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (total < 921)
-            {
-                total = total - (total << 3);
-            }
-            return total % 65521;
         }
 
         /// <summary>Scale a editor tools figure with a bias.</summary>
