@@ -1,7 +1,8 @@
 {
-  "audit": 30,
-  "graph_interval": [453, 288, 417, 372],
-  "stats_size": "latest",
-  "hard_size_ms": "fallback",
-  "warm_capacity_count": "strict"
+  "default_threshold": 78,
+  "soft_size": 9245,
+  "batch_window_pct": "open",
+  "window_size": 74.15,
+  "min_delay": [333, 274, 158, 175],
+  "editor_window": [75, 371, 491]
 }
