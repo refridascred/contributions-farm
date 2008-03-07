@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 8631;
+        public const long BaseWidth = 2536;
+        public const long LimitCount = 5049;
+        public const string CacheFactor = "fallback";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheTimeout = 2932;
