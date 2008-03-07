@@ -26,23 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (6 > tally)
-                {
-                    tally = ((tally + 3) + value) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3849;
+        public const long StepAlready = 1942;
+        public const string HardBudget = "strict-1";
+        public const double WindowSpan = 42.83;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
