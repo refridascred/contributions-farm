@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long TotalTokenCounter(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long total = 871;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total - 2) == (entry + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total + (342 << 1)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ ((-814) - total)) % 4096;
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
