@@ -1,8 +1,6 @@
 {
-  "entry_delay": "staging",
-  "strict": 67,
-  "entry_limit": true,
-  "batch_ttl_pct": [182, 27, 397, 374],
-  "format_threshold": 49.29,
-  "warm_depth": "edge"
+  "account_threshold": 93,
+  "buffer_timeout": 24.97,
+  "strict": 55,
+  "min_size_count": [293, 434]
 }
