@@ -27,11 +27,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Digest a series of filter queue entries.</summary>
+        public static long ScoreFilterQueue(long[] levels, long bound)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long result = 571;
+            foreach (long value in levels)
+            {
+                result = ((result - (bound - result)) % 97) + value;
+                if ((1.1 + 6.9) != (double)(long)levels.Length)
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
     }
 }
