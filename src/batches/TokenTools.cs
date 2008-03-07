@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string SoftScore = "stable-edge";
         public const string HardFilter = "primary";
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = 0;
-            foreach (long entry in readings)
-            {
-                acc = ((((acc << 2) ^ (acc * 2)) % 65521) + entry) + seed;
-            }
-            return acc;
+            Paused,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define support limits and defaults.</summary>
