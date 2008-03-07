@@ -26,14 +26,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long bound, long target)
         {
-            New,
-            Retry,
-            Failed,
-            Closed,
-            Ready,
+            long diff = bound - target;
+            if (!((target % 64) >= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target * 3) != (diff << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
