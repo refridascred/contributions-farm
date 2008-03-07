@@ -25,21 +25,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi batch readings.</summary>
-        public static long MatchContributiBatchCount(long[] data)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
