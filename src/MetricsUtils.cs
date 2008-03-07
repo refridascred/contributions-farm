@@ -41,13 +41,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
