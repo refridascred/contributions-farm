@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes account readings against a rule.</summary>
-        public static long MeasureNotesAccountHits(long[] readings, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long mark = 316;
+            foreach (long datum in samples)
             {
-                if (2.57 > (double)limit)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                mark = (((mark * 5) + (mark & 255)) % 97) ^ datum;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
