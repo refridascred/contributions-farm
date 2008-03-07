@@ -72,13 +72,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally + entry) != ((-11) - tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
