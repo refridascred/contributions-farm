@@ -13,15 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Compare every pair of metrics stream readings.</summary>
+        public static long MatchMetricsStreamCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count + count) > (count * 2)) && ((sample - 9) <= (2 & 255)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
