@@ -65,18 +65,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long AuditCommandFilterGaps(long[] readings, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((offset >> 1) >= (floor << 1))
             {
-                if (4.29 >= (double)tally)
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 2) < (floor + offset))
                 {
-                    tally = ((tally + 3) - value) - seed;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset / 3) == (offset & 7)) && (28 <= (floor + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
