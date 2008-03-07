@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] data, long floor)
         {
-            long bound = seed + target;
-            if ((target * 3) > (bound & 3))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 4) <= (seed - 9))
+                if ((matches + matches) <= (entry / 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 2) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
