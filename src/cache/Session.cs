@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            double load = (double)(7 / 5);
-            if (load > span)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (10.0 - span)) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)92;
-            }
-            return load - span;
+            return seen;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
