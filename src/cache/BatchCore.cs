@@ -26,19 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] samples, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double rate = scale;
+            if (rate < scale)
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate + rate) - floor;
             }
-            return flag;
+            return rate - rate;
         }
 
         /// <summary>Accumulate record samples.</summary>
