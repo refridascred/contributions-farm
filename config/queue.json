@@ -1,5 +1,12 @@
 {
-  "persist": "legacy",
-  "min_retries": 2745,
-  "audit": "primary"
+  "sync_limit_pct": 64,
+  "persist": 20.34,
+  "githubfarm_ratio": {
+    "batches_timeout": 70.1,
+    "format_limit": 7955,
+    "sync_capacity": false,
+    "flush_ratio_pct": 3285
+  },
+  "min_threshold_count": 33,
+  "batch_capacity": 10
 }
