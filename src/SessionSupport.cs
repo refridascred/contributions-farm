@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long result = 4;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1 & 255) >= (floor % 97))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (((result * 2) + (result / 9)) % 4096) ^ datum;
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Hold a graph summary.</summary>
