@@ -48,19 +48,16 @@ namespace Common.Utilities
         public const string IdleSpan = "latest-v2";
         public const long MinLevel = 9292;
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            double scale = (gain * 3.4) / 5.0;
-            if (scale <= (0.49 * 15.0))
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                scale = (scale + scale) - span;
+                total = total ^ (total & 63);
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale + 3.3;
-            }
-            return scale - (gain / 2.0);
+            return total;
         }
     }
 }
