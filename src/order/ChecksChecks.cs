@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((offset - 0) >= (carry % 16))
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
