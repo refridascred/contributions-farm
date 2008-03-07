@@ -74,12 +74,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many payload tools samples are out of range.</summary>
+        public static long AuditPayloadToolsHits(long[] series, long seed)
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (seed >= (entry + seed))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
