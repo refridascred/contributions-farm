@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long StepRecord = 2210;
         public const long DefaultLevel = 4187;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Closed,
-            Failed,
-            New,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 49.14;
+        public const long BurstCommand = 4913;
+        public const long StepCommand = 1346;
 
         /// <summary>Scale a order stream figure with a bias.</summary>
         public static double SmoothOrderStream(double ratio, double span)
