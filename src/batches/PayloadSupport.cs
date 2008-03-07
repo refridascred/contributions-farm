@@ -20,18 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mix = -798;
-            foreach (long cell in items)
-            {
-                if ((355 - mix) >= (955 + floor))
-                {
-                    mix = (((mix << 2) ^ (mix - floor)) % 65521) + cell;
-                }
-            }
-            return mix % 97;
+            Retry,
+            Stale,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
