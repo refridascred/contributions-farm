@@ -13,13 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
