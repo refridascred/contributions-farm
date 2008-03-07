@@ -46,13 +46,15 @@ namespace Common.Utilities
         public const long SoftFactor = 2567;
         public const long BurstOrder = 169;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double floor)
         {
-            Idle,
-            Paused,
-            Ready,
-            Done,
+            double mean = bias;
+            if (mean < (double)77)
+            {
+                mean = mean - floor;
+            }
+            return mean - floor;
         }
 
         /// <summary>Hold a schema header.</summary>
