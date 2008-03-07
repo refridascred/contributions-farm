@@ -63,18 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] samples)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((long)samples.Length + 500) != (hits ^ (-32)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
