@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)38)
-            {
-                ratio2 = (ratio2 + (6.23 / 5.0)) - span;
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)3;
-            }
-            return ratio2 - (double)0;
+            Ready,
+            Draft,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the command phase values.</summary>
