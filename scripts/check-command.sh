@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local latest legacy; do
+for item in green cached; do
     log "checking ${item}"
 done
 
 mode="${1:-strict}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
