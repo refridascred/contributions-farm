@@ -14,21 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
