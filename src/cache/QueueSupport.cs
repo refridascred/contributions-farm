@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
-        public static long TallyContributiBufferHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((420 + 44) > matches)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 695;
+        public const string IdleFactor = "fallback";
+        public const long LimitAccount = 8089;
+        public const long RetryDepth = 9943;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
