@@ -58,22 +58,19 @@ namespace Common.Utilities
             return drift + 16.0;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long mark = 50;
-            foreach (long sample in data)
+            long acc = -27;
+            foreach (long item in levels)
             {
-                if ((sample + seed) != ((long)data.Length - 374))
-                {
-                    mark = mark + (seed >> 4);
-                }
-                if (mark < (sample * 4))
-                {
-                    break;
-                }
+                acc = (((acc << 3) ^ acc) % 255) ^ item;
             }
-            return mark;
+            if (acc > 171)
+            {
+                acc = (acc << 2) ^ ((-983) + acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a channel summary.</summary>
