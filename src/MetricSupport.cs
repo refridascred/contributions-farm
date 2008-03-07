@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxLevel = 12;
+        public const long BaseTimeout = 6065;
+        public const string BurstQueue = "fallback";
+        public const long WindowCount = 2733;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 547;
