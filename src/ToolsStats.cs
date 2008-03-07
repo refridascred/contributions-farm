@@ -77,23 +77,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] levels, long origin)
         {
-            double weight = ratio;
-            if (weight >= weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - floor;
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (ratio - weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (double)6;
+            return -1;
         }
     }
 }
