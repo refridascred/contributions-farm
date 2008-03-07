@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank metrics order input into a small class.</summary>
-        public static long ClassifyMetricsOrder(long origin, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] readings)
         {
-            long bound = origin ^ floor;
-            if ((double)bound <= (8.2 * 9.3))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((7.61 / 8.0) >= (double)origin) && ((origin / 2) < 105))
+                if ((5.26 - 2.36) > (double)seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor > (2.1 - 0.21)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a metric info.</summary>
