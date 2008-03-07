@@ -1,12 +1,9 @@
 # support settings
-stream_ttl:
-  route_size: true
-  warm_ttl_count: staging
-  soft_ttl_s: 360
-  idle_delay_s: false
-  sync_threshold: false
-batch_interval:
-  stats_depth: 53
-  flush_timeout_count: 9968
-  retry_window_s: blue
-sync_window: 500
+flush_timeout_pct:
+  - legacy
+  - latest
+compress: true
+cache_interval_count: standard
+poll_timeout_count: primary
+dry_run: false
+metric_depth: 6070
