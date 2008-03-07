@@ -53,18 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels, long limit)
         {
-            long sum = 74;
-            foreach (long reading in readings)
+            long sum = 525;
+            foreach (long item in levels)
             {
-                if (((long)readings.Length * 2) == (reading + sum))
+                sum = ((sum - limit) % 255) ^ item;
+                if ((sum & 3) < sum)
                 {
-                    sum = (sum * 4) + (reading + reading);
+                    sum = sum - sum;
                 }
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Count the order cache entries that pass the check.</summary>
