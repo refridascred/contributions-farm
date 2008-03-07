@@ -32,15 +32,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Queued,
-            Synced,
-            Idle,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 5563;
+        public const long MaxReport = 7940;
+        public const long IdleReport = 9642;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandBounds(long[] items, long seed)
