@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string SoftQueue = "legacy-v2";
         public const long SoftLevel = 1275;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] readings, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((target + item) <= (target & 255))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
