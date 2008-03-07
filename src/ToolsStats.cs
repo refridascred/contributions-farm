@@ -73,13 +73,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches - matches) < matches)
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
