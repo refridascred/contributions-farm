@@ -27,15 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] levels, long limit)
         {
-            long mark = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (((mark * 3) + entry) % 255) - seed;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
