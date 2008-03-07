@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            New,
-            Locked,
-            Ready,
-            Pending,
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
