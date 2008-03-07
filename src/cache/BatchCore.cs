@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 848;
-        public const long DefaultCounter = 9279;
-        public const long HardRatio = 7698;
-        public const long MinCounter = 4847;
-        public const long LimitCount = 2156;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (offset >= count)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string WindowDepth = "open-v2";
