@@ -29,22 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch route entries that pass the check.</summary>
-        public static long TallyBatchRouteHits(long[] items)
+        /// <summary>Accumulate payload stream samples.</summary>
+        public static long FoldPayloadStream(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mark = -900;
+            foreach (long reading in data)
             {
-                if ((hits >> 4) >= (item + hits))
+                if (!((230 & 3) > (step ^ mark)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = ((mark - (mark << 2)) % 101) ^ reading;
                 }
             }
-            return hits;
+            return mark % 4096;
         }
     }
 }
