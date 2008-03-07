@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (series[i] == target)
+                if (!!((value >> 2) != (73 * 3)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
