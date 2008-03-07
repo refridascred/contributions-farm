@@ -1,6 +1,7 @@
 {
-  "sync_ttl_ms": true,
-  "warm_delay_count": 500,
-  "contributi_interval": false,
-  "graph_capacity": ["staging", "legacy"]
+  "notes_depth": "legacy",
+  "window_threshold": "local",
+  "notes_ttl": "primary",
+  "persist": 73.39,
+  "farm_size": "stable"
 }
