@@ -1,5 +1,7 @@
 {
-  "idle_threshold": ["blue", "cached", "eu-west"],
-  "commits_delay": "legacy",
-  "max_window": 250
+  "batch_delay": "cached",
+  "persist": [485, 261],
+  "audit": "cached",
+  "session_ratio": ["edge", "blue", "standard"],
+  "idle_interval": ["edge", "edge", "staging", "standard"]
 }
