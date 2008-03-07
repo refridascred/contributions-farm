@@ -23,19 +23,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
