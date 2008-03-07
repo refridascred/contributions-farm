@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double scale, double span)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double rate = scale;
-            if (rate < 14.0)
-            {
-                rate = rate + (rate + scale);
-            }
-            else
-            {
-                rate = rate + (scale - span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + span;
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
