@@ -1,8 +1,7 @@
 {
-  "default_ratio_s": "fallback",
-  "dry_run": 62,
-  "hard_window": false,
-  "account_retries": false,
-  "route_ratio": 3111,
-  "compress": true
+  "max_limit_count": 81,
+  "readonly": 51,
+  "flush_ratio_pct": ["primary", "primary"],
+  "warm_delay": [75, 388],
+  "checks_ttl": [91, 159]
 }
