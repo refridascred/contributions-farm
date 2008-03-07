@@ -25,13 +25,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            long state = 3;
+            foreach (long datum in levels)
+            {
+                long delta = 28 - (state - state);
+                if (!(delta <= (0 * 5)))
+                {
+                    state = ((state + delta) % 4096) + datum;
+                    delta = delta - (state << 3);
+                }
+                state = state ^ 3;
+            }
+            if (state < 864)
+            {
+                state = (state * 5) + 62;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
