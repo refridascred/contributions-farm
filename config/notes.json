@@ -1,14 +1,8 @@
 {
-  "retry_interval_pct": {
-    "idle_threshold_count": [374, 15, 307, 108],
-    "report_capacity": 30,
-    "poll_interval_s": false,
-    "min_ttl_s": 63.01,
-    "max_interval_pct": 12.28,
-    "persist": "local"
-  },
-  "batch_ratio_pct": ["blue", "standard", "strict"],
-  "retry_retries": "fallback",
-  "enabled": 60,
-  "order_retries": "open"
+  "dry_run": 69,
+  "cluster_delay": 54,
+  "sync_limit_ms": 27.3,
+  "max_depth_ms": true,
+  "farm_retries": 500,
+  "strict": false
 }
