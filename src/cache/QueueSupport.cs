@@ -21,24 +21,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long result = 145;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (3.6 - 4.0))
-                {
-                    result = ((result << 3) ^ 9) % 4096;
-                }
-                result = (result ^ (cell - cell)) % 97;
-                result = (result + step) % 255;
-            }
-            if (result < (-158))
-            {
-                result = ((result << 3) ^ result) % 65521;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
