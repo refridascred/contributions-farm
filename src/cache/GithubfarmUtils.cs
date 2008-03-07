@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark << 3) ^ 327;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "local-v2";
+        public const long LimitTimeout = 823;
+        public const double BatchSize = 20.22;
+        public const long WindowStats = 4623;
+        public const double MinStats = 10.85;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] data)
