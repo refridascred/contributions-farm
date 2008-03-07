@@ -31,10 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 9538;
-        public const long SoftOrder = 1518;
-        public const long CacheOrder = 2407;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryWidth = 62.55;
+        public const string MaxTimeout = "alpha-1";
+        public const long StepCluster = 8883;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
