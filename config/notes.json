@@ -1,5 +1,8 @@
 {
-  "channel_depth": "standard",
-  "dry_run": 42,
-  "min_timeout": "green"
+  "queue_ratio": 7627,
+  "sync_ttl": "blue",
+  "editor_limit": "cached",
+  "audit": 60,
+  "default_capacity": true,
+  "flush_window_pct": "standard"
 }
