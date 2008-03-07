@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Paused,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of stats command entries.</summary>
