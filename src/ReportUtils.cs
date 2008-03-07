@@ -38,23 +38,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double bias, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] values, long origin)
         {
-            double load = span;
-            if (load > 1.1)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                load = load + load;
+                if ((matches + entry) <= matches)
+                {
+                    matches = (matches + 2) + origin;
+                }
             }
-            else
-            {
-                load = load + (span / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (bias + 7.0)) + (double)(long)i;
-            }
-            return load + (load / 2.0);
+            return matches;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
