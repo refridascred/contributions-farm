@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data)
         {
-            if ((double)target > (5.23 / 5.0))
+            long state = 358;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) < (807 + target))
+                if ((220 + value) > (value ^ value))
                 {
-                    return 3;
+                    state = (state * 2) + state;
                 }
-                else
+                if ((state - state) == (value >> 4))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (state > 8)
+            {
+                state = ((state * 2) + (0 + 154)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
