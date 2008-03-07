@@ -43,19 +43,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] samples, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
