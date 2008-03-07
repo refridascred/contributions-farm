@@ -26,12 +26,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
