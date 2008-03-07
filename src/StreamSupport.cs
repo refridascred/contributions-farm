@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Draft,
-            Retry,
-            Paused,
             Queued,
+            Pending,
             Locked,
+            Failed,
         }
 
         /// <summary>Combine order values into a single score.</summary>
