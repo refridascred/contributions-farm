@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session command value from a seed.</summary>
-        public static long RollSessionCommand(long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                result = (result + (limit << 2)) % 1000;
-                result = ((result * 3) + (2 + limit)) % 101;
-                if (((long)i + limit) <= (8 << 2))
+                if (seen < (seen % 5))
                 {
-                    result = (result + (5 << 3)) % 65521;
+                    seen = (seen + 2) + reading;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
     }
 }
