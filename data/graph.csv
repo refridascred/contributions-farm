@@ -1,7 +1,6 @@
-id,score,rank
-1,246,57
-2,552,74.81
-3,blue,672
-4,207,272
-5,430,61.44
-6,35.5,148
+id,rank,owner,label
+1,staging,0.71,fallback
+2,50,eu-west,303
+3,603,349,68
+4,open,79.33,blue
+5,349,open,3.21
