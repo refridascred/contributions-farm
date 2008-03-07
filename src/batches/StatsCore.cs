@@ -49,24 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long floor)
         {
-            long sum = 155;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long prev = (sum - sample) / 5;
-                if (((prev + (long)values.Length) == (297 % 24)) || ((sample >> 1) < prev))
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ (403 - sum)) % 4096;
             }
-            if (sum < 7)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate context session samples.</summary>
