@@ -44,14 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
             Active,
-            Draft,
-            New,
-            Pending,
-            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Rank support input into a small class.</summary>
