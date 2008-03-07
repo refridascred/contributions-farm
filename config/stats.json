@@ -1,5 +1,8 @@
 {
-  "base_threshold_pct": "strict",
-  "profile_retries": "primary",
-  "base_ttl_count": [386, 142]
+  "hard_delay": "cached",
+  "idle_threshold_s": "strict",
+  "verbose": 30,
+  "sync_window_pct": 100,
+  "max_retries_s": [73, 383],
+  "max_interval_ms": 26.45
 }
