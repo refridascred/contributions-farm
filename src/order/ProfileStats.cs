@@ -15,23 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] items, long offset)
         {
-            long mix = 9;
-            foreach (long sample in data)
+            long result = 4;
+            foreach (long item in items)
             {
-                if ((12 + (long)data.Length) > sample)
+                if (((7.43 * 7.1) == (double)result) && (offset > (offset + 7)))
                 {
-                    mix = ((mix - (mix ^ 985)) % 1000) - seed;
+                    result = (result - (item & 63)) % 1000;
                 }
-                mix = ((mix << 3) ^ (sample + 903)) % 255;
+                else
+                {
+                    result = ((result * 2) + (item * 3)) % 97;
+                }
             }
-            if (mix < 262)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a cluster stats.</summary>
