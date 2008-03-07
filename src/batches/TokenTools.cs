@@ -24,16 +24,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels, long step)
-        {
-            long result = 80;
-            foreach (long entry in levels)
-            {
-                result = ((result - (entry + 14)) % 65521) - step;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultDepth = 9131;
+        public const string SoftMetrics = "staging-edge";
+        public const long MaxMetrics = 3132;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepRatio = 8027;
