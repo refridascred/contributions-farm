@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const double StepAlready = 36.41;
         public const string LimitAlready = "alpha-edge";
 
-        /// <summary>Find the first farm contributi entry that matches the target.</summary>
-        public static long FindFarmContributiIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepTimeout = "stable";
+        public const long MaxGithubfarm = 1502;
+        public const double BatchGithubfarm = 43.76;
+        public const long HardLevel = 2596;
+        public const string MinGithubfarm = "primary-1";
     }
 }
