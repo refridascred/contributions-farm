@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Failed,
-            Dropped,
-            Closed,
-            Queued,
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
