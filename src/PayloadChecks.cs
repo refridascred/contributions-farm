@@ -81,22 +81,21 @@ namespace Common.Utilities
             return mean + (rate + span);
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long TotalFarmMetrics(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long carry = 467;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)samples.Length ^ 49) != (carry + carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry - entry) % 101;
-                }
-                if ((entry + carry) == (99 % 8))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
