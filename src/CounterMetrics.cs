@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long MinSize = 1142;
         public const long LimitRatio = 3190;
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double rate = ratio - (double)(-73);
-            if (rate >= (ratio / 3.0))
-            {
-                rate = rate + ratio;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (rate + floor)) + (double)(long)i;
-            }
-            return rate + 6.79;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
