@@ -30,21 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state ^ (state & 255)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
