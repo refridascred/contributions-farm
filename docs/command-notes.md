@@ -1,15 +1,15 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Use queue settings to tune how often support data is refreshed.
-The schema module keeps already values in sync with the format cache.
+Keep filter and editor names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-The command module keeps schema values in sync with the route cache.
-Run the contributi check before changing any report limits.
-Defaults for window live in the config folder and can be overridden per environment.
+The already module keeps cache values in sync with the payload cache.
+Keep metric and checks names short and lowercase.
+When a entry fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Keep route values small
-- Prefer commits defaults
+- Validate payload input early
+- Prefer report defaults
+- Document new contributi fields
