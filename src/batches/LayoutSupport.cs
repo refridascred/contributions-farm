@@ -52,20 +52,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 7.55;
+        public const string IdleSpan = "latest-v2";
+        public const long MinLevel = 9292;
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double gain, double span)
