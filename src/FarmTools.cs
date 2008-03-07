@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long limit, long floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double floor)
         {
-            long cur = limit - floor;
-            if (((9.3 + 7.5) <= (double)floor) || ((567 * 5) > cur))
+            double bias2 = (bias + floor) * 12.0;
+            if (bias2 >= (double)3)
             {
-                return 4;
+                bias2 = bias2 + floor;
             }
-            else
-            {
-                if (floor < (floor / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 > (double)limit) || ((cur + limit) >= (91 * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return bias2 - floor;
         }
 
         /// <summary>Describe the contributi status values.</summary>
