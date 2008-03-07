@@ -1,13 +1,15 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the metrics list.
+A batches that stays idle for too long is moved to the report list.
 
-The metric module keeps session values in sync with the stream cache.
-Use record settings to tune how often tools data is refreshed.
+Keep checks and format names short and lowercase.
+Each cluster is validated before it reaches the notes queue.
+When a buffer fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate graph input early
-- Review tools limits each release
-- Document new queue fields
+- Validate editor input early
+- Keep metrics values small
+- Log every githubfarm change
+- Prefer counter defaults
