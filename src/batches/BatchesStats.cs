@@ -39,22 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] readings, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double load = weight * 7.0;
+            if (load > span)
             {
-                if ((count * 2) == (entry + (long)readings.Length))
-                {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - (span / 9.0);
             }
-            return count;
+            else
+            {
+                load = load + (double)920;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load + (double)673;
         }
     }
 }
