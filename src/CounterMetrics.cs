@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCount = "latest-edge";
-        public const long MinSize = 1142;
-        public const long LimitRatio = 3190;
+        /// <summary>Rank metrics order input into a small class.</summary>
+        public static long ClassifyMetricsOrder(long origin, long floor)
+        {
+            long bound = origin ^ floor;
+            if ((double)bound <= (8.2 * 9.3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((7.61 / 8.0) >= (double)origin) && ((origin / 2) < 105))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)floor > (2.1 - 0.21)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
