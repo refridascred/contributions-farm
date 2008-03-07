@@ -56,18 +56,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.7 * 6.0) < (double)reading)
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
