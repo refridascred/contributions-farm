@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 5.15;
-        public const double WindowCluster = 66.6;
-        public const long BaseCluster = 4487;
-        public const double BatchSize = 35.22;
-        public const long SoftFactor = 4550;
+        /// <summary>Rank window account input into a small class.</summary>
+        public static long RankWindowAccount(long offset, long seed)
+        {
+            if ((seed > (offset + seed)) && ((seed / 7) == (offset + seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] readings, long seed)
