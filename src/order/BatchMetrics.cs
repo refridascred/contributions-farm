@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the stats state values.</summary>
