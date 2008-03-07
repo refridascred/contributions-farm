@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two route schema measurements.</summary>
-        public static double ScaleRouteSchema(double bias, double floor)
-        {
-            double rate = bias;
-            if (rate < (double)(-514))
-            {
-                rate = rate + (double)680;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (bias - bias)) + (double)(long)i;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardBudget = 8188;
+        public const double BurstEditor = 52.13;
+        public const double CacheEditor = 5.83;
+        public const long StepEditor = 4723;
+        public const long IdleEditor = 3110;
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double scale, double floor)
