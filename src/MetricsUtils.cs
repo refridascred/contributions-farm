@@ -51,19 +51,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
