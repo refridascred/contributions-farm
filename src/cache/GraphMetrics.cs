@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((carry >> 3) >= (floor ^ carry))
+                if (entry <= (entry - tally))
                 {
-                    carry = (carry + (floor & 15)) % 97;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    carry = (carry ^ (7 - floor)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a schema reading.</summary>
