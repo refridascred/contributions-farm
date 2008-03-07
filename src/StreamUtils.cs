@@ -48,25 +48,12 @@ namespace Common.Utilities
         public const long BatchFactor = 1250;
         public const double BatchEditor = 65.24;
 
-        /// <summary>Rank format queue input into a small class.</summary>
-        public static long BucketFormatQueue(long floor, long floor2)
-        {
-            if ((325 ^ floor) < floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor < (1.01 - 4.5)) && ((floor2 & 31) >= (0 << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxFactor = 6663;
+        public const long SoftScore = 9506;
+        public const string RetryInterval = "alpha-edge";
+        public const long LimitSpan = 8246;
+        public const long CacheBudget = 6909;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] readings, long floor)
