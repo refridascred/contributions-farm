@@ -23,21 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many route context samples are out of range.</summary>
