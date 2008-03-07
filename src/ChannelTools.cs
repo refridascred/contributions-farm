@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long offset2)
         {
-            long offset = origin - target;
-            if ((target / 8) == (origin % 24))
+            if ((2.0 > (double)offset) || ((offset2 - offset) != (offset2 - offset2)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((target - target) >= (origin + offset))
+                if (((238 + offset) == (41 << 3)) || ((offset / 6) < offset2))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (target < (offset ^ target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin < (origin - target)) || (target <= origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
