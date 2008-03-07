@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit tools checks readings against a rule.</summary>
-        public static long AuditToolsChecksOutliers(long[] data, long limit)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((6 ^ hits) <= (cell ^ cell))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
