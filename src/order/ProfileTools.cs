@@ -66,28 +66,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long target)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long seed)
         {
-            if ((target / 6) != (step >> 5))
+            long cur = target - seed;
+            if ((double)seed <= (3.6 / 7.0))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((double)target >= (5.86 * 4.75))
+                if (target >= (seed - 0))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((target >> 1) > target)
+                    if ((double)cur == (double)seed)
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        return 6;
                     }
                 }
             }
