@@ -53,31 +53,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long bound)
-        {
-            if (!((8.31 / 7.0) >= 8.9))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound <= (4.3 / 3.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((2.7 * 6.17) >= (double)bound) && ((4.2 - 2.1) > 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitDepth = 2505;
+        public const string HardContext = "latest";
+        public const double BatchContext = 36.93;
+        public const long BaseBudget = 6679;
     }
 }
