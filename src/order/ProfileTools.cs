@@ -50,32 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long cur = target - seed;
-            if ((double)seed <= (3.6 / 7.0))
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                carry = (carry << 2) ^ carry;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (target >= (seed - 0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)cur == (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
