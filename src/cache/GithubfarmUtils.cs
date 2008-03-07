@@ -17,10 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 1670;
-        public const long StepOrder = 7160;
-        public const long WindowLevel = 9650;
+        /// <summary>Fold a list of filter profile readings.</summary>
+        public static long ScoreFilterProfile(long[] series, long target)
+        {
+            long state = 98;
+            foreach (long cell in series)
+            {
+                state = state - (target + cell);
+            }
+            return state;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long RankBuffer(long target, long limit)
