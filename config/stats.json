@@ -1,21 +1,6 @@
 {
-  "flush_ttl_count": 88,
-  "default_timeout_pct": false,
-  "poll_ttl": 9813,
-  "min_ratio_ms": 1235,
-  "window_depth": {
-    "warm_retries": {
-      "record_limit": 100,
-      "burst_limit_count": false,
-      "soft_window": 8.1,
-      "retry_capacity_s": 63,
-      "verbose": [130, 362],
-      "idle_ttl": 38.99
-    },
-    "soft_retries": 4783,
-    "warm_timeout_s": 500,
-    "default_delay": "standard",
-    "idle_limit": "blue",
-    "flush_limit_s": "standard"
-  }
+  "batch_threshold": true,
+  "already_depth": "open",
+  "warm_ratio": false,
+  "poll_window": "fallback"
 }
