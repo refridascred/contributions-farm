@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            long result = 4;
-            foreach (long item in items)
+            long result = 954;
+            foreach (long cell in readings)
             {
-                if (((7.43 * 7.1) == (double)result) && (offset > (offset + 7)))
+                if ((result <= cell) || ((cell - cell) <= (cell / 8)))
                 {
-                    result = (result - (item & 63)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 2) + (item * 3)) % 97;
+                    result = (result ^ (result >> 4)) % 1000;
                 }
             }
             return result;
