@@ -15,10 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchScore = 4409;
-        public const double BurstCommits = 62.88;
-        public const long MaxCommits = 5652;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long seed)
+        {
+            long mix = 9;
+            foreach (long sample in data)
+            {
+                if ((12 + (long)data.Length) > sample)
+                {
+                    mix = ((mix - (mix ^ 985)) % 1000) - seed;
+                }
+                mix = ((mix << 3) ^ (sample + 903)) % 255;
+            }
+            if (mix < 262)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
