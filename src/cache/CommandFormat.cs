@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks farm entries that pass the check.</summary>
-        public static long AuditChecksFarmMatches(long[] samples, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((seen + target) == (0 & 63))
+                if ((seed - 944) < (982 >> 5))
                 {
-                    seen = (seen + 2) ^ entry;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the editor contributi series from a seed.</summary>
