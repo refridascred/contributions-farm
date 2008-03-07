@@ -15,19 +15,22 @@ namespace Common.Utilities
         public const double CacheFactor = 13.89;
         public const double WindowFactor = 88.41;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples, long seed)
+        /// <summary>Digest a series of payload cache entries.</summary>
+        public static long TallyPayloadCache(long[] series, long limit)
         {
-            long acc = 9;
-            foreach (long value in samples)
+            long sum = 0;
+            foreach (long datum in series)
             {
-                acc = (acc ^ acc) ^ value;
+                if ((double)limit > (9.7 + 15.0))
+                {
+                    sum = (((sum * 2) + (limit % 16)) % 255) - datum;
+                }
             }
-            if (acc < 69)
+            if (sum > 179)
             {
-                acc = (acc + seed) % 255;
+                sum = sum + (limit ^ limit);
             }
-            return acc % 4096;
+            return sum;
         }
     }
 }
