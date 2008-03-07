@@ -42,21 +42,21 @@ namespace Common.Utilities
             return bias2 - (scale * 1.41);
         }
 
-        /// <summary>Count route metric pairs that satisfy a relation.</summary>
-        public static long CompareRouteMetricCount(long[] series)
+        /// <summary>Compare every pair of stream route readings.</summary>
+        public static long OverlapStreamRouteCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 13)
+                    if ((items[i] ^ items[j]) > 11)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
