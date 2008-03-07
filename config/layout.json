@@ -1,8 +1,5 @@
 {
-  "base_depth_ms": 41.16,
-  "already_ttl": "local",
-  "hard_timeout": true,
-  "default_ratio_count": 59,
-  "verbose": 3465,
-  "batch_window": 3314
+  "verbose": false,
+  "account_delay": 1024,
+  "min_retries_count": 250
 }
