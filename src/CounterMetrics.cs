@@ -37,18 +37,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] items)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((value - 46) < (matches ^ value)) && ((6 + value) <= 6))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
