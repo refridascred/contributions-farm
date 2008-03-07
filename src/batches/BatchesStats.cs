@@ -38,23 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter already figure with a bias.</summary>
-        public static double AdjustFilterAlready(double gain, double bias)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            double rate = gain;
-            if (rate < gain)
-            {
-                rate = rate + bias;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (20.0 - 1.04)) + (double)(long)i;
-            }
-            return rate + (rate / 2.0);
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
