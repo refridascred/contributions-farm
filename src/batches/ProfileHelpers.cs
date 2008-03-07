@@ -75,19 +75,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (datum >= step)
+                if (datum < step)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
