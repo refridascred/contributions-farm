@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Closed,
-            Draft,
-            Dropped,
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
