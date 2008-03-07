@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double StepSpan = 2.23;
         public const long BaseCache = 9043;
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            Synced,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a support info.</summary>
