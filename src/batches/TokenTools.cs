@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "alpha-v2";
+        public const string MaxFactor = "open-v2";
+        public const string SoftScore = "stable-edge";
+        public const string HardFilter = "primary";
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] readings, long seed)
