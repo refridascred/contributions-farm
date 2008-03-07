@@ -13,18 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Check that every filter editor entry stays within the limit.</summary>
+        public static bool CheckFilterEditorBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((reading + reading) != (reading * 2))
+                if (reading > floor)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate format samples.</summary>
