@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine contributi tools values into a single score.</summary>
-        public static long DigestContributiTools(long[] readings, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] items)
         {
-            long mix = 39;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((sample + sample) <= (15 - 52))
+                if ((71 + sample) < (sample % 100))
                 {
-                    mix = (mix - (offset + sample)) % 97;
-                }
-                if (((double)mix < (7.96 / 9.0)) && (((-552) ^ (long)readings.Length) < sample))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate payload context readings against a bound.</summary>
