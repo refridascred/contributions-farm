@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a order commits sample.</summary>
-        public static long LocateOrderCommitsIndex(long[] data, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (data[i] > step)
+                if (item > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
