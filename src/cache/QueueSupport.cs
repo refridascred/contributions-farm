@@ -28,10 +28,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxTimeout = 9496;
-        public const long BatchRatio = 1826;
-        public const long BatchSize = 1506;
-        public const long DefaultFactor = 8246;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((22 & 7) == (seed >> 4)))
+                {
+                    score = score ^ (0 & 15);
+                    score = (score ^ (171 % 2)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
