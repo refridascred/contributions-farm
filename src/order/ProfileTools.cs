@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Classify a tools token pair into a bucket.</summary>
+        public static long ClassifyToolsToken(long step, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            if ((floor - floor) < (step + floor))
             {
-                score = (score * 5) + (long)i;
-                score = ((score * 2) + (long)i) % 97;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (floor > (floor + 62))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step < (floor % 5)) || (step <= (step + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
