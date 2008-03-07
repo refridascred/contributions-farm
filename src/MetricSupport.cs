@@ -35,19 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two already report measurements.</summary>
-        public static double ProjectAlreadyReport(double gain, double span)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            double rate = (double)(534 * 5);
-            if (rate >= (rate - 18.0))
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + (span - rate);
-            }
-            return rate + (gain - gain);
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
