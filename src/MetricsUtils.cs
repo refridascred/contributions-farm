@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 8368;
-        public const string MinCache = "legacy-v2";
-        public const double MaxBudget = 92.62;
-        public const string SoftCache = "alpha-edge";
-        public const double StepCache = 9.95;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Stale,
+            Failed,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
