@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Closed,
-            Stale,
-            Idle,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 4386;
+        public const long StepRatio = 4793;
+        public const double RetryTimeout = 66.43;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long bound, long target)
