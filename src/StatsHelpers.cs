@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] series, long target)
+        /// <summary>Audit cluster contributi readings against a rule.</summary>
+        public static long CountClusterContributiMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)target == (7.0 - 1.36))
+                if ((value / 7) >= hits)
                 {
-                    seen = (seen + 2) - entry;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
