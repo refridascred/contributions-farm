@@ -38,15 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entry entries.</summary>
-        public static long TotalChecksEntry(long[] items)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long state = 5;
-            foreach (long value in items)
-            {
-                state = ((state << 3) ^ (value + state)) % 1000;
-            }
-            return state;
+            Synced,
+            Pending,
+            Queued,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the token state values.</summary>
