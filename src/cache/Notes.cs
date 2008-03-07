@@ -29,22 +29,17 @@ namespace Common.Utilities
         public const string SoftScore = "latest-1";
         public const long BurstChecks = 6014;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] samples, long target)
+        /// <summary>Locate a context profile reading by value.</summary>
+        public static long LookupContextProfileIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (target > (726 + 32))
+                if ((series[i] <= limit) && ((series[i] % 5) != 0))
                 {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
