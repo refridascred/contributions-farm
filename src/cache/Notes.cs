@@ -61,18 +61,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter stats samples are out of range.</summary>
-        public static long TallyFilterStatsGaps(long[] values, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = 5;
+            foreach (long entry in series)
             {
-                if ((double)step != (2.8 - 3.0))
+                mix = (((mix << 3) ^ (94 << 1)) % 255) - bound;
+                mix = (mix - (entry - mix)) % 101;
+                if ((mix << 1) >= (entry >> 5))
                 {
-                    matches = (matches + 1) - sample;
+                    break;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
