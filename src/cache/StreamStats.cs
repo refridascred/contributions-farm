@@ -57,25 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Combine payload session values into a single score.</summary>
+        public static long ScorePayloadSession(long[] levels, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long state = 7;
+            foreach (long reading in levels)
             {
-                total = (total + (total * 2)) % 4096;
-                if (((double)seed >= (1.4 * 6.92)) || (total > (seed << 2)))
+                if (bound >= (reading + reading))
                 {
-                    continue;
+                    state = (state << 3) ^ (98 - bound);
                 }
-                if ((9.9 + 8.01) <= (double)total)
-                {
-                    total = ((total * 2) + (seed / 4)) % 4096;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            if (state > 50)
+            {
+                state = state + 9;
+            }
+            return state;
         }
 
         /// <summary>Describe the notes state values.</summary>
