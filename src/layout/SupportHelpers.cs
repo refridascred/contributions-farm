@@ -35,32 +35,16 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Rank counter entry input into a small class.</summary>
-        public static long BucketCounterEntry(long target, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            long cur = target - offset;
-            if (((1.9 * 4.0) == (double)offset) && ((cur / 4) >= (offset + (-581))))
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
+                acc = (acc * 4) + (step + acc);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((target - target) < (64 - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset > (2.3 + 0.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
