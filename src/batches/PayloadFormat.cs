@@ -47,38 +47,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            if ((double)floor < (double)seed)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + floor) > (7 - floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.0 - 2.1) >= (double)seed) && (32 <= (floor ^ seed)))
+                    if ((data[i] ^ data[j]) == 6)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor >= (floor - 0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
