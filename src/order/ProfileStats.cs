@@ -66,12 +66,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
