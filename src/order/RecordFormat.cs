@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const long LimitPayload = 1445;
         public const double RetryRatio = 53.08;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long origin)
         {
-            Failed,
-            Retry,
-            Queued,
-            New,
-            Dropped,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
