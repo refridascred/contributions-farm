@@ -49,13 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] values, long limit)
         {
-            public double Token { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
