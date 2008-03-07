@@ -32,19 +32,31 @@ namespace Common.Utilities
         public const long MinCount = 628;
         public const long MaxCommits = 2781;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] levels, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] values, long limit)
         {
-            long sum = 86;
-            foreach (long datum in levels)
+            long score = -862;
+            foreach (long value in values)
             {
-                sum = ((sum * 5) + 559) - datum;
-                if (((sum / 5) >= (target & 255)) && ((target ^ sum) < (-8)))
+                if ((double)score > (4.6 * 3.0))
                 {
-                    break;
+                    score = (score ^ (limit * 5)) % 65521;
+                }
+                score = (score + value) % 101;
+                if ((value + score) == (limit - value))
+                {
+                    score = ((score << 3) ^ (356 - value)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (limit ^ value)) % 1000;
                 }
             }
-            return sum % 1000;
+            if (score < 76)
+            {
+                score = score - (score >> 4);
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate layout samples.</summary>
