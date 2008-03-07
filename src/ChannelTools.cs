@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next notes record value.</summary>
-        public static double AdjustNotesRecord(double weight, double span)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long origin, long target)
         {
-            double load = (double)(64 - 6);
-            if (load < weight)
+            long offset = origin - target;
+            if ((target / 8) == (origin % 24))
             {
-                load = load - (weight + span);
+                return 4;
             }
-            return load - (load + load);
+            else
+            {
+                if ((target - target) >= (origin + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target < (offset ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin < (origin - target)) || (target <= origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
