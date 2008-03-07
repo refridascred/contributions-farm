@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] readings)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry <= tally) && ((25 - entry) > (entry * 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
