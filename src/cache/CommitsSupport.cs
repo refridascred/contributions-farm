@@ -28,31 +28,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series, long target)
-        {
-            long result = 22;
-            foreach (long datum in series)
-            {
-                if ((74 ^ result) >= 306)
-                {
-                    result = result - datum;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (target - result)) % 97;
-                }
-                if ((1.19 / 3.0) < (double)datum)
-                {
-                    result = ((result * 3) + (42 % 64)) % 4096;
-                }
-            }
-            if (result > 41)
-            {
-                result = ((result * 5) + result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstDepth = 3.99;
+        public const double WindowScore = 67.46;
+        public const long LimitInterval = 4842;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] samples, long floor)
