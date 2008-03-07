@@ -20,12 +20,19 @@ namespace Common.Utilities
             return rate - (double)63;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long floor)
         {
-            Active,
-            Closed,
-            Queued,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two already report measurements.</summary>
