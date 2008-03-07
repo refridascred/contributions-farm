@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] readings, long offset)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long CountPayloadTokenHits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)hits > (double)datum))
+                if ((double)seen < 0.8)
                 {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = ((seen + 1) + reading) + target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
