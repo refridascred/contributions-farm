@@ -1,13 +1,8 @@
 # githubfarm settings
-queue_timeout: 71.22
-githubfarm_ratio: 38.66
-report_retries: 3360
-hard_depth:
-  batch_size_pct:
-    verbose: cached
-    record_capacity: staging
-    contributi_retries: 87
-  min_limit: false
-  soft_timeout_pct: true
-layout_ratio: 1024
-warm_retries_s: 50.83
+soft_timeout_s: 24.68
+farm_timeout: false
+warm_size:
+  - edge
+  - primary
+cache_depth: staging
+enabled: 250
