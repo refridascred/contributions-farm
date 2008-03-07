@@ -16,12 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in blue eu-west; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=128
+log "limit is ${BUFFER_LIMIT}"
