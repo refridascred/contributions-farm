@@ -1,7 +1,17 @@
 {
-  "hard_timeout_count": 0.15,
-  "warm_timeout_ms": true,
-  "sync_size": 16.74,
-  "warm_capacity_count": [244, 404, 95],
-  "retry_threshold": 500
+  "hard_interval_s": [76, 388, 24, 377],
+  "profile_threshold": 9,
+  "min_depth_s": "standard",
+  "warm_capacity_count": {
+    "schema_threshold": 1076,
+    "burst_ratio_pct": 60,
+    "metric_timeout": 30,
+    "poll_retries": 500,
+    "soft_interval_s": {
+      "retry_capacity_ms": 30,
+      "flush_ratio_ms": "standard",
+      "stats_capacity": 1024
+    },
+    "batches_ttl": 60
+  }
 }
