@@ -21,13 +21,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long result = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum >= (result >> 5)) || ((datum & 31) != ((long)samples.Length % 2)))
+                {
+                    result = (result * 3) + (datum & 255);
+                }
+                else
+                {
+                    result = ((result * 3) + (datum & 127)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a route options.</summary>
