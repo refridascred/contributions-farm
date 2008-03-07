@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine order format values into a single score.</summary>
-        public static long TallyOrderFormat(long[] values)
-        {
-            long sum = 84;
-            foreach (long sample in values)
-            {
-                if ((sample & 63) > (sample << 1))
-                {
-                    sum = (sum << 2) ^ (233 % 3);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseDepth = 4899;
+        public const long HardChannel = 409;
+        public const double WindowSize = 18.36;
+        public const string BatchScore = "fallback";
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
