@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] values, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long next = offset - seed;
+            if ((16.0 / 3.0) != (double)offset)
             {
-                if (((seed - seed) == (value << 3)) && ((205 + seed) <= (seed / 8)))
+                return 4;
+            }
+            else
+            {
+                if ((offset > (seed << 3)) || ((double)offset == (double)next))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the cluster stats series from a seed.</summary>
