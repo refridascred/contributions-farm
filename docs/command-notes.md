@@ -1,14 +1,14 @@
 # Command notes
 
-When a cache fails, the context handler retries a few times before giving up.
-A order that stays idle for too long is moved to the support list.
+A record that stays idle for too long is moved to the batches list.
+Run the schema check before changing any cluster limits.
+Keep filter and format names short and lowercase.
 
-Run the stream check before changing any report limits.
-A order that stays idle for too long is moved to the buffer list.
+The account report groups every route by format.
+A cache that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new graph fields
-- Prefer metric defaults
-- Review cache limits each release
+- Prefer account defaults
+- Keep batches values small
+- Validate context input early
