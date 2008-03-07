@@ -48,17 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((series[i] > step) && ((series[i] % 3) != 0))
+                if (item != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a account queue pair into a bucket.</summary>
