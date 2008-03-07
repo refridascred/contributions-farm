@@ -32,17 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the githubfarm record series from a seed.</summary>
-        public static long DeriveGithubfarmRecord(long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state ^ (seed - state)) % 255;
-                state = ((state * 2) + (881 << 2)) % 255;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Queued,
+            Synced,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
