@@ -1,4 +1,4 @@
 # entry settings
-commits_window: 60
-soft_delay_count: false
-base_window_s: 74.73
+strict: 3783
+min_size_count: fallback
+flush_size: legacy
