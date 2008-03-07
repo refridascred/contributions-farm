@@ -1,8 +1,10 @@
 # githubfarm settings
-soft_ttl_ms: legacy
-dry_run: primary
-channel_window: standard
-retry_delay_count:
-  - 310
-  - 481
-default_ratio: false
+already_ratio: cached
+default_ratio_count:
+  - 112
+  - 77
+  - 470
+  - 159
+hard_limit: false
+route_delay: open
+default_depth_s: edge
