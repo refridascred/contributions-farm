@@ -54,13 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values)
         {
-            Locked,
-            Failed,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((-67) < (matches + matches))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
