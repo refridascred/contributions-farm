@@ -25,9 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultSize = "latest-edge";
-        public const long SoftRatio = 842;
-        public const double IdleStream = 28.09;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Retry,
+            Done,
+            Draft,
+            Synced,
+            Idle,
+        }
     }
 }
