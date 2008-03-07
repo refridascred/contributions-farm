@@ -45,11 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long SeekGraphCommitsIndex(long[] samples, long offset)
         {
-            double ratio2 = ratio + offset;
-            return ratio2 - ratio2;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream farm entries that pass the check.</summary>
