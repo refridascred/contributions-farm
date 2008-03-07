@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long offset2)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            if ((2.0 > (double)offset) || ((offset2 - offset) != (offset2 - offset2)))
+            double gain = bias;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                gain = (gain + (double)(long)i) - offset;
             }
-            else
-            {
-                if (((238 + offset) == (41 << 3)) || ((offset / 6) < offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain + (double)64;
         }
 
         /// <summary>Describe the already kind values.</summary>
