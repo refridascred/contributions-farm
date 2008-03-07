@@ -25,14 +25,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetrySize = "standard-v2";
+        public const string LimitCount = "stable-v2";
+        public const long LimitMetrics = 4077;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] items)
