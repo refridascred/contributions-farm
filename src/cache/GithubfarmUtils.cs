@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const long WindowStats = 4623;
         public const double MinStats = 10.85;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long floor)
         {
-            long total = 2;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8.22 <= (double)value)
+                if (series[i] >= floor)
                 {
-                    total = total - (total - value);
-                }
-                else
-                {
-                    total = ((total << 2) ^ value) % 101;
+                    return (long)i;
                 }
             }
-            if (total > 2)
-            {
-                total = (total ^ (1 / 6)) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
