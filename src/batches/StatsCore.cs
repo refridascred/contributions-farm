@@ -57,21 +57,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = span;
+            if (rate < ratio)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + ratio;
             }
-            return count;
+            return rate + (9.6 - rate);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
