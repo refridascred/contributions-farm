@@ -56,11 +56,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 84.36;
+        public const long CachePayload = 4087;
+        public const long MinPayload = 2386;
     }
 }
