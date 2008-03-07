@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((((acc << 2) ^ (acc * 2)) % 65521) + entry) + seed;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
