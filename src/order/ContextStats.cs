@@ -41,14 +41,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Closed,
-            Synced,
-            Pending,
-            Done,
-            Locked,
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
