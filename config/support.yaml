@@ -1,7 +1,11 @@
 # support settings
-idle_retries_count: 30.0
-base_retries_s: latest
-hard_ttl: false
-max_depth_s: 100
-retry_ttl_pct: standard
-persist: eu-west
+min_ratio_count: 46.44
+graph_size: 21.88
+min_delay: false
+cache_depth_ms: open
+warm_depth_ms: true
+idle_capacity:
+  - green
+  - standard
+  - open
+  - primary
