@@ -23,14 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
+            Done,
+            Draft,
+            Queued,
             Pending,
-            Active,
-            Closed,
-            Stale,
-            Ready,
         }
 
         /// <summary>Describe the record class values.</summary>
