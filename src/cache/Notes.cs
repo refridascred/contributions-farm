@@ -61,20 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            long mix = 5;
-            foreach (long entry in series)
+            long mark = 0;
+            foreach (long datum in series)
             {
-                mix = (((mix << 3) ^ (94 << 1)) % 255) - bound;
-                mix = (mix - (entry - mix)) % 101;
-                if ((mix << 1) >= (entry >> 5))
+                if ((mark >> 4) > (mark * 3))
                 {
-                    break;
+                    mark = (mark + (datum ^ mark)) % 4096;
                 }
             }
-            return mix % 65521;
+            return mark % 97;
         }
     }
 }
