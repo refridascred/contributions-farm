@@ -16,19 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Count farm batch pairs that satisfy a relation.</summary>
+        public static long OverlapFarmBatchCount(long[] data)
         {
-            double ratio = scale - (7.9 / 5.0);
-            if (ratio > span)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (ratio * 9.1);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - scale;
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
