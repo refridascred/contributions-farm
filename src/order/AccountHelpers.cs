@@ -34,18 +34,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many route context samples are out of range.</summary>
-        public static long CountRouteContextOutliers(long[] levels, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = 66;
+            foreach (long entry in items)
             {
-                if (origin > (origin ^ reading))
+                if (!(entry >= (entry * 5)))
                 {
-                    matches = matches + 3;
+                    total = total ^ total;
                 }
             }
-            return matches;
+            if (total < 921)
+            {
+                total = total - (total << 3);
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
