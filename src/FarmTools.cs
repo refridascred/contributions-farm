@@ -16,14 +16,14 @@ namespace Common.Utilities
             return bias2 - floor;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Pending,
-            Draft,
-            Queued,
-            Failed,
+            Closed,
+            Stale,
             Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the order level values.</summary>
