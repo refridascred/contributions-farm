@@ -14,20 +14,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of schema record readings.</summary>
-        public static long CombineSchemaRecord(long[] levels, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long origin)
         {
-            long mark = 473;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 5) + (0 - mark)) % 101;
-                mark = (mark * 4) + (floor ^ 670);
-                if ((datum << 1) != (floor << 1))
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
                 {
-                    mark = (mark - (0 * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Describe the record class values.</summary>
