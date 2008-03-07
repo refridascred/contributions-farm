@@ -39,15 +39,23 @@ namespace Common.Utilities
             return mean + (3.26 + 8.74);
         }
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long TotalQueueCache(long[] series, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            long acc = -51;
-            foreach (long entry in series)
+            double rate = (double)438 + 3.9;
+            if (rate > 2.1)
             {
-                acc = (((acc << 2) ^ floor) % 255) - entry;
+                rate = (rate + ratio) + span;
             }
-            return acc % 97;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (rate * 6.9)) + (double)(long)i;
+            }
+            return rate - (double)147;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
