@@ -31,23 +31,12 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = 96;
-            foreach (long sample in items)
-            {
-                result = (result - (sample * 5)) % 101;
-                if ((result * 4) >= (9 & 1))
-                {
-                    result = ((result * 4) + (sample + sample)) % 65521;
-                }
-            }
-            if (result > (-5))
-            {
-                result = result - (result & 31);
-            }
-            return result;
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a metric entry.</summary>
