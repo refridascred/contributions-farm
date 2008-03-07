@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
