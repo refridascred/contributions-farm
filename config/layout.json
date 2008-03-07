@@ -1,6 +1,8 @@
 {
-  "verbose": [326, 37, 348],
-  "hard_capacity_s": "eu-west",
-  "max_limit_count": "eu-west",
-  "audit": "edge"
+  "batch_interval": 85.69,
+  "default_ttl_count": "standard",
+  "dry_run": "staging",
+  "max_ratio_ms": ["standard", "eu-west"],
+  "flush_capacity_ms": 87,
+  "poll_capacity_ms": true
 }
