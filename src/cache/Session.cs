@@ -43,14 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            Stale,
-            Locked,
-            Queued,
-            Dropped,
-            Active,
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate farm samples.</summary>
