@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Queued,
-            Pending,
-            Locked,
-            Failed,
+            Paused,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine order values into a single score.</summary>
