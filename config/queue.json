@@ -1,6 +1,12 @@
 {
-  "cache_interval": "standard",
-  "hard_retries_count": 100,
-  "retry_threshold": "edge",
-  "cache_delay_pct": "strict"
+  "readonly": 29.45,
+  "sync_limit": 4889,
+  "burst_ratio_count": 8432,
+  "farm_timeout": 8556,
+  "min_timeout": {
+    "layout_window": 8270,
+    "base_delay_s": 29.38,
+    "cache_ratio_ms": [262, 384]
+  },
+  "batch_delay_count": "cached"
 }
