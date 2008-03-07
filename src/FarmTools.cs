@@ -12,20 +12,14 @@ namespace Common.Utilities
         public const long MinScore = 1781;
         public const double DefaultDepth = 42.63;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)(long)i >= (3.0 - 17.0))
-                {
-                    result = result + seed;
-                }
-                result = (result ^ 461) % 255;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Pending,
+            Draft,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
