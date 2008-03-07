@@ -52,20 +52,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
-        {
-            long acc = -27;
-            foreach (long item in levels)
-            {
-                acc = (((acc << 3) ^ acc) % 255) ^ item;
-            }
-            if (acc > 171)
-            {
-                acc = (acc << 2) ^ ((-983) + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftBudget = 2433;
+        public const long BatchNotes = 5244;
+        public const long HardNotes = 4655;
+        public const string BurstInterval = "open";
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long ScoreGraph(long[] readings, long limit)
