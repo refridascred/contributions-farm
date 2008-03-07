@@ -60,19 +60,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] readings, long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long state = -4;
+            foreach (long value in readings)
             {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state ^ (state * 2)) % 97) + value) + seed;
             }
-            return flag;
+            return state % 1000;
         }
 
         /// <summary>Count the commits report entries that pass the check.</summary>
