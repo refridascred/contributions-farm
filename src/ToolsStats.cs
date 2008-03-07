@@ -53,11 +53,14 @@ namespace Common.Utilities
         public const long BatchQueue = 1463;
         public const double IdleQueue = 30.3;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            Idle,
+            New,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Project the next already value.</summary>
