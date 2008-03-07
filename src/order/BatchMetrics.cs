@@ -47,19 +47,10 @@ namespace Common.Utilities
             return (ratio + (bias / 8.0)) + offset;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits + entry) < hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 8263;
+        public const long BasePayload = 4374;
+        public const double BatchBudget = 55.57;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
