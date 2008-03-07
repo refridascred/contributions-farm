@@ -19,21 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm batch pairs that satisfy a relation.</summary>
-        public static long OverlapFarmBatchCount(long[] data)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the support kind values.</summary>
