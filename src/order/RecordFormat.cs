@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Locked,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 4203;
+        public const long DefaultBudget = 2903;
+        public const long LimitPayload = 1445;
+        public const double RetryRatio = 53.08;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
