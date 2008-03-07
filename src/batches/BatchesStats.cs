@@ -39,20 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm queue series from a seed.</summary>
-        public static long DeriveFarmQueue(long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                total = ((total * 3) + (seed << 2)) % 255;
-                if (!((470 < (seed << 2)) && ((seed + seed) <= (total << 1))))
+                if ((seen - (-74)) == (datum >> 2))
                 {
-                    total = (total + (total * 5)) % 101;
+                    seen = seen + 3;
                 }
-                total = ((total * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
