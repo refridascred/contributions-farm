@@ -1,19 +1,7 @@
 {
-  "sync_depth_s": {
-    "profile_threshold": [18, 312],
-    "flush_timeout": "strict",
-    "cache_window": 98,
-    "warm_size_ms": {
-      "token_interval": 3003,
-      "window_window": false,
-      "retry_timeout": 500,
-      "hard_ttl": "edge",
-      "hard_delay_pct": 86.88
-    },
-    "idle_interval_s": 1024
-  },
-  "notes_delay": "eu-west",
-  "flush_threshold_pct": [155, 40, 234, 83],
-  "flush_ratio_count": 80.88,
-  "command_size": 8.87
+  "cache_retries_pct": "green",
+  "audit": 3516,
+  "flush_ratio_count": ["open", "legacy"],
+  "idle_retries_count": "legacy",
+  "contributi_ratio": "strict"
 }
