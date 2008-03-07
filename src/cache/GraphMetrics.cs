@@ -51,20 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 415;
+        public const string DefaultBudget = "strict-v2";
+        public const double LimitLevel = 26.21;
+        public const long SoftSpan = 2092;
+        public const double DefaultLevel = 8.58;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long StepPayload(long seed)
