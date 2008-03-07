@@ -32,24 +32,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stats command entries.</summary>
-        public static long WeighStatsCommand(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] items)
         {
-            long total = 1;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (total > 729)
+                if ((value / 4) <= value)
                 {
-                    total = total - (entry & 7);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    total = total ^ total;
-                    total = (total * 3) + (8 + 34);
+                    matches = matches - 1;
                 }
-                total = (total * 4) + total;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
