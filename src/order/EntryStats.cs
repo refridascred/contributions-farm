@@ -39,19 +39,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long score = 307;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + 80) % 4096) + datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score < 9)
-            {
-                score = score ^ (score << 2);
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
