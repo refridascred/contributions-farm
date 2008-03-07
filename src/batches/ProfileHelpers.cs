@@ -39,32 +39,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] values, long limit)
-        {
-            long score = -862;
-            foreach (long value in values)
-            {
-                if ((double)score > (4.6 * 3.0))
-                {
-                    score = (score ^ (limit * 5)) % 65521;
-                }
-                score = (score + value) % 101;
-                if ((value + score) == (limit - value))
-                {
-                    score = ((score << 3) ^ (356 - value)) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (limit ^ value)) % 1000;
-                }
-            }
-            if (score < 76)
-            {
-                score = score - (score >> 4);
-            }
-            return score % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseQueue = 27.35;
+        public const long BurstQueue = 8901;
+        public const long CacheWidth = 3117;
+        public const double BatchQueue = 74.62;
+        public const long IdleLevel = 3883;
 
         /// <summary>Digest a series of tools layout entries.</summary>
         public static long ScoreToolsLayout(long[] items)
