@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseDepth = 4899;
-        public const long HardChannel = 409;
-        public const double WindowSize = 18.36;
-        public const string BatchScore = "fallback";
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
