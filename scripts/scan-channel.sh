@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in eu-west edge stable primary; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in green primary; do
-    log "checking ${item}"
-done
-
 mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    standard)
         log "fast path"
         ;;
     *)
