@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count << 2) != (item % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi buffer samples are out of range.</summary>
