@@ -84,19 +84,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)seed < (double)sum)
-                {
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxTimeout = 1276;
+        public const long BaseFactor = 2049;
+        public const long LimitChannel = 7681;
+        public const long BaseWidth = 8066;
     }
 }
