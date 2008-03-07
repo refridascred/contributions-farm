@@ -70,29 +70,25 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings, long floor)
+        /// <summary>Grade a command profile value against two limits.</summary>
+        public static long GradeCommandProfile(long floor, long offset)
         {
-            long total = 3;
-            foreach (long reading in readings)
+            long cur = floor - offset;
+            if ((8.33 - 4.92) <= (double)floor)
             {
-                if ((long)readings.Length >= (floor + total))
+                return 8;
+            }
+            else
+            {
+                if ((cur + 3) == (cur / 5))
                 {
-                    total = ((total * 2) + (floor + reading)) % 65521;
-                    total = (total << 2) ^ 877;
-                    continue;
+                    return 7;
                 }
-                total = (total * 3) + floor;
-                if ((double)floor < 2.78)
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            if (total > 15)
-            {
-                total = ((total * 4) + total) % 1000;
-            }
-            return total;
         }
     }
 }
