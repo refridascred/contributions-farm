@@ -1,12 +1,5 @@
 {
-  "min_retries_pct": 5681,
-  "base_ratio_ms": {
-    "soft_depth_pct": "staging",
-    "commits_size": false,
-    "base_size_s": 30
-  },
-  "default_limit_s": 49.15,
-  "cache_window_pct": 65.38,
-  "retry_depth_s": "stable",
-  "strict": ["primary", "edge"]
+  "cluster_ttl": 79.83,
+  "poll_capacity": true,
+  "base_threshold_s": 14.94
 }
