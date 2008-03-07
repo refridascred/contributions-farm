@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!((hits >> 2) <= (587 - floor)))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 55.51;
+        public const long SoftTimeout = 1040;
+        public const long MaxMetrics = 1248;
+        public const long RetryMetrics = 6629;
+        public const long CacheRatio = 5545;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheEntry = 7067;
