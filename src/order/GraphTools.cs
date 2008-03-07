@@ -16,16 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long CombineReportChecks(long[] items, long target)
+        /// <summary>Compare every pair of notes buffer readings.</summary>
+        public static long MatchNotesBufferCount(long[] readings)
         {
-            long carry = 62;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + (value + value)) % 65521;
-                carry = (carry << 2) ^ (target + 314);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
