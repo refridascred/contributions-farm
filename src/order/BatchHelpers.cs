@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long total = 5;
+            foreach (long item in values)
+            {
+                total = ((total + (total + item)) % 4096) - limit;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
