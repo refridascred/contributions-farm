@@ -1,8 +1,5 @@
 {
-  "batch_interval": 85.69,
-  "default_ttl_count": "standard",
-  "dry_run": "staging",
-  "max_ratio_ms": ["standard", "eu-west"],
-  "flush_capacity_ms": 87,
-  "poll_capacity_ms": true
+  "entry_size": "blue",
+  "batch_capacity_s": true,
+  "contributi_interval": false
 }
