@@ -56,11 +56,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxScore = 3203;
-        public const double BaseCounter = 71.6;
-        public const double WindowCounter = 74.8;
-        public const long MinScore = 8828;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Failed,
+            Synced,
+            Closed,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] data)
