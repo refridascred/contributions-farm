@@ -70,9 +70,15 @@ namespace Common.Utilities
             return gain - (scale + 3.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 6988;
-        public const double SoftEditor = 65.0;
-        public const long LimitEditor = 6498;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
