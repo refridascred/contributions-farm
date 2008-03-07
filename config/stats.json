@@ -1,5 +1,14 @@
 {
-  "context_window": "latest",
-  "cache_window_pct": 30,
-  "cache_retries": 51.14
+  "batch_depth": {
+    "burst_threshold": "latest",
+    "verbose": 100,
+    "format_delay": true,
+    "token_ratio": 27.42,
+    "flush_size": true,
+    "burst_size_count": false
+  },
+  "payload_threshold": 7267,
+  "enabled": 63,
+  "sync_depth_ms": ["eu-west", "eu-west", "latest", "latest"],
+  "channel_interval": "fallback"
 }
