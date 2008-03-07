@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 69.29;
+        public const long HardGithubfarm = 2688;
+        public const long DefaultGithubfarm = 5648;
+        public const long SoftGithubfarm = 1627;
+        public const double StepInterval = 16.04;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileHits(long[] items)
