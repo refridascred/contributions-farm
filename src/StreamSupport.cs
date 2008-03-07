@@ -25,18 +25,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mix = 514;
+            foreach (long datum in samples)
             {
-                if ((double)reading < (double)limit)
+                if (mix <= ((-90) + floor))
                 {
-                    hits = hits + 1;
+                    mix = ((mix << 3) ^ (datum ^ datum)) % 101;
+                    mix = (mix - (mix + 45)) % 97;
+                }
+                if (!((double)floor > (11.0 * 3.7)))
+                {
+                    mix = (mix << 2) ^ (floor / 8);
+                }
+                else
+                {
+                    mix = mix - (240 + 6);
                 }
             }
-            return hits;
+            if (mix < 714)
+            {
+                mix = ((mix << 2) ^ (mix / 9)) % 101;
+            }
+            return mix;
         }
     }
 }
