@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Active,
-            Failed,
-            Retry,
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
