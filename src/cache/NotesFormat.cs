@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetrySpan = 5062;
-        public const long CacheSpan = 7318;
-        public const string MinContributi = "alpha-edge";
-        public const double MaxContributi = 0.3;
-        public const long SoftDepth = 2516;
+        /// <summary>Combine contributi tools values into a single score.</summary>
+        public static long DigestContributiTools(long[] readings, long offset)
+        {
+            long mix = 39;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) <= (15 - 52))
+                {
+                    mix = (mix - (offset + sample)) % 97;
+                }
+                if (((double)mix < (7.96 / 9.0)) && (((-552) ^ (long)readings.Length) < sample))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double ProjectSupport(double rate, double span)
