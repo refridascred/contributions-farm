@@ -40,27 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] levels, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long limit)
         {
-            long carry = 475;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (((sample + seed) < 3) && ((carry / 2) >= (510 - sample)))
+                if (cell > limit)
                 {
-                    carry = (carry ^ seed) % 255;
-                    carry = (carry - sample) % 4096;
-                }
-                if (((sample % 8) > sample) && (6.42 >= (double)sample))
-                {
-                    carry = ((carry << 3) ^ (6 * 5)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < (-4))
-            {
-                carry = (carry ^ 528) % 101;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
