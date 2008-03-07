@@ -39,19 +39,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] readings, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != origin)
+                if (!((origin % 5) <= (anchor ^ (long)i)))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor ^ (anchor - origin);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
