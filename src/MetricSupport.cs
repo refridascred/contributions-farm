@@ -23,12 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            New,
-            Idle,
-            Ready,
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
