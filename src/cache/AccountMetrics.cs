@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score + (floor >> 3)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
