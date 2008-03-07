@@ -25,24 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm command entries.</summary>
-        public static long WeighGithubfarmCommand(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            long state = 32;
-            foreach (long item in samples)
+            long score = 9;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 10; i++)
+                if (((double)cell >= (4.0 - 1.96)) && ((6 - score) < cell))
                 {
-                    state = ((state * 4) + ((long)i - (long)i)) % 65521;
+                    score = score - (score - score);
                 }
-                state = state - 869;
-                state = (state - (item / 5)) % 4096;
+                if ((4.8 < (double)score) || (2 > (cell & 255)))
+                {
+                    break;
+                }
             }
-            if (state < 582)
-            {
-                state = state ^ ((long)samples.Length * 3);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the stats status values.</summary>
