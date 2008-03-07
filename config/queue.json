@@ -1,6 +1,16 @@
 {
-  "poll_timeout": 4.92,
-  "metrics_limit": 57,
-  "idle_capacity_s": 9208,
-  "warm_window": 1.49
+  "persist": false,
+  "retry_delay": 7365,
+  "cache_interval_pct": {
+    "max_threshold_s": "fallback",
+    "verbose": "stable",
+    "entry_threshold": "legacy",
+    "base_ttl": {
+      "readonly": true,
+      "poll_window_s": [389, 395, 457, 79],
+      "idle_retries_s": ["open", "primary", "stable"]
+    },
+    "audit": "edge",
+    "warm_capacity_count": 8.74
+  }
 }
