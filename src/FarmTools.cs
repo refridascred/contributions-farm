@@ -5,39 +5,29 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long target, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            long cur = target - floor;
-            if (((13.0 * 8.73) != (double)floor) && ((target * 4) < target))
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target + target) < (target << 2)) && (target <= ((-81) << 1)))
+                if (((long)i + mark) != (mark + mark))
                 {
-                    return 0;
+                    mark = mark - (mark - mark);
+                    break;
                 }
                 else
                 {
-                    if ((cur + cur) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target + cur) >= (target << 3)) || ((target << 1) > (target / 7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = ((mark << 2) ^ ((long)i + mark)) % 1000;
+                    mark = (mark + (offset * 5)) % 4096;
                 }
+                if ((mark - offset) >= (mark ^ offset))
+                {
+                    mark = (mark + ((long)i ^ offset)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Combine report support values into a single score.</summary>
