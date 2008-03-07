@@ -48,23 +48,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Accumulate buffer command samples.</summary>
+        public static long FoldBufferCommand(long[] series)
         {
-            long anchor = 9;
-            foreach (long sample in series)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 65521;
-                if (((0 & 3) != (sample / 2)) && (anchor < (anchor >> 5)))
+                if (mark <= (4 - entry))
                 {
-                    break;
+                    mark = (mark - (mark >> 2)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (1 % 10);
                 }
             }
-            if (anchor < (-674))
-            {
-                anchor = ((anchor * 5) + (3 * 3)) % 97;
-            }
-            return anchor % 65521;
+            return mark % 1000;
         }
 
         /// <summary>Match up command samples.</summary>
