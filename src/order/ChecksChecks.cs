@@ -49,19 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metric command figure with a bias.</summary>
-        public static double BlendMetricCommand(double rate, double floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double weight = (20.0 / 6.0) / 3.0;
-            if (weight < (rate * 0.28))
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (1.2 - floor)) + (double)(long)i;
-            }
-            return weight + weight;
+            Active,
+            Pending,
+            Synced,
         }
     }
 }
