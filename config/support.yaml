@@ -1,41 +1,51 @@
 # support settings
-strict: blue
-compress:
-  route_ratio: 94.21
-  flush_limit_ms: edge
-  retry_size_ms:
-    burst_interval_s: 6074
-    min_limit_pct: strict
-    burst_threshold_count: false
-    buffer_ttl: cached
-    stats_timeout: 9329
-    flush_ttl: primary
+enabled: primary
+retry_threshold_count:
+  - 163
+  - 128
+  - 199
+  - 343
+flush_interval_s:
+  batches_delay: 1024
+  warm_threshold_ms: 100
+  poll_threshold_s: 35.31
+  cache_interval:
+    soft_interval: 35
+    hard_interval_pct: 2066
+    enabled: open
+    warm_retries_ms: 2545
+    cache_window: 62
+  layout_capacity: 7919
+  strict:
+    default_threshold_s:
+      - 158
+      - 102
+      - 160
+    stream_threshold: staging
+    farm_ratio:
+      - 272
+      - 120
+    cache_depth_ms: false
+    contributi_retries:
+      - 65
+      - 433
+    compress: 8907
+token_ratio:
+  sync_ratio_pct: 6537
+  readonly:
+    idle_window:
+      - 394
+      - 499
+      - 118
+    default_timeout_ms: 1024
+    base_threshold_ms: true
+    hard_ratio: stable
+  soft_limit: false
+  max_limit: legacy
+  counter_depth: stable
 dry_run:
-  cache_capacity:
-    buffer_threshold: local
-    enabled: 4076
-    persist: stable
-    batch_depth:
-      - 238
-      - 383
-      - 231
-      - 434
-    burst_threshold_pct: stable
-    dry_run: 87
-  persist: stable
-  dry_run: false
-  poll_ratio: true
-  graph_timeout:
-    batch_timeout_pct:
-      - 213
-      - 403
-      - 337
-    report_ttl: 59.79
-    dry_run: false
-    soft_retries_ms: 68
-    default_timeout:
-      - staging
-      - blue
-      - strict
-    strict: cached
-  warm_threshold_s: 34.08
+  - strict
+  - standard
+  - local
+  - standard
+token_delay: false
