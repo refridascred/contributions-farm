@@ -31,22 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Validate editor filter readings against a bound.</summary>
+        public static bool ValidateEditorFilterRange(long[] items, long bound)
         {
-            long sum = 496;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!((sum << 3) < (cell * 5)))
+                if (entry < bound)
                 {
-                    sum = ((sum * 5) + sum) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (cell ^ sum);
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the notes mode values.</summary>
