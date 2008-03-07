@@ -56,13 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every profile stream entry stays within the limit.</summary>
+        public static bool GuardProfileStreamRange(long[] readings, long limit)
         {
-            Closed,
-            New,
-            Retry,
-            Dropped,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next buffer value.</summary>
