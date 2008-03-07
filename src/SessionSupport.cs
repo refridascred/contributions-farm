@@ -25,15 +25,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] levels, long origin)
         {
             long count = 0;
-            foreach (long value in series)
+            foreach (long datum in levels)
             {
-                if ((677 & 15) <= (value + (long)series.Length))
+                if (((origin >> 4) <= 61) || (origin >= 9))
                 {
-                    count = count + 2;
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
