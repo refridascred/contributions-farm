@@ -27,17 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > limit)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc + acc) % 97) - (long)i2;
                 }
+                if (acc >= (217 + target))
+                {
+                    acc = (acc ^ target) % 101;
+                    acc = (acc - (target ^ target)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
