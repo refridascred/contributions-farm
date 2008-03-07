@@ -1,6 +1,5 @@
 {
-  "metric_size": "staging",
-  "persist": "latest",
-  "compress": [428, 51, 475, 202],
-  "commits_threshold": "local"
+  "base_threshold_pct": "strict",
+  "profile_retries": "primary",
+  "base_ttl_count": [386, 142]
 }
