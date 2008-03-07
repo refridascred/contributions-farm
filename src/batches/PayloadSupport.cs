@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] samples, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long score = 585;
+            foreach (long sample in data)
             {
-                if (((seed - seed) >= ((-951) ^ seed)) || ((seed >> 1) > (tally & 1)))
+                if (score >= (1 * 3))
                 {
-                    tally = (tally + 3) + value;
+                    score = (score ^ (score ^ (long)data.Length)) + sample;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
