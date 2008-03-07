@@ -51,18 +51,22 @@ namespace Common.Utilities
             return bias3 + (double)81;
         }
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long MeasureEntryNotesOutliers(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 54;
+            foreach (long cell in items)
             {
-                if ((4.5 + 1.17) <= (double)value)
+                if ((4.9 - 7.35) > (double)cell)
                 {
-                    matches = matches + 2;
+                    result = result - (result - cell);
+                }
+                else
+                {
+                    result = (result ^ (cell + cell)) % 1000;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
