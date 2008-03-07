@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4321;
-        public const string SoftCounter = "alpha-edge";
-        public const double HardBudget = 27.42;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] readings, long seed)
