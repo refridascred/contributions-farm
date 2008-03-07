@@ -16,22 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] data, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double ratio = scale - (7.9 / 5.0);
+            if (ratio > span)
             {
-                if ((1.6 * 4.0) <= (double)cell)
-                {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio - (ratio * 9.1);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
