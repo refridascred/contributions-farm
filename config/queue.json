@@ -1,5 +1,5 @@
 {
-  "githubfarm_retries": true,
-  "graph_window": 5898,
-  "metrics_depth": 250
+  "persist": "legacy",
+  "min_retries": 2745,
+  "audit": "primary"
 }
