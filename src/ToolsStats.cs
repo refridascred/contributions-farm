@@ -51,17 +51,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate order buffer samples.</summary>
-        public static long ScoreOrderBuffer(long[] levels, long floor)
+        /// <summary>Audit stats record readings against a rule.</summary>
+        public static long CountStatsRecordHits(long[] samples, long limit)
         {
-            long total = 86;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                total = (total - (entry + total)) - floor;
-                total = ((total * 2) + 799) % 255;
-                total = total ^ (entry - (long)levels.Length);
+                if ((double)hits != (6.27 - 5.7))
+                {
+                    hits = ((hits + 3) + value) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the format status values.</summary>
