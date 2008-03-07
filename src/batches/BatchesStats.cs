@@ -30,14 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] readings, long target)
         {
-            Paused,
-            Active,
-            Queued,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((target + item) <= (target & 255))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
