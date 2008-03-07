@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 42.52;
+        public const long MaxBuffer = 4603;
+        public const long BatchSize = 7388;
+        public const long DefaultBudget = 9197;
 
         /// <summary>Accumulate schema cache samples.</summary>
         public static long CombineSchemaCache(long[] readings)
