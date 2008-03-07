@@ -65,12 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count route context pairs that satisfy a relation.</summary>
+        public static long CompareRouteContextCount(long[] data)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit command filter readings against a rule.</summary>
