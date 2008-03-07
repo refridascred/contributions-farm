@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the cache metrics entries that pass the check.</summary>
-        public static long AuditCacheMetricsMatches(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((matches >> 2) <= (matches - cell))
+                if (((entry >> 3) != (entry >> 4)) && (((entry % 3) != (seen + floor)) || ((seen + 581) == (entry - seen))))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
