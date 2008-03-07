@@ -49,19 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a profile editor reading.</summary>
-        public static double AdjustProfileEditor(double scale, double bias)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] items)
         {
-            double gain = (double)((-446) - 605);
-            if (gain >= 11.0)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                gain = gain - (scale + gain);
+                if ((6.6 / 6.0) > (double)datum)
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (double)(-55)) + (double)(long)i;
-            }
-            return gain + (bias * 8.45);
+            return tally;
         }
     }
 }
