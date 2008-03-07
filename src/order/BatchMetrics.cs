@@ -42,22 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate buffer command samples.</summary>
-        public static long FoldBufferCommand(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mark = 7;
-            foreach (long entry in series)
-            {
-                if (mark <= (4 - entry))
-                {
-                    mark = (mark - (mark >> 2)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (1 % 10);
-                }
-            }
-            return mark % 1000;
+            Queued,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Match up command samples.</summary>
