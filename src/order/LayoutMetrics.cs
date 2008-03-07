@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools stream value from a seed.</summary>
-        public static long DeriveToolsStream(long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((target ^ target) != (sum + 264))
-                {
-                    sum = ((sum * 4) + ((long)i + 2)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
