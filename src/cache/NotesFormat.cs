@@ -23,21 +23,18 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample + hits) == (sample + 43))
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
