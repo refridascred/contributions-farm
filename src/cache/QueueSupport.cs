@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit tools checks readings against a rule.</summary>
+        public static long AuditToolsChecksOutliers(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((6 ^ hits) <= (cell ^ cell))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the payload stats entries that pass the check.</summary>
