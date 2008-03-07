@@ -22,10 +22,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 8215;
-        public const long IdleDepth = 2183;
-        public const long StepDepth = 5351;
-        public const long CacheDepth = 9119;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long limit, long seed)
+        {
+            long delta = limit - seed;
+            if (5 < (delta - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit < (seed - seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
