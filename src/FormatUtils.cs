@@ -63,20 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardTimeout = 5659;
+        public const long IdleInterval = 1858;
+        public const long RetrySpan = 5415;
+        public const long MaxSpan = 5237;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long target)
