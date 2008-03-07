@@ -1,8 +1,8 @@
 {
-  "stats_size": 69.89,
-  "max_size": 7655,
-  "default_ratio": 59.95,
-  "enabled": 79,
-  "max_timeout_s": "cached",
-  "dry_run": "standard"
+  "poll_ttl_s": 1024,
+  "idle_size_s": 100,
+  "filter_timeout": "open",
+  "default_size": "primary",
+  "base_delay_pct": "fallback",
+  "burst_ratio_pct": 14.57
 }
