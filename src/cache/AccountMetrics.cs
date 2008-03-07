@@ -16,23 +16,18 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            long acc = 96;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((63 - (long)samples.Length) > entry)
                 {
-                    acc = (acc ^ ((long)i + acc)) % 4096;
-                    acc = (acc - acc) % 65521;
-                }
-                if ((acc / 6) > (datum - acc))
-                {
-                    acc = ((acc << 2) ^ (datum + datum)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
