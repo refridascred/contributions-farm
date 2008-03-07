@@ -1,10 +1,11 @@
 # Command notes
 
-When a session fails, the batches handler retries a few times before giving up.
-A session that stays idle for too long is moved to the metrics list.
+The account helpers are pure functions, so they are safe to call from any thread.
+A filter that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Validate route input early
-- Document new layout fields
+- Log every layout change
+- Validate stream input early
+- Document new command fields
+- Review record limits each release
