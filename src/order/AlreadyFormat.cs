@@ -34,19 +34,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a command account figure with a bias.</summary>
-        public static double ProjectCommandAccount(double gain, double span)
+        /// <summary>Audit commits entry readings against a rule.</summary>
+        public static long TallyCommitsEntryOutliers(long[] levels)
         {
-            double rate = (9.7 * 3.7) - (gain + gain);
-            if (rate > 1.73)
+            long count = 0;
+            foreach (long item in levels)
             {
-                rate = (rate + (5.0 * 9.6)) - span;
+                if ((70 + item) <= (51 % 5))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate + (1.0 + rate);
-            }
-            return rate - rate;
+            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
