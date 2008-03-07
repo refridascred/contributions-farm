@@ -23,10 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstDepth = "fallback-1";
-        public const long DefaultRecord = 6340;
-        public const double LimitFactor = 24.84;
-        public const long BaseRecord = 4616;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            New,
+            Idle,
+            Ready,
+        }
     }
 }
