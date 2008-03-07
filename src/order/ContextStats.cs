@@ -26,19 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command session readings against a bound.</summary>
-        public static bool CheckCommandSessionBounds(long[] values, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
