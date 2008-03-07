@@ -1,18 +1,7 @@
 {
-  "tools_size": {
-    "burst_threshold": "standard",
-    "compress": "eu-west",
-    "batch_size": 61,
-    "schema_size": true,
-    "batch_capacity": {
-      "cache_timeout": false,
-      "checks_timeout": true,
-      "channel_timeout": "standard"
-    },
-    "poll_ratio": 21.24
-  },
-  "cache_ratio_pct": false,
-  "retry_size_pct": 2220,
-  "poll_timeout_pct": 94,
-  "min_interval_pct": "cached"
+  "format_timeout": "green",
+  "poll_timeout_ms": 79.67,
+  "burst_depth": 3,
+  "sync_delay_pct": ["open", "stable", "primary", "fallback"],
+  "strict": false
 }
