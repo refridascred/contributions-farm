@@ -42,19 +42,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool ValidatePayloadStreamLimits(long[] items, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark << 3) ^ target;
+                mark = mark ^ (17 - mark);
+                mark = mark - target;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
