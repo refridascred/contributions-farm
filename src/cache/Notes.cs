@@ -23,12 +23,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 8239;
-        public const long BaseChecks = 8625;
-        public const double DefaultCount = 35.53;
-        public const string SoftScore = "latest-1";
-        public const long BurstChecks = 6014;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Ready,
+            Stale,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long OverlapClusterCount(long[] samples)
