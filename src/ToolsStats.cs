@@ -66,15 +66,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double floor)
-        {
-            double rate = (weight + weight) - floor;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate - weight)) + (double)(long)i;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 22.25;
+        public const long BaseSpan = 7753;
+        public const long BatchCount = 5825;
+        public const long HardRoute = 6156;
     }
 }
