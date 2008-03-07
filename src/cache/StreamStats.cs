@@ -30,18 +30,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 79.18;
+        public const long CacheCount = 2945;
+        public const long SoftFactor = 8799;
+        public const double SoftScore = 49.19;
+        public const double IdleFactor = 93.66;
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
