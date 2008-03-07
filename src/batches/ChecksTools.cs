@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] values, long seed)
         {
-            double mean = 0.35;
-            if (mean >= scale)
+            long hits = 0;
+            foreach (long value in values)
             {
-                mean = (mean - (scale - 7.69)) - offset;
+                if (((seed - seed) == (value << 3)) && ((205 + seed) <= (seed / 8)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean - 9.9;
+            return hits;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
