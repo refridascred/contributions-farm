@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string LimitSize = "fallback-edge";
         public const string SoftAlready = "strict-1";
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long step)
+        /// <summary>Project the next payload cluster value.</summary>
+        public static double AdjustPayloadCluster(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double weight = (double)(238 % 5);
+            if (weight <= bias)
             {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - weight) - offset;
             }
-            return valid;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - bias;
         }
 
         /// <summary>Hold a editor stats.</summary>
