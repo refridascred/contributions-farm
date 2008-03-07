@@ -72,17 +72,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long floor)
+        /// <summary>Accumulate entry already samples.</summary>
+        public static long FoldEntryAlready(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 1;
+            foreach (long entry in values)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                state = (state - (entry * 4)) % 4096;
             }
-            return -1;
+            return state;
         }
     }
 }
