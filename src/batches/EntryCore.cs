@@ -43,11 +43,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepRatio = 9474;
-        public const string CacheBatch = "primary-1";
-        public const string MaxRatio = "legacy-v2";
-        public const long DefaultBatch = 2398;
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool VerifyBatchesSessionRange(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
