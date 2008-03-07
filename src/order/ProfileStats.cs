@@ -32,11 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Check that every entry context entry stays within the limit.</summary>
+        public static bool GuardEntryContextLimits(long[] levels, long origin)
         {
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
