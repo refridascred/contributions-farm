@@ -1,22 +1,6 @@
 {
-  "persist": [462, 289],
-  "default_depth": {
-    "poll_ttl_count": true,
-    "cache_limit_s": 55.67,
-    "strict": {
-      "hard_depth": "local",
-      "sync_threshold": "blue",
-      "route_timeout": 100,
-      "notes_window": 17
-    },
-    "farm_size": 47.96
-  },
-  "compress": "latest",
-  "default_capacity_s": {
-    "batch_ratio_ms": false,
-    "burst_timeout_ms": 30,
-    "batch_limit": false,
-    "soft_retries": true,
-    "default_size_pct": 56
-  }
+  "cache_interval": "standard",
+  "hard_retries_count": 100,
+  "retry_threshold": "edge",
+  "cache_delay_pct": "strict"
 }
