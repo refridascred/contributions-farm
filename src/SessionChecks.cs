@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine commits queue values into a single score.</summary>
+        public static long CombineCommitsQueue(long[] samples)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long total = 0;
+            foreach (long value in samples)
+            {
+                total = (total << 2) ^ (269 + value);
+                if ((value * 2) >= (total / 7))
+                {
+                    total = (total + total) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
