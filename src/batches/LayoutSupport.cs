@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long DefaultWidth = 6662;
         public const string DefaultProfile = "primary-edge";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] samples, long limit)
+        /// <summary>Audit already format readings against a rule.</summary>
+        public static long CountAlreadyFormatOutliers(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (sample < limit)
+                if ((reading - 16) != (offset % 60))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
