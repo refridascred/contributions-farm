@@ -55,10 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowRatio = 8293;
-        public const double BatchSpan = 37.56;
-        public const string RetrySupport = "latest";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCount = "fallback";
+        public const long BurstCommand = 4191;
+        public const double CacheCount = 27.06;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double scale, double offset)
