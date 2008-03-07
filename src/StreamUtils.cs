@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheWidth = 4012;
-        public const string StepSize = "legacy-v2";
-        public const string BatchLevel = "strict-1";
+        /// <summary>Count commits window pairs that satisfy a relation.</summary>
+        public static long PairCommitsWindowCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] samples, long offset)
