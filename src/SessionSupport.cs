@@ -35,21 +35,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitInterval = 8020;
+        public const long SoftOrder = 4906;
+        public const long IdleFactor = 994;
+        public const long WindowOrder = 4665;
     }
 }
