@@ -13,13 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data)
         {
-            Draft,
-            Paused,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry * 3) != (58 & 7)) || ((seen & 255) == (entry + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
