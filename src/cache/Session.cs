@@ -42,15 +42,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long anchor = 7;
+            foreach (long value in data)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                anchor = (anchor << 3) ^ (offset ^ offset);
+                if ((double)offset > (18.0 * 19.0))
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ offset;
+                }
+                if (0 <= (value - value))
+                {
+                    break;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Locate a account buffer reading by value.</summary>
