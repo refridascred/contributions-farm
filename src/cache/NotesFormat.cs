@@ -35,21 +35,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count context format pairs that satisfy a relation.</summary>
-        public static long CompareContextFormatCount(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((result + 372) >= (292 + bound)) || ((6.11 - 7.0) < (5.0 / 6.0)))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ (77 - result)) % 255;
                 }
+                result = ((result << 3) ^ (55 ^ result)) % 4096;
+                if (bound >= ((long)i ^ (-145)))
+                {
+                    result = ((result * 3) + (bound / 2)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
