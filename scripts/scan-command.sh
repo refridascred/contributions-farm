@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in primary fallback standard edge; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=90
+log "limit is ${COMMAND_LIMIT}"
