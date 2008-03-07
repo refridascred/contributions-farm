@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long origin)
-        {
-            if ((bound ^ origin) > 673)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (5.6 - 3.38))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinScore = 5018;
+        public const long WindowAlready = 6886;
+        public const double WindowInterval = 17.71;
+        public const string BaseInterval = "primary-1";
+        public const string CacheScore = "legacy-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BaseDepth = 7532;
