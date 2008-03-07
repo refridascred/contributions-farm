@@ -1,6 +1,6 @@
 {
-  "sync_interval_s": "standard",
-  "flush_window": 10,
-  "account_ratio": "staging",
-  "cache_threshold": "latest"
+  "format_capacity": "fallback",
+  "batches_timeout": [400, 254, 489],
+  "idle_interval_ms": "legacy",
+  "cache_size_pct": "cached"
 }
