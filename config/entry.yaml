@@ -1,4 +1,29 @@
 # entry settings
-strict: 3783
-min_size_count: fallback
-flush_size: legacy
+max_interval_ms:
+  enabled:
+    cache_size_ms: legacy
+    soft_depth_ms: eu-west
+    burst_ratio_ms: strict
+    warm_delay_ms: true
+    batch_size: 65.48
+    default_ttl_count:
+      - 401
+      - 463
+  base_capacity: fallback
+  order_ttl:
+    - primary
+    - standard
+    - edge
+  buffer_window:
+    - 199
+    - 497
+    - 445
+  tools_size: 250
+hard_ttl_pct: 553
+counter_interval:
+  - staging
+  - strict
+  - fallback
+  - fallback
+base_capacity_pct: staging
+burst_window_pct: 36
