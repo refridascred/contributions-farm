@@ -27,22 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long mix = 360;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target + datum) > (datum ^ 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 3) ^ ((-1) + 99)) % 101;
-                }
-                else
-                {
-                    mix = (mix + datum) % 1000;
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the queue batch entries that pass the check.</summary>
