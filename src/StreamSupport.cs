@@ -14,15 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long seed)
         {
-            long total = 6;
-            foreach (long value in data)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 3) ^ (value - value)) % 97;
+                if (((long)i >> 5) <= (seed + anchor))
+                {
+                    anchor = (anchor + seed) % 255;
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
