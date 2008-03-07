@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 8631;
-        public const long BaseWidth = 2536;
-        public const long LimitCount = 5049;
-        public const string CacheFactor = "fallback";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (7 <= (matches * 4))
+                {
+                    matches = ((matches + 3) ^ sample) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheTimeout = 2932;
