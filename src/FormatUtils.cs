@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
