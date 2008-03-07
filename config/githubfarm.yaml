@@ -1,13 +1,18 @@
 # githubfarm settings
-compress: 250
-min_window_count:
-  - blue
-  - staging
-  - standard
-audit: false
-counter_ratio: 1.25
-soft_timeout_pct:
-  enabled: 97
-  default_retries_pct: open
-  window_depth: 49.24
-  strict: 33
+counter_timeout: 51.64
+idle_limit:
+  idle_capacity_s: edge
+  strict:
+    readonly: fallback
+    cache_size_s: primary
+    retry_interval: true
+    burst_capacity: 15
+    batch_ratio:
+      - 335
+      - 382
+      - 368
+    default_timeout_ms: 7881
+  poll_limit_count:
+    - 393
+    - 70
+record_size: true
