@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const long WindowRatio = 6471;
         public const long StepBudget = 5688;
 
-        /// <summary>Derive the next farm channel value from a seed.</summary>
-        public static long RollFarmChannel(long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
