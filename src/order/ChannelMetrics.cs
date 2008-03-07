@@ -27,19 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] levels, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
     }
 }
