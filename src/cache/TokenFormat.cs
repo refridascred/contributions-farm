@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Locked,
-            Idle,
-            Paused,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
