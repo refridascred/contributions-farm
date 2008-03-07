@@ -41,14 +41,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Done,
-            Queued,
-            Ready,
-            Paused,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 8215;
+        public const long IdleDepth = 2183;
+        public const long StepDepth = 5351;
+        public const long CacheDepth = 9119;
     }
 }
