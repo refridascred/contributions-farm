@@ -49,17 +49,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first commits tools entry that matches the target.</summary>
-        public static long LocateCommitsToolsIndex(long[] samples, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
