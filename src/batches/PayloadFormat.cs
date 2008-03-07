@@ -54,21 +54,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
