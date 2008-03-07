@@ -38,13 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            Locked,
+            Dropped,
+            Stale,
+            Done,
+            Closed,
         }
     }
 }
