@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double bias)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double rate, double bias)
         {
-            double drift = (double)406 * 2.23;
-            if (drift >= (double)36)
+            double weight = (rate / 6.0) / 7.0;
+            if (weight < weight)
             {
-                drift = (drift + 3.27) + rate;
+                weight = (weight + weight) + bias;
             }
-            else
-            {
-                drift = drift - (double)13;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + bias;
+            return weight + (weight * 2.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
