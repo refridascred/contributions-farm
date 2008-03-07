@@ -1,4 +1,7 @@
 # support settings
-cache_threshold_s: false
-poll_limit: 30
-hard_depth_pct: false
+report_size:
+  - stable
+  - strict
+metrics_limit: 7527
+poll_window_pct: false
+metric_limit: 500
