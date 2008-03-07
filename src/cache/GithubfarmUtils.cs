@@ -27,22 +27,32 @@ namespace Common.Utilities
         public const string CacheSize = "alpha-1";
         public const long BaseFactor = 5535;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] items, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long lane = bound + limit;
+            if (limit <= (limit + bound))
             {
-                if ((cell ^ cell) >= hits)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (4.04 * 4.0))
                 {
-                    hits = (hits + 1) + floor;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)lane > (1.0 * 6.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
