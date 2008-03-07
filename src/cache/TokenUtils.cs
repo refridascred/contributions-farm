@@ -39,11 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
