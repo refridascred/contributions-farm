@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (200 < cell)
                 {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
