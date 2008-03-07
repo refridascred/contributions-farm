@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "alpha";
-        public const long MaxBatches = 6257;
-        public const long RetryBatches = 5658;
-        public const double BatchBatches = 50.35;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultFactor = 17.11;
