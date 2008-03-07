@@ -24,10 +24,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultDepth = 9131;
-        public const string SoftMetrics = "staging-edge";
-        public const long MaxMetrics = 3132;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleCount = "stable";
+        public const long RetrySize = 9494;
+        public const long BatchSpan = 1064;
+        public const long IdleScore = 8984;
 
         /// <summary>Count the batch route entries that pass the check.</summary>
         public static long TallyBatchRouteHits(long[] items)
