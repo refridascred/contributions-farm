@@ -62,9 +62,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5482;
-        public const string StepAlready = "local-edge";
-        public const string CacheAlready = "strict-edge";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((5.3 / 4.0) <= (double)floor)
+                {
+                    result = (result << 2) ^ ((long)i + result);
+                    break;
+                }
+                result = ((result << 2) ^ floor) % 4096;
+                if (!(((long)i & 3) > ((long)i * 5)))
+                {
+                    result = ((result * 5) + (long)i) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
