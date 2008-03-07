@@ -33,15 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Synced,
-            Paused,
-            Dropped,
-            Done,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 9690;
+        public const string BaseInterval = "fallback";
+        public const string RetryGithubfarm = "fallback";
+        public const double CacheTimeout = 90.19;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ProjectGithubfarm(double ratio, double offset)
