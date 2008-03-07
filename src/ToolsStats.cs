@@ -77,17 +77,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] levels, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if (entry >= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
