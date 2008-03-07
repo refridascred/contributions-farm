@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 69.29;
-        public const long HardGithubfarm = 2688;
-        public const long DefaultGithubfarm = 5648;
-        public const long SoftGithubfarm = 1627;
-        public const double StepInterval = 16.04;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long offset, long target)
+        {
+            if (((offset >> 1) != (target - target)) && ((9 + offset) >= offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target ^ target) != (target >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target ^ offset) < 822) && ((double)offset <= (6.4 + 2.62)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (312 <= (offset * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileHits(long[] items)
