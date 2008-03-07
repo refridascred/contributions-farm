@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((408 / 9) < (datum + seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 23.36;
+        public const long CacheSpan = 1659;
+        public const long RetryCluster = 96;
+        public const long LimitCluster = 5773;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] samples, long floor)
