@@ -76,15 +76,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Scale a farm editor figure with a bias.</summary>
-        public static double AdjustFarmEditor(double ratio, double span)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double mean = (double)((-294) + 98);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (((mean - mean) - (double)(long)i) + ratio) + span;
-            }
-            return mean - 2.36;
+            Ready,
+            Pending,
+            Retry,
+            Failed,
         }
     }
 }
