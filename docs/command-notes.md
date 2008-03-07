@@ -1,15 +1,10 @@
 # Command notes
 
-Keep filter and editor names short and lowercase.
-Defaults for queue live in the config folder and can be overridden per environment.
-Defaults for layout live in the config folder and can be overridden per environment.
-
-The already module keeps cache values in sync with the payload cache.
-Keep metric and checks names short and lowercase.
-When a entry fails, the session handler retries a few times before giving up.
+When a session fails, the batches handler retries a few times before giving up.
+A session that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Validate payload input early
-- Prefer report defaults
-- Document new contributi fields
+- Prefer queue defaults
+- Validate route input early
+- Document new layout fields
