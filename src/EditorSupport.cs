@@ -70,18 +70,17 @@ namespace Common.Utilities
             return load + (load * 14.0);
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long AuditOrderCacheOutliers(long[] readings, long bound)
+        /// <summary>Locate a profile checks reading by value.</summary>
+        public static long FindProfileChecksIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 + seen) > (seen * 5))
+                if (readings[i] <= origin)
                 {
-                    seen = ((seen + 3) ^ entry) + bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
