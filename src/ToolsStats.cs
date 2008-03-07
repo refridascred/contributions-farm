@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Fold a list of metrics support readings.</summary>
+        public static long CombineMetricsSupport(long[] series)
         {
-            Locked,
-            Queued,
-            Stale,
-            Ready,
-            Closed,
+            long anchor = 1;
+            foreach (long cell in series)
+            {
+                anchor = (((anchor * 4) + ((-751) >> 4)) % 65521) + cell;
+            }
+            if (anchor > (-597))
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
