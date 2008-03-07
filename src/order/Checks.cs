@@ -43,24 +43,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the route account series from a seed.</summary>
-        public static long RollRouteAccount(long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double ratio, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            double gain = offset;
+            if (gain <= (16.0 + 4.5))
             {
-                if ((step & 31) <= (step - carry))
-                {
-                    carry = carry + step;
-                }
-                else
-                {
-                    carry = carry + (89 >> 5);
-                }
-                carry = (carry - (step - step)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
+                gain = gain + offset;
             }
-            return carry;
+            else
+            {
+                gain = gain - (offset * 13.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
