@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long score = 2;
+            foreach (long cell in readings)
+            {
+                if (!((cell + cell) == (cell + (-6))))
+                {
+                    score = ((score << 3) ^ (score + 884)) % 1000;
+                }
+                score = (score - (cell << 2)) % 65521;
+                if (score >= 5)
+                {
+                    score = ((score * 2) + (4 / 6)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a metric record.</summary>
