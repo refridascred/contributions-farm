@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine token support values into a single score.</summary>
-        public static long CombineTokenSupport(long[] samples)
-        {
-            long total = 4;
-            foreach (long value in samples)
-            {
-                total = ((total ^ total) % 4096) ^ value;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 7165;
+        public const long WindowGraph = 8658;
+        public const string IdleSize = "legacy";
+        public const long CacheSize = 210;
+        public const long MinLevel = 3043;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] values)
