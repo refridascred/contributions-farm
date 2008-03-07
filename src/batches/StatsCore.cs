@@ -49,17 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                if ((double)datum >= 6.53)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate context session samples.</summary>
