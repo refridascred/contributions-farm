@@ -16,31 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stats commits value against two limits.</summary>
-        public static long RankStatsCommits(long seed, long step)
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long CombineReportChecks(long[] items, long target)
         {
-            if ((double)step != (19.0 - 18.0))
+            long carry = 62;
+            foreach (long value in items)
             {
-                return 4;
+                carry = (carry + (value + value)) % 65521;
+                carry = (carry << 2) ^ (target + 314);
             }
-            else
-            {
-                if (368 > (seed >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0 * 3) <= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
