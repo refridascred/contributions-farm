@@ -30,15 +30,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Compare every pair of batches checks readings.</summary>
+        public static long MatchBatchesChecksCount(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
+                    if ((readings[i] + readings[j]) < 6)
                     {
                         hits = hits + 1;
                     }
