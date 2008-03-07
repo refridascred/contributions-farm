@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series, long target)
+        /// <summary>Count the metrics notes entries that pass the check.</summary>
+        public static long MeasureMetricsNotesHits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((target >> 4) != (98 + 201))
+                if ((step - seen) >= (reading << 3))
                 {
-                    tally = (tally + 3) ^ cell;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
