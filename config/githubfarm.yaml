@@ -1,9 +1,30 @@
 # githubfarm settings
-route_retries: 250
-batch_timeout:
+batch_window: 3703
+verbose:
+  dry_run:
+    farm_ratio: true
+    persist: 60
+    dry_run: blue
+    commits_ratio: blue
+    strict: 3173
+  soft_ttl_count: 66.7
+  window_threshold:
+    queue_ratio: false
+    hard_depth_pct: 15.99
+    readonly: 13
+    queue_interval: 500
+  cache_window_count: 60
+  sync_capacity_pct: false
+  max_size_pct: latest
+soft_capacity:
+  enabled: green
+  cache_ratio_ms: 24.87
+  hard_size_count: legacy
+  burst_interval_count: false
+  min_delay_count: latest
+  min_threshold: 30
+commits_depth:
   - edge
-  - fallback
-retry_timeout_count: true
-min_size_count: fallback
-batch_ttl_pct: 500
-soft_limit: cached
+  - eu-west
+queue_ttl: stable
+route_retries: true
