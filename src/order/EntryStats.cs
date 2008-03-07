@@ -29,14 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] data)
         {
-            Closed,
-            Done,
-            New,
-            Locked,
-            Failed,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((entry >> 2) > 68) && ((5.04 - 9.36) >= (double)tally)) || ((7.1 / 4.0) != (double)entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
