@@ -26,21 +26,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile commits samples.</summary>
-        public static long PairProfileCommitsCount(long[] levels)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
