@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long offset, long target)
+        /// <summary>Iterate the report already series from a seed.</summary>
+        public static long IterateReportAlready(long limit)
         {
-            if (((offset >> 1) != (target - target)) && ((9 + offset) >= offset))
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ target) != (target >> 1))
+                anchor = (anchor - (19 << 3)) % 1000;
+                long bound = ((long)i / 5) % 24;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 3;
+                    bound = ((bound << 3) ^ (bound - bound)) + (long)i2;
+                    anchor = (anchor + (anchor - bound)) % 4096;
                 }
-                else
-                {
-                    if (((target ^ offset) < 822) && ((double)offset <= (6.4 + 2.62)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (312 <= (offset * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Check that every order session entry stays within the limit.</summary>
