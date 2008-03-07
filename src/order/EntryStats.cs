@@ -13,22 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 255) == (hits ^ sample))
-                {
-                    hits = (hits + 1) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
