@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values, long floor)
+        /// <summary>Count the stream checks entries that pass the check.</summary>
+        public static long CountStreamChecksOutliers(long[] readings)
         {
-            long acc = 762;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc << 3) ^ (floor - acc)) ^ cell;
+                if (180 <= (item & 3))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (acc < 374)
-            {
-                acc = (acc + (floor + acc)) % 4096;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
