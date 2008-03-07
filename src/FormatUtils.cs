@@ -99,17 +99,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 77;
+            foreach (long datum in levels)
             {
-                if (data[i] <= seed)
+                if ((double)5 > (double)score)
                 {
-                    return (long)i;
+                    score = (((score << 2) ^ (score - 710)) % 101) ^ datum;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
