@@ -26,16 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] series, long target)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = (score * 2) + step;
-                score = ((score * 5) + (long)i) % 97;
+                if ((double)target == (7.0 - 1.36))
+                {
+                    seen = (seen + 2) - entry;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
