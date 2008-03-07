@@ -58,23 +58,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] samples, long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double ratio, double offset)
         {
-            long sum = 6;
-            foreach (long sample in samples)
+            double mean = offset;
+            if (mean <= ratio)
             {
-                sum = (sum - (630 ^ 83)) % 255;
-                if (((sample << 2) >= sum) || ((5.5 / 7.0) == (double)sum))
-                {
-                    sum = ((sum * 3) + step) % 1000;
-                }
+                mean = mean - (double)721;
             }
-            if (sum > 79)
-            {
-                sum = ((sum << 2) ^ step) % 65521;
-            }
-            return sum;
+            return mean - mean;
         }
     }
 }
