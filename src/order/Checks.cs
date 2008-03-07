@@ -33,13 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "standard-1";
+        public const long BaseGithubfarm = 1668;
+        public const long BatchDepth = 3350;
+        public const double LimitGithubfarm = 35.2;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
