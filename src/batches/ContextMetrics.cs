@@ -49,18 +49,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] levels)
+        /// <summary>Derive the next tools editor value from a seed.</summary>
+        public static long IterateToolsEditor(long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((hits * 3) <= (value + value))
-                {
-                    hits = hits + 1;
-                }
+                total = (total - (long)i) % 255;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a window entry.</summary>
