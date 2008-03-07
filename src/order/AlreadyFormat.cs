@@ -62,15 +62,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Derive the next batches stream value from a seed.</summary>
+        public static long DeriveBatchesStream(long origin)
         {
-            long result = 713;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                result = (((result * 4) + result) % 97) + value;
+                if ((carry & 31) > origin)
+                {
+                    carry = ((carry * 2) + (carry >> 5)) % 255;
+                }
+                carry = ((carry << 2) ^ (long)i) % 65521;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result % 4096;
+            return carry;
         }
     }
 }
