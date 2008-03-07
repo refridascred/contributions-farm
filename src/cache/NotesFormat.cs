@@ -26,13 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
