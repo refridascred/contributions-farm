@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics support readings.</summary>
-        public static long CombineMetricsSupport(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long seed)
         {
-            long anchor = 1;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                anchor = (((anchor * 4) + ((-751) >> 4)) % 65521) + cell;
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor > (-597))
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
