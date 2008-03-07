@@ -57,22 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload session values into a single score.</summary>
-        public static long ScorePayloadSession(long[] levels, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] data, long floor)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (bound >= (reading + reading))
+                if (item >= floor)
                 {
-                    state = (state << 3) ^ (98 - bound);
+                    ready = false;
+                    break;
                 }
             }
-            if (state > 50)
-            {
-                state = state + 9;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
