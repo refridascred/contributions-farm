@@ -1,14 +1,10 @@
 # entry settings
-strict:
-  compress: open
-  audit: 77
-  soft_depth: 80.17
-  default_depth_count: 71.83
-poll_interval_s: 9942
-batch_ratio_pct:
-  - 343
-  - 120
-base_interval_count: 81.33
-checks_ratio:
-  - 96
-  - 187
+max_window_count: 100
+min_ratio:
+  - staging
+  - legacy
+  - cached
+  - local
+flush_limit: blue
+editor_ratio: stable
+batch_delay: open
