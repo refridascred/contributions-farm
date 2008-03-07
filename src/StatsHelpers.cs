@@ -17,20 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long bound)
         {
-            long score = 1;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                score = ((score - bound) % 101) - sample;
-                score = ((score << 3) ^ 7) % 255;
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score > 35)
-            {
-                score = (score + (score & 7)) % 97;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of stats command entries.</summary>
