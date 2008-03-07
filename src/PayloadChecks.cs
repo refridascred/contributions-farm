@@ -88,16 +88,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long anchor = 24;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor - anchor) % 65521;
-                anchor = (anchor ^ (sample - anchor)) % 101;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a buffer entry.</summary>
