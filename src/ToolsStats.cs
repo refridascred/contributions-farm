@@ -71,18 +71,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Locate a batch stream reading by value.</summary>
+        public static long FindBatchStreamIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - matches) < matches)
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
