@@ -32,23 +32,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            double load = (double)522 / 4.0;
-            if (load <= (double)1)
-            {
-                load = (load - (load - load)) + scale;
-            }
-            else
-            {
-                load = load + (offset * 3.85);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (load - 9.04);
+            double load = ratio / 8.0;
+            return (load + (load + load)) + offset;
         }
     }
 }
