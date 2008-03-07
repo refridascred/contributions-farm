@@ -31,9 +31,19 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "strict-edge";
-        public const long LimitScore = 520;
-        public const string BatchInterval = "strict-edge";
+        /// <summary>Scale a channel record figure with a bias.</summary>
+        public static double SmoothChannelRecord(double ratio, double span)
+        {
+            double gain = span;
+            if (gain < (5.64 - ratio))
+            {
+                gain = gain - 9.88;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - ratio;
+        }
     }
 }
