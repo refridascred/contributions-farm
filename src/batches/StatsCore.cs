@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((item - bound) >= seen)
+                if (!((double)hits > (double)datum))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a entry info.</summary>
