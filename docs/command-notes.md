@@ -1,11 +1,10 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The stream report groups every order by format.
+The schema report groups every cache by stream.
+Use profile settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer tools defaults
-- Validate account input early
-- Log every metrics change
+- Document new already fields
+- Keep farm values small
+- Validate checks input early
