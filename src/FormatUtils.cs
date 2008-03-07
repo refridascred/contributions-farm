@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long HardSpan = 1307;
         public const long BaseSize = 4758;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series)
+        /// <summary>Locate a window commits reading by value.</summary>
+        public static long SeekWindowCommitsIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum == (8.0 + 6.24))
+                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
