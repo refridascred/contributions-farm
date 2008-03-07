@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next editor report value.</summary>
-        public static double ProjectEditorReport(double gain, double span)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long target)
         {
-            double load = (double)(909 / 2);
-            if (load <= (4.6 * 6.2))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - span;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + gain) - (double)(long)i;
-            }
-            return load + (span + load);
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
