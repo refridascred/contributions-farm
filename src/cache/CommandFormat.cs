@@ -16,31 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (((seed ^ seed) < limit) || ((limit << 2) <= (limit - limit)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((1.8 - 1.0) < (double)seed) && ((9.61 / 8.0) >= (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed % 8) <= limit) && ((limit >> 5) != (seed ^ seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
