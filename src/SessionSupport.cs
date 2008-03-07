@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long origin, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            if ((4.2 * 6.0) > (double)offset)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((-683) + offset) != (origin >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((389 / 9) < (3 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin <= (offset & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a graph summary.</summary>
