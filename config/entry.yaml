@@ -1,7 +1,30 @@
 # entry settings
-enabled:
-  - 48
-  - 219
-  - 327
-report_window: staging
-dry_run: 60
+burst_depth_s: 3715
+window_interval: 71
+persist:
+  strict:
+    default_ttl_pct: 1063
+    buffer_window: 2842
+    audit:
+      - green
+      - open
+      - latest
+    metric_depth:
+      - 361
+      - 109
+      - 18
+      - 260
+  channel_timeout: 8328
+  stream_window: 89.0
+  cache_depth: 6
+  warm_limit_ms: fallback
+  default_capacity:
+    - 48
+    - 234
+    - 208
+    - 407
+hard_interval:
+  - staging
+  - stable
+  - local
+  - stable
