@@ -55,18 +55,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] items, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((tally < (item / 6)) || ((tally << 2) >= (target + target)))
+                if (entry > matches)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
