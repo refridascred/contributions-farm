@@ -28,11 +28,23 @@ namespace Common.Utilities
         public const long BatchContext = 4136;
         public const string MinContext = "legacy-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitDepth = 8878;
-        public const double RetryFactor = 31.04;
-        public const double WindowWidth = 21.29;
-        public const double SoftSchema = 70.2;
+        /// <summary>Count the queue batch entries that pass the check.</summary>
+        public static long AuditQueueBatchGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 7) >= ((-72) - matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long offset)
