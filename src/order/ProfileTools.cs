@@ -66,13 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Grade a metric githubfarm value against two limits.</summary>
+        public static long ClassifyMetricGithubfarm(long bound, long origin)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            if ((949 ^ bound) != (8 * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + bound) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin * 3) <= (bound + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((bound >> 4) == (bound - origin)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
