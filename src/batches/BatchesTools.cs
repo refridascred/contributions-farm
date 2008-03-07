@@ -30,19 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] data, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
