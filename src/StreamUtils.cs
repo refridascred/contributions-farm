@@ -72,21 +72,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up account farm samples.</summary>
-        public static long CompareAccountFarmCount(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Project the next buffer value.</summary>
