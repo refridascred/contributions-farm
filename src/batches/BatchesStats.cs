@@ -40,18 +40,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] series, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] data, long limit)
         {
-            long state = 4;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((1.55 * 6.44) == (double)offset) && ((double)state < (15.0 / 8.0)))
+                if (((double)cell >= (6.0 / 6.0)) || ((limit - limit) < matches))
                 {
-                    state = (((state * 3) + (state >> 5)) % 97) + reading;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
