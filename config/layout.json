@@ -1,7 +1,5 @@
 {
-  "filter_ttl": false,
-  "order_window": 471,
-  "graph_limit": ["stable", "open"],
-  "cache_size": 40,
-  "base_limit_ms": "local"
+  "dry_run": 250,
+  "schema_ttl": true,
+  "sync_delay_ms": "fallback"
 }
