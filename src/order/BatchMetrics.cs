@@ -44,21 +44,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits + entry) < hits)
                 {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a farm options.</summary>
