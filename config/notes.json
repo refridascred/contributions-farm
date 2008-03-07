@@ -1,8 +1,7 @@
 {
-  "sync_timeout": "eu-west",
-  "verbose": false,
-  "sync_window": true,
-  "min_size": 6255,
-  "batch_window_count": "standard",
-  "max_limit_s": 500
+  "hard_interval_ms": 500,
+  "support_threshold": 95,
+  "default_interval": [367, 442, 325],
+  "sync_ratio_s": "cached",
+  "readonly": "local"
 }
