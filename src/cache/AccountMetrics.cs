@@ -73,19 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] data, long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
