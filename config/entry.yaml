@@ -1,11 +1,6 @@
 # entry settings
-cache_depth: false
-persist: 10
-enabled: open
-base_ratio:
-  - cached
-  - edge
-  - blue
-  - green
-min_interval_ms: 5094
-hard_retries_s: 93.79
+notes_interval: 100
+audit: fallback
+stream_retries: stable
+readonly: latest
+enabled: true
