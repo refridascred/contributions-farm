@@ -50,22 +50,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double ratio, double offset)
         {
-            long sum = 134;
-            foreach (long sample in readings)
-            {
-                if ((sum * 2) < (-83))
-                {
-                    sum = sum - (sample & 3);
-                }
-            }
-            if (sum > 971)
-            {
-                sum = ((sum << 2) ^ sum) % 255;
-            }
-            return sum;
+            double ratio2 = ratio + offset;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Count the stream farm entries that pass the check.</summary>
