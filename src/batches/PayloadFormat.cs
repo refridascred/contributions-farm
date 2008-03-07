@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 26;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc + (datum % 12)) % 97) + step;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
