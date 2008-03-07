@@ -19,17 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] <= origin)
+                if (((limit << 1) < (total ^ limit)) && ((limit + limit) < total))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ limit) % 1000;
                 }
+                else
+                {
+                    total = (total ^ limit) % 101;
+                }
+                total = ((total << 2) ^ (1 / 9)) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
