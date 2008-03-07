@@ -26,11 +26,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 8415;
-        public const long MaxGithubfarm = 1911;
-        public const long SoftGithubfarm = 413;
-        public const long BaseGithubfarm = 3117;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)acc <= (4.1 + 7.7))
+                {
+                    acc = (acc ^ (989 + bound)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] items)
