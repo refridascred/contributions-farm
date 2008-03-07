@@ -1,35 +1,7 @@
 # githubfarm settings
-idle_interval_s:
-  - primary
-  - cached
-  - local
-  - primary
-warm_retries_pct: 60
-report_window:
-  stats_delay: local
-  report_threshold:
-    - primary
-    - staging
-  command_size: false
-  poll_ttl_ms: 73.16
-  dry_run: 56
-cache_ttl_ms:
-  warm_interval: 85
-  hard_ratio: false
-  report_depth: 30
-  context_window: 1024
-strict:
-  soft_ratio_ms: legacy
-  min_window_count: eu-west
-  poll_timeout_s:
-    min_capacity: legacy
-    batches_limit:
-      - 270
-      - 386
-    graph_limit: 520
-    compress: 22
-    idle_retries_ms: 42
-    base_capacity_pct: legacy
-  command_depth:
-    - blue
-    - latest
+poll_ttl_count: cached
+entry_capacity:
+  - fallback
+  - stable
+  - open
+editor_capacity: true
