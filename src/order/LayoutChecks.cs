@@ -67,15 +67,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Scale a farm editor figure with a bias.</summary>
