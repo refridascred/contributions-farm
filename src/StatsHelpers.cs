@@ -32,22 +32,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((value / 4) <= value)
+                if (item > target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a metrics options.</summary>
