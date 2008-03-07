@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the cluster command series from a seed.</summary>
-        public static long SeriesClusterCommand(long target)
+        /// <summary>Classify a counter channel pair into a bucket.</summary>
+        public static long GradeCounterChannel(long floor, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long offset = floor + limit;
+            if ((limit - floor) <= (offset + floor))
             {
-                total = (total ^ ((long)i << 2)) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((limit << 1) > (offset & 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
