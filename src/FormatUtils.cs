@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            Locked,
-            Paused,
-            Queued,
+            double mean = floor;
+            if (mean <= mean)
+            {
+                mean = mean - floor;
+            }
+            else
+            {
+                mean = mean + rate;
+            }
+            return mean + (double)310;
         }
 
         /// <summary>Compare every pair of metrics stream readings.</summary>
