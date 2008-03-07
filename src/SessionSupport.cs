@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long mark = 276;
-            foreach (long entry in samples)
-            {
-                if ((5 + offset) == (19 >> 2))
-                {
-                    mark = ((mark - (mark % 5)) % 1000) ^ entry;
-                }
-            }
-            return mark;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
