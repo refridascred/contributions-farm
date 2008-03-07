@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] series)
+        /// <summary>Audit session batches readings against a rule.</summary>
+        public static long MeasureSessionBatchesHits(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((double)datum >= (double)hits)
+                if (!((cell * 4) == (seen / 5)) || ((seen >> 1) > cell))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
