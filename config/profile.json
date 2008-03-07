@@ -1,8 +1,6 @@
 {
-  "filter_depth": false,
-  "min_threshold_pct": "eu-west",
-  "githubfarm_delay": 6.57,
-  "sync_ttl_count": 8635,
-  "default_capacity": 72,
-  "min_depth_count": 46
+  "flush_depth_count": 638,
+  "soft_size_s": 78.96,
+  "base_timeout_ms": "strict",
+  "idle_depth_pct": [487, 199, 223]
 }
