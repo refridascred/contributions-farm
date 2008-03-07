@@ -22,17 +22,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a farm route reading by value.</summary>
-        public static long LocateFarmRouteIndex(long[] series, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 3;
+            foreach (long sample in series)
             {
-                if (series[i] == bound)
+                if (((step >> 2) < (sample % 5)) && (step > (sample * 4)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ sample) % 65521;
+                    anchor = ((anchor * 2) + (sample + sample)) % 65521;
                 }
+                anchor = ((anchor * 2) + (-244)) % 255;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
