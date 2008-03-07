@@ -16,23 +16,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a profile token reading.</summary>
-        public static double ProjectProfileToken(double gain, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series, long limit)
         {
-            double load = (span * 4.0) - gain;
-            if (load < load)
+            long seen = 0;
+            foreach (long value in series)
             {
-                load = load - (gain + gain);
+                if ((2.8 + 6.3) > (double)limit)
+                {
+                    seen = (seen + 2) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load + (span / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (span + span)) - (double)(long)i;
-            }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
