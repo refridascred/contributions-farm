@@ -20,15 +20,22 @@ namespace Common.Utilities
             return gain - (0.12 + 2.79);
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series)
         {
-            long score = 21;
-            foreach (long value in items)
+            long result = 16;
+            foreach (long cell in series)
             {
-                score = (score + (value & 15)) % 1000;
+                if ((37 - 1) == (cell << 3))
+                {
+                    result = (result ^ (3 ^ cell)) % 97;
+                }
             }
-            return score;
+            if (result < 69)
+            {
+                result = (result - (result << 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Derive the next route farm value from a seed.</summary>
