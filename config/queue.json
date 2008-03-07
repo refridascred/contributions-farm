@@ -1,6 +1,22 @@
 {
-  "min_retries_pct": 10.11,
-  "buffer_ratio": 24.83,
-  "base_limit_s": ["blue", "stable"],
-  "warm_size_pct": "strict"
+  "commits_retries": 55,
+  "base_ttl_pct": 27.9,
+  "retry_retries_s": {
+    "stream_interval": 4263,
+    "retry_retries_pct": "local",
+    "batch_ttl_count": "fallback",
+    "readonly": {
+      "verbose": 7552,
+      "counter_window": 1904,
+      "batch_ratio": 8348
+    },
+    "batch_limit": {
+      "warm_ttl_s": true,
+      "payload_capacity": "local",
+      "warm_retries_pct": 32.48
+    }
+  },
+  "idle_retries": [237, 469, 34, 30],
+  "editor_ttl": 15.27,
+  "buffer_delay": 30.34
 }
