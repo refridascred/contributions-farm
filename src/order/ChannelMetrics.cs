@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long target)
+        /// <summary>Accumulate buffer channel samples.</summary>
+        public static long TotalBufferChannel(long[] samples, long step)
         {
-            long next = step ^ target;
-            if ((6.6 - 12.0) < (double)target)
+            long sum = 79;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - 455) >= (next + step))
+                sum = sum + sum;
+                sum = ((sum << 2) ^ (sum - step)) % 101;
+                if (datum >= (step >> 2))
                 {
-                    return 4;
+                    sum = ((sum << 3) ^ (step << 1)) % 101;
                 }
                 else
                 {
-                    return 3;
+                    sum = ((sum * 5) + 22) % 1000;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
