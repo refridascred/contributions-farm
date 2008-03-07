@@ -73,11 +73,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultRatio = 8475;
-        public const double RetryCluster = 71.28;
-        public const long RetryFactor = 5867;
-        public const long BaseInterval = 552;
-        public const string SoftCluster = "staging-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 6988;
+        public const double SoftEditor = 65.0;
+        public const long LimitEditor = 6498;
     }
 }
