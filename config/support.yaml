@@ -1,4 +1,7 @@
 # support settings
-retry_depth: stable
-support_threshold: blue
-sync_depth_ms: 60
+cluster_retries: 80.69
+batch_timeout: 1630
+githubfarm_window: 30
+retry_timeout: open
+min_window_count: fallback
+support_window: stable
