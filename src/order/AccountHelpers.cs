@@ -25,11 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many route context samples are out of range.</summary>
