@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a stream farm counter forward.</summary>
-        public static long SeriesStreamFarm(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "cached-v2";
+        public const long WindowTimeout = 9333;
+        public const long MaxSpan = 8173;
+        public const string SoftStream = "open-edge";
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels)
