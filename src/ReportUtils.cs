@@ -32,22 +32,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter checks readings against a rule.</summary>
-        public static long CountFilterChecksMatches(long[] series, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double load = span;
+            if (load > 1.1)
             {
-                if ((double)seen != (2.4 - 0.97))
-                {
-                    seen = ((seen + 3) ^ value) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + load;
             }
-            return seen;
+            else
+            {
+                load = load + (span / 2.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (bias + 7.0)) + (double)(long)i;
+            }
+            return load + (load / 2.0);
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
