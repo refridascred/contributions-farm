@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
-        {
-            long total = 494;
-            foreach (long entry in samples)
-            {
-                if ((37 - total) != (total % 24))
-                {
-                    total = ((total * 2) + (6 + total)) + entry;
-                }
-            }
-            if (total < 637)
-            {
-                total = (total + (total >> 4)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseSpan = "open-edge";
+        public const long StepFarm = 9824;
+        public const double IdleCount = 59.04;
+        public const long LimitCount = 5293;
+        public const double BaseFarm = 81.25;
 
         /// <summary>Define booking limits and defaults.</summary>
         public const double BaseFactor = 11.5;
