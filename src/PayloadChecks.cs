@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxBudget = "fallback-v2";
+        public const double BatchLevel = 44.69;
+        public const double LimitAccount = 25.89;
+        public const long WindowWidth = 4712;
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] readings)
