@@ -50,18 +50,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already entry readings against a rule.</summary>
-        public static long AuditAlreadyEntryOutliers(long[] values, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if (step < (step >> 5))
             {
-                if ((entry + entry) > entry)
+                return 4;
+            }
+            else
+            {
+                if ((step + 74) > (step & 127))
                 {
-                    count = (count + 3) - origin;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the token phase values.</summary>
