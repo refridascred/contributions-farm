@@ -14,14 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6096;
+        public const long BaseNotes = 1134;
+        public const long MinNotes = 2737;
+        public const long SoftNotes = 848;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] values, long target)
