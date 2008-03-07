@@ -66,15 +66,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two notes stream measurements.</summary>
-        public static double ProjectNotesStream(double gain, double bias)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            double ratio = 12.0;
+            if (ratio <= rate)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + gain;
+                ratio = (ratio - (double)(-32)) + bias;
             }
-            return ratio + ratio;
+            return ratio + (ratio * 1.0);
         }
 
         /// <summary>Check that every route command entry stays within the limit.</summary>
