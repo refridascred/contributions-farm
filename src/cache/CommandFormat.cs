@@ -27,15 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
