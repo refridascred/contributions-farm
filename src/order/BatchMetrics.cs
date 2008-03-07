@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] data, long seed)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 33;
+            foreach (long item in data)
+            {
+                if (seed <= (seed % 7))
+                {
+                    carry = (((carry << 2) ^ (seed / 3)) % 101) ^ item;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the record class values.</summary>
