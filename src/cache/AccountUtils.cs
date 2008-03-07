@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheTimeout = 2932;
-        public const long MaxCounter = 4823;
-        public const string MaxInterval = "legacy-edge";
-        public const long WindowRatio = 6471;
-        public const long StepBudget = 5688;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterLimits(long[] data, long floor)
