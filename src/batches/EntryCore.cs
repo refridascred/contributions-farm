@@ -16,21 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain = offset;
+            return (gain + offset) + rate;
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
