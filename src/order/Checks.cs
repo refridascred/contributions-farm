@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
