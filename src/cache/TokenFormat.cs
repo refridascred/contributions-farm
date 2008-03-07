@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long target, long target2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] readings, long limit)
         {
-            long offset = target ^ target2;
-            if ((9.15 * 7.1) < (double)target2)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target >> 2) < (offset ^ offset))
+                if (seen >= value)
                 {
-                    return 3;
+                    seen = (seen + 3) + limit;
                 }
                 else
                 {
-                    if (((target - offset) >= (1 ^ target)) && ((offset + offset) <= (offset >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
