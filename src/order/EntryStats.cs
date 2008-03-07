@@ -22,15 +22,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long offset)
         {
-            long anchor = 942;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + value) + floor;
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
