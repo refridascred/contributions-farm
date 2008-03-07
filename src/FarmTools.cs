@@ -58,14 +58,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] values, long target)
         {
-            Locked,
-            Pending,
-            Stale,
-            Dropped,
-            Failed,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
