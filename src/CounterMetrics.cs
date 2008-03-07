@@ -35,9 +35,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 84.36;
-        public const long CachePayload = 4087;
-        public const long MinPayload = 2386;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
