@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long target)
         {
-            Queued,
-            Draft,
-            Idle,
-            Paused,
+            if ((5 << 1) >= (floor + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor & 31) <= target) || ((-963) >= (floor >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (floor << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + target) <= (floor ^ floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
