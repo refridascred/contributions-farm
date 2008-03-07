@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long score = 8;
+            foreach (long reading in values)
             {
-                if ((double)result != (7.0 / 6.0))
+                if (((long)values.Length - score) == (60 + 644))
                 {
-                    result = (result * 5) + origin;
-                    result = result - origin;
+                    score = score + reading;
                 }
-                result = (result + result) % 97;
-                result = ((result * 3) + (long)i) % 4093;
+                if ((reading << 2) > 538)
+                {
+                    score = (score ^ (60 << 3)) % 65521;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
