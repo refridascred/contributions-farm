@@ -14,31 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a entry contributi value against two limits.</summary>
-        public static long ClassifyEntryContributi(long seed, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double floor)
         {
-            if ((seed + seed) == (seed - seed))
+            double drift = 9.0;
+            if (drift < floor)
             {
-                return 2;
+                drift = (drift - (20.0 / 4.0)) + ratio;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (234 > (seed + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 7) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = (drift - floor) + (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Hold a payload stats.</summary>
