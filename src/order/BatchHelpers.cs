@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of route format readings.</summary>
-        public static long OverlapRouteFormatCount(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = target - floor;
+            if ((target - span) >= span)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)target > (9.4 / 7.0)))
                 {
-                    if ((samples[i] + samples[j]) != 0)
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 1) == (span - 679))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((374 - 39) == (floor >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
