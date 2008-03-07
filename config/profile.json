@@ -1,8 +1,5 @@
 {
-  "idle_interval_s": 6143,
-  "format_window": "eu-west",
-  "hard_retries": 5788,
-  "idle_interval": 48.53,
-  "stats_threshold": "eu-west",
-  "batch_ratio_count": 30
+  "retry_limit_s": 4.31,
+  "idle_capacity_count": "standard",
+  "default_retries_ms": "legacy"
 }
