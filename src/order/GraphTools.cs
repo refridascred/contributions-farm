@@ -24,18 +24,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long floor)
         {
-            long mark = 3;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample + mark) <= (sample & 15)) || ((sample % 3) >= (sample + 30)))
+                if (data[i] < floor)
                 {
-                    mark = ((mark * 3) + mark) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
