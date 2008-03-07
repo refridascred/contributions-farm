@@ -36,21 +36,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total << 3) ^ (limit * 5)) % 97;
-                if ((total ^ 748) > (limit + 741))
-                {
-                    total = (total - (total >> 2)) % 1000;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
