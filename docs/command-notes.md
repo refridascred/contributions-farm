@@ -1,11 +1,13 @@
 # Command notes
 
-Each session is validated before it reaches the profile queue.
-The support report groups every order by entry.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+
+The metric module keeps session values in sync with the stream cache.
+Use record settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new metric fields
-- Validate tools input early
-- Keep command values small
+- Validate graph input early
+- Review tools limits each release
+- Document new queue fields
