@@ -68,15 +68,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a payload tools figure with a bias.</summary>
-        public static double ScalePayloadTools(double rate, double span)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long bound)
         {
-            double mean = span;
-            if (mean >= span)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                mean = (mean + (double)8) - rate;
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + 7.0;
+            return ok;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
