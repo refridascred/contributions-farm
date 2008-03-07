@@ -41,18 +41,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series, long target)
         {
-            long anchor = 1;
-            foreach (long value in items)
+            long mix = 234;
+            foreach (long datum in series)
             {
-                if ((value % 3) <= (-56))
+                if ((target % 7) <= mix)
                 {
-                    anchor = (anchor << 2) ^ (anchor & 1);
+                    mix = ((mix + (target % 2)) % 1000) + datum;
                 }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
