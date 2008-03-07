@@ -28,19 +28,10 @@ namespace Common.Utilities
         public const string LimitDepth = "local";
         public const long HardFilter = 6612;
 
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long CountProfileStreamOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - sample) >= sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepScore = 3499;
+        public const long BurstContributi = 6536;
+        public const long MinRatio = 1427;
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
         public static long LookupTokenEntryIndex(long[] samples, long seed)
