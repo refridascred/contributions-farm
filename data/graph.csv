@@ -1,9 +1,7 @@
-id,token,score
-1,522,strict
-2,cached,38.2
-3,cached,38.32
-4,cached,301
-5,blue,928
-6,190,50.03
-7,770,648
-8,82.82,strict
+id,state,level
+1,blue,256
+2,46.52,latest
+3,74.81,edge
+4,85.16,73.18
+5,primary,green
+6,436,83.89
