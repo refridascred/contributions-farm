@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double bias, double bias2)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long origin)
         {
-            double mean = bias2;
-            if (mean > 18.0)
+            if ((bound ^ origin) > 673)
             {
-                mean = mean - 1.23;
+                return 6;
             }
             else
             {
-                mean = mean - bias;
+                if ((double)origin < (5.6 - 3.38))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean - (double)(-495);
         }
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
