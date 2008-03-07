@@ -43,15 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items)
         {
-            double bias = ratio;
-            if (bias >= (double)(-960))
+            long anchor = 9;
+            foreach (long item in items)
             {
-                bias = (bias + 6.54) + floor;
+                if ((anchor - anchor) != (anchor + anchor))
+                {
+                    anchor = ((anchor ^ anchor) % 101) ^ item;
+                }
             }
-            return bias + (double)7;
+            return anchor;
         }
     }
 }
