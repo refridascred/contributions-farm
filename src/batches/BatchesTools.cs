@@ -30,18 +30,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((((1.4 + 0.6) == (double)item) && ((item + hits) >= item)) && (6 < hits))
+                if (cell >= offset)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
