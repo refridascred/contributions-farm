@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double load = (double)(7 / 5);
+            if (load > span)
             {
-                if (sample <= 51)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + (10.0 - span)) - bias;
             }
-            return hits;
+            else
+            {
+                load = load + (double)92;
+            }
+            return load - span;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
