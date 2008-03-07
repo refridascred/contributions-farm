@@ -44,19 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] items, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Draft,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count route schema pairs that satisfy a relation.</summary>
