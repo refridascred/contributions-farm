@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels)
         {
-            double gain = rate;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                gain = ((gain + rate) + (double)(long)i) - span;
+                if (sample < (674 - sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain - rate;
+            return hits;
         }
 
         /// <summary>Rank layout payload input into a small class.</summary>
