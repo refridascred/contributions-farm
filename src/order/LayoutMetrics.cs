@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long score = 5;
-            foreach (long reading in data)
-            {
-                score = (score - (887 + reading)) % 4096;
-            }
-            if (score < 713)
-            {
-                score = (score + score) % 4096;
-            }
-            return score;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
