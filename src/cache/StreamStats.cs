@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long seed)
         {
-            double scale = offset;
-            if (scale <= (rate * 9.2))
+            long prev = step ^ seed;
+            if (((double)prev <= (0.3 + 3.6)) || (prev < ((-704) % 2)))
             {
-                scale = scale - (double)4;
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale + scale) + (double)(long)i;
+                if ((8.0 * 9.85) <= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 3) >= (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step ^ seed) < prev) || (325 <= (seed + step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return scale + (scale - offset);
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
