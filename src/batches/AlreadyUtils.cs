@@ -40,14 +40,17 @@ namespace Common.Utilities
         public const string HardProfile = "legacy-1";
         public const double HardSize = 32.6;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] samples, long floor)
         {
-            Active,
-            Closed,
-            Paused,
-            Dropped,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two profile measurements.</summary>
