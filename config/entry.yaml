@@ -1,7 +1,5 @@
 # entry settings
-account_size:
-  burst_ratio_ms: latest
-  cache_window_s: latest
-  batch_window_ms: 1024
-retry_ratio_pct: 30
-entry_window: local
+soft_timeout_ms: 37.29
+warm_timeout_ms: 40.45
+default_ttl: 3017
+warm_capacity_s: true
