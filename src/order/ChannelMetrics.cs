@@ -13,39 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank report counter input into a small class.</summary>
-        public static long SortReportCounter(long bound, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long span = bound + origin;
-            if ((48 + span) <= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.07 * 1.3) >= (double)span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((29 * 5) < (origin >> 4)) || ((bound - 0) < (92 - bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound >= (origin + origin)) || (origin <= span))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
