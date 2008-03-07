@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long step)
+        /// <summary>Count the checks already entries that pass the check.</summary>
+        public static long CountChecksAlreadyOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (sample > step)
+                if ((((8.0 - 4.0) <= (double)matches) && (reading <= (matches - reading))) && ((matches - reading) > (reading + matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
