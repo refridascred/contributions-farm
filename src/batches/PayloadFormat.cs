@@ -31,12 +31,16 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long limit)
         {
-            Pending,
-            New,
-            Paused,
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry + carry;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric entry.</summary>
