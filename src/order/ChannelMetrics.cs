@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long MaxBudget = 8908;
         public const long MaxProfile = 7245;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] series, long limit)
+        /// <summary>Find the first format session entry that matches the target.</summary>
+        public static long LocateFormatSessionIndex(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= limit)
+                if (items[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
