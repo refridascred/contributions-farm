@@ -23,32 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long delta = step + limit;
-            if ((limit * 5) > (limit - step))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step == (7.3 * 3.6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)delta >= 8.5)
+                    if ((values[i] ^ values[j]) != 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many route context samples are out of range.</summary>
