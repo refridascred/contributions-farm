@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
+                if ((target >> 4) != (98 + 201))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
