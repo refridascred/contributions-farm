@@ -1,5 +1,7 @@
 {
-  "hard_window_ms": 60,
-  "idle_size": "standard",
-  "dry_run": 38
+  "soft_delay_ms": 100,
+  "metrics_delay": 84.13,
+  "sync_retries_count": ["strict", "local", "stable"],
+  "buffer_interval": ["open", "fallback", "primary"],
+  "flush_depth_ms": 1116
 }
