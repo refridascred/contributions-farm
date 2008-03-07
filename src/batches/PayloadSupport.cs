@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double bias)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double drift = bias;
-            if (drift > (gain + drift))
-            {
-                drift = drift - gain;
-            }
-            return drift - (gain - 3.9);
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
