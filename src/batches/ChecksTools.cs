@@ -31,22 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long acc = 5;
-            foreach (long datum in series)
+            long sum = 496;
+            foreach (long cell in levels)
             {
-                if (((double)acc >= (double)datum) || ((acc - datum) > (acc << 1)))
+                if (!((sum << 3) < (cell * 5)))
                 {
-                    acc = ((acc << 3) ^ (acc / 6)) % 97;
+                    sum = ((sum * 5) + sum) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (cell ^ sum);
                 }
             }
-            if (acc > 62)
-            {
-                acc = (acc * 2) + 937;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the notes mode values.</summary>
