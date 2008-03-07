@@ -30,17 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] data, long floor)
+        /// <summary>Measure how many queue filter samples are out of range.</summary>
+        public static long MeasureQueueFilterOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (data[i] <= floor)
+                if (!((4.37 + 4.0) > (double)seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two payload measurements.</summary>
