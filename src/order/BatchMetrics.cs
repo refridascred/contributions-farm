@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Done,
-            Draft,
-            Queued,
-            Pending,
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the record class values.</summary>
