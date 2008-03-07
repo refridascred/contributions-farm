@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long seed)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Draft,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
