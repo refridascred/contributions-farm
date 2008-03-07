@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values, long seed)
+        /// <summary>Digest a series of metric counter entries.</summary>
+        public static long ScoreMetricCounter(long[] series)
         {
-            long mix = 9;
-            foreach (long sample in values)
+            long sum = 3;
+            foreach (long item in series)
             {
-                mix = ((mix ^ mix) - sample) - seed;
+                if ((sum / 4) == (item & 15))
+                {
+                    sum = sum - (sum - item);
+                }
             }
-            if (mix < 971)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
