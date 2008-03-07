@@ -37,9 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinLevel = 8195;
-        public const double BatchInterval = 34.56;
-        public const double BaseCount = 74.84;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
