@@ -58,14 +58,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Done,
-            Locked,
             Active,
-            New,
-            Paused,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Accumulate route samples.</summary>
