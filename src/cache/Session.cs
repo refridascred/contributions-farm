@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] samples, long origin)
+        /// <summary>Scale a editor checks figure with a bias.</summary>
+        public static double BlendEditorChecks(double bias, double floor)
         {
-            long acc = 60;
-            foreach (long reading in samples)
+            double gain = (double)4 * 8.37;
+            if (gain > (double)1)
             {
-                if (((reading - origin) > (reading >> 5)) && (origin <= reading))
-                {
-                    acc = (acc << 2) ^ (acc << 1);
-                }
+                gain = (gain + gain) - floor;
             }
-            return acc;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain - (0.12 + 2.79);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
