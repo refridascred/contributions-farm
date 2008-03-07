@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Check that every order session entry stays within the limit.</summary>
+        public static bool CheckOrderSessionRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!!((matches - matches) <= value))
+                if (reading > seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
