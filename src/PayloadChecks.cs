@@ -52,15 +52,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long step)
         {
-            double rate2 = (span + span) * 13.0;
-            for (int i = 0; i < 5; i++)
+            long span = target - step;
+            if (((span / 3) < (target - step)) && ((target + step) <= target))
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                return 4;
             }
-            return rate2 + 16.0;
+            else
+            {
+                if (!((span << 1) != (target % 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((570 & 31) >= span)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)607 >= (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
