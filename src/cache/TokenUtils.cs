@@ -26,12 +26,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Find the first stream record entry that matches the target.</summary>
+        public static long FindStreamRecordIndex(long[] items, long limit)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
