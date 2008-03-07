@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (ratio + ratio) + (offset * 6.02);
+            if (load >= (double)86)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (double)361;
             }
-            return hits;
+            else
+            {
+                load = load - (double)8;
+            }
+            return load + load;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
