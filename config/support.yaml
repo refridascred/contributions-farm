@@ -1,4 +1,13 @@
 # support settings
-strict: false
-persist: 60
-base_delay: false
+soft_limit_s: standard
+warm_interval_ms: false
+layout_retries:
+  - 189
+  - 155
+poll_size_pct: 47.69
+min_timeout_pct: green
+account_size:
+  window_delay: 500
+  readonly: strict
+  poll_depth_pct: 60
+  dry_run: true
