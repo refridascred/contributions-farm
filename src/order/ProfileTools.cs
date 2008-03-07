@@ -25,16 +25,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                carry = (carry << 2) ^ carry;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Blend two farm measurements.</summary>
