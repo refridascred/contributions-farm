@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels, long target)
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long result = 3;
+            foreach (long entry in levels)
+            {
+                if (!(84 >= entry))
+                {
+                    result = ((result * 2) + (result >> 4)) - target;
+                }
+                else
+                {
+                    result = ((result * 3) + (entry * 3)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
