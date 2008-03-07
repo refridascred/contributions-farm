@@ -29,19 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter queue entries.</summary>
-        public static long ScoreFilterQueue(long[] levels, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = 571;
-            foreach (long value in levels)
-            {
-                result = ((result - (bound - result)) % 97) + value;
-                if ((1.1 + 6.9) != (double)(long)levels.Length)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
