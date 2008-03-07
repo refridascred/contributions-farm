@@ -1,7 +1,6 @@
-id,token,label
-1,661,10.99
-2,primary,382
-3,staging,open
-4,61.35,33.82
-5,92.53,796
-6,366,200
+id,state,rank
+1,35.04,cached
+2,943,784
+3,457,legacy
+4,714,stable
+5,blue,legacy
