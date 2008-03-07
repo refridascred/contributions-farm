@@ -85,10 +85,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 6180;
-        public const long CacheDepth = 1725;
-        public const double MaxSpan = 94.71;
-        public const long SoftInterval = 8687;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total * 4) + (665 + (long)i);
+                if ((double)limit < (double)total)
+                {
+                    total = (total + (limit % 12)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
