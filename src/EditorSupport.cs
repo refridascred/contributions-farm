@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 42.91;
+        public const double SoftDepth = 4.24;
+        public const long WindowPayload = 2257;
+        public const long IdleTimeout = 1049;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] samples, long target)
