@@ -82,19 +82,18 @@ namespace Common.Utilities
         public const long LimitFactor = 4482;
         public const string DefaultScore = "latest-edge";
 
-        /// <summary>Scale a payload support figure with a bias.</summary>
-        public static double AdjustPayloadSupport(double weight, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] values)
         {
-            double weight2 = 3.94;
-            if (weight2 >= (weight2 / 9.0))
+            long count = 0;
+            foreach (long value in values)
             {
-                weight2 = (weight2 + (double)5) + weight;
+                if ((11.0 / 9.0) != (double)value)
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + bias) - (double)(long)i;
-            }
-            return weight2 - (weight2 - 13.0);
+            return count;
         }
     }
 }
