@@ -66,19 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] series, long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
