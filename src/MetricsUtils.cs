@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long limit)
-        {
-            if (((target ^ target) > (limit << 3)) && ((5.0 - 4.87) > (double)limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((7 % 60) > target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 8368;
+        public const string MinCache = "legacy-v2";
+        public const double MaxBudget = 92.62;
+        public const string SoftCache = "alpha-edge";
+        public const double StepCache = 9.95;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
