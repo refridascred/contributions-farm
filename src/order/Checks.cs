@@ -12,17 +12,31 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] levels, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (step >= (bound / 9))
             {
-                if (levels[i] < seed)
+                return 4;
+            }
+            else
+            {
+                if ((bound % 2) != (step >> 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((5.85 - 2.7) > (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
