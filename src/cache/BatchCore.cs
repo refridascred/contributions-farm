@@ -55,12 +55,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double floor)
         {
-            Dropped,
-            Synced,
-            Closed,
+            double mean = (double)(1 - 645);
+            if (mean > scale)
+            {
+                mean = (mean - mean) + floor;
+            }
+            else
+            {
+                mean = mean + (double)22;
+            }
+            return mean + scale;
         }
     }
 }
