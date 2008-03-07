@@ -43,19 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool VerifyBatchesSessionRange(long[] data, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (reading >= floor)
+                if (reading > target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the report class values.</summary>
