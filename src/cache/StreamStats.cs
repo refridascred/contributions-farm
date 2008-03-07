@@ -37,22 +37,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)(long)samples.Length == (3.0 + 5.0))
+                total = (total + (total * 2)) % 4096;
+                if (((double)seed >= (1.4 * 6.92)) || (total > (seed << 2)))
                 {
-                    matches = (matches + 3) + value;
+                    continue;
                 }
-                else
+                if ((9.9 + 8.01) <= (double)total)
                 {
-                    matches = matches - 1;
+                    total = ((total * 2) + (seed / 4)) % 4096;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the notes state values.</summary>
