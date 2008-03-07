@@ -77,21 +77,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Check that every support context entry stays within the limit.</summary>
+        public static bool CheckSupportContextRange(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != floor)
                 {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
