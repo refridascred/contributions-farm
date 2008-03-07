@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally & 7) != (tally >> 5))
                 {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
