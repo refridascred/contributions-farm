@@ -1,15 +1,8 @@
 # githubfarm settings
-counter_size: open
-layout_timeout:
-  - stable
-  - staging
-  - standard
-  - fallback
-command_interval: 57.41
-flush_window: 81.26
-cache_interval_ms: 1024
-soft_ratio_pct:
-  poll_capacity_s: latest
-  warm_ttl: 3
-  buffer_depth: 1024
-  poll_threshold_count: local
+poll_capacity: 6172
+max_capacity_s: 27.38
+idle_threshold_pct: latest
+hard_ttl_s:
+  dry_run: 6.67
+  checks_window: latest
+  strict: latest
