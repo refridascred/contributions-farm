@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Active,
-            Locked,
-            Synced,
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
