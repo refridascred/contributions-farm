@@ -71,13 +71,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
