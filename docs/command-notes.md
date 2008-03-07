@@ -1,11 +1,11 @@
 # Command notes
 
-A format that stays idle for too long is moved to the editor list.
-The command module keeps layout values in sync with the support cache.
+When a stream fails, the metric handler retries a few times before giving up.
+Use report settings to tune how often farm data is refreshed.
+The filter report groups every cluster by token.
 
 ## Guidelines
 
-- Document new record fields
-- Keep stream values small
-- Validate cache input early
-- Review tools limits each release
+- Log every contributi change
+- Prefer already defaults
+- Validate graph input early
