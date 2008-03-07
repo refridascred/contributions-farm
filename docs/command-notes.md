@@ -1,12 +1,13 @@
 # Command notes
 
-The cluster module keeps record values in sync with the githubfarm cache.
-Use tools settings to tune how often payload data is refreshed.
-Keep farm and order names short and lowercase.
+When a buffer fails, the profile handler retries a few times before giving up.
+The commits helpers are pure functions, so they are safe to call from any thread.
+
+The command report groups every schema by metrics.
+Each format is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new channel fields
-- Review command limits each release
-- Log every metrics change
+- Validate contributi input early
+- Document new support fields
+- Log every command change
