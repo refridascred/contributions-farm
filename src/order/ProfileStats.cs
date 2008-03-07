@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count / 7) <= (target & 7))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
