@@ -22,15 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks metrics series from a seed.</summary>
-        public static long IterateChecksMetrics(long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the context status values.</summary>
