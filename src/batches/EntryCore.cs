@@ -16,17 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a schema account sample.</summary>
-        public static long LocateSchemaAccountIndex(long[] readings, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
