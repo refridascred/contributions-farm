@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const string WindowLevel = "strict";
         public const long RetryCluster = 5897;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 54.46;
+        public const string BaseContributi = "cached-1";
+        public const long StepScore = 8602;
+        public const long SoftContributi = 641;
+        public const long IdleContributi = 2912;
     }
 }
