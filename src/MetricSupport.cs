@@ -29,19 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long seed)
         {
-            double ratio = (double)62 / 6.0;
-            if (ratio < 13.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + (span * 1.84)) - rate;
+                if ((items[i] <= seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (ratio - ratio);
+            return -1;
         }
     }
 }
