@@ -73,11 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowFactor = 1046;
-        public const long StepWindow = 4098;
-        public const double HardSpan = 25.4;
-        public const string IdleWindow = "latest";
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long step)
