@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine report support values into a single score.</summary>
+        public static long WeighReportSupport(long[] data, long limit)
         {
-            Queued,
-            Paused,
-            Dropped,
+            long carry = -1;
+            foreach (long value in data)
+            {
+                if ((value + limit) <= (limit - limit))
+                {
+                    carry = (carry + (value / 6)) % 255;
+                }
+            }
+            if (carry < 4)
+            {
+                carry = (carry ^ limit) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
