@@ -54,19 +54,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] levels, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long state = 23;
+            foreach (long sample in samples)
             {
-                if (reading <= step)
+                if (!((bound % 24) > (bound >> 2)))
                 {
-                    stale = false;
-                    break;
+                    state = (((state << 3) ^ (642 / 7)) % 255) - sample;
                 }
             }
-            return stale;
+            if (state < 0)
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
 
         /// <summary>Match up account farm samples.</summary>
