@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the account command series from a seed.</summary>
