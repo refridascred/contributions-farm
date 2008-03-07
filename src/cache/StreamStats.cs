@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache window readings against a rule.</summary>
-        public static long CountCacheWindowMatches(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen & 127) > (5 + seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit buffer route readings against a rule.</summary>
