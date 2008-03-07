@@ -22,17 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long floor)
+        /// <summary>Grade a payload filter value against two limits.</summary>
+        public static long BucketPayloadFilter(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((1 % 100) > offset)
             {
-                if (series[i] >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((74 << 3) >= limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.1 / 9.0) <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
