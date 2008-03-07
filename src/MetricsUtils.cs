@@ -14,11 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
