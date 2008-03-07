@@ -1,10 +1,11 @@
 # entry settings
-idle_limit: true
-soft_retries_pct: 3690
-readonly:
-  - standard
+cache_depth: false
+persist: 10
+enabled: open
+base_ratio:
   - cached
-  - stable
-profile_depth: false
-min_size_pct: 250
-githubfarm_size: 59
+  - edge
+  - blue
+  - green
+min_interval_ms: 5094
+hard_retries_s: 93.79
