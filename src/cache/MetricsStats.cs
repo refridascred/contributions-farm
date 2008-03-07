@@ -49,21 +49,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a metrics record.</summary>
