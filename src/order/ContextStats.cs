@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a metric payload value against two limits.</summary>
-        public static long RankMetricPayload(long bound, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
         {
-            long offset = bound + step;
-            if ((offset ^ bound) >= (step / 7))
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((6 >= (offset - step)) || (((-8) * 4) < offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
