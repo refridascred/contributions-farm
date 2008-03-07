@@ -37,22 +37,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] series, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item >= (item % 64)) || ((hits & 15) == (item ^ step)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score << 2) ^ score) % 255;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
     }
 }
