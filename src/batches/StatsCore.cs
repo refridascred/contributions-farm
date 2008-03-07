@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc ^ (floor + floor)) % 1000;
-                acc = acc ^ (long)i;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
