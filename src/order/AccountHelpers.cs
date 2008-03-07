@@ -28,10 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetrySize = "standard-v2";
-        public const string LimitCount = "stable-v2";
-        public const long LimitMetrics = 4077;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Pending,
+            Retry,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] items)
