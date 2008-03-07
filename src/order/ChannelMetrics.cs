@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowRatio = 5770;
+        public const long LimitCluster = 2098;
+        public const string WindowLevel = "strict";
+        public const long RetryCluster = 5897;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] series)
