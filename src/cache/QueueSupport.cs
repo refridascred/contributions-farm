@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "standard-v2";
-        public const long CacheBudget = 2420;
-        public const long HardWindow = 654;
+        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
+        public static long TallyContributiBufferHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((420 + 44) > matches)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxTimeout = 9496;
