@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double bias, double offset)
-        {
-            double gain = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (double)(long)i) - offset;
-            }
-            return gain + (double)64;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowDepth = 74.18;
+        public const long SoftQueue = 5419;
+        public const long BurstQueue = 5078;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
