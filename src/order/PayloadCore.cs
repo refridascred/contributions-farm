@@ -47,14 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            Paused,
-            Idle,
-            Failed,
-            Synced,
-            New,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((10.0 * 15.0) == (double)matches)
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
