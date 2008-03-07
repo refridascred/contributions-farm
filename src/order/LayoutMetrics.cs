@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Adjust a support route reading.</summary>
+        public static double AdjustSupportRoute(double bias, double span)
         {
-            Failed,
-            Locked,
-            Synced,
-            Active,
-            Draft,
+            double drift = (bias + span) - bias;
+            if (drift > (double)87)
+            {
+                drift = drift + bias;
+            }
+            return drift - bias;
         }
 
         /// <summary>Look up the position of a payload token sample.</summary>
