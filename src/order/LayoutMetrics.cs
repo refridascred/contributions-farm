@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 4009;
-        public const double LimitTimeout = 2.11;
-        public const long WindowWidth = 9607;
-        public const long IdleRatio = 3443;
-        public const string BatchChecks = "staging-edge";
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] samples)
