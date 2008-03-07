@@ -77,18 +77,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!((double)value < (4.05 / 7.0)))
+                if ((6.0 + 2.96) <= (double)sample)
                 {
-                    seen = seen + 1;
+                    count = (count + 3) + floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
