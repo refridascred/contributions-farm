@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double weight, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            double drift = bias;
+            if (drift > 8.2)
             {
-                score = (score + (floor >> 3)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
+                drift = drift - (weight - bias);
             }
-            return score;
+            return drift - weight;
         }
 
         /// <summary>Digest a series of window entries.</summary>
