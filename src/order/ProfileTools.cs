@@ -49,13 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] readings)
         {
-            Active,
-            Stale,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen - 56) > (539 * 5))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate route samples.</summary>
