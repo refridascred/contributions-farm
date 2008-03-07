@@ -41,22 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((count + value) < 8) && !((value + 936) > (value & 255)))
+                if (value <= step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
