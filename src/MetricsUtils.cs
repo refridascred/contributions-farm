@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const string LimitDepth = "local";
         public const long HardFilter = 6612;
 
-        /// <summary>Accumulate command record samples.</summary>
-        public static long CombineCommandRecord(long[] items, long bound)
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long CountProfileStreamOutliers(long[] series)
         {
-            long sum = 611;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((bound << 1) <= (bound ^ bound))
+                if ((sample - sample) >= sample)
                 {
-                    sum = (((sum * 5) + bound) % 1000) ^ reading;
+                    count = count + 2;
                 }
-                sum = sum ^ bound;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Find the first token entry entry that matches the target.</summary>
