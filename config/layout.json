@@ -1,6 +1,5 @@
 {
-  "account_threshold": 93,
-  "buffer_timeout": 24.97,
-  "strict": 55,
-  "min_size_count": [293, 434]
+  "cache_timeout_count": true,
+  "burst_depth_ms": "legacy",
+  "max_retries_s": 82.55
 }
