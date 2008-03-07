@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report queue readings against a rule.</summary>
-        public static long CountReportQueueGaps(long[] series)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (hits < (hits >> 1))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two notes measurements.</summary>
