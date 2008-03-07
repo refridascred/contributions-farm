@@ -34,22 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((8.05 <= (double)hits) || ((value + value) <= (hits >> 5)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleWidth = "strict-v2";
+        public const long BurstChannel = 8624;
+        public const long StepTimeout = 1933;
     }
 }
