@@ -1,7 +1,9 @@
 # githubfarm settings
-default_delay_count: green
-sync_depth_count: eu-west
-poll_ratio_s: fallback
-flush_limit_ms: 60
-warm_ratio_pct: strict
-poll_interval: 35
+dry_run: 90.73
+retry_size_count: false
+buffer_threshold: 69
+commits_threshold: 70.05
+contributi_threshold:
+  - latest
+  - edge
+contributi_delay: 55
