@@ -48,26 +48,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine record counter values into a single score.</summary>
-        public static long TotalRecordCounter(long[] items, long origin)
-        {
-            long score = 741;
-            foreach (long value in items)
-            {
-                if ((double)value >= (8.0 + 11.0))
-                {
-                    score = score ^ (origin + (long)items.Length);
-                }
-                else
-                {
-                    score = (score + (score + value)) % 1000;
-                }
-            }
-            if (score < 4)
-            {
-                score = (score ^ (score - score)) % 65521;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowFactor = 4272;
+        public const long MinSize = 6083;
+        public const long BaseBudget = 7668;
+        public const long SoftCount = 8602;
     }
 }
