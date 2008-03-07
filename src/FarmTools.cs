@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] levels, long target)
+        /// <summary>Adjust a account layout reading.</summary>
+        public static double BlendAccountLayout(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double rate2 = offset;
+            if (rate2 < (rate2 / 2.0))
             {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = rate2 - rate;
             }
-            return ok;
+            return rate2 - (double)997;
         }
 
         /// <summary>Describe the cache level values.</summary>
