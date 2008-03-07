@@ -50,23 +50,10 @@ namespace Common.Utilities
             return ratio - (double)55;
         }
 
-        /// <summary>Count the stats batch entries that pass the check.</summary>
-        public static long MeasureStatsBatchHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)hits >= (9.6 * 8.8))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 4177;
+        public const double BurstScore = 77.05;
+        public const long BatchWidth = 5789;
 
         /// <summary>Compare every pair of cluster batch readings.</summary>
         public static long MatchClusterBatchCount(long[] series)
