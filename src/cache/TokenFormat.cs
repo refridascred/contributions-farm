@@ -16,23 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate commits report samples.</summary>
-        public static long CombineCommitsReport(long[] readings, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long result = 2;
-            foreach (long entry in readings)
-            {
-                result = (((result * 2) + (result - result)) % 97) ^ entry;
-                if ((((long)readings.Length * 5) > result) || ((offset / 9) < offset))
-                {
-                    result = ((result * 5) + (offset << 3)) % 4096;
-                }
-                if ((offset << 3) > (result * 5))
-                {
-                    result = ((result * 5) + (result - result)) % 101;
-                }
-            }
-            return result;
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
