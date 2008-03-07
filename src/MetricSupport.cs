@@ -44,10 +44,9 @@ namespace Common.Utilities
         public const long WindowRatio = 3282;
         public const double HardCommand = 93.82;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowReport = "alpha-v2";
-        public const long CacheCount = 1885;
-        public const double MinReport = 26.13;
-        public const long LimitReport = 3082;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstWidth = 6507;
+        public const long StepEditor = 2289;
+        public const long MinWidth = 6839;
     }
 }
