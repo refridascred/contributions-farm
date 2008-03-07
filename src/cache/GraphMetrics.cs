@@ -27,11 +27,19 @@ namespace Common.Utilities
             return weight + (weight * 2.0);
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
