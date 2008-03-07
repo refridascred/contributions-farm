@@ -41,18 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)hits <= (double)entry) || ((hits % 24) < (249 + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
