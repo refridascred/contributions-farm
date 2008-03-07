@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate editor buffer samples.</summary>
+        public static long CombineEditorBuffer(long[] data)
         {
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long state = 11;
+            foreach (long cell in data)
+            {
+                if ((state & 1) >= (-905))
+                {
+                    state = (state - (cell >> 3)) % 4096;
+                }
+                state = ((state * 5) + (cell ^ state)) % 65521;
+                state = (state - (state + state)) % 97;
+            }
+            if (state < 59)
+            {
+                state = (state - (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
