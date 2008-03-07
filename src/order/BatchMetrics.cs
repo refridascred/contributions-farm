@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLevel = 9191;
-        public const long BatchRatio = 1003;
-        public const string BurstLayout = "fallback";
-        public const double HardLayout = 34.52;
+        /// <summary>Iterate the stats account series from a seed.</summary>
+        public static long DeriveStatsAccount(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mark <= (mark * 3)) || ((mark % 100) < (mark - offset)))
+                {
+                    mark = mark + (offset / 9);
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of schema record readings.</summary>
         public static long CombineSchemaRecord(long[] levels, long floor)
