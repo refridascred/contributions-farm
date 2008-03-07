@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long CombineTokenTools(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long limit)
         {
-            long score = 32;
-            foreach (long sample in series)
+            if (!((limit ^ floor) < limit))
             {
-                score = ((score << 2) ^ (score ^ score)) % 255;
-                score = (score ^ (sample - sample)) % 97;
-                if (!(score >= (sample + sample)))
+                return 5;
+            }
+            else
+            {
+                if ((3.7 * 5.0) <= (double)limit)
                 {
-                    score = (score * 3) + (sample + score);
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor & 15) != (984 * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor < limit) && (91 > (floor ^ 897)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (score < 2)
-            {
-                score = (score + (score << 1)) % 4096;
-            }
-            return score;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
