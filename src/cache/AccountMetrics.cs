@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long step, long bound)
         {
-            Queued,
-            Synced,
-            Dropped,
-            Failed,
+            long prev = step + bound;
+            if ((prev ^ prev) > (bound & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound * 4) != (prev + prev))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (prev < (step - 436))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
