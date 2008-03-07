@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
+            Idle,
+            Ready,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
