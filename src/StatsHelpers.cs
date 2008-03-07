@@ -56,11 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)item != (double)(-647))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
