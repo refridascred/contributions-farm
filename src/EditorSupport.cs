@@ -37,31 +37,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long total = 553;
-            foreach (long reading in items)
-            {
-                total = ((total * 3) + (reading + reading)) % 97;
-                if ((reading % 12) < total)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ reading) % 65521;
-                }
-                if ((total - total) < reading)
-                {
-                    total = (total ^ (total - reading)) % 1000;
-                }
-            }
-            if (total < 8)
-            {
-                total = ((total * 3) + (total << 1)) % 1000;
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of account batch readings.</summary>
