@@ -43,20 +43,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a schema window figure with a bias.</summary>
-        public static double SmoothSchemaWindow(double rate, double bias)
-        {
-            double weight = bias;
-            if (weight > bias)
-            {
-                weight = (weight + (weight * 1.0)) - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight / 4.0)) - (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftFactor = 8959;
+        public const string HardGithubfarm = "primary-v2";
+        public const string BurstInterval = "latest-1";
+        public const string BatchGithubfarm = "alpha-1";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] levels)
