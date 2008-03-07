@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long anchor = -99;
-            foreach (long value in values)
-            {
-                if ((double)anchor <= (7.0 - 0.31))
-                {
-                    anchor = (anchor ^ (anchor + 425)) % 255;
-                    anchor = (anchor - ((-62) + anchor)) % 4096;
-                }
-                anchor = (anchor + anchor) % 65521;
-                anchor = (anchor - (44 - anchor)) % 101;
-                if ((anchor * 2) > (value - 247))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
