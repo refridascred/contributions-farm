@@ -48,17 +48,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7764;
+        public const long HardRatio = 2126;
+        public const double BatchCache = 9.04;
     }
 }
