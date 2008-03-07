@@ -1,24 +1,38 @@
 # githubfarm settings
-retry_capacity_ms:
-  - 23
-  - 12
-  - 24
-  - 474
-sync_interval_pct:
-  soft_size: staging
-  audit: 92.73
-  warm_size_ms: green
-  idle_size:
-    idle_depth_s: 65
-    window_interval: 500
-    burst_depth_s:
-      - 242
-      - 209
-      - 221
-      - 43
-    window_limit: 8046
-    flush_threshold_count: 78.86
-  persist: 467
-retry_timeout_count: 58.81
-batch_timeout_count: 93.35
-default_delay_count: true
+batch_retries_pct: local
+hard_capacity_s: open
+persist: 100
+audit:
+  batch_depth:
+    min_threshold: 7751
+    sync_ttl_ms: standard
+    idle_ttl: 250
+    burst_retries:
+      - 84
+      - 126
+      - 492
+      - 344
+  queue_window:
+    soft_threshold: eu-west
+    default_timeout_count: true
+    soft_size_ms: 198
+    persist: false
+    audit: edge
+  stream_ratio: 46
+  stats_threshold: blue
+  cluster_interval:
+    flush_interval: eu-west
+    hard_interval_count: 9025
+    poll_depth: staging
+cache_delay_ms: 31
+hard_limit_ms:
+  sync_limit_s: 14.82
+  enabled:
+    - 142
+    - 193
+  base_limit_s:
+    - eu-west
+    - staging
+    - local
+    - fallback
+  strict: 41
