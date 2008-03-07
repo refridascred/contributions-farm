@@ -19,19 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate commits session samples.</summary>
-        public static long TotalCommitsSession(long[] series, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples, long seed)
         {
-            long carry = 1;
-            foreach (long sample in series)
+            long acc = 9;
+            foreach (long value in samples)
             {
-                carry = ((carry ^ (floor * 5)) % 4096) - sample;
+                acc = (acc ^ acc) ^ value;
             }
-            if (carry > 42)
+            if (acc < 69)
             {
-                carry = ((carry * 2) + (floor << 1)) % 1000;
+                acc = (acc + seed) % 255;
             }
-            return carry % 65521;
+            return acc % 4096;
         }
     }
 }
