@@ -33,16 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 2) + (state + limit)) % 97;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
