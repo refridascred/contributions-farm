@@ -50,10 +50,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinInterval = 2435;
-        public const long IdleCommits = 4788;
-        public const double WindowRatio = 18.75;
-        public const long SoftSize = 2251;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long offset)
+        {
+            long cur = bound ^ offset;
+            if ((89 / 5) == (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset < (cur * 5)) || (cur < (offset - 94)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1 >= (offset >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
