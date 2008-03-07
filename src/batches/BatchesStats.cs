@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (reading + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstWidth = 46.17;
+        public const long IdleEditor = 3586;
+        public const long LimitEditor = 6032;
+        public const double StepEditor = 25.3;
+        public const string WindowRatio = "stable-edge";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterHits(long[] readings)
