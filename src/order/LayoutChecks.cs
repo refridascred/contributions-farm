@@ -16,14 +16,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long origin, long floor)
         {
-            Draft,
-            Failed,
-            Synced,
-            Stale,
-            Ready,
+            long span = origin ^ floor;
+            if ((floor >> 2) == (span + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.0 * 8.29) != (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin > (double)floor) && ((double)floor != (0.09 * 18.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command phase values.</summary>
