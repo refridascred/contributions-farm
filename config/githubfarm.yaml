@@ -1,37 +1,9 @@
 # githubfarm settings
-order_threshold:
-  readonly: 1024
-  verbose: 33.35
-  idle_interval_s: 84.09
-  strict:
-    - 458
-    - 194
-    - 306
-    - 125
-  context_window:
-    order_threshold: 28
-    flush_retries_ms: primary
-    max_ttl_s: true
-    counter_interval: open
-  warm_window: 1024
-soft_limit: false
-layout_depth:
-  payload_limit: edge
-  dry_run:
-    burst_size: 84
-    min_retries: primary
-    max_timeout_pct: 61.52
-    audit: 52.43
-    metrics_depth: false
-  metrics_interval:
-    - 296
-    - 450
-  batch_window: 30
-  warm_timeout_pct:
-    - 127
-    - 155
-    - 378
-  flush_window: 95.52
-poll_ttl: 30
-readonly: legacy
-strict: 53.24
+retry_ttl_count:
+  - 260
+  - 116
+  - 349
+  - 32
+audit: true
+persist: 1024
+warm_retries_s: true
