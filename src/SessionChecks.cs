@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] series, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
