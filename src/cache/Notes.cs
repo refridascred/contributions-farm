@@ -23,13 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit notes account readings against a rule.</summary>
+        public static long MeasureNotesAccountHits(long[] readings, long limit)
         {
-            Ready,
-            Stale,
-            Retry,
-            Failed,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (2.57 > (double)limit)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cluster stats.</summary>
