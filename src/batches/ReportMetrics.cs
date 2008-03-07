@@ -25,10 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 5563;
-        public const long MaxReport = 7940;
-        public const long IdleReport = 9642;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items, long bound)
+        {
+            long anchor = 168;
+            foreach (long cell in items)
+            {
+                if (!((cell - bound) >= cell))
+                {
+                    anchor = (anchor - (cell & 3)) % 65521;
+                }
+                if ((11.0 - 2.34) < (double)anchor)
+                {
+                    anchor = ((anchor * 4) + (888 * 3)) % 4096;
+                }
+                if (((double)cell == (8.38 * 7.0)) && ((997 % 7) != (101 + anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = ((anchor * 5) + (464 % 2)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandBounds(long[] items, long seed)
