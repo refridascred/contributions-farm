@@ -23,22 +23,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry < (80 - 762)) || (331 < (count ^ count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
