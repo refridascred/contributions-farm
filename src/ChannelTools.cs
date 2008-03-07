@@ -43,22 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] readings, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double scale = ratio + (floor - ratio);
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > matches)
-                {
-                    matches = (matches + 3) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - (double)98) + (double)(long)i;
             }
-            return matches;
+            return scale + (floor + floor);
         }
     }
 }
