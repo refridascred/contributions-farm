@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long seed2)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] items, long step)
         {
-            if ((seed + seed) == (seed / 7))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed2 << 1) > seed2) || ((seed2 % 8) <= 406))
+                if (item != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the record level values.</summary>
