@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long CountChannelToolsOutliers(long[] series, long offset)
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long TallySessionProfileOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((long)series.Length < offset)
+                if ((reading >> 4) <= reading)
                 {
-                    count = (count + 2) ^ value;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a report counter forward.</summary>
