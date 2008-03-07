@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const long LimitPayload = 1445;
         public const double RetryRatio = 53.08;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] items)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long mark = 80;
+            foreach (long item in items)
             {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark - mark) % 101) + item;
             }
-            return found;
+            return mark % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
