@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            long prev = step ^ seed;
-            if (((double)prev <= (0.3 + 3.6)) || (prev < ((-704) % 2)))
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
+                total = total + (step + step);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((8.0 * 9.85) <= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed << 3) >= (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step ^ seed) < prev) || (325 <= (seed + step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
