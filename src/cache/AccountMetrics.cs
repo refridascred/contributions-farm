@@ -22,21 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 96;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ ((long)i + acc)) % 4096;
+                    acc = (acc - acc) % 65521;
+                }
+                if ((acc / 6) > (datum - acc))
+                {
+                    acc = ((acc << 2) ^ (datum + datum)) % 4096;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
