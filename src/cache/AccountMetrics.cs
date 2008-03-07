@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream format entries that pass the check.</summary>
-        public static long CountStreamFormatOutliers(long[] data, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound > (bound << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) ^ value;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
