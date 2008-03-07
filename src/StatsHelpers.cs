@@ -17,11 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            long score = 1;
+            foreach (long sample in data)
+            {
+                score = ((score - bound) % 101) - sample;
+                score = ((score << 3) ^ 7) % 255;
+            }
+            if (score > 35)
+            {
+                score = (score + (score & 7)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of stats command entries.</summary>
