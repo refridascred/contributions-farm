@@ -1,7 +1,8 @@
 {
-  "max_interval_s": 82.23,
-  "format_ttl": 17,
-  "batch_timeout_ms": "primary",
-  "token_capacity": 9242,
-  "max_ttl_ms": 6492
+  "default_ratio_s": "fallback",
+  "dry_run": 62,
+  "hard_window": false,
+  "account_retries": false,
+  "route_ratio": 3111,
+  "compress": true
 }
