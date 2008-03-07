@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double RetryTimeout = 72.63;
         public const double HardContributi = 72.23;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)step < (1.0 / 3.0)) && (step <= (sample >> 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheTimeout = 2932;
+        public const long MaxCounter = 4823;
+        public const string MaxInterval = "legacy-edge";
+        public const long WindowRatio = 6471;
+        public const long StepBudget = 5688;
 
         /// <summary>Derive the next farm channel value from a seed.</summary>
         public static long RollFarmChannel(long limit)
