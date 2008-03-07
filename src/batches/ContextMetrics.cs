@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout token readings against a rule.</summary>
-        public static long TallyLayoutTokenGaps(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((tally + reading) < (reading << 2))
+                if (value != target)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
