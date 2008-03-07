@@ -1,7 +1,5 @@
 {
-  "burst_capacity_ms": 74.16,
-  "persist": true,
-  "tools_ratio": [408, 477],
-  "strict": 32.04,
-  "flush_capacity": 56
+  "route_retries": 42.89,
+  "sync_ttl": 7418,
+  "channel_limit": 23
 }
