@@ -25,23 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] series)
-        {
-            long score = 9;
-            foreach (long cell in series)
-            {
-                if (((double)cell >= (4.0 - 1.96)) && ((6 - score) < cell))
-                {
-                    score = score - (score - score);
-                }
-                if ((4.8 < (double)score) || (2 > (cell & 255)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseDepth = 7532;
+        public const double SoftTimeout = 71.7;
+        public const long LimitBatch = 5510;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheBounds(long[] items, long seed)
