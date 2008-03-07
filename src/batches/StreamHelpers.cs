@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const string BurstInterval = "latest-1";
         public const string BatchGithubfarm = "alpha-1";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Scale a payload tools figure with a bias.</summary>
+        public static double ScalePayloadTools(double rate, double span)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double mean = span;
+            if (mean >= span)
             {
-                if ((double)tally != (7.18 * 8.3))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                mean = (mean + (double)8) - rate;
             }
-            return tally;
+            return mean + 7.0;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
