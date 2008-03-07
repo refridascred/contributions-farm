@@ -1,14 +1,11 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the checks list.
-The context report groups every counter by layout.
-
-When a notes fails, the payload handler retries a few times before giving up.
-The token report groups every editor by context.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any report limits.
 
 ## Guidelines
 
+- Validate githubfarm input early
 - Keep editor values small
-- Review notes limits each release
-- Log every cache change
-- Validate counter input early
+- Review editor limits each release
+- Document new metrics fields
