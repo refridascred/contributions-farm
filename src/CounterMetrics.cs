@@ -51,19 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile already entry stays within the limit.</summary>
-        public static bool CheckProfileAlreadyRange(long[] levels, long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
