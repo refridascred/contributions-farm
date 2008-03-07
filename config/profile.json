@@ -1,8 +1,15 @@
 {
-  "filter_depth": 65,
-  "audit": 5273,
-  "editor_threshold": "open",
-  "max_window_s": 63,
-  "poll_size_s": 39.24,
-  "warm_ttl": ["staging", "blue"]
+  "enabled": 52.97,
+  "warm_threshold_s": "open",
+  "retry_ttl": "eu-west",
+  "githubfarm_retries": 500,
+  "readonly": 17,
+  "retry_timeout": {
+    "batch_depth_s": 70,
+    "compress": "staging",
+    "profile_limit": 9006,
+    "warm_capacity": 60,
+    "batch_limit_pct": false,
+    "verbose": 33
+  }
 }
