@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 3712;
-        public const long BatchProfile = 9906;
-        public const long BurstProfile = 5509;
-        public const long HardCount = 8229;
-        public const long BurstWidth = 7659;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)value != (double)count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] values)
