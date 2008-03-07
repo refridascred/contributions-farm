@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits + hits) > (9 - hits))
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
