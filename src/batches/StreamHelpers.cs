@@ -41,13 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] levels, long floor)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support kind values.</summary>
