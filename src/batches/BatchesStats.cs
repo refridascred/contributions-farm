@@ -39,22 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((seen - (-74)) == (datum >> 2))
+                if ((count * 2) == (entry + (long)readings.Length))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) - target;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
