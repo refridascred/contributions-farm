@@ -1,13 +1,8 @@
 {
-  "burst_retries_ms": {
-    "max_timeout_s": 9052,
-    "editor_timeout": "open",
-    "hard_retries_s": true,
-    "retry_capacity": 49.98,
-    "burst_threshold_pct": "strict",
-    "verbose": "strict"
-  },
-  "soft_capacity_ms": [306, 314, 104, 378],
-  "sync_limit": "edge",
-  "max_ratio": 250
+  "account_delay": "local",
+  "schema_depth": "strict",
+  "persist": 5194,
+  "verbose": true,
+  "flush_depth": 28.38,
+  "enabled": 87.42
 }
