@@ -1,6 +1,7 @@
 {
-  "githubfarm_ttl": 10,
-  "session_window": 63,
-  "base_depth": 46.59,
-  "burst_interval": 47.5
+  "burst_capacity_ms": 74.16,
+  "persist": true,
+  "tools_ratio": [408, 477],
+  "strict": 32.04,
+  "flush_capacity": 56
 }
