@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double scale, double span)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            double rate = scale;
+            if (rate < 14.0)
+            {
+                rate = rate + (rate + scale);
+            }
+            else
+            {
+                rate = rate + (scale - span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
