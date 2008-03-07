@@ -1,18 +1,10 @@
 # support settings
-account_retries:
-  schema_window:
-    - local
-    - standard
-    - legacy
-  audit: 83.41
-  farm_size:
-    - local
-    - stable
-    - green
-    - latest
-  flush_ttl:
-    - staging
-    - latest
-  tools_ttl: false
-strict: cached
-commits_ratio: local
+enabled: true
+burst_delay_pct:
+  - 178
+  - 418
+  - 150
+sync_delay:
+  - 114
+  - 204
+base_capacity: local
