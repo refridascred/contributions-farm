@@ -75,19 +75,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double drift = bias / 5.0;
+            if (drift < (bias * 9.43))
             {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - bias) - scale;
             }
-            return found;
+            else
+            {
+                drift = drift + (double)89;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift - bias)) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
