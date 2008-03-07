@@ -15,13 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] series, long floor)
         {
-            Synced,
-            Stale,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)floor >= (double)2)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
