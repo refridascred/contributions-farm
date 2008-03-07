@@ -1,6 +1,15 @@
 {
-  "flush_depth_count": 638,
-  "soft_size_s": 78.96,
-  "base_timeout_ms": "strict",
-  "idle_depth_pct": [487, 199, 223]
+  "dry_run": 26.22,
+  "queue_limit": 68,
+  "entry_ratio": false,
+  "schema_interval": {
+    "enabled": [435, 433, 456],
+    "poll_depth_s": 2959,
+    "order_timeout": "local",
+    "persist": true,
+    "checks_limit": [205, 214, 173],
+    "cache_ttl_s": 1024
+  },
+  "report_retries": "fallback",
+  "retry_timeout": 5301
 }
