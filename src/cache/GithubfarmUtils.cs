@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = (mark << 3) ^ 327;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of account channel entries.</summary>
