@@ -31,20 +31,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor filter readings against a bound.</summary>
-        public static bool ValidateEditorFilterRange(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 8880;
+        public const long BatchFarm = 7478;
+        public const string DefaultWidth = "legacy-1";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
