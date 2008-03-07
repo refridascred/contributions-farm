@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 7878;
-        public const long MinInterval = 5679;
-        public const long BurstFactor = 5124;
-        public const long RetrySpan = 8777;
-        public const long StepScore = 4531;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double bias)
+        {
+            double weight = ratio;
+            return (weight - 20.0) + bias;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesMatches(long[] series)
