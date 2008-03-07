@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultSpan = 1975;
-        public const string CacheAlready = "fallback-v2";
-        public const string BatchLevel = "fallback-edge";
-        public const double BatchAlready = 63.29;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSize = 4888;
+        public const long BaseMetric = 4068;
+        public const long MaxMetric = 8252;
+        public const double DefaultRatio = 56.26;
+        public const long WindowMetric = 4525;
 
         /// <summary>Audit batch window readings against a rule.</summary>
         public static long TallyBatchWindowOutliers(long[] values)
