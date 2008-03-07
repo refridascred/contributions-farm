@@ -1,19 +1,28 @@
 # githubfarm settings
-default_capacity_s: 75.08
-readonly: stable
-persist: true
-poll_interval_count: true
-strict: 1024
-poll_depth:
-  poll_ttl_ms: legacy
-  persist: 4.27
-  soft_interval_ms:
-    flush_window_s: 1981
-    sync_timeout: eu-west
-    tools_delay: legacy
-  default_capacity: true
-  burst_size_pct:
-    - 195
-    - 177
-    - 304
-    - 70
+min_timeout_ms: true
+batches_timeout: 52.96
+batches_window: false
+sync_retries_s:
+  - 26
+  - 305
+  - 347
+max_window: green
+cache_timeout:
+  poll_timeout_count:
+    - 487
+    - 31
+    - 52
+    - 292
+  report_threshold: 97.28
+  warm_retries_pct:
+    already_window:
+      - latest
+      - fallback
+      - edge
+    schema_size: standard
+    burst_timeout_count: false
+    soft_threshold: true
+    sync_threshold_count:
+      - 227
+      - 498
+    min_window_ms: 30.72
