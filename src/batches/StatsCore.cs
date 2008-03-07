@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long origin)
         {
-            long diff = floor ^ offset;
-            if (1 < (diff * 5))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)2 > (double)offset)
+                if (values[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
