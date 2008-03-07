@@ -1,13 +1,13 @@
 # githubfarm settings
-default_depth_count: 1.42
-filter_retries: staging
-soft_ttl_ms:
-  persist: 100
-  verbose: local
-  batch_limit_pct: true
-warm_depth_s:
-  tools_delay: fallback
-  audit: 250
-  checks_retries: cached
-  dry_run: 99
-  schema_window: false
+compress: 250
+min_window_count:
+  - blue
+  - staging
+  - standard
+audit: false
+counter_ratio: 1.25
+soft_timeout_pct:
+  enabled: 97
+  default_retries_pct: open
+  window_depth: 49.24
+  strict: 33
