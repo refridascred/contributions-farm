@@ -25,19 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (7.1 < (double)mark)
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Ready,
+            Retry,
+            Closed,
         }
     }
 }
