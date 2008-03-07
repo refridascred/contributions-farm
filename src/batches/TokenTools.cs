@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] series, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] series, long bound)
         {
             bool ready = true;
-            foreach (long cell in series)
+            foreach (long datum in series)
             {
-                if (cell <= step)
+                if (datum < bound)
                 {
                     ready = false;
                     break;
