@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long AuditChecksFilterHits(long[] readings, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long anchor = 437;
+            foreach (long value in samples)
             {
-                if (!((floor / 3) < floor))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor + value) % 65521) - limit;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of already entries.</summary>
