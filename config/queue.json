@@ -1,5 +1,14 @@
 {
-  "enabled": false,
-  "soft_depth": 1194,
-  "counter_timeout": 32
+  "compress": "local",
+  "buffer_threshold": "strict",
+  "poll_capacity_s": [424, 390, 30],
+  "dry_run": "eu-west",
+  "idle_depth_pct": {
+    "idle_interval_count": 2035,
+    "flush_ttl_count": [102, 121, 427, 155],
+    "channel_size": ["standard", "local"],
+    "poll_retries_count": 44.47,
+    "enabled": 4745
+  },
+  "batch_limit": 3
 }
