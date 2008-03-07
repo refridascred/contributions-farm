@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] samples)
         {
-            long mark = 78;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)mark > 2.0)
+                if (((item / 8) == (tally + item)) || (item < (609 + item)))
                 {
-                    mark = (((mark * 4) + (offset * 2)) % 4096) + reading;
+                    tally = tally + 1;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
