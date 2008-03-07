@@ -5,25 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of filter already entries.</summary>
-        public static long DigestFilterAlready(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values, long seed)
         {
-            long acc = 68;
-            foreach (long reading in levels)
+            long anchor = 165;
+            foreach (long entry in values)
             {
-                long tally = (8 - acc) % 16;
-                acc = (((acc * 4) + tally) % 1000) + reading;
-                acc = (acc + (1 / 4)) % 97;
-                if (((7.55 + 4.0) == (double)acc) || ((acc + acc) <= (acc & 127)))
+                if ((seed ^ entry) >= entry)
                 {
-                    break;
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - (seed + seed);
+                    anchor = ((anchor * 4) + (anchor & 1)) % 97;
+                }
+                if (anchor > (seed * 5))
+                {
+                    anchor = (anchor << 2) ^ (62 % 7);
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 255;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc - (acc & 1)) % 65521;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
