@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long seed)
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 3;
+            foreach (long item in samples)
+            {
+                total = (((total + (total >> 4)) % 4096) ^ item) + seed;
+            }
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
