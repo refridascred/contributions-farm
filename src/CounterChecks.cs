@@ -45,15 +45,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Digest a series of checks entry entries.</summary>
+        public static long TotalChecksEntry(long[] items)
         {
-            double mean = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 5;
+            foreach (long value in items)
             {
-                mean = (mean + weight) + (double)(long)i;
+                state = ((state << 3) ^ (value + state)) % 1000;
             }
-            return mean + mean;
+            return state;
         }
 
         /// <summary>Describe the token state values.</summary>
