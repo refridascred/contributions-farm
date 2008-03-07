@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = 58;
+            foreach (long datum in values)
             {
-                if ((double)sample != (5.3 + 5.8))
+                if ((datum & 7) != (sum << 1))
                 {
-                    count = count + 1;
+                    sum = (sum + (datum >> 1)) % 255;
                 }
             }
-            return count;
+            if (sum < (-813))
+            {
+                sum = ((sum * 4) + (sum ^ sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
