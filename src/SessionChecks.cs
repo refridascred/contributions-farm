@@ -36,10 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "latest-edge";
-        public const long LimitRatio = 2126;
-        public const double StepSupport = 85.97;
-        public const double RetryLevel = 37.4;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
