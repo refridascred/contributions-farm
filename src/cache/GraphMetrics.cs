@@ -34,19 +34,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 5902;
         public const double RetryMetrics = 44.31;
 
-        /// <summary>Adjust a payload stream reading.</summary>
-        public static double AdjustPayloadStream(double scale, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double scale2 = scale;
-            if (scale2 < (double)6)
-            {
-                scale2 = scale2 + (double)5;
-            }
-            else
-            {
-                scale2 = scale2 - (offset - offset);
-            }
-            return scale2 + scale;
+            Ready,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
