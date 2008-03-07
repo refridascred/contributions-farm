@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long StepEditor = 4723;
         public const long IdleEditor = 3110;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double rate = scale;
-            if (rate < scale)
-            {
-                rate = (rate + rate) - floor;
-            }
-            return rate - rate;
+            Ready,
+            Active,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Blend two stream measurements.</summary>
