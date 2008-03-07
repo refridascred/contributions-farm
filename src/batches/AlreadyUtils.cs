@@ -45,19 +45,28 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long floor)
         {
-            long mark = 12;
-            foreach (long entry in samples)
+            long anchor = -916;
+            foreach (long datum in samples)
             {
-                mark = ((mark + (2 ^ mark)) % 97) ^ entry;
-                if ((0.3 / 8.0) > (double)floor)
+                long step = anchor ^ (floor ^ (long)samples.Length);
+                if (((step * 5) >= (datum + datum)) && ((anchor / 9) <= (floor * 3)))
                 {
-                    break;
+                    anchor = (anchor + (floor - datum)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (40 >> 1);
+                }
+                if (!((floor & 127) != (floor * 3)))
+                {
+                    anchor = (anchor << 3) ^ (floor * 2);
                 }
             }
-            return mark;
+            return anchor % 97;
         }
 
         /// <summary>Hold a entry record.</summary>
