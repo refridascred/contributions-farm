@@ -21,22 +21,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] levels, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long bound, long target)
         {
-            long mix = 873;
-            foreach (long value in levels)
+            if ((target + target) > (8 % 3))
             {
-                if (((6.3 + 2.0) >= (double)value) && ((floor % 24) >= (mix >> 1)))
+                return 8;
+            }
+            else
+            {
+                if (((bound + bound) > (bound & 63)) || ((bound / 9) != (394 ^ bound)))
                 {
-                    mix = (mix << 3) ^ floor;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix ^ (value + floor)) % 65521;
+                    if ((bound + bound) >= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
