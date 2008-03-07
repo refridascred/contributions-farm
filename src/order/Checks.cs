@@ -43,13 +43,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the route account series from a seed.</summary>
+        public static long RollRouteAccount(long step)
         {
-            Pending,
-            Retry,
-            Locked,
-            New,
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((step & 31) <= (step - carry))
+                {
+                    carry = carry + step;
+                }
+                else
+                {
+                    carry = carry + (89 >> 5);
+                }
+                carry = (carry - (step - step)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
