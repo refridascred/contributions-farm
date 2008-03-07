@@ -14,13 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Find the first metric notes entry that matches the target.</summary>
+        public static long FindMetricNotesIndex(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next session command value from a seed.</summary>
