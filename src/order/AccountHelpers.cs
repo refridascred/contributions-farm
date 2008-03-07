@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long StepNotes = 6081;
         public const long BurstNotes = 1699;
 
-        /// <summary>Find the first farm stats entry that matches the target.</summary>
-        public static long LocateFarmStatsIndex(long[] levels, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                if (!((1.0 / 5.0) <= (double)matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + item) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a queue options.</summary>
