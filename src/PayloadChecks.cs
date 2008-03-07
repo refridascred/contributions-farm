@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long bound)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            if ((double)bound < (2.4 * 0.52))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 2) < 764)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a report stats.</summary>
