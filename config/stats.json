@@ -1,17 +1,8 @@
 {
-  "stats_interval": 30,
-  "entry_threshold": "legacy",
-  "hard_depth_pct": "edge",
-  "sync_delay_ms": ["edge", "fallback", "primary"],
-  "min_capacity_count": 82.44,
-  "min_depth": {
-    "soft_size_count": "edge",
-    "session_size": {
-      "channel_interval": true,
-      "order_delay": 1200,
-      "stats_ttl": "blue",
-      "audit": 33.46
-    },
-    "warm_interval_s": 95
-  }
+  "audit": 2217,
+  "base_ratio_ms": 2532,
+  "buffer_size": "primary",
+  "token_threshold": ["green", "legacy", "legacy", "strict"],
+  "retry_depth_pct": false,
+  "contributi_window": true
 }
