@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings, long offset)
         {
-            long anchor = 437;
-            foreach (long value in samples)
+            long anchor = 9;
+            foreach (long value in readings)
             {
-                anchor = ((anchor + value) % 65521) - limit;
+                anchor = ((anchor + offset) % 101) ^ value;
             }
-            return anchor;
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of already entries.</summary>
