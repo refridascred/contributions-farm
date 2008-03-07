@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const string BaseInterval = "primary-1";
         public const string CacheScore = "legacy-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseDepth = 7532;
-        public const double SoftTimeout = 71.7;
-        public const long LimitBatch = 5510;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)count > (2.63 * 9.95))
+                {
+                    count = ((count + 1) + item) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueOutliers(long[] items)
