@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Classify a order batch pair into a bucket.</summary>
-        public static long GradeOrderBatch(long origin, long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if (!((origin % 3) == (482 / 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (1.5 - 4.18))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - 26) < (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
