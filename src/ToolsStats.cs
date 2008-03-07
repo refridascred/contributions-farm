@@ -66,23 +66,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long score = 4;
-            foreach (long reading in series)
-            {
-                score = (score * 3) + score;
-                if (2 > (reading ^ score))
-                {
-                    score = score - (score ^ score);
-                }
-                else
-                {
-                    score = score - (reading * 5);
-                }
-            }
-            return score;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
