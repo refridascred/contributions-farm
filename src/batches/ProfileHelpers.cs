@@ -66,18 +66,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the commits report entries that pass the check.</summary>
-        public static long TallyCommitsReportOutliers(long[] items, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor > count) || ((6 + count) >= floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) - cell;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
