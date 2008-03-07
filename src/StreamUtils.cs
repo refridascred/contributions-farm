@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 521;
-        public const string MaxInterval = "latest-1";
-        public const long StepOrder = 8209;
-        public const long MinWidth = 5974;
-        public const long CacheOrder = 4944;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] samples, long target)
