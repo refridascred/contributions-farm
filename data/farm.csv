@@ -1,8 +1,6 @@
-id,token,label,ratio,weight
-1,stable,edge,standard,92.92
-2,primary,59.74,open,59.94
-3,687,451,99,latest
-4,81,primary,stable,386
-5,829,758,47.41,969
-6,16.88,474,70.0,open
-7,fallback,cached,40.58,97
+id,owner,region
+1,13.27,19.0
+2,275,141
+3,319,455
+4,111,63.82
+5,132,local
