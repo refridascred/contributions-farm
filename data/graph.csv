@@ -1,6 +1,6 @@
-id,state,rank
-1,35.04,cached
-2,943,784
-3,457,legacy
-4,714,stable
-5,blue,legacy
+id,active,label,ratio,count
+1,35.35,842,green,756
+2,10.94,cached,71,32.13
+3,green,legacy,local,731
+4,6.31,legacy,55.65,88.52
+5,76.31,687,58.76,legacy
