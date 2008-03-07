@@ -37,13 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
