@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema graph samples.</summary>
-        public static long WeighSchemaGraph(long[] samples, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            long sum = 706;
-            foreach (long entry in samples)
+            long sum = -7;
+            foreach (long reading in samples)
             {
-                sum = ((sum - ((-645) + bound)) % 1000) ^ entry;
+                sum = sum ^ (reading >> 4);
+                if ((double)reading >= (double)sum)
+                {
+                    break;
+                }
             }
             return sum;
         }
