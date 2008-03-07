@@ -11,17 +11,32 @@ namespace Common.Utilities
         public const long RetryCluster = 96;
         public const long LimitCluster = 5773;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] samples, long floor)
+        /// <summary>Rank checks channel input into a small class.</summary>
+        public static long RankChecksChannel(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = seed + limit;
+            if ((limit ^ prev) >= seed)
             {
-                if (samples[i] >= floor)
+                return 3;
+            }
+            else
+            {
+                if (seed < (prev % 100))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.25 + 8.0) < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
