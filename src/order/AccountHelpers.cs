@@ -19,19 +19,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate account commits readings against a bound.</summary>
-        public static bool VerifyAccountCommitsRange(long[] levels, long floor)
+        /// <summary>Find the first farm stats entry that matches the target.</summary>
+        public static long LocateFarmStatsIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < floor)
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
