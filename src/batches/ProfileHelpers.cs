@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSpan = 2962;
+        public const long RetryCache = 336;
+        public const double HardLevel = 98.33;
+        public const double LimitCount = 17.52;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseCommits = "staging-1";
