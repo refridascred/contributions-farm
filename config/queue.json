@@ -1,7 +1,5 @@
 {
-  "buffer_ratio": [155, 316, 403, 11],
-  "batch_ratio_pct": 61,
-  "base_ratio": 1426,
-  "burst_ratio": [226, 231, 42],
-  "base_ttl_s": 5686
+  "githubfarm_retries": true,
+  "graph_window": 5898,
+  "metrics_depth": 250
 }
