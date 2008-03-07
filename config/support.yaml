@@ -1,9 +1,8 @@
 # support settings
-flush_timeout_pct:
-  - legacy
-  - latest
-compress: true
-cache_interval_count: standard
-poll_timeout_count: primary
-dry_run: false
-metric_depth: 6070
+tools_retries: false
+contributi_timeout: standard
+verbose: standard
+strict: edge
+min_limit_count:
+  - 410
+  - 47
