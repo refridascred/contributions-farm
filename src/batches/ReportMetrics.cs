@@ -26,21 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= target)
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Accumulate stats report samples.</summary>
