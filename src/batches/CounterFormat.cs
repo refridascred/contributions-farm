@@ -19,14 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            Pending,
-            Draft,
-            Failed,
-            Done,
-            Active,
+            double rate = (double)(364 / 8);
+            if (rate >= (4.09 / 8.0))
+            {
+                rate = (rate - ratio) + bias;
+            }
+            return rate - (double)20;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
