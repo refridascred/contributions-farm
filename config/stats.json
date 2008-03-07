@@ -1,8 +1,6 @@
 {
-  "queue_retries": "fallback",
-  "flush_capacity_count": 21,
-  "cache_timeout": 1921,
-  "base_capacity": 81,
-  "batch_limit": false,
-  "min_ratio_s": 30
+  "buffer_limit": 93.11,
+  "default_limit_count": true,
+  "readonly": "cached",
+  "verbose": 42.04
 }
