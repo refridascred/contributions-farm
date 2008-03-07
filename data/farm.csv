@@ -1,8 +1,9 @@
-id,level,weight,owner
-1,957,765,386
-2,144,42.68,20.83
-3,93.66,591,42
-4,822,legacy,latest
-5,858,blue,859
-6,86.59,172,3
-7,standard,253,strict
+id,token,owner,score,rank
+1,legacy,primary,866,97.83
+2,799,primary,72.31,829
+3,31,edge,484,stable
+4,blue,0.86,local,95.1
+5,416,71.55,latest,660
+6,86.5,70.57,15.13,531
+7,989,primary,92.76,727
+8,366,992,48.66,544
