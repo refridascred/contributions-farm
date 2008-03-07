@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long CountChannelToolsOutliers(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((long)series.Length < offset)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) ^ value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
