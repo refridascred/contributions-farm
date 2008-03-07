@@ -31,19 +31,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] series, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= step)
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
