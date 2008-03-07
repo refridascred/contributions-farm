@@ -26,19 +26,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Project the next graph farm value.</summary>
+        public static double ScaleGraphFarm(double scale, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            double load = (double)(-91);
+            if (load < load)
             {
-                if ((double)acc <= (4.1 + 7.7))
-                {
-                    acc = (acc ^ (989 + bound)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                load = ((load - (load * 2.0)) - scale) - offset;
             }
-            return acc;
+            return load + load;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
