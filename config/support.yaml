@@ -1,6 +1,8 @@
 # support settings
-readonly: false
-report_window: latest
-idle_delay_count: 90
-cache_interval_s: false
-poll_threshold_count: edge
+order_depth: 52.38
+soft_threshold_ms:
+  - green
+  - green
+  - green
+  - cached
+strict: 60
