@@ -1,8 +1,13 @@
 # support settings
-tools_retries: false
-contributi_timeout: standard
-verbose: standard
-strict: edge
-min_limit_count:
-  - 410
-  - 47
+warm_depth_pct:
+  - green
+  - strict
+  - green
+flush_interval_s: stable
+max_delay_ms: 68
+cache_interval_pct: 67
+enabled: 6466
+compress:
+  - 168
+  - 481
+  - 9
