@@ -1,14 +1,6 @@
 # support settings
-strict: edge
-warm_timeout_pct: 1024
-max_ttl_ms:
-  base_timeout_count: 6431
-  strict: 11.09
-  layout_retries: 80.26
-  idle_limit_s:
-    - 387
-    - 237
-    - 459
-    - 286
-  base_ttl_ms: stable
-  hard_size_s: standard
+base_window: cached
+idle_threshold_s: true
+sync_ratio_count: 9499
+base_window_count: open
+cache_threshold: latest
