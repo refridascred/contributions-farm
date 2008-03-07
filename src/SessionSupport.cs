@@ -47,20 +47,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next editor payload value from a seed.</summary>
-        public static long SeriesEditorPayload(long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values, long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long mark = 88;
+            foreach (long sample in values)
             {
-                state = state ^ 79;
-                if ((2.7 - 8.69) != (double)state)
+                if ((8.74 + 9.1) == (double)sample)
                 {
-                    continue;
+                    mark = ((mark << 2) ^ (floor + mark)) % 255;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            if (mark < 7)
+            {
+                mark = (mark << 3) ^ (floor + 90);
+            }
+            return mark % 1000;
         }
     }
 }
