@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] readings, long offset)
+        /// <summary>Locate a entry cache reading by value.</summary>
+        public static long SeekEntryCacheIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= offset)
+                if (levels[i] > origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
