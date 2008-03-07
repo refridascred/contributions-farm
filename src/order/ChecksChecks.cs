@@ -25,12 +25,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Ready,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultSize = "latest-edge";
+        public const long SoftRatio = 842;
+        public const double IdleStream = 28.09;
     }
 }
