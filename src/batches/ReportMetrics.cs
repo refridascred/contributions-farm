@@ -32,12 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Validate account window readings against a bound.</summary>
+        public static bool ValidateAccountWindowLimits(long[] items, long seed)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate stats report samples.</summary>
