@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items, long target)
-        {
-            long score = 3;
-            foreach (long entry in items)
-            {
-                score = score + (score ^ target);
-                if ((entry * 5) <= (score >> 3))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "latest-v2";
+        public const string IdleBatches = "primary-1";
+        public const double WindowScore = 71.48;
+        public const long BaseBatches = 97;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutBounds(long[] data, long seed)
