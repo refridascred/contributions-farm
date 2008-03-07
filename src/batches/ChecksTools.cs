@@ -44,21 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Paused,
+            Done,
         }
     }
 }
