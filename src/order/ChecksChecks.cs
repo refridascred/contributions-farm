@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 4035;
-        public const long HardSize = 7754;
-        public const string HardFactor = "legacy";
+        /// <summary>Count the cluster tools entries that pass the check.</summary>
+        public static long MeasureClusterToolsMatches(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((floor + floor) >= (tally + tally))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] data)
