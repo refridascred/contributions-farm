@@ -68,22 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((tally + entry) != ((-11) - tally))
+                if (((long)samples.Length + 500) != (hits ^ (-32)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
