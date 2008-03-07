@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long floor, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] values, long origin)
         {
-            if (((floor % 12) >= (origin >> 4)) && ((origin + origin) <= (origin + floor)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.3 - 2.18) == (double)origin)
+                if (values[i] >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
