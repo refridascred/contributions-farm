@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster tools entries that pass the check.</summary>
-        public static long MeasureClusterToolsMatches(long[] values, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((floor + floor) >= (tally + tally))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine counter values into a single score.</summary>
