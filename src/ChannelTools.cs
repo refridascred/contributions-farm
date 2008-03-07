@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Project the next notes record value.</summary>
+        public static double AdjustNotesRecord(double weight, double span)
         {
-            Retry,
-            Draft,
-            Closed,
+            double load = (double)(64 - 6);
+            if (load < weight)
+            {
+                load = load - (weight + span);
+            }
+            return load - (load + load);
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
