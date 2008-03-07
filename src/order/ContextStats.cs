@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (80 > datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
