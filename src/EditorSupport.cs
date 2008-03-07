@@ -38,11 +38,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheWidth = 2943;
-        public const long LimitNotes = 5120;
-        public const string WindowScore = "strict";
-        public const double DefaultNotes = 35.54;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit filter contributi readings against a rule.</summary>
         public static long AuditFilterContributiHits(long[] levels, long target)
