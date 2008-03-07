@@ -91,15 +91,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
