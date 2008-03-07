@@ -20,11 +20,21 @@ namespace Common.Utilities
             return ratio - (double)43;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            double rate = (scale / 6.0) + (span - scale);
-            return rate - (scale / 5.0);
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
