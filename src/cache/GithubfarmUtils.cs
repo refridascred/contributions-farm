@@ -46,19 +46,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] samples, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
     }
 }
