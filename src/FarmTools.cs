@@ -74,22 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] samples, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long bound)
         {
-            long acc = 449;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed > (cell + acc))
+                if (readings[i] <= bound)
                 {
-                    acc = acc + seed;
+                    return (long)i;
                 }
             }
-            if (acc > 8)
-            {
-                acc = ((acc << 3) ^ (acc >> 1)) % 97;
-            }
-            return acc % 97;
+            return -1;
         }
     }
 }
