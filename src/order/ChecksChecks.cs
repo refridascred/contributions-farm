@@ -41,17 +41,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a batch profile sample.</summary>
-        public static long FindBatchProfileIndex(long[] values, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Ready,
+            Paused,
+            Active,
         }
     }
 }
