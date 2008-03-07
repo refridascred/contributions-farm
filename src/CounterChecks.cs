@@ -13,22 +13,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long MeasureNotesMetricsHits(long[] samples, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((47 + 8) > (sample << 1))
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix + (bound ^ mix)) % 65521;
+                mix = (mix * 3) + (mix % 10);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
