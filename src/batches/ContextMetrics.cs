@@ -56,10 +56,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowBudget = 9348;
-        public const double IdleWindow = 2.27;
-        public const long IdleScore = 9166;
-        public const long SoftDepth = 5303;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((8.7 * 6.0) < (double)reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
