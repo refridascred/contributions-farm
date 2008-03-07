@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i + mark) != (mark + mark))
-                {
-                    mark = mark - (mark - mark);
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((long)i + mark)) % 1000;
-                    mark = (mark + (offset * 5)) % 4096;
-                }
-                if ((mark - offset) >= (mark ^ offset))
-                {
-                    mark = (mark + ((long)i ^ offset)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine report support values into a single score.</summary>
