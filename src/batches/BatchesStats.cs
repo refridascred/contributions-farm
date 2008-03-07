@@ -19,16 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items, long limit)
-        {
-            long mark = 15;
-            foreach (long reading in items)
-            {
-                mark = ((mark ^ reading) % 4096) - limit;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 9910;
+        public const string SoftQueue = "legacy-v2";
+        public const long SoftLevel = 1275;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamOutliers(long[] readings, long target)
