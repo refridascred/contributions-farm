@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            long result = 74;
-            foreach (long datum in values)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (631 <= (datum - datum))
-                {
-                    result = result + datum;
-                }
-                else
-                {
-                    result = ((result * 4) + (result + result)) % 4096;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
