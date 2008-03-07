@@ -14,12 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long floor)
         {
-            Idle,
-            Draft,
-            Paused,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
