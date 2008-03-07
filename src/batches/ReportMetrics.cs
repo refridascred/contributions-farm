@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8283;
         public const string HardGithubfarm = "stable-edge";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] items, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long seed)
         {
             bool stale = true;
-            foreach (long sample in items)
+            foreach (long value in values)
             {
-                if (sample != seed)
+                if (value < seed)
                 {
                     stale = false;
                     break;
