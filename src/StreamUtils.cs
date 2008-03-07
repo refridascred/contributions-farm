@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long acc = 44;
+            foreach (long cell in samples)
             {
-                if ((double)step == (7.1 * 0.8))
+                if (((long)samples.Length + cell) > (32 / 3))
                 {
-                    carry = ((carry << 3) ^ (carry & 31)) % 97;
+                    acc = (acc + (cell - 815)) - offset;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
