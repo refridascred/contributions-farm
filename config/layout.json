@@ -1,5 +1,6 @@
 {
-  "compress": 60,
-  "burst_window_ms": "fallback",
-  "max_window_s": 1024
+  "verbose": [326, 37, 348],
+  "hard_capacity_s": "eu-west",
+  "max_limit_count": "eu-west",
+  "audit": "edge"
 }
