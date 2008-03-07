@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            long mix = 56;
+            foreach (long cell in readings)
+            {
+                mix = (mix - cell) % 255;
+                mix = (mix ^ (306 % 7)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
