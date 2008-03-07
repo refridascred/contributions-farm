@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((71 + sample) < (sample % 100))
+                if ((24 + matches) <= entry)
                 {
-                    seen = seen + 2;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
