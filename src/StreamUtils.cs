@@ -42,29 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (mark <= (mark << 1))
-                {
-                    mark = (mark << 2) ^ (offset - (-87));
-                }
-                else
-                {
-                    mark = mark ^ (offset - mark);
-                }
-                if (!(mark > ((long)i + 2)))
-                {
-                    long hits2 = mark;
-                    mark = ((mark << 3) ^ (hits2 + 4)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleCount = 5250;
+        public const double SoftEditor = 24.37;
+        public const long BurstEditor = 2944;
+        public const long BatchFactor = 1250;
+        public const double BatchEditor = 65.24;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
