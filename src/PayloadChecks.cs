@@ -47,18 +47,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the tools stats entries that pass the check.</summary>
-        public static long TallyToolsStatsMatches(long[] readings, long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double mean = span;
+            if (mean < span)
             {
-                if ((hits - floor) > (hits % 2))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
+                mean = mean - (double)(-875);
             }
-            return hits;
+            else
+            {
+                mean = mean - (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (rate / 2.0)) + (double)(long)i;
+            }
+            return mean + (rate + span);
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
