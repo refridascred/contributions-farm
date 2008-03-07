@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] items, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (!((((long)i >> 1) >= origin) || (((long)i - anchor) < (560 - anchor))))
+                if (reading != step)
                 {
-                    anchor = ((anchor << 2) ^ (origin * 4)) % 97;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
