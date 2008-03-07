@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] <= seed)
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
