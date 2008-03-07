@@ -36,18 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route checks readings.</summary>
-        public static long TotalRouteChecks(long[] values)
+        /// <summary>Validate command session readings against a bound.</summary>
+        public static bool CheckCommandSessionBounds(long[] values, long origin)
         {
-            long result = 596;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((item % 64) <= (item >> 2))
+                if (reading >= origin)
                 {
-                    result = (result * 2) + (84 - result);
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the payload status values.</summary>
