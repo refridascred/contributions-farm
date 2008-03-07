@@ -17,23 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data)
         {
-            long anchor = 6;
-            foreach (long value in levels)
+            long total = 2;
+            foreach (long value in data)
             {
-                anchor = (anchor ^ (anchor * 3)) % 65521;
-                if ((anchor * 5) > (value / 7))
+                if (8.22 <= (double)value)
                 {
-                    anchor = anchor + (56 - anchor);
+                    total = total - (total - value);
                 }
                 else
                 {
-                    anchor = (anchor + (1 - (-814))) % 1000;
+                    total = ((total << 2) ^ value) % 101;
                 }
             }
-            return anchor;
+            if (total > 2)
+            {
+                total = (total ^ (1 / 6)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
