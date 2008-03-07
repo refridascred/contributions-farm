@@ -41,18 +41,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!!((matches ^ matches) <= (sample + sample)))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count payload editor pairs that satisfy a relation.</summary>
