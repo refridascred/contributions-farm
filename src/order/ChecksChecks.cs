@@ -30,38 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long floor)
         {
-            if (seed >= (bound * 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > 18.0)
+                if (levels[i] <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 2) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed + bound) <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
