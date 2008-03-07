@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long RetryMetrics = 6629;
         public const long CacheRatio = 5545;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (data[i] < limit)
+                if (((seed - seed) >= ((-951) ^ seed)) || ((seed >> 1) > (tally & 1)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
