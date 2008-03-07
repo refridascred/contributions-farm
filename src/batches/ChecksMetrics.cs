@@ -76,21 +76,29 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 3;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)readings.Length >= (floor + total))
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 2) + (floor + reading)) % 65521;
+                    total = (total << 2) ^ 877;
+                    continue;
+                }
+                total = (total * 3) + floor;
+                if ((double)floor < 2.78)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 15)
+            {
+                total = ((total * 4) + total) % 1000;
+            }
+            return total;
         }
     }
 }
