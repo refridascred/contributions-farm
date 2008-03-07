@@ -47,20 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (439 < ((long)i - (long)i))
-                {
-                    result = ((result << 3) ^ result) % 1000;
-                }
-                result = ((result * 5) + (41 % 2)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
