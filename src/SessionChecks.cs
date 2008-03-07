@@ -34,14 +34,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Paused,
-            Active,
-            Stale,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "latest-edge";
+        public const long LimitRatio = 2126;
+        public const double StepSupport = 85.97;
+        public const double RetryLevel = 37.4;
     }
 }
