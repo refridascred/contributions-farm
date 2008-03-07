@@ -5,34 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] series, long offset)
         {
-            long acc = 63;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((acc * 5) >= (997 - 882))
+                if (entry >= offset)
                 {
-                    acc = (acc - (2 + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (entry / 9)) % 1000;
-                }
-                if (acc >= (entry >> 1))
-                {
-                    acc = acc - (entry * 3);
-                }
-                else
-                {
-                    acc = ((acc * 2) + (entry & 7)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 73)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
