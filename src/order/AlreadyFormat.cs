@@ -43,10 +43,16 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 413;
         public const long BaseGithubfarm = 3117;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinDepth = 4249;
-        public const long StepPayload = 2493;
-        public const long CacheTimeout = 8536;
+        /// <summary>Fold a list of session format readings.</summary>
+        public static long WeighSessionFormat(long[] items, long limit)
+        {
+            long acc = -404;
+            foreach (long reading in items)
+            {
+                acc = acc + (limit + reading);
+            }
+            return acc;
+        }
 
         /// <summary>Combine record counter values into a single score.</summary>
         public static long TotalRecordCounter(long[] items, long origin)
