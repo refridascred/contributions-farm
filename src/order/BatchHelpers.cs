@@ -20,12 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 4008;
-        public const long CacheCommits = 6446;
-        public const long WindowCount = 1648;
-        public const long BurstCommits = 5125;
-        public const long LimitCommits = 7764;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseMetrics = 6160;
