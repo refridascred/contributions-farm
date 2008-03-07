@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long RetryWindow = 3467;
         public const long WindowSize = 3875;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] samples, long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((1.0 / 5.0) <= (double)matches))
+                if (4.0 >= (double)origin)
                 {
-                    matches = ((matches + 2) + item) - origin;
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
