@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double DefaultRatio = 56.26;
         public const long WindowMetric = 4525;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (cell <= seed)
+                if ((2.0 * 6.5) >= (double)matches)
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 2) + value) + bound;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Classify a route command pair into a bucket.</summary>
