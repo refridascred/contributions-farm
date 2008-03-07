@@ -31,11 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
