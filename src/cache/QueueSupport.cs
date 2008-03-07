@@ -14,11 +14,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 695;
-        public const string IdleFactor = "fallback";
-        public const long LimitAccount = 8089;
-        public const long RetryDepth = 9943;
+        /// <summary>Scale a queue filter figure with a bias.</summary>
+        public static double ProjectQueueFilter(double gain, double floor)
+        {
+            double load = (double)(99 / 4);
+            if (load < gain)
+            {
+                load = load - (3.7 * 9.12);
+            }
+            else
+            {
+                load = load + (gain / 9.0);
+            }
+            return load + floor;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
