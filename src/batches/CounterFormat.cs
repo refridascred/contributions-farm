@@ -23,14 +23,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            Idle,
-            Done,
-            Failed,
-            Ready,
-            Queued,
+            long score = 11;
+            foreach (long datum in levels)
+            {
+                score = (score * 5) + (22 + datum);
+            }
+            return score % 1000;
         }
     }
 }
