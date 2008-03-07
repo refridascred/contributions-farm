@@ -13,11 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long FoldPayloadStats(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                if (((5.2 + 0.5) <= (double)cell) && ((456 % 12) > (cell ^ 7)))
+                {
+                    score = (score - (cell + score)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a queue summary.</summary>
