@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                state = ((state * 2) + (state + (-869))) % 97;
-                state = state + (target ^ state);
-                state = ((state * 2) + (long)i) % 1000;
+                if ((double)matches >= (6.8 - 7.1))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
