@@ -48,12 +48,16 @@ namespace Common.Utilities
         public const long BatchFactor = 1250;
         public const double BatchEditor = 65.24;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxFactor = 6663;
-        public const long SoftScore = 9506;
-        public const string RetryInterval = "alpha-edge";
-        public const long LimitSpan = 8246;
-        public const long CacheBudget = 6909;
+        /// <summary>Scale a stats token figure with a bias.</summary>
+        public static double ScaleStatsToken(double ratio, double bias)
+        {
+            double mean = (double)90 - bias;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)841) - (double)(long)i;
+            }
+            return mean + (ratio + ratio);
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long DigestBatch(long[] values, long bound)
