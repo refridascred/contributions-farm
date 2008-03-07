@@ -27,11 +27,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long seed)
         {
-            double drift = bias;
-            return (drift + (double)7) + scale;
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc ^ (acc << 1)) % 101) + (long)i2;
+                    acc = (acc - ((-122) / 6)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
