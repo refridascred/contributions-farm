@@ -40,38 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long floor, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            if (((-2) + target) > (floor - 73))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4 - target) <= (target + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((15.0 / 5.0) == (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((-8) + floor) > 62)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
