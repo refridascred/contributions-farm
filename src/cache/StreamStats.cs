@@ -75,12 +75,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            Done,
-            Stale,
-            Synced,
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
