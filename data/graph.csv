@@ -1,6 +1,7 @@
-id,rank,owner,label
-1,staging,0.71,fallback
-2,50,eu-west,303
-3,603,349,68
-4,open,79.33,blue
-5,349,open,3.21
+id,count,token,ratio
+1,377,42.06,256
+2,edge,1.19,991
+3,16.07,40.23,fallback
+4,622,88.56,703
+5,stable,621,641
+6,stable,54.51,staging
