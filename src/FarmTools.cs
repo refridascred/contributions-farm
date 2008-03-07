@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric stream reading by value.</summary>
-        public static long SeekMetricStreamIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
