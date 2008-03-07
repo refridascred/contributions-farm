@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mix = (mix + (long)i) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((datum + datum) >= tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
