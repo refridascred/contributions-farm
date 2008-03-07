@@ -20,22 +20,21 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long mix = 70;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)mix > 1.5) && (reading < (mix % 7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix * 4) + offset) % 4096;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 1)
-            {
-                mix = mix - (39 % 3);
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
