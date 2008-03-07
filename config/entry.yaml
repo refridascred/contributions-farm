@@ -1,6 +1,7 @@
 # entry settings
-notes_interval: 100
-audit: fallback
-stream_retries: stable
-readonly: latest
-enabled: true
+enabled:
+  - 48
+  - 219
+  - 327
+report_window: staging
+dry_run: 60
