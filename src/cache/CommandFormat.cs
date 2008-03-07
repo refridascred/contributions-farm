@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the checks farm entries that pass the check.</summary>
+        public static long AuditChecksFarmMatches(long[] samples, long target)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen + target) == (0 & 63))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the notes status values.</summary>
