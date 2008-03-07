@@ -29,15 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] readings, long target)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long item in readings)
             {
-                if ((tally << 2) <= (long)series.Length)
+                if ((tally - item) > target)
                 {
-                    tally = (tally + 2) ^ item;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
