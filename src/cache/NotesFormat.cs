@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            Queued,
-            Stale,
-            Draft,
-            Idle,
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                total = total - (32 >> 4);
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Accumulate entry samples.</summary>
