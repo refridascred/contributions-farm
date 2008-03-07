@@ -20,32 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long bound, long target)
-        {
-            if ((target + target) > (8 % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + bound) > (bound & 63)) || ((bound / 9) != (394 ^ bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 7067;
+        public const long MinEntry = 7380;
+        public const long BaseRatio = 3292;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long bound, long floor)
