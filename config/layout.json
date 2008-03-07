@@ -1,7 +1,22 @@
 {
-  "format_timeout": "green",
-  "poll_timeout_ms": 79.67,
-  "burst_depth": 3,
-  "sync_delay_pct": ["open", "stable", "primary", "fallback"],
-  "strict": false
+  "batch_delay_count": {
+    "format_retries": "primary",
+    "enabled": 1403,
+    "hard_retries_count": 89,
+    "cache_ttl_ms": "edge",
+    "flush_ttl_count": "stable"
+  },
+  "compress": "strict",
+  "order_limit": {
+    "readonly": "strict",
+    "hard_interval_count": 9145,
+    "idle_limit_s": 22.55
+  },
+  "retry_delay_pct": true,
+  "idle_capacity_s": {
+    "soft_ttl": "stable",
+    "default_timeout_s": 8.58,
+    "channel_depth": "open"
+  },
+  "default_window": "cached"
 }
