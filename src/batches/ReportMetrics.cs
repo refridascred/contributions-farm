@@ -18,32 +18,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long step, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long diff = step ^ offset;
-            if (offset <= (diff - offset))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 2) > (diff + 62))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff < (163 * 4)) || ((step / 2) >= (offset + 3)))
+                    if ((levels[i] ^ levels[j]) != 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
