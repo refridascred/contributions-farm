@@ -62,14 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Dropped,
-            Closed,
-            Retry,
-            Stale,
-            Paused,
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
     }
 }
