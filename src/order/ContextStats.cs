@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                acc = (acc * 4) + (offset - acc);
-                acc = ((acc * 2) + (long)i) % 101;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (80 > datum)
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Validate command session readings against a bound.</summary>
