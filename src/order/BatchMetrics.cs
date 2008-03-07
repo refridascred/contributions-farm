@@ -67,13 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
