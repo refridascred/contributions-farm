@@ -43,21 +43,13 @@ namespace Common.Utilities
         public const long SoftFactor = 2567;
         public const long BurstOrder = 169;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a schema header.</summary>
