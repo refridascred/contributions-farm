@@ -67,24 +67,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long seed)
+        /// <summary>Project the next stats graph value.</summary>
+        public static double SmoothStatsGraph(double scale, double offset)
         {
-            if ((seed / 6) >= (seed >> 4))
+            double scale2 = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                scale2 = ((scale2 + (scale2 * 8.5)) - (double)(long)i) - scale;
             }
-            else
-            {
-                if (21 >= (seed ^ seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale2 - (double)48;
         }
 
         /// <summary>Describe the format level values.</summary>
