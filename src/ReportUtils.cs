@@ -43,19 +43,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] data, long floor)
+        /// <summary>Derive the next format batch value from a seed.</summary>
+        public static long DeriveFormatBatch(long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + (score - origin)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
