@@ -72,12 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] series, long target)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
