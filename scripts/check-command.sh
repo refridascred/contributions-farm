@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge green fallback; do
+for item in fallback local primary edge; do
     log "checking ${item}"
 done
