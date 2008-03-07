@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] levels)
         {
-            long total = 58;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((total ^ total) > (total ^ value))
+                if ((((reading - (-17)) == (reading & 1)) || ((double)34 == (double)hits)) && ((double)hits >= (8.0 / 2.0)))
                 {
-                    total = (total + (total - total)) % 1000;
-                }
-                if ((value / 9) > (value - value))
-                {
-                    total = ((total * 3) + (value & 3)) % 1000;
+                    hits = hits + 1;
                 }
             }
-            if (total > 228)
-            {
-                total = total ^ (total + total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of account channel entries.</summary>
