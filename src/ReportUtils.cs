@@ -13,13 +13,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            Failed,
-            Stale,
-            New,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc << 3) ^ (acc ^ acc);
+                acc = ((acc << 2) ^ (bound % 16)) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
