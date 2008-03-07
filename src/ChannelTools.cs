@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] samples, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((tally - tally) == (tally - 8))
+                if (((count + count) >= (count + item)) || (((long)items.Length >> 4) >= (count + 10)))
                 {
-                    tally = ((tally + 2) ^ reading) + limit;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
