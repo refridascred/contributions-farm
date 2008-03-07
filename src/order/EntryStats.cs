@@ -22,17 +22,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] levels, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 942;
+            foreach (long value in levels)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + value) + floor;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
