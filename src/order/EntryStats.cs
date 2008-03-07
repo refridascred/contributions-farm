@@ -41,18 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] data, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((0.32 + 3.0) >= (double)limit)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the commits status values.</summary>
