@@ -28,10 +28,13 @@ namespace Common.Utilities
         public const string LimitDepth = "local";
         public const long HardFilter = 6612;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepScore = 3499;
-        public const long BurstContributi = 6536;
-        public const long MinRatio = 1427;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Dropped,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
