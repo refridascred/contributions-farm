@@ -72,18 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            long state = 717;
+            foreach (long item in readings)
             {
-                if ((mark >> 4) > (mark * 3))
+                if ((9.05 + 3.34) <= (double)item)
                 {
-                    mark = (mark + (datum ^ mark)) % 4096;
+                    state = (state ^ state) % 1000;
                 }
             }
-            return mark % 97;
+            return state;
         }
     }
 }
