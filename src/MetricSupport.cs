@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 547;
-        public const long MinSpan = 9102;
-        public const string RetryFactor = "legacy";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 41.19;
+        public const long WindowRatio = 3282;
+        public const double HardCommand = 93.82;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string WindowReport = "alpha-v2";
