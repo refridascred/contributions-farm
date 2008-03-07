@@ -60,11 +60,21 @@ namespace Common.Utilities
         public const long BurstCommand = 4191;
         public const double CacheCount = 27.06;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
