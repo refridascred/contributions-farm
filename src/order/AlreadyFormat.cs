@@ -26,12 +26,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 55.02;
-        public const long HardCluster = 6911;
-        public const long DefaultCluster = 9938;
-        public const double StepCluster = 40.32;
-        public const string CacheCluster = "fallback-1";
+        /// <summary>Scale a command account figure with a bias.</summary>
+        public static double ProjectCommandAccount(double gain, double span)
+        {
+            double rate = (9.7 * 3.7) - (gain + gain);
+            if (rate > 1.73)
+            {
+                rate = (rate + (5.0 * 9.6)) - span;
+            }
+            else
+            {
+                rate = rate + (1.0 + rate);
+            }
+            return rate - rate;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] items)
