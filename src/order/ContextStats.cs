@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            long result = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(84 >= entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result * 2) + (result >> 4)) - target;
-                }
-                else
-                {
-                    result = ((result * 3) + (entry * 3)) % 97;
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
