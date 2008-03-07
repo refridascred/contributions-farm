@@ -1,6 +1,11 @@
 {
-  "schema_ratio": "primary",
-  "compress": 65.47,
-  "idle_depth_ms": 1456,
-  "sync_interval_count": 74.5
+  "warm_ratio": {
+    "enabled": 56,
+    "context_window": "primary",
+    "batch_threshold_ms": false
+  },
+  "max_size_count": 74.11,
+  "flush_depth_ms": ["fallback", "cached", "legacy", "local"],
+  "persist": 25.44,
+  "window_limit": 88.32
 }
