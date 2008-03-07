@@ -22,10 +22,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9336;
-        public const double StepBudget = 33.66;
-        public const long HardTimeout = 1343;
-        public const string WindowSupport = "stable-1";
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
