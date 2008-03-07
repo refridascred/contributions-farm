@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Count the window stream entries that pass the check.</summary>
+        public static long AuditWindowStreamMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.22 / 6.0) > (double)hits)
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
