@@ -28,18 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) == (cell >> 4))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCount = "alpha";
+        public const double StepCommand = 74.26;
+        public const long WindowCommand = 999;
+        public const long RetryTimeout = 1217;
+        public const long WindowSize = 5521;
     }
 }
