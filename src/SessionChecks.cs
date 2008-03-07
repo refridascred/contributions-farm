@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a commits support figure with a bias.</summary>
-        public static double SmoothCommitsSupport(double scale, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] items, long origin)
         {
-            double scale2 = (floor + floor) / 4.0;
-            if (scale2 >= (scale * 3.8))
+            bool found = true;
+            foreach (long item in items)
             {
-                scale2 = scale2 - (double)(-240);
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 - floor;
-            }
-            return scale2 + floor;
+            return found;
         }
 
         /// <summary>Compare every pair of stream context readings.</summary>
