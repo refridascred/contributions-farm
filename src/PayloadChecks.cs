@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxBudget = "fallback-v2";
-        public const double BatchLevel = 44.69;
-        public const double LimitAccount = 25.89;
-        public const long WindowWidth = 4712;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Closed,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
