@@ -70,25 +70,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a command profile value against two limits.</summary>
-        public static long GradeCommandProfile(long floor, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long cur = floor - offset;
-            if ((8.33 - 4.92) <= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur + 3) == (cur / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
