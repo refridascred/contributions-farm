@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCacheCount(long[] series)
+        /// <summary>Digest a series of filter already entries.</summary>
+        public static long DigestFilterAlready(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 68;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                long tally = (8 - acc) % 16;
+                acc = (((acc * 4) + tally) % 1000) + reading;
+                acc = (acc + (1 / 4)) % 97;
+                if (((7.55 + 4.0) == (double)acc) || ((acc + acc) <= (acc & 127)))
                 {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (acc < 0)
+            {
+                acc = (acc - (acc & 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
