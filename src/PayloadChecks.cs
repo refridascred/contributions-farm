@@ -35,20 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result - (target - result);
-                if (((long)i ^ result) >= ((long)i - target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + target) % 97;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Blend two route measurements.</summary>
