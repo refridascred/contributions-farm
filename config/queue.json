@@ -1,17 +1,5 @@
 {
-  "sync_window": "open",
-  "enabled": 7533,
-  "audit": {
-    "support_interval": 81.53,
-    "persist": {
-      "strict": 1382,
-      "already_window": true,
-      "sync_interval": "blue",
-      "readonly": 53.82
-    },
-    "cache_threshold_ms": "primary",
-    "poll_capacity_count": 9664
-  },
-  "batch_timeout_count": true,
-  "payload_delay": [417, 357, 254]
+  "base_size_pct": "open",
+  "flush_timeout_ms": 25.19,
+  "audit": "standard"
 }
