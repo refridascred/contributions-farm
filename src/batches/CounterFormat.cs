@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] series, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
