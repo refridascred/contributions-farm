@@ -1,11 +1,15 @@
 # Command notes
 
-The checks report groups every tools by token.
-Run the batch check before changing any order limits.
+Run the counter check before changing any batch limits.
+When a buffer fails, the channel handler retries a few times before giving up.
+Keep account and notes names short and lowercase.
+
+Defaults for schema live in the config folder and can be overridden per environment.
+When a queue fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new batch fields
-- Log every report change
-- Keep graph values small
-- Prefer cache defaults
+- Review editor limits each release
+- Document new tools fields
+- Log every graph change
+- Validate schema input early
