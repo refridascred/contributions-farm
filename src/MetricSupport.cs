@@ -29,12 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            Queued,
-            Stale,
-            Pending,
+            double ratio = (double)62 / 6.0;
+            if (ratio < 13.0)
+            {
+                ratio = (ratio + (span * 1.84)) - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
         }
     }
 }
