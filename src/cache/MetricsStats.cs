@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] data)
+        /// <summary>Digest a series of stream already entries.</summary>
+        public static long ScoreStreamAlready(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = 76;
+            foreach (long value in series)
             {
-                if ((tally >> 4) < ((-9) - reading))
+                if (score < (limit - limit))
                 {
-                    tally = tally + 3;
+                    score = (score * 2) + (value + 86);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Adjust a format reading.</summary>
