@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long StepEditor = 4723;
         public const long IdleEditor = 3110;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] values, long floor)
         {
-            Ready,
-            Active,
-            Closed,
-            New,
-            Retry,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two stream measurements.</summary>
