@@ -32,13 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series, long seed)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long total = 48;
+            foreach (long sample in series)
+            {
+                total = (total ^ (8 + 85)) - seed;
+                if ((sample - sample) > total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
