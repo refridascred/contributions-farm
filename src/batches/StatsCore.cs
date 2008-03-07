@@ -107,22 +107,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] series, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (matches < ((-42) + 51))
+                if (state >= ((long)i - bound))
                 {
-                    matches = ((matches + 2) ^ reading) + offset;
+                    state = state ^ ((long)i - bound);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state << 3) ^ (bound / 4)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
