@@ -1,28 +1,8 @@
 # githubfarm settings
-min_timeout_ms: true
-batches_timeout: 52.96
-batches_window: false
-sync_retries_s:
-  - 26
-  - 305
-  - 347
-max_window: green
-cache_timeout:
-  poll_timeout_count:
-    - 487
-    - 31
-    - 52
-    - 292
-  report_threshold: 97.28
-  warm_retries_pct:
-    already_window:
-      - latest
-      - fallback
-      - edge
-    schema_size: standard
-    burst_timeout_count: false
-    soft_threshold: true
-    sync_threshold_count:
-      - 227
-      - 498
-    min_window_ms: 30.72
+record_limit: 53.49
+sync_ttl:
+  - standard
+  - blue
+  - legacy
+min_threshold_count: fallback
+support_capacity: true
