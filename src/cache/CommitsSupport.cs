@@ -39,10 +39,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstDepth = 3.99;
-        public const double WindowScore = 67.46;
-        public const long LimitInterval = 4842;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] data, long seed)
