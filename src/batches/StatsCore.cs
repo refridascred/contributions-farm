@@ -38,38 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a counter contributi pair into a bucket.</summary>
-        public static long BucketCounterContributi(long bound, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings, long step)
         {
-            if ((bound >> 5) < (bound * 2))
+            long acc = 393;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound >= limit)
+                if ((step << 3) < cell)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (58 > (limit ^ 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= (limit >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = acc ^ step;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a editor summary.</summary>
