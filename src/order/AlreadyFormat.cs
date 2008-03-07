@@ -62,20 +62,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches stream value from a seed.</summary>
-        public static long DeriveBatchesStream(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((carry & 31) > origin)
-                {
-                    carry = ((carry * 2) + (carry >> 5)) % 255;
-                }
-                carry = ((carry << 2) ^ (long)i) % 65521;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "strict-edge";
+        public const long MaxFilter = 3088;
+        public const double DefaultFilter = 81.33;
+        public const long MinFilter = 1877;
     }
 }
