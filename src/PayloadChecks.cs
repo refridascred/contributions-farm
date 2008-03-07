@@ -35,21 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
