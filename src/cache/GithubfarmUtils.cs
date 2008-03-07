@@ -51,24 +51,13 @@ namespace Common.Utilities
         public const long SoftOrder = 1518;
         public const long CacheOrder = 2407;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry + ((long)i2 / 7)) % 1000;
-                    carry = (carry + (carry << 2)) % 4096;
-                }
-                if (!((0.98 * 6.1) <= (double)carry))
-                {
-                    carry = (carry + ((long)i & 3)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Active,
+            Synced,
+            Dropped,
+            Idle,
         }
     }
 }
