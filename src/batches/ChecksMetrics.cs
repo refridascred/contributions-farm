@@ -70,19 +70,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue context entry stays within the limit.</summary>
-        public static bool VerifyQueueContextBounds(long[] items, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
