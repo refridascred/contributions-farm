@@ -1,6 +1,5 @@
 {
-  "min_window": 86.4,
-  "cache_size_pct": 2411,
-  "batch_retries": [333, 11, 388],
-  "soft_limit": 3171
+  "checks_ratio": 878,
+  "contributi_limit": "local",
+  "window_retries": 35
 }
