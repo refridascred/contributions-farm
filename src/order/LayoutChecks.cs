@@ -44,12 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Locate a stats metric reading by value.</summary>
+        public static long FindStatsMetricIndex(long[] levels, long bound)
         {
-            Stale,
-            Ready,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
