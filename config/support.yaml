@@ -1,11 +1,16 @@
 # support settings
-enabled:
-  retry_depth_pct: true
-  audit: local
-  batch_threshold: 748
-  warm_delay:
-    - 231
-    - 85
-  buffer_size: blue
-hard_retries_s: primary
-flush_window_s: cached
+poll_size_count:
+  farm_threshold: 1024
+  persist: edge
+  warm_interval:
+    - 286
+    - 417
+  stats_interval: green
+  max_capacity: edge
+persist: 87.88
+editor_threshold: false
+hard_window_s:
+  - green
+  - cached
+soft_threshold_s: 44
+strict: latest
