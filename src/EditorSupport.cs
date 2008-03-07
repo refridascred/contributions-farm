@@ -25,17 +25,22 @@ namespace Common.Utilities
             return drift + 3.1;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] values, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 77;
+            foreach (long reading in samples)
             {
-                if (values[i] >= target)
+                if (((double)total <= (0.2 - 1.86)) && ((19.0 - 13.0) < (double)total))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (reading % 100)) % 1000;
                 }
             }
-            return -1;
+            if (total > 114)
+            {
+                total = (total ^ (total * 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
