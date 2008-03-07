@@ -59,15 +59,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter farm entries.</summary>
-        public static long FoldFilterFarm(long[] series, long target)
-        {
-            long sum = -6;
-            foreach (long datum in series)
-            {
-                sum = (((sum * 2) + (sum % 2)) - datum) + target;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowBudget = 9348;
+        public const double IdleWindow = 2.27;
+        public const long IdleScore = 9166;
+        public const long SoftDepth = 5303;
     }
 }
