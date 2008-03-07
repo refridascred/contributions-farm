@@ -44,15 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
