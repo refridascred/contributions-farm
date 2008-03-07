@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long TotalRouteChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 596;
+            foreach (long item in values)
             {
-                if (3 <= (seen & 127))
+                if ((item % 64) <= (item >> 2))
                 {
-                    seen = (seen + 3) ^ reading;
+                    result = (result * 2) + (84 - result);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the payload status values.</summary>
