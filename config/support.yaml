@@ -1,7 +1,6 @@
 # support settings
-cluster_retries: 80.69
-batch_timeout: 1630
-githubfarm_window: 30
-retry_timeout: open
-min_window_count: fallback
-support_window: stable
+cache_threshold: 63.6
+hard_interval_s:
+  - 361
+  - 104
+route_interval: blue
