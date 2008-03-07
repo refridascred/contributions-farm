@@ -54,10 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 6502;
-        public const long BaseBudget = 7042;
-        public const string HardWidth = "legacy";
-        public const long RetryAccount = 5874;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
