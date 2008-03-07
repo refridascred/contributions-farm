@@ -43,10 +43,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 7.55;
-        public const string IdleSpan = "latest-v2";
-        public const long MinLevel = 9292;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Closed,
+            Draft,
+            Retry,
+            Done,
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long limit)
