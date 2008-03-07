@@ -34,19 +34,16 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-1";
         public const long BurstWidth = 8760;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long seed)
+        /// <summary>Iterate the counter cache series from a seed.</summary>
+        public static long IterateCounterCache(long bound)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ (anchor + anchor);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
     }
 }
