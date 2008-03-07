@@ -31,18 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)entry == (6.89 + 9.56)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9336;
+        public const double StepBudget = 33.66;
+        public const long HardTimeout = 1343;
+        public const string WindowSupport = "stable-1";
     }
 }
