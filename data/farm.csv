@@ -1,7 +1,7 @@
-id,label,score,owner
-1,290,blue,656
-2,staging,987,81.92
-3,open,cached,strict
-4,455,37.91,38
-5,39.25,54,60.64
-6,stable,79.87,57.8
+id,weight,token,region,ratio
+1,468,edge,27.38,62.62
+2,581,660,local,27.98
+3,primary,70,blue,401
+4,strict,562,404,72.47
+5,eu-west,open,91.42,896
+6,primary,907,20.47,69.03
