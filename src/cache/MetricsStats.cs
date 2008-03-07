@@ -58,18 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long TallyStreamFarmHits(long[] values, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((double)step > (4.61 - 3.35))
+                if (cell > seed)
                 {
-                    matches = (matches + 3) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
