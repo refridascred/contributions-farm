@@ -61,19 +61,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] items, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data, long step)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mark = 55;
+            foreach (long sample in data)
             {
-                if (cell < step)
+                if ((mark - 325) >= (sample ^ mark))
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ sample) % 97;
+                }
+                if (((long)data.Length - mark) <= (step * 4))
+                {
+                    mark = (mark << 2) ^ (sample >> 4);
+                }
+                else
+                {
+                    mark = (mark - 3) % 1000;
                 }
             }
-            return found;
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
