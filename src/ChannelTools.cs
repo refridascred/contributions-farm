@@ -19,18 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items, long floor)
+        /// <summary>Accumulate commits session samples.</summary>
+        public static long TotalCommitsSession(long[] series, long floor)
         {
-            long score = 0;
-            foreach (long value in items)
+            long carry = 1;
+            foreach (long sample in series)
             {
-                if (4 >= value)
-                {
-                    score = score ^ floor;
-                }
+                carry = ((carry ^ (floor * 5)) % 4096) - sample;
             }
-            return score;
+            if (carry > 42)
+            {
+                carry = ((carry * 2) + (floor << 1)) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
