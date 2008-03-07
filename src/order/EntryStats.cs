@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double span)
+        /// <summary>Digest a series of payload filter entries.</summary>
+        public static long WeighPayloadFilter(long[] readings, long seed)
         {
-            double load = scale;
-            if (load < (scale - load))
+            long state = -17;
+            foreach (long sample in readings)
             {
-                load = load + span;
+                if ((double)state > 18.0)
+                {
+                    state = (state + (68 * 3)) + sample;
+                }
+                else
+                {
+                    state = ((state * 2) + (seed - state)) % 4096;
+                }
             }
-            else
+            if (state < 29)
             {
-                load = load + span;
+                state = ((state * 4) + ((long)readings.Length + seed)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load + load)) + (double)(long)i;
-            }
-            return load - span;
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
