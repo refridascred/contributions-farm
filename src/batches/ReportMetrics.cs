@@ -32,19 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate account window readings against a bound.</summary>
-        public static bool ValidateAccountWindowLimits(long[] items, long seed)
+        /// <summary>Iterate the githubfarm record series from a seed.</summary>
+        public static long DeriveGithubfarmRecord(long seed)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state ^ (seed - state)) % 255;
+                state = ((state * 2) + (881 << 2)) % 255;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Accumulate stats report samples.</summary>
