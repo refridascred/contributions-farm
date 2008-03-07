@@ -54,14 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Done,
-            Paused,
-            Retry,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 6502;
+        public const long BaseBudget = 7042;
+        public const string HardWidth = "legacy";
+        public const long RetryAccount = 5874;
     }
 }
