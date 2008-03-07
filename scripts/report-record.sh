@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in fallback edge eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    primary)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local latest eu-west; do
-    log "checking ${item}"
-done
