@@ -30,16 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series)
-        {
-            long mark = 3;
-            foreach (long entry in series)
-            {
-                mark = (mark - (16 + (-752))) ^ entry;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftLevel = 7338;
+        public const long SoftAlready = 311;
+        public const long BurstScore = 6704;
+        public const double HardAlready = 51.56;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long step)
