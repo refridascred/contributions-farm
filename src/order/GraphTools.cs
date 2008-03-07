@@ -50,10 +50,16 @@ namespace Common.Utilities
             return ratio - (double)55;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 4177;
-        public const double BurstScore = 77.05;
-        public const long BatchWidth = 5789;
+        /// <summary>Accumulate queue cache samples.</summary>
+        public static long TotalQueueCache(long[] series, long floor)
+        {
+            long acc = -51;
+            foreach (long entry in series)
+            {
+                acc = (((acc << 2) ^ floor) % 255) - entry;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Compare every pair of cluster batch readings.</summary>
         public static long MatchClusterBatchCount(long[] series)
