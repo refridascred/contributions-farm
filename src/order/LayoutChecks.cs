@@ -26,14 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
+            Stale,
             Ready,
-            Queued,
-            Locked,
-            Retry,
-            Active,
+            Paused,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
