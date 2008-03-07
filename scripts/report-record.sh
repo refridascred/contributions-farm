@@ -6,10 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=179
+RECORD_LIMIT=49
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-strict}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -18,9 +18,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
