@@ -19,32 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items)
-        {
-            long acc = 1;
-            foreach (long cell in items)
-            {
-                acc = (acc - (cell >> 1)) % 1000;
-                for (int i = 0; i < 8; i++)
-                {
-                    acc = (((acc << 2) ^ (cell / 3)) % 4096) ^ (long)i;
-                }
-                if ((acc / 4) != (cell + cell))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            if (acc > 745)
-            {
-                acc = (acc ^ (acc << 3)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 5901;
+        public const long BaseGithubfarm = 4866;
+        public const long BatchGithubfarm = 4861;
+        public const string StepInterval = "staging";
+        public const string RetryFactor = "fallback-edge";
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
