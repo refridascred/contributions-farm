@@ -1,10 +1,13 @@
 # githubfarm settings
-min_ttl_pct: 1024
-graph_timeout: false
-enabled: 0.47
-stream_capacity: 1024
-soft_interval:
-  - latest
-  - standard
-  - strict
-  - green
+default_depth_count: 1.42
+filter_retries: staging
+soft_ttl_ms:
+  persist: 100
+  verbose: local
+  batch_limit_pct: true
+warm_depth_s:
+  tools_delay: fallback
+  audit: 250
+  checks_retries: cached
+  dry_run: 99
+  schema_window: false
