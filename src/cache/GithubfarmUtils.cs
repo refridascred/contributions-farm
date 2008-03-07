@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "local-v2";
-        public const long LimitTimeout = 823;
-        public const double BatchSize = 20.22;
-        public const long WindowStats = 4623;
-        public const double MinStats = 10.85;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] series, long floor)
