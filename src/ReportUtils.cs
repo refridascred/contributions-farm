@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long bound)
+        /// <summary>Project the next editor report value.</summary>
+        public static double ProjectEditorReport(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)(909 / 2);
+            if (load <= (4.6 * 6.2))
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                load = load - span;
             }
-            return -1;
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + gain) - (double)(long)i;
+            }
+            return load + (span + load);
         }
 
         /// <summary>Describe the command phase values.</summary>
