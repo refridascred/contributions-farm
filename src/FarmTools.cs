@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long target, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = target - floor;
+            if (((13.0 * 8.73) != (double)floor) && ((target * 4) < target))
             {
-                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((target + target) < (target << 2)) && (target <= ((-81) << 1)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((cur + cur) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target + cur) >= (target << 3)) || ((target << 1) > (target / 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
