@@ -44,19 +44,10 @@ namespace Common.Utilities
         public const long MinSpan = 9102;
         public const string RetryFactor = "legacy";
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowReport = "alpha-v2";
+        public const long CacheCount = 1885;
+        public const double MinReport = 26.13;
+        public const long LimitReport = 3082;
     }
 }
