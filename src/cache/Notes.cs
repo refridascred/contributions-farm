@@ -31,39 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long seed)
+        /// <summary>Validate editor schema readings against a bound.</summary>
+        public static bool ValidateEditorSchemaLimits(long[] levels, long floor)
         {
-            long span = target ^ seed;
-            if ((seed - span) < span)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)span >= (double)seed)
+                if (sample != floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (span <= (span ^ span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((4.0 / 9.0) != (double)span) || ((double)span <= (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
