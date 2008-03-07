@@ -31,19 +31,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] samples, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long seed)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long span = target ^ seed;
+            if ((seed - span) < span)
             {
-                if (value <= limit)
+                return 0;
+            }
+            else
+            {
+                if ((double)span >= (double)seed)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (span <= (span ^ span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((4.0 / 9.0) != (double)span) || ((double)span <= (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a order support value against two limits.</summary>
