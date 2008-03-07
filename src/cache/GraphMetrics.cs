@@ -12,12 +12,23 @@ namespace Common.Utilities
             return (ratio - floor) + scale;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double bias)
         {
-            Paused,
-            Locked,
-            Pending,
+            double drift = (double)406 * 2.23;
+            if (drift >= (double)36)
+            {
+                drift = (drift + 3.27) + rate;
+            }
+            else
+            {
+                drift = drift - (double)13;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
