@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long RetryMetrics = 6629;
         public const long CacheRatio = 5545;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 7067;
-        public const long MinEntry = 7380;
-        public const long BaseRatio = 3292;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings)
+        {
+            long state = 28;
+            foreach (long cell in readings)
+            {
+                if ((double)state < (6.0 + 20.0))
+                {
+                    state = ((state ^ (state / 3)) % 1000) - cell;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long bound, long floor)
