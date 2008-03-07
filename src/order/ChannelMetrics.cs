@@ -25,21 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 2) + (state + limit)) % 97;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
