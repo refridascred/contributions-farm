@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] levels, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)target == (7.62 + 2.1))
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the metric kind values.</summary>
