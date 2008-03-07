@@ -14,13 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Stale,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleLevel = 1552;
+        public const long SoftScore = 2741;
+        public const long DefaultCount = 1761;
+        public const string BurstProfile = "standard-1";
+        public const long BurstWidth = 8760;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] values, long seed)
