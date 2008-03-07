@@ -89,31 +89,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a account queue pair into a bucket.</summary>
-        public static long RankAccountQueue(long bound, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if (limit >= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= (9.9 - 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound > (-262))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
