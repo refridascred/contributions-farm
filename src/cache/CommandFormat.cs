@@ -38,18 +38,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count > 97)
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 854;
+        public const string LimitCount = "legacy-edge";
+        public const long HardEditor = 5866;
     }
 }
