@@ -48,17 +48,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
