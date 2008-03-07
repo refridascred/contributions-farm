@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < floor)
+                if (series[i] <= origin)
                 {
                     return (long)i;
                 }
