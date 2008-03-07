@@ -67,13 +67,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long seed)
         {
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            if ((seed / 6) >= (seed >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if (21 >= (seed ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the format level values.</summary>
