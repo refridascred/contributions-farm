@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Failed,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a tools record.</summary>
