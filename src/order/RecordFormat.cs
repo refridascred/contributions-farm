@@ -35,17 +35,21 @@ namespace Common.Utilities
         public const double WindowWidth = 21.29;
         public const double SoftSchema = 70.2;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
