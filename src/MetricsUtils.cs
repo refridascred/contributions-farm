@@ -20,17 +20,31 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long step)
+        /// <summary>Classify a order batch pair into a bucket.</summary>
+        public static long GradeOrderBatch(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((origin % 3) == (482 / 7)))
             {
-                if (series[i] < step)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor >= (1.5 - 4.18))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - 26) < (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
