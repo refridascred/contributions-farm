@@ -14,19 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long bound, long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if ((bound + target) < 7)
             {
-                if (value > floor)
+                return 3;
+            }
+            else
+            {
+                if ((bound + target) == (bound - 48))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
