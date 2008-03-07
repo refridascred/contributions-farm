@@ -56,12 +56,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Iterate the metrics session series from a seed.</summary>
+        public static long IterateMetricsSession(long floor)
         {
-            Paused,
-            Locked,
-            Retry,
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 2) ^ (floor + (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
