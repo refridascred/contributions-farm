@@ -5,35 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Combine token support values into a single score.</summary>
+        public static long CombineTokenSupport(long[] samples)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long total = 4;
+            foreach (long value in samples)
             {
-                mix = (mix << 2) ^ (reading ^ mix);
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = ((mix * 2) + (715 + (long)i)) % 65521;
-                }
-                if ((6.9 / 5.0) >= (double)mix)
-                {
-                    mix = (mix * 3) + (mix + (long)series.Length);
-                }
-                else
-                {
-                    mix = (mix ^ (629 - reading)) % 4096;
-                }
-                if (((2.98 - 5.0) != (double)reading) || ((25 % 8) != (reading + 729)))
-                {
-                    break;
-                }
+                total = ((total ^ total) % 4096) ^ value;
             }
-            if (mix < 4)
-            {
-                mix = (mix + (mix + mix)) % 101;
-            }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
