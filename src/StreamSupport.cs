@@ -14,20 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] levels, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (((long)i >> 5) <= (seed + anchor))
+                if (item > target)
                 {
-                    anchor = (anchor + seed) % 255;
+                    flag = false;
                     break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
