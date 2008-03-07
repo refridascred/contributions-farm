@@ -24,25 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long gap = origin + target;
-            if ((0 ^ 46) != (gap % 97))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (1 <= (target - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
