@@ -51,9 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 16.41;
-        public const double DefaultFactor = 29.97;
-        public const double CacheScore = 62.61;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
