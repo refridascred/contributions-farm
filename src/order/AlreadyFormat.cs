@@ -37,15 +37,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 413;
         public const long BaseGithubfarm = 3117;
 
-        /// <summary>Fold a list of session format readings.</summary>
-        public static long WeighSessionFormat(long[] items, long limit)
+        /// <summary>Validate report format readings against a bound.</summary>
+        public static bool ValidateReportFormatBounds(long[] readings, long origin)
         {
-            long acc = -404;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                acc = acc + (limit + reading);
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
