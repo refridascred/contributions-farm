@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a githubfarm graph pair into a bucket.</summary>
+        public static long BucketGithubfarmGraph(long seed, long offset)
         {
-            Ready,
-            Synced,
-            Stale,
-            Active,
+            if (!((seed + seed) >= (offset & 255)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(0.3 >= (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= (offset + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
