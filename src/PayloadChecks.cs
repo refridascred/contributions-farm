@@ -33,12 +33,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!!((matches + matches) > matches))
+                {
+                    matches = ((matches + 1) + entry) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
