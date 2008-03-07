@@ -44,19 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] series, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            long acc = 1;
-            foreach (long item in series)
+            long sum = 134;
+            foreach (long sample in readings)
             {
-                acc = acc + (bound + item);
-                if ((924 + acc) <= (acc - acc))
+                if ((sum * 2) < (-83))
                 {
-                    break;
+                    sum = sum - (sample & 3);
                 }
             }
-            return acc;
+            if (sum > 971)
+            {
+                sum = ((sum << 2) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
