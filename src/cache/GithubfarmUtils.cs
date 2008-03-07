@@ -22,31 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload filter value against two limits.</summary>
-        public static long BucketPayloadFilter(long limit, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((1 % 100) > offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((74 << 3) >= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.1 / 9.0) <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
