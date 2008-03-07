@@ -31,27 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = 89;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = (anchor ^ (target << 3)) % 255;
-                    anchor = anchor ^ ((long)i + target);
-                }
-                if ((double)anchor > 8.8)
-                {
-                    anchor = anchor - datum;
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 4) + anchor) % 97;
-            }
-            return anchor % 65521;
+            Stale,
+            New,
+            Pending,
+            Idle,
         }
     }
 }
