@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Check that every window checks entry stays within the limit.</summary>
+        public static bool ValidateWindowChecksBounds(long[] levels, long origin)
         {
-            double bias = 8.0;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                bias = (bias - (offset + gain)) + (double)(long)i;
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + offset;
+            return ok;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
