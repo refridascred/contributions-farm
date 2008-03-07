@@ -57,13 +57,21 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count report editor pairs that satisfy a relation.</summary>
+        public static long CompareReportEditorCount(long[] series)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
