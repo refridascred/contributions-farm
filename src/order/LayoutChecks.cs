@@ -24,18 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = 9;
-            foreach (long item in values)
-            {
-                if ((double)5 > (double)(long)values.Length)
-                {
-                    anchor = (anchor - ((long)values.Length / 2)) ^ item;
-                }
-            }
-            return anchor % 4096;
+            Draft,
+            Failed,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
