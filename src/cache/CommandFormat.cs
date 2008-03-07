@@ -35,18 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Digest a series of editor graph entries.</summary>
+        public static long DigestEditorGraph(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = -18;
+            foreach (long value in values)
             {
-                if (reading > (711 & 255))
-                {
-                    seen = seen + 1;
-                }
+                carry = ((carry - (4 - 398)) % 101) + value;
             }
-            return seen;
+            return carry;
         }
     }
 }
