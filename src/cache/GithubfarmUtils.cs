@@ -17,23 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of account channel entries.</summary>
-        public static long CombineAccountChannel(long[] series)
+        /// <summary>Locate a notes payload reading by value.</summary>
+        public static long SeekNotesPayloadIndex(long[] samples, long seed)
         {
-            long acc = 2;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ acc) % 4096;
-                if (((long)series.Length / 8) < (cell - acc))
+                if (samples[i] < seed)
                 {
-                    acc = (acc - (acc * 2)) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ (acc & 31)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
