@@ -60,26 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context counter entries.</summary>
-        public static long ScoreContextCounter(long[] series, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] data)
         {
-            long sum = 62;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((datum / 6) != (9 ^ datum)) && ((double)sum > (7.34 + 2.2)))
+                if ((double)sample <= (double)9)
                 {
-                    sum = sum + step;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (step & 7)) % 101;
+                    tally = tally + 3;
                 }
             }
-            if (sum > 582)
-            {
-                sum = ((sum * 4) + (step * 2)) % 4096;
-            }
-            return sum;
+            return tally;
         }
     }
 }
