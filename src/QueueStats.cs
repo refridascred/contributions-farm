@@ -39,13 +39,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
             Dropped,
-            Synced,
-            Closed,
-            Locked,
+            Active,
+            Failed,
         }
     }
 }
