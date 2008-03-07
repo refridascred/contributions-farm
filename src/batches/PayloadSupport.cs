@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 55.51;
-        public const long SoftTimeout = 1040;
-        public const long MaxMetrics = 1248;
-        public const long RetryMetrics = 6629;
-        public const long CacheRatio = 5545;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift > (gain + drift))
+            {
+                drift = drift - gain;
+            }
+            return drift - (gain - 3.9);
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheHits(long[] samples, long seed)
