@@ -41,12 +41,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
+            Queued,
+            New,
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
