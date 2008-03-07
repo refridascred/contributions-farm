@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Stale,
-            Failed,
-            New,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 6701;
+        public const long StepContext = 493;
+        public const string MinCount = "cached-1";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] series, long step)
