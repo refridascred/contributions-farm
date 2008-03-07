@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstWidth = 46.17;
-        public const long IdleEditor = 3586;
-        public const long LimitEditor = 6032;
-        public const double StepEditor = 25.3;
-        public const string WindowRatio = "stable-edge";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items, long limit)
+        {
+            long mark = 15;
+            foreach (long reading in items)
+            {
+                mark = ((mark ^ reading) % 4096) - limit;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] values, long target)
