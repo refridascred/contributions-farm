@@ -51,19 +51,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long seed)
+        /// <summary>Match up account farm samples.</summary>
+        public static long CompareAccountFarmCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Project the next buffer value.</summary>
