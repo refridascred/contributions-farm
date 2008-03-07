@@ -12,31 +12,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if (step >= (bound / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 2) != (step >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.85 - 2.7) > (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
