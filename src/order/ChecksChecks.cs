@@ -30,10 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 7245;
-        public const long BurstFactor = 4459;
-        public const long BatchLevel = 5017;
-        public const string BurstScore = "primary-v2";
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (7.1 < (double)mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
