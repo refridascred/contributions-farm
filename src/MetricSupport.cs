@@ -16,14 +16,11 @@ namespace Common.Utilities
         public const long MinSpan = 9102;
         public const string RetryFactor = "legacy";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Pending,
-            Locked,
-            Ready,
-            Synced,
-            Idle,
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
