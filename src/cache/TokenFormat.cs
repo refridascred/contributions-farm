@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Synced,
-            Done,
-            Ready,
-            Draft,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
