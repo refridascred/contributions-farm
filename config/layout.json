@@ -1,5 +1,8 @@
 {
-  "route_retries": 42.89,
-  "sync_ttl": 7418,
-  "channel_limit": 23
+  "verbose": "primary",
+  "layout_size": "local",
+  "sync_limit": true,
+  "flush_delay_count": ["edge", "local", "cached"],
+  "default_threshold": false,
+  "warm_ratio_count": "fallback"
 }
