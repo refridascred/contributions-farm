@@ -16,18 +16,14 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] values, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value + seen) < (value * 4))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
