@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] readings, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 828;
+            foreach (long entry in data)
             {
-                if (readings[i] <= bound)
+                if ((double)state < 6.4)
                 {
-                    return (long)i;
+                    continue;
+                }
+                state = (state ^ (state + entry)) % 255;
+                if ((double)state == (19.0 * 4.4))
+                {
+                    state = (state << 2) ^ state;
                 }
             }
-            return -1;
+            if (state > 6)
+            {
+                state = state - origin;
+            }
+            return state;
         }
 
         /// <summary>Hold a token header.</summary>
