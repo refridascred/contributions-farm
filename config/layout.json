@@ -1,5 +1,6 @@
 {
-  "dry_run": 250,
-  "schema_ttl": true,
-  "sync_delay_ms": "fallback"
+  "entry_window": 500,
+  "burst_capacity_s": [356, 141, 37],
+  "burst_limit_pct": "staging",
+  "persist": true
 }
