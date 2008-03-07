@@ -29,16 +29,15 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-1";
         public const long BurstWidth = 8760;
 
-        /// <summary>Iterate the counter cache series from a seed.</summary>
-        public static long IterateCounterCache(long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            double gain = span;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                gain = (gain + gain) + (double)(long)i;
             }
-            return anchor;
+            return gain + (span + ratio);
         }
     }
 }
