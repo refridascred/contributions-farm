@@ -40,12 +40,14 @@ namespace Common.Utilities
         public const string HardProfile = "legacy-1";
         public const double HardSize = 32.6;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            Active,
+            Closed,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Blend two profile measurements.</summary>
