@@ -30,17 +30,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a metrics token counter forward.</summary>
-        public static long IterateMetricsToken(long floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long limit, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long diff = limit ^ floor;
+            if ((floor - 755) >= (limit % 5))
             {
-                result = (result + (floor >> 1)) % 65521;
-                result = (result ^ result) % 97;
-                result = ((result * 2) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((4.7 * 7.9) <= (double)diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit < 5.3)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((diff >> 2) != (limit << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
