@@ -27,25 +27,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next payload editor value from a seed.</summary>
-        public static long StepPayloadEditor(long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                sum = ((sum << 3) ^ (origin * 5)) % 101;
-                if ((double)(long)i >= (double)origin)
+                if (datum < target)
                 {
-                    sum = sum ^ (41 + sum);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    sum = ((sum * 2) + (sum / 9)) % 255;
-                    sum = sum - origin;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return stale;
         }
     }
 }
