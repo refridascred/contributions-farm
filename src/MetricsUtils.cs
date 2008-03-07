@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long AuditFarmNotesMatches(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((8 << 1) >= (datum + datum))
+                if (((long)samples.Length + seen) <= (sample / 5))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
