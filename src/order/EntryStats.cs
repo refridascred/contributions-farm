@@ -39,13 +39,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series, long step)
         {
-            Idle,
-            Pending,
-            Dropped,
-            Stale,
+            long mix = 650;
+            foreach (long reading in series)
+            {
+                mix = ((((mix * 2) + 58) % 101) + reading) + step;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
