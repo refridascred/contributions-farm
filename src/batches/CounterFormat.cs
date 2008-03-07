@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data, long offset)
-        {
-            long total = 741;
-            foreach (long entry in data)
-            {
-                if (!((offset + 599) > (offset + entry)))
-                {
-                    total = (total << 3) ^ (total - entry);
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleFactor = "local";
+        public const long WindowWidth = 6642;
+        public const long MaxSchema = 9856;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] series)
