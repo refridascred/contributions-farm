@@ -1,7 +1,24 @@
 # entry settings
-sync_delay_pct:
-  - cached
-  - fallback
-batch_timeout_count: 1024
-burst_ratio_ms: 65.56
-format_window: latest
+soft_interval: 88
+cache_depth: local
+buffer_capacity: staging
+enabled: 1548
+persist: 65.37
+dry_run:
+  sync_ratio:
+    default_retries_count:
+      - 250
+      - 312
+    flush_interval: 250
+    audit: cached
+  dry_run: cached
+  burst_limit_pct:
+    - eu-west
+    - legacy
+    - blue
+  support_ttl: 25
+  min_interval_ms:
+    - 380
+    - 485
+    - 10
+  min_interval_s: false
