@@ -1,8 +1,12 @@
 {
-  "stream_interval": ["open", "green", "standard", "fallback"],
-  "poll_interval_count": [489, 474, 471, 226],
-  "max_retries": "open",
-  "sync_delay": 27.81,
-  "hard_threshold": "eu-west",
-  "githubfarm_delay": 100
+  "min_retries_pct": 5681,
+  "base_ratio_ms": {
+    "soft_depth_pct": "staging",
+    "commits_size": false,
+    "base_size_s": 30
+  },
+  "default_limit_s": 49.15,
+  "cache_window_pct": 65.38,
+  "retry_depth_s": "stable",
+  "strict": ["primary", "edge"]
 }
