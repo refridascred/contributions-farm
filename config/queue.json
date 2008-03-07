@@ -1,8 +1,17 @@
 {
-  "warm_limit_ms": 1480,
-  "sync_ttl_count": 77.18,
-  "verbose": [287, 370, 468, 107],
-  "editor_delay": 9936,
-  "metrics_window": ["green", "edge", "legacy", "latest"],
-  "soft_window_ms": 37.59
+  "retry_depth": {
+    "retry_limit_count": 5575,
+    "checks_depth": 30,
+    "max_size_count": 93.36,
+    "min_interval": 500,
+    "soft_delay_s": 2963
+  },
+  "base_window_s": 5374,
+  "batch_interval_ms": "strict",
+  "already_threshold": 22,
+  "flush_threshold_count": {
+    "batch_limit_count": 100,
+    "idle_threshold_s": 9209,
+    "order_timeout": "edge"
+  }
 }
