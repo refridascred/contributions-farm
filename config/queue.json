@@ -1,21 +1,8 @@
 {
-  "poll_threshold_count": "primary",
-  "warm_ttl": 8337,
-  "max_ttl": {
-    "strict": 1024,
-    "idle_timeout_count": {
-      "report_capacity": "open",
-      "default_limit": true,
-      "schema_retries": 30,
-      "audit": false,
-      "filter_size": 29.07,
-      "soft_capacity": [426, 110]
-    },
-    "dry_run": 250,
-    "hard_ratio_ms": "local",
-    "soft_ttl_ms": false,
-    "idle_ttl_count": 250
-  },
-  "batch_threshold_ms": 6209,
-  "window_capacity": "fallback"
+  "warm_limit_ms": 1480,
+  "sync_ttl_count": 77.18,
+  "verbose": [287, 370, 468, 107],
+  "editor_delay": 9936,
+  "metrics_window": ["green", "edge", "legacy", "latest"],
+  "soft_window_ms": 37.59
 }
