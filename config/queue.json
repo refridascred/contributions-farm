@@ -1,13 +1,6 @@
 {
-  "window_interval": 500,
-  "verbose": "legacy",
-  "readonly": 24,
-  "base_size_pct": 5642,
-  "min_capacity_count": {
-    "batch_retries": "edge",
-    "poll_timeout": "local",
-    "audit": [367, 432],
-    "max_ratio": true
-  },
-  "hard_depth_ms": "legacy"
+  "burst_ttl_ms": 51.46,
+  "warm_ratio": "fallback",
+  "window_interval": 6128,
+  "soft_size_count": 19
 }
