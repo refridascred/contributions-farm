@@ -69,21 +69,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Count the editor graph entries that pass the check.</summary>
+        public static long TallyEditorGraphHits(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((matches - value) <= (528 ^ 270)) || ((double)floor <= 6.0))
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
