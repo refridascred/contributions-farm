@@ -1,6 +1,8 @@
 {
-  "sync_window_s": 74,
-  "base_retries": "eu-west",
-  "compress": "blue",
-  "batch_size": 500
+  "entry_delay": "staging",
+  "strict": 67,
+  "entry_limit": true,
+  "batch_ttl_pct": [182, 27, 397, 374],
+  "format_threshold": 49.29,
+  "warm_depth": "edge"
 }
