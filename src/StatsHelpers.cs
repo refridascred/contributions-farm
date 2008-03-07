@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster contributi readings against a rule.</summary>
-        public static long CountClusterContributiMatches(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels, long offset)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long value in levels)
             {
-                if ((value / 7) >= hits)
+                if (6 > tally)
                 {
-                    hits = hits + 2;
+                    tally = ((tally + 3) + value) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
