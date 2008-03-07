@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools graph readings against a bound.</summary>
-        public static bool CheckToolsGraphLimits(long[] levels, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double scale = bias;
+            if (scale > (scale / 7.0))
             {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale + bias;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + bias) + (double)(long)i;
+            }
+            return scale - (bias2 + 5.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
