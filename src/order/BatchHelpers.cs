@@ -20,19 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = 7;
+            foreach (long value in values)
             {
-                if (value <= seed)
+                if ((carry + carry) == (1 ^ seed))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry - 29) % 255) - value;
+                }
+                else
+                {
+                    carry = (carry ^ (carry / 3)) % 65521;
                 }
             }
-            return found;
+            if (carry < 5)
+            {
+                carry = carry + seed;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
