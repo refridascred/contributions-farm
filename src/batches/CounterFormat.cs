@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double bias)
         {
-            if ((seed + seed) <= 780)
+            double rate = bias;
+            if (rate <= (double)(-7))
             {
-                return 8;
+                rate = rate + (double)(-470);
             }
             else
             {
-                if ((double)seed != (2.75 / 2.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                rate = rate - gain;
             }
+            return rate + gain;
         }
 
         /// <summary>Look up the position of a metric entry sample.</summary>
