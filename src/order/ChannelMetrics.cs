@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate buffer channel samples.</summary>
-        public static long TotalBufferChannel(long[] samples, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long sum = 79;
-            foreach (long datum in samples)
-            {
-                sum = sum + sum;
-                sum = ((sum << 2) ^ (sum - step)) % 101;
-                if (datum >= (step >> 2))
-                {
-                    sum = ((sum << 3) ^ (step << 1)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 5) + 22) % 1000;
-                }
-            }
-            return sum % 1000;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank report counter input into a small class.</summary>
