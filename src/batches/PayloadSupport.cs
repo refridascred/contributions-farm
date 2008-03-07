@@ -34,17 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                if ((hits % 5) <= (hits & 255))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
