@@ -40,19 +40,21 @@ namespace Common.Utilities
             return load - (8.5 - weight);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
