@@ -40,21 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 475;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample + seed) < 3) && ((carry / 2) >= (510 - sample)))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ seed) % 255;
+                    carry = (carry - sample) % 4096;
+                }
+                if (((sample % 8) > sample) && (6.42 >= (double)sample))
+                {
+                    carry = ((carry << 3) ^ (6 * 5)) % 4096;
                 }
             }
-            return seen;
+            if (carry < (-4))
+            {
+                carry = (carry ^ 528) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
