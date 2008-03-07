@@ -1,11 +1,30 @@
 # support settings
-min_ratio_count: 46.44
-graph_size: 21.88
-min_delay: false
-cache_depth_ms: open
-warm_depth_ms: true
-idle_capacity:
-  - green
-  - standard
-  - open
-  - primary
+retry_threshold_s: stable
+contributi_interval: 78.54
+base_size:
+  stream_capacity: true
+  context_window: 1453
+  enabled:
+    - stable
+    - eu-west
+    - strict
+  buffer_threshold: 46
+min_size_s:
+  warm_depth_s: 60
+  strict:
+    batch_delay: 59.03
+    base_timeout_ms: edge
+    retry_capacity_s:
+      - staging
+      - local
+      - standard
+      - fallback
+    readonly: false
+    base_limit_count: 250
+  poll_depth_ms:
+    - green
+    - edge
+    - latest
+    - blue
+stats_size: 33
+hard_ttl: 14.35
