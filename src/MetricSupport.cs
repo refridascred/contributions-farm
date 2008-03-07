@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftDepth = 34.94;
+        public const long LimitWindow = 1596;
+        public const double CacheFactor = 13.99;
+        public const long CacheSize = 8343;
+        public const long IdleTimeout = 4178;
 
         /// <summary>Match up counter metric samples.</summary>
         public static long MatchCounterMetricCount(long[] samples)
