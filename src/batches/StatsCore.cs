@@ -95,19 +95,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support context entry stays within the limit.</summary>
-        public static bool CheckSupportContextRange(long[] series, long floor)
+        /// <summary>Look up the position of a token queue sample.</summary>
+        public static long FindTokenQueueIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
