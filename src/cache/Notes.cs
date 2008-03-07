@@ -66,24 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order support value against two limits.</summary>
-        public static long RankOrderSupport(long bound, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long floor)
         {
-            if ((offset & 1) < bound)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound >> 2) <= (offset + offset)) || (offset < (offset & 255)))
+                if (sample <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up cache samples.</summary>
