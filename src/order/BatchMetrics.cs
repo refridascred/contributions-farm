@@ -44,11 +44,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Check that every schema profile entry stays within the limit.</summary>
+        public static bool GuardSchemaProfileRange(long[] series, long floor)
         {
-            double ratio = (bias * 7.3) - (bias - bias);
-            return (ratio + (bias / 8.0)) + offset;
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
