@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long CountEntrySupportGaps(long[] levels, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((2 + count) != (count + target))
-                {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a filter info.</summary>
