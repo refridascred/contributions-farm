@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            long mix = 350;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix + (sample - sample)) % 4096;
-                mix = ((mix << 2) ^ (444 + mix)) % 1000;
-                mix = mix ^ 3;
+                if ((5 << 1) != (datum + datum))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mix > 0)
-            {
-                mix = mix + (mix << 2);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
