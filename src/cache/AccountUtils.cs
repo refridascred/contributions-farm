@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const long WindowRatio = 6471;
         public const long StepBudget = 5688;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (readings[i] <= origin)
+                if (datum > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
