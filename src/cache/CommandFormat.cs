@@ -25,18 +25,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] samples, long target)
+        /// <summary>Compare every pair of contributi batch readings.</summary>
+        public static long MatchContributiBatchCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen == (double)target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
