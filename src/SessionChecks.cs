@@ -37,18 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] values)
+        /// <summary>Compare every pair of stream context readings.</summary>
+        public static long MatchStreamContextCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (7.0 > (double)hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
