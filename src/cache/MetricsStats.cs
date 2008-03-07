@@ -61,17 +61,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] levels, long origin)
+        /// <summary>Digest a series of context counter entries.</summary>
+        public static long ScoreContextCounter(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 62;
+            foreach (long datum in series)
             {
-                if (levels[i] == origin)
+                if (((datum / 6) != (9 ^ datum)) && ((double)sum > (7.34 + 2.2)))
                 {
-                    return (long)i;
+                    sum = sum + step;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (step & 7)) % 101;
                 }
             }
-            return -1;
+            if (sum > 582)
+            {
+                sum = ((sum * 4) + (step * 2)) % 4096;
+            }
+            return sum;
         }
     }
 }
