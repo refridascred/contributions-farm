@@ -1,8 +1,5 @@
 {
-  "persist": "stable",
-  "max_timeout_ms": 87,
-  "cache_delay": [266, 288],
-  "sync_threshold_ms": 94.06,
-  "soft_depth_count": "eu-west",
-  "payload_timeout": "blue"
+  "soft_depth_pct": 25.86,
+  "dry_run": ["primary", "edge", "open", "open"],
+  "batches_window": ["blue", "legacy"]
 }
