@@ -30,12 +30,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
