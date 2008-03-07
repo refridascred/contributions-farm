@@ -24,18 +24,9 @@ namespace Common.Utilities
         public const long WindowRatio = 4993;
         public const string BatchCount = "local-edge";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count >> 2) < entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftBudget = 83.6;
+        public const double BatchDepth = 7.65;
+        public const string MinFormat = "standard-edge";
     }
 }
