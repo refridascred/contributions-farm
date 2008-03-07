@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double DefaultRatio = 56.26;
         public const long WindowMetric = 4525;
 
-        /// <summary>Audit batch window readings against a rule.</summary>
-        public static long TallyBatchWindowOutliers(long[] values)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((count & 63) > (count >> 5))
+                if (cell <= seed)
                 {
-                    count = (count + 2) + value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Classify a route command pair into a bucket.</summary>
