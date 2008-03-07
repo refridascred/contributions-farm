@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi record entries.</summary>
