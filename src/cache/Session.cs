@@ -43,17 +43,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a account buffer reading by value.</summary>
-        public static long SeekAccountBufferIndex(long[] samples, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Draft,
+            Done,
+            Locked,
+            Queued,
         }
     }
 }
