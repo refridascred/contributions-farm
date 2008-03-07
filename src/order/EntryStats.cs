@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = scale;
+            if (load < (scale - load))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + span;
             }
-            return seen;
+            else
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load + load)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
