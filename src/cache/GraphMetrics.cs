@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long step)
+        /// <summary>Fold a list of tools stats readings.</summary>
+        public static long CombineToolsStats(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 7;
+            foreach (long value in readings)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                if (!((acc ^ acc) == (acc ^ value)))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (acc / 7);
                 }
+                acc = (acc * 5) + (value ^ acc);
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Project the next tools value.</summary>
