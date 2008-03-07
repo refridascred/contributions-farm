@@ -53,15 +53,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long bound)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            if (!((8.31 / 7.0) >= 8.9))
             {
-                mix = ((mix * 5) + (cell % 10)) + target;
+                return 4;
             }
-            return mix % 1000;
+            else
+            {
+                if (!((double)bound <= (4.3 / 3.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((2.7 * 6.17) >= (double)bound) && ((4.2 - 2.1) > 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
