@@ -31,10 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 5833;
-        public const string MinBudget = "stable-1";
-        public const long CacheFactor = 1804;
+        /// <summary>Derive the next route farm value from a seed.</summary>
+        public static long SeriesRouteFarm(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state << 3) ^ (state * 3)) % 97;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Locate a account buffer reading by value.</summary>
         public static long SeekAccountBufferIndex(long[] samples, long bound)
