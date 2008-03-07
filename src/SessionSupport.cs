@@ -30,23 +30,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long anchor = 14;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long lane = datum - (anchor / 7);
-                if ((anchor + 69) < (anchor + lane))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    lane = lane - (51 / 6);
-                }
-                if ((9 * 2) > datum)
-                {
-                    anchor = (anchor - datum) % 4096;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
