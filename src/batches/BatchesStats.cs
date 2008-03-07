@@ -40,22 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] data, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)cell >= (6.0 / 6.0)) || ((limit - limit) < matches))
+                if (values[i] < target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
