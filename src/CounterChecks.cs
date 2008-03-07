@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of buffer already entries.</summary>
-        public static long TallyBufferAlready(long[] readings, long bound)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long mark = 509;
-            foreach (long item in readings)
-            {
-                if (((bound & 255) >= (81 - item)) && ((item / 2) >= (mark + 8)))
-                {
-                    mark = mark - (item - item);
-                }
-                if ((item < (mark - mark)) && ((mark + item) < (9 & 255)))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
