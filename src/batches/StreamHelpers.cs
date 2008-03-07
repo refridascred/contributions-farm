@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long state = 78;
+            foreach (long entry in items)
+            {
+                state = (state - (entry % 8)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
