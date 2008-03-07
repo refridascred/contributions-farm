@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long step, long bound)
-        {
-            long prev = step + bound;
-            if ((prev ^ prev) > (bound & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 4) != (prev + prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (prev < (step - 436))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 5.15;
+        public const double WindowCluster = 66.6;
+        public const long BaseCluster = 4487;
+        public const double BatchSize = 35.22;
+        public const long SoftFactor = 4550;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] readings, long seed)
