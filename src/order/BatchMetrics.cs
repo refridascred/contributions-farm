@@ -35,13 +35,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Synced,
+            double ratio = (bias * 7.3) - (bias - bias);
+            return (ratio + (bias / 8.0)) + offset;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
