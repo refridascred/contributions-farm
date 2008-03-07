@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many account route samples are out of range.</summary>
+        public static long MeasureAccountRouteOutliers(long[] values, long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading ^ floor) != (reading * 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
