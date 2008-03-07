@@ -1,17 +1,6 @@
 # entry settings
-burst_interval_pct: open
-support_delay: edge
-poll_ttl:
-  readonly: false
-  hard_ratio: 56.02
-  idle_depth: open
-  graph_capacity:
-    burst_size_pct: latest
-    cache_ttl: true
-    cache_interval:
-      - 305
-      - 311
-      - 125
-      - 493
-  audit: 34.99
-  soft_window_count: 94.27
+already_retries: 15
+audit: 65.13
+entry_size: 69.85
+cache_retries_pct: 7617
+poll_window_ms: eu-west
