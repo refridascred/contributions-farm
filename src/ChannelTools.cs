@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count + count) >= (count + item)) || (((long)items.Length >> 4) >= (count + 10)))
+                if (data[i] == limit)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
