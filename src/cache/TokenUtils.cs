@@ -39,17 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result << 3) ^ 343) % 4096;
-                result = ((result << 3) ^ (long)i) % 65521;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((double)floor != (9.05 + 18.0))
+                {
+                    mix = (mix + (6 & 63)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
