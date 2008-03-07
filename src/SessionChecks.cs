@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 155;
-        public const long StepSpan = 7425;
-        public const long BurstFactor = 4753;
-        public const double MinFarm = 52.48;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
