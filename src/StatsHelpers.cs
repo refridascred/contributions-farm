@@ -17,14 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Queued,
-            Paused,
-            Ready,
-            Retry,
-            Failed,
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of stats command entries.</summary>
