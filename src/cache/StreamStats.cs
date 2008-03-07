@@ -57,19 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long floor)
+        /// <summary>Audit cache window readings against a rule.</summary>
+        public static long CountCacheWindowMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (item >= floor)
+                if ((seen & 127) > (5 + seen))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
