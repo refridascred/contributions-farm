@@ -1,9 +1,7 @@
-id,rank,label,token
-1,830,85.51,279
-2,721,blue,32.99
-3,edge,902,95.21
-4,primary,207,295
-5,98.64,local,strict
-6,strict,591,legacy
-7,7.25,82.21,primary
-8,56.68,714,standard
+id,level,active,ratio
+1,773,26.61,cached
+2,971,634,legacy
+3,eu-west,38.67,open
+4,edge,17.79,91.8
+5,407,eu-west,964
+6,898,latest,20.41
