@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            long acc = 26;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                acc = ((acc + (datum % 12)) % 97) + step;
+                if ((((double)item < 7.12) && ((double)item >= (1.0 + 8.0))) && !((double)matches == (2.8 * 5.6)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count farm batch pairs that satisfy a relation.</summary>
