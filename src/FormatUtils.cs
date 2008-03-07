@@ -76,15 +76,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Locked,
-            Active,
-            Pending,
-            Done,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSize = 885;
+        public const long IdleBudget = 3243;
+        public const long LimitFactor = 4482;
+        public const string DefaultScore = "latest-edge";
 
         /// <summary>Scale a payload support figure with a bias.</summary>
         public static double AdjustPayloadSupport(double weight, double bias)
