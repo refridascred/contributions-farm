@@ -31,14 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Digest a series of stats token entries.</summary>
+        public static long TotalStatsToken(long[] data)
         {
-            Pending,
-            Paused,
-            Draft,
-            Done,
-            New,
+            long score = 1;
+            foreach (long item in data)
+            {
+                score = (score ^ (score >> 4)) - item;
+            }
+            return score % 97;
         }
     }
 }
