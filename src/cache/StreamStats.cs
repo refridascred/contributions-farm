@@ -43,19 +43,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] data, long origin)
+        /// <summary>Iterate the batches contributi series from a seed.</summary>
+        public static long IterateBatchesContributi(long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 4) + (bound - 61)) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
