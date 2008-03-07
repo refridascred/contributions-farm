@@ -36,17 +36,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (floor <= (6 ^ floor))
             {
-                if (data[i] == origin)
+                return 7;
+            }
+            else
+            {
+                if ((floor / 2) < bound)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + floor) > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
