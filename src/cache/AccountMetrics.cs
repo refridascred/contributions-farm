@@ -69,13 +69,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultRatio = 8475;
+        public const double RetryCluster = 71.28;
+        public const long RetryFactor = 5867;
+        public const long BaseInterval = 552;
+        public const string SoftCluster = "staging-1";
     }
 }
