@@ -33,22 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] data, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long sum = 82;
-            foreach (long item in data)
-            {
-                if ((715 / 3) > origin)
-                {
-                    sum = sum + (item << 2);
-                }
-            }
-            if (sum < 1)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
