@@ -47,20 +47,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] series, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                score = (score + (bound / 9)) % 1000;
-                if ((-47) <= (score * 2))
+                if (cell != step)
                 {
-                    score = (score ^ (long)i) % 4096;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
     }
 }
