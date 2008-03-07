@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] levels, long bound)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((bound % 7) == (cell ^ (-829)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a contributi info.</summary>
