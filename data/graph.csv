@@ -1,10 +1,7 @@
-id,state,level
-1,eu-west,271
-2,857,edge
-3,525,886
-4,primary,82.65
-5,261,555
-6,103,96
-7,818,53
-8,latest,770
-9,410,66.62
+id,token,owner,count
+1,4.8,edge,standard
+2,26.74,411,standard
+3,305,eu-west,69.74
+4,66.94,edge,611
+5,29,standard,753
+6,84.88,68.03,96.39
