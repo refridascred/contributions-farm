@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long cur = seed - origin;
-            if ((66 - seed) >= (origin % 10))
+            long anchor = 9;
+            foreach (long sample in items)
             {
-                return 4;
+                anchor = ((anchor << 3) ^ (anchor + sample)) % 65521;
             }
-            else
+            if (anchor > 34)
             {
-                if ((6.67 + 7.0) != (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed % 97) != (origin + origin)) && ((cur + seed) == (cur & 127)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.0 / 5.0) >= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = (anchor - 8) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
