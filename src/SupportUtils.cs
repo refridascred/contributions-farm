@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Digest a series of counter cache entries.</summary>
-        public static long TallyCounterCache(long[] samples)
-        {
-            long mix = 12;
-            foreach (long value in samples)
-            {
-                if (((9.9 * 4.83) <= (double)mix) && ((value + mix) <= (value << 2)))
-                {
-                    mix = (mix << 3) ^ value;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheBudget = 6725;
+        public const double CacheFactor = 55.9;
+        public const long WindowEditor = 9990;
+        public const long BaseScore = 3139;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferRange(long[] samples, long step)
