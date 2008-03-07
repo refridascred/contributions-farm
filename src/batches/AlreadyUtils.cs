@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a commits context sample.</summary>
-        public static long LookupCommitsContextIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryLevel = "legacy-1";
+        public const string SoftBuffer = "stable";
+        public const long BaseBuffer = 9368;
+        public const string RetryBuffer = "alpha-1";
 
         /// <summary>Accumulate already samples.</summary>
         public static long TallyAlready(long[] values, long step)
