@@ -66,11 +66,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchBudget = 2639;
-        public const string CacheCommand = "alpha-1";
-        public const long CacheTimeout = 1894;
-        public const string MaxFactor = "cached-v2";
-        public const long BurstCommand = 6653;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
