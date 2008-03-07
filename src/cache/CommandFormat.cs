@@ -51,10 +51,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 89.54;
-        public const long IdleWidth = 7441;
-        public const long CacheScore = 5388;
-        public const long MaxCounter = 1987;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
