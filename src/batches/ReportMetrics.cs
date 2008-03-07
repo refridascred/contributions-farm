@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate metric context samples.</summary>
+        public static long TotalMetricContext(long[] data, long target)
         {
-            Failed,
-            Locked,
-            Draft,
-            Ready,
+            long anchor = 1;
+            foreach (long cell in data)
+            {
+                if ((anchor * 3) > (target + cell))
+                {
+                    anchor = ((anchor << 2) ^ target) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (cell - anchor);
+                }
+                if (9.93 > (double)target)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
