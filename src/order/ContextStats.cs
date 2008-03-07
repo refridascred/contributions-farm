@@ -18,11 +18,32 @@ namespace Common.Utilities
         public const long CacheFormat = 628;
         public const double WindowFormat = 2.66;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "cached-1";
-        public const long IdleQueue = 5090;
-        public const long StepSpan = 5731;
-        public const double SoftQueue = 14.16;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long offset)
+        {
+            if ((12.0 >= (double)offset) && ((offset + seed) >= (seed % 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - 1) < (offset + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] levels, long offset)
