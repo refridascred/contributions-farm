@@ -45,25 +45,22 @@ namespace Common.Utilities
         public const long StepRatio = 4793;
         public const double RetryTimeout = 66.43;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long bound, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] samples, long seed)
         {
-            long diff = bound - target;
-            if (!((target % 64) >= bound))
+            long acc = 449;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target * 3) != (diff << 2))
+                if (seed > (cell + acc))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    acc = acc + seed;
                 }
             }
+            if (acc > 8)
+            {
+                acc = ((acc << 3) ^ (acc >> 1)) % 97;
+            }
+            return acc % 97;
         }
     }
 }
