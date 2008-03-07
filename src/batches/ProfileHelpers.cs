@@ -66,15 +66,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings, long seed)
+        /// <summary>Digest a series of tools layout entries.</summary>
+        public static long ScoreToolsLayout(long[] items)
         {
-            long state = -4;
-            foreach (long value in readings)
+            long carry = 30;
+            foreach (long value in items)
             {
-                state = (((state ^ (state * 2)) % 97) + value) + seed;
+                if ((2.3 - 0.91) >= (double)value)
+                {
+                    carry = (carry ^ (carry % 10)) % 97;
+                }
             }
-            return state % 1000;
+            if (carry > 7)
+            {
+                carry = (carry - (carry & 63)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
