@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session batches readings against a rule.</summary>
-        public static long MeasureSessionBatchesHits(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((cell * 4) == (seen / 5)) || ((seen >> 1) > cell))
+                if ((tally >> 4) < ((-9) - reading))
                 {
-                    seen = seen + 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
