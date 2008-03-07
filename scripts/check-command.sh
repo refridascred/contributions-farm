@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard legacy; do
+for item in primary stable local open; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=166
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
