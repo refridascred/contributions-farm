@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!!((matches - matches) <= value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
