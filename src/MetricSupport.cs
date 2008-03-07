@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string LimitSize = "fallback-edge";
         public const string SoftAlready = "strict-1";
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                if (item > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a editor stats.</summary>
