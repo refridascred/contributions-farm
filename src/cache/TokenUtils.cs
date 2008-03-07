@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            Stale,
-            Draft,
-            Retry,
-            Paused,
+            long mix = 429;
+            foreach (long datum in samples)
+            {
+                if (((8.0 + 1.6) >= (double)datum) && ((9.1 / 6.0) > (double)mix))
+                {
+                    mix = ((mix << 2) ^ (datum + mix)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first metric notes entry that matches the target.</summary>
