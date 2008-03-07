@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFactor = 17.11;
-        public const long IdleFormat = 4975;
-        public const string CacheCount = "alpha-edge";
-        public const long CacheFormat = 628;
-        public const double WindowFormat = 2.66;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] values)
