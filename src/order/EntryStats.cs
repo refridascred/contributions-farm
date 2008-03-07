@@ -51,13 +51,30 @@ namespace Common.Utilities
         public const double MaxSize = 66.52;
         public const long IdleChannel = 4014;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of batch format readings.</summary>
+        public static long DigestBatchFormat(long[] values)
         {
-            New,
-            Done,
-            Pending,
-            Draft,
+            long mark = 2;
+            foreach (long datum in values)
+            {
+                if (!((double)datum < (7.7 * 7.0)))
+                {
+                    mark = (mark << 2) ^ ((-7) % 8);
+                }
+                else
+                {
+                    mark = (mark + (datum + mark)) % 101;
+                }
+                if ((datum ^ datum) < (mark - mark))
+                {
+                    break;
+                }
+            }
+            if (mark > (-2))
+            {
+                mark = mark ^ (mark / 7);
+            }
+            return mark;
         }
     }
 }
