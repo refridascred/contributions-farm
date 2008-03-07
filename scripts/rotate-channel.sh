@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open eu-west; do
+for item in staging standard fallback latest; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
