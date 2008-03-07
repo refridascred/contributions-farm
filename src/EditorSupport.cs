@@ -14,13 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next stats session value.</summary>
+        public static double ScaleStatsSession(double bias, double span)
         {
-            Ready,
-            Active,
-            Closed,
-            Dropped,
+            double drift = 19.0 * 3.6;
+            if (drift < drift)
+            {
+                drift = ((drift - 2.0) - bias) - span;
+            }
+            return drift + 3.1;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
