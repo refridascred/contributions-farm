@@ -65,27 +65,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values, long bound)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long sum = 513;
-            foreach (long entry in values)
-            {
-                if ((sum / 8) >= (entry & 127))
-                {
-                    sum = (sum - entry) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ bound) % 1000;
-                }
-                sum = ((sum << 3) ^ (bound & 3)) % 97;
-            }
-            if (sum > (-99))
-            {
-                sum = ((sum << 3) ^ (sum & 7)) % 101;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
