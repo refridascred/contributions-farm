@@ -1,12 +1,7 @@
 {
-  "min_ttl_count": "eu-west",
-  "readonly": {
-    "max_window_ms": 7,
-    "min_size_s": 64.01,
-    "cache_threshold_count": false,
-    "burst_delay_ms": 2450,
-    "layout_interval": 60
-  },
-  "counter_window": false,
-  "batch_limit_count": ["strict", "primary", "latest", "legacy"]
+  "farm_interval": "cached",
+  "flush_ratio_ms": "legacy",
+  "editor_ttl": 9506,
+  "hard_depth": 49.28,
+  "payload_depth": "open"
 }
