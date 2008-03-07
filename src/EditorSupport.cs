@@ -43,21 +43,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of account batch readings.</summary>
-        public static long PairAccountBatchCount(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > target)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
