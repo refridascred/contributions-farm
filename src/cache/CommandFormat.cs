@@ -30,14 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Iterate the editor contributi series from a seed.</summary>
+        public static long SeriesEditorContributi(long target)
         {
-            Active,
-            Ready,
-            Pending,
-            Draft,
-            Locked,
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc - ((long)i & 31);
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of editor graph entries.</summary>
