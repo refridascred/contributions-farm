@@ -23,30 +23,22 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long target)
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long SortLayoutPayload(long seed, long offset)
         {
-            long span = limit - target;
-            if ((double)span >= (3.85 - 6.7))
+            if ((53 - offset) > (offset % 5))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((68 ^ 73) < (target & 15))
+                if ((offset >> 2) > seed)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((907 > (limit + limit)) || ((span ^ target) > (669 & 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
