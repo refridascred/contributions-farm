@@ -28,11 +28,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Classify a already route pair into a bucket.</summary>
+        public static long RankAlreadyRoute(long offset, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
+            if ((bound + offset) >= bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound > (double)(-522))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
