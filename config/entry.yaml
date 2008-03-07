@@ -1,6 +1,5 @@
 # entry settings
-warm_timeout_ms: 3912
-window_threshold:
-  - 321
-  - 22
-dry_run: 30
+enabled: 250
+compress: open
+stream_depth: staging
+hard_timeout: 81.49
