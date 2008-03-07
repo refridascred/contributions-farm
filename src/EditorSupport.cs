@@ -29,22 +29,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long total = 77;
-            foreach (long reading in samples)
-            {
-                if (((double)total <= (0.2 - 1.86)) && ((19.0 - 13.0) < (double)total))
-                {
-                    total = ((total << 3) ^ (reading % 100)) % 1000;
-                }
-            }
-            if (total > 114)
-            {
-                total = (total ^ (total * 2)) % 65521;
-            }
-            return total;
+            Active,
+            Idle,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
