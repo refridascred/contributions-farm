@@ -57,11 +57,29 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchCount = "local";
-        public const long CacheBudget = 147;
-        public const long StepWidth = 4588;
-        public const long MinAccount = 5582;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] series, long offset)
+        {
+            long carry = -8;
+            foreach (long datum in series)
+            {
+                if ((941 - carry) <= (datum - datum))
+                {
+                    carry = (carry ^ carry) % 255;
+                }
+                else
+                {
+                    carry = (carry * 2) + (datum + offset);
+                    carry = (carry + (datum >> 5)) % 1000;
+                }
+                carry = carry - carry;
+            }
+            if (carry > (-146))
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
