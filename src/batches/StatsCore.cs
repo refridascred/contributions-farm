@@ -49,18 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] items, long floor)
+        /// <summary>Find the first commits tools entry that matches the target.</summary>
+        public static long LocateCommitsToolsIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum >= 6.53)
+                if (samples[i] <= seed)
                 {
-                    tally = (tally + 2) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
