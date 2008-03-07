@@ -83,15 +83,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] values)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long score = -2;
-            foreach (long entry in values)
-            {
-                score = (score - (entry - entry)) % 1000;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
     }
 }
