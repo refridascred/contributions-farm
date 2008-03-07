@@ -26,18 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long TallyCounterMetricsOutliers(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry <= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a already counter forward.</summary>
