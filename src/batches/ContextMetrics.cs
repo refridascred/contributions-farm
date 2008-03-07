@@ -40,18 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (entry >= count)
+                if ((90 > tally) && ((tally + tally) != (sample * 5)))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
