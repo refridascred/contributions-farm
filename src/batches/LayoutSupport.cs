@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
