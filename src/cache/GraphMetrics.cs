@@ -40,13 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long step)
         {
-            Ready,
-            Synced,
-            Active,
-            Idle,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
