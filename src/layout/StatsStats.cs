@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const double CacheEditor = 79.64;
         public const long StepEditor = 3955;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Draft,
+            Locked,
             New,
-            Stale,
-            Queued,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine filter token values into a single score.</summary>
