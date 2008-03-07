@@ -31,13 +31,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            Paused,
+            Ready,
+            Queued,
+            Synced,
+            Pending,
         }
     }
 }
