@@ -82,18 +82,18 @@ namespace Common.Utilities
         public const long LimitFactor = 4482;
         public const string DefaultScore = "latest-edge";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((11.0 / 9.0) != (double)value)
+                if (!((double)tally > (17.0 * 16.0)) && (1.98 >= (double)tally))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
