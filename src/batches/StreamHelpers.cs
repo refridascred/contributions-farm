@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a tools command reading.</summary>
-        public static double ScaleToolsCommand(double weight, double span)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] readings)
         {
-            double load = span * 7.32;
-            return (load + 1.32) + weight;
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - seen) != (12 << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload info.</summary>
