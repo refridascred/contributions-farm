@@ -77,11 +77,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Draft,
+            Failed,
         }
     }
 }
