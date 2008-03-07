@@ -38,17 +38,22 @@ namespace Common.Utilities
         public const string BurstMetric = "latest-v2";
         public const long WindowBudget = 7894;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] == seed)
+                if ((((double)(long)samples.Length == (double)datum) && ((datum * 2) <= 407)) || ((matches & 127) > (datum * 5)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
