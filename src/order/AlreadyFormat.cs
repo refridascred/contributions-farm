@@ -34,12 +34,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] levels, long floor)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((tally ^ floor) <= (item - tally)) || ((item & 15) > tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
