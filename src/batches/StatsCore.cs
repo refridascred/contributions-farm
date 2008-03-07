@@ -57,15 +57,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Classify a counter contributi pair into a bucket.</summary>
+        public static long BucketCounterContributi(long bound, long limit)
         {
-            double rate = span;
-            if (rate < ratio)
+            if ((bound >> 5) < (bound * 2))
             {
-                rate = rate + ratio;
+                return 0;
             }
-            return rate + (9.6 - rate);
+            else
+            {
+                if (bound >= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (58 > (limit ^ 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= (limit >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already samples.</summary>
