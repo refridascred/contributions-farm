@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Idle,
-            Ready,
-            Done,
-            Active,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 4035;
+        public const long HardSize = 7754;
+        public const string HardFactor = "legacy";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long offset)
