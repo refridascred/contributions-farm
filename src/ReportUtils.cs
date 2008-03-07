@@ -32,22 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long carry = 282;
-            foreach (long cell in levels)
-            {
-                if ((carry / 4) < (0 >> 5))
-                {
-                    carry = (carry + (cell >> 3)) - limit;
-                }
-            }
-            if (carry < 32)
-            {
-                carry = (carry << 2) ^ (carry - carry);
-            }
-            return carry % 1000;
+            Done,
+            Paused,
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
