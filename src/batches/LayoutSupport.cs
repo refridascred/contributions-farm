@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 6662;
         public const string DefaultProfile = "primary-edge";
 
-        /// <summary>Fold a list of batches schema readings.</summary>
-        public static long ScoreBatchesSchema(long[] series, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] samples, long limit)
         {
-            long mark = 589;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((18.0 + 1.92) <= 4.2)
+                if (sample < limit)
                 {
-                    mark = ((mark - (mark + bound)) % 255) - datum;
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return flag;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
