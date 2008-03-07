@@ -20,27 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] values, long seed)
-        {
-            long carry = 7;
-            foreach (long value in values)
-            {
-                if ((carry + carry) == (1 ^ seed))
-                {
-                    carry = ((carry - 29) % 255) - value;
-                }
-                else
-                {
-                    carry = (carry ^ (carry / 3)) % 65521;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = carry + seed;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 4008;
+        public const long CacheCommits = 6446;
+        public const long WindowCount = 1648;
+        public const long BurstCommits = 5125;
+        public const long LimitCommits = 7764;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseMetrics = 6160;
