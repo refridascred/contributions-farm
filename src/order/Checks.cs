@@ -20,19 +20,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double scale, double bias)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 <= (scale / 5.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 - (bias * 4.9);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            return bias2 - (scale * 1.41);
+            return count;
         }
 
         /// <summary>Compare every pair of stream route readings.</summary>
