@@ -37,39 +37,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long origin, long origin2)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long delta = origin + origin2;
-            if ((delta / 5) >= (origin % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((delta & 15) > (delta << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin * 2) != (origin % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.19 > (double)origin2) && (4.8 <= (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a editor tools figure with a bias.</summary>
