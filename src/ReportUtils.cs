@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long limit)
+        /// <summary>Roll a payload already counter forward.</summary>
+        public static long DerivePayloadAlready(long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (value < limit)
+                if (((carry ^ limit) == (limit << 1)) || ((limit + limit) <= (limit << 1)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ limit) % 1000;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Roll a report counter forward.</summary>
