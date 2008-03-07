@@ -1,4 +1,44 @@
 # support settings
-idle_ratio_count: 500
-cluster_ratio: 2.05
-poll_timeout_ms: fallback
+strict:
+  payload_retries:
+    burst_window_pct: 82.37
+    compress:
+      - staging
+      - eu-west
+      - stable
+    schema_ttl: 78.77
+    payload_limit:
+      - open
+      - blue
+      - latest
+      - standard
+    burst_window: 13
+    burst_interval_ms: standard
+  checks_size:
+    enabled: 71
+    max_ratio_pct: false
+    cache_timeout: 6167
+    burst_retries_s: 82.9
+    default_retries_ms: 4.48
+    audit: 84.57
+  enabled: primary
+  poll_ratio: true
+  persist: cached
+burst_ttl:
+  dry_run: 18.89
+  metric_threshold:
+    - legacy
+    - blue
+    - primary
+  cache_window_s: false
+  flush_timeout:
+    - 292
+    - 367
+  poll_depth_ms:
+    - legacy
+    - blue
+retry_size:
+  - 187
+  - 393
+  - 478
+  - 238
