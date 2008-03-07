@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] items, long bound)
         {
-            double ratio = (double)(7 << 1);
-            if (ratio > ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ((ratio + (ratio - 7.3)) + bias) - floor;
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio / 5.0)) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
