@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long seed)
         {
-            Queued,
-            Locked,
-            Synced,
-            Dropped,
-            Retry,
+            if (((origin ^ seed) >= seed) && ((origin + seed) >= seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 1) == (86 + 493))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up report samples.</summary>
