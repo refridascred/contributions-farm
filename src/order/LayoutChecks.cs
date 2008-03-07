@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of token editor readings.</summary>
-        public static long DigestTokenEditor(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double ratio, double floor)
         {
-            long state = 552;
-            foreach (long reading in levels)
+            double ratio2 = floor;
+            if (ratio2 <= ratio)
             {
-                state = ((state << 3) ^ ((long)levels.Length + reading)) % 65521;
+                ratio2 = ratio2 + (ratio * 2.84);
             }
-            return state;
+            return ratio2 - ratio;
         }
 
         /// <summary>Accumulate graph samples.</summary>
