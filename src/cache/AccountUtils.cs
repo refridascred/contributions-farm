@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (7 <= (matches * 4))
-                {
-                    matches = ((matches + 3) ^ sample) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 5639;
+        public const double LimitFactor = 52.06;
+        public const long LimitTools = 3133;
+        public const string MaxTimeout = "local-edge";
+        public const long BaseFactor = 3968;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
