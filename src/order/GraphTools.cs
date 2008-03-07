@@ -57,22 +57,13 @@ namespace Common.Utilities
         public const double DefaultDepth = 55.87;
         public const string WindowCount = "legacy-v2";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long score = 17;
-            foreach (long cell in values)
-            {
-                if (!((cell - cell) >= score))
-                {
-                    score = score - (0 + score);
-                }
-            }
-            if (score > (-85))
-            {
-                score = score + score;
-            }
-            return score % 4096;
+            Failed,
+            Closed,
+            Locked,
+            Queued,
         }
     }
 }
