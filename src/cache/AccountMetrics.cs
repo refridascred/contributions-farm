@@ -54,18 +54,15 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Count the report route entries that pass the check.</summary>
-        public static long TallyReportRouteMatches(long[] items, long origin)
+        /// <summary>Project the next window queue value.</summary>
+        public static double ProjectWindowQueue(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double gain = (double)47 - (scale / 5.0);
+            if (gain > 18.0)
             {
-                if (!((item % 60) >= item))
-                {
-                    hits = (hits + 2) + origin;
-                }
+                gain = (gain - (gain / 3.0)) - offset;
             }
-            return hits;
+            return gain - (scale + 3.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
