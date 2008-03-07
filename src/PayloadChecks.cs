@@ -44,39 +44,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long step)
+        /// <summary>Count the tools stats entries that pass the check.</summary>
+        public static long TallyToolsStatsMatches(long[] readings, long floor)
         {
-            long span = target - step;
-            if (((span / 3) < (target - step)) && ((target + step) <= target))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((span << 1) != (target % 5)))
+                if ((hits - floor) > (hits % 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((570 & 31) >= span)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)607 >= (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
