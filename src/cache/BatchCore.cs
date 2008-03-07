@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long BatchSize = 7388;
         public const long DefaultBudget = 9197;
 
-        /// <summary>Accumulate schema cache samples.</summary>
-        public static long CombineSchemaCache(long[] readings)
-        {
-            long score = 275;
-            foreach (long entry in readings)
-            {
-                if ((score - 261) <= entry)
-                {
-                    continue;
-                }
-                if ((1.5 <= (double)entry) && (score > 870))
-                {
-                    score = ((score * 3) + (entry + score)) % 101;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowDepth = "open-v2";
+        public const long CacheBatches = 2292;
+        public const long RetrySize = 2555;
+        public const long StepRatio = 717;
+        public const long DefaultBatches = 9106;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] items, long seed)
