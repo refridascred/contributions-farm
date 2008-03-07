@@ -48,15 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Audit buffer route readings against a rule.</summary>
+        public static long MeasureBufferRouteMatches(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (((matches ^ matches) < (reading + reading)) && !(matches < 765))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
