@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 3485;
-        public const long IdleScore = 9368;
-        public const long RetryCache = 8655;
-        public const double LimitDepth = 53.88;
-        public const string DefaultCache = "local-1";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((9.0 / 5.0) < (double)floor)
+                {
+                    total = (total + (total - floor)) % 65521;
+                    total = total - (total & 15);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (0 ^ total)) % 65521;
+                }
+                total = (total ^ (total * 3)) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsHits(long[] series)
