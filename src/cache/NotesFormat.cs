@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a tools report counter forward.</summary>
-        public static long SeriesToolsReport(long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((score * 3) < ((long)i + score)))
-                {
-                    score = (score + ((long)i * 3)) % 97;
-                    score = (score ^ (target & 255)) % 4096;
-                }
-                score = ((score * 4) + target) % 101;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Queued,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of support entries.</summary>
