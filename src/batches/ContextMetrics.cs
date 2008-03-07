@@ -72,14 +72,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Done,
-            Locked,
-            Ready,
-            Synced,
-            Stale,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
