@@ -23,13 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long seed)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Offset { get; set; }
+            if ((double)seed <= (7.4 / 3.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed > (floor + seed)) && ((floor ^ floor) >= (floor / 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + floor) < 40)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
