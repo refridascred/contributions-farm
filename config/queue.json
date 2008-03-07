@@ -1,6 +1,13 @@
 {
-  "poll_timeout": false,
-  "strict": 2837,
-  "verbose": 8920,
-  "cache_ratio_ms": 6.95
+  "window_interval": 500,
+  "verbose": "legacy",
+  "readonly": 24,
+  "base_size_pct": 5642,
+  "min_capacity_count": {
+    "batch_retries": "edge",
+    "poll_timeout": "local",
+    "audit": [367, 432],
+    "max_ratio": true
+  },
+  "hard_depth_ms": "legacy"
 }
