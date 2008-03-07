@@ -47,19 +47,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] data, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
