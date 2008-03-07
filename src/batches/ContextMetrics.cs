@@ -43,19 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (datum != target)
+                if (item > seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Audit layout token readings against a rule.</summary>
