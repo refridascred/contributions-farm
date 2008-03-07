@@ -43,22 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Accumulate stats report samples.</summary>
+        public static long CombineStatsReport(long[] samples, long limit)
         {
-            long anchor = 7;
-            foreach (long item in items)
+            long result = 38;
+            foreach (long value in samples)
             {
-                if (!((item & 255) >= (long)items.Length))
+                result = (result + (limit + value)) % 65521;
+                if ((16.0 + 8.0) > (double)limit)
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    break;
                 }
             }
-            if (anchor < 834)
+            if (result < 8)
             {
-                anchor = (anchor - (anchor ^ anchor)) % 97;
+                result = (result + (result + 3)) % 255;
             }
-            return anchor % 65521;
+            return result;
         }
     }
 }
