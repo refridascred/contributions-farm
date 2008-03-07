@@ -69,17 +69,13 @@ namespace Common.Utilities
             return load + (load * 14.0);
         }
 
-        /// <summary>Locate a profile checks reading by value.</summary>
-        public static long FindProfileChecksIndex(long[] readings, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
