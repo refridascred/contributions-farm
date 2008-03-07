@@ -36,12 +36,21 @@ namespace Common.Utilities
         public const long BatchFarm = 7478;
         public const string DefaultWidth = "legacy-1";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            Synced,
-            Paused,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
