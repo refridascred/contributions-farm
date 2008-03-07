@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] levels)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading - (-17)) == (reading & 1)) || ((double)34 == (double)hits)) && ((double)hits >= (8.0 / 2.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of account channel entries.</summary>
