@@ -84,10 +84,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 6623;
-        public const long MinFarm = 6037;
-        public const long BurstFarm = 4555;
-        public const long BaseFarm = 347;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 883;
+        public const string BatchBudget = "stable";
+        public const string SoftSize = "local-v2";
+        public const string BatchGraph = "standard-1";
     }
 }
