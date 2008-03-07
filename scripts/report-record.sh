@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=359
+RECORD_LIMIT=296
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    edge)
+    open)
         log "fast path"
         ;;
     *)
