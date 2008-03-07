@@ -44,17 +44,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] values, long target)
+        /// <summary>Scale a filter already figure with a bias.</summary>
+        public static double AdjustFilterAlready(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = gain;
+            if (rate < gain)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                rate = rate + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (20.0 - 1.04)) + (double)(long)i;
+            }
+            return rate + (rate / 2.0);
         }
     }
 }
