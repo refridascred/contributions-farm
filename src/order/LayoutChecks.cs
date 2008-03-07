@@ -34,11 +34,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitScore = 33.96;
-        public const long BaseInterval = 3045;
-        public const long CacheRatio = 6801;
-        public const long BurstOrder = 7698;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Draft,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
