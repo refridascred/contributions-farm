@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Look up the position of a farm layout sample.</summary>
+        public static long LookupFarmLayoutIndex(long[] readings, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
