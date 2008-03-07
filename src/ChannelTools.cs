@@ -25,20 +25,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of tools support entries.</summary>
-        public static long TallyToolsSupport(long[] series, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items, long floor)
         {
-            long score = 61;
-            foreach (long item in series)
+            long score = 0;
+            foreach (long value in items)
             {
-                if ((2 + score) < 15)
+                if (4 >= value)
                 {
-                    score = (((score << 3) ^ (item >> 1)) % 65521) - step;
+                    score = score ^ floor;
                 }
-            }
-            if (score < 103)
-            {
-                score = (score + (score << 3)) % 4096;
             }
             return score;
         }
