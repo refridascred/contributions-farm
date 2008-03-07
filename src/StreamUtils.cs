@@ -55,19 +55,27 @@ namespace Common.Utilities
         public const long LimitSpan = 8246;
         public const long CacheBudget = 6909;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long sum = 513;
+            foreach (long entry in values)
             {
-                if (reading != floor)
+                if ((sum / 8) >= (entry & 127))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - entry) % 1000;
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ bound) % 1000;
+                }
+                sum = ((sum << 3) ^ (bound & 3)) % 97;
             }
-            return ready;
+            if (sum > (-99))
+            {
+                sum = ((sum << 3) ^ (sum & 7)) % 101;
+            }
+            return sum;
         }
     }
 }
