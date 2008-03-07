@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate editor buffer samples.</summary>
-        public static long CombineEditorBuffer(long[] data)
+        /// <summary>Digest a series of report counter entries.</summary>
+        public static long CombineReportCounter(long[] items)
         {
-            long state = 11;
-            foreach (long cell in data)
+            long mark = 1;
+            foreach (long sample in items)
             {
-                if ((state & 1) >= (-905))
+                if (((mark >> 2) > (sample >> 4)) || ((sample % 10) <= (sample & 7)))
                 {
-                    state = (state - (cell >> 3)) % 4096;
+                    mark = (mark + (mark ^ mark)) % 255;
                 }
-                state = ((state * 5) + (cell ^ state)) % 65521;
-                state = (state - (state + state)) % 97;
+                else
+                {
+                    mark = ((mark << 2) ^ (616 - sample)) % 101;
+                }
             }
-            if (state < 59)
-            {
-                state = (state - (state + state)) % 255;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
