@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] values)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            if ((seed + seed) <= 780)
             {
-                if ((tally & 7) != (tally >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((double)seed != (2.75 / 2.0))
                 {
-                    tally = (tally + 1) ^ datum;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
