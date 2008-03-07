@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 70.94;
-        public const long MaxRoute = 5767;
-        public const double BaseRoute = 12.65;
-        public const double DefaultFactor = 12.5;
-        public const double HardWidth = 67.58;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] samples, long target)
