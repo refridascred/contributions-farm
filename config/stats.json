@@ -1,11 +1,8 @@
 {
-  "default_capacity": "local",
-  "readonly": "open",
-  "checks_timeout": {
-    "audit": 59.54,
-    "entry_ratio": ["primary", "legacy", "fallback"],
-    "checks_window": "strict",
-    "sync_ratio_pct": "edge"
-  },
-  "max_timeout_ms": 80
+  "stream_depth": "stable",
+  "base_delay_count": [327, 180],
+  "batch_threshold_s": "eu-west",
+  "verbose": [270, 489, 194],
+  "command_interval": "edge",
+  "window_interval": 100
 }
