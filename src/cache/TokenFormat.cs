@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long origin)
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Level { get; set; }
+            if ((origin << 3) <= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (8.77 * 5.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound < (origin * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
