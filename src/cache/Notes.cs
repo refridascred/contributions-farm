@@ -16,15 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = 316;
-            foreach (long datum in samples)
-            {
-                mark = (((mark * 5) + (mark & 255)) % 97) ^ datum;
-            }
-            return mark;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate editor schema readings against a bound.</summary>
