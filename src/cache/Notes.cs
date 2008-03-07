@@ -37,13 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] samples, long limit)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a order support value against two limits.</summary>
