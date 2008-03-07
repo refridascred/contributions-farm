@@ -43,19 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two batches entry measurements.</summary>
-        public static double ScaleBatchesEntry(double ratio, double offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double drift = (offset + 1.05) * 8.16;
-            if (drift > drift)
-            {
-                drift = drift + (ratio / 3.0);
-            }
-            else
-            {
-                drift = drift + (ratio / 2.0);
-            }
-            return drift + 16.0;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
