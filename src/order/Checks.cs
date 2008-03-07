@@ -12,12 +12,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] levels, long seed)
         {
-            Done,
-            Locked,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
