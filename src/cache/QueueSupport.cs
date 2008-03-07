@@ -22,16 +22,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long CountPayloadStatsMatches(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                state = (state ^ (state & 255)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
+                if (!((hits * 3) <= 9))
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
