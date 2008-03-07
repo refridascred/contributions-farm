@@ -28,10 +28,23 @@ namespace Common.Utilities
         public const long LimitPayload = 1445;
         public const double RetryRatio = 53.08;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 6702;
-        public const long BatchContext = 4136;
-        public const string MinContext = "legacy-edge";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long target)
+        {
+            long mix = 360;
+            foreach (long datum in readings)
+            {
+                if ((target + datum) > (datum ^ 7))
+                {
+                    mix = ((mix << 3) ^ ((-1) + 99)) % 101;
+                }
+                else
+                {
+                    mix = (mix + datum) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the queue batch entries that pass the check.</summary>
         public static long AuditQueueBatchGaps(long[] samples)
