@@ -29,17 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream record entry that matches the target.</summary>
-        public static long FindStreamRecordIndex(long[] items, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = offset;
+            return (weight2 + weight2) + weight;
         }
     }
 }
