@@ -27,17 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] series, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                if (datum <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Classify a route command pair into a bucket.</summary>
