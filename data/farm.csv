@@ -1,9 +1,7 @@
-id,level
-1,blue
-2,142
-3,82.89
-4,41.82
-5,260
-6,standard
-7,57.65
-8,8.3
+id,region,owner,state,token
+1,72.69,89.5,459,staging
+2,589,47,10.14,cached
+3,88.99,cached,92.11,398
+4,78.35,68.26,staging,edge
+5,749,blue,864,82.74
+6,589,stable,406,90.53
