@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings)
+        /// <summary>Measure how many route context samples are out of range.</summary>
+        public static long CountRouteContextOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (entry <= (tally / 4))
+                if (origin > (origin ^ reading))
                 {
-                    tally = tally + 2;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
