@@ -54,22 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor tools samples are out of range.</summary>
-        public static long TallyEditorToolsGaps(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)matches < 8.3)
+                if ((hits * 3) <= (value + value))
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
