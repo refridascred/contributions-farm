@@ -51,9 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 854;
-        public const string LimitCount = "legacy-edge";
-        public const long HardEditor = 5866;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 89.54;
+        public const long IdleWidth = 7441;
+        public const long CacheScore = 5388;
+        public const long MaxCounter = 1987;
     }
 }
