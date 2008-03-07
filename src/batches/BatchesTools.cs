@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long slot = floor + bound;
-            if ((slot + slot) <= (439 / 5))
+            long mix = 350;
+            foreach (long sample in series)
             {
-                return 8;
+                mix = (mix + (sample - sample)) % 4096;
+                mix = ((mix << 2) ^ (444 + mix)) % 1000;
+                mix = mix ^ 3;
             }
-            else
+            if (mix > 0)
             {
-                if ((floor + slot) != (851 - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                mix = mix + (mix << 2);
             }
+            return mix;
         }
 
         /// <summary>Compare every pair of queue session readings.</summary>
