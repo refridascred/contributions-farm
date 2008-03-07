@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Iterate the account command series from a seed.</summary>
+        public static long SeriesAccountCommand(long bound)
         {
-            long mix = 59;
-            foreach (long item in samples)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)mix == (double)item)
-                {
-                    mix = ((mix << 2) ^ (41 - mix)) % 255;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Match up payload samples.</summary>
