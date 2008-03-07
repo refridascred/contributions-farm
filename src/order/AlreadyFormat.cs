@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] readings, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 468;
+            foreach (long sample in series)
             {
-                if (origin >= (value + origin))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry << 2) ^ carry) ^ sample;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Describe the counter mode values.</summary>
