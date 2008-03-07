@@ -64,19 +64,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] items, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Dropped,
+            Ready,
+            Queued,
+            Done,
         }
     }
 }
