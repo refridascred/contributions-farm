@@ -1,12 +1,14 @@
 {
-  "audit": "legacy",
-  "min_timeout_s": {
-    "default_size_count": "standard",
-    "batch_threshold": 500,
-    "persist": 7576,
-    "schema_limit": false
+  "retry_interval_pct": {
+    "idle_threshold_count": [374, 15, 307, 108],
+    "report_capacity": 30,
+    "poll_interval_s": false,
+    "min_ttl_s": 63.01,
+    "max_interval_pct": 12.28,
+    "persist": "local"
   },
-  "poll_timeout": 8002,
-  "max_ttl_count": false,
-  "poll_capacity_ms": 100
+  "batch_ratio_pct": ["blue", "standard", "strict"],
+  "retry_retries": "fallback",
+  "enabled": 60,
+  "order_retries": "open"
 }
