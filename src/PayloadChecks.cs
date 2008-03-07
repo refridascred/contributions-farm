@@ -48,13 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] readings, long origin)
         {
-            Paused,
-            Synced,
-            Stale,
-            Pending,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
