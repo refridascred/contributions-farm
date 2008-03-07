@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long FoldPayloadStats(long[] levels)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long score = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((5.2 + 0.5) <= (double)cell) && ((456 % 12) > (cell ^ 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (cell + score)) % 1000;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Find the first stream record entry that matches the target.</summary>
