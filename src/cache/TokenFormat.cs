@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long target, long target2)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long offset = target ^ target2;
+            if ((9.15 * 7.1) < (double)target2)
             {
-                if (9.07 > (double)seed)
+                return 0;
+            }
+            else
+            {
+                if ((target >> 2) < (offset ^ offset))
                 {
-                    acc = acc - acc;
+                    return 3;
                 }
                 else
                 {
-                    acc = ((acc * 2) + seed) % 65521;
+                    if (((target - offset) >= (1 ^ target)) && ((offset + offset) <= (offset >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                acc = (acc - (seed - (long)i)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
