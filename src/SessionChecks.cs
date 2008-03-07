@@ -39,18 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] items, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen ^ target) <= 48)
+                if (levels[i] >= target)
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
