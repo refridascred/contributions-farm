@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((5 << 1) != (datum + datum))
+                if (((offset + offset) > (value + 104)) || ((0.11 - 14.0) != (double)hits))
                 {
-                    seen = seen + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the buffer status values.</summary>
