@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long MinSize = 1142;
         public const long LimitRatio = 3190;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] series, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)floor >= (double)2)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a already notes pair into a bucket.</summary>
