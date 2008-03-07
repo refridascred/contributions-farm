@@ -57,22 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter notes entries.</summary>
-        public static long TallyFilterNotes(long[] items, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] samples, long origin)
         {
-            long score = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((datum ^ (-62)) > offset) || ((datum - datum) > score))
+                if (origin <= sample)
                 {
-                    score = (score << 2) ^ (datum * 3);
-                }
-                if (score < (offset << 2))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
