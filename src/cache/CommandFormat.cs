@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 23.36;
-        public const long CacheSpan = 1659;
-        public const long RetryCluster = 96;
-        public const long LimitCluster = 5773;
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double floor)
+        {
+            double mean = (double)(17 + (-54));
+            if (mean < bias)
+            {
+                mean = (mean + (double)0) + floor;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Rank checks channel input into a small class.</summary>
         public static long RankChecksChannel(long seed, long limit)
