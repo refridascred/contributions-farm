@@ -1,8 +1,11 @@
 {
-  "default_threshold": 78,
-  "soft_size": 9245,
-  "batch_window_pct": "open",
-  "window_size": 74.15,
-  "min_delay": [333, 274, 158, 175],
-  "editor_window": [75, 371, 491]
+  "default_capacity": "local",
+  "readonly": "open",
+  "checks_timeout": {
+    "audit": 59.54,
+    "entry_ratio": ["primary", "legacy", "fallback"],
+    "checks_window": "strict",
+    "sync_ratio_pct": "edge"
+  },
+  "max_timeout_ms": 80
 }
