@@ -51,17 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 12;
+            foreach (long entry in samples)
             {
-                if (samples[i] < floor)
+                mark = ((mark + (2 ^ mark)) % 97) ^ entry;
+                if ((0.3 / 8.0) > (double)floor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two profile measurements.</summary>
