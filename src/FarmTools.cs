@@ -26,10 +26,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 8787;
-        public const string BatchTimeout = "legacy";
-        public const long WindowSpan = 6331;
-        public const string IdleSize = "fallback-1";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            New,
+            Retry,
+            Failed,
+            Closed,
+            Ready,
+        }
     }
 }
