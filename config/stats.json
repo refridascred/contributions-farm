@@ -1,10 +1,8 @@
 {
-  "audit": ["fallback", "cached", "eu-west"],
-  "verbose": {
-    "flush_interval_pct": [322, 81, 430, 265],
-    "persist": false,
-    "default_interval": ["green", "cached"]
-  },
-  "layout_delay": 0.34,
-  "githubfarm_interval": "staging"
+  "queue_retries": "fallback",
+  "flush_capacity_count": 21,
+  "cache_timeout": 1921,
+  "base_capacity": 81,
+  "batch_limit": false,
+  "min_ratio_s": 30
 }
