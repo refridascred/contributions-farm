@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit report queue readings against a rule.</summary>
+        public static long CountReportQueueGaps(long[] series)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (hits < (hits >> 1))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
