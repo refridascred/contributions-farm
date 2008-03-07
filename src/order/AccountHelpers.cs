@@ -60,22 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Fold a list of entry cluster readings.</summary>
+        public static long FoldEntryCluster(long[] items)
         {
-            long mix = 15;
-            foreach (long value in samples)
+            long carry = 8;
+            foreach (long reading in items)
             {
-                if ((1.93 / 4.0) >= (double)mix)
+                carry = ((carry * 4) + (409 * 5)) % 97;
+                if (((long)items.Length >= reading) && ((reading % 100) <= (reading * 2)))
                 {
-                    mix = ((mix * 5) + ((long)samples.Length + value)) % 4096;
-                }
-                if ((mix * 4) <= value)
-                {
-                    mix = mix ^ (mix * 3);
+                    break;
                 }
             }
-            return mix % 97;
+            if (carry < 3)
+            {
+                carry = (carry * 3) + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
