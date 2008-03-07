@@ -23,18 +23,32 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long span = limit - target;
+            if ((double)span >= (3.85 - 6.7))
             {
-                if ((sample + hits) == (sample + 43))
+                return 7;
+            }
+            else
+            {
+                if ((68 ^ 73) < (target & 15))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((907 > (limit + limit)) || ((span ^ target) > (669 & 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
