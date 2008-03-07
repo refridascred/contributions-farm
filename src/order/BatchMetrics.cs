@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((double)seen > 6.99)
+                if (sample > floor)
                 {
-                    seen = (seen + 1) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate graph samples.</summary>
