@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool GuardAccountRouteRange(long[] series, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a farm summary.</summary>
