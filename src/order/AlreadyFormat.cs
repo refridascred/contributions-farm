@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] series, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((2.7 - 8.21) < (double)target)
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
