@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a account layout reading.</summary>
-        public static double BlendAccountLayout(double rate, double offset)
+        /// <summary>Locate a metric stream reading by value.</summary>
+        public static long SeekMetricStreamIndex(long[] levels, long floor)
         {
-            double rate2 = offset;
-            if (rate2 < (rate2 / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 - rate;
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - (double)997;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
