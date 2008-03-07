@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 413;
         public const long BaseGithubfarm = 3117;
 
-        /// <summary>Validate report format readings against a bound.</summary>
-        public static bool ValidateReportFormatBounds(long[] readings, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long anchor = 1;
+            foreach (long value in items)
             {
-                if (entry != origin)
+                if ((value % 3) <= (-56))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor << 2) ^ (anchor & 1);
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
