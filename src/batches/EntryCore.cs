@@ -25,22 +25,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit route order readings against a rule.</summary>
-        public static long TallyRouteOrderMatches(long[] items, long bound)
+        /// <summary>Compare every pair of stats token readings.</summary>
+        public static long OverlapStatsTokenCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound << 3) <= 24)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
