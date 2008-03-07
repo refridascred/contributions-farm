@@ -1,6 +1,10 @@
 {
-  "entry_window": 500,
-  "burst_capacity_s": [356, 141, 37],
-  "burst_limit_pct": "staging",
-  "persist": true
+  "window_interval": {
+    "cache_ttl_count": "cached",
+    "base_delay_ms": 6161,
+    "cache_capacity": false,
+    "audit": 3626
+  },
+  "route_limit": "staging",
+  "dry_run": ["open", "latest", "fallback", "open"]
 }
