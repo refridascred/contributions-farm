@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long SoftQueue = 5419;
         public const long BurstQueue = 5078;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Paused,
-            Synced,
-            Done,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 5699;
+        public const double CacheFactor = 13.89;
+        public const double WindowFactor = 88.41;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] samples, long seed)
