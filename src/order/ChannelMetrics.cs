@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long seed)
         {
-            long mix = 591;
-            foreach (long value in data)
+            long mix = 9;
+            foreach (long sample in values)
             {
-                mix = ((mix + (value ^ value)) % 1000) + target;
+                mix = ((mix ^ mix) - sample) - seed;
             }
-            if (mix < 865)
+            if (mix < 971)
             {
-                mix = mix ^ mix;
+                mix = (mix ^ mix) % 65521;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
