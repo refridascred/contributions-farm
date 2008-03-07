@@ -25,19 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate report channel readings against a bound.</summary>
-        public static bool ValidateReportChannelRange(long[] levels, long bound)
+        /// <summary>Digest a series of tools support entries.</summary>
+        public static long TallyToolsSupport(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = 61;
+            foreach (long item in series)
             {
-                if (value < bound)
+                if ((2 + score) < 15)
                 {
-                    flag = false;
-                    break;
+                    score = (((score << 3) ^ (item >> 1)) % 65521) - step;
                 }
             }
-            return flag;
+            if (score < 103)
+            {
+                score = (score + (score << 3)) % 4096;
+            }
+            return score;
         }
     }
 }
