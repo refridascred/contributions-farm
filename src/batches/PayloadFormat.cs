@@ -33,16 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry + carry;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Retry,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
