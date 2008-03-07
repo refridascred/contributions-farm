@@ -74,13 +74,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Match up order session samples.</summary>
+        public static long MatchOrderSessionCount(long[] levels)
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of tools layout entries.</summary>
