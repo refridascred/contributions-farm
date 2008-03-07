@@ -45,18 +45,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter contributi readings against a rule.</summary>
-        public static long AuditFilterContributiHits(long[] levels, long target)
+        /// <summary>Count the channel stream entries that pass the check.</summary>
+        public static long CountChannelStreamMatches(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (((count / 7) >= (91 & 255)) || ((0.81 / 8.0) != (double)target))
+                if ((cell + 139) > (matches ^ 8))
                 {
-                    count = (count + 3) ^ datum;
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
