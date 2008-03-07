@@ -42,10 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxBudget = 4973;
-        public const double SoftFilter = 80.92;
-        public const long SoftSize = 6265;
-        public const long MaxTimeout = 3061;
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
