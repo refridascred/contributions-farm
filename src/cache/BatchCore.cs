@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowDepth = "open-v2";
-        public const long CacheBatches = 2292;
-        public const long RetrySize = 2555;
-        public const long StepRatio = 717;
-        public const long DefaultBatches = 9106;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] items, long seed)
