@@ -62,18 +62,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)tally > (17.0 * 16.0)) && (1.98 >= (double)tally))
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 4409;
+        public const string BurstTimeout = "alpha-v2";
+        public const long CacheRatio = 2925;
+        public const string RetryBatch = "legacy-edge";
     }
 }
