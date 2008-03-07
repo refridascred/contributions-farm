@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Paused,
-            New,
-            Stale,
-            Done,
+            Ready,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
