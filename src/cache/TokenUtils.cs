@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if (!((limit ^ floor) < limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.7 * 5.0) <= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor & 15) != (984 * 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor < limit) && (91 > (floor ^ 897)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Hold a cache info.</summary>
