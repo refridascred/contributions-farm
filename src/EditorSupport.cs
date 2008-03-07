@@ -61,26 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series)
-        {
-            long anchor = 751;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = ((anchor + (sample - (long)series.Length)) % 65521) ^ (long)i;
-                }
-                if (((double)3 < (double)anchor) || ((sample >> 3) > (sample - sample)))
-                {
-                    anchor = anchor + (sample >> 1);
-                }
-                else
-                {
-                    anchor = (anchor - (sample + anchor)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseFactor = 4920;
+        public const long RetryPayload = 3676;
+        public const string MinPayload = "fallback-v2";
+        public const string HardPayload = "alpha-1";
     }
 }
