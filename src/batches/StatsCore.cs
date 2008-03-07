@@ -68,18 +68,21 @@ namespace Common.Utilities
             return rate + (9.6 - rate);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] readings, long offset)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches > (offset * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
