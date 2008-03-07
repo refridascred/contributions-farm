@@ -73,39 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long offset2)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long offset3 = offset - offset2;
-            if ((5.0 < (double)offset2) || (offset3 >= (offset2 << 1)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 24) >= (offset2 + offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset != (7.0 - 17.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset3 & 7) <= (offset << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
