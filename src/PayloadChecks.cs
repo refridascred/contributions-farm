@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long anchor = -99;
+            foreach (long value in values)
             {
-                if ((reading * 5) > matches)
+                if ((double)anchor <= (7.0 - 0.31))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor ^ (anchor + 425)) % 255;
+                    anchor = (anchor - ((-62) + anchor)) % 4096;
+                }
+                anchor = (anchor + anchor) % 65521;
+                anchor = (anchor - (44 - anchor)) % 101;
+                if ((anchor * 2) > (value - 247))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a report stats.</summary>
