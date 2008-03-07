@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long origin)
+        /// <summary>Count the report tools entries that pass the check.</summary>
+        public static long TallyReportToolsMatches(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (values[i] < origin)
+                if (!((double)reading != (11.0 / 3.0)) && ((double)seen >= (6.91 * 7.11)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
