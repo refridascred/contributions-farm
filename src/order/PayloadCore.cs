@@ -14,13 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
             public long Level { get; set; }
-            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the batch status values.</summary>
