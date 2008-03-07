@@ -68,13 +68,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Blend two notes stream measurements.</summary>
+        public static double ProjectNotesStream(double gain, double bias)
         {
-            Dropped,
-            Done,
-            Pending,
-            Queued,
+            double ratio = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) + gain;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a already record.</summary>
