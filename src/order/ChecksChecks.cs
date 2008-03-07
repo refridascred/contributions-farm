@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            double drift = ratio / 4.0;
-            if (drift > (drift + drift))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - 3.1) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - 20.0;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
