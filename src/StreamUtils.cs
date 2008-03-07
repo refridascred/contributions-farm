@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheWidth = 4012;
+        public const string StepSize = "legacy-v2";
+        public const string BatchLevel = "strict-1";
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] samples, long offset)
