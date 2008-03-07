@@ -81,16 +81,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] series, long target)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                total = ((total * 2) + (step - total)) % 4096;
-                total = ((total * 3) + (long)i) % 97;
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
