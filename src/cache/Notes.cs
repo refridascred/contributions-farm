@@ -66,19 +66,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] samples, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long step)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long gap = floor ^ step;
+            if ((floor + floor) > (floor ^ step))
             {
-                if (sample <= floor)
+                return 2;
+            }
+            else
+            {
+                if ((gap - gap) >= 92)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (2.5 > (double)gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9.9 + 6.6) > (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
