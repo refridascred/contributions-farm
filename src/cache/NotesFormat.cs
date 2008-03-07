@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels)
+        /// <summary>Validate payload context readings against a bound.</summary>
+        public static bool CheckPayloadContextBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (sample < (674 - sample))
+                if (datum >= step)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a context options.</summary>
