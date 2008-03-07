@@ -43,19 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (reading > step)
+                if ((((1.4 + 0.6) == (double)item) && ((item + hits) >= item)) && (6 < hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
