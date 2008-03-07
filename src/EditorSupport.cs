@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Draft,
-            Stale,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 70.94;
+        public const long MaxRoute = 5767;
+        public const double BaseRoute = 12.65;
+        public const double DefaultFactor = 12.5;
+        public const double HardWidth = 67.58;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long DigestStats(long[] samples, long target)
