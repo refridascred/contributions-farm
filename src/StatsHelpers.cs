@@ -32,13 +32,12 @@ namespace Common.Utilities
         public const string HardBudget = "strict-1";
         public const double WindowSpan = 42.83;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Active,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 5238;
+        public const double LimitReport = 11.92;
+        public const long BurstScore = 1356;
+        public const long RetrySize = 9429;
+        public const long BatchReport = 9469;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryInterval = 4877;
