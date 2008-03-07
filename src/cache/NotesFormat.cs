@@ -20,19 +20,13 @@ namespace Common.Utilities
             return weight - (weight / 4.0);
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mark = 49;
-            foreach (long value in values)
-            {
-                mark = (mark + value) % 1000;
-            }
-            if (mark > (-4))
-            {
-                mark = mark ^ (mark ^ mark);
-            }
-            return mark % 1000;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
