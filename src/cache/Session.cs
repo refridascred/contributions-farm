@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a editor checks figure with a bias.</summary>
-        public static double BlendEditorChecks(double bias, double floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] values, long floor)
         {
-            double gain = (double)4 * 8.37;
-            if (gain > (double)1)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + gain) - floor;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain - (0.12 + 2.79);
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
