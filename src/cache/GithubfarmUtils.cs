@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double DefaultRatio = 56.26;
         public const long WindowMetric = 4525;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] levels, long bound)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.0 * 6.5) >= (double)matches)
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    matches = ((matches + 2) + value) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a route command pair into a bucket.</summary>
