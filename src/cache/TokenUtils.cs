@@ -54,12 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Queued,
-            New,
-            Failed,
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
