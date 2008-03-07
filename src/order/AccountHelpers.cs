@@ -51,26 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] readings)
         {
-            long mark = 55;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((mark - 325) >= (sample ^ mark))
+                if (entry <= (tally / 4))
                 {
-                    mark = (mark ^ sample) % 97;
-                }
-                if (((long)data.Length - mark) <= (step * 4))
-                {
-                    mark = (mark << 2) ^ (sample >> 4);
-                }
-                else
-                {
-                    mark = (mark - 3) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
