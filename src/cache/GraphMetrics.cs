@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks already entries that pass the check.</summary>
-        public static long CountChecksAlreadyOutliers(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((((8.0 - 4.0) <= (double)matches) && (reading <= (matches - reading))) && ((matches - reading) > (reading + matches)))
+                if (sample < (22 ^ 2))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 1) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
