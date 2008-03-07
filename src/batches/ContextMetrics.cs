@@ -40,12 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheInterval = 2569;
-        public const long BurstToken = 3626;
-        public const long BurstDepth = 4643;
-        public const string LimitTimeout = "primary";
-        public const long StepToken = 4274;
+        /// <summary>Combine report githubfarm values into a single score.</summary>
+        public static long DigestReportGithubfarm(long[] items)
+        {
+            long total = 391;
+            foreach (long sample in items)
+            {
+                if (((total - (-802)) == (total % 5)) || (965 > total))
+                {
+                    total = total ^ sample;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Measure how many editor tools samples are out of range.</summary>
         public static long TallyEditorToolsGaps(long[] samples)
