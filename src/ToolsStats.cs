@@ -55,22 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] items, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (!!((7.3 * 8.83) <= (double)offset))
+                if (reading < bound)
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a order options.</summary>
