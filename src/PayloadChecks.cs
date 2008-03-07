@@ -73,19 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] levels, long offset)
+        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
+        public static bool ValidateBufferMetricRange(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (cell >= offset)
+                if (entry <= floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
