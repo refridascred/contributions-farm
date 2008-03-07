@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] values)
         {
-            double ratio = (bias - bias2) - (bias2 * 8.21);
-            if (ratio >= ratio)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                ratio = ratio - bias;
+                if (tally > (entry + entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio + (ratio + bias2);
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
