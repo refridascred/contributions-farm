@@ -1,21 +1,6 @@
 # support settings
-enabled:
-  - eu-west
-  - open
-  - green
-  - edge
-max_window_s:
-  min_ttl: false
-  min_size: 6965
-  audit: 47.59
-  farm_ratio: cached
-  already_limit:
-    persist: 12.01
-    enabled: open
-    sync_window: local
-    cluster_ratio: standard
-    route_size: 9416
-    strict:
-      - edge
-      - eu-west
-strict: legacy
+readonly: false
+report_window: latest
+idle_delay_count: 90
+cache_interval_s: false
+poll_threshold_count: edge
