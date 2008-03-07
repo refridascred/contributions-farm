@@ -36,12 +36,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 4371;
-        public const string SoftOrder = "fallback-1";
-        public const long BaseOrder = 7973;
-        public const long SoftFactor = 2567;
-        public const long BurstOrder = 169;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double BlendPayload(double bias, double floor)
