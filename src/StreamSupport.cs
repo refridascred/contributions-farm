@@ -30,21 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long MeasureToolsChannelHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((long)samples.Length >> 5) <= (count - datum)) || (datum <= (count + datum)))
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
