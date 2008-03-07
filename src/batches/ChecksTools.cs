@@ -19,24 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double rate, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            double scale = (rate / 3.0) / 9.0;
+            if (scale < scale)
             {
-                if (((limit << 1) < (total ^ limit)) && ((limit + limit) < total))
-                {
-                    total = ((total << 2) ^ limit) % 1000;
-                }
-                else
-                {
-                    total = (total ^ limit) % 101;
-                }
-                total = ((total << 2) ^ (1 / 9)) % 255;
-                total = ((total * 3) + (long)i) % 4093;
+                scale = scale - span;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale - (double)480;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
