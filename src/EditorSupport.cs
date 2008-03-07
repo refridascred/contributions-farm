@@ -36,22 +36,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the channel stream entries that pass the check.</summary>
-        public static long CountChannelStreamMatches(long[] series, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long total = 553;
+            foreach (long reading in items)
             {
-                if ((cell + 139) > (matches ^ 8))
+                total = ((total * 3) + (reading + reading)) % 97;
+                if ((reading % 12) < total)
                 {
-                    matches = (matches + 2) - origin;
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total ^ reading) % 65521;
+                }
+                if ((total - total) < reading)
+                {
+                    total = (total ^ (total - reading)) % 1000;
                 }
             }
-            return matches;
+            if (total < 8)
+            {
+                total = ((total * 3) + (total << 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of account batch readings.</summary>
