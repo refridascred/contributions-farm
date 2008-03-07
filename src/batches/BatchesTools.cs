@@ -43,39 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long limit, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long step)
         {
-            long diff = limit ^ floor;
-            if ((floor - 755) >= (limit % 5))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.7 * 7.9) <= (double)diff)
+                if (reading > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit < 5.3)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((diff >> 2) != (limit << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
