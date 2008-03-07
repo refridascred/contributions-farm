@@ -56,22 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            long acc = 319;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (((double)sample != (9.12 + 4.05)) || ((sample + acc) > (long)samples.Length))
+                if ((double)datum == (8.0 + 6.24))
                 {
-                    acc = (acc << 2) ^ sample;
-                }
-                else
-                {
-                    acc = acc ^ ((long)samples.Length + sample);
+                    tally = tally + 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
