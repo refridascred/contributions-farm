@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] items, long offset)
+        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricMetricsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= (matches >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + offset;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the counter mode values.</summary>
