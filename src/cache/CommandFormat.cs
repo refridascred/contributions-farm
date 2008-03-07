@@ -39,16 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 3322;
+        public const long DefaultFarm = 2074;
+        public const double WindowFarm = 66.81;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorHits(long[] levels)
