@@ -48,31 +48,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long seed, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] readings)
         {
-            if ((double)seed == (4.1 - 17.0))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >> 1) < (seed >> 5))
+                if (count > cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + 49) > (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
