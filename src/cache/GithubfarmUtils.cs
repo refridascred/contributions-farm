@@ -60,31 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout payload value from a seed.</summary>
-        public static long SeriesLayoutPayload(long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((double)(long)i != (3.86 / 3.0)) || ((55 - bound) >= (mark - 75)))
+                if ((tally ^ cell) == (tally % 10))
                 {
-                    mark = (mark - (mark + bound)) % 1000;
-                    mark = (mark ^ (mark - (long)i)) % 101;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (long)i) % 101;
-                    mark = mark - bound;
-                }
-                mark = (mark ^ (95 * 5)) % 255;
-                if ((mark + mark) <= (bound / 7))
-                {
-                    mark = (mark - (79 + 582)) % 4096;
-                    mark = (mark ^ (bound + 48)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
     }
 }
