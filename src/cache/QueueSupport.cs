@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Synced,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "standard-v2";
+        public const long CacheBudget = 2420;
+        public const long HardWindow = 654;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] readings)
