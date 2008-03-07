@@ -60,23 +60,11 @@ namespace Common.Utilities
         public const long BurstCommand = 4191;
         public const double CacheCount = 27.06;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double mean = offset + (double)472;
-            if (mean <= (mean / 8.0))
-            {
-                mean = (mean - (double)266) - scale;
-            }
-            else
-            {
-                mean = mean - (0.81 / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)20;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
