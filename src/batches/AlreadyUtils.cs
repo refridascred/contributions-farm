@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
