@@ -29,22 +29,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] readings, long target)
+        /// <summary>Classify a already notes pair into a bucket.</summary>
+        public static long RankAlreadyNotes(long target, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if (((double)seed != (15.0 + 6.1)) || ((seed << 1) < (target / 6)))
             {
-                if ((tally - item) > target)
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) >= target)
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (seed < (target % 60))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a editor info.</summary>
