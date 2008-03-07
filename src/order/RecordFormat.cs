@@ -73,11 +73,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            Dropped,
+            Closed,
+            Retry,
+            Stale,
+            Paused,
         }
     }
 }
