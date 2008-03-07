@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate metric context samples.</summary>
-        public static long TotalMetricContext(long[] data, long target)
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long TotalTokenCounter(long[] items)
         {
-            long anchor = 1;
-            foreach (long cell in data)
+            long total = 871;
+            foreach (long entry in items)
             {
-                if ((anchor * 3) > (target + cell))
+                if ((total - 2) == (entry + entry))
                 {
-                    anchor = ((anchor << 2) ^ target) % 97;
+                    total = (total + (342 << 1)) % 1000;
                 }
                 else
                 {
-                    anchor = anchor ^ (cell - anchor);
-                }
-                if (9.93 > (double)target)
-                {
-                    break;
+                    total = ((total << 3) ^ ((-814) - total)) % 4096;
                 }
             }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
