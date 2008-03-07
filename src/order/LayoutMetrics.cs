@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long anchor = 235;
-            foreach (long value in samples)
-            {
-                anchor = anchor - (value - value);
-            }
-            if (anchor < (-7))
-            {
-                anchor = (anchor - (anchor - anchor)) % 65521;
-            }
-            return anchor % 4096;
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
