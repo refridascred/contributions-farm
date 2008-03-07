@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine metrics format values into a single score.</summary>
-        public static long FoldMetricsFormat(long[] samples, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long acc = -4;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (12.0 / 2.0))
-                {
-                    acc = (acc << 3) ^ (offset + reading);
-                }
-            }
-            if (acc < 29)
-            {
-                acc = ((acc * 4) + offset) % 1000;
-            }
-            return acc % 97;
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a farm stats sample.</summary>
