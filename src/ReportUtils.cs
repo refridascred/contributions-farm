@@ -56,25 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long step)
-        {
-            if (step < (step >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + 74) > (step & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchCount = "local";
+        public const long CacheBudget = 147;
+        public const long StepWidth = 4588;
+        public const long MinAccount = 5582;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
