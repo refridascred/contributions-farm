@@ -1,10 +1,9 @@
 # entry settings
-max_window_count: 100
-min_ratio:
-  - staging
-  - legacy
-  - cached
-  - local
-flush_limit: blue
-editor_ratio: stable
-batch_delay: open
+verbose: 1024
+min_size_pct: 500
+queue_window:
+  - green
+  - edge
+  - blue
+  - primary
+sync_depth_pct: 11.07
