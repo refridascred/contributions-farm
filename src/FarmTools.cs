@@ -43,13 +43,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            New,
-            Closed,
-            Dropped,
-            Retry,
+            double bias = ratio;
+            if (bias >= (double)(-960))
+            {
+                bias = (bias + 6.54) + floor;
+            }
+            return bias + (double)7;
         }
     }
 }
