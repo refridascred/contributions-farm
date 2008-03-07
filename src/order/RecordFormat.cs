@@ -33,11 +33,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next format cluster value from a seed.</summary>
+        public static long StepFormatCluster(long offset)
         {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = acc + acc;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the queue batch entries that pass the check.</summary>
