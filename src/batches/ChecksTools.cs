@@ -45,18 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] items)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((6.6 / 6.0) > (double)datum)
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
