@@ -9,12 +9,18 @@ log() {
 RECORD_LIMIT=179
 log "limit is ${RECORD_LIMIT}"
 
-for item in fallback local edge; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
