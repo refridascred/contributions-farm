@@ -1,5 +1,5 @@
 {
-  "batch_size_pct": "primary",
-  "max_limit": "open",
-  "poll_timeout_ms": true
+  "soft_capacity": false,
+  "order_capacity": true,
+  "soft_size_count": "latest"
 }
