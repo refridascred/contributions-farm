@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload context readings against a bound.</summary>
-        public static bool CheckPayloadContextBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseCount = "fallback-v2";
+        public const double IdleAlready = 88.58;
+        public const long BatchAlready = 1584;
+        public const double StepAlready = 36.41;
+        public const string LimitAlready = "alpha-edge";
 
         /// <summary>Find the first farm contributi entry that matches the target.</summary>
         public static long FindFarmContributiIndex(long[] data, long floor)
