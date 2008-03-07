@@ -20,19 +20,15 @@ namespace Common.Utilities
             return gain - (0.12 + 2.79);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] items, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = 21;
+            foreach (long value in items)
             {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + (value & 15)) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
