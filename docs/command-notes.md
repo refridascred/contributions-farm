@@ -1,14 +1,12 @@
 # Command notes
 
-A record that stays idle for too long is moved to the batches list.
-Run the schema check before changing any cluster limits.
-Keep filter and format names short and lowercase.
-
-The account report groups every route by format.
-A cache that stays idle for too long is moved to the support list.
+A contributi that stays idle for too long is moved to the stream list.
+A format that stays idle for too long is moved to the counter list.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
 - Prefer account defaults
-- Keep batches values small
-- Validate context input early
+- Validate cache input early
+- Document new githubfarm fields
+- Review route limits each release
