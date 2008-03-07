@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 9670;
-        public const double CacheSpan = 52.47;
-        public const double LimitRatio = 77.56;
-        public const double StepSpan = 2.23;
-        public const long BaseCache = 9043;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)target == (7.62 + 2.1))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
