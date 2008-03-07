@@ -30,11 +30,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryDepth = 2492;
-        public const long StepBudget = 1569;
-        public const long CacheInterval = 1615;
-        public const string LimitCount = "strict";
-        public const long BaseEditor = 1646;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long offset, long step)
+        {
+            if (((93 - step) <= (step + step)) && ((227 + offset) > step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + offset) <= (offset ^ offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)offset >= (8.11 - 17.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
