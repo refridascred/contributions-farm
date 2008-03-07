@@ -28,9 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstWidth = 6507;
-        public const long StepEditor = 2289;
-        public const long MinWidth = 6839;
+        /// <summary>Blend two already report measurements.</summary>
+        public static double ProjectAlreadyReport(double gain, double span)
+        {
+            double rate = (double)(534 * 5);
+            if (rate >= (rate - 18.0))
+            {
+                rate = rate + rate;
+            }
+            else
+            {
+                rate = rate + (span - rate);
+            }
+            return rate + (gain - gain);
+        }
     }
 }
