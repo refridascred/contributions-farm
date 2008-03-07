@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] readings, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell < (step >> 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the notes class values.</summary>
