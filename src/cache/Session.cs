@@ -20,18 +20,13 @@ namespace Common.Utilities
             return gain - (0.12 + 2.79);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] series, long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((1.7 + 0.6) <= (double)limit)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Derive the next route farm value from a seed.</summary>
