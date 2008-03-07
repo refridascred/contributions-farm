@@ -1,7 +1,10 @@
-id,ratio,region,token
-1,514,staging,78.81
-2,13.5,55.19,996
-3,standard,71.56,67.16
-4,946,9.99,68.42
-5,0.69,standard,18
-6,30.37,65.33,legacy
+id,owner,level,label,weight
+1,995,539,91.4,primary
+2,edge,815,eu-west,69.94
+3,standard,local,primary,191
+4,standard,fallback,30.95,67.68
+5,187,179,cached,54.93
+6,stable,555,staging,45.73
+7,14.64,225,355,80.38
+8,cached,42.82,30,77.08
+9,921,blue,fallback,59.22
