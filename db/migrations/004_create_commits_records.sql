@@ -1,13 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    region TEXT,
-    token TEXT
+    ratio REAL,
+    level INTEGER,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
 
-INSERT INTO commits_records (label, region, token) VALUES ('local', 'latest', 'standard');
-INSERT INTO commits_records (label, region, token) VALUES ('stable', 'edge', 'local');
-INSERT INTO commits_records (label, region, token) VALUES ('eu-west', 'blue', 'local');
+INSERT INTO commits_records (ratio, level, region) VALUES (51.62, 3, 'green');
+INSERT INTO commits_records (ratio, level, region) VALUES (51.5, 24, 'edge');
