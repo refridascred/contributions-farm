@@ -40,21 +40,19 @@ namespace Common.Utilities
             return load - (8.5 - weight);
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Scale a schema window figure with a bias.</summary>
+        public static double SmoothSchemaWindow(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias;
+            if (weight > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight + (weight * 1.0)) - rate;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight / 4.0)) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
