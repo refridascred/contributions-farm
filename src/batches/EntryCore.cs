@@ -61,10 +61,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetrySize = 1557;
-        public const string StepWidth = "strict-edge";
-        public const string MaxBudget = "latest-v2";
-        public const double IdleFactor = 49.21;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Synced,
+            Failed,
+            Idle,
+            Stale,
+            Retry,
+        }
     }
 }
