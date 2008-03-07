@@ -54,18 +54,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] series, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long span = offset - offset2;
+            if ((double)offset2 <= (6.42 * 6.2))
             {
-                if (766 > (sample << 1))
+                return 4;
+            }
+            else
+            {
+                if ((span % 64) <= offset2)
                 {
-                    hits = (hits + 1) + origin;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
