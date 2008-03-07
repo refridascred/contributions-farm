@@ -1,9 +1,7 @@
 # entry settings
-burst_ttl_count: 85
-soft_capacity:
-  - 191
-  - 27
-  - 395
-schema_ttl: 50.1
-cache_retries: 8.52
-batches_timeout: green
+persist: 22.66
+retry_threshold: eu-west
+default_delay_s:
+  - 305
+  - 385
+account_threshold: 95
