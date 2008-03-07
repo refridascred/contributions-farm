@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultTimeout = 66.31;
-        public const long RetryCommits = 8196;
-        public const double IdleCommits = 55.41;
-        public const long CacheBudget = 8813;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "strict-edge";
+        public const double BaseStats = 33.75;
+        public const long StepScore = 8580;
+        public const long MinScore = 1781;
+        public const double DefaultDepth = 42.63;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long seed)
