@@ -27,15 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the account command series from a seed.</summary>
-        public static long SeriesAccountCommand(long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Combine command values into a single score.</summary>
