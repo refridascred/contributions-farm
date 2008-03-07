@@ -75,23 +75,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double scale, double bias)
+        /// <summary>Count the commits report entries that pass the check.</summary>
+        public static long TallyCommitsReportOutliers(long[] items, long floor)
         {
-            double drift = bias / 5.0;
-            if (drift < (bias * 9.43))
+            long count = 0;
+            foreach (long cell in items)
             {
-                drift = (drift - bias) - scale;
+                if ((floor > count) || ((6 + count) >= floor))
+                {
+                    count = (count + 1) - cell;
+                }
             }
-            else
-            {
-                drift = drift + (double)89;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift - bias)) + (double)(long)i;
-            }
-            return drift - bias;
+            return count;
         }
     }
 }
