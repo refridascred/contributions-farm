@@ -1,8 +1,14 @@
 # entry settings
-cluster_window: 95.71
-verbose: open
-burst_threshold:
-  hard_timeout_ms: 8.59
-  record_limit: 91.95
-  tools_timeout: staging
-sync_retries_ms: 22.11
+buffer_timeout: 250
+soft_window_ms: 5508
+idle_size: staging
+base_delay: green
+contributi_interval:
+  flush_ttl_pct: 1885
+  idle_window_count: 37.53
+  max_timeout: blue
+  command_limit:
+    - 480
+    - 62
+  default_delay_count: 4048
+cache_delay_pct: 99
