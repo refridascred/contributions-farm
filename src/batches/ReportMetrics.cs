@@ -25,30 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items, long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            long anchor = 168;
-            foreach (long cell in items)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((cell - bound) >= cell))
-                {
-                    anchor = (anchor - (cell & 3)) % 65521;
-                }
-                if ((11.0 - 2.34) < (double)anchor)
-                {
-                    anchor = ((anchor * 4) + (888 * 3)) % 4096;
-                }
-                if (((double)cell == (8.38 * 7.0)) && ((997 % 7) != (101 + anchor)))
-                {
-                    break;
-                }
+                score = score + bound;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor * 5) + (464 % 2)) % 4096;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
