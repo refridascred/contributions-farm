@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const string SoftMetrics = "staging-edge";
         public const long MaxMetrics = 3132;
 
-        /// <summary>Find the first stream route entry that matches the target.</summary>
-        public static long SeekStreamRouteIndex(long[] readings, long offset)
+        /// <summary>Count the batch route entries that pass the check.</summary>
+        public static long TallyBatchRouteHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
+                if ((hits >> 4) >= (item + hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
