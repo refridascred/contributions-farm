@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] items, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next tools stream value from a seed.</summary>
