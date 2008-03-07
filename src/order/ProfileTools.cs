@@ -66,35 +66,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric githubfarm value against two limits.</summary>
-        public static long ClassifyMetricGithubfarm(long bound, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long target)
         {
-            if ((949 ^ bound) != (8 * 2))
+            if ((target / 6) != (step >> 5))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((origin + bound) <= origin)
+                if ((double)target >= (5.86 * 4.75))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (!((origin * 3) <= (bound + origin)))
+                    if ((target >> 1) > target)
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        if (!((bound >> 4) == (bound - origin)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 8;
                     }
                 }
             }
