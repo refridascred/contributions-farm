@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            double load = (6.8 + bias) - 7.13;
+            if (load > 2.0)
+            {
+                load = (load + (double)(-91)) + ratio;
+            }
+            return load - bias;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
