@@ -38,19 +38,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count + 4) < ((long)data.Length & 3))
-                {
-                    count = ((count + 1) + item) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitScore = 33.96;
+        public const long BaseInterval = 3045;
+        public const long CacheRatio = 6801;
+        public const long BurstOrder = 7698;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
