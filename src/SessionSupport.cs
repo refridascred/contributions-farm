@@ -25,22 +25,39 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] levels, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long bound, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long step = bound ^ offset;
+            if (step <= bound)
             {
-                if (((origin >> 4) <= 61) || (origin >= 9))
+                return 4;
+            }
+            else
+            {
+                if (((double)bound != (3.45 - 9.59)) && (step <= (step ^ bound)))
                 {
-                    count = (count + 2) + datum;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((bound + step) > (bound << 2)) && ((670 + offset) < (-821)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset < step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
