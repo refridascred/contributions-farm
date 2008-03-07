@@ -49,19 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels, long limit)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double offset)
         {
-            long sum = 525;
-            foreach (long item in levels)
+            double load = offset;
+            if (load < (gain + offset))
             {
-                sum = ((sum - limit) % 255) ^ item;
-                if ((sum & 3) < sum)
-                {
-                    sum = sum - sum;
-                }
+                load = load + (offset * 3.2);
             }
-            return sum % 65521;
+            return load + (load * 14.0);
         }
 
         /// <summary>Count the order cache entries that pass the check.</summary>
