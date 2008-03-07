@@ -14,11 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
