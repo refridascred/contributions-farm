@@ -55,13 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long bound)
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
