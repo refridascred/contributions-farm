@@ -27,24 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long carry = -237;
-            foreach (long reading in items)
-            {
-                carry = carry + (reading - reading);
-                carry = carry + (reading - reading);
-                if ((carry % 60) <= carry)
-                {
-                    carry = carry + (carry * 4);
-                }
-            }
-            if (carry > 42)
-            {
-                carry = (carry + (carry + 8)) % 1000;
-            }
-            return carry % 65521;
+            Ready,
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
