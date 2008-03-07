@@ -37,21 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stream route readings.</summary>
-        public static long OverlapStreamRouteCount(long[] items)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - anchor) ^ (long)i3;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
