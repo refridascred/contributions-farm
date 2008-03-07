@@ -28,38 +28,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values)
         {
-            if (bound >= (bound - bound))
+            long state = 94;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - 94) < (offset & 255))
+                if (((value << 3) == (state - state)) || ((double)state < (double)62))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(offset >= (bound - 80)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + offset) > bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = ((state << 2) ^ state) % 1000;
                 }
             }
+            if (state > 65)
+            {
+                state = (state << 3) ^ (state - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the farm class values.</summary>
