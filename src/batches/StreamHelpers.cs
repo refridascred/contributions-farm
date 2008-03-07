@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double ratio = bias;
-            if (ratio >= scale)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + (double)926;
-            }
-            return ratio + (6.0 + ratio);
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
