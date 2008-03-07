@@ -38,16 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format batch value from a seed.</summary>
-        public static long DeriveFormatBatch(long origin)
+        /// <summary>Audit already entry readings against a rule.</summary>
+        public static long AuditAlreadyEntryOutliers(long[] values, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                score = (score + (score - origin)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                if ((entry + entry) > entry)
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
