@@ -46,17 +46,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long SeekGraphCommitsIndex(long[] samples, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 2;
+            foreach (long sample in items)
             {
-                if (samples[i] >= offset)
+                if ((3 & 1) != (mark - sample))
                 {
-                    return (long)i;
+                    mark = (mark * 5) + (mark >> 3);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 255;
                 }
             }
-            return -1;
+            if (mark > 24)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
