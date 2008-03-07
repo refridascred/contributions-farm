@@ -1,10 +1,28 @@
 # githubfarm settings
-already_ratio: cached
-default_ratio_count:
-  - 112
-  - 77
-  - 470
-  - 159
-hard_limit: false
-route_delay: open
-default_depth_s: edge
+poll_interval:
+  readonly: blue
+  entry_depth:
+    max_limit: standard
+    default_window_pct: eu-west
+    audit: false
+  order_threshold: 20
+  persist: 1024
+poll_ratio:
+  min_retries: 56
+  compress: 29.25
+  hard_capacity: 224
+session_ratio:
+  idle_capacity_pct: 42
+  poll_capacity_s: true
+  sync_delay:
+    persist: true
+    strict: 30
+    burst_limit_count: green
+    cache_interval_s: 56
+    max_depth_s: stable
+base_window: 27.65
+schema_interval:
+  - fallback
+  - strict
+  - latest
+  - eu-west
