@@ -1,8 +1,14 @@
 {
-  "dry_run": 69,
-  "cluster_delay": 54,
-  "sync_limit_ms": 27.3,
-  "max_depth_ms": true,
-  "farm_retries": 500,
-  "strict": false
+  "burst_limit": {
+    "warm_ratio": "legacy",
+    "warm_ttl_ms": 80.84,
+    "dry_run": "edge"
+  },
+  "max_interval": "cached",
+  "poll_retries": {
+    "counter_retries": "local",
+    "channel_limit": "eu-west",
+    "audit": true,
+    "persist": "fallback"
+  }
 }
