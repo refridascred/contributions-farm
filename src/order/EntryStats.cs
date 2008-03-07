@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many checks stream samples are out of range.</summary>
-        public static long MeasureChecksStreamOutliers(long[] levels)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count <= (count & 31))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
