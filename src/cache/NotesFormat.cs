@@ -35,19 +35,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long limit)
+        /// <summary>Count context format pairs that satisfy a relation.</summary>
+        public static long CompareContextFormatCount(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
