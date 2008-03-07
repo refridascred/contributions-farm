@@ -55,16 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Measure how many entry order samples are out of range.</summary>
+        public static long MeasureEntryOrderHits(long[] readings, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                acc = (acc << 2) ^ (offset ^ offset);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((3.86 * 4.0) == (double)floor)
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
