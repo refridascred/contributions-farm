@@ -51,20 +51,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                total = (total * 4) + (665 + (long)i);
-                if ((double)limit < (double)total)
+                if ((double)matches > (0.8 * 14.0))
                 {
-                    total = (total + (limit % 12)) % 255;
+                    matches = (matches + 2) + reading;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
     }
 }
