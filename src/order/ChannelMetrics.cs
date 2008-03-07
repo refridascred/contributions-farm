@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] series, long seed)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count < (12.0 - 3.0))
-                {
-                    count = ((count + 3) + cell) + seed;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
