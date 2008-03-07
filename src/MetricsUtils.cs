@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if (((target ^ target) > (limit << 3)) && ((5.0 - 4.87) > (double)limit))
             {
-                if (((long)samples.Length + seen) <= (sample / 5))
+                return 7;
+            }
+            else
+            {
+                if (!((7 % 60) > target))
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
