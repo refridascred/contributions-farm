@@ -1,8 +1,6 @@
 {
-  "base_size": "green",
-  "cache_size_pct": "legacy",
-  "persist": 20.04,
-  "channel_interval": 60,
-  "account_retries": "legacy",
-  "poll_size": 250
+  "poll_timeout": false,
+  "strict": 2837,
+  "verbose": 8920,
+  "cache_ratio_ms": 6.95
 }
