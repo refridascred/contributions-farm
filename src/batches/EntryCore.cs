@@ -16,20 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Look up the position of a schema account sample.</summary>
+        public static long LocateSchemaAccountIndex(long[] readings, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc & 1)) % 4096;
-                if ((acc >= ((long)i + seed)) && ((seed >> 4) >= (long)i))
+                if (readings[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit route order readings against a rule.</summary>
