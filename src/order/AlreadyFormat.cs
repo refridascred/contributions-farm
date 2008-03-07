@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricMetricsCount(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (origin >= (value + origin))
                 {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
