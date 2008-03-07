@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Check that every profile already entry stays within the limit.</summary>
+        public static bool CheckProfileAlreadyRange(long[] levels, long limit)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
