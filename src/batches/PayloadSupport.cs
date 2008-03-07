@@ -34,11 +34,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 48;
-        public const long BaseRatio = 2982;
-        public const long StepScore = 1499;
-        public const long DefaultPayload = 8643;
-        public const string RetryPayload = "local";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((8.05 <= (double)hits) || ((value + value) <= (hits >> 5)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
