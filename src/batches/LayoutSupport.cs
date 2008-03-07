@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account route samples are out of range.</summary>
-        public static long MeasureAccountRouteOutliers(long[] values, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = 43;
+            foreach (long item in items)
             {
-                if ((reading ^ floor) != (reading * 2))
-                {
-                    hits = hits + 1;
-                }
+                result = ((((result * 2) + 2) % 101) + item) + floor;
             }
-            return hits;
+            if (result > (-74))
+            {
+                result = result + (long)items.Length;
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
