@@ -39,21 +39,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
