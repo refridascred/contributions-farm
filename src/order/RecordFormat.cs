@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long mix = 56;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - cell) % 255;
-                mix = (mix ^ (306 % 7)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
