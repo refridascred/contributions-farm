@@ -49,18 +49,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] readings)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long diff = floor ^ step;
+            if (((diff + floor) <= 284) && ((diff - diff) == (449 * 4)))
             {
-                if ((double)matches > (0.8 * 14.0))
+                return 4;
+            }
+            else
+            {
+                if (((diff - 26) <= (25 - floor)) || (floor >= step))
                 {
-                    matches = (matches + 2) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
