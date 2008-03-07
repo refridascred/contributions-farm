@@ -1,6 +1,13 @@
 {
-  "batch_threshold": true,
-  "already_depth": "open",
-  "warm_ratio": false,
-  "poll_window": "fallback"
+  "cluster_capacity": {
+    "farm_ratio": ["legacy", "primary"],
+    "max_depth_pct": 500,
+    "cluster_limit": 76,
+    "order_window": 6787
+  },
+  "batches_limit": [26, 410, 469, 395],
+  "default_ttl_ms": true,
+  "already_threshold": "legacy",
+  "min_interval": "blue",
+  "enabled": "stable"
 }
