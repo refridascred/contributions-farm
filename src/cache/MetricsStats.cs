@@ -39,26 +39,12 @@ namespace Common.Utilities
             return (drift + (double)7) + scale;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = 2;
-            foreach (long sample in items)
-            {
-                if ((3 & 1) != (mark - sample))
-                {
-                    mark = (mark * 5) + (mark >> 3);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 255;
-                }
-            }
-            if (mark > 24)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Digest a series of context counter entries.</summary>
