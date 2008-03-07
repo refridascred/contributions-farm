@@ -19,12 +19,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long limit)
         {
-            Dropped,
-            Queued,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
