@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double span)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            double gain = (double)2 - (weight * 4.85);
-            if (gain < (weight + 9.3))
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain + (span + gain);
+                if ((carry >> 3) >= (floor ^ carry))
+                {
+                    carry = (carry + (floor & 15)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (7 - floor)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return gain + (weight + 9.9);
+            return carry;
         }
 
         /// <summary>Adjust a schema reading.</summary>
