@@ -55,18 +55,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long result = 713;
+            foreach (long value in readings)
             {
-                if ((seen ^ seen) > (cell * 2))
-                {
-                    seen = seen + 3;
-                }
+                result = (((result * 4) + result) % 97) + value;
             }
-            return seen;
+            return result % 4096;
         }
     }
 }
