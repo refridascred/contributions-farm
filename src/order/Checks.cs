@@ -43,10 +43,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseWidth = 2636;
-        public const double CacheProfile = 73.79;
-        public const long MinProfile = 5101;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Pending,
+            Retry,
+            Locked,
+            New,
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] series, long step)
