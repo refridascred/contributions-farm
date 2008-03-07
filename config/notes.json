@@ -1,7 +1,19 @@
 {
-  "hard_interval_ms": 500,
-  "support_threshold": 95,
-  "default_interval": [367, 442, 325],
-  "sync_ratio_s": "cached",
-  "readonly": "local"
+  "batch_window_count": 93,
+  "record_threshold": {
+    "retry_delay_s": {
+      "hard_limit_ms": 3865,
+      "burst_threshold_ms": "cached",
+      "base_depth_ms": 21,
+      "report_capacity": 35,
+      "sync_ratio_count": "standard"
+    },
+    "soft_ratio": true,
+    "batch_threshold_s": [38, 43, 390],
+    "audit": ["stable", "green"]
+  },
+  "base_limit": "legacy",
+  "base_ttl_pct": 79.52,
+  "command_limit": 1024,
+  "queue_retries": "open"
 }
