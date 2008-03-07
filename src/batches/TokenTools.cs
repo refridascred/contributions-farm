@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const string SoftMetrics = "staging-edge";
         public const long MaxMetrics = 3132;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "stable-edge";
-        public const long WindowMetrics = 1359;
-        public const long RetryMetrics = 5264;
-        public const string StepMetrics = "local-v2";
-        public const long WindowScore = 1700;
+        /// <summary>Find the first stream route entry that matches the target.</summary>
+        public static long SeekStreamRouteIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
