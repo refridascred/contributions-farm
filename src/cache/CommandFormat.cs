@@ -44,10 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 3322;
-        public const long DefaultFarm = 2074;
-        public const double WindowFarm = 66.81;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)seen == (double)target)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorHits(long[] levels)
