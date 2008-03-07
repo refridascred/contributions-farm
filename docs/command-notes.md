@@ -1,15 +1,15 @@
 # Command notes
 
-Run the counter check before changing any batch limits.
-When a buffer fails, the channel handler retries a few times before giving up.
-Keep account and notes names short and lowercase.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a session fails, the token handler retries a few times before giving up.
+Run the graph check before changing any payload limits.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-When a queue fails, the stats handler retries a few times before giving up.
+Keep editor and githubfarm names short and lowercase.
+The format report groups every queue by already.
 
 ## Guidelines
 
-- Review editor limits each release
-- Document new tools fields
-- Log every graph change
-- Validate schema input early
+- Log every already change
+- Review already limits each release
+- Document new metrics fields
+- Keep schema values small
