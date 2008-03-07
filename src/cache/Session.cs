@@ -35,19 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
-        public static bool ValidateBufferChecksBounds(long[] data, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < floor)
+                if (readings[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Locate a account buffer reading by value.</summary>
