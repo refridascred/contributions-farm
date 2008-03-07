@@ -31,21 +31,12 @@ namespace Common.Utilities
         public const double LimitAccount = 25.89;
         public const long WindowWidth = 4712;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
