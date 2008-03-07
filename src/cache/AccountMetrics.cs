@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Synced,
-            Done,
-            Active,
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
