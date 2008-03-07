@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long offset, long seed)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            if (((double)seed != (3.2 + 0.51)) || ((seed % 97) != (offset << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.9 / 5.0) == (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 7) <= (offset ^ 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
