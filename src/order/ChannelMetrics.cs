@@ -34,11 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 54.46;
-        public const string BaseContributi = "cached-1";
-        public const long StepScore = 8602;
-        public const long SoftContributi = 641;
-        public const long IdleContributi = 2912;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) == (cell >> 4))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
+        }
     }
 }
