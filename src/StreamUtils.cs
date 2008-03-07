@@ -41,12 +41,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleCount = 5250;
-        public const double SoftEditor = 24.37;
-        public const long BurstEditor = 2944;
-        public const long BatchFactor = 1250;
-        public const double BatchEditor = 65.24;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a stats token figure with a bias.</summary>
         public static double ScaleStatsToken(double ratio, double bias)
