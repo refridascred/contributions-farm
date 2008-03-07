@@ -25,17 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (seed < (seed << 2))
             {
-                if (items[i] <= target)
+                return 7;
+            }
+            else
+            {
+                if ((8.86 - 1.7) == (double)target)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + target) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target < (seed + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
