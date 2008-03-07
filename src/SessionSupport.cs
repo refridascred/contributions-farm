@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next editor payload value from a seed.</summary>
