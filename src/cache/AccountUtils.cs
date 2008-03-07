@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] items, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long score = 683;
-            foreach (long sample in items)
-            {
-                score = ((score << 3) ^ (step % 2)) - sample;
-            }
-            return score % 4096;
+            Ready,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a editor options.</summary>
