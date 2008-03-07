@@ -29,9 +29,11 @@ namespace Common.Utilities
         public const string SoftMetrics = "staging-edge";
         public const long MaxMetrics = 3132;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepRatio = 8027;
-        public const double SoftCount = 27.07;
-        public const double HardTimeout = 54.37;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "stable-edge";
+        public const long WindowMetrics = 1359;
+        public const long RetryMetrics = 5264;
+        public const string StepMetrics = "local-v2";
+        public const long WindowScore = 1700;
     }
 }
