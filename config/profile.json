@@ -1,15 +1,15 @@
 {
-  "dry_run": 26.22,
-  "queue_limit": 68,
-  "entry_ratio": false,
-  "schema_interval": {
-    "enabled": [435, 433, 456],
-    "poll_depth_s": 2959,
-    "order_timeout": "local",
-    "persist": true,
-    "checks_limit": [205, 214, 173],
-    "cache_ttl_s": 1024
+  "flush_depth_s": 6.71,
+  "flush_size_pct": 1028,
+  "retry_size_count": false,
+  "entry_interval": "blue",
+  "default_timeout": {
+    "order_limit": "fallback",
+    "hard_threshold_pct": "open",
+    "max_interval": 72.64,
+    "session_limit": "fallback",
+    "stats_depth": 62,
+    "default_timeout_pct": [354, 14, 270, 419]
   },
-  "report_retries": "fallback",
-  "retry_timeout": 5301
+  "soft_interval_s": false
 }
