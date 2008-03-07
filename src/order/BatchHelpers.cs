@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Compare every pair of route format readings.</summary>
+        public static long OverlapRouteFormatCount(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
