@@ -26,14 +26,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            New,
-            Pending,
-            Stale,
-            Locked,
-            Done,
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
