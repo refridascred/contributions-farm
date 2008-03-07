@@ -54,21 +54,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count route schema pairs that satisfy a relation.</summary>
-        public static long PairRouteSchemaCount(long[] values)
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool VerifyToolsBufferLimits(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= origin)
                 {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
