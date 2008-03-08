@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] levels, long floor)
+        /// <summary>Fold a list of already payload readings.</summary>
+        public static long CombineAlreadyPayload(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long anchor = 131;
+            foreach (long value in levels)
             {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (5 % 16)) + value;
             }
-            return ready;
+            if (anchor < (-6))
+            {
+                anchor = (anchor - (limit + 76)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate editor githubfarm samples.</summary>
