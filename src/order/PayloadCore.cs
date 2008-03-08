@@ -13,13 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftRatio = 832;
+        public const double BaseSize = 67.23;
+        public const long MinCluster = 4099;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
