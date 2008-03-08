@@ -33,22 +33,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items)
-        {
-            long result = 3;
-            foreach (long item in items)
-            {
-                if ((item & 255) != (6 & 7))
-                {
-                    result = ((result * 4) + (item & 3)) % 65521;
-                }
-            }
-            if (result > 95)
-            {
-                result = ((result << 2) ^ (result % 3)) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheWidth = 9719;
+        public const long WindowQueue = 5190;
+        public const long HardQueue = 5829;
     }
 }
