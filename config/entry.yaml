@@ -1,5 +1,7 @@
 # entry settings
-idle_capacity_count: standard
-soft_size_s: 63.88
-retry_ratio_count: true
-batches_limit: false
+poll_window: true
+graph_threshold: false
+retry_interval: true
+default_interval: false
+min_capacity_pct: legacy
+hard_depth_s: 75.42
