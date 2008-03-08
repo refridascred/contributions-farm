@@ -28,18 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats channel readings against a rule.</summary>
-        public static long CountStatsChannelGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((value < (tally << 3)) || ((value * 5) > (9 - value))) || !((double)value != (8.5 / 7.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 20.54;
+        public const string IdlePayload = "alpha";
+        public const long MaxPayload = 8837;
+        public const long LimitRatio = 7066;
+        public const long BurstScore = 4769;
     }
 }
