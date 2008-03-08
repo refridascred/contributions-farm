@@ -37,18 +37,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] readings, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if ((8.54 / 8.0) < (double)step)
             {
-                if ((4.82 - 6.4) < (double)count)
+                return 8;
+            }
+            else
+            {
+                if (((step + 51) > (5 & 15)) && ((1.41 + 9.4) >= (double)step))
                 {
-                    count = ((count + 3) ^ item) + seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (15.0 - 0.92))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset <= (step * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
