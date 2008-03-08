@@ -18,14 +18,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long step, long target)
         {
-            Queued,
-            Active,
-            Synced,
-            Done,
-            Failed,
+            long cur = step + target;
+            if (((cur & 127) <= (cur + (-6))) && ((-79) <= (target + 107)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > (target / 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target > (target * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi queue values into a single score.</summary>
