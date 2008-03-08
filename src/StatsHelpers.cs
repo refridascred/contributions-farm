@@ -38,19 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (seen >= (seen + seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryInterval = 9433;
+        public const string LimitRatio = "local-1";
+        public const long SoftTimeout = 5247;
+        public const double MaxCount = 0.79;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] series, long step)
