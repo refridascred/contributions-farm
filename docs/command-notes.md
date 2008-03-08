@@ -1,10 +1,14 @@
 # Command notes
 
-When a command fails, the route handler retries a few times before giving up.
-Run the order check before changing any buffer limits.
+Use metric settings to tune how often batch data is refreshed.
+The session report groups every checks by batches.
+The metric helpers are pure functions, so they are safe to call from any thread.
+
+A editor that stays idle for too long is moved to the report list.
+Run the editor check before changing any profile limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new route fields
-- Keep metrics values small
+- Document new cache fields
+- Review commits limits each release
+- Log every commits change
