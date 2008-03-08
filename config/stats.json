@@ -1,16 +1,7 @@
 {
-  "verbose": 30.0,
-  "batch_timeout_count": 77.6,
-  "sync_limit": {
-    "default_ratio": {
-      "schema_ttl": "cached",
-      "default_depth": 1024,
-      "cluster_threshold": 51,
-      "channel_timeout": 24,
-      "verbose": true
-    },
-    "default_limit": 60,
-    "audit": true,
-    "channel_capacity": "standard"
-  }
+  "dry_run": false,
+  "warm_delay": ["edge", "open", "staging"],
+  "min_ttl_count": "standard",
+  "enabled": 6.51,
+  "default_threshold_count": ["edge", "strict", "eu-west", "standard"]
 }
