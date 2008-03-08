@@ -25,18 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long AuditQueueCommitsHits(long[] levels)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count % 24) != (count + item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Paused,
+            Draft,
         }
     }
 }
