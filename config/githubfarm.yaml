@@ -1,36 +1,9 @@
 # githubfarm settings
-audit:
-  default_threshold: false
-  cache_retries: 56.68
-  warm_capacity_s: 72
-  compress: primary
-  min_interval_pct: 95
-poll_timeout:
-  - 73
-  - 341
-  - 129
-  - 342
-default_window_pct: edge
-verbose: stable
-flush_retries_ms:
-  report_capacity:
-    - 459
-    - 496
-    - 259
-    - 269
-  default_delay_pct:
-    - green
-    - local
-    - cached
-  soft_threshold: 60
-  hard_window_count:
-    session_ratio: cached
-    dry_run: 60
-    poll_depth_ms:
-      - local
-      - legacy
-      - edge
-      - strict
-    retry_capacity_s: fallback
-    base_limit_s: legacy
-    warm_capacity: primary
+max_retries: 80.98
+soft_retries: true
+route_interval:
+  poll_capacity: 82
+  sync_retries_ms: 2
+  strict: false
+sync_capacity_s: local
+cache_depth_count: stable
