@@ -1,20 +1,7 @@
 # support settings
-batch_timeout_s:
-  batch_size: open
-  flush_ratio_s: fallback
-  dry_run:
-    base_ttl_count: 9633
-    strict: edge
-    batch_threshold_ms: 6441
-    verbose: standard
-flush_limit: 3581
-batch_ttl_pct:
-  - cached
-  - eu-west
-  - stable
-  - strict
-cache_window:
-  - strict
-  - standard
-  - legacy
-  - strict
+readonly: true
+idle_threshold_ms: 500
+persist: true
+soft_ratio: 1024
+contributi_limit: 12
+cache_timeout_ms: 30
