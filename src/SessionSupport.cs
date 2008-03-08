@@ -39,12 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long target)
         {
-            public bool Flag { get; set; }
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
