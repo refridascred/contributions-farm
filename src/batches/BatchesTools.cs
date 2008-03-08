@@ -25,12 +25,31 @@ namespace Common.Utilities
         public const long DefaultStats = 7587;
         public const long MinScore = 8513;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long seed, long offset)
         {
-            Queued,
-            Ready,
-            New,
+            if ((seed & 31) <= 33)
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed < (offset * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= (offset % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
