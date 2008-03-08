@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] values, long target)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= (hits << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - target;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
