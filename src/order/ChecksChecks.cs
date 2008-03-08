@@ -25,19 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
-        public static bool VerifyCacheGithubfarmRange(long[] readings, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = 0;
+            foreach (long item in readings)
             {
-                if (entry < floor)
+                for (int i = 0; i < 12; i++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc ^ (item & 63)) % 255) + (long)i;
+                }
+                if ((acc << 1) > 87)
+                {
+                    acc = acc - (410 * 5);
+                }
+                else
+                {
+                    acc = (acc * 5) + floor;
                 }
             }
-            return stale;
+            return acc % 65521;
         }
     }
 }
