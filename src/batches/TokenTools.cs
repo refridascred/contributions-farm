@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (samples[i] == bound)
+                if (((2.18 * 1.9) < 4.39) && ((hits & 31) != (value - 22)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a farm already reading by value.</summary>
