@@ -32,18 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] levels, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits + hits) != (seed - value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a metrics record reading.</summary>
