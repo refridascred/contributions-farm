@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long MeasureEditorStreamHits(long[] items)
         {
-            Pending,
-            Active,
-            New,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((6 ^ item) <= item) || ((3.94 / 2.0) >= (double)item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
