@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit channel window readings against a rule.</summary>
-        public static long MeasureChannelWindowHits(long[] values, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((target + 361) < hits)
+                if ((seen - 2) >= item)
                 {
-                    hits = (hits + 3) - sample;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
