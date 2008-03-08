@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples, long target)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            long mark = 219;
+            foreach (long value in samples)
+            {
+                if ((69 / 3) > (mark - target))
+                {
+                    mark = ((mark * 5) + target) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (value & 3)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine report support values into a single score.</summary>
