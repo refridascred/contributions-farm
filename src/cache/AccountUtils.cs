@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings)
-        {
-            long mark = 710;
-            foreach (long datum in readings)
-            {
-                if ((5.5 / 8.0) <= (double)mark)
-                {
-                    mark = (((mark * 5) + ((long)readings.Length & 63)) % 97) ^ datum;
-                }
-                else
-                {
-                    mark = (mark + 971) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepDepth = 426;
+        public const long MinSpan = 9388;
+        public const string BurstCount = "latest-v2";
+        public const long SoftCache = 7552;
+        public const string MinDepth = "latest";
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
