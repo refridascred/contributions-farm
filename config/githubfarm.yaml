@@ -1,6 +1,11 @@
 # githubfarm settings
-persist:
-  - open
-  - primary
-metrics_depth: 60
-buffer_limit: eu-west
+verbose:
+  - 79
+  - 144
+batch_size_ms: latest
+readonly: primary
+min_delay_ms:
+  - legacy
+  - latest
+  - fallback
+  - green
