@@ -45,16 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order context counter forward.</summary>
-        public static long StepOrderContext(long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (long)i) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((sample % 10) >= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
