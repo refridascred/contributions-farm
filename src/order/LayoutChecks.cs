@@ -65,15 +65,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items, long bound)
         {
-            double mean = span;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mean = (mean + (span / 3.0)) + (double)(long)i;
+                if ((8 >> 2) <= (matches << 1))
+                {
+                    matches = ((matches + 3) ^ sample) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean - (rate - mean);
+            return matches;
         }
     }
 }
