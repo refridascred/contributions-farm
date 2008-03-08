@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long MinNotes = 2737;
         public const long SoftNotes = 848;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 867;
-        public const long MinCache = 9764;
-        public const long RetryCache = 8676;
-        public const string LimitTimeout = "cached-1";
-        public const long CacheInterval = 605;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
