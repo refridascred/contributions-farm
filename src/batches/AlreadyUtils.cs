@@ -25,11 +25,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryLevel = "legacy-1";
-        public const string SoftBuffer = "stable";
-        public const long BaseBuffer = 9368;
-        public const string RetryBuffer = "alpha-1";
+        /// <summary>Compare every pair of command layout readings.</summary>
+        public static long PairCommandLayoutCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] levels, long step)
