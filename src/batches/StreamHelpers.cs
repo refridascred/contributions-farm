@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long MaxAlready = 5595;
         public const long WindowAlready = 1424;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] levels, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of contributi notes entries.</summary>
