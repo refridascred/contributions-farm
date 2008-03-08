@@ -41,18 +41,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if ((offset < 702) && ((14.0 / 9.0) < (double)target))
             {
-                if ((matches - matches) > (item + 8))
+                return 4;
+            }
+            else
+            {
+                if ((45 - target) <= offset)
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
