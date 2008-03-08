@@ -31,12 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 31.54;
-        public const long MinRatio = 5489;
-        public const long BatchCluster = 4587;
-        public const long DefaultCount = 445;
-        public const long RetryBudget = 8052;
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long LocateSessionReportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] items)
