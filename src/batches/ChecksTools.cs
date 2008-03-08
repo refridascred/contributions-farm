@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples, long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] series, long limit)
         {
-            long state = 50;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                state = ((state + (bound ^ bound)) % 255) + cell;
+                if (sample <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state < 76)
-            {
-                state = (state ^ (bound - bound)) % 255;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the queue level values.</summary>
