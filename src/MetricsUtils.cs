@@ -41,15 +41,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a context cache counter forward.</summary>
-        public static long StepContextCache(long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long step, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            if ((18.0 + 1.43) <= (double)origin)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((-2) < (origin + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
