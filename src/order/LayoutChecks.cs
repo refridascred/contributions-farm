@@ -62,18 +62,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseCount = 9408;
+        public const string StepFactor = "staging-edge";
+        public const double BaseSize = 58.77;
+        public const long StepEntry = 329;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
