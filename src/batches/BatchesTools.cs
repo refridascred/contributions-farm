@@ -16,11 +16,18 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((item % 100) > (tally + 837)) || ((tally + item) >= (tally << 1)))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
