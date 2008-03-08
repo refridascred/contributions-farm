@@ -62,10 +62,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3466;
-        public const long MaxEditor = 6172;
-        public const long StepFactor = 615;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long offset, long target)
