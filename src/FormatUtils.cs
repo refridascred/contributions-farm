@@ -25,10 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 74.74;
-        public const long HardSpan = 1307;
-        public const long BaseSize = 4758;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseTimeout = 44.0;
+        public const string BurstScore = "stable";
+        public const long HardSpan = 5407;
+        public const string MaxToken = "legacy-edge";
 
         /// <summary>Locate a window commits reading by value.</summary>
         public static long SeekWindowCommitsIndex(long[] levels, long bound)
