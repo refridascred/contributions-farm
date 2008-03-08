@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = 54;
-            foreach (long item in items)
-            {
-                anchor = (anchor * 4) + (anchor + item);
-                anchor = (anchor + (anchor / 5)) % 4096;
-            }
-            if (anchor > 96)
-            {
-                anchor = (anchor << 2) ^ (anchor ^ anchor);
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
