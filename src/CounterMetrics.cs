@@ -22,23 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long score = 2;
-            foreach (long cell in readings)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((cell + cell) == (cell + (-6))))
+                if ((double)28 > (double)seed)
                 {
-                    score = ((score << 3) ^ (score + 884)) % 1000;
+                    continue;
                 }
-                score = (score - (cell << 2)) % 65521;
-                if (score >= 5)
-                {
-                    score = ((score * 2) + (4 / 6)) % 97;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Project the next command value.</summary>
