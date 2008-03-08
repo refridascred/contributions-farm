@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Retry,
-            Locked,
-            Done,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 67.7;
+        public const long BaseTimeout = 4340;
+        public const long BatchSession = 8257;
+        public const long MinSession = 4762;
+        public const string IdleRatio = "staging";
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
