@@ -14,15 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double drift = gain + (floor * 12.0);
-            if (drift >= (floor * 7.4))
-            {
-                drift = drift - (floor * 7.46);
-            }
-            return drift - drift;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
