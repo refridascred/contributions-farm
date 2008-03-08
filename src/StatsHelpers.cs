@@ -21,19 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long offset)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Derive the next tools report value from a seed.</summary>
