@@ -39,15 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((628 / 9) >= (item - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
