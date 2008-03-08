@@ -53,11 +53,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
