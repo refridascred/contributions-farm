@@ -22,25 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long target, long bound)
+        /// <summary>Digest a series of contributi already entries.</summary>
+        public static long ScoreContributiAlready(long[] data, long limit)
         {
-            long lane = target + bound;
-            if ((target + bound) > (bound - lane))
+            long sum = 744;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound < lane)
+                if (sample >= ((long)data.Length & 31))
                 {
-                    return 3;
+                    sum = (sum ^ sum) % 1000;
+                }
+                sum = (sum * 5) + (91 + sum);
+                if ((double)limit < (8.0 + 16.0))
+                {
+                    sum = (sum + (limit & 127)) % 4096;
                 }
                 else
                 {
-                    return 0;
+                    sum = ((sum * 3) + (limit + limit)) % 4096;
+                }
+                if (!((14 - 77) <= (sample / 4)))
+                {
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
