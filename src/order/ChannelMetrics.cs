@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < (cell + matches))
+                if (items[i] < origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
