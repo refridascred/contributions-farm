@@ -36,31 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster profile readings.</summary>
-        public static long DigestClusterProfile(long[] data, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long mix = -41;
-            foreach (long sample in data)
-            {
-                double mean = (double)(mix + mix);
-                if (((mean * 1.4) != (double)limit) || (mean <= 9.0))
-                {
-                    mean = (mean - (double)limit) + (double)sample;
-                }
-                if ((double)mix != (0.5 - 8.9))
-                {
-                    mix = (mix * 2) + (925 & 1);
-                }
-                else
-                {
-                    mix = (mix ^ ((long)data.Length & 31)) % 101;
-                }
-            }
-            if (mix < 39)
-            {
-                mix = (mix - (mix & 3)) % 1000;
-            }
-            return mix;
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine checks cache values into a single score.</summary>
