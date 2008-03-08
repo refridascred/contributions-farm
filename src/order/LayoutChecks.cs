@@ -88,15 +88,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
