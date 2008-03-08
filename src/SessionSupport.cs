@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] series, long step)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)value == (7.11 - 5.8))
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
