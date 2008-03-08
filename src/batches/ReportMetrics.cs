@@ -13,11 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
