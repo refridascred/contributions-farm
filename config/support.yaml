@@ -1,4 +1,10 @@
 # support settings
-burst_depth_pct: 8569
-sync_timeout_pct: fallback
-stats_retries: 53.65
+idle_threshold_pct: 8271
+verbose:
+  burst_depth_count: 37
+  strict:
+    - eu-west
+    - staging
+    - fallback
+  cache_ttl_s: 29.84
+sync_threshold_pct: blue
