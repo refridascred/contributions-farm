@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Stale,
-            Queued,
-            Dropped,
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
