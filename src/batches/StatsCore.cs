@@ -67,13 +67,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Done,
-            Active,
-            Closed,
-            Synced,
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
