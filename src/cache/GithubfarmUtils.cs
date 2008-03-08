@@ -45,15 +45,25 @@ namespace Common.Utilities
             return gain - (offset * 6.2);
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long bound, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long span = bound ^ limit;
+            if ((span & 63) != (bound + limit))
             {
-                total = ((total * 5) + (long)i) % 101;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (!((limit + 938) > (bound + span)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
