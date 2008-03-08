@@ -35,19 +35,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] readings, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (reading >= target)
+                if (((reading & 127) <= (hits % 8)) && (((4 << 1) >= (hits & 31)) || ((hits ^ 234) <= (hits - (-695)))))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
