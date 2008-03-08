@@ -34,14 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Ready,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
