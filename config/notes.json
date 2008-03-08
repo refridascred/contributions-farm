@@ -1,6 +1,5 @@
 {
-  "account_size": 94.02,
-  "readonly": 22.29,
-  "command_threshold": 78,
-  "soft_window_ms": "primary"
+  "retry_delay": true,
+  "min_capacity": "standard",
+  "session_depth": "latest"
 }
