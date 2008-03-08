@@ -35,32 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools report value from a seed.</summary>
-        public static long IterateToolsReport(long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (sum << 2) ^ (long)i2;
-                }
-                if ((99 + (long)i) <= sum)
-                {
-                    sum = ((sum << 3) ^ sum) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (254 / 7)) % 4096;
-                    sum = (sum << 2) ^ (278 << 1);
-                }
-                if ((double)sum == (8.0 * 4.0))
-                {
-                    sum = ((sum * 2) + (step + (long)i)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits batches readings.</summary>
