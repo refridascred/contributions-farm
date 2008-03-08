@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] levels, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                score = (score ^ 20) % 65521;
-                long cur = (score / 2) + 91;
-                score = (score ^ (cur - limit)) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
+                if ((19.0 >= (double)entry) || ((double)(long)levels.Length > 9.0))
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
