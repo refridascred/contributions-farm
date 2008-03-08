@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long limit, long step)
-        {
-            if (step > limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 3) > (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 6910;
+        public const long DefaultFactor = 3053;
+        public const long BatchTimeout = 8065;
+        public const double WindowScore = 49.63;
+        public const long BaseProfile = 6958;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double gain, double bias)
