@@ -54,21 +54,22 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!(tally >= (157 + entry)))
                 {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank token input into a small class.</summary>
