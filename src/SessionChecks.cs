@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((11.0 <= (double)sample) || (sample < ((-49) - sample)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Locked,
         }
 
         /// <summary>Digest a series of support entries.</summary>
