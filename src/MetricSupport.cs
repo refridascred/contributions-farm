@@ -28,32 +28,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long origin, long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long prev = origin + limit;
-            if (((limit - limit) > prev) && ((origin & 255) != (prev + 23)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (464 <= (origin - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit > (prev / 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
