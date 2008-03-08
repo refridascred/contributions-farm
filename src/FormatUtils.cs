@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftScore = 863;
-        public const double MaxSpan = 28.57;
-        public const long LimitLevel = 7524;
-        public const long MinNotes = 4357;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string LimitInterval = "standard";
