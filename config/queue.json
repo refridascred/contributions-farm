@@ -1,6 +1,6 @@
 {
-  "stats_retries": 4845,
-  "verbose": "cached",
-  "retry_delay_ms": true,
-  "warm_depth": 2065
+  "max_timeout_pct": false,
+  "account_retries": 13,
+  "flush_retries_ms": [80, 77, 355, 133],
+  "persist": "blue"
 }
