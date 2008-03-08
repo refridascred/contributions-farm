@@ -1,8 +1,7 @@
-id,owner,region
-1,675,open
-2,188,open
-3,89.2,20.8
-4,534,stable
-5,open,staging
-6,latest,59.21
-7,920,164
+id,state,weight,active,score
+1,latest,52.51,2.29,409
+2,750,staging,40.66,fallback
+3,blue,821,35.77,93
+4,250,860,529,26.93
+5,strict,111,84.45,770
+6,678,27.1,167,73.99
