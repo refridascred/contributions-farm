@@ -37,23 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            double rate = (double)829;
-            if (rate > (rate * 7.0))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + (double)38) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate + bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + bias;
+            return count;
         }
     }
 }
