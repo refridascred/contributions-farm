@@ -39,11 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryWidth = 7527;
-        public const long MinRatio = 3689;
-        public const string RetryContributi = "local-v2";
-        public const double RetryDepth = 1.12;
-        public const double BaseFactor = 80.98;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 8799;
+        public const double RetryInterval = 79.53;
+        public const long LimitLevel = 5791;
     }
 }
