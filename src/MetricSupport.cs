@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            double rate = (0.1 + weight) / 7.0;
+            if (rate >= rate)
+            {
+                rate = rate + (7.0 / 7.0);
+            }
+            else
+            {
+                rate = rate - (bias / 2.0);
+            }
+            return rate + (double)6;
         }
     }
 }
