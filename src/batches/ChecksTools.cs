@@ -39,16 +39,21 @@ namespace Common.Utilities
         public const long DefaultStream = 9317;
         public const string BaseStream = "legacy";
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - sum) % 4096;
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
