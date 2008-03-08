@@ -1,12 +1,14 @@
 # Command notes
 
-The payload report groups every payload by entry.
-Run the order check before changing any editor limits.
-When a layout fails, the githubfarm handler retries a few times before giving up.
+A command that stays idle for too long is moved to the report list.
+Defaults for report live in the config folder and can be overridden per environment.
+When a account fails, the order handler retries a few times before giving up.
+
+Use counter settings to tune how often graph data is refreshed.
+Each cache is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every metric change
-- Validate profile input early
-- Review stream limits each release
+- Review channel limits each release
+- Keep filter values small
+- Document new batch fields
