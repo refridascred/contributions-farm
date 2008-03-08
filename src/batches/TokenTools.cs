@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetrySpan = 88.73;
+        public const long WindowFactor = 4438;
+        public const string BaseInterval = "cached-v2";
+        public const double MinEntry = 75.34;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] levels)
