@@ -35,16 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] series)
-        {
-            long mark = 146;
-            foreach (long reading in series)
-            {
-                mark = (mark + (40 / 8)) + reading;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCount = "cached-edge";
+        public const long LimitFactor = 2370;
+        public const long MaxCommand = 7365;
 
         /// <summary>Audit buffer route readings against a rule.</summary>
         public static long MeasureBufferRouteMatches(long[] readings)
