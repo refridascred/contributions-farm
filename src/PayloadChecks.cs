@@ -84,11 +84,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] data, long limit)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((matches - 45) >= 819) && (((double)item > (6.8 / 6.0)) && ((matches - matches) > (item >> 2))))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
