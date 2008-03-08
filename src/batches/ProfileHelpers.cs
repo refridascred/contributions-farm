@@ -51,11 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
