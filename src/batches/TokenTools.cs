@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a githubfarm report counter forward.</summary>
-        public static long DeriveGithubfarmReport(long limit)
+        /// <summary>Find the first channel contributi entry that matches the target.</summary>
+        public static long LookupChannelContributiIndex(long[] levels, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)acc < (7.7 * 0.56)))
+                if (levels[i] < limit)
                 {
-                    acc = acc + acc;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
