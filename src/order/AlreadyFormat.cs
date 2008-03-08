@@ -42,14 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] series, long origin)
         {
-            Dropped,
-            Locked,
-            Idle,
-            Ready,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout entry.</summary>
