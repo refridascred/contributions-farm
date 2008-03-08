@@ -54,15 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double bias = offset - (double)(-78);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias - 7.0) + (double)(long)i) + scale;
-            }
-            return bias - bias;
+            Synced,
+            Idle,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
