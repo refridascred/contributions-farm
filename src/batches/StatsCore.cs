@@ -67,13 +67,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long target)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
