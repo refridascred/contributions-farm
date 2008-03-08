@@ -1,4 +1,4 @@
 # support settings
-sync_limit_s: 37
-strict: 250
-batch_limit_ms: false
+retry_retries_ms: 73.88
+soft_ttl: 26.41
+format_window: 74.67
