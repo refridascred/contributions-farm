@@ -56,15 +56,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Dropped,
+            Ready,
+            Done,
         }
     }
 }
