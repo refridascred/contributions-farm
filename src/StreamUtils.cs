@@ -28,28 +28,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine entry already values into a single score.</summary>
-        public static long CombineEntryAlready(long[] values, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long acc = 5;
-            foreach (long reading in values)
-            {
-                if (((reading - 0) < (reading * 5)) || ((acc % 97) == (reading << 3)))
-                {
-                    acc = ((acc * 3) + (-26)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 65521;
-                    acc = acc ^ (reading + (-61));
-                }
-                acc = ((acc * 2) + (limit + 90)) % 4096;
-            }
-            if (acc < 4)
-            {
-                acc = (acc << 3) ^ (acc * 4);
-            }
-            return acc % 97;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a layout stats.</summary>
