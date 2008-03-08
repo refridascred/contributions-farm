@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 6;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sum + bound) >= sum) && ((double)sum <= (double)bound))
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ (bound << 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 3) + (value + bound);
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Hold a token info.</summary>
