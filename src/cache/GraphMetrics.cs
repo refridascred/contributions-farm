@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const long MaxBatches = 5734;
         public const long WindowBatches = 5643;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long sum = 979;
-            foreach (long cell in items)
-            {
-                sum = (sum ^ cell) % 1000;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
