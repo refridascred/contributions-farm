@@ -47,19 +47,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] readings, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long bound)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long step = limit - bound;
+            if ((704 ^ bound) < limit)
             {
-                if (item != origin)
+                return 4;
+            }
+            else
+            {
+                if (!((limit + 5) < (bound + 162)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (6.7 <= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a metrics commits counter forward.</summary>
