@@ -1,8 +1,13 @@
 {
-  "entry_depth": false,
-  "cache_ratio": 100,
-  "soft_limit_pct": 53.33,
-  "format_limit": 13.86,
-  "metric_retries": 60,
-  "base_ratio_count": "open"
+  "compress": ["strict", "staging", "open", "standard"],
+  "cache_capacity_s": 64,
+  "base_window_s": false,
+  "sync_capacity": {
+    "command_ratio": 84,
+    "soft_limit": 612,
+    "cluster_size": "primary",
+    "checks_size": 86.78
+  },
+  "account_interval": true,
+  "sync_window_pct": "green"
 }
