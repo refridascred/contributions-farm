@@ -27,21 +27,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
