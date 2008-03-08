@@ -53,14 +53,15 @@ namespace Common.Utilities
             return ratio - (double)275;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long origin)
         {
-            Failed,
-            Queued,
-            Dropped,
-            New,
-            Active,
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
