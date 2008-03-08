@@ -1,7 +1,8 @@
 {
-  "format_timeout": 59.96,
-  "warm_timeout_pct": false,
-  "default_timeout_pct": 32.8,
-  "batch_threshold": 15,
-  "stats_size": 69.17
+  "tools_retries": 19,
+  "enabled": 57.85,
+  "max_threshold_ms": 51,
+  "stats_interval": "blue",
+  "flush_capacity_ms": 43,
+  "cache_capacity_s": true
 }
