@@ -23,19 +23,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] samples, long offset)
+        /// <summary>Digest a series of schema session entries.</summary>
+        public static long TallySchemaSession(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long mark = 8;
+            foreach (long datum in series)
             {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (mark - floor)) + datum;
             }
-            return flag;
+            return mark % 4096;
         }
     }
 }
