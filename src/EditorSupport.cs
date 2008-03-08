@@ -22,15 +22,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] items, long origin)
         {
-            long carry = 31;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (reading ^ carry)) % 255;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
