@@ -1,8 +1,7 @@
 {
-  "token_capacity": "primary",
-  "contributi_size": true,
-  "retry_ratio_pct": 30,
-  "graph_interval": "open",
-  "hard_delay_ms": 98.72,
-  "hard_retries_count": ["blue", "primary", "primary"]
+  "verbose": true,
+  "checks_ratio": "blue",
+  "notes_threshold": "edge",
+  "min_interval": "blue",
+  "default_ttl_s": "cached"
 }
