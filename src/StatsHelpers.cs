@@ -15,15 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate schema session samples.</summary>
-        public static long ScoreSchemaSession(long[] readings)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long carry = -144;
-            foreach (long value in readings)
-            {
-                carry = (carry + carry) ^ value;
-            }
-            return carry % 1000;
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Blend two context payload measurements.</summary>
