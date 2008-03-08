@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (seen < (seen % 5))
+                if ((matches * 5) > (matches % 100))
                 {
-                    seen = (seen + 2) + reading;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
