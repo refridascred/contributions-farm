@@ -1,10 +1,8 @@
 # support settings
-burst_ratio: edge
-token_depth: false
-flush_delay: local
-poll_retries: standard
-record_ratio:
-  - edge
-  - fallback
-  - strict
-  - blue
+dry_run: 45
+layout_capacity: 4.71
+soft_limit: 83.62
+idle_capacity:
+  - standard
+  - local
+hard_interval: blue
