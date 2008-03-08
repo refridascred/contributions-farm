@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (26 > (limit + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) <= limit)
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the format phase values.</summary>
