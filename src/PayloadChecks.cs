@@ -34,11 +34,39 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next already entry value.</summary>
-        public static double ProjectAlreadyEntry(double rate, double span)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long limit)
         {
-            double weight = (double)(24 * 3);
-            return (weight + (weight + rate)) + span;
+            long edge = seed ^ limit;
+            if ((edge % 97) != (limit & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge + 5) != (limit * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit < (limit >> 1)) && ((edge % 3) == (limit * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge + seed) < (855 % 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a report reading.</summary>
