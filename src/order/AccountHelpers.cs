@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = (acc * 5) + (122 / 7);
+                if (acc > (floor - floor))
+                {
+                    acc = (acc * 3) + (long)i;
+                    acc = (acc + (4 % 64)) % 1000;
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the batch level values.</summary>
