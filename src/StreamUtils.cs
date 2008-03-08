@@ -62,31 +62,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long seed2)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            if ((seed2 + seed) >= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 - seed) <= (53 - seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed2 <= (seed2 - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Idle,
+            Active,
+            Failed,
         }
     }
 }
