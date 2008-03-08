@@ -63,21 +63,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 78;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor + anchor) + item) + step;
             }
-            return tally;
+            return anchor;
         }
     }
 }
