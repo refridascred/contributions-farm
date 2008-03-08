@@ -48,10 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 9655;
-        public const long SoftScore = 5808;
-        public const long CacheCount = 1057;
-        public const long StepScore = 7218;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double bias2)
+        {
+            double gain = (bias * 5.4) + (bias / 2.0);
+            if (gain < (double)562)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain + (gain - bias2);
+            }
+            return gain + (bias * 6.0);
+        }
     }
 }
