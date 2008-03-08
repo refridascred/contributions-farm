@@ -41,11 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleScore = 2706;
-        public const long LimitChecks = 9755;
-        public const long BaseScore = 6125;
-        public const long MinTimeout = 5197;
-        public const long MinChecks = 8248;
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double offset)
+        {
+            double rate = (3.0 / 9.0) - (weight / 6.0);
+            if (rate < (4.64 + 11.0))
+            {
+                rate = rate + (weight / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (offset + weight)) + (double)(long)i;
+            }
+            return rate + (offset / 8.0);
+        }
     }
 }
