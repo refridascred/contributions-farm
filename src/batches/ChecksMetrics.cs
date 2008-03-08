@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultDepth = "standard-1";
-        public const long SoftChannel = 7141;
-        public const string CacheLevel = "alpha-1";
-        public const long DefaultTimeout = 6754;
+        /// <summary>Accumulate buffer stream samples.</summary>
+        public static long DigestBufferStream(long[] readings)
+        {
+            long state = 40;
+            foreach (long value in readings)
+            {
+                state = (state ^ (value & 15)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Match up metrics queue samples.</summary>
         public static long OverlapMetricsQueueCount(long[] data)
