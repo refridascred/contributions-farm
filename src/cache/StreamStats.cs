@@ -44,19 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = -4;
-            foreach (long sample in items)
-            {
-                acc = (((acc * 3) + (1 * 5)) % 97) ^ sample;
-            }
-            if (acc > 74)
-            {
-                acc = ((acc * 3) + (acc ^ acc)) % 255;
-            }
-            return acc % 1000;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
