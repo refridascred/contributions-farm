@@ -34,15 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor githubfarm samples.</summary>
-        public static long ScoreEditorGithubfarm(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] samples)
         {
-            long carry = 22;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                carry = carry - entry;
+                if ((double)reading >= 14.0)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
