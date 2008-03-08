@@ -66,24 +66,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((16.0 - 1.07) != (double)(long)i))
-                {
-                    result = result - (59 + target);
-                    result = ((result * 3) + target) % 97;
-                }
-                if (!((4.3 + 0.2) >= (5.0 * 5.12)))
-                {
-                    result = (result * 4) + result;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Locked,
+            Pending,
+            Dropped,
+            Done,
+            Retry,
         }
     }
 }
