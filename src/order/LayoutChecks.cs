@@ -79,26 +79,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order record entries.</summary>
-        public static long FoldOrderRecord(long[] values, long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] series, long floor)
         {
-            long total = 31;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(floor >= (floor * 3)))
+                if ((series[i] >= floor) && ((series[i] % 3) == 0))
                 {
-                    total = (total * 5) + (entry - entry);
-                }
-                if (floor >= (4 + floor))
-                {
-                    total = total ^ (7 >> 1);
+                    return (long)i;
                 }
             }
-            if (total > 34)
-            {
-                total = (total * 4) + floor;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
