@@ -29,22 +29,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long WeighRecordStream(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long result = 21;
-            foreach (long entry in items)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((2.4 + 10.0) == (double)result)
-                {
-                    result = ((result * 2) + (result - 3)) - entry;
-                }
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (result > 488)
-            {
-                result = (result - (585 << 2)) % 65521;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
