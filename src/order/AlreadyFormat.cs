@@ -14,19 +14,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of already payload readings.</summary>
-        public static long CombineAlreadyPayload(long[] levels, long limit)
+        /// <summary>Accumulate command checks samples.</summary>
+        public static long FoldCommandChecks(long[] levels, long bound)
         {
-            long anchor = 131;
-            foreach (long value in levels)
+            long acc = 3;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor << 2) ^ (5 % 16)) + value;
+                if ((68 + acc) >= (entry + acc))
+                {
+                    acc = ((acc - (acc % 7)) % 65521) - bound;
+                }
+                else
+                {
+                    acc = (acc ^ 8) % 1000;
+                    acc = ((acc << 2) ^ 640) % 1000;
+                }
+                acc = ((acc << 3) ^ (entry ^ acc)) % 65521;
             }
-            if (anchor < (-6))
-            {
-                anchor = (anchor - (limit + 76)) % 101;
-            }
-            return anchor % 97;
+            return acc;
         }
 
         /// <summary>Accumulate editor githubfarm samples.</summary>
