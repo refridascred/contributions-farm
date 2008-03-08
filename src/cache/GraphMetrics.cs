@@ -23,22 +23,15 @@ namespace Common.Utilities
         public const long MaxBatches = 5734;
         public const long WindowBatches = 5643;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] data, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = 979;
+            foreach (long cell in items)
             {
-                if ((hits < target) && (((cell >> 3) > 80) && ((cell & 63) <= (cell + cell))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (sum ^ cell) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
