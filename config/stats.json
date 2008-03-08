@@ -1,6 +1,5 @@
 {
-  "readonly": [450, 478, 329, 376],
-  "soft_delay_pct": "blue",
-  "verbose": 250,
-  "batch_ratio": "primary"
+  "sync_retries": 18,
+  "enabled": "strict",
+  "verbose": 9959
 }
