@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long MaxSession = 3593;
         public const long RetrySession = 7552;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series, long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value < 0) && !((double)seed <= (7.45 / 5.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
