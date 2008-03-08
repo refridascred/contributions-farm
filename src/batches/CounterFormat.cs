@@ -14,16 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series, long target)
-        {
-            long state = 373;
-            foreach (long value in series)
-            {
-                state = (state ^ (target % 24)) + value;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowTimeout = 9709;
+        public const long StepLevel = 9670;
+        public const long LimitLevel = 7154;
+        public const long RetryRatio = 9997;
+        public const double CacheFilter = 86.46;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
