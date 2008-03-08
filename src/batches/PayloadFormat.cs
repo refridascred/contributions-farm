@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long CacheBudget = 7099;
         public const long CacheStream = 3230;
 
-        /// <summary>Scale a token tools figure with a bias.</summary>
-        public static double SmoothTokenTools(double bias, double bias2)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double bias3 = (8.7 / 5.0) + (bias2 + 20.0);
-            if (bias3 >= (double)15)
-            {
-                bias3 = bias3 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = bias3 + (double)(long)i;
-            }
-            return bias3 - bias;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
