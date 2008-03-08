@@ -1,6 +1,5 @@
 {
-  "persist": 3037,
-  "buffer_retries": 250,
-  "layout_window": 1024,
-  "max_window_ms": 68.35
+  "metrics_interval": 500,
+  "compress": 5.65,
+  "hard_depth_ms": 4.08
 }
