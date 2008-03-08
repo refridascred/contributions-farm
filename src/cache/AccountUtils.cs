@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
