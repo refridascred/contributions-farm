@@ -22,17 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] items, long origin)
+        /// <summary>Check that every stats filter entry stays within the limit.</summary>
+        public static bool GuardStatsFilterLimits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((items[i] <= origin) && ((items[i] % 5) == 0))
+                if (datum >= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
