@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            New,
-            Failed,
-            Synced,
-            Dropped,
-            Retry,
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
