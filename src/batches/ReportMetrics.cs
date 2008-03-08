@@ -35,24 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long step)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if (!((26 << 2) >= (step % 12)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)step != (2.0 * 5.4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
