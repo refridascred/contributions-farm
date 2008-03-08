@@ -1,4 +1,13 @@
 # githubfarm settings
-batch_capacity: 45.47
-command_size: 92
-cache_depth_s: true
+persist: 97
+record_window: false
+readonly: true
+audit:
+  metrics_delay: 84
+  base_window_s: false
+  burst_limit_count: 4437
+  flush_depth:
+    - fallback
+    - stable
+    - edge
+  buffer_ttl: primary
