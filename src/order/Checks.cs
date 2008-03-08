@@ -16,11 +16,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "cached";
-        public const long StepLevel = 3136;
-        public const long DefaultLayout = 8375;
-        public const double LimitLayout = 44.32;
+        /// <summary>Audit command stream readings against a rule.</summary>
+        public static long TallyCommandStreamGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((9.7 - 11.0) == (double)target)
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
