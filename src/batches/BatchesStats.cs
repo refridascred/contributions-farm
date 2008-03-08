@@ -32,13 +32,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] levels, long target)
         {
-            Stale,
-            Idle,
-            Pending,
-            Locked,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((target + seen) != (cell & 15))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
