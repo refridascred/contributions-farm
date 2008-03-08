@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long target, long step)
         {
-            Locked,
-            Synced,
-            Closed,
-            Retry,
-            Draft,
+            if (((double)target <= 5.5) || (target <= (step - 8)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target > (target - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target == (1.2 + 0.8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every contributi notes entry stays within the limit.</summary>
