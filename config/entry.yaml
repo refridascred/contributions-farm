@@ -1,7 +1,9 @@
 # entry settings
-base_size: cached
-hard_threshold: true
-base_size_s: green
-farm_limit: strict
-cache_interval_count: 98
-strict: false
+buffer_size: false
+default_threshold: 60
+idle_interval: 30
+metrics_timeout: 11
+min_depth_pct:
+  poll_window: 7054
+  farm_window: 4138
+  sync_limit_count: fallback
