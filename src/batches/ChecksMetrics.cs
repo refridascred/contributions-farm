@@ -28,23 +28,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine contributi queue values into a single score.</summary>
-        public static long CombineContributiQueue(long[] readings)
-        {
-            long mark = 172;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= (double)mark)
-                {
-                    mark = mark + (mark >> 5);
-                }
-                else
-                {
-                    mark = mark + (cell ^ cell);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 6077;
+        public const string DefaultWidth = "local";
+        public const long WindowLevel = 8086;
+        public const long RetryWidth = 5100;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitSpan = 5984;
