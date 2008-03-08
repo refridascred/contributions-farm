@@ -34,22 +34,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] readings, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long target, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long bound = target ^ step;
+            if ((step + target) <= (target / 7))
             {
-                if ((14.0 + 6.09) < (double)limit)
+                return 6;
+            }
+            else
+            {
+                if ((target - step) <= (step % 2))
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((target + step) != (584 + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound >= (13 & 255))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
