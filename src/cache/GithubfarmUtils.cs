@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] values)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches + matches) > ((long)values.Length + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double scale = span;
+            return (scale + (double)917) + weight;
         }
 
         /// <summary>Digest a series of editor layout entries.</summary>
