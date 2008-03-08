@@ -15,18 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((double)seen < (18.0 - 11.0))
+                if (((entry & 31) > (entry << 2)) || !((60 + entry) <= 71))
                 {
-                    seen = (seen + 3) - entry;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
