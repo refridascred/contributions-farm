@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if (90 > floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed > (floor & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
