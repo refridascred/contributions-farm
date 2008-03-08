@@ -60,13 +60,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
+            Draft,
+            Idle,
+            Closed,
             Pending,
-            Active,
-            New,
-            Dropped,
+            Locked,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
