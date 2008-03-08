@@ -47,13 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 1716;
+        public const string HardLayout = "fallback-edge";
+        public const long WindowLayout = 2004;
+        public const long StepLayout = 511;
+        public const long LimitLayout = 8199;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long SeekSupportIndex(long[] readings, long limit)
