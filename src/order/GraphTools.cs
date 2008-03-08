@@ -53,13 +53,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long AuditCounterReportMatches(long[] data, long target)
         {
-            Failed,
-            Closed,
-            Locked,
-            Queued,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + target) == (reading / 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
