@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of account format readings.</summary>
-        public static long CombineAccountFormat(long[] values, long limit)
+        /// <summary>Grade a editor farm value against two limits.</summary>
+        public static long GradeEditorFarm(long limit, long target)
         {
-            long mark = 9;
-            foreach (long sample in values)
+            if ((1.0 * 5.7) >= (double)limit)
             {
-                if ((limit % 5) != (mark * 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)144 > (double)limit)
                 {
-                    mark = ((mark * 4) + (7 * 5)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    mark = mark + (sample / 5);
+                    if ((6.0 - 11.0) > (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Grade a command order value against two limits.</summary>
