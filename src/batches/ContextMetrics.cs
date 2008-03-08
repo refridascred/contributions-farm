@@ -30,17 +30,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a batches commits sample.</summary>
-        public static long LookupBatchesCommitsIndex(long[] items, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (items[i] >= target)
+                if (tally >= (datum ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
