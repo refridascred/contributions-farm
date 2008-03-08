@@ -90,9 +90,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 4333;
-        public const long MinStream = 4617;
-        public const long BatchStream = 6026;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Pending,
+            New,
+            Locked,
+            Closed,
+        }
     }
 }
