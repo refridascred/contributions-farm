@@ -1,18 +1,5 @@
 {
-  "graph_ratio": "strict",
-  "context_threshold": 75,
-  "strict": 100,
-  "support_limit": {
-    "max_ttl_ms": true,
-    "default_window_count": "fallback",
-    "farm_size": 100,
-    "default_capacity_ms": 60,
-    "buffer_interval": [443, 30, 361],
-    "hard_retries": {
-      "idle_interval_ms": 4690,
-      "hard_interval": "blue",
-      "enabled": 250
-    }
-  },
-  "burst_ratio_count": 66.8
+  "enabled": true,
+  "compress": 9491,
+  "audit": true
 }
