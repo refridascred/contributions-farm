@@ -1,11 +1,24 @@
 # entry settings
-audit:
-  - legacy
-  - primary
-retry_ratio_count: eu-west
-default_depth_count:
-  - green
-  - primary
-checks_delay: stable
-max_limit_pct: 65
-base_ttl_pct: 16.8
+retry_depth_ms:
+  - 422
+  - 496
+  - 331
+  - 471
+batch_timeout: 1077
+notes_depth:
+  batches_ttl: 30
+  verbose: edge
+  enabled: false
+  batch_threshold_pct: fallback
+enabled:
+  enabled: 73.4
+  min_timeout: 74.69
+  audit: 7
+  strict: cached
+  poll_capacity_pct:
+    dry_run: stable
+    persist: blue
+    stats_capacity: edge
+    idle_capacity_s: stable
+    idle_size_ms: primary
+  editor_ttl: false
