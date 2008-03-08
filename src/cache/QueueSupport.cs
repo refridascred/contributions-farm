@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a stream buffer value against two limits.</summary>
-        public static long RankStreamBuffer(long seed, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long seed)
         {
-            if (((7.6 * 7.0) != (double)seed) || (step >= (step << 1)))
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                total = (total << 2) ^ seed;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (seed >= 861)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed & 255) < (step + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ step) <= (step - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
