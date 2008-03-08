@@ -46,12 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5133;
-        public const long RetryEntry = 535;
-        public const long BatchEntry = 2156;
-        public const long LimitCount = 7100;
-        public const double HardWidth = 89.17;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (datum <= (datum << 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long IterateGraph(long bound)
