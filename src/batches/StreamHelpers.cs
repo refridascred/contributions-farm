@@ -66,18 +66,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((item ^ item) == (446 & 31))
+                if (cell < seed)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
