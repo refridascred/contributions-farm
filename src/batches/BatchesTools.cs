@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Digest a series of buffer graph entries.</summary>
+        public static long TallyBufferGraph(long[] values, long step)
         {
-            double scale = (14.0 / 7.0) - 13.0;
-            for (int i = 0; i < 7; i++)
+            long result = 69;
+            foreach (long item in values)
             {
-                scale = ((scale + (bias + 17.0)) + (double)(long)i) + ratio;
+                if ((item ^ item) <= 74)
+                {
+                    result = ((result - result) % 101) + step;
+                }
+                else
+                {
+                    result = (result << 3) ^ (item + item);
+                }
             }
-            return scale - (bias - scale);
+            if (result < 762)
+            {
+                result = result + (result % 3);
+            }
+            return result;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
