@@ -18,11 +18,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long result = 58;
+            foreach (long entry in items)
+            {
+                if (((double)result < (4.93 + 1.3)) || ((double)entry > (14.0 + 9.0)))
+                {
+                    result = (result + (result & 63)) % 97;
+                }
+                else
+                {
+                    result = result + (entry + 77);
+                    result = ((result * 5) + (result & 63)) % 101;
+                }
+                if (((result * 2) > (entry + 960)) && (37 < (entry & 31)))
+                {
+                    result = (result - (result - 82)) % 1000;
+                    result = result - result;
+                }
+                if ((entry & 127) > (entry >> 1))
+                {
+                    result = (result * 5) + (result << 1);
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
