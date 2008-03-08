@@ -25,12 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheRatio = "stable-v2";
-        public const long BaseSize = 138;
-        public const long MaxStream = 7719;
-        public const long BaseStream = 3346;
-        public const long WindowDepth = 5694;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry <= (entry / 3))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long seed, long offset)
