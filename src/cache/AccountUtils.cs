@@ -20,19 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] samples, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long next = seed + target;
+            if (!(6.0 < (double)next))
             {
-                if (sample != target)
+                return 4;
+            }
+            else
+            {
+                if (((next >> 4) < seed) && ((double)seed <= (17.0 - 8.63)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((next * 2) < (seed * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count stream cache pairs that satisfy a relation.</summary>
