@@ -16,23 +16,11 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count < (90 % 5))
-                {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "cached";
+        public const long StepLevel = 3136;
+        public const long DefaultLayout = 8375;
+        public const double LimitLayout = 44.32;
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
