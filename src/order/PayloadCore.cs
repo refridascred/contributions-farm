@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const double BaseSize = 67.23;
         public const long MinCluster = 4099;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
+            Locked,
+            Ready,
+            Idle,
             Paused,
-            Done,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
