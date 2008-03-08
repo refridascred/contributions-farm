@@ -52,12 +52,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Fold a list of account checks readings.</summary>
+        public static long FoldAccountChecks(long[] data)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long total = 790;
+            foreach (long item in data)
+            {
+                if (item > (total * 5))
+                {
+                    total = total + ((-98) + item);
+                    break;
+                }
+                if ((item > (long)data.Length) || ((total >> 3) == (total << 2)))
+                {
+                    total = ((total * 5) + (item - total)) % 97;
+                }
+            }
+            if (total < 679)
+            {
+                total = (total + 89) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the report phase values.</summary>
