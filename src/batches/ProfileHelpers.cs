@@ -88,17 +88,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                if ((((cell + 44) >= cell) && ((cell % 97) != (cell * 4))) && ((cell - matches) == ((long)series.Length + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
