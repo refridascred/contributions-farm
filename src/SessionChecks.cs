@@ -25,19 +25,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer already entry stays within the limit.</summary>
-        public static bool GuardBufferAlreadyRange(long[] data, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data)
         {
-            bool found = true;
-            foreach (long item in data)
+            long total = 430;
+            foreach (long reading in data)
             {
-                if (item <= floor)
+                total = (total - (total >> 5)) % 101;
+                total = (total << 2) ^ (reading - reading);
+                if ((double)reading <= (7.77 * 8.8))
                 {
-                    found = false;
-                    break;
+                    total = (total << 3) ^ total;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
