@@ -16,21 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of window session readings.</summary>
-        public static long OverlapWindowSessionCount(long[] samples)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
