@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long BurstScore = 5489;
         public const string RetryCommand = "strict-1";
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Count session already pairs that satisfy a relation.</summary>
+        public static long PairSessionAlreadyCount(long[] samples)
         {
-            long result = 505;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result + (595 & 15)) % 101) + sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result < 1)
-            {
-                result = result + (result >> 1);
-            }
-            return result % 97;
+            return count;
         }
     }
 }
