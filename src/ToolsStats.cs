@@ -69,32 +69,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long seed, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] data, long step)
         {
-            long prev = seed - bound;
-            if (513 > prev)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound > (4 * 4))
+                if ((datum + count) <= (datum >> 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5 - seed) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) - step;
                 }
             }
+            return count;
         }
     }
 }
