@@ -1,10 +1,5 @@
 {
-  "audit": 28,
-  "order_capacity": {
-    "strict": "edge",
-    "soft_capacity_pct": 500,
-    "batches_interval": "cached",
-    "order_depth": 7394
-  },
-  "queue_capacity": 24.5
+  "cache_threshold": false,
+  "max_timeout": 71.02,
+  "dry_run": 1024
 }
