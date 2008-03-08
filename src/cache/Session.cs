@@ -25,15 +25,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] items, long origin)
         {
-            long total = 24;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                total = (((total - (34 ^ total)) % 97) - cell) - step;
+                if ((8.9 <= (double)seen) || (origin >= (seen + seen)))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
