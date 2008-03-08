@@ -48,30 +48,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long score = 571;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score * 4) > 46)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score ^ (score - sample);
-                }
-                else
-                {
-                    score = (score + (score * 2)) % 101;
-                }
-                if ((floor / 9) > floor)
-                {
-                    score = (score ^ (-4)) % 255;
-                }
-                if ((5 + score) > (score >> 3))
-                {
-                    break;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
