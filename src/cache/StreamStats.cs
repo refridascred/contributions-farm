@@ -34,11 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] series)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            long mark = 146;
+            foreach (long reading in series)
+            {
+                mark = (mark + (40 / 8)) + reading;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit buffer route readings against a rule.</summary>
