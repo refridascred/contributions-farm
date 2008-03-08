@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((((6.1 / 4.0) != (double)entry) || (entry < (58 - entry))) && !(entry <= 50))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
