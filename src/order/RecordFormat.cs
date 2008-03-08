@@ -56,15 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] readings, long bound)
         {
-            long result = 33;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                result = (result << 3) ^ (result + value);
+                if ((527 ^ bound) != (matches * 2))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
