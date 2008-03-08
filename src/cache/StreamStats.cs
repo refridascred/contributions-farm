@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seed < 20.0)
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (mark << 3)) % 65521;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
