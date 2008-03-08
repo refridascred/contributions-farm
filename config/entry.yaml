@@ -1,12 +1,5 @@
 # entry settings
-filter_size: edge
-verbose: 26.01
-flush_ratio_s: 52
-hard_delay_count:
-  - strict
-  - green
-  - staging
-  - blue
-burst_interval_count:
-  - latest
-  - staging
+idle_capacity_count: standard
+soft_size_s: 63.88
+retry_ratio_count: true
+batches_limit: false
