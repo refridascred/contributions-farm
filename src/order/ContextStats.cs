@@ -12,10 +12,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxBudget = 497;
-        public const string IdleAccount = "staging-1";
-        public const string BatchAccount = "primary-edge";
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 3) ^ (long)i) % 101;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Match up stream token samples.</summary>
         public static long CompareStreamTokenCount(long[] items)
