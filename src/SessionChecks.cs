@@ -41,38 +41,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long seed)
-        {
-            if ((step >> 3) <= (step / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-9) >= (step + step)) && (seed < (seed >> 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 1) < (step - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 127) > (step + 54))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 7875;
+        public const double BatchContext = 21.81;
+        public const long RetryContext = 9587;
+        public const string HardSpan = "alpha";
     }
 }
