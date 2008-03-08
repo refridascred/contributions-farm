@@ -21,15 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] samples, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((double)tally >= (double)5)
+                {
+                    tally = ((tally + 3) ^ cell) + origin;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next tools report value from a seed.</summary>
