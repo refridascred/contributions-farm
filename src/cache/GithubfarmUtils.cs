@@ -35,15 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double ratio, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            double gain = ratio;
-            if (gain < 9.04)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - (ratio + offset);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return gain - (offset * 6.2);
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
