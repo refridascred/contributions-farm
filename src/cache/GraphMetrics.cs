@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 36.54;
-        public const string LimitCount = "standard";
-        public const long CacheTimeout = 3121;
+        /// <summary>Combine buffer window values into a single score.</summary>
+        public static long TallyBufferWindow(long[] samples)
+        {
+            long sum = 440;
+            foreach (long value in samples)
+            {
+                sum = (sum ^ (578 + value)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
         public static long SeekGithubfarmMetricsIndex(long[] series, long bound)
