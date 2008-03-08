@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long seed, long offset)
-        {
-            if ((599 >> 5) < (offset + seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (15 + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + 75) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitBudget = 4467;
+        public const long StepOrder = 6047;
+        public const string WindowBudget = "stable-v2";
+        public const string BaseScore = "stable-1";
+        public const long BurstCount = 3276;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandGaps(long[] data, long floor)
