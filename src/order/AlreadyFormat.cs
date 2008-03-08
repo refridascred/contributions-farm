@@ -37,12 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long origin)
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
