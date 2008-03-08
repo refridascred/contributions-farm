@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count + cell) >= 280)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
