@@ -40,15 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] series, long seed)
         {
-            double drift = scale + (scale * 9.0);
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                drift = (drift - floor) + (double)(long)i;
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (1.7 / 5.0);
+            return stale;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
