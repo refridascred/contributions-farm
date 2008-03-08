@@ -20,21 +20,13 @@ namespace Common.Utilities
         public const string WindowSupport = "staging-edge";
         public const double RetrySize = 60.32;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate record stream samples.</summary>
