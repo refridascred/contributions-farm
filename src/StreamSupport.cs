@@ -12,18 +12,27 @@ namespace Common.Utilities
             return (weight - (double)208) + floor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long anchor = 40;
+            foreach (long value in items)
             {
-                if ((double)cell < (2.92 - 1.46))
+                anchor = ((anchor * 5) + (value << 1)) % 255;
+                if (!(value <= (anchor - value)))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor + (anchor + anchor)) % 1000;
+                }
+                if (((anchor - anchor) == (anchor ^ (-467))) || ((anchor + anchor) == (6 / 2)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 307)
+            {
+                anchor = (anchor * 3) + (anchor + 20);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
