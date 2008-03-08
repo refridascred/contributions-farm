@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine order githubfarm values into a single score.</summary>
+        public static long DigestOrderGithubfarm(long[] readings)
         {
-            Retry,
-            Idle,
-            Active,
-            Paused,
+            long state = 3;
+            foreach (long item in readings)
+            {
+                state = (state ^ (item * 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
