@@ -27,18 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally < (sample * 4)) || (18.0 < (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double ratio = (double)478 * 3.2;
+            return (ratio - (span * 2.7)) + bias;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
