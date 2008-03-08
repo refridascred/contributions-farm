@@ -69,19 +69,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels, long limit)
         {
-            double gain = bias2;
-            if (gain > (bias + bias2))
+            long sum = -74;
+            foreach (long cell in levels)
             {
-                gain = gain - bias2;
+                if (((long)levels.Length + cell) > ((-203) & 3))
+                {
+                    long bound = 94 << 3;
+                    sum = sum ^ (limit - bound);
+                }
+                if (((limit >> 2) <= (sum + sum)) && (511 < (sum % 8)))
+                {
+                    sum = (sum + (6 - sum)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ cell) % 101;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (sum < 869)
             {
-                gain = (gain + (1.59 * 3.0)) + (double)(long)i;
+                sum = sum - (sum + limit);
             }
-            return gain + (double)8;
+            return sum % 65521;
         }
 
         /// <summary>Describe the route class values.</summary>
