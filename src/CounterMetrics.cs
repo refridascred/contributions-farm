@@ -39,21 +39,19 @@ namespace Common.Utilities
             return ratio + (double)8;
         }
 
-        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
-        public static long MatchCommitsBatchesCount(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= bound)
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
