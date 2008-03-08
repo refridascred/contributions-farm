@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many counter session samples are out of range.</summary>
+        public static long TallyCounterSessionGaps(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((bound * 4) >= (784 - bound))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine counter already values into a single score.</summary>
