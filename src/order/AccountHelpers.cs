@@ -86,11 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 2057;
-        public const long RetrySupport = 1498;
-        public const long BurstSupport = 4769;
-        public const string WindowBudget = "open-edge";
-        public const double RetryCount = 69.72;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
