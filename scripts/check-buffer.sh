@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in blue cached local stable; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=90
+BUFFER_LIMIT=483
 log "limit is ${BUFFER_LIMIT}"
