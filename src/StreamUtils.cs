@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long CountClusterCounterGaps(long[] readings, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = 650;
+            foreach (long entry in items)
             {
-                if ((sample ^ sample) == (hits + sample))
+                if ((4.2 * 19.0) < (double)acc)
                 {
-                    hits = (hits + 1) + origin;
+                    acc = acc ^ entry;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
