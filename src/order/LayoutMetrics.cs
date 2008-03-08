@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] data, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
             long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor < (5.16 - 10.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + item;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
