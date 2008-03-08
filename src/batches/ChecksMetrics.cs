@@ -68,18 +68,19 @@ namespace Common.Utilities
         public const long RetryRatio = 264;
         public const long MinEntry = 3910;
 
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long AuditGithubfarmCommandGaps(long[] series)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((count % 5) > 244)
+                if (entry != offset)
                 {
-                    count = (count + 1) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
