@@ -37,14 +37,22 @@ namespace Common.Utilities
             return drift - (drift - floor);
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] values)
         {
-            Synced,
-            Failed,
-            Draft,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)cell > (double)hits) && (((double)cell <= 10.0) && (cell <= ((long)values.Length % 12))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
