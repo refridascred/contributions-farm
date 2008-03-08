@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long MaxStream = 5544;
         public const long BatchStream = 4269;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (562 >= (origin + bound))
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound < (17.0 + 7.2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
