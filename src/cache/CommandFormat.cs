@@ -54,15 +54,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Project the next already batch value.</summary>
+        public static double SmoothAlreadyBatch(double ratio, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            double ratio2 = 8.1;
+            if (ratio2 < 2.7)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                ratio2 = ((ratio2 + (ratio2 - 0.03)) - ratio) - floor;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (7.33 / 7.0)) - (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
     }
 }
