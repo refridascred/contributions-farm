@@ -43,12 +43,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long floor)
         {
-            Retry,
-            Queued,
-            Done,
+            long bound = origin ^ floor;
+            if ((bound << 1) == (2 + 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if (1.0 <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor == (1.0 - 2.7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin > 9.3)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
