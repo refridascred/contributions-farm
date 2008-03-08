@@ -22,11 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Derive the next report commits value from a seed.</summary>
+        public static long SeriesReportCommits(long bound)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state * 3) + ((long)i - state);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two filter measurements.</summary>
