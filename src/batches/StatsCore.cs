@@ -67,19 +67,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double bias)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double ratio, double bias)
         {
-            double weight = 13.0 - (double)992;
-            if (weight > bias)
+            double scale = (ratio + ratio) * 8.3;
+            if (scale < (bias + scale))
             {
-                weight = (weight + (weight - weight)) - ratio;
+                scale = scale + scale;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - bias;
+            return scale - (ratio / 7.0);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
