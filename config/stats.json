@@ -1,8 +1,7 @@
 {
-  "burst_capacity_count": "latest",
-  "batches_retries": "legacy",
-  "hard_delay_ms": 69.61,
-  "stream_retries": 500,
-  "token_timeout": "eu-west",
-  "default_limit_ms": [421, 378]
+  "stream_limit": 1759,
+  "warm_interval": "edge",
+  "tools_depth": 89,
+  "batches_size": 100,
+  "token_depth": "open"
 }
