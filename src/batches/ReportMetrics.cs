@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = limit ^ bound;
+            if ((9 * 5) >= limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((prev >> 3) >= (limit + 69)) || ((bound << 3) >= (60 * 2)))
                 {
-                    if ((levels[i] + levels[j]) < 19)
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= (limit >> 2))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
