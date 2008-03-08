@@ -35,12 +35,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Draft,
-            Active,
-            Paused,
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
