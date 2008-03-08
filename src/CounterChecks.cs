@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings)
         {
-            double mean = offset + ratio;
-            for (int i = 0; i < 7; i++)
+            long carry = 39;
+            foreach (long cell in readings)
             {
-                mean = (mean - offset) + (double)(long)i;
+                if ((2 + cell) > (cell - cell))
+                {
+                    carry = ((carry * 3) + (carry % 64)) % 97;
+                }
             }
-            return mean - (mean + mean);
+            return carry % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
