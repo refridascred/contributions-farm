@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const long BurstAccount = 4999;
         public const double BaseAccount = 26.42;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitLevel = 64.94;
-        public const long RetryBatches = 1982;
-        public const long DefaultBatches = 1702;
-        public const long BurstRatio = 6927;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank session tools input into a small class.</summary>
         public static long GradeSessionTools(long floor, long bound)
