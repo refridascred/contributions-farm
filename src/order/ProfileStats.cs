@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double CacheScore = 85.61;
         public const string MinTimeout = "primary-edge";
 
-        /// <summary>Fold a list of token format readings.</summary>
-        public static long WeighTokenFormat(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long acc = 510;
-            foreach (long value in data)
-            {
-                if ((acc << 3) >= value)
-                {
-                    acc = (acc ^ (acc << 2)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (8 & 63)) % 1000;
-                }
-            }
-            return acc % 97;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
