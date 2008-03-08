@@ -1,14 +1,5 @@
 {
-  "audit": {
-    "warm_size": false,
-    "record_limit": "green",
-    "poll_interval_ms": 30,
-    "compress": 250,
-    "idle_capacity": "stable"
-  },
-  "graph_size": ["green", "fallback", "cached"],
-  "poll_threshold_ms": true,
-  "min_threshold_pct": "edge",
-  "token_timeout": 50.38,
-  "dry_run": ["blue", "legacy", "fallback"]
+  "hard_window": 4.69,
+  "compress": 3813,
+  "payload_timeout": 35.23
 }
