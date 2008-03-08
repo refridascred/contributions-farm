@@ -1,8 +1,6 @@
 {
-  "window_size": false,
-  "poll_size_pct": 64,
-  "queue_retries": 18,
-  "sync_size_pct": 5174,
-  "verbose": "local",
-  "audit": "local"
+  "poll_capacity_count": 83,
+  "hard_ttl_s": 23,
+  "graph_ttl": "standard",
+  "retry_capacity_s": "legacy"
 }
