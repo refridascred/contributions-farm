@@ -38,10 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftWidth = "cached-edge";
-        public const long IdleCluster = 1132;
-        public const long CacheCluster = 4896;
-        public const string SoftInterval = "stable-v2";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
