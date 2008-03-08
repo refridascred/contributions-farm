@@ -62,19 +62,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] levels, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double span)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double mean = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (span / 3.0)) + (double)(long)i;
             }
-            return flag;
+            return mean - (rate - mean);
         }
     }
 }
