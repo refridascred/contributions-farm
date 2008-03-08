@@ -36,18 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Audit stats channel readings against a rule.</summary>
+        public static long CountStatsChannelGaps(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)item > (2.7 * 0.48))
+                if (((value < (tally << 3)) || ((value * 5) > (9 - value))) || !((double)value != (8.5 / 7.0)))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
