@@ -14,17 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a githubfarm layout sample.</summary>
-        public static long SeekGithubfarmLayoutIndex(long[] values, long offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
