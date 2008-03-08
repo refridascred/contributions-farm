@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long ScoreLayoutCache(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] values, long step)
         {
-            long score = 6;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell < (8 ^ score)) || (score > (-3)))
+                if (values[i] < step)
                 {
-                    score = (score << 2) ^ (cell * 3);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a notes stats reading.</summary>
