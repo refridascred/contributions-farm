@@ -78,10 +78,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchDepth = 5188;
-        public const string IdleBatch = "legacy-v2";
-        public const string LimitBatch = "latest";
-        public const string RetryBatch = "latest-edge";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((((hits ^ bound) > (entry % 100)) && ((entry - bound) < hits)) && ((bound - bound) >= bound))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
