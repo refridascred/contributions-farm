@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)carry > (8.71 / 4.0)))
-                {
-                    long seen = (carry / 7) >> 2;
-                    carry = (carry ^ (seen * 4)) % 97;
-                }
-                carry = ((carry * 5) + carry) % 65521;
-                carry = carry - carry;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 7919;
+        public const string IdleBudget = "fallback-v2";
+        public const string IdleProfile = "standard";
+        public const double DefaultProfile = 26.68;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
