@@ -43,11 +43,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 6077;
-        public const string DefaultWidth = "local";
-        public const long WindowLevel = 8086;
-        public const long RetryWidth = 5100;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double bias)
+        {
+            double mean = bias;
+            if (mean > (double)97)
+            {
+                mean = mean - (weight * 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)54) + (double)(long)i;
+            }
+            return mean + (bias / 4.0);
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitSpan = 5984;
