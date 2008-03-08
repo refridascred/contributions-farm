@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long seed, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] levels)
         {
-            if (((origin << 3) > (origin * 3)) && (6.99 > (double)origin))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 63) > (origin * 2))
+                if ((sample / 3) < hits)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin != (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin ^ seed) <= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
