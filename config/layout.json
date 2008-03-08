@@ -1,7 +1,6 @@
 {
-  "min_threshold": "legacy",
-  "max_capacity_s": "open",
-  "sync_depth": 3702,
-  "audit": 8448,
-  "min_retries": "strict"
+  "layout_size": false,
+  "base_ratio": false,
+  "min_limit_s": 6118,
+  "batch_delay_pct": false
 }
