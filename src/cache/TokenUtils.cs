@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the notes format entries that pass the check.</summary>
+        public static long MeasureNotesFormatHits(long[] series, long origin)
         {
-            Done,
-            Idle,
-            Pending,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((7 * 3) >= ((long)series.Length & 63))
+                {
+                    matches = ((matches + 2) - entry) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many schema command samples are out of range.</summary>
