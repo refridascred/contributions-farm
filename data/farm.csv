@@ -1,8 +1,6 @@
-id,active,level
-1,latest,edge
-2,773,18.05
-3,903,staging
-4,12,191
-5,primary,fallback
-6,229,82.45
-7,latest,157
+id,weight,active,level
+1,153,green,standard
+2,84.52,16.76,751
+3,23.4,976,402
+4,396,344,32.83
+5,60.06,latest,fallback
