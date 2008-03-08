@@ -47,19 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] values, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
