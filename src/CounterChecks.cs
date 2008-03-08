@@ -55,19 +55,15 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Measure how many payload tools samples are out of range.</summary>
-        public static long AuditPayloadToolsHits(long[] series, long seed)
+        /// <summary>Audit profile stats readings against a rule.</summary>
+        public static long MeasureProfileStatsMatches(long[] levels, long limit)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long item in levels)
             {
-                if (seed >= (entry + seed))
+                if (item <= (737 >> 3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) - limit;
                 }
             }
             return count;
