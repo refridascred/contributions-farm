@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count tools command pairs that satisfy a relation.</summary>
-        public static long MatchToolsCommandCount(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell >= (9.7 * 4.3))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
