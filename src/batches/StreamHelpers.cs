@@ -76,18 +76,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen < (2.2 * 7.0))
+                if ((double)reading != (4.1 * 8.71))
                 {
-                    seen = (seen + 2) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
