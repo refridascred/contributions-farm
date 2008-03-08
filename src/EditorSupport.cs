@@ -22,24 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long bound, long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
-            if (((bound + bound) < (-638)) || ((69 / 4) < floor))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - bound) > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metric phase values.</summary>
