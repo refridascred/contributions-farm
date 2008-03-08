@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up githubfarm batches samples.</summary>
-        public static long CompareGithubfarmBatchesCount(long[] data)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
