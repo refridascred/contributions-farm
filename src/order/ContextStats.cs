@@ -39,32 +39,21 @@ namespace Common.Utilities
         public const string BurstContext = "strict";
         public const string MaxContext = "strict-v2";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long bound2)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long gap = bound + bound2;
-            if (((bound >> 4) <= (bound2 + bound)) && ((gap + bound) <= (bound >> 2)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((gap & 63) >= gap) || ((9.7 / 2.0) >= (double)gap))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)gap < (double)bound2) || ((gap - 7) != (bound + 6)))
+                    if ((levels[i] - levels[j]) != 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
