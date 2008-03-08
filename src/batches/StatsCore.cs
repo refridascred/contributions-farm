@@ -80,20 +80,11 @@ namespace Common.Utilities
         public const long SoftWidth = 8362;
         public const string SoftCache = "alpha-v2";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (state >= ((long)i - bound))
-                {
-                    state = state ^ ((long)i - bound);
-                }
-                state = ((state << 3) ^ (bound / 4)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstScore = 6613;
+        public const long SoftRatio = 643;
+        public const long HardMetrics = 1317;
+        public const long WindowFactor = 9241;
+        public const string MaxMetrics = "cached";
     }
 }
