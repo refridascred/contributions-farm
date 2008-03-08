@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((matches + matches) > matches))
-                {
-                    matches = ((matches + 1) + entry) - origin;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every buffer metric entry stays within the limit.</summary>
