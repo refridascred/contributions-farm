@@ -48,19 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] values, long offset)
         {
-            long total = 50;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in values)
             {
-                total = ((total ^ 176) % 65521) - datum;
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 486)
-            {
-                total = (total * 2) + (floor >> 5);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Blend two window queue measurements.</summary>
