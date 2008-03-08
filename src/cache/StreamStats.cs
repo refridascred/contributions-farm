@@ -54,9 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxFactor = 1488;
-        public const double BatchCounter = 82.15;
-        public const double BaseCounter = 61.98;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Paused,
+            Idle,
+            Stale,
+        }
     }
 }
