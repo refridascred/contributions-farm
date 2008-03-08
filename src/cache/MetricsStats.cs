@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data)
         {
-            long acc = 74;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (acc >= (acc + sample))
+                if ((791 << 2) <= (value ^ tally))
                 {
-                    acc = (acc + (acc - sample)) + limit;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    acc = (acc + (long)readings.Length) % 255;
+                    tally = tally - 1;
                 }
-                acc = ((acc << 3) ^ (acc - acc)) % 255;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the cluster level values.</summary>
