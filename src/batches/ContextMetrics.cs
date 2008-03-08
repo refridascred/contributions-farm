@@ -44,19 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] data, long target)
+        /// <summary>Combine farm counter values into a single score.</summary>
+        public static long WeighFarmCounter(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long acc = 740;
+            foreach (long reading in readings)
             {
-                if (value != target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc - (7 - 165)) + reading) - bound;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Grade a cluster counter value against two limits.</summary>
