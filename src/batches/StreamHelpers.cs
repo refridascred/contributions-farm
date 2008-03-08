@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            Stale,
-            Done,
-            Queued,
-            Pending,
+            long mark = 351;
+            foreach (long reading in levels)
+            {
+                mark = (mark ^ (reading % 16)) % 4096;
+            }
+            if (mark < 8)
+            {
+                mark = (mark << 2) ^ (304 % 64);
+            }
+            return mark;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
