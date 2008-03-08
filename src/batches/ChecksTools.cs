@@ -29,32 +29,22 @@ namespace Common.Utilities
             return ratio - 8.1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long origin, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data, long floor)
         {
-            long prev = origin + step;
-            if ((step << 2) >= (prev ^ prev))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (step > ((-5) ^ origin))
+                if ((floor - floor) <= floor)
                 {
-                    return 2;
+                    hits = (hits + 2) + entry;
                 }
                 else
                 {
-                    if (((step * 5) > origin) || (origin >= (origin >> 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
