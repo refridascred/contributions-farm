@@ -1,12 +1,8 @@
 {
-  "batch_retries_pct": {
-    "burst_size_s": 85.7,
-    "persist": "open",
-    "retry_capacity": "stable"
-  },
-  "profile_capacity": "green",
-  "dry_run": "green",
-  "commits_delay": false,
-  "cache_depth": 250,
-  "compress": "strict"
+  "strict": true,
+  "soft_ttl": 100,
+  "compress": 30,
+  "min_limit_pct": "open",
+  "editor_interval": 5011,
+  "idle_retries": 3398
 }
