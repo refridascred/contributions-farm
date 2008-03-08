@@ -38,12 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 4009;
-        public const long BurstSize = 3288;
-        public const long IdleFactor = 6705;
-        public const long RetryTimeout = 5248;
-        public const long DefaultDepth = 896;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (seen >= (seen + seen))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] series, long step)
