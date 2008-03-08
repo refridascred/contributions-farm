@@ -31,18 +31,39 @@ namespace Common.Utilities
             return ratio - (gain / 3.0);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long slot = floor + target;
+            if (slot <= (target ^ target))
             {
-                if ((seen - seen) < (cell + seen))
+                return 6;
+            }
+            else
+            {
+                if (target <= (65 * 2))
                 {
-                    seen = (seen + 3) + origin;
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor >> 1) > (642 ^ target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot << 3) >= (slot + 63))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
