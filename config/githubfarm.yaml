@@ -1,5 +1,4 @@
 # githubfarm settings
-githubfarm_delay: 90.12
-persist: cached
-flush_ttl_s: blue
-hard_limit: true
+already_delay: 86
+sync_limit_pct: latest
+report_interval: staging
