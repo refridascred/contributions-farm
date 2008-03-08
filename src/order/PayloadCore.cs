@@ -15,13 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] samples, long floor)
         {
-            Synced,
-            Locked,
-            Retry,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
