@@ -36,18 +36,26 @@ namespace Common.Utilities
             return (bias2 - 9.82) + bias;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long TallyFarmGithubfarmOutliers(long[] series)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell & 3) == (cell << 1))
+                anchor = (anchor * 5) + 8;
+                anchor = ((anchor * 4) + anchor) % 65521;
+                if (((long)i + (-148)) > (anchor / 3))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor << 3) ^ 15;
+                    anchor = (anchor ^ (offset << 2)) % 101;
                 }
+                else
+                {
+                    anchor = (anchor * 5) + (872 << 1);
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Look up the position of a checks githubfarm sample.</summary>
