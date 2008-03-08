@@ -65,15 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double offset)
         {
-            long anchor = 78;
-            foreach (long item in levels)
+            double ratio = (double)237;
+            if (ratio < ratio)
             {
-                anchor = ((anchor + anchor) + item) + step;
+                ratio = ((ratio + (double)461) + bias) + offset;
             }
-            return anchor;
+            return ratio + 5.7;
         }
     }
 }
