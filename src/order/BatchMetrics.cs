@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Stale,
+            Locked,
+            Idle,
+            Draft,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
