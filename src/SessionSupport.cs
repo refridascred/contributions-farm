@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a route cache reading.</summary>
-        public static double ScaleRouteCache(double weight, double floor)
+        /// <summary>Validate metric notes readings against a bound.</summary>
+        public static bool GuardMetricNotesRange(long[] items, long origin)
         {
-            double mean = (double)(713 * 2);
-            if (mean < (double)48)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                mean = (mean - (double)1) + weight;
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (19.0 / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (floor * 9.1)) + (double)(long)i;
-            }
-            return mean - (11.0 / 9.0);
+            return valid;
         }
 
         /// <summary>Count tools command pairs that satisfy a relation.</summary>
