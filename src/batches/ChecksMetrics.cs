@@ -52,11 +52,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftBudget = 2433;
-        public const long BatchNotes = 5244;
-        public const long HardNotes = 4655;
-        public const string BurstInterval = "open";
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long ScoreGraph(long[] readings, long limit)
