@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const long RetryRoute = 8086;
         public const long MinDepth = 8819;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)data.Length >= (entry % 12))
+                if (data[i] > limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
