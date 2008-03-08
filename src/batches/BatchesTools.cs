@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items, long limit)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long anchor = 43;
-            foreach (long datum in items)
-            {
-                if ((double)limit == (4.8 / 8.0))
-                {
-                    anchor = (anchor << 2) ^ (datum - 89);
-                }
-            }
-            if (anchor > 418)
-            {
-                anchor = ((anchor << 3) ^ 76) % 4096;
-            }
-            return anchor % 97;
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
