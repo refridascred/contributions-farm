@@ -28,12 +28,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
