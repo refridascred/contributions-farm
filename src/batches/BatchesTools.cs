@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 908;
+            foreach (long reading in data)
             {
-                if (((double)matches > (6.71 - 7.16)) || ((sample & 15) >= (-425)))
+                if (((mix + reading) < (seed ^ 3)) || ((0 - mix) >= 175))
                 {
-                    matches = matches + 1;
+                    mix = (mix << 3) ^ mix;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (mix + mix) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a context record.</summary>
