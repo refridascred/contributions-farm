@@ -1,5 +1,14 @@
 {
-  "checks_depth": "eu-west",
-  "default_depth_pct": "standard",
-  "notes_depth": "latest"
+  "already_limit": "latest",
+  "compress": 3123,
+  "burst_depth_count": "latest",
+  "max_ratio_s": {
+    "warm_retries": [161, 138, 226],
+    "batch_depth_pct": 94.6,
+    "hard_interval": 100,
+    "retry_retries_s": "green",
+    "githubfarm_retries": "legacy",
+    "idle_threshold_s": [80, 16, 44]
+  },
+  "min_limit_pct": 37.66
 }
