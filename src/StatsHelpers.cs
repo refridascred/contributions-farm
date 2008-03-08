@@ -53,18 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] series, long step)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((double)floor >= (3.7 / 9.0))
+                if (value >= step)
                 {
-                    mix = (((mix * 2) + floor) % 4096) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
