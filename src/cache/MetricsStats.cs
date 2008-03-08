@@ -59,12 +59,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] readings, long limit)
         {
-            Pending,
-            Dropped,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
