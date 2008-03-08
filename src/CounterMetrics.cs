@@ -39,11 +39,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultScore = 2189;
-        public const long SoftSchema = 7735;
-        public const string IdleScore = "local-1";
-        public const long MinSchema = 6390;
-        public const long IdleSchema = 5898;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!(seen >= (seen >> 5)))
+                {
+                    seen = ((seen + 3) + item) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
