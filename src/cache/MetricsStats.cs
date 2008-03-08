@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of contributi support entries.</summary>
-        public static long DigestContributiSupport(long[] samples, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long state = 70;
-            foreach (long item in samples)
-            {
-                state = (((state * 3) + 92) % 101) + item;
-            }
-            if (state < 0)
-            {
-                state = (state - origin) % 65521;
-            }
-            return state % 4096;
+            Retry,
+            Locked,
+            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Rank order input into a small class.</summary>
