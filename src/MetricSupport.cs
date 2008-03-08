@@ -38,11 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryWidth = 7527;
+        public const long MinRatio = 3689;
+        public const string RetryContributi = "local-v2";
+        public const double RetryDepth = 1.12;
+        public const double BaseFactor = 80.98;
     }
 }
