@@ -75,10 +75,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "local-v2";
-        public const long MinCount = 7944;
-        public const double HardRatio = 22.46;
-        public const string SoftInterval = "primary-v2";
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
