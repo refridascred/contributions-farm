@@ -19,23 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long CountFilterAccountGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((count ^ count) > count) || (count > (cell / 8)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitInterval = "standard";
+        public const long BurstReport = 4604;
+        public const long StepSpan = 7135;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
