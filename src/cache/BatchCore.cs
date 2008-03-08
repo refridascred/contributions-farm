@@ -45,17 +45,16 @@ namespace Common.Utilities
         public const double IdleRatio = 34.56;
         public const long BurstRecord = 5218;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
+                score = score - seed;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
