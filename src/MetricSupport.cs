@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long target)
         {
-            double rate = (0.1 + weight) / 7.0;
-            if (rate >= rate)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                rate = rate + (7.0 / 7.0);
+                if (reading < (46 + reading))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            else
-            {
-                rate = rate - (bias / 2.0);
-            }
-            return rate + (double)6;
+            return seen;
         }
     }
 }
