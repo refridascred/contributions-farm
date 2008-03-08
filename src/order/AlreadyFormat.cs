@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 7614;
-        public const long HardGraph = 3479;
-        public const string BaseBudget = "stable-edge";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            New,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] levels, long floor)
