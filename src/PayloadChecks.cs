@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long bound)
+        /// <summary>Audit already schema readings against a rule.</summary>
+        public static long AuditAlreadySchemaHits(long[] series)
         {
-            if ((double)bound < (2.4 * 0.52))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 2) < 764)
+                if ((-980) <= hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 3) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a session summary.</summary>
