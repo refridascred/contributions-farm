@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double gain = (double)(53 ^ 190);
-            return ((gain + gain) + weight) + offset;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
