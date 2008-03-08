@@ -19,32 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long step)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long step2 = seed - step;
-            if ((double)step2 > (8.0 - 5.01))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (0.6 >= (double)seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (5.0 > (double)seed)
+                    if ((levels[i] ^ levels[j]) == 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of context checks entries.</summary>
