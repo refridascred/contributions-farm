@@ -41,13 +41,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long mark = 86;
+            foreach (long value in values)
+            {
+                if (!((value >= ((-710) % 64)) || ((double)mark != (0.1 - 4.0))))
+                {
+                    mark = ((mark * 5) + mark) % 4096;
+                }
+                if ((mark + (-499)) >= (7 % 100))
+                {
+                    mark = (mark ^ (51 * 2)) % 65521;
+                }
+                else
+                {
+                    mark = mark ^ (value + value);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel record.</summary>
