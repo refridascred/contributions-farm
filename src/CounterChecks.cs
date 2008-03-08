@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            double mean = offset + ratio;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix + (bound ^ mix)) % 65521;
-                mix = (mix * 3) + (mix % 10);
-                mix = ((mix * 2) + (long)i) % 101;
+                mean = (mean - offset) + (double)(long)i;
             }
-            return mix;
+            return mean - (mean + mean);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
