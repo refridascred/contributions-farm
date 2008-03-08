@@ -14,10 +14,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 4054;
-        public const long RetryRoute = 8086;
-        public const long MinDepth = 8819;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultScore = "legacy";
+        public const long LimitInterval = 3462;
+        public const double RetryTimeout = 12.27;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] data, long limit)
