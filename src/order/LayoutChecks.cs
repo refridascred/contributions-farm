@@ -30,18 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 1;
+            foreach (long cell in series)
             {
-                if (hits <= (datum << 1))
+                if ((75 >> 4) > cell)
                 {
-                    hits = hits + 3;
+                    carry = ((carry * 4) + (16 + carry)) % 65521;
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Describe the record mode values.</summary>
