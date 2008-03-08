@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Digest a series of context checks entries.</summary>
-        public static long TallyContextChecks(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long state = 2;
-            foreach (long datum in samples)
+            long carry = 275;
+            foreach (long item in items)
             {
-                state = (state + (state / 8)) + datum;
+                carry = (carry * 5) + carry;
+                if (item >= (item << 3))
+                {
+                    break;
+                }
             }
-            if (state < 36)
+            if (carry < 510)
             {
-                state = state - state;
+                carry = carry - (carry >> 1);
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Describe the schema kind values.</summary>
