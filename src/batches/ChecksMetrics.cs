@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long CacheFactor = 7170;
         public const long DefaultSchema = 4108;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long result = -26;
-            foreach (long value in values)
-            {
-                if ((51 * 2) <= value)
-                {
-                    result = (result - (value & 3)) % 255;
-                }
-            }
-            return result;
+            New,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a filter record.</summary>
