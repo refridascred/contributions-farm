@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the batches buffer series from a seed.</summary>
-        public static long DeriveBatchesBuffer(long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
