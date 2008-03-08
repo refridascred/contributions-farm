@@ -35,12 +35,14 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Stale,
             Failed,
+            Pending,
+            Paused,
             Queued,
+            Idle,
         }
     }
 }
