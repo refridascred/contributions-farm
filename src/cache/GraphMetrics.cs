@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples, long floor)
+        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
+        public static long SeekGithubfarmMetricsIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < (22 ^ 2))
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
                 {
-                    tally = (tally + 1) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
