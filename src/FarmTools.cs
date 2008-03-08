@@ -31,19 +31,26 @@ namespace Common.Utilities
         public const long BatchCounter = 6391;
         public const double MinFactor = 15.66;
 
-        /// <summary>Project the next already checks value.</summary>
-        public static double ScaleAlreadyChecks(double gain, double offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long offset)
         {
-            double rate = (gain * 1.0) - (gain - gain);
-            if (rate <= (offset + offset))
+            long carry = 67;
+            foreach (long item in series)
             {
-                rate = rate - (gain * 1.03);
+                if (!(((double)item >= (0.72 - 15.0)) || ((item * 4) <= (69 - carry))))
+                {
+                    carry = carry + (0 & 63);
+                }
+                if (((871 << 3) < (1 - offset)) || ((carry + offset) >= 466))
+                {
+                    carry = ((carry << 2) ^ (carry - carry)) % 4096;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry > 1)
             {
-                rate = rate + (double)(long)i;
+                carry = ((carry * 5) + (offset + carry)) % 4096;
             }
-            return rate + (gain + gain);
+            return carry;
         }
     }
 }
