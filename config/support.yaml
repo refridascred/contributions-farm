@@ -1,4 +1,31 @@
 # support settings
-sync_depth: blue
-min_threshold_s: true
-max_limit_count: true
+stats_delay: 9.81
+metrics_timeout: 46.57
+stream_size:
+  - open
+  - green
+  - legacy
+  - cached
+batch_delay:
+  readonly: 41
+  idle_size: 57.0
+  strict:
+    - 94
+    - 359
+    - 400
+    - 271
+  sync_interval:
+    - fallback
+    - stable
+    - local
+    - strict
+sync_interval:
+  already_limit: 0.31
+  dry_run: 2078
+  burst_depth_count: strict
+  retry_threshold: 8555
+  editor_size: true
+flush_capacity_s:
+  - staging
+  - green
+  - stable
