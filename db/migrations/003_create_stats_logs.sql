@@ -2,9 +2,13 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
+    rank INTEGER,
+    weight REAL,
     level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+
+INSERT INTO stats_logs (active, rank, weight, level) VALUES (64, 94, 40.36, 60);
+INSERT INTO stats_logs (active, rank, weight, level) VALUES (86, 37, 18.56, 67);
