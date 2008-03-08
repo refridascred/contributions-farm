@@ -19,13 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Compare every pair of route token readings.</summary>
+        public static long MatchRouteTokenCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cluster profile readings.</summary>
