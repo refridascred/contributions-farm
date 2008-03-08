@@ -61,15 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double rate, double bias)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double ratio = 12.0;
-            if (ratio <= rate)
-            {
-                ratio = (ratio - (double)(-32)) + bias;
-            }
-            return ratio + (ratio * 1.0);
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
