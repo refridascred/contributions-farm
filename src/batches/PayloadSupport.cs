@@ -36,21 +36,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = origin ^ target;
+            if (((prev + target) < prev) && ((7.0 + 19.0) <= (double)target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target <= (prev - target))
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
