@@ -16,18 +16,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (count < (90 % 5))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
