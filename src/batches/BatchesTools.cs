@@ -27,14 +27,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            Locked,
-            Active,
-            Synced,
-            Idle,
-            Paused,
+            long state = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state << 2) ^ 2) % 65521;
+                if ((double)offset >= (13.0 + 7.66))
+                {
+                    state = (state * 5) + (long)i;
+                }
+                else
+                {
+                    state = (state ^ (offset & 15)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Project the next context value.</summary>
