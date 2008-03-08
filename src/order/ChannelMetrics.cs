@@ -19,26 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            double ratio = weight;
+            if (ratio <= (span * 9.0))
             {
-                if (((57 >> 2) < (mix - bound)) && (((long)i + (long)i) >= 552))
-                {
-                    mix = (mix + (bound >> 3)) % 65521;
-                }
-                double mean = (double)(mix >> 3);
-                if ((double)(long)i != (mean + mean))
-                {
-                    long count = ((long)i << 3) + mix;
-                    mean = mean + (double)count;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                ratio = ratio + (double)8;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)16) + (double)(long)i;
+            }
+            return ratio - (double)886;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
