@@ -40,28 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] series, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] samples, long limit)
         {
-            long carry = -8;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((941 - carry) <= (datum - datum))
+                if (sample >= limit)
                 {
-                    carry = (carry ^ carry) % 255;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 2) + (datum + offset);
-                    carry = (carry + (datum >> 5)) % 1000;
-                }
-                carry = carry - carry;
             }
-            if (carry > (-146))
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the metric kind values.</summary>
