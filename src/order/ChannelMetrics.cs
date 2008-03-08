@@ -22,23 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long carry = 26;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ reading) % 65521;
-                if ((double)reading == (8.6 - 6.35))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry * 2) + (offset >> 3)) % 97;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
