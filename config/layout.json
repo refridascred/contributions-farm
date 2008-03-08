@@ -1,11 +1,7 @@
 {
-  "format_depth": {
-    "compress": 46.55,
-    "soft_capacity": "blue",
-    "hard_delay_pct": 24
-  },
-  "batch_ttl_pct": 45,
-  "command_timeout": "eu-west",
-  "min_depth_pct": 35.47,
-  "checks_depth": 30
+  "hard_capacity": "stable",
+  "sync_capacity": "primary",
+  "filter_delay": "edge",
+  "poll_size_s": [315, 77, 384, 404],
+  "poll_size_ms": 28
 }
