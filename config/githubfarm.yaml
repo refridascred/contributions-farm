@@ -1,16 +1,10 @@
 # githubfarm settings
-enabled: 83.32
-poll_capacity_count:
-  - 181
-  - 422
-  - 464
-warm_timeout:
-  - staging
-  - primary
-  - fallback
-queue_retries:
-  - legacy
-  - primary
-  - strict
-  - legacy
-sync_limit_ms: local
+max_size_count: 2336
+batch_threshold_count: 45.24
+cluster_interval: 51.15
+account_depth: 2397
+batch_size_pct: 3206
+enabled:
+  - 285
+  - 364
+  - 339
