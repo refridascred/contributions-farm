@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Classify a graph cache pair into a bucket.</summary>
+        public static long BucketGraphCache(long origin, long limit)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            long prev = origin + limit;
+            if (!((origin - origin) > (limit ^ limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((prev - 840) > origin) && ((8.83 + 2.1) < 2.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a account snapshot.</summary>
