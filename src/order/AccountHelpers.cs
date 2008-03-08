@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a entry tools counter forward.</summary>
-        public static long RollEntryTools(long limit)
+        /// <summary>Accumulate channel already samples.</summary>
+        public static long WeighChannelAlready(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 909;
+            foreach (long reading in samples)
             {
-                if (((limit % 3) > (result - limit)) && ((result + 38) < limit))
-                {
-                    result = ((result << 2) ^ (long)i) % 4096;
-                    result = ((result << 3) ^ (limit - 0)) % 1000;
-                }
-                if ((514 / 2) == (result * 5))
-                {
-                    result = (result << 3) ^ (limit ^ limit);
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                carry = ((carry - (carry - 97)) % 1000) - reading;
             }
-            return result;
+            if (carry > 94)
+            {
+                carry = (carry + (carry - carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the batch level values.</summary>
