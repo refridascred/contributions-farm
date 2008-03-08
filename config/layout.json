@@ -1,6 +1,10 @@
 {
-  "retry_capacity": false,
-  "flush_retries": 8639,
-  "profile_interval": [127, 167],
-  "hard_ratio_ms": [284, 447, 24, 390]
+  "verbose": false,
+  "soft_retries_s": "legacy",
+  "cache_capacity_s": {
+    "retry_ratio_pct": ["open", "standard", "local"],
+    "cache_interval": "standard",
+    "poll_limit": "blue",
+    "metric_depth": 30
+  }
 }
