@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long limit2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            if (!((limit2 + limit2) == (limit << 2)))
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit >> 5) <= (131 - limit)))
+                result = (result - (17 >> 2)) % 65521;
+                if ((bound >= (105 & 63)) || ((double)bound <= (double)(long)i))
                 {
-                    return 5;
+                    result = result ^ 595;
                 }
-                else
-                {
-                    if (limit > limit2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
