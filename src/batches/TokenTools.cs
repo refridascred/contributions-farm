@@ -20,19 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long bound)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != bound)
+                if (values[i] >= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
