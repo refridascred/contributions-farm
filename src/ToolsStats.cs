@@ -56,18 +56,13 @@ namespace Common.Utilities
             return gain + (weight * 0.12);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] samples)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value + value) > (930 - 46))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
