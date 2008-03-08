@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long limit)
         {
-            long prev = limit ^ bound;
-            if ((9 * 5) >= limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((prev >> 3) >= (limit + 69)) || ((bound << 3) >= (60 * 2)))
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= (limit >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a metrics record reading.</summary>
