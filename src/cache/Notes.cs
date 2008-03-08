@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long floor)
         {
-            Closed,
-            Active,
-            Retry,
+            if ((8 + 6) >= (35 + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(16 <= (limit + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit / 4) >= limit) || ((floor >> 4) < (311 & 127)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((15.0 - 8.3) >= (19.0 + 0.06))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already options.</summary>
