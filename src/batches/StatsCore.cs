@@ -75,10 +75,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 4182;
-        public const long SoftWidth = 8362;
-        public const string SoftCache = "alpha-v2";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= 24)
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstScore = 6613;
