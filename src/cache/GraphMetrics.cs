@@ -37,24 +37,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long limit, long seed)
+        /// <summary>Scale a entry metric figure with a bias.</summary>
+        public static double AdjustEntryMetric(double rate, double offset)
         {
-            if ((seed ^ seed) == (seed - seed))
+            double scale = (13.0 / 6.0) / 5.0;
+            if (scale > (rate + scale))
             {
-                return 7;
+                scale = (scale - (scale - rate)) + offset;
             }
             else
             {
-                if ((3.08 * 0.83) >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale = scale - (double)80;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (double)2) + (double)(long)i;
+            }
+            return scale - (scale * 3.7);
         }
 
         /// <summary>Roll a cluster checks counter forward.</summary>
