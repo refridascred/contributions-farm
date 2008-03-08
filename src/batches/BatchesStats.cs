@@ -54,20 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((bound > 20) && ((bound / 8) <= bound))
-                {
-                    total = total + ((long)i >> 1);
-                    total = (total ^ (8 - total)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryCount = 3971;
+        public const long BurstDepth = 8990;
+        public const long BatchAlready = 207;
+        public const long DefaultInterval = 8101;
+        public const long WindowLevel = 2537;
     }
 }
