@@ -1,13 +1,11 @@
 # entry settings
-retry_timeout_pct:
-  - eu-west
-  - blue
-  - cached
-readonly: edge
-sync_delay: stable
-cache_size_count:
-  poll_limit: 1024
-  poll_size_ms: 19.6
-  poll_threshold_s: 78.73
-  warm_threshold_pct: 89
-  sync_interval: 71
+editor_threshold: 37.14
+default_depth_s: open
+hard_retries: false
+graph_retries:
+  - 478
+  - 307
+  - 486
+  - 435
+farm_retries: 72.1
+route_window: true
