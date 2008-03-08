@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 8884;
-        public const string LimitRoute = "staging-edge";
-        public const long StepInterval = 5067;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long target, long limit)
+        {
+            if ((double)target <= (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (target <= (target - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
