@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Fold a list of layout cache readings.</summary>
+        public static long ScoreLayoutCache(long[] readings)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long score = 6;
+            foreach (long cell in readings)
+            {
+                if ((cell < (8 ^ score)) || (score > (-3)))
+                {
+                    score = (score << 2) ^ (cell * 3);
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a notes stats reading.</summary>
