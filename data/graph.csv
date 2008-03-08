@@ -1,7 +1,6 @@
-id,state,weight,region
-1,552,677,local
-2,strict,241,692
-3,primary,648,51.28
-4,474,520,60.17
-5,72.89,930,47.58
-6,1.79,37.98,eu-west
+id,label,level,region,active
+1,287,957,local,415
+2,96,655,90,fallback
+3,30.04,79,36.46,699
+4,888,34.41,42.78,cached
+5,356,strict,317,38.59
