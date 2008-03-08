@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Fold a list of account format readings.</summary>
+        public static long CombineAccountFormat(long[] values, long limit)
         {
-            double rate = bias;
-            if (rate > (3.0 + gain))
+            long mark = 9;
+            foreach (long sample in values)
             {
-                rate = rate - 4.2;
+                if ((limit % 5) != (mark * 2))
+                {
+                    mark = ((mark * 4) + (7 * 5)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (sample / 5);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (7.8 * 8.2)) + (double)(long)i;
-            }
-            return rate - (bias - gain);
+            return mark;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
