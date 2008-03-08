@@ -69,12 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
