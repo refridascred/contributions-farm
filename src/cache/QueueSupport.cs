@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryWidth = "local-v2";
-        public const long MinSession = 5626;
-        public const long BatchLevel = 339;
-        public const long HardWidth = 391;
-        public const long RetryInterval = 7601;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (target <= (target ^ target))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a profile metrics sample.</summary>
         public static long FindProfileMetricsIndex(long[] readings, long offset)
