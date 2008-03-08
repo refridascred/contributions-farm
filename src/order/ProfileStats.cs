@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)(-2) > (double)target)
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
