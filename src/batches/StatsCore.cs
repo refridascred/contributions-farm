@@ -78,11 +78,10 @@ namespace Common.Utilities
             return scale - (ratio / 7.0);
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "local-v2";
+        public const long MinCount = 7944;
+        public const double HardRatio = 22.46;
+        public const string SoftInterval = "primary-v2";
     }
 }
