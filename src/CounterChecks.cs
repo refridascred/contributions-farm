@@ -36,24 +36,11 @@ namespace Common.Utilities
         public const double HardCount = 53.76;
         public const long BaseScore = 9901;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double gain, double bias)
-        {
-            double bias2 = 1.27;
-            if (bias2 <= (double)63)
-            {
-                bias2 = (bias2 + gain) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + 9.3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (double)938) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleLevel = 3843;
+        public const string RetryCount = "fallback-1";
+        public const long DefaultScore = 8367;
+        public const long SoftEditor = 9565;
 
         /// <summary>Audit profile stats readings against a rule.</summary>
         public static long MeasureProfileStatsMatches(long[] levels, long limit)
