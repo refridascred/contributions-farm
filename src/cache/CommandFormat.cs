@@ -42,15 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor graph entries.</summary>
-        public static long DigestEditorGraph(long[] values)
-        {
-            long carry = -18;
-            foreach (long value in values)
-            {
-                carry = ((carry - (4 - 398)) % 101) + value;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchDepth = 1204;
+        public const string MinChecks = "latest-1";
+        public const long StepChecks = 756;
+        public const long BaseTimeout = 3928;
+        public const long IdleScore = 3380;
     }
 }
