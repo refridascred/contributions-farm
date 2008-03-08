@@ -1,8 +1,5 @@
 {
-  "compress": 32,
-  "default_retries_s": false,
-  "audit": 2553,
-  "contributi_timeout": "standard",
-  "poll_threshold_pct": true,
-  "min_delay_ms": ["local", "eu-west", "stable"]
+  "batch_delay_pct": 80,
+  "default_threshold": "strict",
+  "idle_capacity_pct": [316, 317, 317, 199]
 }
