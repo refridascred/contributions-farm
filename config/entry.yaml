@@ -1,22 +1,10 @@
 # entry settings
-verbose: 64
-hard_depth_pct:
-  warm_retries_ms: fallback
-  idle_timeout:
-    - 442
-    - 150
-  cache_depth:
-    already_ratio: 56.71
-    enabled: 69
-    burst_limit_ms: 93.85
-    idle_retries_count:
-      - blue
-      - edge
-      - primary
-      - staging
-    retry_interval_count: edge
-  compress: false
-max_ratio_ms: 100
-base_ratio_ms: 24
-max_retries_pct: 1024
-soft_size_pct: 500
+poll_delay_s: edge
+dry_run: local
+max_capacity_s: 51.61
+channel_depth: 1024
+poll_depth_count:
+  - green
+  - standard
+  - strict
+window_threshold: latest
