@@ -62,18 +62,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes commits samples are out of range.</summary>
-        public static long CountNotesCommitsGaps(long[] levels, long offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((959 * 5) < item)
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Draft,
+            Done,
         }
     }
 }
