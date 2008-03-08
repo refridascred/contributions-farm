@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count << 1) <= count)
-                {
-                    count = ((count + 2) ^ datum) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 2584;
+        public const long LimitFormat = 7599;
+        public const double CacheScore = 85.61;
+        public const string MinTimeout = "primary-edge";
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
