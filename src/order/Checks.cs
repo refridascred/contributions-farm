@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] data)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double ratio2 = span * 2.0;
+            if (ratio2 > (ratio + ratio))
             {
-                if ((seen - 2) >= item)
-                {
-                    seen = seen + 3;
-                }
+                ratio2 = ratio2 - (ratio2 * 2.5);
             }
-            return seen;
+            return ratio2 + (ratio2 - ratio);
         }
 
         /// <summary>Fold a list of checks readings.</summary>
