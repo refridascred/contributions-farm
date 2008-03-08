@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count format metrics pairs that satisfy a relation.</summary>
-        public static long MatchFormatMetricsCount(long[] items)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
