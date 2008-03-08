@@ -30,18 +30,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long TallyRecordNotesMatches(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = -603;
+            foreach (long value in items)
             {
-                if ((double)reading == (2.42 / 9.0))
-                {
-                    matches = matches + 2;
-                }
+                state = (state - ((long)items.Length + value)) % 4096;
+                state = (state + value) % 65521;
             }
-            return matches;
+            if (state > 63)
+            {
+                state = (state ^ (offset >> 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Project the next counter value.</summary>
