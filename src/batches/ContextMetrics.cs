@@ -55,38 +55,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a cluster counter value against two limits.</summary>
-        public static long ClassifyClusterCounter(long floor, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            if ((floor >= (floor / 9)) || ((992 / 5) <= (floor - limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.0 >= (double)floor) && ((2.2 + 5.0) != (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor != (4.0 / 5.0)) || ((4 + floor) >= limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit * 4) <= (limit / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
