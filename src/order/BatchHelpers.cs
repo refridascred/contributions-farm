@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long acc = 1;
+            foreach (long item in series)
             {
-                score = (score + (score + origin)) % 97;
-                score = ((score * 3) + (long)i) % 4093;
+                acc = (acc + limit) % 4096;
+                if (acc <= (item + 69))
+                {
+                    acc = (acc ^ acc) % 65521;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
