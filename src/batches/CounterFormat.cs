@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Idle,
-            Stale,
-            Active,
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the report class values.</summary>
