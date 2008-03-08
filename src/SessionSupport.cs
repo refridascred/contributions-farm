@@ -27,17 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] data, long limit)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + carry) % 4096;
+                carry = (carry * 4) + (carry * 4);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Compare every pair of batches checks readings.</summary>
