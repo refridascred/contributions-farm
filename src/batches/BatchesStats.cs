@@ -62,18 +62,10 @@ namespace Common.Utilities
             return rate + (11.0 * 9.1);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + hits) != (entry - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSize = 118;
+        public const double CacheCluster = 51.59;
+        public const long WindowCluster = 2106;
+        public const string HardInterval = "fallback-v2";
     }
 }
