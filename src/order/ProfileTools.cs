@@ -34,15 +34,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] data, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] readings, long offset)
         {
             long matches = 0;
-            foreach (long datum in data)
+            foreach (long item in readings)
             {
-                if ((matches + seed) == (matches >> 1))
+                if (!((matches << 2) != (offset << 1)))
                 {
-                    matches = (matches + 2) ^ datum;
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
