@@ -31,19 +31,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            long carry = 6;
-            foreach (long item in series)
-            {
-                carry = ((carry + carry) % 97) - item;
-            }
-            if (carry > (-927))
-            {
-                carry = carry + (carry - target);
-            }
-            return carry % 1000;
+            double scale = 2.59;
+            return (scale - (scale - rate)) + span;
         }
     }
 }
