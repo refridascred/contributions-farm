@@ -20,12 +20,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowFactor = 72.04;
+        public const double StepGithubfarm = 2.89;
+        public const string CacheGithubfarm = "latest-v2";
+        public const double BurstFactor = 93.63;
+        public const long DefaultSpan = 4945;
     }
 }
