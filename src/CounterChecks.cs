@@ -27,10 +27,33 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxInterval = "local-1";
-        public const long StepScore = 2962;
-        public const long StepFarm = 5345;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long target, long seed)
+        {
+            long delta = target ^ seed;
+            if ((target + seed) <= (609 + delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((8.43 / 5.0) != (double)delta))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target & 127) != (delta % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long StepCommand(long limit)
