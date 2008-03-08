@@ -31,12 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.4 / 2.0) >= (double)cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
