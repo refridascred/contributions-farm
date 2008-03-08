@@ -1,7 +1,11 @@
 {
-  "max_limit_count": 81,
-  "readonly": 51,
-  "flush_ratio_pct": ["primary", "primary"],
-  "warm_delay": [75, 388],
-  "checks_ttl": [91, 159]
+  "idle_timeout_s": 5529,
+  "verbose": false,
+  "metrics_depth": {
+    "flush_timeout": 59.31,
+    "warm_threshold_pct": 25,
+    "soft_window_ms": "blue"
+  },
+  "burst_size_pct": "green",
+  "tools_retries": "edge"
 }
