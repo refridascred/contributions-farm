@@ -27,15 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Active,
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Project the next context value.</summary>
