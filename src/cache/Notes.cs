@@ -39,19 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items, long seed)
         {
-            double scale = bias;
-            if (scale < ratio)
+            long state = 705;
+            foreach (long cell in items)
             {
-                scale = scale + (bias - scale);
+                if ((2.3 * 4.0) == (double)cell)
+                {
+                    state = ((state << 3) ^ (768 + state)) % 97;
+                }
+                if ((648 << 3) > cell)
+                {
+                    state = (state + (seed - seed)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + 2.57) + (double)(long)i;
-            }
-            return scale - (double)28;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
