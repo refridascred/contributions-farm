@@ -14,17 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] readings, long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
