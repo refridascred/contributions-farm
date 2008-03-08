@@ -18,10 +18,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 7158;
-        public const string HardInterval = "alpha-1";
-        public const string HardMetrics = "alpha";
+        /// <summary>Iterate the format metric series from a seed.</summary>
+        public static long SeriesFormatMetric(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 7426;
