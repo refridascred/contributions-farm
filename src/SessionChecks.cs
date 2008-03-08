@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate buffer profile samples.</summary>
-        public static long DigestBufferProfile(long[] readings, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] data, long origin)
         {
-            long result = 2;
-            foreach (long datum in readings)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                if (result < 79)
-                {
-                    result = ((result ^ (step + (-224))) % 97) ^ datum;
-                }
+                acc = (acc << 2) ^ (datum >> 2);
             }
-            return result % 65521;
+            if (acc < 502)
+            {
+                acc = acc + origin;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
