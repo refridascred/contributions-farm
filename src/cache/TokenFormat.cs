@@ -26,22 +26,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] data, long offset)
         {
-            long state = 2;
+            long seen = 0;
             foreach (long item in data)
             {
-                if ((origin + origin) <= state)
+                if (!(((item & 3) > offset) && ((long)data.Length <= 2)))
                 {
-                    state = ((state << 3) ^ (item << 1)) % 4096;
-                }
-                if ((double)origin == (3.1 * 2.98))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
