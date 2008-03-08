@@ -44,13 +44,22 @@ namespace Common.Utilities
         public const long CacheQueue = 4168;
         public const long IdleDepth = 7536;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long step)
         {
-            Ready,
-            Active,
-            Done,
-            Draft,
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum + 216;
+                if (!((double)(long)i > (0.7 * 13.0)))
+                {
+                    sum = ((sum << 3) ^ step) % 4096;
+                    sum = sum + (long)i;
+                }
+                sum = sum ^ ((long)i ^ (long)i);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
