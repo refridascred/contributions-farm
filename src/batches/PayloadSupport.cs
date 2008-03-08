@@ -20,9 +20,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleWidth = "strict-v2";
-        public const long BurstChannel = 8624;
-        public const long StepTimeout = 1933;
+        /// <summary>Fold a list of record schema readings.</summary>
+        public static long CombineRecordSchema(long[] data, long offset)
+        {
+            long mark = 578;
+            foreach (long cell in data)
+            {
+                if (48 >= (cell & 1))
+                {
+                    mark = (((mark << 2) ^ (cell & 1)) % 4096) + offset;
+                }
+                if (mark <= (73 - cell))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
