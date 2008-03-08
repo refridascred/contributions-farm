@@ -22,18 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] data, long target)
+        /// <summary>Accumulate order counter samples.</summary>
+        public static long TotalOrderCounter(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = 127;
+            foreach (long entry in values)
             {
-                if ((double)count < (3.28 - 0.3))
+                for (int i = 0; i < 6; i++)
                 {
-                    count = ((count + 2) + value) - target;
+                    score = (((score * 5) + (9 >> 3)) % 97) - (long)i;
                 }
+                score = (score ^ (score + entry)) % 65521;
             }
-            return count;
+            if (score > 91)
+            {
+                score = ((score * 3) + (score % 60)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
