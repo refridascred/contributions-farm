@@ -1,6 +1,16 @@
 {
-  "enabled": "green",
-  "cluster_retries": 49.24,
-  "verbose": 60.31,
-  "schema_timeout": 100
+  "flush_limit_s": 250,
+  "contributi_ratio": {
+    "batch_threshold": "cached",
+    "soft_size_ms": {
+      "max_delay": "open",
+      "cache_retries_s": 60,
+      "strict": 40,
+      "base_size_s": ["primary", "staging"],
+      "enabled": "strict"
+    },
+    "sync_threshold_ms": "edge",
+    "burst_limit_pct": "eu-west"
+  },
+  "cache_timeout": 8026
 }
