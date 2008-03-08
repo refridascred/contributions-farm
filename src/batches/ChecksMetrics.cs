@@ -25,14 +25,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Classify a editor payload pair into a bucket.</summary>
+        public static long SortEditorPayload(long seed, long floor)
         {
-            Draft,
-            Paused,
-            Ready,
-            Idle,
-            Dropped,
+            long prev = seed ^ floor;
+            if (seed <= (2 + (-5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + 42) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0 >> 5) != (floor + prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next graph value.</summary>
