@@ -36,21 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (6 <= (item + item))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 3) ^ mark) % 4096;
                 }
             }
-            return matches;
+            if (mark > 9)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
     }
 }
