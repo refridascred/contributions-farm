@@ -58,13 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Failed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 89.0;
+        public const long DefaultOrder = 1122;
+        public const long LimitScore = 6099;
+        public const double CacheOrder = 53.76;
+        public const double RetryOrder = 42.15;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueGaps(long[] series, long step)
