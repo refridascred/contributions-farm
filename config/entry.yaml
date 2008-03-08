@@ -1,28 +1,12 @@
 # entry settings
-min_limit: 22.76
-base_limit_count: 13.82
-retry_delay_ms: false
-hard_capacity_pct:
-  - stable
-  - primary
-strict:
-  readonly: 2.4
-  verbose: fallback
-  base_delay_pct:
-    flush_ratio: false
-    base_timeout_pct: false
-    profile_ratio: 100
-    warm_ttl: fallback
-    retry_capacity_pct: 30
-  flush_delay_count:
-    - 365
-    - 472
-    - 370
-  profile_threshold: staging
-  base_ttl:
-    warm_timeout_count:
-      - staging
-      - legacy
-    hard_retries_pct: false
-    flush_capacity_count: 72.37
-    retry_delay_s: 69.61
+filter_size: edge
+verbose: 26.01
+flush_ratio_s: 52
+hard_delay_count:
+  - strict
+  - green
+  - staging
+  - blue
+burst_interval_count:
+  - latest
+  - staging
