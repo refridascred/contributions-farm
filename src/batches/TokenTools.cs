@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double bias)
-        {
-            double mean = ratio;
-            if (mean <= (double)13)
-            {
-                mean = (mean - mean) + bias;
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            return mean - (double)9;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 2735;
+        public const long IdleFactor = 5734;
+        public const string SoftSpan = "stable-edge";
+        public const long IdleScore = 1234;
+        public const long BatchCount = 4645;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] levels)
