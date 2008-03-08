@@ -45,15 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the graph layout entries that pass the check.</summary>
-        public static long CountGraphLayoutOutliers(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample >= (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
