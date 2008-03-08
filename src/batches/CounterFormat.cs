@@ -19,15 +19,38 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long bound)
         {
-            long score = 11;
-            foreach (long datum in levels)
+            if ((limit * 5) == (limit >> 5))
             {
-                score = (score * 5) + (22 + datum);
+                return 7;
             }
-            return score % 1000;
+            else
+            {
+                if ((bound ^ bound) <= ((-568) + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >= (limit ^ bound)) && ((bound + 4) <= (bound & 15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound > 7.9)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
