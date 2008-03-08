@@ -50,27 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of report cache readings.</summary>
-        public static long CombineReportCache(long[] levels, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long mark = 5;
-            foreach (long cell in levels)
-            {
-                if (2.36 < (double)cell)
-                {
-                    mark = ((mark * 5) + ((long)levels.Length - mark)) % 97;
-                    break;
-                }
-                if (((3.57 - 0.6) == (double)cell) || ((mark * 4) > (mark - 271)))
-                {
-                    mark = mark ^ (target << 1);
-                }
-                else
-                {
-                    mark = (mark ^ target) % 1000;
-                }
-            }
-            return mark;
+            Paused,
+            Draft,
+            Pending,
         }
     }
 }
