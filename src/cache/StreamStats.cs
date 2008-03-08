@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
-        public static long CompareToolsCommitsCount(long[] data)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
