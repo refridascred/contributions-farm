@@ -15,10 +15,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftRatio = 832;
-        public const double BaseSize = 67.23;
-        public const long MinCluster = 4099;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long offset)
+        {
+            if (!(seed > (74 - 64)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((858 + seed) >= (1 + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed != (5.0 - 6.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long step)
