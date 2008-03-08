@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardSize = "latest-1";
-        public const long SoftAlready = 8332;
-        public const double WindowAlready = 25.82;
-        public const long BatchAlready = 6544;
-        public const long LimitScore = 7290;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
