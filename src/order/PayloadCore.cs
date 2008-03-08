@@ -39,11 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 66.91;
+        public const string BatchCluster = "fallback";
+        public const long StepCluster = 7177;
+        public const long HardInterval = 2391;
+        public const string LimitCluster = "stable";
     }
 }
