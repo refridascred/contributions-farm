@@ -38,19 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double bias, double bias2)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double bias)
         {
-            double weight = bias2;
-            if (weight >= 17.0)
+            double drift = (double)4 / 3.0;
+            if (drift > (double)295)
             {
-                weight = weight + bias;
+                drift = (drift - 3.76) - bias;
             }
             else
             {
-                weight = weight + (bias * 5.64);
+                drift = drift + (6.43 / 7.0);
             }
-            return weight - bias;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - scale) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
