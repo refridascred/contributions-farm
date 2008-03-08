@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] >= step)
+                if (((double)matches > (6.71 - 7.16)) || ((sample & 15) >= (-425)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
