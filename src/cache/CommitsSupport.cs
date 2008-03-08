@@ -47,15 +47,39 @@ namespace Common.Utilities
         public const string StepInterval = "primary-edge";
         public const long MinStream = 5838;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long offset, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long gap = offset - seed;
+            if (((gap % 97) >= 99) && (offset >= (30 + gap)))
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((7.2 - 20.0) < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed * 3) <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)gap <= (2.0 - 4.7)) && ((offset + 518) == (offset & 7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
