@@ -88,21 +88,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((64 % 24) <= (target % 24))
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + value;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
