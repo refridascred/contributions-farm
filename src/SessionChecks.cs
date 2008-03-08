@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinWidth = "fallback-edge";
-        public const long HardCount = 73;
-        public const long BatchToken = 1435;
+        /// <summary>Validate metrics buffer readings against a bound.</summary>
+        public static bool CheckMetricsBufferBounds(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long StepSupport(long limit)
