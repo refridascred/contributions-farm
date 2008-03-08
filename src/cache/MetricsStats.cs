@@ -54,15 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Synced,
-            Idle,
-            Pending,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheSize = 2235;
+        public const long WindowScore = 7177;
+        public const long CacheWidth = 5517;
+        public const long BurstSpan = 4163;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 1716;
