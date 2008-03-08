@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardBudget = 8188;
-        public const double BurstEditor = 52.13;
-        public const double CacheEditor = 5.83;
-        public const long StepEditor = 4723;
-        public const long IdleEditor = 3110;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Retry,
+            Closed,
+            Pending,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool ValidateCacheRange(long[] values, long floor)
