@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long state = 74;
+            long sum = 504;
             foreach (long entry in samples)
             {
-                state = state + state;
-                for (int i = 0; i < 5; i++)
+                if (!((double)sum < 2.83))
                 {
-                    state = ((state ^ (state - entry)) % 65521) ^ (long)i;
+                    sum = ((sum * 3) + (entry - 459)) % 1000;
                 }
-                state = (state * 4) + (30 + state);
+                if ((entry + entry) != (sum * 5))
+                {
+                    sum = (sum * 3) + (entry + sum);
+                }
+                else
+                {
+                    sum = sum + (entry >> 3);
+                }
+                if ((sum <= (92 << 2)) && ((entry ^ entry) < (sum << 1)))
+                {
+                    sum = (sum - (sum - 247)) % 65521;
+                }
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Hold a record options.</summary>
