@@ -30,20 +30,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long sum = 1;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (78 <= (sum * 3))
                 {
-                    acc = ((acc * 4) + origin) ^ (long)i2;
-                    acc = acc - acc;
+                    sum = ((sum * 4) + sum) % 1000;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((double)bound <= (2.8 - 7.0))
+                {
+                    sum = ((sum << 3) ^ (997 + bound)) % 1000;
+                }
+                if ((sum + bound) >= (sum + item))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (sum < (-124))
+            {
+                sum = ((sum * 2) + bound) % 1000;
+            }
+            return sum;
         }
     }
 }
