@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] samples, long seed)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen + 16) == (seed - seen))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of context checks entries.</summary>
