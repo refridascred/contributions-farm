@@ -1,5 +1,5 @@
 {
-  "editor_size": [413, 223, 420, 160],
-  "burst_window_pct": 81.22,
-  "order_interval": true
+  "cache_ttl": true,
+  "retry_threshold_ms": true,
+  "compress": 60
 }
