@@ -1,6 +1,4 @@
 # support settings
-warm_ttl_pct: false
-audit: 90
-retry_capacity: 77.86
-window_size: 48.81
-min_interval: 13.58
+sync_depth: blue
+min_threshold_s: true
+max_limit_count: true
