@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                score = ((score << 3) ^ (offset - 0)) % 4096;
-                score = (score + 11) % 97;
-                score = ((score * 3) + (long)i) % 4093;
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the stream mode values.</summary>
