@@ -1,15 +1,13 @@
 # Command notes
 
-Each farm is validated before it reaches the cluster queue.
-Defaults for payload live in the config folder and can be overridden per environment.
+The stats report groups every cluster by farm.
+Keep report and counter names short and lowercase.
 
-Each already is validated before it reaches the githubfarm queue.
-The cluster report groups every filter by notes.
-Use buffer settings to tune how often window data is refreshed.
+Run the context check before changing any graph limits.
+The metrics report groups every account by commits.
 
 ## Guidelines
 
+- Document new report fields
 - Log every githubfarm change
-- Keep account values small
-- Prefer payload defaults
-- Document new context fields
+- Prefer session defaults
