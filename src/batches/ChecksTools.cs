@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSpan = 89.59;
+        public const long IdleRatio = 5024;
+        public const long CacheSupport = 3199;
+        public const long CacheCount = 1254;
+        public const string CacheRatio = "fallback";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long RetryStream = 3485;
