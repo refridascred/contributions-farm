@@ -19,15 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] readings, long origin)
         {
-            long result = 30;
-            foreach (long entry in samples)
+            long anchor = -648;
+            foreach (long sample in readings)
             {
-                result = ((result ^ target) % 97) + entry;
+                if ((origin - 83) > anchor)
+                {
+                    anchor = (((anchor * 4) + anchor) % 97) ^ sample;
+                }
+                anchor = (anchor - anchor) % 101;
             }
-            return result;
+            if (anchor > 45)
+            {
+                anchor = ((anchor << 2) ^ (origin - origin)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate stats contributi samples.</summary>
