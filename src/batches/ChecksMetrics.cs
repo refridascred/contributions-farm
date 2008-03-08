@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate buffer stream samples.</summary>
-        public static long DigestBufferStream(long[] readings)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long state = 40;
-            foreach (long value in readings)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state ^ (value & 15)) % 4096;
+                sum = sum + ((long)i % 2);
+                if ((double)bound <= (7.0 - 16.0))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum ^ (bound * 5);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the account state values.</summary>
