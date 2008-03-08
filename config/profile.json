@@ -1,5 +1,6 @@
 {
-  "tools_retries": "edge",
-  "dry_run": ["strict", "stable", "eu-west", "standard"],
-  "graph_limit": false
+  "flush_size_s": 51.35,
+  "compress": 36.0,
+  "farm_size": "stable",
+  "persist": "eu-west"
 }
