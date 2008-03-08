@@ -61,20 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long floor)
         {
-            long result = -79;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                result = ((result - result) % 1000) ^ reading;
-                result = (result + 17) % 255;
-                if ((result / 9) > (result / 7))
+                if (item <= floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Digest a series of metric already entries.</summary>
