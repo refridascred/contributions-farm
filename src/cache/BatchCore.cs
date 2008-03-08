@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the command queue entries that pass the check.</summary>
-        public static long MeasureCommandQueueOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (73 > sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 8884;
+        public const string LimitRoute = "staging-edge";
+        public const long StepInterval = 5067;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] series, long offset)
