@@ -33,21 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Locate a record graph reading by value.</summary>
+        public static long SeekRecordGraphIndex(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] <= limit)
                 {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
