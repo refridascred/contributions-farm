@@ -31,10 +31,18 @@ namespace Common.Utilities
             return ratio - (gain / 3.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 97.09;
-        public const double RetryInterval = 63.86;
-        public const long RetryNotes = 9893;
-        public const long RetrySize = 9225;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen - seen) < (cell + seen))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
+        }
     }
 }
