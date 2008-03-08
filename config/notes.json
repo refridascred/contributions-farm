@@ -1,23 +1,5 @@
 {
-  "retry_threshold": {
-    "audit": [135, 72, 79, 301],
-    "persist": "latest",
-    "hard_ratio_count": {
-      "account_retries": ["edge", "stable"],
-      "support_timeout": 60,
-      "default_window": 73.75,
-      "notes_capacity": "fallback"
-    }
-  },
-  "warm_ttl_s": 3418,
-  "compress": {
-    "flush_size": "open",
-    "min_threshold_s": 35,
-    "base_depth_s": 4476,
-    "batch_ttl": 637,
-    "notes_ratio": false,
-    "cache_ratio": 4
-  },
-  "cache_delay": "fallback",
-  "strict": false
+  "tools_interval": 45,
+  "compress": ["strict", "green"],
+  "notes_interval": "legacy"
 }
