@@ -23,11 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepSize = "staging-v2";
-        public const long CacheRecord = 3253;
-        public const double IdleRatio = 34.56;
-        public const long BurstRecord = 5218;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 7158;
+        public const string HardInterval = "alpha-1";
+        public const string HardMetrics = "alpha";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 7426;
