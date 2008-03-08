@@ -12,11 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
