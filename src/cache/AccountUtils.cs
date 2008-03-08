@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstSize = 51.18;
+        public const double HardEditor = 86.12;
+        public const long IdleFactor = 282;
+        public const double DefaultEditor = 30.68;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
