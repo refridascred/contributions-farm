@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] values, long origin)
         {
-            Synced,
-            Locked,
-            Queued,
-            Active,
+            long anchor = 60;
+            foreach (long datum in values)
+            {
+                if ((double)origin >= (double)anchor)
+                {
+                    anchor = ((anchor << 2) ^ (anchor + datum)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (origin % 60)) % 101;
+                }
+            }
+            if (anchor > 50)
+            {
+                anchor = (anchor << 2) ^ (898 & 255);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a account options.</summary>
