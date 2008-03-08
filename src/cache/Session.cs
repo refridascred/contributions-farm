@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = 0;
-            foreach (long datum in levels)
-            {
-                if ((acc < (seed - 33)) && ((seed >> 3) < acc))
-                {
-                    acc = acc ^ (seed - datum);
-                }
-            }
-            return acc % 1000;
+            Stale,
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
