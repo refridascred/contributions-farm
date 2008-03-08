@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string StepSchema = "primary-edge";
         public const long BaseSpan = 8617;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit support buffer readings against a rule.</summary>
+        public static long AuditSupportBufferMatches(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen & 31) >= (entry & 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of context checks entries.</summary>
