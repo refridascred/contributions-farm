@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long seed)
         {
-            long acc = 1;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                acc = (acc + limit) % 4096;
-                if (acc <= (item + 69))
+                if (datum < seed)
                 {
-                    acc = (acc ^ acc) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
