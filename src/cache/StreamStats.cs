@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
+        public static long CompareToolsCommitsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen >> 4) <= (value + 23))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
