@@ -53,16 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Adjust a metrics layout reading.</summary>
+        public static double BlendMetricsLayout(double scale, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            double ratio = (double)(130 << 3);
+            if (ratio <= (span - 4.01))
             {
-                total = ((total * 4) + (limit / 7)) % 4096;
-                total = ((total * 5) + (long)i) % 97;
+                ratio = ratio + (span / 9.0);
             }
-            return total;
+            else
+            {
+                ratio = ratio + (span * 2.41);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (4.89 + scale)) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
