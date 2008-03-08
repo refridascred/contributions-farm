@@ -39,19 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every schema profile entry stays within the limit.</summary>
-        public static bool GuardSchemaProfileRange(long[] series, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up contributi samples.</summary>
