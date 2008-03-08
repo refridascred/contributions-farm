@@ -44,16 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total + (total - total)) % 1000;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            New,
+            Done,
+            Queued,
         }
     }
 }
