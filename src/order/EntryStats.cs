@@ -70,11 +70,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
