@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Locked,
-            Draft,
-            Failed,
-            New,
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of queue metric readings.</summary>
