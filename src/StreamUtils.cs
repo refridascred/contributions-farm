@@ -46,16 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next batches account value from a seed.</summary>
-        public static long StepBatchesAccount(long limit)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            double ratio2 = ratio;
+            if (ratio2 <= (ratio * 1.8))
             {
-                sum = (sum ^ (47 - sum)) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                ratio2 = ratio2 - (ratio + ratio);
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 + span;
         }
 
         /// <summary>Describe the commits level values.</summary>
