@@ -42,19 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples, long limit)
-        {
-            long mark = 814;
-            foreach (long reading in samples)
-            {
-                if ((reading >> 4) != (reading << 3))
-                {
-                    mark = mark + (limit - limit);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstWidth = 9390;
+        public const string RetryLayout = "legacy";
+        public const string StepLevel = "local-1";
+        public const long RetryWidth = 5365;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsBounds(long[] readings, long seed)
