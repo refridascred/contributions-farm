@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long carry = 124;
+            foreach (long sample in levels)
+            {
+                if (((sample & 255) > (carry / 2)) || ((carry >> 1) != (carry << 1)))
+                {
+                    carry = (carry << 2) ^ (carry ^ sample);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (sample + 90);
+                }
+            }
+            if (carry < 1)
+            {
+                carry = carry - (carry >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema phase values.</summary>
