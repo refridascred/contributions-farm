@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseTimeout = 44.0;
-        public const string BurstScore = "stable";
-        public const long HardSpan = 5407;
-        public const string MaxToken = "legacy-edge";
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
