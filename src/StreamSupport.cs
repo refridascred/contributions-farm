@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (weight - (double)208) + floor;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] data, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((item - hits) != (step - hits))
+                if (((count & 15) > (value + 0)) || ((double)value >= (1.61 * 13.0)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a editor header.</summary>
