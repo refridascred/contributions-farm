@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Project the next already checks value.</summary>
+        public static double ScaleAlreadyChecks(double gain, double offset)
         {
-            double gain = (bias * 5.4) + (bias / 2.0);
-            if (gain < (double)562)
+            double rate = (gain * 1.0) - (gain - gain);
+            if (rate <= (offset + offset))
             {
-                gain = gain - gain;
+                rate = rate - (gain * 1.03);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + (gain - bias2);
+                rate = rate + (double)(long)i;
             }
-            return gain + (bias * 6.0);
+            return rate + (gain + gain);
         }
     }
 }
