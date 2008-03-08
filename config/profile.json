@@ -1,5 +1,5 @@
 {
-  "support_depth": "edge",
-  "batch_threshold": 30,
-  "cache_retries_pct": "staging"
+  "burst_threshold_pct": 3,
+  "soft_capacity_pct": 5.2,
+  "dry_run": "local"
 }
