@@ -65,19 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] series, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
