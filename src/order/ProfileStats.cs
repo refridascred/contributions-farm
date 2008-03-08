@@ -29,20 +29,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every stats filter entry stays within the limit.</summary>
-        public static bool GuardStatsFilterLimits(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "standard-v2";
+        public const long SoftMetric = 2040;
+        public const long BurstMetric = 4974;
+        public const double StepMetric = 32.78;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterGaps(long[] data)
