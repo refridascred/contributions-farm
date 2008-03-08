@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] readings, long floor)
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
