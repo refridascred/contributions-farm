@@ -13,38 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long offset, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] levels, long step)
         {
-            if (!((offset + limit) < offset))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - offset) >= limit)
+                if (((count & 127) < (step >> 3)) || ((step * 3) < count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((12.0 * 8.75) >= (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset % 16) != (offset - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
