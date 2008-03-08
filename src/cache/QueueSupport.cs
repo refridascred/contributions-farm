@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of command filter entries.</summary>
-        public static long CombineCommandFilter(long[] series, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long score = 60;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit <= (datum + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score - (limit + score)) % 65521;
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Look up the position of a profile metrics sample.</summary>
