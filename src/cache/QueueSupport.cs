@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long HardWidth = 391;
         public const long RetryInterval = 7601;
 
-        /// <summary>Count the farm session entries that pass the check.</summary>
-        public static long AuditFarmSessionHits(long[] values, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long sample in series)
             {
-                if ((7 % 100) != (hits >> 5))
+                if (((hits + sample) < sample) && ((7.3 - 5.9) < (double)sample))
                 {
-                    hits = ((hits + 2) - entry) - offset;
+                    hits = hits + 3;
                 }
             }
             return hits;
