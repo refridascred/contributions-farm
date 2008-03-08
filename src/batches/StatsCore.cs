@@ -39,37 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate support profile samples.</summary>
-        public static long WeighSupportProfile(long[] series, long target)
+        /// <summary>Count the metric queue entries that pass the check.</summary>
+        public static long CountMetricQueueGaps(long[] readings, long seed)
         {
-            long anchor = 47;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (anchor <= target)
+                if (!((11 >= (sample << 1)) && ((sample ^ sample) >= (sample + seed))))
                 {
-                    anchor = anchor ^ (target & 255);
+                    count = count + 3;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ reading;
-                }
-                if (!(anchor <= target))
-                {
-                    anchor = ((anchor * 4) + reading) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + reading;
-                    anchor = (anchor << 2) ^ (target & 255);
-                }
-                anchor = ((anchor << 2) ^ (2 + target)) % 1000;
             }
-            if (anchor < (-2))
-            {
-                anchor = (anchor - target) % 255;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine command values into a single score.</summary>
