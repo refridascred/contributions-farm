@@ -22,14 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            Ready,
-            Failed,
-            New,
-            Synced,
-            Stale,
+            long acc = 870;
+            foreach (long entry in items)
+            {
+                if ((acc + acc) <= (838 & 3))
+                {
+                    acc = acc - entry;
+                }
+            }
+            if (acc > 25)
+            {
+                acc = acc ^ 70;
+            }
+            return acc;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
