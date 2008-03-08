@@ -47,18 +47,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((value / 7) > 8)
+                if (datum <= 34)
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
