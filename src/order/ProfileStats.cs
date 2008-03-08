@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Draft,
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the metric status values.</summary>
