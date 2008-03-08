@@ -21,24 +21,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            long anchor = 44;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                anchor = (anchor * 4) + (item * 3);
-                anchor = (anchor << 2) ^ (anchor - anchor);
-                if ((anchor >> 1) < (anchor + item))
+                if ((value / 7) > 8)
                 {
-                    anchor = anchor ^ anchor;
+                    matches = matches + 3;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
