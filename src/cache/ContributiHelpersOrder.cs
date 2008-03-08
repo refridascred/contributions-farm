@@ -27,13 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
