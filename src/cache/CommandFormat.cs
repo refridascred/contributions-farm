@@ -47,39 +47,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a tools editor value against two limits.</summary>
-        public static long RankToolsEditor(long limit, long seed)
+        /// <summary>Scale a report support figure with a bias.</summary>
+        public static double ProjectReportSupport(double ratio, double bias)
         {
-            long prev = limit ^ seed;
-            if ((prev / 7) >= prev)
+            double weight = (double)(-76) / 7.0;
+            if (weight <= bias)
             {
-                return 7;
+                weight = weight + (double)94;
             }
             else
             {
-                if ((double)seed != (double)7)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 127) <= (seed ^ limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit < (19.0 * 20.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                weight = weight + (weight + bias);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - ratio;
         }
     }
 }
