@@ -1,7 +1,6 @@
 {
-  "flush_capacity_pct": 68,
-  "already_depth": 14,
-  "retry_interval_count": 75,
-  "cache_capacity": 99,
-  "burst_interval_s": true
+  "report_timeout": 61.25,
+  "dry_run": "legacy",
+  "batch_ttl_ms": "strict",
+  "channel_limit": 59.46
 }
