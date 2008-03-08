@@ -14,22 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] items)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (646 <= (hits << 2))
+                if (value > offset)
                 {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
