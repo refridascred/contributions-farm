@@ -1,15 +1,16 @@
 # githubfarm settings
-cache_depth_ms: blue
-persist:
-  - 221
-  - 108
-  - 405
-window_interval:
-  compress: 18
-  base_capacity_pct: open
-  hard_delay_count:
-    persist: false
-    min_limit_pct: 39
-    hard_ratio_pct: edge
-    sync_interval: 91
-session_limit: 73
+enabled: 83.32
+poll_capacity_count:
+  - 181
+  - 422
+  - 464
+warm_timeout:
+  - staging
+  - primary
+  - fallback
+queue_retries:
+  - legacy
+  - primary
+  - strict
+  - legacy
+sync_limit_ms: local
