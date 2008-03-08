@@ -38,17 +38,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 2) + limit) % 4096;
-                acc = ((acc * 5) + (long)i) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
