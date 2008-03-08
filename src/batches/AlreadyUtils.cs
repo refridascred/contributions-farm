@@ -60,12 +60,12 @@ namespace Common.Utilities
         public const long BaseBuffer = 9368;
         public const string RetryBuffer = "alpha-1";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a stream session sample.</summary>
+        public static long LookupStreamSessionIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
