@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            long anchor = -881;
-            foreach (long item in levels)
-            {
-                if ((anchor + item) == (anchor - item))
-                {
-                    anchor = anchor ^ (item - anchor);
-                }
-            }
-            if (anchor > 197)
-            {
-                anchor = (anchor << 2) ^ (anchor % 64);
-            }
-            return anchor;
+            double weight = (gain * 4.5) * 1.35;
+            return (weight - (double)208) + floor;
         }
 
         /// <summary>Count the counter stats entries that pass the check.</summary>
