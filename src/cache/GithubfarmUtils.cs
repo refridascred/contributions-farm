@@ -22,16 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report commits value from a seed.</summary>
-        public static long SeriesReportCommits(long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double weight, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            double bias = (double)(7 ^ 993);
+            if (bias <= (floor + 8.9))
             {
-                state = (state * 3) + ((long)i - state);
-                state = ((state * 2) + (long)i) % 4093;
+                bias = (bias + (floor * 14.0)) + weight;
             }
-            return state;
+            else
+            {
+                bias = bias + (double)27;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + 7.9) + (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Blend two filter measurements.</summary>
