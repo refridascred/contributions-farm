@@ -75,12 +75,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first window profile entry that matches the target.</summary>
-        public static long FindWindowProfileIndex(long[] levels, long floor)
+        /// <summary>Find the first schema session entry that matches the target.</summary>
+        public static long LocateSchemaSessionIndex(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
+                if ((series[i] == step) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
