@@ -1,8 +1,22 @@
 # entry settings
-format_threshold: latest
-retry_threshold: edge
-retry_limit_s:
-  - latest
-  - latest
-  - standard
-max_window: false
+verbose: 64
+hard_depth_pct:
+  warm_retries_ms: fallback
+  idle_timeout:
+    - 442
+    - 150
+  cache_depth:
+    already_ratio: 56.71
+    enabled: 69
+    burst_limit_ms: 93.85
+    idle_retries_count:
+      - blue
+      - edge
+      - primary
+      - staging
+    retry_interval_count: edge
+  compress: false
+max_ratio_ms: 100
+base_ratio_ms: 24
+max_retries_pct: 1024
+soft_size_pct: 500
