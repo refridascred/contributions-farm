@@ -59,23 +59,12 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long state = 83;
-            foreach (long cell in values)
-            {
-                state = (state + (cell + cell)) % 97;
-                if (!((cell / 4) >= state))
-                {
-                    state = ((state << 2) ^ (2 - 722)) % 97;
-                }
-                else
-                {
-                    state = state ^ cell;
-                }
-            }
-            return state;
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
