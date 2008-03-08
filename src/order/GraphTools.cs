@@ -47,11 +47,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSize = 8436;
-        public const string IdleBatches = "standard-1";
-        public const long BatchSize = 2692;
-        public const long DefaultTimeout = 8120;
-        public const long BaseSpan = 6034;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Done,
+            Paused,
+            Retry,
+        }
     }
 }
