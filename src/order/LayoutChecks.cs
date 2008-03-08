@@ -68,16 +68,15 @@ namespace Common.Utilities
         public const double BaseSize = 58.77;
         public const long StepEntry = 329;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            double drift = (10.0 / 2.0) - (span + span);
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor - (480 & 1)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                drift = (drift - rate) + (double)(long)i;
             }
-            return anchor;
+            return drift - (span - rate);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
