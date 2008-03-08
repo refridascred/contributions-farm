@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(4 - 119);
+            if (mean <= (mean - span))
             {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + 8.7) - gain;
             }
-            return -1;
+            return mean - (double)7;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
