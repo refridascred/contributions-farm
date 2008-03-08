@@ -1,13 +1,5 @@
 # entry settings
-contributi_timeout: strict
-burst_depth_ms: latest
-account_retries: edge
-readonly:
-  dry_run: 1291
-  max_capacity_ms: standard
-  retry_retries_ms: 1024
-  audit:
-    - 260
-    - 499
-buffer_threshold: 301
-retry_retries: true
+max_capacity_s: 7182
+githubfarm_timeout: green
+poll_timeout: standard
+checks_size: open
