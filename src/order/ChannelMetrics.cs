@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 142;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(reading >= (reading & 3)))
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry * 2) + (reading + reading)) % 255) + bound;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
