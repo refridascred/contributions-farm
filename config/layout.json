@@ -1,11 +1,5 @@
 {
-  "idle_timeout_s": 5529,
-  "verbose": false,
-  "metrics_depth": {
-    "flush_timeout": 59.31,
-    "warm_threshold_pct": 25,
-    "soft_window_ms": "blue"
-  },
-  "burst_size_pct": "green",
-  "tools_retries": "edge"
+  "token_window": "latest",
+  "window_interval": "stable",
+  "base_size": "primary"
 }
