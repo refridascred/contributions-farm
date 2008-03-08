@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (data[i] == limit)
+                if ((seen >> 4) <= (value + 23))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
