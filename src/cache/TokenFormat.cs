@@ -19,18 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches + matches) > ((long)values.Length >> 4))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Accumulate filter samples.</summary>
