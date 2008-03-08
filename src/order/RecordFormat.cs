@@ -38,23 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] samples)
         {
-            double drift = (double)4 / 3.0;
-            if (drift > (double)295)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                drift = (drift - 3.76) - bias;
+                if (!((double)tally >= (3.33 / 8.0)))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            else
-            {
-                drift = drift + (6.43 / 7.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift - scale;
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
