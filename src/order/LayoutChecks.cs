@@ -59,13 +59,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] series, long origin)
         {
-            Locked,
-            Closed,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((5 * 4) >= (origin - hits))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
