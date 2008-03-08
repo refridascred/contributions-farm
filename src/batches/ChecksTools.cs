@@ -34,13 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Done,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 3485;
+        public const string LimitStream = "staging";
+        public const long DefaultStream = 9317;
+        public const string BaseStream = "legacy";
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] readings)
