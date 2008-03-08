@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            Ready,
-            Synced,
-            Idle,
-            Pending,
+            long state = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                long span = state - (state - state);
+                if (!((double)span > (3.0 * 8.4)))
+                {
+                    span = span + span;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many command farm samples are out of range.</summary>
