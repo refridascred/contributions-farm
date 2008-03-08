@@ -1,6 +1,5 @@
 {
-  "metrics_depth": "fallback",
-  "verbose": 6.2,
-  "default_threshold_s": "strict",
-  "soft_limit_count": ["fallback", "green", "strict", "staging"]
+  "retry_ratio_count": 26.65,
+  "sync_limit_pct": "legacy",
+  "record_capacity": "standard"
 }
