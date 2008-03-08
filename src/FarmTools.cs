@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] data, long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
