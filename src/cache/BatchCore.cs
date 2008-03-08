@@ -39,26 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long result = 45;
-            foreach (long cell in data)
-            {
-                if ((18.0 * 8.3) < (double)cell)
-                {
-                    continue;
-                }
-                if ((5 + offset) >= (cell + offset))
-                {
-                    result = (result ^ (cell - cell)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (offset / 5)) % 101;
-                }
-            }
-            return result;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up context samples.</summary>
