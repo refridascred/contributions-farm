@@ -14,10 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 4565;
-        public const string MaxWidth = "legacy-1";
-        public const long IdleSize = 5098;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1672;
+        public const double WindowWidth = 28.31;
+        public const long BurstAccount = 4999;
+        public const double BaseAccount = 26.42;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] values, long limit)
