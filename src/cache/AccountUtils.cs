@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long step, long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] readings, long origin)
         {
-            if ((step - step) > (3 ^ step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8 <= (9 - step)) && (step <= (48 << 1)))
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-2) % 97) <= (step / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)target >= (9.0 * 0.83)) && ((target + step) <= (target - step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
