@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command contributi sample.</summary>
-        public static long LookupCommandContributiIndex(long[] samples, long floor)
+        /// <summary>Measure how many schema command samples are out of range.</summary>
+        public static long CountSchemaCommandMatches(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (samples[i] >= floor)
+                if (((hits ^ 24) <= (offset % 97)) || ((offset * 4) <= (110 + 98)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
