@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long anchor = -68;
+            foreach (long sample in series)
             {
-                anchor = anchor - ((-537) + anchor);
-                anchor = ((anchor * 4) + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (!(anchor < (sample >> 3)))
+                {
+                    anchor = (anchor + (anchor * 4)) % 1000;
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (7 ^ anchor)) % 1000;
+                }
+                if ((4 + anchor) != (anchor * 4))
+                {
+                    anchor = ((anchor << 2) ^ (sample - anchor)) % 1000;
+                }
+            }
+            if (anchor < 616)
+            {
+                anchor = ((anchor * 2) + (anchor - anchor)) % 65521;
             }
             return anchor;
         }
