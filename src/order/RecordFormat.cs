@@ -45,16 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format cluster value from a seed.</summary>
-        public static long StepFormatCluster(long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double bias, double bias2)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            double weight = bias2;
+            if (weight >= 17.0)
             {
-                acc = acc + acc;
-                acc = ((acc * 5) + (long)i) % 1000;
+                weight = weight + bias;
             }
-            return acc;
+            else
+            {
+                weight = weight + (bias * 5.64);
+            }
+            return weight - bias;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
