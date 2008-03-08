@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every commits token entry stays within the limit.</summary>
+        public static bool CheckCommitsTokenRange(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the commits phase values.</summary>
