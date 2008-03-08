@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long CacheFactor = 7170;
         public const long DefaultSchema = 4108;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long result = -26;
+            foreach (long value in values)
+            {
+                if ((51 * 2) <= value)
+                {
+                    result = (result - (value & 3)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Adjust a tools reading.</summary>
