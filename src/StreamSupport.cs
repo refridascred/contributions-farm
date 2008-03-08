@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 25.58;
+        public const double LimitCount = 48.79;
+        public const long IdleChannel = 3183;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double WindowCount = 37.14;
