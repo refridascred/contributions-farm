@@ -36,17 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record graph reading by value.</summary>
-        public static long SeekRecordGraphIndex(long[] samples, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (samples[i] <= limit)
+                if ((double)item > (2.7 * 0.48))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
