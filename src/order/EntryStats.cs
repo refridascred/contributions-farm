@@ -62,21 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)hits >= (9.49 - 3.0))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
