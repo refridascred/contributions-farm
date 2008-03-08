@@ -65,13 +65,14 @@ namespace Common.Utilities
             return scale + (scale + 6.64);
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            Pending,
+            Stale,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the queue level values.</summary>
