@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long target)
+        /// <summary>Audit commits filter readings against a rule.</summary>
+        public static long TallyCommitsFilterOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] >= target)
+                if ((189 - matches) < (floor + floor))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank batches counter input into a small class.</summary>
