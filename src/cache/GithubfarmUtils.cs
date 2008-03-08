@@ -22,21 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of route channel readings.</summary>
-        public static long CompareRouteChannelCount(long[] readings)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
