@@ -20,14 +20,30 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            Stale,
-            Queued,
-            Active,
-            Pending,
-            Closed,
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((double)floor < 4.6))
+                {
+                    long tally = 222 & 3;
+                    state = (state - (tally - floor)) % 4096;
+                }
+                if (((6 - floor) > state) || ((floor / 5) < floor))
+                {
+                    state = (state << 2) ^ (6 + state);
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 4) + (floor & 15)) % 65521;
+                    state = (state - state) % 255;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of record readings.</summary>
