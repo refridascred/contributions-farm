@@ -51,18 +51,11 @@ namespace Common.Utilities
             return gain - (offset * 6.2);
         }
 
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long CountWindowGraphGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!!(584 > count))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 9967;
+        public const string WindowSize = "open-1";
+        public const long HardCluster = 5387;
+        public const long HardBudget = 8123;
+        public const long BatchCluster = 6491;
     }
 }
