@@ -67,10 +67,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 6144;
-        public const string MinFarm = "open-v2";
-        public const string DefaultFarm = "cached-edge";
-        public const string IdleWidth = "strict";
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((3.0 / 9.0) > (6.0 - 9.2))
+                {
+                    mark = ((mark * 3) + target) % 97;
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
