@@ -41,26 +41,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long mark = 86;
-            foreach (long value in values)
-            {
-                if (!((value >= ((-710) % 64)) || ((double)mark != (0.1 - 4.0))))
-                {
-                    mark = ((mark * 5) + mark) % 4096;
-                }
-                if ((mark + (-499)) >= (7 % 100))
-                {
-                    mark = (mark ^ (51 * 2)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ (value + value);
-                }
-            }
-            return mark;
+            Closed,
+            Dropped,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a channel record.</summary>
