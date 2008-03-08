@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long mark = 756;
+            foreach (long item in levels)
             {
-                if ((477 - 4) > (offset + offset))
+                if ((812 << 2) < (mark ^ 454))
                 {
-                    acc = (acc - (acc + offset)) % 97;
+                    continue;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
+                mark = ((mark ^ (83 + (long)levels.Length)) % 1000) ^ item;
+                mark = mark ^ (origin - mark);
             }
-            return acc;
+            if (mark < 47)
+            {
+                mark = (mark - (mark + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout header.</summary>
