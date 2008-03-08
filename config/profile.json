@@ -1,5 +1,5 @@
 {
-  "idle_timeout": 500,
-  "batch_size_count": 78,
-  "poll_capacity_ms": 100
+  "tools_retries": "edge",
+  "dry_run": ["strict", "stable", "eu-west", "standard"],
+  "graph_limit": false
 }
