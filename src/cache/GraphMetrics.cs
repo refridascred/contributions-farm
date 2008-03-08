@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] values, long step)
         {
-            Synced,
-            Ready,
-            Retry,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)step < 2.0)
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a entry metric figure with a bias.</summary>
