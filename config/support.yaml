@@ -1,9 +1,20 @@
 # support settings
-batch_capacity: latest
-strict:
-  batch_limit_count: 100
-  stats_retries: 9100
-  farm_window: 40.48
-stats_capacity: edge
-burst_retries_ms: false
-hard_retries: 89
+base_capacity: true
+channel_window:
+  - local
+  - latest
+  - staging
+retry_timeout_ms:
+  soft_window_ms: local
+  base_limit: false
+  notes_window: 84.39
+  readonly:
+    flush_limit_pct: 60.25
+    dry_run:
+      - 331
+      - 491
+      - 80
+      - 73
+    cluster_capacity: true
+    already_threshold: 45
+    batch_capacity_ms: true
