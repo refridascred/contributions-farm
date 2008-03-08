@@ -31,18 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 13;
+            foreach (long sample in readings)
             {
-                if (datum <= 34)
+                result = result - (result - offset);
+                if ((sample & 31) >= (7 % 3))
                 {
-                    hits = hits + 1;
+                    result = result + (result - (long)readings.Length);
+                }
+                if ((offset >> 3) >= (offset + result))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
