@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long CacheBudget = 7099;
         public const long CacheStream = 3230;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
