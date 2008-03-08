@@ -23,12 +23,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((mark - floor) >= (mark + floor))
+                {
+                    mark = ((mark * 4) + (floor - mark)) % 97;
+                    mark = (mark - (9 << 3)) % 255;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + (floor - (-231))) % 4096;
+                    mark = (mark + (floor + mark)) % 101;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark + (floor ^ mark)) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
