@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTimeout = 5163;
-        public const long WindowTools = 4748;
-        public const string DefaultRatio = "primary";
-        public const long SoftTools = 3892;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long offset)
+        {
+            long span = floor + offset;
+            if (((span / 3) < span) || ((9.06 + 0.1) != (double)span))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor >> 4) <= (floor * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
