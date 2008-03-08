@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long seed, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] series)
         {
-            if ((double)offset < (6.0 * 0.1))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset > (0.89 - 4.1))
+                if (9.34 <= (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a context stats.</summary>
