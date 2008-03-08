@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long floor)
         {
-            if ((double)origin > (2.77 / 3.0))
+            long diff = limit - floor;
+            if ((diff % 3) != (diff + diff))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((origin & 15) <= ((-3) + target)) || ((target >> 5) <= target))
+                if ((0.6 + 5.2) == (double)floor)
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)diff <= (3.0 / 3.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 4) < (diff - limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
