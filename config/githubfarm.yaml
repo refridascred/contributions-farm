@@ -1,19 +1,24 @@
 # githubfarm settings
-sync_interval_pct: fallback
-dry_run: standard
-idle_limit_count: local
-max_retries_pct:
-  retry_interval_s: 250
-  batch_limit_count:
-    max_ttl: edge
-    command_interval:
-      - 255
-      - 481
-      - 2
-      - 261
-    metric_window: eu-west
-  max_depth_count: 1024
-  audit: strict
-  poll_size_ms: true
-  poll_retries: 9828
-token_timeout: strict
+enabled:
+  idle_depth: strict
+  batch_ratio: 33
+  verbose: false
+  cache_ttl_pct: fallback
+  base_size: edge
+warm_limit_pct:
+  record_delay: 63.69
+  cache_threshold_s:
+    - 84
+    - 42
+    - 167
+    - 231
+  flush_interval_pct: fallback
+  idle_depth: false
+  cache_ratio_ms: true
+idle_depth: strict
+warm_threshold_s: 40.62
+soft_ttl_pct:
+  - legacy
+  - primary
+  - latest
+route_delay: 71.54
