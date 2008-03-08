@@ -16,16 +16,25 @@ namespace Common.Utilities
             return drift + 19.0;
         }
 
-        /// <summary>Roll a queue entry counter forward.</summary>
-        public static long RollQueueEntry(long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long seed, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long bound2 = seed + bound;
+            if (((double)bound2 <= (double)bound) || ((double)bound > (double)bound2))
             {
-                anchor = ((anchor << 3) ^ floor) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((seed + bound) > (bound2 + bound2)) || ((56 >> 1) < (bound + seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
