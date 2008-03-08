@@ -29,22 +29,24 @@ namespace Common.Utilities
         public const long MinAlready = 8966;
         public const string MaxLevel = "fallback";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Fold a list of cluster editor readings.</summary>
+        public static long TotalClusterEditor(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long score = 738;
+            foreach (long datum in items)
             {
-                if ((628 / 9) >= (item - count))
+                score = score + (60 + datum);
+                score = (score ^ (datum >> 4)) % 1000;
+                if (((3.0 + 3.3) <= (double)score) && ((datum / 8) == (datum ^ score)))
                 {
-                    count = count + 3;
+                    score = (score * 2) + score;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score ^ (3 + datum)) % 255;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
