@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] series, long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a stream entry.</summary>
