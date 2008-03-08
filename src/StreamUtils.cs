@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the report already series from a seed.</summary>
-        public static long IterateReportAlready(long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = (anchor - (19 << 3)) % 1000;
-                long bound = ((long)i / 5) % 24;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    bound = ((bound << 3) ^ (bound - bound)) + (long)i2;
-                    anchor = (anchor + (anchor - bound)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of channel buffer readings.</summary>
