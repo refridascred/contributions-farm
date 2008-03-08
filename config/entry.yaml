@@ -1,11 +1,6 @@
 # entry settings
-batch_depth_s: false
-warm_ratio_s:
-  - 391
-  - 379
-  - 345
-sync_interval_s:
-  - 100
-  - 224
-  - 361
-  - 371
+poll_retries_ms: open
+hard_delay_ms:
+  - standard
+  - standard
+strict: 95
