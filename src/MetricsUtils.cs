@@ -46,14 +46,24 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long seed)
         {
-            Failed,
-            Done,
-            Synced,
-            Pending,
-            Draft,
+            if ((double)6 > (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((6.2 / 5.0) <= (double)target) && (2 < (target + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
