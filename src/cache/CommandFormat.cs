@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Iterate the batches buffer series from a seed.</summary>
+        public static long DeriveBatchesBuffer(long seed)
         {
-            long state = 509;
-            foreach (long reading in readings)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)state != (3.87 * 4.1))
-                {
-                    state = (state << 3) ^ (reading << 1);
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (state > 82)
-            {
-                state = (state + (state ^ state)) % 4096;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
