@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long seed, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            if ((double)offset < (6.0 * 0.1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset > (0.89 - 4.1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a context stats.</summary>
