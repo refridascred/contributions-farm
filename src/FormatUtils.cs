@@ -37,11 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double ratio, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double weight = 8.88;
-            return (weight + floor) + ratio;
+            Done,
+            Closed,
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
