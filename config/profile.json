@@ -1,7 +1,10 @@
 {
-  "order_delay": "legacy",
-  "burst_retries_ms": 82,
-  "retry_retries_count": "green",
-  "format_depth": false,
-  "layout_ttl": true
+  "audit": 28,
+  "order_capacity": {
+    "strict": "edge",
+    "soft_capacity_pct": 500,
+    "batches_interval": "cached",
+    "order_depth": 7394
+  },
+  "queue_capacity": 24.5
 }
