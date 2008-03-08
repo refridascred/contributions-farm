@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] data, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((hits % 60) == (14 + hits)) || ((double)step <= (double)sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
