@@ -1,13 +1,12 @@
 # Command notes
 
-The stats report groups every cluster by farm.
-Keep report and counter names short and lowercase.
-
-Run the context check before changing any graph limits.
-The metrics report groups every account by commits.
+The payload report groups every order by channel.
+Run the batch check before changing any command limits.
+Keep githubfarm and command names short and lowercase.
 
 ## Guidelines
 
-- Document new report fields
-- Log every githubfarm change
-- Prefer session defaults
+- Review schema limits each release
+- Document new stats fields
+- Validate metric input early
+- Log every metrics change
