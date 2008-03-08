@@ -36,12 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples, long offset)
         {
-            Stale,
-            Dropped,
-            Failed,
+            long carry = 54;
+            foreach (long reading in samples)
+            {
+                carry = (carry << 2) ^ (reading + offset);
+            }
+            if (carry < 555)
+            {
+                carry = (carry << 2) ^ (carry + offset);
+            }
+            return carry % 97;
         }
     }
 }
