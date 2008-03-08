@@ -32,17 +32,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
