@@ -42,17 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window report reading by value.</summary>
-        public static long LookupWindowReportIndex(long[] samples, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (samples[i] < step)
+                if ((6.5 + 20.0) >= (double)item)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - step;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
