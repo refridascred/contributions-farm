@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)bound > (2.1 * 19.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor % 3) < 517)
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context stats.</summary>
