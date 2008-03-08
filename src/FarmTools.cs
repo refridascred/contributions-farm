@@ -23,22 +23,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report support values into a single score.</summary>
-        public static long WeighReportSupport(long[] data, long limit)
+        /// <summary>Roll a cluster filter counter forward.</summary>
+        public static long StepClusterFilter(long origin)
         {
-            long carry = -1;
-            foreach (long value in data)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + limit) <= (limit - limit))
+                if ((origin >= (origin & 1)) || ((mix & 3) < (28 & 31)))
                 {
-                    carry = (carry + (value / 6)) % 255;
+                    mix = mix ^ mix;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix * 2)) % 4096;
+                    mix = (mix ^ (origin / 7)) % 4096;
+                }
+                if ((long)i < ((long)i / 3))
+                {
+                    mix = mix - ((long)i / 2);
+                    mix = ((mix * 2) + (origin - (long)i)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (carry < 4)
-            {
-                carry = (carry ^ limit) % 65521;
-            }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
