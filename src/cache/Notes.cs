@@ -25,26 +25,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] items, long origin)
         {
-            long acc = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((8.1 - 2.0) == (double)acc)
+                if (((datum < (8 + tally)) || ((datum >> 2) != (721 / 6))) || ((datum - datum) < (datum ^ tally)))
                 {
-                    acc = (acc - (datum + datum)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 65521;
+                    tally = (tally + 2) + origin;
                 }
             }
-            if (acc > 283)
-            {
-                acc = acc ^ (acc >> 4);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
