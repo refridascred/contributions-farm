@@ -62,13 +62,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a metrics commits counter forward.</summary>
+        public static long DeriveMetricsCommits(long seed)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((seed * 2) >= (9 - seed))
+                {
+                    mix = (mix - (seed - mix)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 5) + seed) % 97;
+                }
+                if ((mix * 5) <= mix)
+                {
+                    mix = (mix + (36 + seed)) % 65521;
+                    mix = ((mix << 3) ^ (mix / 4)) % 255;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix / 5);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
