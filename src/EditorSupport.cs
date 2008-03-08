@@ -52,10 +52,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseFactor = 4920;
-        public const long RetryPayload = 3676;
-        public const string MinPayload = "fallback-v2";
-        public const string HardPayload = "alpha-1";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples, long step)
+        {
+            long acc = 956;
+            foreach (long value in samples)
+            {
+                acc = ((acc * 2) + step) ^ value;
+            }
+            return acc;
+        }
     }
 }
