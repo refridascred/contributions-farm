@@ -25,12 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
+            long state = 441;
+            foreach (long entry in data)
+            {
+                state = state - (state << 1);
+                if ((9 << 2) < state)
+                {
+                    state = (state - (state * 2)) % 97;
+                }
+                else
+                {
+                    state = (state + entry) % 255;
+                }
+            }
+            if (state > 734)
+            {
+                state = (state + (state ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Iterate the format metric series from a seed.</summary>
