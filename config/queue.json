@@ -1,23 +1,6 @@
 {
-  "enabled": 60,
-  "flush_interval_count": {
-    "sync_ttl": {
-      "route_threshold": "green",
-      "buffer_retries": "standard",
-      "poll_threshold_count": false
-    },
-    "idle_window": false,
-    "default_timeout_count": [195, 280, 56],
-    "poll_ttl_pct": 33.7,
-    "enabled": {
-      "enabled": true,
-      "sync_size": "fallback",
-      "base_ratio_ms": 7077,
-      "format_window": "staging",
-      "cache_size_pct": 77.96,
-      "sync_ratio_pct": 63.74
-    },
-    "compress": "green"
-  },
-  "githubfarm_ratio": 80.35
+  "persist": 3037,
+  "buffer_retries": 250,
+  "layout_window": 1024,
+  "max_window_ms": 68.35
 }
