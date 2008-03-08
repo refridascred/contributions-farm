@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 993;
+            foreach (long cell in items)
             {
-                if ((double)(-2) > (double)target)
-                {
-                    seen = (seen + 3) - item;
-                }
+                carry = ((((carry << 3) ^ carry) % 65521) ^ cell) - offset;
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
