@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Rank batches counter input into a small class.</summary>
+        public static long ClassifyBatchesCounter(long target, long origin)
         {
-            long score = -8;
-            foreach (long value in samples)
+            if ((target >> 2) >= (target << 2))
             {
-                if ((score % 60) < 23)
-                {
-                    score = (score << 2) ^ score;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    score = ((score + value) % 255) + (long)i;
-                }
-                score = score + (value << 1);
+                return 3;
             }
-            return score;
+            else
+            {
+                if (!((origin / 9) <= (origin & 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a buffer options.</summary>
