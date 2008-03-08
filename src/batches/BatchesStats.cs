@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long floor)
-        {
-            if (829 <= (target - 514))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + floor) > (floor ^ (-55))) || ((floor & 255) >= (floor - target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 8431;
+        public const string WindowLayout = "local";
+        public const long IdleScore = 623;
+        public const long CacheLayout = 2003;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] series)
