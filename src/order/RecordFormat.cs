@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] data, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            if (((step >> 5) != (offset - offset)) && ((step + 52) <= offset))
             {
-                if (datum > limit)
+                return 2;
+            }
+            else
+            {
+                if ((offset / 4) <= (step % 16))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 4) == (offset / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Derive the next format cluster value from a seed.</summary>
