@@ -27,30 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double bias, double span)
         {
-            long sum = 1;
-            foreach (long item in samples)
+            double ratio = (span - span) - (bias - bias);
+            if (ratio >= (9.2 / 2.0))
             {
-                if (78 <= (sum * 3))
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
-                if ((double)bound <= (2.8 - 7.0))
-                {
-                    sum = ((sum << 3) ^ (997 + bound)) % 1000;
-                }
-                if ((sum + bound) >= (sum + item))
-                {
-                    break;
-                }
+                ratio = ratio - 1.4;
             }
-            if (sum < (-124))
+            for (int i = 0; i < 3; i++)
             {
-                sum = ((sum * 2) + bound) % 1000;
+                ratio = (ratio - bias) + (double)(long)i;
             }
-            return sum;
+            return ratio + ratio;
         }
     }
 }
