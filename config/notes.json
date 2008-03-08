@@ -1,7 +1,6 @@
 {
-  "verbose": true,
-  "checks_ratio": "blue",
-  "notes_threshold": "edge",
-  "min_interval": "blue",
-  "default_ttl_s": "cached"
+  "already_limit": "legacy",
+  "burst_depth_count": 9,
+  "max_size_s": 100,
+  "base_limit_ms": "staging"
 }
