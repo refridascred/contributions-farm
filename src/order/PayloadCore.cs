@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] samples, long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double gain, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double gain2 = gain * 8.96;
+            if (gain2 < (gain - 0.25))
             {
-                if ((cell >> 1) != (step - step))
-                {
-                    seen = seen + 3;
-                }
+                gain2 = gain2 - (double)80;
             }
-            return seen;
+            return gain2 - (span * 6.21);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
