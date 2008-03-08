@@ -1,6 +1,9 @@
-id,weight,active,level
-1,153,green,standard
-2,84.52,16.76,751
-3,23.4,976,402
-4,396,344,32.83
-5,60.06,latest,fallback
+id,active
+1,30.88
+2,staging
+3,30
+4,97.72
+5,467
+6,402
+7,strict
+8,blue
