@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] items, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long sum = 383;
+            foreach (long entry in values)
             {
-                if (entry <= bound)
+                if ((entry + sum) >= sum)
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum << 3)) % 101;
                 }
             }
-            return ready;
+            if (sum > 7)
+            {
+                sum = sum - (sum << 1);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
