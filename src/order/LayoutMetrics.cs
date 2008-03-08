@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            Ready,
-            Closed,
-            Active,
-            New,
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((state + step) <= (step % 64))
+                {
+                    state = (state * 3) + (step ^ step);
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
