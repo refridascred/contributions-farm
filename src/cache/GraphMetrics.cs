@@ -29,15 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] values, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] data, long target)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long cell in data)
             {
-                if ((double)step < 2.0)
+                if ((hits < target) && (((cell >> 3) > 80) && ((cell & 63) <= (cell + cell))))
                 {
-                    hits = (hits + 1) - item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
