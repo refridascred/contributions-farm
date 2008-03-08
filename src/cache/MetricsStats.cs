@@ -18,39 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long limit)
-        {
-            if (((seed - limit) < seed) || ((double)limit <= 7.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 2) < (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (double)9)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit >= (7 - seed)) || ((5 - limit) >= (limit / 8)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "alpha-1";
+        public const long SoftMetrics = 1955;
+        public const double SoftSize = 10.88;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] series, long bound)
