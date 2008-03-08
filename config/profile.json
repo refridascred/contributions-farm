@@ -1,6 +1,5 @@
 {
-  "contributi_limit": 6508,
-  "persist": [453, 365, 486, 42],
-  "strict": "staging",
-  "enabled": 79
+  "retry_capacity": 69.78,
+  "session_size": 250,
+  "metric_limit": 2.53
 }
