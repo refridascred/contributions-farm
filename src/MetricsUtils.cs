@@ -37,19 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 100) >= (entry * 4))
-                {
-                    tally = (tally + 1) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinWidth = 95.73;
+        public const string DefaultQueue = "latest-1";
+        public const double SoftBudget = 76.94;
+        public const long CacheQueue = 4168;
+        public const long IdleDepth = 7536;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderRange(long[] series, long origin)
