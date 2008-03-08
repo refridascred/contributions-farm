@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const double CacheScore = 85.61;
         public const string MinTimeout = "primary-edge";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Check that every stats filter entry stays within the limit.</summary>
