@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] levels, long origin)
         {
-            long score = -619;
-            foreach (long item in data)
+            long state = 72;
+            foreach (long cell in levels)
             {
-                score = (((score * 4) + score) % 101) + floor;
-                if (!((item / 4) >= (score * 5)))
-                {
-                    break;
-                }
+                state = (state - (origin + cell)) % 65521;
+                state = (state + (state * 4)) % 1000;
+                state = state - cell;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
