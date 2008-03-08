@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (item >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score + (score + origin)) % 97;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
