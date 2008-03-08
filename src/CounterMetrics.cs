@@ -24,19 +24,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] readings, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (value >= bound)
+                if (cell > origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
