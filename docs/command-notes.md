@@ -1,11 +1,12 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Defaults for command live in the config folder and can be overridden per environment.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every payload by entry.
+Run the order check before changing any editor limits.
+When a layout fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer context defaults
-- Keep layout values small
+- Keep counter values small
+- Log every metric change
+- Validate profile input early
+- Review stream limits each release
