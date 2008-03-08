@@ -23,12 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Queued,
-            Dropped,
-            Retry,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
