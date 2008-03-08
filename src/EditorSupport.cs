@@ -23,19 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples, long target)
+        /// <summary>Iterate the batches checks series from a seed.</summary>
+        public static long StepBatchesChecks(long bound)
         {
-            long carry = 483;
-            foreach (long reading in samples)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((((carry << 3) ^ ((-320) & 1)) % 1000) ^ reading) - target;
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (carry > 52)
-            {
-                carry = (carry - (carry & 255)) % 65521;
-            }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Hold a record summary.</summary>
