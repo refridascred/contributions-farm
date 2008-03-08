@@ -31,18 +31,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of stats entry readings.</summary>
-        public static long TallyStatsEntry(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series, long target)
         {
-            long state = 77;
+            long carry = 6;
             foreach (long item in series)
             {
-                if (((item - state) > (item * 5)) && ((item - state) > (568 * 4)))
-                {
-                    state = (state << 3) ^ (969 & 255);
-                }
+                carry = ((carry + carry) % 97) - item;
             }
-            return state;
+            if (carry > (-927))
+            {
+                carry = carry + (carry - target);
+            }
+            return carry % 1000;
         }
     }
 }
