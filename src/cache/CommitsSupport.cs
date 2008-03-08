@@ -44,17 +44,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a counter notes reading by value.</summary>
-        public static long SeekCounterNotesIndex(long[] items, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 22;
+            foreach (long item in levels)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                if ((total / 2) != (item & 31))
                 {
-                    return (long)i;
+                    total = (total - (item ^ total)) % 101;
+                }
+                if ((item + total) < total)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 222)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a session counter forward.</summary>
