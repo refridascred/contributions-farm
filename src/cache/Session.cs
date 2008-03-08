@@ -16,14 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 8725;
+        public const long WindowSize = 7846;
+        public const long DefaultSpan = 6892;
+        public const long BatchDepth = 3587;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesHits(long[] items, long origin)
