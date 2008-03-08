@@ -60,13 +60,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long TallyClusterBatchOutliers(long[] samples, long offset)
         {
-            Idle,
-            Ready,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!(offset < (-6)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
