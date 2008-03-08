@@ -49,31 +49,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            if ((step << 2) < (bound + bound))
+            long sum = 562;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound * 2) < bound))
+                if (52 < sum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (5 / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum + (sum & 127)) ^ entry;
                 }
             }
+            if (sum < 2)
+            {
+                sum = (sum ^ (sum * 4)) % 1000;
+            }
+            return sum;
         }
     }
 }
