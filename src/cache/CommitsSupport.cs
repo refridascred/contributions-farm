@@ -57,39 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long offset, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            long gap = offset - seed;
-            if (((gap % 97) >= 99) && (offset >= (30 + gap)))
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((7.2 - 20.0) < (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 3) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)gap <= (2.0 - 4.7)) && ((offset + 518) == (offset & 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Validate batch context readings against a bound.</summary>
