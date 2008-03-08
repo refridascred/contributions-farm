@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double weight, double offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            double load = offset - offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + load) - (double)(long)i) + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + offset;
+            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
