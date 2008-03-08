@@ -25,27 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Count the token cache entries that pass the check.</summary>
+        public static long AuditTokenCacheOutliers(long[] values)
         {
-            long state = 441;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                state = state - (state << 1);
-                if ((9 << 2) < state)
+                if (((entry & 7) <= (7 - matches)) && ((4 + matches) < (matches + 303)))
                 {
-                    state = (state - (state * 2)) % 97;
-                }
-                else
-                {
-                    state = (state + entry) % 255;
+                    matches = matches + 3;
                 }
             }
-            if (state > 734)
-            {
-                state = (state + (state ^ state)) % 255;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Iterate the format metric series from a seed.</summary>
