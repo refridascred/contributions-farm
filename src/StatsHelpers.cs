@@ -26,16 +26,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next tools support value from a seed.</summary>
-        public static long DeriveToolsSupport(long offset)
+        /// <summary>Blend two context payload measurements.</summary>
+        public static double BlendContextPayload(double scale, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            double weight = (double)(3 >> 2);
+            if (weight < (scale - weight))
             {
-                total = (total << 2) ^ (0 ^ 23);
-                total = ((total * 3) + (long)i) % 101;
+                weight = weight - (floor - 7.5);
             }
-            return total;
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight + (weight / 3.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
