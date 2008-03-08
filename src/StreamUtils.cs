@@ -13,19 +13,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of channel buffer readings.</summary>
-        public static long TotalChannelBuffer(long[] values, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long origin)
         {
-            long sum = 35;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum << 3) ^ (cell & 255)) % 101;
-                if ((sum + step) <= (cell >> 4))
-                {
-                    break;
-                }
+                result = (result - (result << 2)) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return sum % 4096;
+            return result;
         }
 
         /// <summary>Hold a stream record.</summary>
