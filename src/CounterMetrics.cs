@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of payload editor entries.</summary>
-        public static long DigestPayloadEditor(long[] readings, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            long result = -66;
-            foreach (long value in readings)
+            long sum = 26;
+            foreach (long entry in readings)
             {
-                result = (result - (value - result)) + offset;
+                sum = (((sum * 4) + sum) % 65521) + entry;
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Hold a batches record.</summary>
