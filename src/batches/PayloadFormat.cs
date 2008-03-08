@@ -23,12 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a commits layout counter forward.</summary>
+        public static long StepCommitsLayout(long bound)
         {
-            Synced,
-            Failed,
-            Active,
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Locate a record reading by value.</summary>
