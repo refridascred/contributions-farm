@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Paused,
-            Draft,
-            Stale,
-            Idle,
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
