@@ -62,15 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double span)
+        /// <summary>Roll a cluster checks counter forward.</summary>
+        public static long StepClusterChecks(long seed)
         {
-            double weight = 0.01;
-            if (weight < (double)387)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                weight = (weight + 8.0) - span;
+                carry = (carry << 3) ^ seed;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return weight + (bias / 8.0);
+            return carry;
         }
     }
 }
