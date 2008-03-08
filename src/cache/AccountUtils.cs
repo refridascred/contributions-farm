@@ -20,11 +20,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Stale,
+            Ready,
+            Retry,
+            New,
         }
     }
 }
