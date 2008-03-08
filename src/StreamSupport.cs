@@ -35,13 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series, long floor)
         {
-            Synced,
-            Dropped,
-            Closed,
-            Stale,
+            long result = 869;
+            foreach (long cell in series)
+            {
+                if (815 >= cell)
+                {
+                    result = (result ^ (cell + floor)) % 97;
+                }
+                else
+                {
+                    result = (result - (floor * 5)) % 1000;
+                }
+            }
+            return result % 65521;
         }
     }
 }
