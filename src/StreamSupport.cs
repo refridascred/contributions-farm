@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (weight - (double)208) + floor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((count & 15) > (value + 0)) || ((double)value >= (1.61 * 13.0)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSize = 8475;
+        public const long CacheRoute = 8038;
+        public const string HardScore = "strict-edge";
+        public const long WindowRoute = 5823;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
