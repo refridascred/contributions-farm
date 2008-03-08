@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchRatio = 34.04;
-        public const long MaxFactor = 1198;
-        public const long HardContributi = 5912;
-        public const string StepContributi = "local-v2";
-        public const string WindowContributi = "primary-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheLevel = 44.46;
+        public const long HardSupport = 4001;
+        public const long StepSize = 1595;
+        public const string CacheSupport = "fallback-edge";
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] levels, long step)
