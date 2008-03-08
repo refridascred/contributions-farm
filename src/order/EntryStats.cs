@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double load = offset - offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)readings.Length > (item + item)) && ((seen + seen) > (372 * 5)))
-                {
-                    seen = seen + 1;
-                }
+                load = ((load + load) - (double)(long)i) + weight;
             }
-            return seen;
+            return load + offset;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
