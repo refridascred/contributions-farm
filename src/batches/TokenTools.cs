@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stats order input into a small class.</summary>
-        public static long GradeStatsOrder(long limit, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] levels, long target)
         {
-            if (((limit + target) != (target & 1)) || ((2.51 + 6.63) != (double)limit))
+            long total = 1;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target % 64) > limit))
+                if (sample <= target)
                 {
-                    return 3;
+                    total = ((total << 3) ^ (total << 1)) % 101;
                 }
-                else
+                if ((target + sample) != (target / 7))
                 {
-                    if ((limit % 100) <= (limit + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the order kind values.</summary>
