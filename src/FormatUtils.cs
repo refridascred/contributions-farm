@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const long BurstReport = 4604;
         public const long StepSpan = 7135;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Retry,
-            Active,
-            Locked,
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
