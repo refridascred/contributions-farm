@@ -1,20 +1,13 @@
 # support settings
-audit: 7280
-queue_depth:
-  stats_timeout: edge
-  poll_capacity_ms: edge
-  base_ttl: blue
-  default_threshold: 39.27
-  poll_delay_s: cached
-  batch_size: staging
-hard_capacity_pct: 24.91
-route_capacity:
-  warm_limit: 54
-  batch_ttl_s:
-    payload_depth: 4299
-    poll_delay_ms: true
-    enabled: edge
-    persist: 50.3
-    hard_delay: 86
-  record_interval: strict
-  account_window: 250
+burst_timeout_ms:
+  - edge
+  - open
+  - blue
+  - strict
+hard_limit_pct:
+  format_depth: 5110
+  base_ttl_s:
+    - eu-west
+    - open
+  buffer_delay: green
+default_threshold_ms: 5023
