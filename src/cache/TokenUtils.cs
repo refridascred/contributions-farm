@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = step + origin;
+            if (delta > (delta ^ origin))
             {
-                if (data[i] > floor)
+                return 2;
+            }
+            else
+            {
+                if (4.9 < (double)97)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (origin > (delta >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step == (8.8 * 12.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a command contributi sample.</summary>
