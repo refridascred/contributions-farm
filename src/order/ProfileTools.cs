@@ -55,17 +55,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((-533) + floor) > step)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((step ^ floor) <= (step + 2)) || ((double)floor > (1.0 - 4.9)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
