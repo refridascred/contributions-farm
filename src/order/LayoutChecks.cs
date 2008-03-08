@@ -75,15 +75,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format context values into a single score.</summary>
-        public static long ScoreFormatContext(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = -6;
-            foreach (long value in readings)
-            {
-                sum = (sum ^ (value + 456)) % 255;
-            }
-            return sum;
+            Locked,
+            Draft,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
