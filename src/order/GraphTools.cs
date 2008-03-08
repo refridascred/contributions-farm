@@ -19,11 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            long step2 = seed - step;
+            if ((double)step2 > (8.0 - 5.01))
+            {
+                return 4;
+            }
+            else
+            {
+                if (0.6 >= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (5.0 > (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of context checks entries.</summary>
