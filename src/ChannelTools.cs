@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((6.1 / 4.0) != (double)entry) || (entry < (58 - entry))) && !(entry <= 50))
+                if ((477 - 4) > (offset + offset))
                 {
-                    count = count + 2;
+                    acc = (acc - (acc + offset)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the stats mode values.</summary>
