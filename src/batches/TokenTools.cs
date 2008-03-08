@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 2735;
-        public const long IdleFactor = 5734;
-        public const string SoftSpan = "stable-edge";
-        public const long IdleScore = 1234;
-        public const long BatchCount = 4645;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 3831;
+        public const long StepScore = 2428;
+        public const long SoftTimeout = 5938;
+        public const long StepLevel = 6827;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
