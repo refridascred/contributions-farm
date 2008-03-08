@@ -61,14 +61,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a checks githubfarm sample.</summary>
+        public static long FindChecksGithubfarmIndex(long[] levels, long step)
         {
-            Synced,
-            Failed,
-            Idle,
-            Stale,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
