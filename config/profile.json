@@ -1,5 +1,7 @@
 {
-  "retry_capacity": 69.78,
-  "session_size": 250,
-  "metric_limit": 2.53
+  "verbose": "fallback",
+  "readonly": true,
+  "audit": "staging",
+  "context_retries": 93.99,
+  "retry_ttl_count": false
 }
