@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowPayload = 2257;
         public const long IdleTimeout = 1049;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] samples, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] data, long floor)
         {
-            long anchor = 2;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                anchor = anchor ^ (value >> 2);
+                if ((floor % 3) > (entry + floor))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (anchor < 342)
-            {
-                anchor = (anchor - (target - anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the contributi class values.</summary>
