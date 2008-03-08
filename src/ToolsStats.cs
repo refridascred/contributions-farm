@@ -71,27 +71,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account checks readings.</summary>
-        public static long FoldAccountChecks(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long bound)
         {
-            long total = 790;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > (total * 5))
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
                 {
-                    total = total + ((-98) + item);
-                    break;
-                }
-                if ((item > (long)data.Length) || ((total >> 3) == (total << 2)))
-                {
-                    total = ((total * 5) + (item - total)) % 97;
+                    return (long)i;
                 }
             }
-            if (total < 679)
-            {
-                total = (total + 89) % 1000;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
