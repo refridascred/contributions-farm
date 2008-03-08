@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter already values into a single score.</summary>
-        public static long FoldCounterAlready(long[] levels, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] values, long target)
         {
-            long mix = 898;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mix = (((mix << 2) ^ (origin % 2)) % 97) ^ entry;
+                if (sample <= (hits << 3))
+                {
+                    hits = (hits + 3) - target;
+                }
             }
-            if (mix > 87)
-            {
-                mix = (mix * 5) + (origin >> 2);
-            }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
