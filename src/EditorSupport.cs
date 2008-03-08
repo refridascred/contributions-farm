@@ -48,10 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxLevel = "fallback-edge";
-        public const long MinSpan = 873;
-        public const long SoftInterval = 4521;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Retry,
+            Queued,
+            Done,
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
