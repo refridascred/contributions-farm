@@ -34,23 +34,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of tools record readings.</summary>
-        public static long FoldToolsRecord(long[] data)
+        /// <summary>Compare every pair of token graph readings.</summary>
+        public static long PairTokenGraphCount(long[] samples)
         {
-            long carry = 6;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry ^ (long)i) % 101) - sample;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = ((carry << 2) ^ (18 % 60)) % 101;
             }
-            if (carry > 9)
-            {
-                carry = (carry ^ (carry + (-502))) % 97;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Combine format context values into a single score.</summary>
