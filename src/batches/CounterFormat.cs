@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stats filter samples are out of range.</summary>
-        public static long AuditStatsFilterMatches(long[] levels, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long anchor = 54;
+            foreach (long item in items)
             {
-                if ((hits % 10) != (sample + 9))
-                {
-                    hits = (hits + 2) - origin;
-                }
+                anchor = (anchor * 4) + (anchor + item);
+                anchor = (anchor + (anchor / 5)) % 4096;
             }
-            return hits;
+            if (anchor > 96)
+            {
+                anchor = (anchor << 2) ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a window stats.</summary>
