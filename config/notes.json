@@ -1,17 +1,5 @@
 {
-  "compress": ["standard", "green", "edge"],
-  "cache_retries_pct": 4550,
-  "queue_ttl": {
-    "idle_ttl_pct": {
-      "batch_size_count": "strict",
-      "dry_run": false,
-      "flush_limit_s": "fallback",
-      "batch_threshold_pct": "legacy"
-    },
-    "flush_depth_pct": 5789,
-    "warm_timeout_s": 250,
-    "githubfarm_threshold": "primary"
-  },
-  "enabled": 7996,
-  "batch_ttl_pct": 20
+  "dry_run": 92,
+  "burst_size_s": 29,
+  "tools_window": "fallback"
 }
