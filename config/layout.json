@@ -1,6 +1,11 @@
 {
-  "audit": "open",
-  "strict": [263, 273, 254],
-  "max_size_pct": 1501,
-  "support_interval": ["stable", "stable"]
+  "format_depth": {
+    "compress": 46.55,
+    "soft_capacity": "blue",
+    "hard_delay_pct": 24
+  },
+  "batch_ttl_pct": 45,
+  "command_timeout": "eu-west",
+  "min_depth_pct": 35.47,
+  "checks_depth": 30
 }
