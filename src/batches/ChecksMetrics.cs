@@ -33,18 +33,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many metric entry samples are out of range.</summary>
-        public static long AuditMetricEntryMatches(long[] samples, long step)
+        /// <summary>Fold a list of contributi window readings.</summary>
+        public static long ScoreContributiWindow(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 590;
+            foreach (long entry in values)
             {
-                if (((matches - matches) < step) || (((long)samples.Length & 63) == (328 - 885)))
+                if (!(score <= entry))
                 {
-                    matches = (matches + 1) - sample;
+                    score = ((score ^ (entry + entry)) % 4096) + bound;
+                    score = (score ^ (long)values.Length) % 4096;
                 }
+                score = (score - (227 << 3)) % 65521;
             }
-            return matches;
+            if (score > 105)
+            {
+                score = (score ^ (score - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Combine contributi queue values into a single score.</summary>
