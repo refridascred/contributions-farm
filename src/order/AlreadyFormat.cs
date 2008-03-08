@@ -37,11 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
