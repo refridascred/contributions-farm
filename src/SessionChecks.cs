@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every batches command entry stays within the limit.</summary>
-        public static bool VerifyBatchesCommandRange(long[] data, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
