@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values, long step)
         {
-            long total = 3;
-            foreach (long item in samples)
+            long state = 302;
+            foreach (long cell in values)
             {
-                total = (((total + (total >> 4)) % 4096) ^ item) + seed;
+                state = (((state << 3) ^ 589) % 255) - step;
+                state = (state ^ (43 * 3)) % 1000;
+                if ((64 + cell) < state)
+                {
+                    state = state - state;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
