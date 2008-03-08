@@ -59,22 +59,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long total = 9;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + cell) > (cell << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + total) % 255;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 54)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return matches;
         }
     }
 }
