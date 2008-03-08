@@ -68,11 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheScore = "latest";
-        public const long StepTools = 3484;
-        public const double StepInterval = 41.02;
-        public const long BaseWidth = 2501;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Stale,
+            Synced,
+            New,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
