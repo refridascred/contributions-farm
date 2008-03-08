@@ -62,10 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxTimeout = 1276;
-        public const long BaseFactor = 2049;
-        public const long LimitChannel = 7681;
-        public const long BaseWidth = 8066;
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double span)
+        {
+            double weight = 0.01;
+            if (weight < (double)387)
+            {
+                weight = (weight + 8.0) - span;
+            }
+            return weight + (bias / 8.0);
+        }
     }
 }
