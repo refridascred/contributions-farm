@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double ratio, double bias)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long bound)
         {
-            double load = 3.17;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                load = (load - bias) + (double)(long)i;
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - ratio;
+            return flag;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
