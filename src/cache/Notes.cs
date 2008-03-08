@@ -25,18 +25,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] items, long origin)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((datum < (8 + tally)) || ((datum >> 2) != (721 / 6))) || ((datum - datum) < (datum ^ tally)))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
