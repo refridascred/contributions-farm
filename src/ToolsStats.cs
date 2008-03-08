@@ -30,11 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "latest-v2";
-        public const string IdleBatches = "primary-1";
-        public const double WindowScore = 71.48;
-        public const long BaseBatches = 97;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
