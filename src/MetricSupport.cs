@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                long hits = (long)i ^ (mark ^ offset);
+                hits = (hits - (82 << 2)) % 255;
+                if ((5.38 / 3.0) >= (double)hits)
+                {
+                    mark = (mark - 7) % 4096;
+                    hits = hits - offset;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
