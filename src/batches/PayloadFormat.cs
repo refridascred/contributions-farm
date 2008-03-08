@@ -27,38 +27,12 @@ namespace Common.Utilities
             return bias3 - bias;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long step, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((double)step <= (10.0 - 8.5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((280 * 4) <= (bound / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step & 3) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)step == (18.0 - 18.0)) || (step >= (bound % 8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Active,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
