@@ -27,16 +27,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Derive the next route farm value from a seed.</summary>
-        public static long SeriesRouteFarm(long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state << 3) ^ (state * 3)) % 97;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the stats mode values.</summary>
