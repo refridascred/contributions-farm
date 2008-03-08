@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstScore = 1064;
+        public const long BaseRatio = 9321;
+        public const long DefaultProfile = 4741;
+        public const long MaxProfile = 1021;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double rate, double span)
