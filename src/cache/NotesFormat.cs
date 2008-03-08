@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series, long offset)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((offset - datum) >= offset)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
