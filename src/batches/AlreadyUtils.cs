@@ -27,22 +27,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] values, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((long)values.Length > 1)
-                {
-                    hits = ((hits + 1) - sample) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a route header.</summary>
