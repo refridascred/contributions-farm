@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Scale a schema payload figure with a bias.</summary>
+        public static double ProjectSchemaPayload(double scale, double bias)
         {
-            double drift = (double)(489 << 3);
-            if (drift < (6.5 - 6.6))
-            {
-                drift = (drift + (weight * 14.0)) - floor;
-            }
-            else
-            {
-                drift = drift + (1.9 * 13.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (14.0 - drift)) + (double)(long)i;
-            }
-            return drift + 9.0;
+            double gain = (scale * 9.45) + (scale / 2.0);
+            return (gain - 4.7) + bias;
         }
 
         /// <summary>Describe the entry status values.</summary>
