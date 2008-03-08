@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache batch samples.</summary>
-        public static long FoldCacheBatch(long[] samples, long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double scale, double offset)
         {
-            long carry = 396;
-            foreach (long entry in samples)
+            double ratio = (double)((-56) + 23);
+            for (int i = 0; i < 2; i++)
             {
-                carry = carry ^ (origin - origin);
-                if (((9.26 + 1.83) <= (double)origin) && (carry > 1))
-                {
-                    carry = ((carry * 3) + (entry - 2)) % 1000;
-                }
+                ratio = ((ratio - (scale / 3.0)) + (double)(long)i) - offset;
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 2) + (71 >> 1)) % 4096;
-            }
-            return carry;
+            return ratio - 8.1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
