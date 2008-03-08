@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double bias, double bias2)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels, long seed)
         {
-            double ratio = (bias - bias) + bias2;
-            if (ratio < (1.6 + ratio))
+            long mix = 90;
+            foreach (long item in levels)
             {
-                ratio = ratio - (ratio - bias2);
+                mix = (mix ^ seed) + item;
             }
-            else
-            {
-                ratio = ratio - (ratio / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + (ratio - ratio);
+            return mix % 65521;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
