@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already format readings against a rule.</summary>
-        public static long CountAlreadyFormatOutliers(long[] values, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - 16) != (offset % 60))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
