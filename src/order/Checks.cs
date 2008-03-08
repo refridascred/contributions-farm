@@ -39,23 +39,18 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "fallback";
         public const double CacheTimeout = 90.19;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double ratio, double offset)
+        /// <summary>Count the graph layout entries that pass the check.</summary>
+        public static long CountGraphLayoutOutliers(long[] items)
         {
-            double gain = offset;
-            if (gain <= (16.0 + 4.5))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                gain = gain + offset;
+                if ((double)sample >= (double)hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain = gain - (offset * 13.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain - offset;
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
