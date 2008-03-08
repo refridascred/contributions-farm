@@ -1,5 +1,17 @@
 # githubfarm settings
-batch_size_ms: 88.71
-flush_timeout: 95
-route_capacity: 25.7
-dry_run: 45.03
+strict:
+  - 194
+  - 145
+idle_size: 96.16
+verbose: 1523
+hard_capacity:
+  - 16
+  - 331
+  - 455
+  - 271
+default_depth:
+  - 446
+  - 446
+  - 261
+  - 427
+warm_capacity_count: fallback
