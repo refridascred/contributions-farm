@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long MeasureCacheBatchesMatches(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (sample >= (sample * 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
