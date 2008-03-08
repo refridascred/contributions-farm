@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleCount = "fallback-v2";
+        public const long WindowBudget = 666;
+        public const string BurstBatches = "staging-v2";
+        public const long RetrySize = 6644;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
