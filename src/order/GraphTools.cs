@@ -63,13 +63,27 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 3;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (((mix << 2) ^ (sample << 1)) % 1000) - (long)i;
+                }
+                mix = ((mix * 5) + (73 + sample)) % 97;
+                if ((78 + sample) < mix)
+                {
+                    mix = mix - (sample + sample);
+                }
+            }
+            if (mix > 5)
+            {
+                mix = mix + (-997);
+            }
+            return mix % 97;
         }
     }
 }
