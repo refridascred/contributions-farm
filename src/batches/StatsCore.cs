@@ -67,15 +67,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double ratio, double bias)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double scale = (ratio + ratio) * 8.3;
-            if (scale < (bias + scale))
-            {
-                scale = scale + scale;
-            }
-            return scale - (ratio / 7.0);
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
