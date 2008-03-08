@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long CacheCount = 1254;
         public const string CacheRatio = "fallback";
 
-        /// <summary>Validate batches cache readings against a bound.</summary>
-        public static bool VerifyBatchesCacheLimits(long[] items, long bound)
+        /// <summary>Locate a counter githubfarm reading by value.</summary>
+        public static long FindCounterGithubfarmIndex(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= bound)
+                if (data[i] <= offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
