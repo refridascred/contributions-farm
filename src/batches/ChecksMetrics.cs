@@ -24,23 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double scale = (double)(16 + 0);
-            if (scale >= scale)
-            {
-                scale = scale - weight;
-            }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 8.0) - (double)(long)i;
-            }
-            return scale + (floor - scale);
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine contributi queue values into a single score.</summary>
