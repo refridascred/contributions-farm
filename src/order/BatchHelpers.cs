@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long seed, long origin)
         {
-            long total = 5;
-            foreach (long item in values)
+            if (((origin << 3) > (origin * 3)) && (6.99 > (double)origin))
             {
-                total = ((total + (total + item)) % 4096) - limit;
+                return 5;
             }
-            return total % 1000;
+            else
+            {
+                if ((origin & 63) > (origin * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin != (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin ^ seed) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
