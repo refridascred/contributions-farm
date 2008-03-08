@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine stream schema values into a single score.</summary>
-        public static long TotalStreamSchema(long[] items, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long total = -60;
-            foreach (long reading in items)
-            {
-                if (!((13.0 * 9.8) != (double)total))
-                {
-                    total = ((total << 2) ^ (offset & 63)) % 1000;
-                    continue;
-                }
-                total = total - (267 + total);
-                total = (total + ((long)items.Length + (-50))) % 255;
-                if (((0.9 / 8.0) >= (double)reading) || ((offset >> 5) > 87))
-                {
-                    break;
-                }
-            }
-            if (total > 17)
-            {
-                total = (total + total) % 4096;
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
