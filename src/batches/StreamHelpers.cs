@@ -23,23 +23,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples)
-        {
-            long result = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >= (result >> 5)) || ((datum & 31) != ((long)samples.Length % 2)))
-                {
-                    result = (result * 3) + (datum & 255);
-                }
-                else
-                {
-                    result = ((result * 3) + (datum & 127)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 3095;
+        public const double IdleSize = 48.94;
+        public const string SoftWidth = "stable-v2";
+        public const long MaxAlready = 5595;
+        public const long WindowAlready = 1424;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportLimits(long[] levels, long floor)
