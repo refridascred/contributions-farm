@@ -1,6 +1,7 @@
 {
-  "persist": false,
-  "batch_interval_pct": 81.99,
-  "support_ttl": "green",
-  "warm_capacity_count": 28.98
+  "batches_ratio": [95, 272],
+  "enabled": true,
+  "schema_interval": 250,
+  "base_capacity_count": 6979,
+  "soft_depth": [196, 63, 58]
 }
