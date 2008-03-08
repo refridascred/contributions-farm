@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            long score = -619;
+            foreach (long item in data)
+            {
+                score = (((score * 4) + score) % 101) + floor;
+                if (!((item / 4) >= (score * 5)))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
