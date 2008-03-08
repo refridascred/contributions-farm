@@ -53,13 +53,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of notes farm readings.</summary>
+        public static long DigestNotesFarm(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public double Ratio { get; set; }
+            long carry = 34;
+            foreach (long item in levels)
+            {
+                if ((double)carry >= (1.0 - 3.0))
+                {
+                    carry = ((carry << 2) ^ carry) - item;
+                }
+            }
+            if (carry < 3)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 1000;
         }
     }
 }
