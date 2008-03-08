@@ -57,13 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long origin)
         {
-            Ready,
-            Idle,
-            Failed,
-            Retry,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
