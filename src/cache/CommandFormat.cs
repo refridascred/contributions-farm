@@ -42,11 +42,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchDepth = 1204;
-        public const string MinChecks = "latest-1";
-        public const long StepChecks = 756;
-        public const long BaseTimeout = 3928;
-        public const long IdleScore = 3380;
+        /// <summary>Grade a tools editor value against two limits.</summary>
+        public static long RankToolsEditor(long limit, long seed)
+        {
+            long prev = limit ^ seed;
+            if ((prev / 7) >= prev)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed != (double)7)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 127) <= (seed ^ limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit < (19.0 * 20.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
