@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!(((item - bound) > (bound - bound)) && (bound <= (bound / 2))))
+                if (((matches + entry) == (matches >> 1)) && ((entry >> 5) < entry))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
