@@ -22,13 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] series, long bound)
+        /// <summary>Validate filter layout readings against a bound.</summary>
+        public static bool GuardFilterLayoutRange(long[] series, long origin)
         {
             bool found = true;
             foreach (long reading in series)
             {
-                if (reading <= bound)
+                if (reading >= origin)
                 {
                     found = false;
                     break;
