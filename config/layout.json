@@ -1,10 +1,8 @@
 {
-  "verbose": false,
-  "soft_retries_s": "legacy",
-  "cache_capacity_s": {
-    "retry_ratio_pct": ["open", "standard", "local"],
-    "cache_interval": "standard",
-    "poll_limit": "blue",
-    "metric_depth": 30
-  }
+  "stream_retries": 92.19,
+  "sync_depth_ms": 33.24,
+  "warm_threshold": 1024,
+  "context_depth": [16, 55, 286, 275],
+  "hard_ratio_pct": false,
+  "compress": 87.05
 }
