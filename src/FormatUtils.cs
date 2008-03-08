@@ -37,32 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings, long bound)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double floor)
         {
-            long carry = 23;
-            foreach (long cell in readings)
-            {
-                if ((568 ^ carry) > ((long)readings.Length >> 5))
-                {
-                    carry = carry + (67 % 97);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry ^ (cell + bound)) % 97;
-                    carry = carry + bound;
-                }
-                if ((double)bound == (15.0 / 8.0))
-                {
-                    carry = (carry * 5) + bound;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ cell;
-                }
-            }
-            return carry % 4096;
+            double weight = 8.88;
+            return (weight + floor) + ratio;
         }
 
         /// <summary>Hold a profile stats.</summary>
