@@ -70,18 +70,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long AuditCounterReportMatches(long[] data, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + target) == (reading / 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
