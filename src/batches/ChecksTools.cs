@@ -63,19 +63,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long seed, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long lane = seed + floor;
+            if ((seed >> 3) <= (floor - seed))
             {
-                if (entry != origin)
+                return 1;
+            }
+            else
+            {
+                if (!((double)lane > (7.9 / 7.0)))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
