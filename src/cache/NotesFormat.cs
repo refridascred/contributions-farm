@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseCount = "fallback-v2";
-        public const double IdleAlready = 88.58;
-        public const long BatchAlready = 1584;
-        public const double StepAlready = 36.41;
-        public const string LimitAlready = "alpha-edge";
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double offset)
+        {
+            double scale = (0.22 - offset) - 5.1;
+            if (scale >= offset)
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)45) + (double)(long)i;
+            }
+            return scale + (double)2;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string StepTimeout = "stable";
