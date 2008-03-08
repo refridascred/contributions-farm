@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 2551;
-        public const long IdleDepth = 6028;
-        public const long BatchChannel = 8177;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 4291;
+        public const long StepFactor = 1142;
+        public const long MinScore = 790;
+        public const string WindowGraph = "legacy-edge";
+        public const long StepGraph = 4284;
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
         public static long AuditWindowBufferHits(long[] data, long floor)
