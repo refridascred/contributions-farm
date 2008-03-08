@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of report entry readings.</summary>
-        public static long ScoreReportEntry(long[] data, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] readings)
         {
-            long acc = 48;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((item * 2) > (limit + item))
+                if (((long)readings.Length > (item + item)) && ((seen + seen) > (372 * 5)))
                 {
-                    acc = (acc + (55 >> 3)) % 1000;
-                }
-                else
-                {
-                    acc = acc + (limit + limit);
+                    seen = seen + 1;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
