@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long HardWidth = 391;
         public const long RetryInterval = 7601;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
+        /// <summary>Count the farm session entries that pass the check.</summary>
+        public static long AuditFarmSessionHits(long[] values, long offset)
         {
-            double ratio = bias;
-            if (ratio < (1.14 * 11.0))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                ratio = ratio + (bias * 20.0);
+                if ((7 % 100) != (hits >> 5))
+                {
+                    hits = ((hits + 2) - entry) - offset;
+                }
             }
-            else
-            {
-                ratio = ratio + (gain * 3.8);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (bias / 3.0)) + (double)(long)i;
-            }
-            return ratio - (gain / 3.0);
+            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
