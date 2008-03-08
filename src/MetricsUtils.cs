@@ -32,17 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long limit)
+        /// <summary>Scale a stats batches figure with a bias.</summary>
+        public static double ProjectStatsBatches(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = (double)(71 + 974);
+            if (ratio2 <= (double)68)
             {
-                if ((series[i] == limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio2) - (double)(long)i;
+            }
+            return ratio2 - (ratio - span);
         }
 
         /// <summary>Roll a context cache counter forward.</summary>
