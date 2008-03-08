@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((step + step) <= ((-6) * 4)) || ((target + step) > (target / 4)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step & 255) > step)
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step <= (double)3)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
