@@ -27,31 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long offset)
         {
-            if ((seed + target) >= (target - target))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (target >> 3))
+                if (datum > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((887 / 4) >= (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
