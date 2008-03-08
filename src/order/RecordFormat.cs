@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a record stats value against two limits.</summary>
