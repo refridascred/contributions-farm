@@ -1,6 +1,6 @@
 {
-  "payload_delay": 90,
-  "batch_limit_ms": false,
-  "retry_retries_ms": "eu-west",
-  "idle_ratio": [389, 90, 452, 197]
+  "compress": "eu-west",
+  "editor_threshold": "open",
+  "burst_retries_ms": "blue",
+  "hard_retries_s": "open"
 }
