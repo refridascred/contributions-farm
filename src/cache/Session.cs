@@ -44,12 +44,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Ready,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryTimeout = 94.48;
+        public const long BurstCount = 6069;
+        public const double MaxMetric = 6.26;
     }
 }
