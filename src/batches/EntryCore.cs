@@ -43,26 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] readings, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                anchor = (anchor * 5) + 8;
-                anchor = ((anchor * 4) + anchor) % 65521;
-                if (((long)i + (-148)) > (anchor / 3))
+                if (entry >= seed)
                 {
-                    anchor = (anchor << 3) ^ 15;
-                    anchor = (anchor ^ (offset << 2)) % 101;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor * 5) + (872 << 1);
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Look up the position of a checks githubfarm sample.</summary>
