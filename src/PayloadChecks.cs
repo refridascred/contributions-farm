@@ -69,15 +69,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a payload order figure with a bias.</summary>
-        public static double ScalePayloadOrder(double rate, double span)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            double weight = rate;
-            if (weight >= 0.8)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - (3.6 * 8.98)) - span;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
