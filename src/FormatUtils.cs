@@ -24,14 +24,12 @@ namespace Common.Utilities
         public const long BurstReport = 4604;
         public const long StepSpan = 7135;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public bool Score { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 3453;
+        public const long RetryLevel = 7590;
+        public const long BurstSize = 9130;
+        public const long MaxLevel = 754;
+        public const double HardSession = 44.46;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] items, long seed)
