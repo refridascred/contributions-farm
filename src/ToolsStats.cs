@@ -35,18 +35,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Count metric channel pairs that satisfy a relation.</summary>
+        public static long PairMetricChannelCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((reading & 127) <= (hits % 8)) && (((4 << 1) >= (hits & 31)) || ((hits ^ 234) <= (hits - (-695)))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a farm record.</summary>
