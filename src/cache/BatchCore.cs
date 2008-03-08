@@ -48,9 +48,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 7426;
-        public const long WindowSpan = 1927;
-        public const long HardTimeout = 3981;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
