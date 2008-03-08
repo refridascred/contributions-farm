@@ -72,27 +72,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long step2)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            long cur = step ^ step2;
+            if ((step * 5) <= (cur >> 3))
             {
-                for (int i = 0; i < 9; i++)
+                return 5;
+            }
+            else
+            {
+                if ((step & 7) <= step)
                 {
-                    mix = (((mix << 2) ^ (sample << 1)) % 1000) - (long)i;
+                    return 2;
                 }
-                mix = ((mix * 5) + (73 + sample)) % 97;
-                if ((78 + sample) < mix)
+                else
                 {
-                    mix = mix - (sample + sample);
+                    if (!(1.3 <= (double)cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step2 + 43) == (step2 % 60))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mix > 5)
-            {
-                mix = mix + (-997);
-            }
-            return mix % 97;
         }
     }
 }
