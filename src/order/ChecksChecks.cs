@@ -20,12 +20,13 @@ namespace Common.Utilities
             return rate - (bias - gain);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 3688;
-        public const double BaseQueue = 50.12;
-        public const long StepRatio = 6654;
-        public const long CacheQueue = 7601;
-        public const long CacheDepth = 8895;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Done,
+            New,
+            Ready,
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
