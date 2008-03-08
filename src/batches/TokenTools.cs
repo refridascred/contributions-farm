@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetrySpan = 88.73;
-        public const long WindowFactor = 4438;
-        public const string BaseInterval = "cached-v2";
-        public const double MinEntry = 75.34;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double bias)
+        {
+            double mean = ratio;
+            if (mean <= (double)13)
+            {
+                mean = (mean - mean) + bias;
+            }
+            else
+            {
+                mean = mean - ratio;
+            }
+            return mean - (double)9;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamGaps(long[] levels)
