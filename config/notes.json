@@ -1,13 +1,11 @@
 {
-  "default_ratio": {
-    "hard_timeout_s": "local",
-    "soft_threshold_count": [34, 318, 53, 407],
-    "min_capacity_ms": "open",
-    "verbose": 50,
-    "persist": 15.43,
-    "max_delay": false
+  "persist": {
+    "format_depth": true,
+    "cache_retries_ms": "latest",
+    "poll_window_pct": [489, 497, 247, 198]
   },
-  "enabled": 513,
-  "notes_size": true,
-  "account_limit": 2
+  "hard_limit_count": 9301,
+  "base_depth_pct": 500,
+  "flush_window": [12, 326, 418, 455],
+  "schema_size": 76.29
 }
