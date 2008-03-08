@@ -18,24 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if (26 > (limit + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) <= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Queued,
+            Active,
+            Pending,
+            Closed,
         }
 
         /// <summary>Roll a buffer githubfarm counter forward.</summary>
