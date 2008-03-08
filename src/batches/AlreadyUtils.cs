@@ -62,17 +62,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a batches account sample.</summary>
-        public static long FindBatchesAccountIndex(long[] values, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
