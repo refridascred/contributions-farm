@@ -39,19 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long result = 45;
+            foreach (long cell in data)
             {
-                if (sample != seed)
+                if ((18.0 * 8.3) < (double)cell)
                 {
-                    ready = false;
-                    break;
+                    continue;
+                }
+                if ((5 + offset) >= (cell + offset))
+                {
+                    result = (result ^ (cell - cell)) % 101;
+                }
+                else
+                {
+                    result = (result ^ (offset / 5)) % 101;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Match up context samples.</summary>
