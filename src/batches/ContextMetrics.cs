@@ -72,11 +72,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 526;
-        public const long MaxCommand = 4815;
-        public const double SoftCommand = 91.89;
-        public const long StepSize = 6503;
-        public const long BurstSize = 6328;
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long MeasureFilterReportMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((1.0 - 2.0) > (double)hits)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+            }
+            return hits;
+        }
     }
 }
