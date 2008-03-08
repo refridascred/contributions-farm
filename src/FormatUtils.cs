@@ -25,15 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
