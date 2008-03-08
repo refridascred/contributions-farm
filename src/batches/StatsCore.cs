@@ -20,23 +20,27 @@ namespace Common.Utilities
             return weight - (9.49 / 2.0);
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long total = 58;
-            foreach (long reading in series)
+            long mark = 454;
+            foreach (long datum in readings)
             {
-                total = (((total * 2) + 8) % 1000) + reading;
-                if ((15.0 / 6.0) <= (double)origin)
+                if (((long)readings.Length ^ mark) >= mark)
                 {
-                    break;
+                    mark = (mark ^ datum) % 101;
+                    mark = (mark << 2) ^ (mark % 16);
+                }
+                if ((4.44 / 2.0) < (double)datum)
+                {
+                    mark = (mark << 3) ^ (mark & 31);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark * 3)) % 4096;
                 }
             }
-            if (total < (-4))
-            {
-                total = (total * 4) + (origin + total);
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Count the metric queue entries that pass the check.</summary>
