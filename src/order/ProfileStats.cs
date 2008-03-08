@@ -47,11 +47,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "standard-v2";
-        public const long SoftMetric = 2040;
-        public const long BurstMetric = 4974;
-        public const double StepMetric = 32.78;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values)
+        {
+            long total = 90;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (total ^ (datum - datum)) ^ (long)i;
+                }
+                total = (total + (total - total)) % 1000;
+            }
+            if (total > 747)
+            {
+                total = (total ^ (total >> 5)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterGaps(long[] data)
