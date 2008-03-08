@@ -20,27 +20,13 @@ namespace Common.Utilities
             return weight - (9.49 / 2.0);
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = 454;
-            foreach (long datum in readings)
-            {
-                if (((long)readings.Length ^ mark) >= mark)
-                {
-                    mark = (mark ^ datum) % 101;
-                    mark = (mark << 2) ^ (mark % 16);
-                }
-                if ((4.44 / 2.0) < (double)datum)
-                {
-                    mark = (mark << 3) ^ (mark & 31);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark * 3)) % 4096;
-                }
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
