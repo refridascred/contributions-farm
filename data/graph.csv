@@ -1,8 +1,7 @@
-id,token,region
-1,edge,899
-2,795,269
-3,open,97
-4,legacy,45.12
-5,854,855
-6,308,44.79
-7,49,staging
+id,level,ratio
+1,74.11,45.91
+2,53.58,cached
+3,877,latest
+4,519,836
+5,primary,primary
+6,729,163
