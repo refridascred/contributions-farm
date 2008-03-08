@@ -77,15 +77,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double bias, double floor)
+        /// <summary>Find the first route stream entry that matches the target.</summary>
+        public static long SeekRouteStreamIndex(long[] items, long floor)
         {
-            double weight = (double)(2 * 2);
-            if (weight >= (weight * 2.52))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + weight) + floor;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + bias;
+            return -1;
         }
 
         /// <summary>Match up cache account samples.</summary>
