@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Derive the next contributi layout value from a seed.</summary>
+        public static long StepContributiLayout(long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = (anchor ^ anchor) % 101;
-                anchor = (anchor * 5) + (9 ^ bound);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((6.0 - 5.94) > (double)target)
+                {
+                    acc = (acc - (target / 3)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ 6) % 65521;
+                }
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the layout status values.</summary>
