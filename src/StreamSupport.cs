@@ -21,18 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command farm samples are out of range.</summary>
-        public static long CountCommandFarmGaps(long[] values, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((646 & 127) < floor)
+                if (6 > (sample & 255))
                 {
-                    tally = (tally + 3) - item;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
