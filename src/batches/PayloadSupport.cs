@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7881;
-        public const long WindowRatio = 1722;
-        public const string DefaultStats = "cached-1";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits > (9 * 2))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] items)
