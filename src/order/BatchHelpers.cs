@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] series)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry / 2) != (entry << 1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
