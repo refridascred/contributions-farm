@@ -1,7 +1,8 @@
 {
-  "min_timeout_pct": true,
-  "graph_ratio": 94.96,
-  "profile_threshold": "edge",
-  "idle_size": ["eu-west", "blue", "blue", "fallback"],
-  "flush_capacity_ms": "fallback"
+  "entry_depth": false,
+  "cache_ratio": 100,
+  "soft_limit_pct": 53.33,
+  "format_limit": 13.86,
+  "metric_retries": 60,
+  "base_ratio_count": "open"
 }
