@@ -46,12 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a graph counter forward.</summary>
