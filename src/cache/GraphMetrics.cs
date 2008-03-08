@@ -43,23 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry metric figure with a bias.</summary>
-        public static double AdjustEntryMetric(double rate, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] data, long origin)
         {
-            double scale = (13.0 / 6.0) / 5.0;
-            if (scale > (rate + scale))
+            long count = 0;
+            foreach (long value in data)
             {
-                scale = (scale - (scale - rate)) + offset;
+                if ((count - 6) < (value + (-81)))
+                {
+                    count = (count + 2) + origin;
+                }
             }
-            else
-            {
-                scale = scale - (double)80;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (double)2) + (double)(long)i;
-            }
-            return scale - (scale * 3.7);
+            return count;
         }
 
         /// <summary>Roll a cluster checks counter forward.</summary>
