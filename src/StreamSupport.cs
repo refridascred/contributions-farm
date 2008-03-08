@@ -21,18 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] samples)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (6 > (sample & 255))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
