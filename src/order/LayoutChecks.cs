@@ -62,19 +62,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] items, long bound)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
             long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)items.Length - seen) != (178 + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
