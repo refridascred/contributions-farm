@@ -37,12 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinLevel = "cached-edge";
+        public const long DefaultContributi = 9707;
+        public const string CacheLevel = "legacy-v2";
     }
 }
