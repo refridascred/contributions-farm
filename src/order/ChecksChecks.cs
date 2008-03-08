@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
