@@ -42,24 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long step, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] series, long origin)
         {
-            if ((18.0 + 1.43) <= (double)origin)
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-2) < (origin + step))
+                if (sample > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the cache phase values.</summary>
