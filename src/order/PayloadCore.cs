@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double gain, double span)
-        {
-            double gain2 = gain * 8.96;
-            if (gain2 < (gain - 0.25))
-            {
-                gain2 = gain2 - (double)80;
-            }
-            return gain2 - (span * 6.21);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "latest-v2";
+        public const long StepRoute = 9681;
+        public const long BurstRoute = 9662;
+        public const long MaxWidth = 6867;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
