@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long BurstAccount = 4999;
         public const double BaseAccount = 26.42;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] samples, long target)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((entry - entry) <= (-78)) || (1 <= (target + count))) && ((count << 1) != (entry % 7)))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
