@@ -1,8 +1,7 @@
-id,owner,count,rank,score
-1,154,78.76,green,open
-2,cached,stable,blue,46.14
-3,edge,391,76,34.87
-4,58.53,open,blue,standard
-5,standard,288,123,2.46
-6,106,strict,25,417
-7,cached,219,standard,701
+id,level
+1,97.59
+2,legacy
+3,599
+4,495
+5,45.19
+6,588
