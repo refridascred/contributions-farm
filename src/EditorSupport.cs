@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (state + state);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    long delta = state;
-                    state = ((state + delta) % 4096) - (long)i2;
-                }
-                state = (state - ((long)i + state)) % 97;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleFactor = 9508;
+        public const string SoftBudget = "alpha-v2";
+        public const long BaseTimeout = 8790;
+        public const long LimitEntry = 3018;
 
         /// <summary>Iterate the batches checks series from a seed.</summary>
         public static long StepBatchesChecks(long bound)
