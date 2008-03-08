@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Locked,
-            Active,
-            Failed,
-            Ready,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
