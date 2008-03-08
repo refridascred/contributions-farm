@@ -25,21 +25,25 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Compare every pair of command layout readings.</summary>
-        public static long PairCommandLayoutCount(long[] samples)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = origin + bound;
+            if ((((-4) << 1) == (bound << 1)) && (origin > (bound - cur)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin % 97) != (92 + 20))
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
