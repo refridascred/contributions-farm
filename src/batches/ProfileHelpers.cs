@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] values)
+        /// <summary>Audit report editor readings against a rule.</summary>
+        public static long TallyReportEditorHits(long[] levels, long origin)
         {
-            long mix = 413;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mix = (((mix << 3) ^ (60 >> 1)) % 101) ^ cell;
+                if (!((matches - (long)levels.Length) != (origin >> 4)))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
