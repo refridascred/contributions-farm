@@ -25,17 +25,26 @@ namespace Common.Utilities
         public const long LimitInterval = 3462;
         public const double RetryTimeout = 12.27;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long sample in items)
             {
-                if (data[i] > limit)
+                if ((sample / 9) < (mark >> 2))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (19 * 5)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ mark;
                 }
             }
-            return -1;
+            if (mark > 759)
+            {
+                mark = (mark * 2) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
