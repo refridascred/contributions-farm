@@ -27,13 +27,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long floor)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
