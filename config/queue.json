@@ -1,6 +1,5 @@
 {
-  "max_timeout_pct": false,
-  "account_retries": 13,
-  "flush_retries_ms": [80, 77, 355, 133],
-  "persist": "blue"
+  "batch_limit_ms": "strict",
+  "strict": false,
+  "soft_retries": 2351
 }
