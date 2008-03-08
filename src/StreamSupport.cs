@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const string HardScore = "strict-edge";
         public const long WindowRoute = 5823;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
