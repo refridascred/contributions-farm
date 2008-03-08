@@ -60,39 +60,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long step2)
+        /// <summary>Fold a list of route command readings.</summary>
+        public static long FoldRouteCommand(long[] levels, long step)
         {
-            long cur = step ^ step2;
-            if ((step * 5) <= (cur >> 3))
+            long carry = 3;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 7) <= step)
+                if ((1.25 / 4.0) == (double)item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(1.3 <= (double)cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step2 + 43) == (step2 % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = carry ^ (carry << 3);
                 }
             }
+            if (carry < 3)
+            {
+                carry = carry ^ (step + 638);
+            }
+            return carry;
         }
     }
 }
