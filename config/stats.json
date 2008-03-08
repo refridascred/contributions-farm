@@ -1,16 +1,7 @@
 {
-  "flush_limit_s": 250,
-  "contributi_ratio": {
-    "batch_threshold": "cached",
-    "soft_size_ms": {
-      "max_delay": "open",
-      "cache_retries_s": 60,
-      "strict": 40,
-      "base_size_s": ["primary", "staging"],
-      "enabled": "strict"
-    },
-    "sync_threshold_ms": "edge",
-    "burst_limit_pct": "eu-west"
-  },
-  "cache_timeout": 8026
+  "sync_window": "standard",
+  "hard_timeout_count": 6053,
+  "default_depth_count": "strict",
+  "audit": ["strict", "cached", "open", "local"],
+  "window_depth": "legacy"
 }
