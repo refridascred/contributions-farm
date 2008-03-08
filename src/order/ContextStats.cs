@@ -30,14 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Closed,
-            Queued,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 6497;
+        public const string StepContext = "strict-edge";
+        public const long StepWidth = 4466;
+        public const string BurstContext = "strict";
+        public const string MaxContext = "strict-v2";
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryGaps(long[] readings, long origin)
