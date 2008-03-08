@@ -32,13 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] data, long bound)
         {
-            New,
-            Draft,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((bound << 2) != (7 + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
