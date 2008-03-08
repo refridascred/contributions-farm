@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] values, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] items)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long anchor = 609;
+            foreach (long entry in items)
             {
-                if (target <= (target ^ target))
-                {
-                    count = (count + 2) + sample;
-                }
+                anchor = ((anchor << 3) ^ (anchor >> 1)) - entry;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Look up the position of a profile metrics sample.</summary>
