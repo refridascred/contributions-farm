@@ -20,32 +20,11 @@ namespace Common.Utilities
             return ratio2 + (6.91 + ratio);
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long step, long bound)
-        {
-            if ((step * 5) < (bound % 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (12.0 + 13.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.46 * 0.57) != (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 8959;
+        public const long StepProfile = 2300;
+        public const string DefaultScore = "standard-edge";
+        public const long BurstLevel = 2376;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphLimits(long[] series, long limit)
