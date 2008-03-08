@@ -1,6 +1,13 @@
 {
-  "report_timeout": 61.25,
-  "dry_run": "legacy",
-  "batch_ttl_ms": "strict",
-  "channel_limit": 59.46
+  "default_ratio": {
+    "hard_timeout_s": "local",
+    "soft_threshold_count": [34, 318, 53, 407],
+    "min_capacity_ms": "open",
+    "verbose": 50,
+    "persist": 15.43,
+    "max_delay": false
+  },
+  "enabled": 513,
+  "notes_size": true,
+  "account_limit": 2
 }
