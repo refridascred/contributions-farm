@@ -34,18 +34,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series, long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) == (reading & 15))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
