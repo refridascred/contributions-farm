@@ -1,16 +1,7 @@
 {
-  "burst_delay": "latest",
-  "warm_window": 6,
-  "idle_ratio": {
-    "order_threshold": 500,
-    "sync_size": "edge",
-    "soft_delay_count": ["latest", "eu-west", "cached", "local"],
-    "stream_depth": 4.17,
-    "batches_timeout": {
-      "flush_ratio_count": 56,
-      "audit": ["fallback", "edge"],
-      "cache_ttl_s": 3180,
-      "channel_timeout": "fallback"
-    }
-  }
+  "flush_ratio": 33,
+  "poll_size": 93,
+  "flush_ratio_pct": true,
+  "burst_retries": 39.5,
+  "audit": 49.73
 }
