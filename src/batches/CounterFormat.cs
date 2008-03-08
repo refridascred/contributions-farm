@@ -28,19 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate filter layout readings against a bound.</summary>
-        public static bool GuardFilterLayoutRange(long[] series, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (reading >= origin)
+                if (!((tally - 72) <= tally))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
