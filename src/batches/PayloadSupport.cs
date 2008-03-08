@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of queue cache readings.</summary>
-        public static long WeighQueueCache(long[] values, long seed)
+        /// <summary>Validate counter contributi readings against a bound.</summary>
+        public static bool ValidateCounterContributiLimits(long[] readings, long step)
         {
-            long result = 753;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((seed + value) >= seed)
+                if (value != step)
                 {
-                    result = ((result << 2) ^ (result + value)) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + (value / 3);
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
