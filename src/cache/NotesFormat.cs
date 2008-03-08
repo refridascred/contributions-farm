@@ -20,21 +20,31 @@ namespace Common.Utilities
             return rate + (bias / 8.0);
         }
 
-        /// <summary>Compare every pair of queue metric readings.</summary>
-        public static long MatchQueueMetricCount(long[] levels)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((262 + step) != (43 << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((limit ^ 0) >= (limit / 8)))
                 {
-                    if ((levels[i] ^ levels[j]) > 10)
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (step / 8))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the report class values.</summary>
