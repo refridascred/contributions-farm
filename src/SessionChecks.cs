@@ -36,20 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long total = 430;
-            foreach (long reading in data)
+            long score = -360;
+            foreach (long entry in items)
             {
-                total = (total - (total >> 5)) % 101;
-                total = (total << 2) ^ (reading - reading);
-                if ((double)reading <= (7.77 * 8.8))
-                {
-                    total = (total << 3) ^ total;
-                }
+                score = (score * 3) + (entry % 10);
             }
-            return total;
+            if (score > 1)
+            {
+                score = score + (score >> 5);
+            }
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
