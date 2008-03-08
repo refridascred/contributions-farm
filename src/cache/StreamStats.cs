@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const long DefaultCount = 445;
         public const long RetryBudget = 8052;
 
-        /// <summary>Audit buffer route readings against a rule.</summary>
-        public static long MeasureBufferRouteMatches(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = -4;
+            foreach (long sample in items)
             {
-                if (((matches ^ matches) < (reading + reading)) && !(matches < 765))
-                {
-                    matches = matches + 1;
-                }
+                acc = (((acc * 3) + (1 * 5)) % 97) ^ sample;
             }
-            return matches;
+            if (acc > 74)
+            {
+                acc = ((acc * 3) + (acc ^ acc)) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
