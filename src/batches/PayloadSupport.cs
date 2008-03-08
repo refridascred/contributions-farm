@@ -38,21 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 3) + (4 - sum)) % 4096;
+                sum = ((sum << 2) ^ (step + step)) % 4096;
+                sum = sum ^ (step % 2);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
