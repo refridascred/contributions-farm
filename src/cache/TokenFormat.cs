@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "primary-edge";
-        public const double BaseLevel = 58.71;
-        public const long IdleRoute = 1883;
-        public const double BurstRoute = 45.47;
-        public const double StepRoute = 70.76;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data, long origin)
+        {
+            long state = 2;
+            foreach (long item in data)
+            {
+                if ((origin + origin) <= state)
+                {
+                    state = ((state << 3) ^ (item << 1)) % 4096;
+                }
+                if ((double)origin == (3.1 * 2.98))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
