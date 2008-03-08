@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const double BaseSize = 67.23;
         public const long MinCluster = 4099;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            Locked,
-            Ready,
-            Idle,
-            Paused,
-            Pending,
+            long sum = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((30 & 3) > (step - step))
+                {
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
