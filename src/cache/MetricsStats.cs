@@ -43,17 +43,26 @@ namespace Common.Utilities
         public const long StepLayout = 511;
         public const long LimitLayout = 8199;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] readings, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 46;
+            foreach (long value in items)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                if ((double)value < (3.2 / 9.0))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (long)items.Length;
+                }
+                if (origin >= (result % 97))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 2)
+            {
+                result = (result * 2) + origin;
+            }
+            return result % 4096;
         }
     }
 }
