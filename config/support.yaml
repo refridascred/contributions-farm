@@ -1,17 +1,10 @@
 # support settings
-default_threshold_s: 9862
-max_threshold_s: 55.56
-batch_ratio_ms:
-  buffer_depth:
-    - legacy
-    - legacy
-  compress: open
-  dry_run: stable
-  persist:
-    compress: false
-    cache_limit_count: 58
-    cache_ttl_count:
-      - green
-      - strict
-    cache_interval_ms: false
-    counter_timeout: eu-west
+burst_ratio: edge
+token_depth: false
+flush_delay: local
+poll_retries: standard
+record_ratio:
+  - edge
+  - fallback
+  - strict
+  - blue
