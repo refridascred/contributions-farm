@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long WindowPayload = 2257;
         public const long IdleTimeout = 1049;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] data, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 483;
+            foreach (long reading in samples)
             {
-                if ((floor % 3) > (entry + floor))
-                {
-                    seen = seen + 2;
-                }
+                carry = ((((carry << 3) ^ ((-320) & 1)) % 1000) ^ reading) - target;
             }
-            return seen;
+            if (carry > 52)
+            {
+                carry = (carry - (carry & 255)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a context reading by value.</summary>
