@@ -67,12 +67,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            Done,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
