@@ -66,21 +66,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already metrics readings.</summary>
-        public static long PairAlreadyMetricsCount(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed ^ offset;
+            if ((seed << 2) <= (3 ^ seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset << 3) == (delta * 3))
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
