@@ -1,11 +1,8 @@
 {
-  "flush_delay_s": "legacy",
-  "entry_ratio": "primary",
-  "batches_delay": {
-    "default_retries_ms": 9424,
-    "batch_size": 668,
-    "cache_size_pct": 65,
-    "queue_size": "strict"
-  },
-  "batch_ratio": "green"
+  "contributi_retries": [224, 115],
+  "cache_interval_pct": [253, 110, 339, 445],
+  "stream_retries": 60,
+  "batch_interval": 85,
+  "hard_interval_pct": ["stable", "open", "edge"],
+  "report_depth": 21
 }
