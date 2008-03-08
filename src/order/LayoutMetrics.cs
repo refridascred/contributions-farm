@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the route channel entries that pass the check.</summary>
-        public static long MeasureRouteChannelOutliers(long[] items)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen / 2) >= (seen / 7))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Active,
+            New,
         }
 
         /// <summary>Hold a entry header.</summary>
