@@ -22,19 +22,14 @@ namespace Common.Utilities
         public const long DefaultProfile = 4741;
         public const long MaxProfile = 1021;
 
-        /// <summary>Validate checks githubfarm readings against a bound.</summary>
-        public static bool ValidateChecksGithubfarmBounds(long[] items, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Failed,
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
