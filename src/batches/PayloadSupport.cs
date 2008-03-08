@@ -24,22 +24,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record schema readings.</summary>
-        public static long CombineRecordSchema(long[] data, long offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mark = 578;
-            foreach (long cell in data)
-            {
-                if (48 >= (cell & 1))
-                {
-                    mark = (((mark << 2) ^ (cell & 1)) % 4096) + offset;
-                }
-                if (mark <= (73 - cell))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Failed,
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
