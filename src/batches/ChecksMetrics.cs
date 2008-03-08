@@ -33,15 +33,39 @@ namespace Common.Utilities
         public const double WindowLayout = 75.69;
         public const long IdleCount = 4430;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double bias, double floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long origin, long offset)
         {
-            double mean = (2.0 * 5.7) + 2.32;
-            if (mean < floor)
+            long delta = origin ^ offset;
+            if (((16.0 * 6.02) != (double)delta) || ((origin + delta) <= offset))
             {
-                mean = (mean - (double)81) + bias;
+                return 6;
             }
-            return mean + mean;
+            else
+            {
+                if ((delta % 10) > origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (15.0 + 13.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + delta) > offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
