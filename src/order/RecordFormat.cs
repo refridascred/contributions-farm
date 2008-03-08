@@ -45,22 +45,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue batch entries that pass the check.</summary>
-        public static long AuditQueueBatchGaps(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 33;
+            foreach (long value in samples)
             {
-                if ((datum / 7) >= ((-72) - matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result << 3) ^ (result + value);
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
