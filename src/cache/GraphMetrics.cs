@@ -50,27 +50,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] levels, long limit)
-        {
-            long score = -61;
-            foreach (long value in levels)
-            {
-                if ((limit << 3) <= (limit & 255))
-                {
-                    score = (score + 36) % 1000;
-                    score = score + (limit + score);
-                }
-                if ((score * 5) < value)
-                {
-                    score = score - (limit / 6);
-                }
-                else
-                {
-                    score = (score * 2) + (score + value);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 7506;
+        public const long IdleWindow = 4429;
+        public const long MaxWindow = 7663;
     }
 }
