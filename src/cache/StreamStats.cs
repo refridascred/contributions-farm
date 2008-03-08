@@ -40,11 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 9073;
+        public const long MinRatio = 2581;
+        public const long MaxLevel = 6902;
+        public const string DefaultScore = "staging-v2";
     }
 }
