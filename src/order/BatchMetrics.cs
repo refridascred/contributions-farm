@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] items, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] data)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long result = 251;
+            foreach (long entry in data)
             {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result * 5) + (result & 1)) % 255) - entry;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
