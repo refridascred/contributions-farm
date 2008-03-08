@@ -1,6 +1,4 @@
 # support settings
-compress: 250
-filter_window: false
-readonly: true
-token_threshold: 64.36
-default_delay_count: eu-west
+burst_depth_pct: 8569
+sync_timeout_pct: fallback
+stats_retries: 53.65
