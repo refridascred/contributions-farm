@@ -16,19 +16,15 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double floor)
         {
-            double scale = bias;
-            if (scale > (scale / 7.0))
+            double drift = gain + (floor * 12.0);
+            if (drift >= (floor * 7.4))
             {
-                scale = scale + bias;
+                drift = drift - (floor * 7.46);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale - (bias2 + 5.0);
+            return drift - drift;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
