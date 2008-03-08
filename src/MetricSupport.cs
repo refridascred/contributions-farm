@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit commits filter readings against a rule.</summary>
-        public static long TallyCommitsFilterOutliers(long[] data, long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((189 - matches) < (floor + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) - entry;
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
