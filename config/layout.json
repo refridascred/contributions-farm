@@ -1,7 +1,12 @@
 {
-  "batch_interval": 64,
-  "command_interval": 100,
-  "burst_interval": ["fallback", "legacy", "eu-west"],
-  "entry_delay": 1141,
-  "idle_interval_pct": [397, 494]
+  "dry_run": {
+    "sync_retries": "stable",
+    "compress": true,
+    "audit": "green",
+    "githubfarm_delay": 75.12,
+    "buffer_timeout": ["eu-west", "local", "stable", "eu-west"]
+  },
+  "retry_window_pct": 93.07,
+  "order_threshold": 60,
+  "editor_window": "legacy"
 }
