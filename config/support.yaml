@@ -1,8 +1,7 @@
 # support settings
-contributi_timeout: 204
-burst_ttl_ms: 40
-batch_window:
-  - 9
-  - 222
-  - 445
-  - 467
+max_ratio_ms: 29.46
+max_window: legacy
+graph_window:
+  - cached
+  - latest
+batches_delay: false
