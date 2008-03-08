@@ -44,22 +44,10 @@ namespace Common.Utilities
             return ratio - (gain / 3.0);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >= (entry / 4)) || ((tally & 15) > tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 97.09;
+        public const double RetryInterval = 63.86;
+        public const long RetryNotes = 9893;
+        public const long RetrySize = 9225;
     }
 }
