@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Count the order batch entries that pass the check.</summary>
+        public static long MeasureOrderBatchOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (hits > cell)
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
