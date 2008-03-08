@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next session cluster value from a seed.</summary>
+        public static long DeriveSessionCluster(long origin)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
