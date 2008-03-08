@@ -59,15 +59,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double floor)
-        {
-            double ratio = floor - (rate * 19.0);
-            if (ratio > (0.1 / 4.0))
-            {
-                ratio = ratio - (double)54;
-            }
-            return ratio + rate;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitTimeout = 1639;
+        public const long BatchAccount = 9151;
+        public const long WindowAccount = 1305;
     }
 }
