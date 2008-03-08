@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long TallyEntrySchemaOutliers(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = 25;
+            foreach (long datum in samples)
             {
-                if ((entry - 5) < (4 + hits))
-                {
-                    hits = hits + 2;
-                }
+                score = (((score << 3) ^ 5) % 255) ^ datum;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Grade a window metric value against two limits.</summary>
