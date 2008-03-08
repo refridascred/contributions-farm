@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            Active,
-            Idle,
-            Closed,
-            Ready,
+            long carry = 256;
+            foreach (long datum in samples)
+            {
+                if (datum >= carry)
+                {
+                    carry = carry - (carry << 3);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry << 3)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
