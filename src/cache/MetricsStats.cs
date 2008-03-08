@@ -43,11 +43,10 @@ namespace Common.Utilities
         public const long StepLayout = 511;
         public const long LimitLayout = 8199;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheScore = 86.51;
-        public const long SoftTools = 9350;
-        public const string MaxTools = "staging-v2";
-        public const long LimitBudget = 7394;
-        public const double RetryTools = 1.46;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowInterval = 5568;
+        public const double WindowOrder = 88.7;
+        public const long BaseOrder = 6925;
+        public const double MaxOrder = 9.01;
     }
 }
