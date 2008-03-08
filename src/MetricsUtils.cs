@@ -45,15 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Roll a context cache counter forward.</summary>
+        public static long StepContextCache(long step)
         {
-            long result = 1;
-            foreach (long sample in levels)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                result = (((result << 2) ^ (33 % 24)) % 65521) + sample;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return result % 1000;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
