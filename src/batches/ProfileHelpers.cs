@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit report editor readings against a rule.</summary>
-        public static long TallyReportEditorHits(long[] levels, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long acc = 3;
+            foreach (long value in samples)
             {
-                if (!((matches - (long)levels.Length) != (origin >> 4)))
+                if (((976 + acc) > (acc / 3)) || ((value / 9) > (acc & 127)))
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc << 3) ^ (value - acc);
                 }
             }
-            return matches;
+            if (acc > 435)
+            {
+                acc = (acc ^ (acc & 31)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
