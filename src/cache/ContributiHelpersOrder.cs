@@ -36,11 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Locate a order report reading by value.</summary>
+        public static long FindOrderReportIndex(long[] series, long origin)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
