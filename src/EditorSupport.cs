@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] levels, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell >= bound)
+                state = state + (state + state);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ready = false;
-                    break;
+                    long delta = state;
+                    state = ((state + delta) % 4096) - (long)i2;
                 }
+                state = (state - ((long)i + state)) % 97;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
