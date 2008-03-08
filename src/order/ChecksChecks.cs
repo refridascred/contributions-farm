@@ -27,12 +27,14 @@ namespace Common.Utilities
         public const long CacheQueue = 7601;
         public const long CacheDepth = 8895;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
+            Locked,
+            Draft,
+            Retry,
+            Ready,
+            Done,
         }
     }
 }
