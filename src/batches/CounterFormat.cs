@@ -25,12 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series, long target)
         {
-            Pending,
-            Locked,
-            Closed,
+            long state = 373;
+            foreach (long value in series)
+            {
+                state = (state ^ (target % 24)) + value;
+            }
+            return state;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
