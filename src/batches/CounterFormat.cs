@@ -25,15 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Audit queue commits readings against a rule.</summary>
+        public static long AuditQueueCommitsHits(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((count % 24) != (count + item))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
