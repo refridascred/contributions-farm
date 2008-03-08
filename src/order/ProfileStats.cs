@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const double CacheScore = 85.61;
         public const string MinTimeout = "primary-edge";
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long origin)
         {
-            Synced,
-            Active,
-            Locked,
-            Retry,
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
