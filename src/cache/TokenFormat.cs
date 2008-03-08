@@ -38,19 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 5783;
+        public const long BatchEditor = 8861;
+        public const long BaseEditor = 4721;
+        public const long LimitSize = 3253;
+        public const long MinEditor = 6710;
     }
 }
