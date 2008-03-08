@@ -1,10 +1,6 @@
-id,rank,weight
-1,608,49.23
-2,60.13,cached
-3,586,942
-4,latest,83.81
-5,51.28,655
-6,29.78,14
-7,stable,stable
-8,261,662
-9,418,38
+id,score,region,token
+1,647,46.24,724
+2,latest,22.89,127
+3,legacy,legacy,419
+4,latest,347,cached
+5,505,2.83,8
