@@ -1,19 +1,17 @@
 # githubfarm settings
-base_retries: stable
-cache_depth_ms: 100
-batch_delay:
-  strict:
-    - 197
-    - 243
-  verbose: 500
-  sync_capacity_ms:
-    report_retries: true
-    default_capacity_pct: legacy
-    commits_delay: latest
-    idle_ttl_ms: 60
-    tools_size: open
-    persist: eu-west
-  sync_depth_ms: false
-  base_size: latest
-retry_interval: 500
-flush_ttl_count: 16
+dry_run: true
+filter_window: fallback
+default_depth_ms: 82.99
+base_size:
+  - 154
+  - 445
+  - 461
+  - 66
+enabled:
+  burst_window: 28
+  base_ratio_pct: 52.97
+  farm_retries: 57.36
+  profile_window: 1024
+  contributi_size: green
+  schema_capacity: staging
+hard_depth: 1024
