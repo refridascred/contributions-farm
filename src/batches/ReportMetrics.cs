@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate support stream readings against a bound.</summary>
-        public static bool VerifySupportStreamLimits(long[] levels, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (cell <= floor)
+                if (value < step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
