@@ -58,22 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardRatio = 8515;
+        public const double SoftCount = 61.98;
+        public const long MinBatches = 8873;
+        public const double CacheCount = 32.78;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelHits(long[] items, long target)
