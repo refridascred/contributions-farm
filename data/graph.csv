@@ -1,8 +1,8 @@
-id,active,token
-1,178,62.5
-2,608,90.75
-3,352,green
-4,22.76,blue
-5,698,blue
-6,943,62.6
-7,legacy,607
+id,owner,count,ratio,rank
+1,strict,44.0,97.28,legacy
+2,51.84,63.39,green,blue
+3,368,367,194,54
+4,90.55,eu-west,73.42,721
+5,strict,488,local,stable
+6,standard,60.6,cached,27.03
+7,91,77.02,57.98,5.49
