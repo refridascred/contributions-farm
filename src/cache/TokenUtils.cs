@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many schema command samples are out of range.</summary>
-        public static long CountSchemaCommandMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((hits ^ 24) <= (offset % 97)) || ((offset * 4) <= (110 + 98)))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitSize = 9443;
+        public const string LimitBuffer = "alpha-1";
+        public const string RetryBuffer = "open-v2";
+        public const long MaxBuffer = 1719;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MinLevel = "cached-edge";
