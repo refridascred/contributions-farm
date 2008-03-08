@@ -66,19 +66,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] series, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell < seed)
+                if (!((16.0 - 1.07) != (double)(long)i))
                 {
-                    found = false;
-                    break;
+                    result = result - (59 + target);
+                    result = ((result * 3) + target) % 97;
                 }
+                if (!((4.3 + 0.2) >= (5.0 * 5.12)))
+                {
+                    result = (result * 4) + result;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
     }
 }
