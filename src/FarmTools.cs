@@ -27,19 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double bias, double span)
-        {
-            double ratio = (span - span) - (bias - bias);
-            if (ratio >= (9.2 / 2.0))
-            {
-                ratio = ratio - 1.4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 9655;
+        public const long SoftScore = 5808;
+        public const long CacheCount = 1057;
+        public const long StepScore = 7218;
     }
 }
