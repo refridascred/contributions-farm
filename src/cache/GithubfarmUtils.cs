@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepScore = 9781;
+        public const long WindowProfile = 3841;
+        public const double MaxProfile = 55.1;
+        public const long BaseProfile = 1839;
+        public const long SoftRatio = 2891;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long target)
