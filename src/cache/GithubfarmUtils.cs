@@ -22,22 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long step)
         {
-            long score = 808;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset - offset) < ((-930) >> 2))
+                if (values[i] < step)
                 {
-                    score = (score - (89 - 73)) + sample;
+                    return (long)i;
                 }
             }
-            if (score < 8)
-            {
-                score = ((score << 3) ^ 48) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
