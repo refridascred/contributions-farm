@@ -41,22 +41,27 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] samples, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = 8;
+            foreach (long datum in data)
             {
-                if ((20.0 + 6.0) < (double)tally)
+                if ((double)state >= (10.0 * 2.97))
                 {
-                    tally = ((tally + 1) - reading) - floor;
+                    state = state - offset;
+                    state = (state * 3) + (datum << 1);
                 }
-                else
+                if (((-4) << 2) == (state << 2))
                 {
-                    tally = tally - 1;
+                    state = ((state * 3) + (offset * 3)) % 101;
                 }
             }
-            return tally;
+            if (state > 3)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
