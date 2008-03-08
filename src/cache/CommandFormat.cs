@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout context reading.</summary>
-        public static double AdjustLayoutContext(double ratio, double floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long limit)
         {
-            double drift = (floor - floor) - floor;
-            if (drift < (7.0 / 9.0))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                drift = (drift + (double)51) + ratio;
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (floor / 5.0)) + (double)(long)i;
-            }
-            return drift - (drift - floor);
+            return flag;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
