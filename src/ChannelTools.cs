@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long MeasureEditorStreamHits(long[] items)
+        /// <summary>Accumulate commits record samples.</summary>
+        public static long CombineCommitsRecord(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 326;
+            foreach (long cell in levels)
             {
-                if (((6 ^ item) <= item) || ((3.94 / 2.0) >= (double)item))
+                total = total - (total >> 3);
+                if ((8.13 / 8.0) > (double)cell)
                 {
-                    tally = tally + 3;
+                    total = (total << 3) ^ cell;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a context stats.</summary>
