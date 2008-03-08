@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
-        public static long CountGraphGithubfarmOutliers(long[] readings, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long reading in readings)
+            foreach (long sample in readings)
             {
-                if (!!((double)origin > (6.0 / 6.0)))
+                if (!((double)count != (12.0 * 7.67)))
                 {
-                    count = (count + 2) - reading;
+                    count = ((count + 3) + sample) + offset;
                 }
             }
             return count;
