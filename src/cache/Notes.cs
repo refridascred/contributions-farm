@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
+            Failed,
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the format class values.</summary>
