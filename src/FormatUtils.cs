@@ -32,12 +32,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Closed,
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
