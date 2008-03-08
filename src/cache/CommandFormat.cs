@@ -13,17 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] readings, long offset)
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long CountChannelToolsMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] >= offset)
+                if ((tally * 3) > 63)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
