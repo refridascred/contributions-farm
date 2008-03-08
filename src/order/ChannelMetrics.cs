@@ -13,12 +13,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long limit)
         {
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            if ((offset & 7) == (0 - 627))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((444 << 2) == (limit + offset)) || ((8 - 4) > offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 2) == (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset >> 1) >= offset) && (limit <= offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
