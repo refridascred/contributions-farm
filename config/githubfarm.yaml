@@ -1,11 +1,17 @@
 # githubfarm settings
-burst_timeout_ms: false
-poll_window_count: primary
-format_delay: 6412
-warm_interval_s: blue
-contributi_ratio: 76
-poll_size_ms:
-  - staging
-  - legacy
-  - latest
-  - legacy
+audit:
+  flush_threshold_ms:
+    burst_timeout_count: 21.06
+    default_window_ms: stable
+    batch_capacity_pct: 68
+    flush_retries: staging
+    readonly: legacy
+  metric_depth: green
+  compress:
+    warm_timeout: 31.31
+    max_limit_s: open
+    notes_delay: stable
+  idle_size_pct: cached
+  max_timeout_ms: 44
+strict: blue
+base_delay_pct: 26.15
