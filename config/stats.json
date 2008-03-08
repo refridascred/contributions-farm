@@ -1,5 +1,5 @@
 {
-  "cache_ttl": true,
-  "retry_threshold_ms": true,
-  "compress": 60
+  "cluster_limit": "fallback",
+  "schema_timeout": 93,
+  "warm_window_count": 96.65
 }
