@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 93;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (floor <= (2 % 10))
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 3) ^ (floor - item);
+                }
+                else
+                {
+                    result = (result - result) % 1000;
+                }
+                if ((item << 3) < ((-237) * 5))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
