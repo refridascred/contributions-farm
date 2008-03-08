@@ -47,14 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Active,
-            Done,
-            Dropped,
-            Paused,
-            Retry,
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
