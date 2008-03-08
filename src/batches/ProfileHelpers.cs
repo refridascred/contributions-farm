@@ -89,19 +89,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            double drift = weight;
-            if (drift >= drift)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (double)21) + offset;
+                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (double)3;
+            return -1;
         }
     }
 }
