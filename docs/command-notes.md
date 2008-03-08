@@ -1,11 +1,15 @@
 # Command notes
 
-The channel module keeps queue values in sync with the order cache.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Use command settings to tune how often farm data is refreshed.
+A buffer that stays idle for too long is moved to the stats list.
+Keep command and stats names short and lowercase.
+When a githubfarm fails, the entry handler retries a few times before giving up.
+
+The metric module keeps tools values in sync with the format cache.
+The format module keeps cluster values in sync with the context cache.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new stats fields
-- Review buffer limits each release
+- Review batches limits each release
+- Document new profile fields
+- Keep buffer values small
+- Log every counter change
