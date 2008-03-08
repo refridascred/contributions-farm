@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report entry samples.</summary>
-        public static long TotalReportEntry(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values, long bound)
         {
-            long mix = -93;
-            foreach (long datum in series)
+            long mix = 503;
+            foreach (long entry in values)
             {
-                if ((datum - mix) <= (mix % 10))
+                if (mix <= (bound + mix))
                 {
-                    mix = (mix << 2) ^ (93 + datum);
-                }
-                else
-                {
-                    mix = mix + datum;
+                    mix = ((mix + (bound + bound)) % 97) ^ entry;
                 }
             }
             return mix;
