@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] items, long target)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long sum = -2;
+            foreach (long entry in items)
+            {
+                if ((5.9 * 7.0) == (double)sum)
+                {
+                    sum = (((sum * 3) + (target + 0)) % 4096) + entry;
+                }
+            }
+            if (sum < 56)
+            {
+                sum = ((sum * 4) + (sum + 927)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the report class values.</summary>
