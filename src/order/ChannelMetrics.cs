@@ -32,22 +32,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample > (tally >> 3)) && ((11.0 - 1.0) <= (double)tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 84.72;
+        public const long MinLevel = 430;
+        public const long StepScore = 1950;
     }
 }
