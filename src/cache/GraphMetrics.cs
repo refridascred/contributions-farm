@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
-        public static long SeekGithubfarmMetricsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 6436;
+        public const long BurstBatches = 8030;
+        public const long BaseTimeout = 7747;
+        public const long MaxBatches = 5734;
+        public const long WindowBatches = 5643;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] data, long target)
