@@ -29,19 +29,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric record reading.</summary>
-        public static double ScaleMetricRecord(double gain, double bias)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double ratio = bias;
-            if (ratio > (gain / 6.0))
-            {
-                ratio = ratio - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)6) - (double)(long)i;
-            }
-            return ratio - (ratio - bias);
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
