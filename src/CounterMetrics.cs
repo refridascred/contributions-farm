@@ -45,26 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Match up layout checks samples.</summary>
+        public static long PairLayoutChecksCount(long[] levels)
         {
-            long carry = 542;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1.46 / 2.0) == (double)entry) && ((carry + carry) < 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry + (entry % 3);
-                }
-                if ((entry > carry) && ((entry + carry) <= carry))
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 97;
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
