@@ -1,8 +1,6 @@
 {
-  "readonly": "open",
-  "audit": 48.12,
-  "strict": "eu-west",
-  "verbose": false,
-  "burst_interval_ms": [449, 212],
-  "contributi_timeout": false
+  "report_capacity": 82.18,
+  "flush_timeout_s": "eu-west",
+  "entry_threshold": false,
+  "min_size": 5.2
 }
