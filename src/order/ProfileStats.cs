@@ -40,19 +40,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every entry context entry stays within the limit.</summary>
-        public static bool GuardEntryContextLimits(long[] levels, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != origin)
+                if ((items[i] <= origin) && ((items[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
