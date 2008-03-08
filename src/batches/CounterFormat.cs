@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Retry,
-            Active,
-            Ready,
-            Failed,
-            Synced,
+            New,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Digest a series of format entries.</summary>
