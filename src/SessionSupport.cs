@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every farm profile entry stays within the limit.</summary>
-        public static bool CheckFarmProfileBounds(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepDepth = "legacy-edge";
+        public const long IdleTimeout = 4496;
+        public const long SoftBudget = 1173;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
