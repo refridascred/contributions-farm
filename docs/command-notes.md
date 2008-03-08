@@ -1,14 +1,11 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the schema list.
-Run the profile check before changing any window limits.
-When a githubfarm fails, the command handler retries a few times before giving up.
-
-Keep token and session names short and lowercase.
-The tools report groups every commits by tools.
+The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for command live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every filter change
-- Validate route input early
-- Prefer cluster defaults
+- Validate cache input early
+- Prefer context defaults
+- Keep layout values small
