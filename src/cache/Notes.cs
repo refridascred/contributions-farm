@@ -23,10 +23,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryCount = 3226;
-        public const long LimitDepth = 1686;
-        public const long WindowSpan = 2478;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((9 >> 5) < (entry + entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double ScaleBatch(double bias, double span)
