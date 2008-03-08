@@ -43,15 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items, long origin)
+        /// <summary>Check that every support account entry stays within the limit.</summary>
+        public static bool GuardSupportAccountLimits(long[] readings, long limit)
         {
-            long acc = 2;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in readings)
             {
-                acc = (((acc * 4) + (origin * 5)) % 101) ^ reading;
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
