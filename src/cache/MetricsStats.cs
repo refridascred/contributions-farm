@@ -15,38 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long floor, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((floor % 5) == (floor + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor > (402 >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + floor) == (198 + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit / 3) >= 1)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
