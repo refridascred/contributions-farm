@@ -18,23 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long seed, long offset)
         {
-            long next = step + limit;
-            if ((8 + limit) >= limit)
+            if ((599 >> 5) < (offset + seed))
             {
                 return 0;
             }
             else
             {
-                if ((step ^ step) == (next % 5))
+                if (seed > (15 + seed))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    if ((seed + 75) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
