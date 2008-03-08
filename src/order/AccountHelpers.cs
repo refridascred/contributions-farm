@@ -46,20 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double offset)
-        {
-            double gain = 4.03;
-            if (gain > bias)
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 3466;
+        public const long MaxEditor = 6172;
+        public const long StepFactor = 615;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long offset, long target)
