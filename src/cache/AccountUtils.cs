@@ -20,9 +20,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleTimeout = "open-1";
-        public const string SoftFilter = "cached";
-        public const long MaxFilter = 925;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
