@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two editor record measurements.</summary>
-        public static double AdjustEditorRecord(double rate, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long limit, long step)
         {
-            double bias = (double)(903 % 16);
-            return (bias + span) + rate;
+            if (step > limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step * 3) > (limit + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
