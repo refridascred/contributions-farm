@@ -15,19 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every account profile entry stays within the limit.</summary>
-        public static bool ValidateAccountProfileRange(long[] series, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (value < bound)
+                if (item > offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Derive the next tools report value from a seed.</summary>
