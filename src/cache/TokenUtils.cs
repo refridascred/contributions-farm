@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepScore = 41.87;
-        public const double HardSpan = 10.87;
-        public const string MaxWidth = "stable";
-        public const long IdleLevel = 1184;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Done,
+            Idle,
+            Pending,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Measure how many schema command samples are out of range.</summary>
         public static long CountSchemaCommandMatches(long[] series, long offset)
