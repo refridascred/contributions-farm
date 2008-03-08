@@ -32,12 +32,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 6497;
-        public const string StepContext = "strict-edge";
-        public const long StepWidth = 4466;
-        public const string BurstContext = "strict";
-        public const string MaxContext = "strict-v2";
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long CompareCommitsCount(long[] levels)
