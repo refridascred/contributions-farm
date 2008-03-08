@@ -35,23 +35,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings, long offset)
+        /// <summary>Count stream cache pairs that satisfy a relation.</summary>
+        public static long PairStreamCacheCount(long[] levels)
         {
-            long result = 13;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = result - (result - offset);
-                if ((sample & 31) >= (7 % 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (result - (long)readings.Length);
-                }
-                if ((offset >> 3) >= (offset + result))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return matches;
         }
     }
 }
