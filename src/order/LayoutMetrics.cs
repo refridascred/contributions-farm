@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels, long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long step, long floor)
         {
-            long state = 3;
-            foreach (long entry in levels)
+            if ((step % 24) < (floor & 7))
             {
-                state = ((state * 4) + (bound * 5)) % 65521;
-                if ((state - 49) != (bound ^ bound))
+                return 6;
+            }
+            else
+            {
+                if ((step + 73) <= (5 / 7))
                 {
-                    state = ((state * 5) + 251) % 97;
+                    return 5;
                 }
                 else
                 {
-                    state = (state ^ (entry >> 3)) % 101;
+                    return 8;
                 }
             }
-            if (state < 4)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
