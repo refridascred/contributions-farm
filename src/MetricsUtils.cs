@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long target, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] data, long target)
         {
-            if (((double)target <= 5.5) || (target <= (step - 8)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (target - target))
+                if (data[i] >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target == (1.2 + 0.8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every contributi notes entry stays within the limit.</summary>
