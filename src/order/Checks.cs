@@ -45,21 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 6;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.5 * 4.9) >= (double)reading)
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 2) ^ (reading >> 1)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (carry * 5);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
