@@ -1,7 +1,12 @@
 {
-  "stream_limit": 1759,
-  "warm_interval": "edge",
-  "tools_depth": 89,
-  "batches_size": 100,
-  "token_depth": "open"
+  "schema_threshold": 87,
+  "base_threshold_pct": "legacy",
+  "entry_timeout": {
+    "context_interval": false,
+    "command_depth": 60,
+    "soft_capacity": 1024,
+    "soft_depth": 1314
+  },
+  "soft_interval": "blue",
+  "entry_ttl": "latest"
 }
