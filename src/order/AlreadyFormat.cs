@@ -25,18 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] levels, long floor)
+        /// <summary>Validate stream channel readings against a bound.</summary>
+        public static bool VerifyStreamChannelLimits(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (((tally ^ floor) <= (item - tally)) || ((item & 15) > tally))
+                if (datum > target)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a editor header.</summary>
