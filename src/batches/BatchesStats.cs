@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a contributi route value against two limits.</summary>
-        public static long RankContributiRoute(long step, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            if ((floor ^ floor) >= (step * 5))
+            double drift = (double)(489 << 3);
+            if (drift < (6.5 - 6.6))
             {
-                return 4;
+                drift = (drift + (weight * 14.0)) - floor;
             }
             else
             {
-                if (step > (134 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + floor) >= (floor % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                drift = drift + (1.9 * 13.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (14.0 - drift)) + (double)(long)i;
+            }
+            return drift + 9.0;
         }
 
         /// <summary>Describe the entry status values.</summary>
