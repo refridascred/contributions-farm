@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const string BurstMetric = "latest-v2";
         public const long WindowBudget = 7894;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] samples)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double ratio = rate + rate;
+            if (ratio > (double)10)
             {
-                if ((((double)(long)samples.Length == (double)datum) && ((datum * 2) <= 407)) || ((matches & 127) > (datum * 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio - (ratio * 1.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (span - span);
+            }
+            return ratio - (double)275;
         }
 
         /// <summary>Describe the batches status values.</summary>
