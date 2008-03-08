@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 91;
+            foreach (long item in series)
             {
-                if (values[i] <= bound)
+                if (item >= step)
                 {
-                    return (long)i;
+                    result = (result + (item + item)) % 101;
+                }
+                else
+                {
+                    result = result + (result + step);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
