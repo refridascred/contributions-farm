@@ -14,30 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 26;
+            foreach (long reading in readings)
             {
-                if ((mark - floor) >= (mark + floor))
+                carry = ((carry << 2) ^ reading) % 65521;
+                if ((double)reading == (8.6 - 6.35))
                 {
-                    mark = ((mark * 4) + (floor - mark)) % 97;
-                    mark = (mark - (9 << 3)) % 255;
-                    continue;
+                    carry = ((carry * 2) + (offset >> 3)) % 97;
                 }
-                else
-                {
-                    mark = (mark + (floor - (-231))) % 4096;
-                    mark = (mark + (floor + mark)) % 101;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark + (floor ^ mark)) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            if (carry > 0)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
