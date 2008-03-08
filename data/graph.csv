@@ -1,7 +1,8 @@
-id,score,weight,rank,ratio
-1,577,105,738,stable
-2,62.11,cached,377,98.31
-3,legacy,local,cached,5.02
-4,245,staging,latest,329
-5,stable,primary,0,245
-6,51.26,48.21,legacy,green
+id,active,token
+1,178,62.5
+2,608,90.75
+3,352,green
+4,22.76,blue
+5,698,blue
+6,943,62.6
+7,legacy,607
