@@ -33,31 +33,13 @@ namespace Common.Utilities
         public const long BatchFarm = 7478;
         public const string DefaultWidth = "legacy-1";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((origin - bound) >= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 3) != (31 % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ origin) < (origin - 259))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
