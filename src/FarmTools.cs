@@ -30,23 +30,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long step)
         {
-            double weight2 = offset + (double)917;
-            if (weight2 >= (weight + offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 - (weight - weight);
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 * 3.4);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - offset;
+            return -1;
         }
     }
 }
