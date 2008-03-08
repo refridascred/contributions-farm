@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long TallyEntryBatchMatches(long[] levels)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((5 / 9) < (seen ^ seen))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
