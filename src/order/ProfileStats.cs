@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = 993;
-            foreach (long cell in items)
-            {
-                carry = ((((carry << 3) ^ carry) % 65521) ^ cell) - offset;
-            }
-            return carry % 65521;
+            Synced,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
