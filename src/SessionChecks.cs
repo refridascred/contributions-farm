@@ -49,12 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] items, long step)
         {
-            Paused,
-            Queued,
-            Retry,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
