@@ -1,12 +1,17 @@
 # githubfarm settings
-poll_window:
-  default_interval_count: true
-  soft_threshold: 60
-  min_delay_pct: cached
-  dry_run: false
-audit: true
-min_threshold:
-  - 290
-  - 119
-  - 325
-  - 499
+audit:
+  - 179
+  - 201
+  - 39
+retry_delay: 4133
+base_timeout:
+  strict: 250
+  warm_retries: 75
+  readonly: 47.77
+  enabled: false
+  counter_ratio: 60
+support_window: latest
+flush_size:
+  - 372
+  - 275
+  - 51
