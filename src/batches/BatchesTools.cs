@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double bias)
         {
-            Queued,
-            Paused,
-            Retry,
-            Stale,
-            New,
+            double scale = (14.0 / 7.0) - 13.0;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + (bias + 17.0)) + (double)(long)i) + ratio;
+            }
+            return scale - (bias - scale);
         }
 
         /// <summary>Hold a commits info.</summary>
