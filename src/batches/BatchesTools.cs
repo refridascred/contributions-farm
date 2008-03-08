@@ -23,38 +23,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a command contributi pair into a bucket.</summary>
-        public static long ClassifyCommandContributi(long seed, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] data, long target)
         {
-            if (seed >= (offset + 5))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed / 2) < 4) || ((offset >> 1) >= (5 ^ seed)))
+                if (cell <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed <= offset) || ((double)seed < (5.0 / 2.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset * 5) == (offset + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
