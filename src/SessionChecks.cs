@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
