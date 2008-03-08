@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long step, long step2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step2 > (step + step2)) && ((double)step2 >= 12.0))
             {
-                if (samples[i] == offset)
+                return 8;
+            }
+            else
+            {
+                if ((step2 - step2) >= (step2 + step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step2 > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
