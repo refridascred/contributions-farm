@@ -44,22 +44,26 @@ namespace Common.Utilities
         public const long CacheQueue = 4168;
         public const long IdleDepth = 7536;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long sum = 2;
+            foreach (long cell in samples)
             {
-                sum = sum + 216;
-                if (!((double)(long)i > (0.7 * 13.0)))
+                if (((double)sum >= (6.66 + 3.8)) || ((double)cell <= (9.3 + 3.37)))
                 {
-                    sum = ((sum << 3) ^ step) % 4096;
-                    sum = sum + (long)i;
+                    sum = ((sum * 4) + sum) % 1000;
                 }
-                sum = sum ^ ((long)i ^ (long)i);
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((double)cell > 10.0)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (sum > 56)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
