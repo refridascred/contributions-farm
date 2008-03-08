@@ -1,20 +1,6 @@
 {
-  "audit": ["staging", "local", "primary"],
-  "verbose": {
-    "enabled": {
-      "hard_ratio_pct": 3.39,
-      "poll_interval_s": 47,
-      "warm_window_count": true
-    },
-    "hard_retries_ms": ["standard", "legacy", "edge"],
-    "metrics_limit": false
-  },
-  "default_limit_ms": {
-    "min_depth_count": 56,
-    "strict": 2,
-    "base_ttl": 90.27,
-    "flush_window": [395, 414, 86],
-    "graph_threshold": true
-  },
-  "farm_threshold": "cached"
+  "enabled": "green",
+  "cluster_retries": 49.24,
+  "verbose": 60.31,
+  "schema_timeout": 100
 }
