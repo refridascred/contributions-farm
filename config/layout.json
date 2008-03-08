@@ -1,15 +1,7 @@
 {
-  "stream_delay": {
-    "batch_limit": 6753,
-    "flush_window_count": 500,
-    "min_ratio": [111, 441, 100],
-    "format_delay": 1024,
-    "persist": 94.71,
-    "base_window_count": 1024
-  },
-  "cluster_interval": "legacy",
-  "retry_timeout_pct": 1024,
-  "batch_delay_ms": 92,
-  "audit": 97.73,
-  "sync_window": 68.82
+  "min_threshold": "legacy",
+  "max_capacity_s": "open",
+  "sync_depth": 3702,
+  "audit": 8448,
+  "min_retries": "strict"
 }
