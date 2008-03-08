@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support buffer readings against a rule.</summary>
-        public static long AuditSupportBufferMatches(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] samples, long seed)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long sample in samples)
             {
-                if ((seen & 31) >= (entry & 3))
+                if ((seen + 16) == (seed - seen))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 1) ^ sample;
                 }
             }
             return seen;
