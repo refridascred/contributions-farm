@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Done,
-            Paused,
-            Stale,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowCount = 37.14;
+        public const double RetryStream = 92.46;
+        public const long HardStream = 4330;
+        public const long SoftSize = 3889;
+        public const long MaxWidth = 7147;
 
         /// <summary>Digest a series of schema session entries.</summary>
         public static long TallySchemaSession(long[] series, long floor)
