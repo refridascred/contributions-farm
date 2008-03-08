@@ -1,5 +1,5 @@
 {
-  "burst_ratio_count": ["standard", "edge", "staging"],
-  "persist": "legacy",
-  "base_ratio_s": false
+  "token_capacity": 250,
+  "max_limit_ms": false,
+  "flush_timeout_count": 100
 }
