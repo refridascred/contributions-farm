@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
             New,
-            Closed,
-            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a contributi info.</summary>
