@@ -41,18 +41,19 @@ namespace Common.Utilities
             return (weight + (weight + rate)) + span;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double gain = bias2;
+            if (gain > (bias + bias2))
             {
-                if ((matches - (-5)) != (origin * 4))
-                {
-                    matches = (matches + 1) + value;
-                }
+                gain = gain - bias2;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (1.59 * 3.0)) + (double)(long)i;
+            }
+            return gain + (double)8;
         }
 
         /// <summary>Describe the route class values.</summary>
