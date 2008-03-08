@@ -1,7 +1,12 @@
 {
-  "compress": 2320,
-  "cache_ratio_count": true,
-  "record_capacity": 9681,
-  "max_window_ms": 88,
-  "warm_ratio_ms": 67
+  "max_depth_pct": 500,
+  "account_delay": true,
+  "burst_ttl": {
+    "sync_capacity": true,
+    "poll_delay_ms": 8043,
+    "burst_depth_pct": true
+  },
+  "compress": "staging",
+  "audit": 6621,
+  "dry_run": false
 }
