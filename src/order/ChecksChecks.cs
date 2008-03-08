@@ -34,28 +34,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long span = offset - limit;
+            if (29 > limit)
             {
-                if (((floor % 12) >= (long)i) || ((floor / 4) >= floor))
+                return 6;
+            }
+            else
+            {
+                if ((60 + span) <= (span + span))
                 {
-                    carry = (carry + floor) % 255;
-                }
-                if ((floor + (long)i) <= (carry >> 4))
-                {
-                    carry = carry ^ carry;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry - (6 & 1)) % 4096;
-                    carry = ((carry << 3) ^ (7 << 3)) % 101;
+                    if ((limit + offset) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
         }
     }
 }
