@@ -27,13 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Locked,
-            New,
-            Retry,
-            Paused,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
