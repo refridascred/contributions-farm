@@ -26,20 +26,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double bias, double bias2)
-        {
-            double rate = 1.0;
-            if (rate <= (double)9)
-            {
-                rate = (rate - rate) - bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate * 9.0)) + (double)(long)i;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 4699;
+        public const long MinScore = 2203;
+        public const string StepScore = "strict";
+        public const double WindowLayout = 75.69;
+        public const long IdleCount = 4430;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double BlendWindow(double bias, double floor)
