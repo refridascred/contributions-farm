@@ -1,13 +1,5 @@
 # entry settings
-token_threshold: 60
-persist: 39.17
-max_window:
-  - 243
-  - 438
-  - 478
-retry_depth_s: true
-default_timeout_count: 4.62
-hard_size_s:
-  - eu-west
-  - eu-west
-  - green
+profile_ttl: 1024
+warm_size_s: 28.27
+retry_ratio_s: 13.01
+contributi_interval: primary
