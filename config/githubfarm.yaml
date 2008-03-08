@@ -1,48 +1,6 @@
 # githubfarm settings
-readonly:
-  idle_interval_s:
-    hard_retries: true
-    cache_threshold_s:
-      - 330
-      - 142
-    sync_interval_s: false
-    batch_depth_count: false
-  verbose: 250
-  warm_size: open
-  cluster_ratio: 60.1
-  batch_limit_pct: 33.98
-notes_timeout:
-  batch_interval_pct: 57
-  enabled: true
-  max_retries_ms: 55.71
-  cache_timeout_pct: 1438
-soft_delay_count: 58
-cluster_ratio:
-  readonly: 93.09
-  max_retries: edge
-  soft_delay: false
-  cache_ratio:
-    hard_ratio: strict
-    cache_ratio: staging
-    hard_threshold_pct:
-      - 373
-      - 445
-      - 155
-      - 244
-    retry_size: 100
-    poll_window_count:
-      - latest
-      - stable
-    burst_size:
-      - 169
-      - 78
-  base_size_ms:
-    hard_ratio_s: false
-    strict: 5463
-    cache_interval_pct: 3532
-    audit: 277
-    sync_size_count:
-      - legacy
-      - eu-west
-    farm_capacity: 250
-  hard_ttl: 100
+soft_timeout: 500
+default_delay: local
+stats_ratio: stable
+notes_depth: false
+burst_capacity_ms: true
