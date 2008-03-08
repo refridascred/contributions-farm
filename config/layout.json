@@ -1,7 +1,8 @@
 {
-  "hard_capacity": "stable",
-  "sync_capacity": "primary",
-  "filter_delay": "edge",
-  "poll_size_s": [315, 77, 384, 404],
-  "poll_size_ms": 28
+  "default_delay": 4,
+  "cache_ratio_ms": 1024,
+  "batches_capacity": "stable",
+  "hard_interval_ms": 60.13,
+  "sync_depth_count": 45.05,
+  "dry_run": 86
 }
