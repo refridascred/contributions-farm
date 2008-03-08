@@ -12,31 +12,18 @@ namespace Common.Utilities
             return (scale + (double)917) + weight;
         }
 
-        /// <summary>Digest a series of editor layout entries.</summary>
-        public static long FoldEditorLayout(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] samples)
         {
-            long state = 8;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((double)state == (16.0 * 2.6))
+                if ((2.0 + 6.08) >= (double)seen)
                 {
-                    state = state + cell;
-                    continue;
-                }
-                else
-                {
-                    state = (state - (4 + cell)) % 101;
-                }
-                if ((cell & 31) == (cell + cell))
-                {
-                    state = (state << 2) ^ (state >> 5);
+                    seen = (seen + 1) + datum;
                 }
             }
-            if (state < 793)
-            {
-                state = (state * 3) + (8 / 9);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
