@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi notes entry stays within the limit.</summary>
-        public static bool ValidateContributiNotesLimits(long[] levels, long bound)
+        /// <summary>Roll a queue entry counter forward.</summary>
+        public static long RollQueueEntry(long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor << 3) ^ floor) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
