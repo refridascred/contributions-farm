@@ -22,15 +22,19 @@ namespace Common.Utilities
         public const long DefaultProfile = 4741;
         public const long MaxProfile = 1021;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double rate, double span)
+        /// <summary>Validate checks githubfarm readings against a bound.</summary>
+        public static bool ValidateChecksGithubfarmBounds(long[] items, long limit)
         {
-            double rate2 = 7.2;
-            if (rate2 < (span - span))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                rate2 = rate2 - (rate2 + rate);
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate2 - (span + span);
+            return ok;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
