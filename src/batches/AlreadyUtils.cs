@@ -60,12 +60,12 @@ namespace Common.Utilities
         public const long BaseBuffer = 9368;
         public const string RetryBuffer = "alpha-1";
 
-        /// <summary>Look up the position of a stream session sample.</summary>
-        public static long LookupStreamSessionIndex(long[] data, long step)
+        /// <summary>Locate a buffer githubfarm reading by value.</summary>
+        public static long SeekBufferGithubfarmIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= step)
+                if (levels[i] == floor)
                 {
                     return (long)i;
                 }
