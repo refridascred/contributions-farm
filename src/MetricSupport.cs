@@ -16,10 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 9367;
-        public const long StepRatio = 8682;
-        public const double CacheDepth = 96.88;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
