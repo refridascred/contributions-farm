@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long SoftCommand = 3648;
         public const string RetrySize = "latest-edge";
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] data)
         {
-            Dropped,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits <= (datum << 1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many entry order samples are out of range.</summary>
