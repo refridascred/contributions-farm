@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Idle,
-            Stale,
             Failed,
             Ready,
-            Done,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the layout mode values.</summary>
