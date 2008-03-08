@@ -56,19 +56,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] levels, long bound)
         {
-            double mean = (double)(1 - 645);
-            if (mean > scale)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                mean = (mean - mean) + floor;
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)22;
-            }
-            return mean + scale;
+            return stale;
         }
     }
 }
