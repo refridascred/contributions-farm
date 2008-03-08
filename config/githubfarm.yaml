@@ -1,17 +1,7 @@
 # githubfarm settings
-batch_interval_pct: true
-cache_capacity:
-  enabled: 69
-  idle_timeout: true
-  strict: 83
-  retry_retries_count: false
-  flush_threshold_count: 81.82
-hard_retries:
-  - 277
-  - 481
-  - 51
-  - 242
-max_retries_ms:
-  - 499
-  - 393
-  - 182
+strict: 78
+default_capacity_pct: 13
+support_threshold: open
+default_interval: local
+audit: 24
+session_capacity: 500
