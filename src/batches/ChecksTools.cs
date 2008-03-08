@@ -39,12 +39,21 @@ namespace Common.Utilities
         public const long BatchFarm = 7478;
         public const string DefaultWidth = "legacy-1";
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            Closed,
-            Draft,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
