@@ -43,26 +43,11 @@ namespace Common.Utilities
         public const long StepLayout = 511;
         public const long LimitLayout = 8199;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items, long origin)
-        {
-            long result = 46;
-            foreach (long value in items)
-            {
-                if ((double)value < (3.2 / 9.0))
-                {
-                    result = (result << 2) ^ (long)items.Length;
-                }
-                if (origin >= (result % 97))
-                {
-                    break;
-                }
-            }
-            if (result < 2)
-            {
-                result = (result * 2) + origin;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheScore = 86.51;
+        public const long SoftTools = 9350;
+        public const string MaxTools = "staging-v2";
+        public const long LimitBudget = 7394;
+        public const double RetryTools = 1.46;
     }
 }
