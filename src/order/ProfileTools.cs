@@ -34,11 +34,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] data, long seed)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches + seed) == (matches >> 1))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
