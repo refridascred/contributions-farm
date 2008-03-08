@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] series, long offset)
         {
-            long sum = 383;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + sum) >= sum)
+                if (series[i] > offset)
                 {
-                    sum = ((sum << 2) ^ (sum << 3)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum - (sum << 1);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
