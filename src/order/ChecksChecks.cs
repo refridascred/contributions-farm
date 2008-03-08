@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] samples, long bound)
         {
-            double drift = (double)(84 - 29);
-            if (drift < (bias - scale))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                drift = drift - (bias / 8.0);
+                if ((bound - 62) < (long)samples.Length)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + (8.0 * 1.4);
+            return tally;
         }
 
         /// <summary>Describe the editor phase values.</summary>
