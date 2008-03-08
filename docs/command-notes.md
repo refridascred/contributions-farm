@@ -1,10 +1,15 @@
 # Command notes
 
-The buffer module keeps githubfarm values in sync with the layout cache.
-Use support settings to tune how often metric data is refreshed.
+Run the schema check before changing any route limits.
+Run the counter check before changing any contributi limits.
+
+A farm that stays idle for too long is moved to the payload list.
+Run the account check before changing any contributi limits.
+The graph report groups every window by graph.
 
 ## Guidelines
 
-- Review record limits each release
-- Document new route fields
-- Prefer checks defaults
+- Document new order fields
+- Prefer farm defaults
+- Keep profile values small
+- Validate cache input early
