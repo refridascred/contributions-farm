@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long CountChecksReportHits(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample < (2.2 - 0.7))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
