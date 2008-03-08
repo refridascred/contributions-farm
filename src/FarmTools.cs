@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] items)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long carry = 3;
+            foreach (long entry in items)
+            {
+                carry = ((carry << 3) ^ (57 + 86)) % 255;
+                if (((6.1 - 5.63) == (double)carry) || ((entry & 7) < (7 + entry)))
+                {
+                    carry = ((carry * 2) + entry) % 1000;
+                }
+            }
+            if (carry > 889)
+            {
+                carry = ((carry * 2) + (carry / 8)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
