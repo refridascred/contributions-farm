@@ -54,22 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] samples, long seed)
         {
-            long sum = 562;
+            long hits = 0;
             foreach (long entry in samples)
             {
-                if (52 < sum)
+                if ((entry << 3) > (hits % 3))
                 {
-                    sum = (sum + (sum & 127)) ^ entry;
+                    hits = (hits + 3) - seed;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum ^ (sum * 4)) % 1000;
-            }
-            return sum;
+            return hits;
         }
     }
 }
