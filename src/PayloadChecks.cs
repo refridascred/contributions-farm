@@ -42,31 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double bias, double floor)
         {
-            long sum = -74;
-            foreach (long cell in levels)
+            double weight = (double)(2 * 2);
+            if (weight >= (weight * 2.52))
             {
-                if (((long)levels.Length + cell) > ((-203) & 3))
-                {
-                    long bound = 94 << 3;
-                    sum = sum ^ (limit - bound);
-                }
-                if (((limit >> 2) <= (sum + sum)) && (511 < (sum % 8)))
-                {
-                    sum = (sum + (6 - sum)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ cell) % 101;
-                }
+                weight = (weight + weight) + floor;
             }
-            if (sum < 869)
-            {
-                sum = sum - (sum + limit);
-            }
-            return sum % 65521;
+            return weight + bias;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
