@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit already schema readings against a rule.</summary>
-        public static long AuditAlreadySchemaHits(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((-980) <= hits)
-                {
-                    hits = (hits + 3) - datum;
-                }
+                anchor = anchor - ((-537) + anchor);
+                anchor = ((anchor * 4) + anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
