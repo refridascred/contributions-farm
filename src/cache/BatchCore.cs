@@ -39,24 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double span)
-        {
-            double ratio = span * 4.99;
-            if (ratio > rate)
-            {
-                ratio = ratio + (double)0;
-            }
-            else
-            {
-                ratio = ratio + (span * 0.6);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - rate;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepSize = "staging-v2";
+        public const long CacheRecord = 3253;
+        public const double IdleRatio = 34.56;
+        public const long BurstRecord = 5218;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] items, long seed)
