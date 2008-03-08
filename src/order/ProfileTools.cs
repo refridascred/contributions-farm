@@ -37,18 +37,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels)
-        {
-            long acc = 71;
-            foreach (long value in levels)
-            {
-                if (((acc & 63) <= 40) || (acc < (value ^ value)))
-                {
-                    acc = acc - (acc >> 1);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1445;
+        public const double StepDepth = 98.4;
+        public const long BatchContext = 1202;
+        public const string RetryContext = "strict-edge";
     }
 }
