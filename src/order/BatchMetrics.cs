@@ -32,19 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long total = 0;
+            foreach (long reading in series)
             {
-                if (cell > offset)
+                if (!(27 <= (reading - 877)))
                 {
-                    found = false;
-                    break;
+                    total = (total - (reading * 4)) % 255;
                 }
             }
-            return found;
+            if (total < 160)
+            {
+                total = total + (total + 735);
+            }
+            return total;
         }
 
         /// <summary>Adjust a metrics record reading.</summary>
