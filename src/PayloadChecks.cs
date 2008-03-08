@@ -25,38 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if (seed < (seed << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.86 - 1.7) == (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + target) > seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target < (seed + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
