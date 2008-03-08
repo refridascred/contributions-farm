@@ -44,19 +44,13 @@ namespace Common.Utilities
         public const long CacheQueue = 4168;
         public const long IdleDepth = 7536;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] series, long origin)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
