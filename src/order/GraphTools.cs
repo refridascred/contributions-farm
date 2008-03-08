@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mark = 62;
-            foreach (long sample in values)
-            {
-                mark = (((mark * 4) + (sample * 2)) % 1000) + bound;
-            }
-            if (mark < 9)
-            {
-                mark = ((mark << 2) ^ 1) % 4096;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
