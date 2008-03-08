@@ -43,13 +43,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long mix = 4;
+            foreach (long entry in items)
+            {
+                mix = ((mix * 3) + (entry >> 1)) % 255;
+                mix = mix - (mix % 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a editor tools figure with a bias.</summary>
