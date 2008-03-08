@@ -27,10 +27,38 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 3323;
-        public const string SoftScore = "alpha-edge";
-        public const long SoftRoute = 7701;
+        /// <summary>Accumulate support profile samples.</summary>
+        public static long WeighSupportProfile(long[] series, long target)
+        {
+            long anchor = 47;
+            foreach (long reading in series)
+            {
+                if (anchor <= target)
+                {
+                    anchor = anchor ^ (target & 255);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ reading;
+                }
+                if (!(anchor <= target))
+                {
+                    anchor = ((anchor * 4) + reading) % 4096;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + reading;
+                    anchor = (anchor << 2) ^ (target & 255);
+                }
+                anchor = ((anchor << 2) ^ (2 + target)) % 1000;
+            }
+            if (anchor < (-2))
+            {
+                anchor = (anchor - target) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] readings, long step)
