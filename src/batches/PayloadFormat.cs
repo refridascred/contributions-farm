@@ -32,17 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                if ((((step / 5) < seen) || ((step * 4) != (step ^ item))) || ((item * 4) != (item + 0)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
