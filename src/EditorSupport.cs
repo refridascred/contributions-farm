@@ -60,26 +60,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of command support entries.</summary>
-        public static long FoldCommandSupport(long[] items, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long floor)
         {
-            long anchor = 440;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (((78 >> 5) >= (floor % 10)) || ((reading + anchor) >= (reading * 2)))
+                if (sample < floor)
                 {
-                    anchor = (anchor - (reading >> 4)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (floor + anchor)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 267)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor % 97;
+            return flag;
         }
     }
 }
