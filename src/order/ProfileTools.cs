@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double weight, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long target)
         {
-            double load = 3.0 - (double)81;
-            if (load > (8.49 * 6.4))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                load = ((load - 7.8) + weight) - offset;
+                if ((target / 7) > reading)
+                {
+                    count = count + 2;
+                }
             }
-            return load - (11.0 * 3.44);
+            return count;
         }
 
         /// <summary>Compare every pair of cluster schema readings.</summary>
