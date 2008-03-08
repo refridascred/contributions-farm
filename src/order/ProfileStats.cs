@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a stream stats value against two limits.</summary>
+        public static long GradeStreamStats(long origin, long bound)
         {
-            Stale,
-            Synced,
-            Pending,
+            long delta = origin - bound;
+            if ((0 ^ bound) >= (delta >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin <= (bound << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin > delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)delta != (0.52 - 5.7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster options.</summary>
