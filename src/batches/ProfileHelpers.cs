@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double rate2 = (offset - offset) - (double)4;
+            if (rate2 <= (7.0 * 3.76))
             {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                rate2 = (rate2 - 8.43) + rate;
             }
-            return flag;
+            return rate2 + rate2;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
