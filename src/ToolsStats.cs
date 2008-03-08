@@ -22,12 +22,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            Stale,
-            Locked,
-            New,
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Project the next commits value.</summary>
