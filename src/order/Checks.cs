@@ -30,22 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many tools graph samples are out of range.</summary>
-        public static long MeasureToolsGraphHits(long[] series, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (764 + 89))
-                {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
