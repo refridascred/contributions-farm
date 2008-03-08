@@ -28,18 +28,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((double)tally >= (3.33 / 8.0)))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                score = score + (score ^ target);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
