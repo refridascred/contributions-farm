@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if ((double)target <= (double)limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (target <= (target - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count the token cache entries that pass the check.</summary>
