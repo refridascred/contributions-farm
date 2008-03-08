@@ -33,12 +33,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxFactor = 25.58;
-        public const long LimitQueue = 8630;
-        public const string RetryQueue = "alpha-1";
-        public const long IdleQueue = 266;
-        public const string BatchInterval = "strict-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitCount = 1373;
+        public const long LimitBudget = 7466;
+        public const string MinTimeout = "staging";
+        public const long SoftDepth = 2618;
+        public const long MinFilter = 5787;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
