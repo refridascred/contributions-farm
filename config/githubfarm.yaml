@@ -1,4 +1,9 @@
 # githubfarm settings
-already_delay: 86
-sync_limit_pct: latest
-report_interval: staging
+min_window: strict
+poll_window_count: legacy
+strict: 75
+payload_retries:
+  - cached
+  - cached
+  - standard
+session_timeout: 61.03
