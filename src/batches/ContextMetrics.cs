@@ -19,18 +19,23 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the entry window entries that pass the check.</summary>
-        public static long TallyEntryWindowMatches(long[] items, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long total = 9;
+            foreach (long reading in readings)
             {
-                if ((((count / 3) == (origin + reading)) && (reading >= (origin ^ reading))) || ((origin % 8) != (count ^ count)))
+                total = total ^ (origin + origin);
+                if ((total < (origin % 10)) && ((total % 24) <= (reading - total)))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            if (total > (-322))
+            {
+                total = (total + (-717)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine farm counter values into a single score.</summary>
