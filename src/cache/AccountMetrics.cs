@@ -26,31 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema context value against two limits.</summary>
-        public static long SortSchemaContext(long limit, long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            if ((floor & 127) <= (-13))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (double)1)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + floor) > (limit + limit))
+                    if ((items[i] ^ items[j]) == 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a tools header.</summary>
