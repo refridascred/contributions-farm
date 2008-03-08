@@ -47,23 +47,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a report support figure with a bias.</summary>
-        public static double ProjectReportSupport(double ratio, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            double weight = (double)(-76) / 7.0;
-            if (weight <= bias)
+            long total = 9;
+            foreach (long cell in values)
             {
-                weight = weight + (double)94;
+                if ((cell + cell) > (cell << 1))
+                {
+                    total = (total + total) % 255;
+                }
             }
-            else
+            if (total < 54)
             {
-                weight = weight + (weight + bias);
+                total = total ^ total;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - ratio;
+            return total;
         }
     }
 }
