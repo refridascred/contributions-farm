@@ -1,7 +1,7 @@
 {
-  "min_retries": 1.35,
-  "batch_capacity_s": true,
-  "persist": false,
-  "verbose": "eu-west",
-  "min_capacity_count": 15
+  "graph_ttl": [37, 380],
+  "soft_timeout_pct": "local",
+  "compress": 100,
+  "retry_interval": 4657,
+  "strict": "primary"
 }
