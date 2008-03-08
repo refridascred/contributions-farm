@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long acc = 870;
-            foreach (long entry in items)
-            {
-                if ((acc + acc) <= (838 & 3))
-                {
-                    acc = acc - entry;
-                }
-            }
-            if (acc > 25)
-            {
-                acc = acc ^ 70;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
