@@ -18,18 +18,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = 0;
-            foreach (long item in data)
-            {
-                if ((item << 3) <= (item >> 5))
-                {
-                    anchor = (anchor + (item - 0)) % 255;
-                }
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
