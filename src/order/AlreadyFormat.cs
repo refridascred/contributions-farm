@@ -64,10 +64,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "strict-edge";
-        public const long MaxFilter = 3088;
-        public const double DefaultFilter = 81.33;
-        public const long MinFilter = 1877;
+        /// <summary>Grade a order graph value against two limits.</summary>
+        public static long BucketOrderGraph(long step, long limit)
+        {
+            if (limit > step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (4.0 + 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
