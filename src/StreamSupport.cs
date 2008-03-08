@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowCount = 37.14;
-        public const double RetryStream = 92.46;
-        public const long HardStream = 4330;
-        public const long SoftSize = 3889;
-        public const long MaxWidth = 7147;
+        /// <summary>Count the counter stats entries that pass the check.</summary>
+        public static long MeasureCounterStatsGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value + matches) > (850 % 100))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long limit)
