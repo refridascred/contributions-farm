@@ -1,5 +1,11 @@
 {
-  "account_delay": "blue",
-  "farm_capacity": 6832,
-  "enabled": "eu-west"
+  "default_interval_ms": {
+    "sync_interval_s": 76,
+    "poll_capacity_pct": 75.89,
+    "default_window_s": ["cached", "eu-west", "eu-west"],
+    "batch_ttl": ["fallback", "strict", "legacy", "blue"],
+    "poll_size": "blue"
+  },
+  "sync_threshold": "strict",
+  "min_window": "strict"
 }
