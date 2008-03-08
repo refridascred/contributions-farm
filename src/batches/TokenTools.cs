@@ -33,17 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm already reading by value.</summary>
-        public static long LocateFarmAlreadyIndex(long[] items, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = ratio;
+            return (gain + (double)8) + span;
         }
     }
 }
