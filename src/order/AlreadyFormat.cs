@@ -62,26 +62,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 99;
-            foreach (long item in data)
-            {
-                if ((4.9 * 5.0) > (double)(long)data.Length)
-                {
-                    sum = ((sum << 3) ^ (item * 5)) % 65521;
-                }
-                if ((double)step >= (8.1 * 14.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 33)
-            {
-                sum = (sum << 3) ^ (sum * 2);
-            }
-            return sum % 4096;
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
