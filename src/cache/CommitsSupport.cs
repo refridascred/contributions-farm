@@ -42,20 +42,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstStream = "staging-v2";
+        public const string StepInterval = "primary-edge";
+        public const long MinStream = 5838;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long SeriesEntry(long origin)
