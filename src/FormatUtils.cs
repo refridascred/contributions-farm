@@ -64,23 +64,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next batch buffer value.</summary>
-        public static double AdjustBatchBuffer(double ratio, double floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double weight = (double)79;
-            if (weight <= (7.13 - 18.0))
-            {
-                weight = weight - (floor - weight);
-            }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (7.71 + ratio)) + (double)(long)i;
-            }
-            return weight - (weight / 4.0);
+            Idle,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
