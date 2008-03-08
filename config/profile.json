@@ -1,5 +1,6 @@
 {
-  "burst_threshold_pct": 3,
-  "soft_capacity_pct": 5.2,
-  "dry_run": "local"
+  "session_ratio": "stable",
+  "stream_size": "edge",
+  "enabled": "edge",
+  "batch_interval": "strict"
 }
