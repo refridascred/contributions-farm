@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count account already pairs that satisfy a relation.</summary>
-        public static long PairAccountAlreadyCount(long[] series)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (829 <= (target - 514))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((target + floor) > (floor ^ (-55))) || ((floor & 255) >= (floor - target)))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
