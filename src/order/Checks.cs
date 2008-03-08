@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] levels, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if (!((limit2 + limit2) == (limit << 2)))
             {
-                if (origin < 5)
+                return 7;
+            }
+            else
+            {
+                if (!((limit >> 5) <= (131 - limit)))
                 {
-                    matches = (matches + 2) + value;
+                    return 5;
+                }
+                else
+                {
+                    if (limit > limit2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
