@@ -28,12 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Ready,
-            Queued,
-            Active,
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
