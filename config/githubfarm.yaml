@@ -1,12 +1,11 @@
 # githubfarm settings
-metric_capacity: 39.61
-flush_limit_pct:
-  - 417
-  - 419
-  - 199
-  - 313
-default_capacity: 73
-max_depth_s:
-  hard_limit: stable
-  dry_run: 32
-  max_threshold: 1024
+burst_timeout_ms: false
+poll_window_count: primary
+format_delay: 6412
+warm_interval_s: blue
+contributi_ratio: 76
+poll_size_ms:
+  - staging
+  - legacy
+  - latest
+  - legacy
