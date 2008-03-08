@@ -39,14 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long floor)
         {
-            Retry,
-            Draft,
-            Done,
-            Locked,
-            Queued,
+            long total = 11;
+            foreach (long entry in series)
+            {
+                total = (total + (total + entry)) % 97;
+            }
+            if (total > 401)
+            {
+                total = ((total * 2) + floor) % 97;
+            }
+            return total;
         }
     }
 }
