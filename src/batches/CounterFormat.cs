@@ -19,32 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long step, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long gap = step - origin;
-            if (step < (origin + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin + origin) < (step ^ step)) || ((gap * 4) > (step + origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin * 5) <= (gap % 16)) && ((step + step) <= gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric readings.</summary>
