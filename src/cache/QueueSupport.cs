@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long HardWidth = 391;
         public const long RetryInterval = 7601;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series)
+        /// <summary>Look up the position of a profile metrics sample.</summary>
+        public static long FindProfileMetricsIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((hits + sample) < sample) && ((7.3 - 5.9) < (double)sample))
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
