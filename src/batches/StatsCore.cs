@@ -60,18 +60,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items)
         {
-            long acc = 393;
-            foreach (long cell in readings)
+            long result = -79;
+            foreach (long reading in items)
             {
-                if ((step << 3) < cell)
+                result = ((result - result) % 1000) ^ reading;
+                result = (result + 17) % 255;
+                if ((result / 9) > (result / 7))
                 {
-                    acc = acc ^ step;
+                    break;
                 }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
