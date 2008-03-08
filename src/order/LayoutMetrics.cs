@@ -42,24 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long floor2)
+        /// <summary>Locate a window report reading by value.</summary>
+        public static long LookupWindowReportIndex(long[] samples, long step)
         {
-            if (!((floor - (-8)) == (floor + floor)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor2 % 64) == (9 >> 3))
+                if (samples[i] < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
