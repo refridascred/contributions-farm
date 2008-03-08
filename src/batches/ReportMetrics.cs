@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double ratio, double bias)
         {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            double load = 3.17;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
