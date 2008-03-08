@@ -1,10 +1,7 @@
 {
-  "readonly": "strict",
-  "hard_retries_count": {
-    "batch_capacity_pct": 6638,
-    "cache_delay_s": "blue",
-    "base_threshold_s": "legacy",
-    "readonly": "standard"
-  },
-  "format_window": "blue"
+  "min_timeout_pct": true,
+  "graph_ratio": 94.96,
+  "profile_threshold": "edge",
+  "idle_size": ["eu-west", "blue", "blue", "fallback"],
+  "flush_capacity_ms": "fallback"
 }
