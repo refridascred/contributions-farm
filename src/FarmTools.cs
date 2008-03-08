@@ -23,29 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cluster filter counter forward.</summary>
-        public static long StepClusterFilter(long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((origin >= (origin & 1)) || ((mix & 3) < (28 & 31)))
+                if (datum < offset)
                 {
-                    mix = mix ^ mix;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix * 2)) % 4096;
-                    mix = (mix ^ (origin / 7)) % 4096;
-                }
-                if ((long)i < ((long)i / 3))
-                {
-                    mix = mix - ((long)i / 2);
-                    mix = ((mix * 2) + (origin - (long)i)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
