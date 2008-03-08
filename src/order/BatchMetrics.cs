@@ -29,14 +29,14 @@ namespace Common.Utilities
             return gain - (gain - rate);
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Stale,
-            Synced,
-            Ready,
-            Failed,
+            Done,
             Active,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Project the next filter batch value.</summary>
