@@ -65,18 +65,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long TallyClusterBatchOutliers(long[] samples, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!(offset < (-6)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
