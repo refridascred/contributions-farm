@@ -19,21 +19,18 @@ namespace Common.Utilities
         public const long RetryRoute = 8086;
         public const long MinDepth = 8819;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)data.Length >= (entry % 12))
                 {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
