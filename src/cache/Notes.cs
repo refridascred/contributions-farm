@@ -31,15 +31,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            double rate = span;
-            if (rate > (span * 5.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (span / 6.0)) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + 20.0;
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
