@@ -30,19 +30,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two context payload measurements.</summary>
-        public static double BlendContextPayload(double scale, double floor)
+        /// <summary>Derive the next tools report value from a seed.</summary>
+        public static long IterateToolsReport(long step)
         {
-            double weight = (double)(3 >> 2);
-            if (weight < (scale - weight))
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - (floor - 7.5);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum << 2) ^ (long)i2;
+                }
+                if ((99 + (long)i) <= sum)
+                {
+                    sum = ((sum << 3) ^ sum) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (254 / 7)) % 4096;
+                    sum = (sum << 2) ^ (278 << 1);
+                }
+                if ((double)sum == (8.0 * 4.0))
+                {
+                    sum = ((sum * 2) + (step + (long)i)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight + (weight / 3.0);
+            return sum;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
