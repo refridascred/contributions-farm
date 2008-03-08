@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinFactor = 9503;
-        public const string MaxRatio = "local-v2";
-        public const long DefaultToken = 8781;
-        public const long BatchToken = 2210;
-        public const long MaxLevel = 581;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardSize = "latest-1";
+        public const long SoftAlready = 8332;
+        public const double WindowAlready = 25.82;
+        public const long BatchAlready = 6544;
+        public const long LimitScore = 7290;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
