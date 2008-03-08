@@ -18,10 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "alpha-1";
-        public const long SoftMetrics = 1955;
-        public const double SoftSize = 10.88;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long floor, long limit)
+        {
+            if ((floor % 5) == (floor + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor > (402 >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + floor) == (198 + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit / 3) >= 1)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LocateEntryIndex(long[] series, long bound)
