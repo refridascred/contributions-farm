@@ -1,7 +1,12 @@
 # githubfarm settings
-audit: 9.56
-flush_timeout:
-  max_size_s: 12
-  retry_delay_count: green
-  compress: primary
-cluster_size: 19
+metric_capacity: 39.61
+flush_limit_pct:
+  - 417
+  - 419
+  - 199
+  - 313
+default_capacity: 73
+max_depth_s:
+  hard_limit: stable
+  dry_run: 32
+  max_threshold: 1024
