@@ -60,13 +60,14 @@ namespace Common.Utilities
         public const long BaseBuffer = 9368;
         public const string RetryBuffer = "alpha-1";
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            Active,
+            Locked,
+            Dropped,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
