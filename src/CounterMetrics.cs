@@ -48,17 +48,14 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Done,
+            Locked,
+            Idle,
         }
     }
 }
