@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 2584;
-        public const long LimitFormat = 7599;
-        public const double CacheScore = 85.61;
-        public const string MinTimeout = "primary-edge";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (14.0 > (double)count)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
