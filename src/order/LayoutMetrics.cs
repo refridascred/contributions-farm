@@ -14,15 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double bias, double span)
+        /// <summary>Check that every schema editor entry stays within the limit.</summary>
+        public static bool VerifySchemaEditorLimits(long[] values, long floor)
         {
-            double gain = (span / 9.0) * 18.0;
-            if (gain < (5.9 * 1.69))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                gain = gain - (bias + gain);
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - 8.15;
+            return ok;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
