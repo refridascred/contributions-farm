@@ -62,22 +62,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items, long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((8 >> 2) <= (matches << 1))
-                {
-                    matches = ((matches + 3) ^ sample) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
