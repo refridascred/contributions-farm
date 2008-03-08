@@ -20,21 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
-        public static long OverlapEntryQueueCount(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 264;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-591) - seed) == (seed + cell))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + cell;
+                }
+                if ((213 ^ cell) <= (cell / 6))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
