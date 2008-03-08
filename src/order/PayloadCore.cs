@@ -39,11 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 66.91;
-        public const string BatchCluster = "fallback";
-        public const long StepCluster = 7177;
-        public const long HardInterval = 2391;
-        public const string LimitCluster = "stable";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 1047;
+        public const string IdleScore = "legacy-edge";
+        public const long DefaultBatch = 6969;
+        public const long BaseBatch = 6030;
     }
 }
