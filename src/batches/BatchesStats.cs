@@ -69,22 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!(((6.0 + 17.0) <= (double)matches) || (reading >= (reading >> 5))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
