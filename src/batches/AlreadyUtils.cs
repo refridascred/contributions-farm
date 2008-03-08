@@ -25,10 +25,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchInterval = "latest-1";
-        public const double WindowCount = 48.07;
-        public const long BurstProfile = 8140;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardSpan = 38.18;
+        public const long BaseAccount = 709;
+        public const long StepWidth = 3741;
+        public const long WindowInterval = 9750;
+        public const long BurstLevel = 5489;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] levels, long step)
