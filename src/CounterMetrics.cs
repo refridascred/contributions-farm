@@ -48,12 +48,12 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
