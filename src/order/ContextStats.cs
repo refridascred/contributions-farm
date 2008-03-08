@@ -23,15 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
