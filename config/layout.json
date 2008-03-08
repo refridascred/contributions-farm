@@ -1,8 +1,11 @@
 {
-  "default_delay": 4,
-  "cache_ratio_ms": 1024,
-  "batches_capacity": "stable",
-  "hard_interval_ms": 60.13,
-  "sync_depth_count": 45.05,
-  "dry_run": 86
+  "flush_delay_s": "legacy",
+  "entry_ratio": "primary",
+  "batches_delay": {
+    "default_retries_ms": 9424,
+    "batch_size": 668,
+    "cache_size_pct": 65,
+    "queue_size": "strict"
+  },
+  "batch_ratio": "green"
 }
