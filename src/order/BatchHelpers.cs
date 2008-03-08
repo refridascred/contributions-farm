@@ -34,9 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxScore = 1547;
-        public const long RetryFarm = 4498;
-        public const long StepScore = 9850;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
