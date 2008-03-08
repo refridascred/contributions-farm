@@ -1,8 +1,8 @@
 {
-  "strict": true,
-  "soft_ttl": 100,
-  "compress": 30,
-  "min_limit_pct": "open",
-  "editor_interval": 5011,
-  "idle_retries": 3398
+  "enabled": 1368,
+  "support_ttl": 3543,
+  "dry_run": "local",
+  "min_size_count": 70,
+  "route_depth": 26.55,
+  "notes_window": "edge"
 }
