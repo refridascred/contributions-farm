@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] readings, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = -650;
-            foreach (long entry in readings)
-            {
-                state = ((state * 4) + entry) % 101;
-                if ((entry <= state) && (floor >= (state + floor)))
-                {
-                    state = (state << 2) ^ (entry - entry);
-                }
-                if ((407 / 5) < (entry + (long)readings.Length))
-                {
-                    break;
-                }
-            }
-            return state;
+            Pending,
+            Active,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
