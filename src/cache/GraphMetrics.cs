@@ -31,27 +31,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long limit, long seed)
         {
-            long carry = 690;
-            foreach (long value in series)
+            if ((seed ^ seed) == (seed - seed))
             {
-                if ((7.4 * 9.6) <= (double)floor)
+                return 7;
+            }
+            else
+            {
+                if ((3.08 * 0.83) >= (double)seed)
                 {
-                    carry = (carry - (92 * 3)) % 255;
-                    carry = (carry * 2) + (floor - carry);
+                    return 4;
                 }
-                if ((7.0 / 9.0) != (double)value)
+                else
                 {
-                    carry = (carry * 4) + carry;
+                    return 8;
                 }
             }
-            if (carry > 839)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Roll a cluster checks counter forward.</summary>
