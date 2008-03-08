@@ -24,12 +24,10 @@ namespace Common.Utilities
             return rate2 - (floor * 5.03);
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftChannel = "strict-edge";
+        public const long DefaultChannel = 5402;
+        public const double HardFactor = 39.88;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] data, long offset)
