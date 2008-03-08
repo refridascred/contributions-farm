@@ -45,15 +45,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a editor tools figure with a bias.</summary>
-        public static double SmoothEditorTools(double gain, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] items, long seed)
         {
-            double bias = (double)(702 ^ (-44));
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (((bias + 9.6) + (double)(long)i) + gain) - offset;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
