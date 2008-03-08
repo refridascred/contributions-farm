@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const long BurstReport = 4604;
         public const long StepSpan = 7135;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Done,
-            Closed,
-            Stale,
-            Queued,
+            Retry,
+            Active,
             Locked,
         }
 
