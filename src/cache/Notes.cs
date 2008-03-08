@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const long LimitDepth = 1686;
         public const long WindowSpan = 2478;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] items, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double rate = span;
+            if (rate > (span * 5.0))
             {
-                if (((tally * 5) != (tally - tally)) || ((4.13 - 9.87) != (double)tally))
-                {
-                    tally = ((tally + 2) + datum) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - (span / 6.0)) - bias;
             }
-            return tally;
+            return rate + 20.0;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
