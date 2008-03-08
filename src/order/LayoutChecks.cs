@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long IdleDepth = 6028;
         public const long BatchChannel = 8177;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long seed, long offset)
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long AuditWindowBufferHits(long[] data, long floor)
         {
-            if (((59 * 2) == (offset / 5)) && ((offset + 528) > (offset & 31)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > (4.64 / 8.0))
+                if ((double)floor <= (8.99 / 5.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
