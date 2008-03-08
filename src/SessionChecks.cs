@@ -25,38 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long offset)
+        /// <summary>Check that every buffer already entry stays within the limit.</summary>
+        public static bool GuardBufferAlreadyRange(long[] data, long floor)
         {
-            if ((double)72 >= (double)floor)
+            bool found = true;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (16.0 - 3.53))
+                if (item <= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor > (19.0 / 6.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + 132) >= (offset & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a profile entry.</summary>
