@@ -57,15 +57,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] items)
         {
-            double ratio = (double)237;
-            if (ratio < ratio)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                ratio = ((ratio + (double)461) + bias) + offset;
+                if (!(13.0 < (double)matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return ratio + 5.7;
+            return matches;
         }
     }
 }
