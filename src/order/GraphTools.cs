@@ -21,14 +21,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of context checks entries.</summary>
+        public static long TallyContextChecks(long[] samples)
         {
-            Dropped,
-            Queued,
-            Ready,
-            Paused,
-            New,
+            long state = 2;
+            foreach (long datum in samples)
+            {
+                state = (state + (state / 8)) + datum;
+            }
+            if (state < 36)
+            {
+                state = state - state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Fold a list of already counter readings.</summary>
