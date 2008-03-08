@@ -35,22 +35,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long seed, long target)
         {
-            long result = 869;
-            foreach (long cell in series)
+            if ((seed + target) >= (target - target))
             {
-                if (815 >= cell)
+                return 0;
+            }
+            else
+            {
+                if (target > (target >> 3))
                 {
-                    result = (result ^ (cell + floor)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    result = (result - (floor * 5)) % 1000;
+                    if ((887 / 4) >= (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result % 65521;
         }
     }
 }
