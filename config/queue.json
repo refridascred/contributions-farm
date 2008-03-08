@@ -1,5 +1,5 @@
 {
-  "metrics_interval": 500,
-  "compress": 5.65,
-  "hard_depth_ms": 4.08
+  "buffer_ratio": "edge",
+  "base_timeout": 250,
+  "readonly": "fallback"
 }
