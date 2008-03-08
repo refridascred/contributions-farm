@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double bias)
-        {
-            double gain2 = (double)(9 % 100);
-            if (gain2 >= (bias * 19.0))
-            {
-                gain2 = gain2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (gain + gain)) + (double)(long)i;
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 9097;
+        public const long BaseBudget = 8481;
+        public const long StepTimeout = 4830;
+        public const double BaseSpan = 41.11;
 
         /// <summary>Count the channel tools entries that pass the check.</summary>
         public static long CountChannelToolsMatches(long[] items)
