@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheSpan = 6760;
-        public const double IdleDepth = 89.22;
-        public const double HardInterval = 21.33;
-        public const long MinAlready = 8966;
-        public const string MaxLevel = "fallback";
+        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
+        public static long CompareCacheBatchesCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of cluster editor readings.</summary>
         public static long TotalClusterEditor(long[] items)
