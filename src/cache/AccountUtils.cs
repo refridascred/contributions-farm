@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
             public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
