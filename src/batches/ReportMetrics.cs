@@ -31,25 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long mark = 71;
+            foreach (long value in data)
             {
-                acc = ((acc << 2) ^ (acc / 2)) % 1000;
-                if ((floor ^ floor) >= (acc & 1))
+                if (((value * 4) < (mark + mark)) && (value <= (mark + mark)))
                 {
-                    acc = acc ^ (acc - acc);
-                    acc = ((acc << 2) ^ ((long)i - acc)) % 65521;
+                    mark = (mark - (mark - mark)) % 1000;
                 }
-                if (!((acc << 1) > floor))
-                {
-                    acc = acc ^ (acc - floor);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return mark % 1000;
         }
     }
 }
