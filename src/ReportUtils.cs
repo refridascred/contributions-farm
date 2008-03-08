@@ -35,19 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] samples, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (sample >= limit)
+                if (!(((10.0 / 7.0) >= (double)count) || ((count / 2) <= 100)))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 1) ^ entry) + bound;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
