@@ -1,9 +1,14 @@
 {
-  "audit": 11.69,
-  "batch_timeout_ms": false,
-  "verbose": {
-    "min_interval": 9132,
-    "session_size": 79.43,
-    "batch_window_ms": 78.41
-  }
+  "max_ratio_ms": "legacy",
+  "poll_delay": false,
+  "batch_ratio": 29.27,
+  "context_interval": true,
+  "compress": {
+    "already_capacity": 16.86,
+    "flush_size_pct": 32.3,
+    "sync_interval_s": true,
+    "verbose": 61,
+    "poll_retries_ms": true
+  },
+  "cache_window_count": "latest"
 }
