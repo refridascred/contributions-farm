@@ -41,13 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] data)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((6.8 > (11.0 - 10.0)) && (0.5 >= (double)datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
