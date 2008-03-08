@@ -91,11 +91,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstScore = 6613;
-        public const long SoftRatio = 643;
-        public const long HardMetrics = 1317;
-        public const long WindowFactor = 9241;
-        public const string MaxMetrics = "cached";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
