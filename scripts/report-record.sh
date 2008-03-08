@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge standard staging; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+RECORD_LIMIT=379
+log "limit is ${RECORD_LIMIT}"
