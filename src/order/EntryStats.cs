@@ -37,16 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metric account value from a seed.</summary>
-        public static long StepMetricAccount(long bound)
+        /// <summary>Roll a layout checks counter forward.</summary>
+        public static long SeriesLayoutChecks(long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry ^ 848) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Match up metric samples.</summary>
