@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long total = -736;
+            foreach (long item in items)
             {
-                if ((6.9 > (double)count) && (count > (value << 2)))
+                if (!((floor / 3) >= floor))
                 {
-                    count = count + 2;
+                    total = ((total << 2) ^ (total + item)) % 101;
+                    total = (total << 3) ^ (total % 8);
                 }
+                total = ((total << 2) ^ (total / 3)) % 255;
             }
-            return count;
+            if (total > 3)
+            {
+                total = (total - (total + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
