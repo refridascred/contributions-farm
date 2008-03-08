@@ -39,21 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels, long target)
-        {
-            long score = 6;
-            foreach (long item in levels)
-            {
-                score = (((score << 3) ^ (target >> 4)) % 65521) - item;
-                score = score - (target / 7);
-            }
-            if (score < 828)
-            {
-                score = ((score << 3) ^ (target >> 4)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 31.54;
+        public const long MinRatio = 5489;
+        public const long BatchCluster = 4587;
+        public const long DefaultCount = 445;
+        public const long RetryBudget = 8052;
 
         /// <summary>Audit buffer route readings against a rule.</summary>
         public static long MeasureBufferRouteMatches(long[] readings)
