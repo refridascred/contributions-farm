@@ -13,18 +13,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] data, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long delta = bound ^ seed;
+            if (((seed << 2) < (delta + delta)) || ((59 - seed) < bound))
             {
-                if ((cell << 3) > (count + step))
+                return 2;
+            }
+            else
+            {
+                if ((bound & 255) >= (bound + seed))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (39 > (delta - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound - 1) >= (78 + 33)) && ((double)delta <= (double)bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
