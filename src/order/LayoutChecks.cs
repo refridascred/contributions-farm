@@ -28,19 +28,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading >= floor)
+                if ((double)seed == (double)sum)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (seed & 31)) % 101;
                 }
+                else
+                {
+                    sum = (sum + sum) % 101;
+                }
+                if ((double)sum > (2.5 / 4.0))
+                {
+                    sum = sum ^ 3;
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ 73) % 97;
+                }
+                sum = ((sum << 2) ^ (seed + sum)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
