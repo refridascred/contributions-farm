@@ -52,17 +52,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
