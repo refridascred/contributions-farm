@@ -1,31 +1,8 @@
 # githubfarm settings
-flush_size_pct:
-  cache_retries_count: false
-  support_depth: 1217
-  soft_depth_ms: green
-  base_ttl: false
-poll_size_ms:
-  poll_size_ms:
-    - strict
-    - legacy
-    - edge
-  readonly: 1983
-  flush_size: legacy
-  cache_size_count: 1024
-  audit:
-    - 312
-    - 311
-  counter_timeout: blue
-account_ratio: edge
-metric_capacity:
-  editor_limit: 30
-  max_depth_s:
-    - 280
-    - 78
-    - 135
-    - 311
-  persist: false
-context_size:
-  - stable
-  - fallback
-  - primary
+warm_timeout_count: false
+checks_size: false
+cache_interval_count: open
+queue_delay:
+  - 221
+  - 80
+  - 272
