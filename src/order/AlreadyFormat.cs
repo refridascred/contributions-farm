@@ -63,13 +63,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 6144;
+        public const string MinFarm = "open-v2";
+        public const string DefaultFarm = "cached-edge";
+        public const string IdleWidth = "strict";
     }
 }
