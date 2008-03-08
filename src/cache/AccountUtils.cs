@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstSize = 51.18;
-        public const double HardEditor = 86.12;
-        public const long IdleFactor = 282;
-        public const double DefaultEditor = 30.68;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long step, long target)
+        {
+            if ((step - step) > (3 ^ step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8 <= (9 - step)) && (step <= (48 << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-2) % 97) <= (step / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)target >= (9.0 * 0.83)) && ((target + step) <= (target - step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
