@@ -27,13 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            Paused,
-            Ready,
-            Draft,
-            Pending,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score ^ 20) % 65521;
+                long cur = (score / 2) + 91;
+                score = (score ^ (cur - limit)) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Rank window input into a small class.</summary>
