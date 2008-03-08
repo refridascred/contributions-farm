@@ -1,8 +1,19 @@
 {
-  "farm_interval": 1024,
-  "hard_delay_s": [434, 207, 85],
-  "min_capacity": "local",
-  "farm_capacity": 63,
-  "default_interval_pct": 100,
-  "hard_size_ms": 4104
+  "support_threshold": {
+    "hard_size": {
+      "persist": 945,
+      "support_timeout": "edge",
+      "buffer_ratio": [349, 366, 469, 45],
+      "retry_window_ms": [154, 12, 335],
+      "idle_ttl": 500
+    },
+    "already_capacity": 23,
+    "farm_window": ["open", "edge"],
+    "default_delay_ms": true,
+    "command_window": 30
+  },
+  "flush_threshold_s": true,
+  "warm_delay": 8,
+  "retry_interval_count": 65.05,
+  "idle_ratio_pct": 80.25
 }
