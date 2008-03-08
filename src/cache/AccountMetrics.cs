@@ -71,22 +71,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((9.0 / 6.0) > (double)matches)
+                if (((mark >> 5) < mark) || ((double)mark <= 7.1))
                 {
-                    matches = (matches + 2) + reading;
+                    mark = ((mark * 5) + mark) % 97;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
