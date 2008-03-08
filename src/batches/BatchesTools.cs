@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] data, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mix = 908;
-            foreach (long reading in data)
-            {
-                if (((mix + reading) < (seed ^ 3)) || ((0 - mix) >= 175))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
