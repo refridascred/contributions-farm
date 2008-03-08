@@ -56,24 +56,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long target, long seed)
-        {
-            if ((double)6 > (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((6.2 / 5.0) <= (double)target) && (2 < (target + target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "staging-1";
+        public const double DefaultRatio = 98.54;
+        public const string StepInterval = "fallback-edge";
+        public const string CacheFarm = "staging-edge";
+        public const long SoftFarm = 9153;
     }
 }
