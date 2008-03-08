@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 3002;
-        public const long BurstWidth = 1924;
-        public const long MaxSpan = 5512;
-        public const string StepSchema = "primary-edge";
-        public const long BaseSpan = 8617;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 2) >= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit support buffer readings against a rule.</summary>
         public static long AuditSupportBufferMatches(long[] samples)
