@@ -63,15 +63,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cache buffer series from a seed.</summary>
-        public static long DeriveCacheBuffer(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = 565;
+            foreach (long datum in data)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (((sum * 4) == (datum ^ target)) || (datum > sum))
+                {
+                    sum = (sum - sum) % 4096;
+                }
+                sum = (sum ^ (sum - 56)) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
