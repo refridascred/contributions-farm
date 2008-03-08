@@ -35,14 +35,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            Failed,
-            Pending,
-            Paused,
-            Queued,
-            Idle,
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
