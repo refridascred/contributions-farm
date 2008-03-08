@@ -67,12 +67,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            Retry,
-            Paused,
-            Draft,
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix - (426 - offset)) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
