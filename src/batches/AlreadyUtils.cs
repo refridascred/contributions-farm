@@ -30,19 +30,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] levels, long step)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
