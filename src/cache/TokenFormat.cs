@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] series, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = 74;
+            foreach (long entry in samples)
             {
-                if (!((double)cell != (8.71 * 1.66)))
+                state = state + state;
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = (matches + 1) + limit;
+                    state = ((state ^ (state - entry)) % 65521) ^ (long)i;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state * 4) + (30 + state);
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a record options.</summary>
