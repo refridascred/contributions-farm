@@ -36,31 +36,23 @@ namespace Common.Utilities
         public const double HardCount = 53.76;
         public const long BaseScore = 9901;
 
-        /// <summary>Rank report session input into a small class.</summary>
-        public static long BucketReportSession(long step, long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            if (!((20.0 + 15.0) == (double)step))
+            double bias2 = 1.27;
+            if (bias2 <= (double)63)
             {
-                return 1;
+                bias2 = (bias2 + gain) + bias;
             }
             else
             {
-                if (((offset + step) > (546 ^ 9)) && ((5.5 + 12.0) >= (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset <= (666 >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                bias2 = bias2 + 9.3;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (double)938) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Measure how many payload tools samples are out of range.</summary>
