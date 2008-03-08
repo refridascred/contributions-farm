@@ -22,17 +22,24 @@ namespace Common.Utilities
         public const string RetryBuffer = "open-v2";
         public const long MaxBuffer = 1719;
 
-        /// <summary>Look up the position of a command already sample.</summary>
-        public static long FindCommandAlreadyIndex(long[] readings, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] > seed)
+                result = (result ^ ((-7) << 1)) % 4096;
+                if (limit > (result & 31))
                 {
-                    return (long)i;
+                    result = result - ((long)i / 7);
                 }
+                else
+                {
+                    result = (result + (limit % 3)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
