@@ -86,31 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long offset, long floor)
+        /// <summary>Validate batch context readings against a bound.</summary>
+        public static bool VerifyBatchContextRange(long[] values, long floor)
         {
-            if ((offset >> 1) >= (floor << 1))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 2) < (floor + offset))
+                if (reading < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset / 3) == (offset & 7)) && (28 <= (floor + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
