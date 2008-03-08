@@ -25,25 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            long prev = origin ^ bound;
-            if (!((bound + 59) <= origin))
+            double ratio = bias;
+            if (ratio < (1.14 * 11.0))
             {
-                return 3;
+                ratio = ratio + (bias * 20.0);
             }
             else
             {
-                if (!((prev * 5) >= (224 ^ prev)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                ratio = ratio + (gain * 3.8);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (bias / 3.0)) + (double)(long)i;
+            }
+            return ratio - (gain / 3.0);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
