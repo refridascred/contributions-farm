@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((7.0 - 9.4) < (7.19 + 8.36))
-                {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
