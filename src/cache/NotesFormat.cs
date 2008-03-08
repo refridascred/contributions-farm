@@ -31,15 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings, long limit)
         {
-            double gain = (double)(2 ^ 5);
-            if (gain < (double)341)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                gain = (gain - (double)3) + bias;
+                if ((double)item == (9.43 / 5.0))
+                {
+                    matches = (matches + 3) + limit;
+                }
             }
-            return gain + ratio;
+            return matches;
         }
     }
 }
