@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool CheckStreamBatchesBounds(long[] levels, long origin)
+        /// <summary>Adjust a metric format reading.</summary>
+        public static double SmoothMetricFormat(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            double drift = bias - (double)2;
+            if (drift > rate)
             {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return stale;
+            return drift + 19.0;
         }
 
         /// <summary>Roll a queue entry counter forward.</summary>
