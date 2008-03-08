@@ -1,7 +1,8 @@
 {
-  "graph_ttl": [37, 380],
-  "soft_timeout_pct": "local",
-  "compress": 100,
-  "retry_interval": 4657,
-  "strict": "primary"
+  "compress": 32,
+  "default_retries_s": false,
+  "audit": 2553,
+  "contributi_timeout": "standard",
+  "poll_threshold_pct": true,
+  "min_delay_ms": ["local", "eu-west", "stable"]
 }
