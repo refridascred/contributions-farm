@@ -52,19 +52,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] samples, long target)
+        /// <summary>Validate queue payload readings against a bound.</summary>
+        public static bool GuardQueuePayloadLimits(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (reading >= target)
+                if (item != step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the route level values.</summary>
