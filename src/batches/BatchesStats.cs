@@ -24,12 +24,31 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long step, long bound)
         {
-            Ready,
-            Active,
-            Idle,
+            if ((step * 5) < (bound % 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step != (12.0 + 13.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((3.46 * 0.57) != (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
