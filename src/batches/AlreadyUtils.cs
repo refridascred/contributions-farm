@@ -46,12 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Ready,
-            Active,
-            Draft,
+            Idle,
+            Dropped,
+            Pending,
+            Failed,
             Stale,
         }
     }
