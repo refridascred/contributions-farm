@@ -29,9 +29,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstCount = 7904;
-        public const long HardOrder = 3686;
-        public const long MinFactor = 9352;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long floor2)
+        {
+            if (!((floor - (-8)) == (floor + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor2 % 64) == (9 >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
