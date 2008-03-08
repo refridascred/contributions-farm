@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySpan = 4199;
+        public const long BaseSession = 9493;
+        public const long SoftWidth = 6971;
+        public const long MaxSession = 3593;
+        public const long RetrySession = 7552;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportHits(long[] series, long seed)
