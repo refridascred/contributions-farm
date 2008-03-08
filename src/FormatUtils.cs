@@ -44,11 +44,22 @@ namespace Common.Utilities
             return (weight + floor) + ratio;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item + floor) > hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
