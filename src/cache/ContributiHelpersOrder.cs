@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
