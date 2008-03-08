@@ -1,13 +1,6 @@
 # support settings
-burst_timeout_ms:
-  - edge
-  - open
-  - blue
-  - strict
-hard_limit_pct:
-  format_depth: 5110
-  base_ttl_s:
-    - eu-west
-    - open
-  buffer_delay: green
-default_threshold_ms: 5023
+min_window_ms: primary
+poll_capacity: 1467
+max_timeout_count: false
+persist: 7832
+editor_size: 3
