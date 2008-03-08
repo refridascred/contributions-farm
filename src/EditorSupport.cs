@@ -36,11 +36,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the route level values.</summary>
