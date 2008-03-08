@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "legacy";
-        public const long DefaultBudget = 8752;
-        public const string CacheSize = "stable-v2";
-        public const long CacheBudget = 7099;
-        public const long CacheStream = 3230;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Active,
+            Draft,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long origin)
