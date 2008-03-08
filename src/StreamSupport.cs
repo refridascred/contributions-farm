@@ -17,15 +17,34 @@ namespace Common.Utilities
         public const long SoftSize = 3889;
         public const long MaxWidth = 7147;
 
-        /// <summary>Digest a series of schema session entries.</summary>
-        public static long TallySchemaSession(long[] series, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long mark = 8;
-            foreach (long datum in series)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mark = ((mark << 2) ^ (mark - floor)) + datum;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (((acc * 5) + (acc * 5)) % 255) ^ (long)i2;
+                    acc = acc - (acc % 24);
+                }
+                if ((limit % 7) > acc)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (long)i) % 255;
+                }
+                if ((double)(long)i != (19.0 - 5.4))
+                {
+                    acc = ((acc << 3) ^ acc) % 97;
+                    acc = ((acc * 4) + acc) % 97;
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return mark % 4096;
+            return acc;
         }
     }
 }
