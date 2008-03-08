@@ -41,24 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double ratio, double span)
         {
-            if ((offset < 702) && ((14.0 / 9.0) < (double)target))
+            double bias = (double)312 / 7.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                bias = (bias + ratio) + (double)(long)i;
             }
-            else
-            {
-                if ((45 - target) <= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return bias + span;
         }
 
         /// <summary>Hold a report record.</summary>
