@@ -1,13 +1,5 @@
 {
-  "dry_run": 6917,
-  "default_delay": [84, 29, 251],
-  "default_limit": 100,
-  "poll_timeout_s": {
-    "compress": 61,
-    "default_timeout_ms": 9267,
-    "notes_timeout": [248, 412, 23, 122],
-    "base_timeout_ms": 35.13
-  },
-  "min_limit_pct": 8249,
-  "sync_delay_count": true
+  "burst_ratio_count": ["standard", "edge", "staging"],
+  "persist": "legacy",
+  "base_ratio_s": false
 }
