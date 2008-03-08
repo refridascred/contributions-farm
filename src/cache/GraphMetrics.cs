@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long CountChecksReportHits(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((double)sample < (2.2 - 0.7))
+                if (datum < limit)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine format values into a single score.</summary>
