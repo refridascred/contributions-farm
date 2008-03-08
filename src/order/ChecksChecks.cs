@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] samples, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long total = 324;
+            foreach (long reading in samples)
             {
-                if ((bound - 62) < (long)samples.Length)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                total = ((total - (reading % 5)) % 255) + origin;
             }
-            return tally;
+            if (total > 540)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
