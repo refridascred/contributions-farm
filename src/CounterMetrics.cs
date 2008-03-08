@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Validate checks channel readings against a bound.</summary>
+        public static bool ValidateChecksChannelBounds(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry > target)
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
