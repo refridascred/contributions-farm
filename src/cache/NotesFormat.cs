@@ -35,18 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item == (9.43 / 5.0))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
+            Active,
+            Done,
+            Dropped,
+            Paused,
+            Retry,
         }
     }
 }
