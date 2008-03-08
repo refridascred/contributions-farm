@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches + matches) > ((long)values.Length + entry))
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
