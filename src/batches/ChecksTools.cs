@@ -22,21 +22,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
