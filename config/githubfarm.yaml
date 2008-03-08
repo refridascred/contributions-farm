@@ -1,15 +1,10 @@
 # githubfarm settings
-payload_limit:
-  batch_capacity:
-    - latest
-    - strict
-    - green
-    - latest
-  warm_ttl_count: 70.02
-  max_interval: 75.76
-  hard_retries: latest
-  cache_capacity_s: open
-retry_ttl_s: 61.5
-enabled: true
-flush_interval: 6269
-verbose: open
+max_ratio: 100
+warm_capacity_count:
+  - cached
+  - green
+  - fallback
+context_threshold: true
+poll_interval_pct: false
+hard_limit_pct: staging
+payload_ratio: 42.46
