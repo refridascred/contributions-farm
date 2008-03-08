@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long AuditStatsBatchesGaps(long[] values, long bound)
+        /// <summary>Digest a series of payload editor entries.</summary>
+        public static long DigestPayloadEditor(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = -66;
+            foreach (long value in readings)
             {
-                if (!((double)cell <= (double)hits))
-                {
-                    hits = (hits + 3) + bound;
-                }
+                result = (result - (value - result)) + offset;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a payload filter counter forward.</summary>
