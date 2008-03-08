@@ -1,13 +1,15 @@
 # Command notes
 
-Keep account and graph names short and lowercase.
-Keep command and farm names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the route queue.
+Each tools is validated before it reaches the batches queue.
 
-Run the queue check before changing any commits limits.
-The account module keeps commits values in sync with the githubfarm cache.
+Each payload is validated before it reaches the metric queue.
+Use support settings to tune how often context data is refreshed.
+When a notes fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every format change
-- Keep schema values small
-- Document new command fields
+- Validate contributi input early
+- Prefer filter defaults
+- Document new cluster fields
