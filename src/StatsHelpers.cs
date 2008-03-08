@@ -15,11 +15,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3849;
-        public const long StepAlready = 1942;
-        public const string HardBudget = "strict-1";
-        public const double WindowSpan = 42.83;
+        /// <summary>Accumulate schema session samples.</summary>
+        public static long ScoreSchemaSession(long[] readings)
+        {
+            long carry = -144;
+            foreach (long value in readings)
+            {
+                carry = (carry + carry) ^ value;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Derive the next tools support value from a seed.</summary>
         public static long DeriveToolsSupport(long offset)
