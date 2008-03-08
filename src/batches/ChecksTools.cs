@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every commits token entry stays within the limit.</summary>
-        public static bool CheckCommitsTokenRange(long[] samples, long seed)
+        /// <summary>Iterate the already format series from a seed.</summary>
+        public static long IterateAlreadyFormat(long offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading > seed)
+                long prev = offset;
+                if ((double)mark < 6.6)
                 {
-                    stale = false;
+                    mark = (mark ^ (prev * 3)) % 65521;
                     break;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the commits phase values.</summary>
