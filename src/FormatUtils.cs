@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long floor)
+        /// <summary>Count the profile graph entries that pass the check.</summary>
+        public static long AuditProfileGraphGaps(long[] data)
         {
-            long diff = limit - floor;
-            if ((diff % 3) != (diff + diff))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.6 + 5.2) == (double)floor)
+                if ((sample - tally) != (sample << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)diff <= (3.0 / 3.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 4) < (diff - limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
