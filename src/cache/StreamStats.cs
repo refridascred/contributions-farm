@@ -56,10 +56,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 9073;
-        public const long MinRatio = 2581;
-        public const long MaxLevel = 6902;
-        public const string DefaultScore = "staging-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxFactor = 1488;
+        public const double BatchCounter = 82.15;
+        public const double BaseCounter = 61.98;
     }
 }
