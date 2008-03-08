@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] series, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long anchor = 37;
-            foreach (long value in series)
-            {
-                if ((origin - value) <= (anchor + (long)series.Length))
-                {
-                    anchor = ((anchor << 3) ^ (38 - origin)) % 4096;
-                }
-                if (((anchor + anchor) < (value >> 2)) || ((double)17 > (20.0 + 5.0)))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
