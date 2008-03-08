@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 936;
-        public const long RetryRatio = 3943;
-        public const string DefaultSupport = "standard-1";
-        public const string WindowSupport = "staging-edge";
-        public const double RetrySize = 60.32;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) >= (hits - 9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the format token entries that pass the check.</summary>
         public static long MeasureFormatTokenOutliers(long[] readings)
