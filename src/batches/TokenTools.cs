@@ -36,22 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            long mark = 9;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (6 <= (item + item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 3) ^ mark) % 4096;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return count;
         }
     }
 }
