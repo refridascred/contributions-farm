@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 778;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ cell) - seed;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many schema command samples are out of range.</summary>
