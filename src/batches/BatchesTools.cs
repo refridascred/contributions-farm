@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Active,
-            Closed,
-            Retry,
-            Stale,
             Synced,
+            Locked,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
