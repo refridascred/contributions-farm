@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long seed, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            if ((7.8 / 3.0) >= (double)seed)
+            double weight = 4.54;
+            if (weight > (double)(-2))
             {
-                return 5;
+                weight = (weight - ratio) - floor;
             }
             else
             {
-                if ((double)limit < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (limit & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((16 - seed) < (seed - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = weight + (weight - 16.0);
             }
+            return weight - (weight * 3.4);
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
