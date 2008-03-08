@@ -19,25 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long span = target + origin;
-            if (target >= (span / 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span / 6) > 388)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
