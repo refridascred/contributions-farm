@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Find the first githubfarm route entry that matches the target.</summary>
+        public static long LocateGithubfarmRouteIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] <= step)
+                if (items[i] >= target)
                 {
                     return (long)i;
                 }
