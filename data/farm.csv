@@ -1,7 +1,7 @@
-id,level,rank,active
-1,882,297,260
-2,78.24,open,eu-west
-3,618,443,cached
-4,legacy,31,280
-5,24.3,cached,537
-6,712,58.37,stable
+id,state,weight,count
+1,cached,138,614
+2,9.83,794,171
+3,32,cached,963
+4,39.48,legacy,local
+5,fallback,27,blue
+6,64.86,225,stable
