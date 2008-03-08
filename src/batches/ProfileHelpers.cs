@@ -60,18 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (!((value - 567) == (16 << 1)))
+                if (reading != step)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
