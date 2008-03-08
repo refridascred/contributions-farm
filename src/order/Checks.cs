@@ -24,21 +24,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Iterate the counter filter series from a seed.</summary>
+        public static long StepCounterFilter(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = acc ^ (acc * 3);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count the graph layout entries that pass the check.</summary>
