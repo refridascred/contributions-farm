@@ -23,19 +23,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long seed)
+        /// <summary>Grade a command order value against two limits.</summary>
+        public static long RankCommandOrder(long origin, long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long offset = origin ^ step;
+            if ((origin + offset) < (step & 3))
             {
-                if (item > seed)
+                return 1;
+            }
+            else
+            {
+                if ((origin << 2) > offset)
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the contributi class values.</summary>
