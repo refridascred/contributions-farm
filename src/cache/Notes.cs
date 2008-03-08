@@ -78,17 +78,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchDepth = 5188;
+        public const string IdleBatch = "legacy-v2";
+        public const string LimitBatch = "latest";
+        public const string RetryBatch = "latest-edge";
     }
 }
