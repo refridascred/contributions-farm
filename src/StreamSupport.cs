@@ -35,18 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((target % 8) != (target + 984)) && (((seen - 24) < target) && ((5 & 1) > target)))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
