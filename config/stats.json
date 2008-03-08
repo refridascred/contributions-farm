@@ -1,8 +1,15 @@
 {
-  "burst_limit_count": "fallback",
-  "hard_threshold_count": true,
-  "retry_window": 61,
-  "enabled": "legacy",
-  "default_interval": 9,
-  "batch_depth_count": "eu-west"
+  "min_delay_s": ["green", "blue"],
+  "default_interval_count": false,
+  "persist": {
+    "batch_ratio_pct": "edge",
+    "warm_threshold_pct": "cached",
+    "poll_depth_ms": {
+      "min_retries": "edge",
+      "audit": 85.92,
+      "graph_retries": 58.71
+    },
+    "support_window": "local"
+  },
+  "soft_interval_count": false
 }
