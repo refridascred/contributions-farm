@@ -1,6 +1,7 @@
-id,score,region,token
-1,647,46.24,724
-2,latest,22.89,127
-3,legacy,legacy,419
-4,latest,347,cached
-5,505,2.83,8
+id,state,weight,region
+1,552,677,local
+2,strict,241,692
+3,primary,648,51.28
+4,474,520,60.17
+5,72.89,930,47.58
+6,1.79,37.98,eu-west
