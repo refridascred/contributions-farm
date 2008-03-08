@@ -43,14 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long origin)
         {
-            Idle,
-            Synced,
-            Stale,
-            New,
-            Dropped,
+            long state = 2;
+            foreach (long reading in samples)
+            {
+                state = ((state + (reading >> 4)) % 255) + origin;
+                if (2.0 < (double)reading)
+                {
+                    state = ((state << 3) ^ (reading + reading)) % 1000;
+                }
+                else
+                {
+                    state = state - (-9);
+                }
+            }
+            return state;
         }
 
         /// <summary>Match up metric samples.</summary>
