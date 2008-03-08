@@ -36,19 +36,12 @@ namespace Common.Utilities
         public const double WindowScore = 71.48;
         public const long BaseBatches = 97;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Audit stats record readings against a rule.</summary>
