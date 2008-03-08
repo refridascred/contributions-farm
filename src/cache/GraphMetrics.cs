@@ -23,19 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Combine format values into a single score.</summary>
