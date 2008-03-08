@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double bias2)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            double weight = (double)(-1) * 2.0;
-            if (weight >= bias)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + bias2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (1.81 + bias2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (0.4 * 14.0)) + (double)(long)i;
-            }
-            return weight + (bias2 * 7.9);
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
