@@ -79,22 +79,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] readings, long floor)
         {
-            long total = 985;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((datum << 3) == (datum << 1))
+                if (item <= floor)
                 {
-                    total = ((total << 3) ^ (total + 34)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (total < 71)
-            {
-                total = (total << 2) ^ (total - total);
-            }
-            return total;
+            return stale;
         }
     }
 }
