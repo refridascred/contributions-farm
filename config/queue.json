@@ -1,23 +1,7 @@
 {
-  "compress": {
-    "githubfarm_limit": "open",
-    "checks_depth": {
-      "base_size_ms": 2945,
-      "soft_delay_count": 16.69,
-      "min_retries_s": "stable"
-    },
-    "metrics_interval": 250,
-    "audit": {
-      "burst_delay_s": 61,
-      "base_delay_ms": 23.85,
-      "buffer_depth": "fallback",
-      "command_depth": 7396,
-      "metric_timeout": false,
-      "queue_ratio": 50.47
-    }
-  },
-  "cache_retries_s": 5289,
-  "session_timeout": 55.61,
-  "route_window": 38,
-  "dry_run": true
+  "queue_size": 5444,
+  "strict": "primary",
+  "verbose": 1.61,
+  "retry_ttl": "green",
+  "sync_size_pct": 500
 }
