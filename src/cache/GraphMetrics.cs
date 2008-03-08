@@ -49,12 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload stream reading by value.</summary>
-        public static long LocatePayloadStreamIndex(long[] readings, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
