@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark << 3) ^ target;
-                mark = mark ^ (17 - mark);
-                mark = mark - target;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((double)160 != (double)(long)levels.Length)
+                {
+                    hits = ((hits + 2) + entry) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
