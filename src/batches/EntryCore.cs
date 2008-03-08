@@ -46,16 +46,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
