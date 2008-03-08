@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long step, long step2)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            if ((step2 > (step + step2)) && ((double)step2 >= 12.0))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 - step2) >= (step2 + step))
+                if ((count + cell) >= 280)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step2 > (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
