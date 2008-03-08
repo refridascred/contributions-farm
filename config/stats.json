@@ -1,7 +1,11 @@
 {
-  "dry_run": false,
-  "warm_delay": ["edge", "open", "staging"],
-  "min_ttl_count": "standard",
-  "enabled": 6.51,
-  "default_threshold_count": ["edge", "strict", "eu-west", "standard"]
+  "idle_depth_pct": 1874,
+  "hard_capacity_ms": true,
+  "schema_window": 95.45,
+  "flush_retries_pct": "strict",
+  "dry_run": {
+    "default_capacity_s": "eu-west",
+    "verbose": 100,
+    "githubfarm_ttl": 7229
+  }
 }
