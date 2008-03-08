@@ -15,18 +15,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((entry * 3) != (58 & 7)) || ((seen & 255) == (entry + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Retry,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
