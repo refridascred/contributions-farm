@@ -13,16 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of stats schema entries.</summary>
-        public static long DigestStatsSchema(long[] samples)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = 503;
-            foreach (long value in samples)
-            {
-                mix = (mix + (mix - value)) % 97;
-                mix = ((mix * 2) + (18 * 5)) % 101;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Draft,
+            Pending,
         }
 
         /// <summary>Accumulate graph samples.</summary>
