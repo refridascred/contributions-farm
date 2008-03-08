@@ -16,21 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up metrics queue samples.</summary>
-        public static long OverlapMetricsQueueCount(long[] data)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
