@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            if ((47 << 2) >= limit)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (((result * 2) + ((long)i & 3)) % 255) ^ (long)i2;
-                    result = (result + (result ^ origin)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((228 > (target + target)) && ((target ^ 825) == (limit & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 4) >= (target / 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
