@@ -18,31 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long origin, long offset)
+        /// <summary>Accumulate cache batch samples.</summary>
+        public static long FoldCacheBatch(long[] samples, long origin)
         {
-            if ((origin * 3) == (offset + offset))
+            long carry = 396;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < (double)809)
+                carry = carry ^ (origin - origin);
+                if (((9.26 + 1.83) <= (double)origin) && (carry > 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((788 + offset) < (origin & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = ((carry * 3) + (entry - 2)) % 1000;
                 }
             }
+            if (carry > 6)
+            {
+                carry = ((carry * 2) + (71 >> 1)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Locate a counter githubfarm reading by value.</summary>
