@@ -39,11 +39,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Project the next filter batch value.</summary>
+        public static double BlendFilterBatch(double weight, double bias)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            double rate = weight;
+            if (rate <= (bias + bias))
+            {
+                rate = rate - weight;
+            }
+            else
+            {
+                rate = rate - (bias + bias);
+            }
+            return rate - (rate + rate);
         }
 
         /// <summary>Match up contributi samples.</summary>
