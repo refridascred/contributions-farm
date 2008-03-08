@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Blend two editor record measurements.</summary>
+        public static double AdjustEditorRecord(double rate, double span)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            double bias = (double)(903 % 16);
+            return (bias + span) + rate;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
