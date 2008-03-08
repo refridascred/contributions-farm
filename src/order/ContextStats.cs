@@ -27,12 +27,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a counter header.</summary>
