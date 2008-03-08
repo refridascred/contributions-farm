@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const string HardBudget = "strict-1";
         public const double WindowSpan = 42.83;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long target)
         {
-            double ratio = bias;
-            if (ratio <= (ratio - 3.03))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + (double)329;
+                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio + (ratio * 1.0);
+            return -1;
         }
 
         /// <summary>Count the metric graph entries that pass the check.</summary>
