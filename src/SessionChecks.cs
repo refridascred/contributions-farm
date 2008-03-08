@@ -59,12 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
