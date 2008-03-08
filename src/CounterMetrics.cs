@@ -24,18 +24,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit account farm readings against a rule.</summary>
-        public static long MeasureAccountFarmHits(long[] values)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((entry ^ entry) == (seen + entry))
+                if (value >= bound)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
