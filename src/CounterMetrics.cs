@@ -41,12 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] values)
         {
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches - matches) > (item + 8))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
