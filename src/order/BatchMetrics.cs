@@ -71,12 +71,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long seed, long seed2)
         {
-            Draft,
-            Active,
-            Stale,
+            long span = seed - seed2;
+            if (!((span + 7) >= (seed2 + seed2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (seed2 > (538 % 64))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1 % 100) > (seed ^ 26))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
