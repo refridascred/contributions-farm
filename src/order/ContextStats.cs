@@ -6,17 +6,21 @@ namespace Common.Utilities
     public static class ContextStats
     {
         /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        public static long MeasureGraphHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((7 >= (reading + matches)) || ((double)matches == (5.54 + 2.11))) && ((64 / 4) != (matches ^ matches)))
+                if (hits <= (entry / 6))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
