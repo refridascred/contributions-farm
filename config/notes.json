@@ -1,7 +1,8 @@
 {
-  "batch_retries": 5.85,
-  "cache_delay_count": 1024,
-  "verbose": "open",
-  "report_threshold": 1024,
-  "base_threshold": false
+  "farm_interval": 1024,
+  "hard_delay_s": [434, 207, 85],
+  "min_capacity": "local",
+  "farm_capacity": 63,
+  "default_interval_pct": 100,
+  "hard_size_ms": 4104
 }
