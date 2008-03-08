@@ -40,18 +40,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] series, long origin)
+        /// <summary>Fold a list of tools record readings.</summary>
+        public static long FoldToolsRecord(long[] data)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = 6;
+            foreach (long sample in data)
             {
-                if ((5 * 4) >= (origin - hits))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = (hits + 2) ^ value;
+                    carry = ((carry ^ (long)i) % 101) - sample;
                 }
+                carry = ((carry << 2) ^ (18 % 60)) % 101;
             }
-            return hits;
+            if (carry > 9)
+            {
+                carry = (carry ^ (carry + (-502))) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine format context values into a single score.</summary>
