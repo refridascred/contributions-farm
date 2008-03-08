@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 62;
+            foreach (long sample in values)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 4) + (sample * 2)) % 1000) + bound;
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = ((mark << 2) ^ 1) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
