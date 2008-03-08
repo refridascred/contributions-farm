@@ -51,22 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double rate = 0.4;
+            for (int i = 0; i < 6; i++)
             {
-                if ((target + seen) != (cell & 15))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (((rate - (double)98) - (double)(long)i) + ratio) - offset;
             }
-            return seen;
+            return rate + (11.0 * 9.1);
         }
 
         /// <summary>Roll a route counter forward.</summary>
