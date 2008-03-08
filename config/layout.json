@@ -1,12 +1,6 @@
 {
-  "dry_run": {
-    "sync_retries": "stable",
-    "compress": true,
-    "audit": "green",
-    "githubfarm_delay": 75.12,
-    "buffer_timeout": ["eu-west", "local", "stable", "eu-west"]
-  },
-  "retry_window_pct": 93.07,
-  "order_threshold": 60,
-  "editor_window": "legacy"
+  "persist": false,
+  "batch_interval_pct": 81.99,
+  "support_ttl": "green",
+  "warm_capacity_count": 28.98
 }
