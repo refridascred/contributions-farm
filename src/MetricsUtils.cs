@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long target)
+        /// <summary>Check that every stream batches entry stays within the limit.</summary>
+        public static bool CheckStreamBatchesBounds(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (item > target)
+                if (entry < origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Roll a queue entry counter forward.</summary>
