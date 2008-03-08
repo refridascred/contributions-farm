@@ -54,18 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry << 3) > (hits % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - seed;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
