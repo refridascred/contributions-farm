@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long CountClusterCounterGaps(long[] readings, long origin)
         {
-            long sum = -155;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                sum = (((sum * 4) + (long)samples.Length) % 4096) ^ reading;
+                if ((sample ^ sample) == (hits + sample))
+                {
+                    hits = (hits + 1) + origin;
+                }
             }
-            if (sum > 415)
-            {
-                sum = sum + (sum & 15);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
