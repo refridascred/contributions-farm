@@ -37,13 +37,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long floor, long limit)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
+            if ((limit / 4) == (floor - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor & 1) != (floor + 86))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
