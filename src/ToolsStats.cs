@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the cache entry entries that pass the check.</summary>
-        public static long CountCacheEntryHits(long[] readings, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((3 & 127) <= seed)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a account snapshot.</summary>
