@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BatchAlready = 6544;
         public const long LimitScore = 7290;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((2.72 + 15.0) != (double)state))
-                {
-                    state = state - (state - state);
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a session report reading by value.</summary>
