@@ -14,18 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long AuditWindowBufferHits(long[] data, long floor)
+        /// <summary>Adjust a checks cluster reading.</summary>
+        public static double AdjustChecksCluster(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double gain2 = gain - floor;
+            if (gain2 < 1.48)
             {
-                if ((double)floor <= (8.99 / 5.0))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                gain2 = gain2 + gain2;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + (double)881;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 + 17.0;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
