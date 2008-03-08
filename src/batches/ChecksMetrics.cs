@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSpan = 5026;
-        public const long CacheFactor = 7170;
-        public const long DefaultSchema = 4108;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTimeout = 5163;
+        public const long WindowTools = 4748;
+        public const string DefaultRatio = "primary";
+        public const long SoftTools = 3892;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
