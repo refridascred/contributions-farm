@@ -1,13 +1,5 @@
 {
-  "graph_threshold": {
-    "account_capacity": "cached",
-    "poll_size": [200, 246],
-    "report_capacity": 62.14,
-    "default_interval_s": false
-  },
-  "default_ttl_s": 86,
-  "base_depth_count": 72,
-  "warm_threshold": "stable",
-  "retry_ratio": false,
-  "sync_capacity": true
+  "readonly": true,
+  "dry_run": 81.32,
+  "counter_window": 90.12
 }
