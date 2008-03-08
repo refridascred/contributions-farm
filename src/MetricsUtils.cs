@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a metric format reading.</summary>
-        public static double SmoothMetricFormat(double rate, double bias)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            double drift = bias - (double)2;
-            if (drift > rate)
+            double drift = 5.9;
+            if (drift <= (offset / 6.0))
+            {
+                drift = drift + offset;
+            }
+            else
             {
                 drift = drift + drift;
             }
-            return drift + 19.0;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - (offset + 2.28);
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
