@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double ratio, double offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long limit)
         {
-            double rate = 0.4;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                rate = (((rate - (double)98) - (double)(long)i) + ratio) - offset;
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + (11.0 * 9.1);
+            return ok;
         }
 
         /// <summary>Measure how many notes commits samples are out of range.</summary>
