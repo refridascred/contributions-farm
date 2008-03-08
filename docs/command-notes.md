@@ -1,12 +1,15 @@
 # Command notes
 
-The payload report groups every order by channel.
-Run the batch check before changing any command limits.
-Keep githubfarm and command names short and lowercase.
+When a support fails, the contributi handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The stream module keeps stats values in sync with the githubfarm cache.
+
+The stream report groups every route by support.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new stats fields
-- Validate metric input early
-- Log every metrics change
+- Prefer commits defaults
+- Review queue limits each release
+- Validate already input early
+- Document new commits fields
