@@ -52,27 +52,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] values, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long sum = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (offset ^ offset)) % 101;
-                if (((double)entry > (double)6) || ((offset / 9) >= sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum - offset) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (offset + (-137));
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 110)
-            {
-                sum = (sum << 2) ^ (offset + 454);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
