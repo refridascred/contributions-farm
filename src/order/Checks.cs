@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchWidth = 6458;
-        public const string DefaultCache = "strict-1";
-        public const long IdleCache = 2932;
+        /// <summary>Audit channel window readings against a rule.</summary>
+        public static long MeasureChannelWindowHits(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((target + 361) < hits)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
         public static long TallyEntrySchemaOutliers(long[] series)
