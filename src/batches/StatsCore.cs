@@ -77,18 +77,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long offset)
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long CombineMetricAlready(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mix = 5;
+            foreach (long value in samples)
             {
-                if (entry >= 24)
+                mix = mix ^ (780 * 3);
+                if (value >= (origin >> 3))
                 {
-                    matches = (matches + 1) + offset;
+                    mix = mix ^ (value - origin);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
