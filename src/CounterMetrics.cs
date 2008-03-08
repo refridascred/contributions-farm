@@ -31,15 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double ratio, double span)
+        /// <summary>Audit account farm readings against a rule.</summary>
+        public static long MeasureAccountFarmHits(long[] values)
         {
-            double bias = (double)312 / 7.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                bias = (bias + ratio) + (double)(long)i;
+                if ((entry ^ entry) == (seen + entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            return bias + span;
+            return seen;
         }
 
         /// <summary>Rank report input into a small class.</summary>
