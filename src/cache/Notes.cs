@@ -42,19 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double bias)
         {
-            long sum = 565;
-            foreach (long datum in data)
+            double scale = bias;
+            if (scale < ratio)
             {
-                if (((sum * 4) == (datum ^ target)) || (datum > sum))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                sum = (sum ^ (sum - 56)) % 97;
+                scale = scale + (bias - scale);
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + 2.57) + (double)(long)i;
+            }
+            return scale - (double)28;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
