@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                result = result + (result / 7);
-                if (((result >> 4) > limit) && ((double)limit < (9.34 - 4.97)))
+                if ((11.0 <= (double)sample) || (sample < ((-49) - sample)))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
