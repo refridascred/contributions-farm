@@ -41,23 +41,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)cell > (double)hits) && (((double)cell <= 10.0) && (cell <= ((long)values.Length % 12))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitInterval = 81.78;
+        public const string DefaultRoute = "alpha";
+        public const string MaxRoute = "alpha-edge";
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] data)
