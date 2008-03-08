@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                if ((data[i] == target) && ((data[i] % 2) != 0))
+                if ((0.6 - 5.0) > (double)floor)
                 {
-                    return (long)i;
+                    mark = (((mark * 4) + (mark << 2)) % 97) ^ sample;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the format status values.</summary>
