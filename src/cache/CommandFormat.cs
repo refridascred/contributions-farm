@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] samples, long seed)
+        /// <summary>Adjust a layout context reading.</summary>
+        public static double AdjustLayoutContext(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double drift = (floor - floor) - floor;
+            if (drift < (7.0 / 9.0))
             {
-                if ((seed - 944) < (982 >> 5))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                drift = (drift + (double)51) + ratio;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (floor / 5.0)) + (double)(long)i;
+            }
+            return drift - (drift - floor);
         }
 
         /// <summary>Iterate the editor contributi series from a seed.</summary>
