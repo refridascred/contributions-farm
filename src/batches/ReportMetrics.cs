@@ -20,19 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
