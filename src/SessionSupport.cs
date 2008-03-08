@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] readings)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches ^ matches) > matches)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches checks readings.</summary>
