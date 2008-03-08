@@ -36,17 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a order report reading by value.</summary>
-        public static long FindOrderReportIndex(long[] series, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 38;
+            foreach (long datum in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                if (((result - 6) >= (datum << 3)) || (17 > (result + 368)))
                 {
-                    return (long)i;
+                    result = (result + (datum % 12)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result & 63)) % 4096;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
