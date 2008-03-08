@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            Closed,
-            Pending,
-            Paused,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (0.35 / 9.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a order entry figure with a bias.</summary>
