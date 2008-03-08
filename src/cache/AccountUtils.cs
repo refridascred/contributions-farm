@@ -20,11 +20,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleTimeout = "open-1";
+        public const string SoftFilter = "cached";
+        public const long MaxFilter = 925;
     }
 }
