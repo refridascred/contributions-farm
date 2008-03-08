@@ -36,15 +36,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a layout checks counter forward.</summary>
-        public static long SeriesLayoutChecks(long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Match up metric samples.</summary>
