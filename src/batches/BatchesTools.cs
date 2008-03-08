@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long step)
         {
-            long total = -736;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((floor / 3) >= floor))
+                if (samples[i] >= step)
                 {
-                    total = ((total << 2) ^ (total + item)) % 101;
-                    total = (total << 3) ^ (total % 8);
+                    return (long)i;
                 }
-                total = ((total << 2) ^ (total / 3)) % 255;
             }
-            if (total > 3)
-            {
-                total = (total - (total + total)) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
