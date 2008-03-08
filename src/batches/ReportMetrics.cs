@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-1";
         public const long BurstWidth = 8760;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double ratio, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (span + ratio);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 2819;
+        public const double MaxBuffer = 66.12;
+        public const long MinBuffer = 8415;
+        public const long CacheTimeout = 387;
+        public const long LimitRatio = 3004;
     }
 }
