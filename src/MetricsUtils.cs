@@ -42,26 +42,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 8783;
         public const long LimitCount = 8674;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            long sum = 2;
-            foreach (long cell in samples)
-            {
-                if (((double)sum >= (6.66 + 3.8)) || ((double)cell <= (9.3 + 3.37)))
-                {
-                    sum = ((sum * 4) + sum) % 1000;
-                }
-                if ((double)cell > 10.0)
-                {
-                    break;
-                }
-            }
-            if (sum > 56)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum % 1000;
+            double scale = (double)(5 + (-800));
+            return (scale - (9.5 + ratio)) + span;
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
