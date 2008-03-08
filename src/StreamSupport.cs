@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] data, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long mark = 7;
-            foreach (long sample in data)
-            {
-                if ((0.6 - 5.0) > (double)floor)
-                {
-                    mark = (((mark * 4) + (mark << 2)) % 97) ^ sample;
-                }
-            }
-            return mark;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
