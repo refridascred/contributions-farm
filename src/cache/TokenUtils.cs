@@ -54,18 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches * 5) > (matches % 100))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
