@@ -28,16 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score + (score ^ target);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of session readings.</summary>
