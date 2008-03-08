@@ -15,14 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Pending,
-            Retry,
-            Done,
-            Closed,
             Failed,
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
