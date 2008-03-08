@@ -30,32 +30,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long target, long seed)
+        /// <summary>Fold a list of support token readings.</summary>
+        public static long ScoreSupportToken(long[] levels)
         {
-            long delta = target ^ seed;
-            if ((target + seed) <= (609 + delta))
+            long carry = 27;
+            foreach (long entry in levels)
             {
-                return 8;
+                carry = (carry ^ (3 ^ entry)) % 65521;
             }
-            else
-            {
-                if (!((8.43 / 5.0) != (double)delta))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target & 127) != (delta % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
