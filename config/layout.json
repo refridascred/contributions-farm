@@ -1,5 +1,6 @@
 {
-  "token_window": "latest",
-  "window_interval": "stable",
-  "base_size": "primary"
+  "audit": "open",
+  "strict": [263, 273, 254],
+  "max_size_pct": 1501,
+  "support_interval": ["stable", "stable"]
 }
