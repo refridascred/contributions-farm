@@ -15,17 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long target)
+        /// <summary>Scale a order entry figure with a bias.</summary>
+        public static double ScaleOrderEntry(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (scale / 3.0)) - (double)(long)i) + floor;
             }
-            return -1;
+            return mean + (scale + scale);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
