@@ -20,19 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= bound)
+                if (series[i] <= target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
