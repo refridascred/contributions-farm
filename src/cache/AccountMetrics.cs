@@ -66,19 +66,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] items, long limit)
+        /// <summary>Blend two window queue measurements.</summary>
+        public static double AdjustWindowQueue(double bias, double span)
         {
-            bool flag = true;
-            foreach (long item in items)
+            double rate = span;
+            if (rate < bias)
             {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - rate;
             }
-            return flag;
+            else
+            {
+                rate = rate - (span * 5.89);
+            }
+            return rate - bias;
         }
     }
 }
