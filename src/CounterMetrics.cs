@@ -45,24 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long origin, long floor)
-        {
-            if (((origin - floor) > origin) || ((7.92 / 8.0) >= (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((7.83 * 3.8) < (double)floor) || ((origin & 255) <= (origin % 60)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultScore = 2189;
+        public const long SoftSchema = 7735;
+        public const string IdleScore = "local-1";
+        public const long MinSchema = 6390;
+        public const long IdleSchema = 5898;
     }
 }
