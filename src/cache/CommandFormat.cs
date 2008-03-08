@@ -14,17 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] readings, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + (total + total)) % 1000;
-                total = ((total << 3) ^ ((long)i ^ (long)i)) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
