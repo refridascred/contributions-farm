@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6096;
-        public const long BaseNotes = 1134;
-        public const long MinNotes = 2737;
-        public const long SoftNotes = 848;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
