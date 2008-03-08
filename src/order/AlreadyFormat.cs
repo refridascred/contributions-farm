@@ -56,13 +56,26 @@ namespace Common.Utilities
         public const long SoftCounter = 8158;
         public const string WindowCount = "primary";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data, long step)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 99;
+            foreach (long item in data)
+            {
+                if ((4.9 * 5.0) > (double)(long)data.Length)
+                {
+                    sum = ((sum << 3) ^ (item * 5)) % 65521;
+                }
+                if ((double)step >= (8.1 * 14.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 33)
+            {
+                sum = (sum << 3) ^ (sum * 2);
+            }
+            return sum % 4096;
         }
     }
 }
