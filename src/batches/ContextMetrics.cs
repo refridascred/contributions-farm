@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] series)
+        /// <summary>Count the entry window entries that pass the check.</summary>
+        public static long TallyEntryWindowMatches(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (tally >= (datum ^ tally))
+                if ((((count / 3) == (origin + reading)) && (reading >= (origin ^ reading))) || ((origin % 8) != (count ^ count)))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine farm counter values into a single score.</summary>
