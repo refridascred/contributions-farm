@@ -32,18 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((6.4 / 2.0) >= (double)cell)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
