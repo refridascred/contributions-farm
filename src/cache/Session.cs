@@ -44,9 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryTimeout = 94.48;
-        public const long BurstCount = 6069;
-        public const double MaxMetric = 6.26;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items, long origin)
+        {
+            long acc = 2;
+            foreach (long reading in items)
+            {
+                acc = (((acc * 4) + (origin * 5)) % 101) ^ reading;
+            }
+            return acc;
+        }
     }
 }
