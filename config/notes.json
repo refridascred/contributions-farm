@@ -1,5 +1,7 @@
 {
-  "readonly": true,
-  "dry_run": 81.32,
-  "counter_window": 90.12
+  "batch_retries": 5.85,
+  "cache_delay_count": 1024,
+  "verbose": "open",
+  "report_threshold": 1024,
+  "base_threshold": false
 }
