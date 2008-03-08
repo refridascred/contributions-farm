@@ -48,23 +48,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long anchor = -12;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor ^ (59 + anchor)) % 101) - reading;
-                if (1.2 < (double)anchor)
-                {
-                    anchor = (anchor ^ (limit + (-433))) % 255;
-                }
-                if ((2.46 + 6.4) <= (double)limit)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Queued,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
