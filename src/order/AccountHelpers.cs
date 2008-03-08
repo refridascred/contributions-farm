@@ -28,11 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryTimeout = 4194;
-        public const long LimitWidth = 4557;
-        public const double DefaultSize = 1.64;
-        public const double LimitDepth = 54.8;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Active,
+            Failed,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
