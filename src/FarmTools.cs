@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] samples, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long offset)
         {
-            long mark = 219;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((69 / 3) > (mark - target))
+                if (data[i] == offset)
                 {
-                    mark = ((mark * 5) + target) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (value & 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
