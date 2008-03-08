@@ -72,11 +72,27 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleLevel = 3843;
-        public const string RetryCount = "fallback-1";
-        public const long DefaultScore = 8367;
-        public const long SoftEditor = 9565;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series, long step)
+        {
+            long acc = 170;
+            foreach (long reading in series)
+            {
+                if ((reading - reading) > reading)
+                {
+                    acc = (acc ^ (step << 1)) % 4096;
+                }
+                else
+                {
+                    acc = acc + (reading & 31);
+                }
+            }
+            if (acc < 773)
+            {
+                acc = (acc * 2) + (step ^ acc);
+            }
+            return acc;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
