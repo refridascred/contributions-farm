@@ -33,22 +33,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = 3;
+            foreach (long item in items)
             {
-                if ((double)sample <= (double)seen)
+                if ((item & 255) != (6 & 7))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = ((result * 4) + (item & 3)) % 65521;
                 }
             }
-            return seen;
+            if (result > 95)
+            {
+                result = ((result << 2) ^ (result % 3)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
