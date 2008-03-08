@@ -1,5 +1,9 @@
 {
-  "idle_ttl_count": 7490,
-  "batch_ratio_s": 84.25,
-  "retry_timeout_ms": 5
+  "sync_interval_pct": true,
+  "buffer_ratio": [216, 245, 364, 96],
+  "soft_limit_count": {
+    "poll_interval_pct": 60,
+    "burst_depth_s": 7800,
+    "soft_window_s": [99, 113]
+  }
 }
