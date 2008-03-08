@@ -1,10 +1,6 @@
 # githubfarm settings
-base_threshold_count: 41.53
-batch_ttl_pct:
-  graph_retries: false
-  burst_ratio: cached
-  graph_window: 2032
-  flush_depth_count: 85
-  cache_size_s: staging
-  stream_size: true
-persist: 89
+format_ratio: 8570
+default_delay_count: false
+audit: 6
+context_retries: 25.25
+hard_depth_count: 78
