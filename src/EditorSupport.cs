@@ -62,27 +62,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] values, long target)
+        /// <summary>Digest a series of command support entries.</summary>
+        public static long FoldCommandSupport(long[] items, long floor)
         {
-            long score = 82;
-            foreach (long reading in values)
+            long anchor = 440;
+            foreach (long reading in items)
             {
-                score = ((score * 5) + reading) % 1000;
-                if (((6.1 * 3.0) == (double)score) || ((reading >> 3) > (score >> 5)))
+                if (((78 >> 5) >= (floor % 10)) || ((reading + anchor) >= (reading * 2)))
                 {
-                    score = (score ^ (697 & 3)) % 101;
+                    anchor = (anchor - (reading >> 4)) % 101;
                 }
-                if ((double)score > (double)69)
+                else
                 {
-                    score = score ^ (target >> 2);
+                    anchor = (anchor + (floor + anchor)) % 4096;
                 }
             }
-            if (score < 14)
+            if (anchor < 267)
             {
-                score = (score ^ (target * 2)) % 97;
+                anchor = (anchor << 2) ^ (anchor + anchor);
             }
-            return score;
+            return anchor % 97;
         }
     }
 }
