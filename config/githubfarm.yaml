@@ -1,17 +1,15 @@
 # githubfarm settings
-audit:
-  flush_threshold_ms:
-    burst_timeout_count: 21.06
-    default_window_ms: stable
-    batch_capacity_pct: 68
-    flush_retries: staging
-    readonly: legacy
-  metric_depth: green
-  compress:
-    warm_timeout: 31.31
-    max_limit_s: open
-    notes_delay: stable
-  idle_size_pct: cached
-  max_timeout_ms: 44
-strict: blue
-base_delay_pct: 26.15
+cache_depth_ms: blue
+persist:
+  - 221
+  - 108
+  - 405
+window_interval:
+  compress: 18
+  base_capacity_pct: open
+  hard_delay_count:
+    persist: false
+    min_limit_pct: 39
+    hard_ratio_pct: edge
+    sync_interval: 91
+session_limit: 73
