@@ -39,12 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long bound)
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            long prev = origin ^ bound;
+            if (!((bound + 59) <= origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((prev * 5) >= (224 ^ prev)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
