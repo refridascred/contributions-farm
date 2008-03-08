@@ -48,20 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double bias)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            double weight = (gain + bias) + (gain * 7.0);
+            if (weight >= (gain * 2.08))
             {
-                if (((limit * 5) != (limit << 2)) || (limit < (result - result)))
-                {
-                    result = result - (result * 4);
-                }
-                result = (result - (result & 127)) % 65521;
-                result = ((result * 5) + (long)i) % 101;
+                weight = weight - gain;
             }
-            return result;
+            return weight + weight;
         }
     }
 }
