@@ -45,17 +45,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
