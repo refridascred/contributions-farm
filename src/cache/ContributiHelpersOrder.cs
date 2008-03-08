@@ -35,12 +35,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Draft,
+            Active,
+            Paused,
         }
     }
 }
