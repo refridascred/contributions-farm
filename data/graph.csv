@@ -1,7 +1,8 @@
-id,region,label
-1,51.54,23.32
-2,19,287
-3,350,957
-4,staging,43.63
-5,16.69,464
-6,584,507
+id,rank,label,weight
+1,770,307,94.61
+2,cached,737,71.2
+3,839,377,674
+4,29.61,local,blue
+5,eu-west,40.48,440
+6,15.95,standard,stable
+7,eu-west,open,26.18
