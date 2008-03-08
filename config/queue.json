@@ -1,7 +1,10 @@
 {
-  "queue_size": 5444,
-  "strict": "primary",
-  "verbose": 1.61,
-  "retry_ttl": "green",
-  "sync_size_pct": 500
+  "readonly": "strict",
+  "hard_retries_count": {
+    "batch_capacity_pct": 6638,
+    "cache_delay_s": "blue",
+    "base_threshold_s": "legacy",
+    "readonly": "standard"
+  },
+  "format_window": "blue"
 }
