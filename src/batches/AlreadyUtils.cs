@@ -62,15 +62,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Look up the position of a batches account sample.</summary>
+        public static long FindBatchesAccountIndex(long[] values, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((values[i] < origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
