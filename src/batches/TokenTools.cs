@@ -20,17 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] >= floor)
+                score = (score - (step / 2)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (long)i) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next stream value.</summary>
