@@ -1,5 +1,6 @@
 {
-  "sync_retries": 18,
-  "enabled": "strict",
-  "verbose": 9959
+  "counter_depth": 1024,
+  "sync_ttl_pct": 250,
+  "persist": 87.16,
+  "cache_delay_ms": 7951
 }
