@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] samples, long step)
         {
-            Paused,
-            Stale,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 1) != (step - step))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a profile record.</summary>
