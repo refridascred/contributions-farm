@@ -39,9 +39,21 @@ namespace Common.Utilities
             return ratio + (double)8;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 3249;
-        public const long MinFactor = 2376;
-        public const string MinWidth = "latest";
+        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
+        public static long MatchCommitsBatchesCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
