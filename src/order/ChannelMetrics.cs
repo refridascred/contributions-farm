@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items, long limit)
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
+            long result = 62;
+            foreach (long item in items)
+            {
+                result = (result ^ (limit ^ item)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
