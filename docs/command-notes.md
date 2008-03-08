@@ -1,11 +1,14 @@
 # Command notes
 
-When a stream fails, the metric handler retries a few times before giving up.
-Use report settings to tune how often farm data is refreshed.
-The filter report groups every cluster by token.
+A githubfarm that stays idle for too long is moved to the schema list.
+Run the profile check before changing any window limits.
+When a githubfarm fails, the command handler retries a few times before giving up.
+
+Keep token and session names short and lowercase.
+The tools report groups every commits by tools.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer already defaults
-- Validate graph input early
+- Log every filter change
+- Validate route input early
+- Prefer cluster defaults
