@@ -48,12 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Active,
+            Draft,
+            Stale,
         }
     }
 }
