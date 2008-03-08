@@ -1,7 +1,5 @@
 {
-  "order_size": 58,
-  "poll_retries": "open",
-  "readonly": [154, 332, 436],
-  "base_capacity": "open",
-  "dry_run": 7221
+  "compress": "stable",
+  "metric_capacity": true,
+  "metrics_timeout": "edge"
 }
