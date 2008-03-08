@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleFactor = 9508;
-        public const string SoftBudget = "alpha-v2";
-        public const long BaseTimeout = 8790;
-        public const long LimitEntry = 3018;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the batches checks series from a seed.</summary>
         public static long StepBatchesChecks(long bound)
