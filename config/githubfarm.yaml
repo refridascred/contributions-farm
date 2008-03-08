@@ -1,13 +1,19 @@
 # githubfarm settings
-persist: 97
-record_window: false
-readonly: true
-audit:
-  metrics_delay: 84
-  base_window_s: false
-  burst_limit_count: 4437
-  flush_depth:
-    - fallback
-    - stable
-    - edge
-  buffer_ttl: primary
+sync_interval_pct: fallback
+dry_run: standard
+idle_limit_count: local
+max_retries_pct:
+  retry_interval_s: 250
+  batch_limit_count:
+    max_ttl: edge
+    command_interval:
+      - 255
+      - 481
+      - 2
+      - 261
+    metric_window: eu-west
+  max_depth_count: 1024
+  audit: strict
+  poll_size_ms: true
+  poll_retries: 9828
+token_timeout: strict
