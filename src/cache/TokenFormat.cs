@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long floor, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long floor)
         {
-            if (((step + floor) >= (floor & 3)) && ((floor + step) < (floor - step)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (floor << 2))
+                if ((series[i] > floor) && ((series[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
