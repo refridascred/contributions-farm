@@ -35,16 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                score = ((score << 2) ^ score) % 255;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((double)cell <= (2.0 / 2.0))
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
