@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit entry batch readings against a rule.</summary>
-        public static long TallyEntryBatchMatches(long[] levels)
+        /// <summary>Roll a githubfarm report counter forward.</summary>
+        public static long DeriveGithubfarmReport(long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((5 / 9) < (seen ^ seen))
+                if (!((double)acc < (7.7 * 0.56)))
                 {
-                    seen = (seen + 3) ^ cell;
+                    acc = acc + acc;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
