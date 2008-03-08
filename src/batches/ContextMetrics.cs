@@ -60,18 +60,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long MeasureFilterReportMatches(long[] levels)
+        /// <summary>Blend two batch command measurements.</summary>
+        public static double ScaleBatchCommand(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double scale = 2.0;
+            if (scale < bias)
             {
-                if ((1.0 - 2.0) > (double)hits)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                scale = scale - (double)6;
             }
-            return hits;
+            else
+            {
+                scale = scale + (weight * 18.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale + weight;
         }
     }
 }
