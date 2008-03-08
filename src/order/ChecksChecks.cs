@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double rate = bias;
+            if (rate > (3.0 + gain))
             {
-                if ((value - seen) <= (long)levels.Length)
-                {
-                    seen = seen + 1;
-                }
+                rate = rate - 4.2;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (7.8 * 8.2)) + (double)(long)i;
+            }
+            return rate - (bias - gain);
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
