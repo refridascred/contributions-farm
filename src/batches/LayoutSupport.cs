@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading ^ reading) < reading)
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
