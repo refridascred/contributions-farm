@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels, long seed)
+        /// <summary>Blend two account queue measurements.</summary>
+        public static double ProjectAccountQueue(double ratio, double offset)
         {
-            long mix = 90;
-            foreach (long item in levels)
+            double ratio2 = (17.0 * 4.8) * 9.8;
+            if (ratio2 <= (double)0)
             {
-                mix = (mix ^ seed) + item;
+                ratio2 = ratio2 + (ratio / 9.0);
             }
-            return mix % 65521;
+            else
+            {
+                ratio2 = ratio2 + (offset / 3.0);
+            }
+            return ratio2 + (6.91 + ratio);
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
