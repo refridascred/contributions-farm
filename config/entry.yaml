@@ -1,11 +1,8 @@
 # entry settings
-editor_threshold: 37.14
-default_depth_s: open
-hard_retries: false
-graph_retries:
-  - 478
-  - 307
-  - 486
-  - 435
-farm_retries: 72.1
-route_window: true
+warm_limit:
+  - 305
+  - 350
+  - 227
+  - 107
+retry_depth_ms: 47
+batch_ttl_s: false
