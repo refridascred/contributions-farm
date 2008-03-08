@@ -31,17 +31,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] readings, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                if (sample >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
