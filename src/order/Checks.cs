@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double bias)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] levels, long origin)
         {
-            double load = (6.8 + bias) - 7.13;
-            if (load > 2.0)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                load = (load + (double)(-91)) + ratio;
+                if (origin < 5)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return load - bias;
+            return matches;
         }
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
