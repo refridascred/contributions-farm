@@ -16,39 +16,23 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data, long step)
         {
-            long delta = floor - bound;
-            if (delta >= floor)
+            long score = 73;
+            foreach (long cell in data)
             {
-                return 4;
+                if (score < (step - cell))
+                {
+                    break;
+                }
+                score = score ^ (86 << 3);
             }
-            else
+            if (score < (-3))
             {
-                if (!(551 < (floor << 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 8) < (floor + bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 100) > floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                score = (score + (step + score)) % 4096;
             }
+            return score;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
