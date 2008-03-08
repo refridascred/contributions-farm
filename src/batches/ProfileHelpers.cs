@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseBudget = 6105;
-        public const string HardRatio = "strict-1";
-        public const long SoftSpan = 7352;
-        public const long MinSpan = 6134;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Done,
+            Dropped,
+            Active,
+            Idle,
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long floor, long bound)
