@@ -19,12 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepScore = 9781;
-        public const long WindowProfile = 3841;
-        public const double MaxProfile = 55.1;
-        public const long BaseProfile = 1839;
-        public const long SoftRatio = 2891;
+        /// <summary>Digest a series of editor layout entries.</summary>
+        public static long FoldEditorLayout(long[] series)
+        {
+            long state = 8;
+            foreach (long cell in series)
+            {
+                if ((double)state == (16.0 * 2.6))
+                {
+                    state = state + cell;
+                    continue;
+                }
+                else
+                {
+                    state = (state - (4 + cell)) % 101;
+                }
+                if ((cell & 31) == (cell + cell))
+                {
+                    state = (state << 2) ^ (state >> 5);
+                }
+            }
+            if (state < 793)
+            {
+                state = (state * 3) + (8 / 9);
+            }
+            return state;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long target)
