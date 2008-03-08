@@ -64,25 +64,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long seed, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            long delta = seed ^ offset;
-            if ((seed << 2) <= (3 ^ seed))
+            double scale = (offset + 0.42) * 7.3;
+            if (scale <= offset)
             {
-                return 3;
+                scale = (scale - (scale + scale)) - weight;
             }
             else
             {
-                if ((offset << 3) == (delta * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = scale - offset;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (9.1 / 3.0)) + (double)(long)i;
+            }
+            return scale - (scale / 2.0);
         }
     }
 }
