@@ -51,11 +51,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] data)
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count ^ count) == (count % 7))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
     }
 }
