@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine buffer window values into a single score.</summary>
-        public static long TallyBufferWindow(long[] samples)
+        /// <summary>Match up payload metric samples.</summary>
+        public static long PairPayloadMetricCount(long[] data)
         {
-            long sum = 440;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (578 + value)) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
