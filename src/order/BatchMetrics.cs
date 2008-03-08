@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] values, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(53 ^ 190);
+            return ((gain + gain) + weight) + offset;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
