@@ -29,38 +29,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            if ((step + step) != (step / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)7 > (double)seed) || ((9 / 2) > (step << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 12) <= (18 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed <= (step >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double bias2 = (rate / 5.0) * 15.0;
+            return (bias2 - 9.82) + bias;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
