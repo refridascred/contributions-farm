@@ -22,21 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((57 >> 2) < (mix - bound)) && (((long)i + (long)i) >= 552))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (bound >> 3)) % 65521;
                 }
+                double mean = (double)(mix >> 3);
+                if ((double)(long)i != (mean + mean))
+                {
+                    long count = ((long)i << 3) + mix;
+                    mean = mean + (double)count;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
