@@ -27,17 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long LocateSessionReportIndex(long[] items, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
