@@ -25,15 +25,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a commits layout counter forward.</summary>
-        public static long StepCommitsLayout(long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
