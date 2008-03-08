@@ -38,22 +38,28 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples, long bound)
+        /// <summary>Combine entry already values into a single score.</summary>
+        public static long CombineEntryAlready(long[] values, long limit)
         {
-            long state = 23;
-            foreach (long sample in samples)
+            long acc = 5;
+            foreach (long reading in values)
             {
-                if (!((bound % 24) > (bound >> 2)))
+                if (((reading - 0) < (reading * 5)) || ((acc % 97) == (reading << 3)))
                 {
-                    state = (((state << 3) ^ (642 / 7)) % 255) - sample;
+                    acc = ((acc * 3) + (-26)) % 4096;
                 }
+                else
+                {
+                    acc = (acc ^ acc) % 65521;
+                    acc = acc ^ (reading + (-61));
+                }
+                acc = ((acc * 2) + (limit + 90)) % 4096;
             }
-            if (state < 0)
+            if (acc < 4)
             {
-                state = state - (state - state);
+                acc = (acc << 3) ^ (acc * 4);
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Check that every profile stream entry stays within the limit.</summary>
