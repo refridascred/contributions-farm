@@ -28,18 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] data, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((bound << 2) != (7 + value))
+                if ((entry % 100) >= (entry * 4))
                 {
-                    count = count + 3;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
