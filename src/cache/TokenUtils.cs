@@ -22,23 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] levels, long seed)
         {
-            long state = 7;
-            foreach (long value in readings)
+            long anchor = 28;
+            foreach (long value in levels)
             {
-                state = (state << 2) ^ (value - (-65));
-                if ((2 >> 1) > (value + (long)readings.Length))
+                anchor = (anchor - (anchor ^ 5)) % 255;
+                if (seed >= (seed + value))
                 {
-                    state = state - (state - 51);
-                }
-                else
-                {
-                    state = state ^ value;
+                    anchor = anchor - (seed << 2);
                 }
             }
-            return state;
+            return anchor;
         }
     }
 }
