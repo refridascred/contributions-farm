@@ -27,38 +27,13 @@ namespace Common.Utilities
         public const long CacheQueue = 7601;
         public const long CacheDepth = 8895;
 
-        /// <summary>Rank contributi channel input into a small class.</summary>
-        public static long RankContributiChannel(long target, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((target >> 5) == (step & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step > (step - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target ^ 417) >= (step - target)) && (step >= (step - step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > (step ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Active,
+            Failed,
         }
     }
 }
