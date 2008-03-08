@@ -60,32 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format metrics input into a small class.</summary>
-        public static long GradeFormatMetrics(long target, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long floor)
         {
-            long step = target - seed;
-            if ((seed + seed) < (60 + seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= (seed + seed))
+                if (items[i] < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (target << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
