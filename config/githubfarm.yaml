@@ -1,9 +1,9 @@
 # githubfarm settings
-max_retries: 80.98
-soft_retries: true
-route_interval:
-  poll_capacity: 82
-  sync_retries_ms: 2
-  strict: false
-sync_capacity_s: local
-cache_depth_count: stable
+idle_timeout_pct: primary
+persist:
+  min_retries: legacy
+  compress: false
+  strict: true
+flush_limit_ms: 500
+metrics_ratio: 500
+dry_run: 10.75
