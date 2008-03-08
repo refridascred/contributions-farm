@@ -58,11 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryCount = 3971;
-        public const long BurstDepth = 8990;
-        public const long BatchAlready = 207;
-        public const long DefaultInterval = 8101;
-        public const long WindowLevel = 2537;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!(((6.0 + 17.0) <= (double)matches) || (reading >= (reading >> 5))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
