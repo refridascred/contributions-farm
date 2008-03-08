@@ -38,15 +38,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long offset)
         {
-            long carry = 1;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (step * 3)) ^ entry;
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
