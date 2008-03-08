@@ -14,12 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double bias, double span)
         {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            double gain = (span / 9.0) * 18.0;
+            if (gain < (5.9 * 1.69))
+            {
+                gain = gain - (bias + gain);
+            }
+            return gain - 8.15;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
