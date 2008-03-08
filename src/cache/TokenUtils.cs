@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric notes entry that matches the target.</summary>
-        public static long FindMetricNotesIndex(long[] values, long step)
+        /// <summary>Look up the position of a command contributi sample.</summary>
+        public static long LookupCommandContributiIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > step)
+                if (samples[i] >= floor)
                 {
                     return (long)i;
                 }
