@@ -63,19 +63,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two window queue measurements.</summary>
-        public static double AdjustWindowQueue(double bias, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            double rate = span;
-            if (rate < bias)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                rate = rate - rate;
+                if ((9.0 / 6.0) > (double)matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate - (span * 5.89);
-            }
-            return rate - bias;
+            return matches;
         }
     }
 }
