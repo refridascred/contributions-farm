@@ -19,18 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command support reading by value.</summary>
-        public static long SeekCommandSupportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstWidth = 5859;
+        public const long LimitInterval = 4296;
+        public const string CacheCount = "stable-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleEditor = 5783;
