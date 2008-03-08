@@ -1,7 +1,16 @@
 {
-  "sync_window": "standard",
-  "hard_timeout_count": 6053,
-  "default_depth_count": "strict",
-  "audit": ["strict", "cached", "open", "local"],
-  "window_depth": "legacy"
+  "verbose": 30.0,
+  "batch_timeout_count": 77.6,
+  "sync_limit": {
+    "default_ratio": {
+      "schema_ttl": "cached",
+      "default_depth": 1024,
+      "cluster_threshold": 51,
+      "channel_timeout": 24,
+      "verbose": true
+    },
+    "default_limit": 60,
+    "audit": true,
+    "channel_capacity": "standard"
+  }
 }
