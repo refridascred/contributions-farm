@@ -50,19 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double ratio = floor - (rate * 19.0);
+            if (ratio > (0.1 / 4.0))
             {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - (double)54;
             }
-            return flag;
+            return ratio + rate;
         }
     }
 }
