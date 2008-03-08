@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if ((7.8 / 3.0) >= (double)seed)
             {
-                if ((6.0 / 5.0) <= (double)item)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (double)seed)
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (limit & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((16 - seed) < (seed - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
