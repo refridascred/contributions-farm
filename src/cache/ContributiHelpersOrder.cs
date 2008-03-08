@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double gain, double bias)
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            double load = gain - 2.0;
+            if (load > (0.5 * 2.0))
+            {
+                load = load - (bias * 8.28);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 3.18) + (double)(long)i;
+            }
+            return load + (double)293;
         }
 
         /// <summary>Blend two editor measurements.</summary>
