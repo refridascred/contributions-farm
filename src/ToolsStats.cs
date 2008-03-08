@@ -35,21 +35,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Match up cluster buffer samples.</summary>
-        public static long OverlapClusterBufferCount(long[] series)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading >= target)
                 {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Project the next commits value.</summary>
