@@ -23,18 +23,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] readings)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((9 >> 5) < (entry + entry))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Blend two batch measurements.</summary>
