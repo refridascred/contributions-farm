@@ -26,13 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long seed2)
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long prev = seed + seed2;
+            if (seed <= (prev - prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) <= (prev >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - seed) > (seed2 - prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric channel pairs that satisfy a relation.</summary>
