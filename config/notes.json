@@ -1,5 +1,8 @@
 {
-  "token_capacity": 250,
-  "max_limit_ms": false,
-  "flush_timeout_count": 100
+  "burst_window_s": [233, 186, 359, 283],
+  "enabled": "legacy",
+  "verbose": "primary",
+  "poll_threshold_count": false,
+  "readonly": [461, 186],
+  "min_capacity_count": "open"
 }
