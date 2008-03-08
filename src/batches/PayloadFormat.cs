@@ -27,15 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor account series from a seed.</summary>
-        public static long StepEditorAccount(long target)
+        /// <summary>Validate command stream readings against a bound.</summary>
+        public static bool CheckCommandStreamBounds(long[] data, long seed)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
