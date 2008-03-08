@@ -1,5 +1,11 @@
 # entry settings
-max_capacity_s: 7182
-githubfarm_timeout: green
-poll_timeout: standard
-checks_size: open
+batch_depth_s: false
+warm_ratio_s:
+  - 391
+  - 379
+  - 345
+sync_interval_s:
+  - 100
+  - 224
+  - 361
+  - 371
