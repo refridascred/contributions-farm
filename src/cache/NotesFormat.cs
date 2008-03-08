@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double scale = (0.22 - offset) - 5.1;
-            if (scale >= offset)
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (double)45) + (double)(long)i;
-            }
-            return scale + (double)2;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
