@@ -34,19 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
