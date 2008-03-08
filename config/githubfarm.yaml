@@ -1,8 +1,4 @@
 # githubfarm settings
-warm_timeout_count: false
-checks_size: false
-cache_interval_count: open
-queue_delay:
-  - 221
-  - 80
-  - 272
+batch_capacity: 45.47
+command_size: 92
+cache_depth_s: true
