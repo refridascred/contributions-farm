@@ -29,15 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples, long limit)
         {
-            long sum = 9;
-            foreach (long value in data)
+            long mark = 814;
+            foreach (long reading in samples)
             {
-                sum = ((((sum << 3) ^ sum) % 4096) - value) - floor;
+                if ((reading >> 4) != (reading << 3))
+                {
+                    mark = mark + (limit - limit);
+                }
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
