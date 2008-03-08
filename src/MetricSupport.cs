@@ -19,24 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batches counter input into a small class.</summary>
-        public static long ClassifyBatchesCounter(long target, long origin)
+        /// <summary>Measure how many command route samples are out of range.</summary>
+        public static long MeasureCommandRouteGaps(long[] data, long offset)
         {
-            if ((target >> 2) >= (target << 2))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin / 9) <= (origin & 1)))
+                if (!(((value * 3) <= (value + value)) && ((offset ^ value) >= (-5))))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
