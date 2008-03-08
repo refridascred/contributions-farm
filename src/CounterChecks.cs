@@ -62,19 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next filter command value.</summary>
-        public static double ScaleFilterCommand(double gain, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] samples, long floor)
         {
-            double bias = offset;
-            if (bias >= (double)3)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                bias = (bias + bias) + gain;
+                if ((20.0 + 6.0) < (double)tally)
+                {
+                    tally = ((tally + 1) - reading) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias - (offset - 4.0);
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
