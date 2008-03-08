@@ -29,21 +29,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of stats token readings.</summary>
-        public static long OverlapStatsTokenCount(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step + step) != (step / 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)7 > (double)seed) || ((9 / 2) > (step << 3)))
                 {
-                    if ((data[i] + data[j]) > 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 12) <= (18 << 3))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed <= (step >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
