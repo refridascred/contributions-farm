@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
-        public static bool ValidateBufferMetricRange(long[] readings, long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
