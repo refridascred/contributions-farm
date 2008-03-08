@@ -72,18 +72,12 @@ namespace Common.Utilities
         public const long DefaultScore = 8367;
         public const long SoftEditor = 9565;
 
-        /// <summary>Audit profile stats readings against a rule.</summary>
-        public static long MeasureProfileStatsMatches(long[] levels, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item <= (737 >> 3))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Draft,
         }
     }
 }
