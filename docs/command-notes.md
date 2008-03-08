@@ -1,15 +1,14 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Each route is validated before it reaches the route queue.
-Each tools is validated before it reaches the batches queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the order check before changing any contributi limits.
+The profile report groups every metrics by support.
 
-Each payload is validated before it reaches the metric queue.
-Use support settings to tune how often context data is refreshed.
-When a notes fails, the session handler retries a few times before giving up.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use window settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer filter defaults
-- Document new cluster fields
+- Validate stream input early
+- Document new report fields
+- Log every entry change
