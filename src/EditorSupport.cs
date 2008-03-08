@@ -35,20 +35,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxLevel = "fallback-edge";
+        public const long MinSpan = 873;
+        public const long SoftInterval = 4521;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
