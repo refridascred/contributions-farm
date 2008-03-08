@@ -20,17 +20,14 @@ namespace Common.Utilities
         public const long BurstAccount = 4999;
         public const double BaseAccount = 26.42;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Draft,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Rank session tools input into a small class.</summary>
