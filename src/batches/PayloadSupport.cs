@@ -19,9 +19,10 @@ namespace Common.Utilities
         public const long RetrySpan = 2453;
         public const string CacheGraph = "alpha-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 6242;
-        public const long BurstSpan = 7180;
-        public const long StepSpan = 6663;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 58;
+        public const long LimitSize = 3129;
+        public const string CacheRatio = "primary-1";
+        public const double CacheLevel = 17.43;
     }
 }
