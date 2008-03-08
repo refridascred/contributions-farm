@@ -1,8 +1,8 @@
 # support settings
-poll_window_pct: 250
-poll_limit_pct: 100
-persist:
-  - cached
-  - blue
-warm_size: false
-account_limit: fallback
+contributi_timeout: 204
+burst_ttl_ms: 40
+batch_window:
+  - 9
+  - 222
+  - 445
+  - 467
