@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double floor)
         {
-            long mark = 80;
-            foreach (long cell in items)
-            {
-                if (((double)cell == (double)mark) || ((mark % 7) >= (mark & 7)))
-                {
-                    mark = ((mark * 3) + (cell >> 3)) % 65521;
-                }
-                if ((mark - mark) < (499 - mark))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            double ratio2 = (double)749 / 9.0;
+            return ((ratio2 - (double)(-8)) + ratio) + floor;
         }
 
         /// <summary>Describe the schema phase values.</summary>
