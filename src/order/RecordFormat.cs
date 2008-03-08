@@ -68,23 +68,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long seed2)
         {
-            double drift = (double)(57 + 5);
-            if (drift >= (floor / 7.0))
+            if (((-396) ^ seed2) > 65)
             {
-                drift = (drift + (9.7 + floor)) - ratio;
+                return 0;
             }
             else
             {
-                drift = drift + 8.1;
+                if (11.0 <= (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 6.0) + (double)(long)i;
-            }
-            return drift - floor;
         }
     }
 }
