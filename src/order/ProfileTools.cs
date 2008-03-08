@@ -41,15 +41,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine checks cache values into a single score.</summary>
-        public static long DigestChecksCache(long[] items, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long carry = -8;
-            foreach (long sample in items)
-            {
-                carry = ((carry + (carry + bound)) % 1000) + sample;
-            }
-            return carry;
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
