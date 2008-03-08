@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples, long bound)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            long state = 50;
+            foreach (long cell in samples)
+            {
+                state = ((state + (bound ^ bound)) % 255) + cell;
+            }
+            if (state < 76)
+            {
+                state = (state ^ (bound - bound)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
