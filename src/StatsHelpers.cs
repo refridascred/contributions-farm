@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const long SoftTimeout = 5247;
         public const double MaxCount = 0.79;
 
-        /// <summary>Derive the next format tools value from a seed.</summary>
-        public static long SeriesFormatTools(long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 2;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                acc = acc - (acc >> 1);
+                if ((datum / 4) >= datum)
                 {
-                    acc = (((acc << 2) ^ (acc + 11)) % 255) ^ (long)i2;
+                    break;
                 }
-                if ((acc + offset) <= acc)
-                {
-                    acc = (acc - acc) % 1000;
-                    acc = ((acc * 4) + ((long)i ^ offset)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
             return acc;
         }
