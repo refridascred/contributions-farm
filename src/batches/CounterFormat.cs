@@ -28,18 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((tally - 72) <= tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
