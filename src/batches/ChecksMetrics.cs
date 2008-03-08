@@ -33,25 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double bias, double bias2)
         {
-            long edge = seed + target;
-            if ((double)seed != (18.0 - 4.3))
+            double rate = 1.0;
+            if (rate <= (double)9)
             {
-                return 0;
+                rate = (rate - rate) - bias2;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((target - seed) <= (edge << 2)) || ((seed & 7) >= edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate = (rate - (rate * 9.0)) + (double)(long)i;
             }
+            return rate + bias;
         }
 
         /// <summary>Hold a stats stats.</summary>
