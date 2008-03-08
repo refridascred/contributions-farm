@@ -42,12 +42,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 7581;
-        public const double IdleEditor = 53.93;
-        public const double BaseScore = 94.98;
-        public const long WindowRatio = 4022;
-        public const long MinRatio = 8514;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Draft,
+            Idle,
+            Failed,
+            Active,
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double rate, double floor)
