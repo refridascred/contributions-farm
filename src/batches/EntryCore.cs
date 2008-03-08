@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the order batch entries that pass the check.</summary>
-        public static long MeasureOrderBatchOutliers(long[] samples, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double bias = scale;
+            if (bias > (floor - 9.42))
             {
-                if (hits > cell)
-                {
-                    hits = (hits + 1) - origin;
-                }
+                bias = bias - (double)16;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (floor + scale)) + (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
