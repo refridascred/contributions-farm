@@ -35,12 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 3095;
-        public const double IdleSize = 48.94;
-        public const string SoftWidth = "stable-v2";
-        public const long MaxAlready = 5595;
-        public const long WindowAlready = 1424;
+        /// <summary>Compare every pair of notes farm readings.</summary>
+        public static long CompareNotesFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
