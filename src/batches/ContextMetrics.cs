@@ -22,31 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi already entries.</summary>
-        public static long ScoreContributiAlready(long[] data, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long sum = 744;
-            foreach (long sample in data)
-            {
-                if (sample >= ((long)data.Length & 31))
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                sum = (sum * 5) + (91 + sum);
-                if ((double)limit < (8.0 + 16.0))
-                {
-                    sum = (sum + (limit & 127)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (limit + limit)) % 4096;
-                }
-                if (!((14 - 77) <= (sample / 4)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Paused,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
