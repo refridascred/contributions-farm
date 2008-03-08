@@ -25,21 +25,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 24;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (((total - (34 ^ total)) % 97) - cell) - step;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
