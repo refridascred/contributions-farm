@@ -28,32 +28,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long offset, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long span = offset - limit;
-            if (29 > limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((60 + span) <= (span + span))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + offset) < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Ready,
+            Failed,
+            Dropped,
         }
     }
 }
