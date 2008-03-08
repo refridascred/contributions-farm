@@ -49,24 +49,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a order graph value against two limits.</summary>
-        public static long BucketOrderGraph(long step, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            if (limit > step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (4.0 + 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
