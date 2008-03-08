@@ -32,19 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a stats batches figure with a bias.</summary>
-        public static double ProjectStatsBatches(double ratio, double span)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double ratio2 = (double)(71 + 974);
-            if (ratio2 <= (double)68)
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + ratio2) - (double)(long)i;
-            }
-            return ratio2 - (ratio - span);
+            New,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Roll a context cache counter forward.</summary>
