@@ -52,19 +52,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every profile stream entry stays within the limit.</summary>
-        public static bool GuardProfileStreamRange(long[] readings, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
