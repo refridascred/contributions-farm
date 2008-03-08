@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultDepth = "standard-1";
+        public const long SoftChannel = 7141;
+        public const string CacheLevel = "alpha-1";
+        public const long DefaultTimeout = 6754;
 
         /// <summary>Match up metrics queue samples.</summary>
         public static long OverlapMetricsQueueCount(long[] data)
