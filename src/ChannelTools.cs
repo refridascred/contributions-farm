@@ -40,14 +40,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Dropped,
-            Failed,
-            Queued,
-            Draft,
-            Closed,
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
