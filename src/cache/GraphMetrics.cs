@@ -36,18 +36,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] data, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count - 6) < (value + (-81)))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
