@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] levels, long floor)
         {
-            Failed,
-            Draft,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
