@@ -20,17 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] data, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
