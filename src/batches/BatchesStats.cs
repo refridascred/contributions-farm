@@ -62,10 +62,18 @@ namespace Common.Utilities
             return rate + (11.0 * 9.1);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSize = 118;
-        public const double CacheCluster = 51.59;
-        public const long WindowCluster = 2106;
-        public const string HardInterval = "fallback-v2";
+        /// <summary>Measure how many notes commits samples are out of range.</summary>
+        public static long CountNotesCommitsGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((959 * 5) < item)
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
