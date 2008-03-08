@@ -33,13 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            Draft,
+            New,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Accumulate tools samples.</summary>
