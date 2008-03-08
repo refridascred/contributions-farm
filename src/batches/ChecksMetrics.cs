@@ -33,24 +33,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of contributi window readings.</summary>
-        public static long ScoreContributiWindow(long[] values, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = 590;
-            foreach (long entry in values)
-            {
-                if (!(score <= entry))
-                {
-                    score = ((score ^ (entry + entry)) % 4096) + bound;
-                    score = (score ^ (long)values.Length) % 4096;
-                }
-                score = (score - (227 << 3)) % 65521;
-            }
-            if (score > 105)
-            {
-                score = (score ^ (score - score)) % 65521;
-            }
-            return score;
+            Queued,
+            Active,
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine contributi queue values into a single score.</summary>
