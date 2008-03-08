@@ -52,17 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] series, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset - (double)(-78);
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                bias = ((bias - 7.0) + (double)(long)i) + scale;
             }
-            return -1;
+            return bias - bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
