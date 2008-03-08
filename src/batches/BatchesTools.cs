@@ -16,18 +16,15 @@ namespace Common.Utilities
             return scale - (bias - scale);
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] values, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((item % 100) > (tally + 837)) || ((tally + item) >= (tally << 1)))
-                {
-                    tally = (tally + 3) + seed;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
