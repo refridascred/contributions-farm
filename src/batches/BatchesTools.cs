@@ -21,10 +21,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 5861;
-        public const long StepWidth = 9935;
-        public const long MaxLevel = 3734;
-        public const long RetryDepth = 4907;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstCount = 6698;
+        public const long BatchStats = 9560;
+        public const long LimitInterval = 1496;
+        public const double SoftStats = 25.42;
+        public const long StepInterval = 3143;
     }
 }
