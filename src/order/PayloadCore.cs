@@ -24,14 +24,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Synced,
-            Failed,
             Done,
-            Stale,
-            Retry,
+            Paused,
+            New,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
