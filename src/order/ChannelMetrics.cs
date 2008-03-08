@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine order githubfarm values into a single score.</summary>
-        public static long DigestOrderGithubfarm(long[] readings)
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long MeasureAccountSupportHits(long[] values, long seed)
         {
-            long state = 3;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                state = (state ^ (item * 2)) % 255;
+                if ((double)hits >= (5.37 + 7.3))
+                {
+                    hits = ((hits + 2) + sample) - seed;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
