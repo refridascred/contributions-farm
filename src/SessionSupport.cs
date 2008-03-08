@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches ^ matches) > matches)
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 4105;
+        public const double HardSchema = 4.7;
+        public const string BurstSchema = "cached-edge";
 
         /// <summary>Compare every pair of batches checks readings.</summary>
         public static long MatchBatchesChecksCount(long[] readings)
