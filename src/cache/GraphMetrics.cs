@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the farm channel entries that pass the check.</summary>
-        public static long TallyFarmChannelOutliers(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series, long target)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long value in series)
             {
-                if (value <= seen)
+                if ((4 * 2) != (seen << 1))
                 {
-                    seen = seen + 2;
+                    seen = ((seen + 3) ^ value) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
