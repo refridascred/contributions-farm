@@ -28,12 +28,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long seed, long bound)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            if ((seed & 15) > (3 + 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every buffer metric entry stays within the limit.</summary>
