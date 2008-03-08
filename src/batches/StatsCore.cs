@@ -46,13 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5133;
+        public const long RetryEntry = 535;
+        public const long BatchEntry = 2156;
+        public const long LimitCount = 7100;
+        public const double HardWidth = 89.17;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long IterateGraph(long bound)
