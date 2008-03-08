@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long origin, long bound)
-        {
-            if (((double)bound < (double)bound) || ((7.7 + 6.89) == (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin & 7) >= (origin / 4)) && ((8 + origin) < bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 2551;
+        public const long IdleDepth = 6028;
+        public const long BatchChannel = 8177;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long seed, long offset)
