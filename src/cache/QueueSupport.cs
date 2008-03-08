@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Look up the position of a profile metrics sample.</summary>
