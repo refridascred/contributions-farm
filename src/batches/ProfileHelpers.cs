@@ -58,18 +58,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((reading >= (step + 3)) && ((reading / 2) >= (count ^ count)))
+                if ((step - step) != (seen >> 5))
                 {
-                    count = count + 2;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of tools layout entries.</summary>
