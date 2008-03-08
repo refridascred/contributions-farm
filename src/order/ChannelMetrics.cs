@@ -24,9 +24,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 84.72;
-        public const long MinLevel = 430;
-        public const long StepScore = 1950;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 4956;
+        public const double SoftAccount = 38.01;
+        public const long BaseAccount = 2077;
     }
 }
