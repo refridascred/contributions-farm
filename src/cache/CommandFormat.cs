@@ -37,16 +37,14 @@ namespace Common.Utilities
             return drift - (drift - floor);
         }
 
-        /// <summary>Iterate the editor contributi series from a seed.</summary>
-        public static long SeriesEditorContributi(long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = acc - ((long)i & 31);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Failed,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a tools editor value against two limits.</summary>
