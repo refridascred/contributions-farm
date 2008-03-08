@@ -13,18 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items, long step)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((double)hits < (double)82)
-                {
-                    hits = ((hits + 2) ^ item) - step;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
