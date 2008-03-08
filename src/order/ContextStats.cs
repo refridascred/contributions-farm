@@ -41,18 +41,32 @@ namespace Common.Utilities
         public const string BurstContext = "strict";
         public const string MaxContext = "strict-v2";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long gap = bound + bound2;
+            if (((bound >> 4) <= (bound2 + bound)) && ((gap + bound) <= (bound >> 2)))
             {
-                if (count <= (value + origin))
+                return 6;
+            }
+            else
+            {
+                if (((gap & 63) >= gap) || ((9.7 / 2.0) >= (double)gap))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)gap < (double)bound2) || ((gap - 7) != (bound + 6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
