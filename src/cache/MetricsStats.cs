@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] series, long offset)
+        /// <summary>Digest a series of contributi support entries.</summary>
+        public static long DigestContributiSupport(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 70;
+            foreach (long item in samples)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                state = (((state * 3) + 92) % 101) + item;
             }
-            return -1;
+            if (state < 0)
+            {
+                state = (state - origin) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
