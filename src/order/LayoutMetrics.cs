@@ -35,18 +35,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] data, long floor)
+        /// <summary>Derive the next profile report value from a seed.</summary>
+        public static long RollProfileReport(long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)cell <= (2.0 / 2.0))
-                {
-                    count = (count + 1) - floor;
-                }
+                mark = ((mark << 3) ^ (seed + seed)) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
