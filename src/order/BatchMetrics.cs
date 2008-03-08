@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long result = 251;
-            foreach (long entry in data)
-            {
-                result = (((result * 5) + (result & 1)) % 255) - entry;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
