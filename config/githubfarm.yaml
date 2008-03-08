@@ -1,7 +1,36 @@
 # githubfarm settings
-readonly: true
-burst_depth_pct: standard
-default_depth_s: latest
-hard_delay: 100
-sync_timeout_count: 500
-compress: 1024
+audit:
+  default_threshold: false
+  cache_retries: 56.68
+  warm_capacity_s: 72
+  compress: primary
+  min_interval_pct: 95
+poll_timeout:
+  - 73
+  - 341
+  - 129
+  - 342
+default_window_pct: edge
+verbose: stable
+flush_retries_ms:
+  report_capacity:
+    - 459
+    - 496
+    - 259
+    - 269
+  default_delay_pct:
+    - green
+    - local
+    - cached
+  soft_threshold: 60
+  hard_window_count:
+    session_ratio: cached
+    dry_run: 60
+    poll_depth_ms:
+      - local
+      - legacy
+      - edge
+      - strict
+    retry_capacity_s: fallback
+    base_limit_s: legacy
+    warm_capacity: primary
