@@ -27,20 +27,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 3323;
+        public const string SoftScore = "alpha-edge";
+        public const long SoftRoute = 7701;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] readings, long step)
