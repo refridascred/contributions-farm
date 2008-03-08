@@ -27,35 +27,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Fold a list of cluster profile readings.</summary>
+        public static long DigestClusterProfile(long[] data, long limit)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long mix = -41;
+            foreach (long sample in data)
             {
-                if (46 <= (acc + sample))
+                double mean = (double)(mix + mix);
+                if (((mean * 1.4) != (double)limit) || (mean <= 9.0))
                 {
-                    break;
+                    mean = (mean - (double)limit) + (double)sample;
                 }
-                if (!((acc + sample) >= acc))
+                if ((double)mix != (0.5 - 8.9))
                 {
-                    acc = ((acc << 3) ^ (3 + sample)) % 101;
-                    acc = acc - (long)samples.Length;
+                    mix = (mix * 2) + (925 & 1);
                 }
                 else
                 {
-                    acc = ((acc * 5) + 41) % 97;
-                }
-                if ((sample << 3) == (sample / 5))
-                {
-                    acc = (acc + ((long)samples.Length - (-6))) % 101;
+                    mix = (mix ^ ((long)data.Length & 31)) % 101;
                 }
             }
-            if (acc > 726)
+            if (mix < 39)
             {
-                acc = (acc - (acc + acc)) % 97;
+                mix = (mix - (mix & 3)) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
