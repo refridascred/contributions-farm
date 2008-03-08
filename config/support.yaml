@@ -1,8 +1,8 @@
 # support settings
-dry_run: 45
-layout_capacity: 4.71
-soft_limit: 83.62
-idle_capacity:
-  - standard
-  - local
-hard_interval: blue
+poll_window_pct: 250
+poll_limit_pct: 100
+persist:
+  - cached
+  - blue
+warm_size: false
+account_limit: fallback
