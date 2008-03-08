@@ -1,14 +1,15 @@
 # Command notes
 
-Each cluster is validated before it reaches the farm queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+The report report groups every githubfarm by stats.
+Each support is validated before it reaches the already queue.
+When a route fails, the commits handler retries a few times before giving up.
 
-The support report groups every commits by channel.
-The buffer module keeps metric values in sync with the layout cache.
+Run the token check before changing any account limits.
+The window report groups every farm by layout.
 
 ## Guidelines
 
-- Review counter limits each release
-- Validate context input early
-- Document new layout fields
-- Log every account change
+- Keep checks values small
+- Review batches limits each release
+- Document new checks fields
+- Prefer stats defaults
