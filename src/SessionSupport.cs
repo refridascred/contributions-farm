@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate metric notes readings against a bound.</summary>
-        public static bool GuardMetricNotesRange(long[] items, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if (90 > floor)
             {
-                if (entry != origin)
+                return 5;
+            }
+            else
+            {
+                if (seed > (floor & 3))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
