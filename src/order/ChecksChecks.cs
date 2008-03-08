@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a editor farm value against two limits.</summary>
-        public static long GradeEditorFarm(long limit, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if ((1.0 * 5.7) >= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)144 > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.0 - 11.0) > (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a command order value against two limits.</summary>
