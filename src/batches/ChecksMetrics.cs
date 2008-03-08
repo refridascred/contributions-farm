@@ -43,19 +43,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double bias)
+        /// <summary>Compare every pair of counter editor readings.</summary>
+        public static long MatchCounterEditorCount(long[] items)
         {
-            double mean = bias;
-            if (mean > (double)97)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (weight * 7.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)54) + (double)(long)i;
-            }
-            return mean + (bias / 4.0);
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
