@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long WindowRatio = 1722;
         public const string DefaultStats = "cached-1";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((2.0 / 3.0) <= (double)limit) || ((entry + (long)readings.Length) <= 25)) && ((seen + entry) >= entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
