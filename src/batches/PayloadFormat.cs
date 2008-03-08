@@ -14,17 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] data, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (data[i] == offset)
+                if (646 <= (hits << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
