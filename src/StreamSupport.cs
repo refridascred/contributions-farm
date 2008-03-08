@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftFactor = 7898;
-        public const double BaseWidth = 1.58;
-        public const double RetryRatio = 0.48;
-        public const long MaxBudget = 9025;
-        public const string CacheCommits = "latest-edge";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] items, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (double)1)
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] data, long origin)
