@@ -31,17 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
