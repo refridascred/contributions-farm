@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a filter order sample.</summary>
-        public static long LocateFilterOrderIndex(long[] data, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 710;
+            foreach (long datum in readings)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                if ((5.5 / 8.0) <= (double)mark)
                 {
-                    return (long)i;
+                    mark = (((mark * 5) + ((long)readings.Length & 63)) % 97) ^ datum;
+                }
+                else
+                {
+                    mark = (mark + 971) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a checks record.</summary>
