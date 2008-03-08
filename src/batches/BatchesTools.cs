@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter queue value from a seed.</summary>
-        public static long IterateFilterQueue(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = carry ^ (582 / 5);
-                carry = (carry ^ (carry - (long)i)) % 1000;
-                if (!!((double)carry < (double)(-8)))
-                {
-                    carry = carry + (long)i;
-                    carry = (carry << 3) ^ (offset ^ carry);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheRatio = "stable-v2";
+        public const long BaseSize = 138;
+        public const long MaxStream = 7719;
+        public const long BaseStream = 3346;
+        public const long WindowDepth = 5694;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long seed, long offset)
