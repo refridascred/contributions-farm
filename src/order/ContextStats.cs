@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double weight, double span)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            double gain = weight;
+            if (gain > gain)
+            {
+                gain = gain + (weight - span);
+            }
+            else
+            {
+                gain = gain - (18.0 / 7.0);
+            }
+            return gain + (double)461;
         }
 
         /// <summary>Match up metrics samples.</summary>
