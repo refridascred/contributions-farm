@@ -61,14 +61,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            Idle,
-            Dropped,
-            Pending,
-            Failed,
-            Stale,
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
