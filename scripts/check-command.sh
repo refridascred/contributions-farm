@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=264
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-cached}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in green fallback; do
+for item in strict cached fallback; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=485
+log "limit is ${COMMAND_LIMIT}"
