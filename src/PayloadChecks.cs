@@ -18,11 +18,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
+            public long Rank { get; set; }
             public long Token { get; set; }
-            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
