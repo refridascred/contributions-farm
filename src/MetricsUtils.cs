@@ -37,12 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinWidth = 95.73;
-        public const string DefaultQueue = "latest-1";
-        public const double SoftBudget = 76.94;
-        public const long CacheQueue = 4168;
-        public const long IdleDepth = 7536;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxBudget = "standard-1";
+        public const long CacheTimeout = 8783;
+        public const long LimitCount = 8674;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] samples)
