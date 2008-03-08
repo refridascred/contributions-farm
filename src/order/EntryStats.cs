@@ -15,14 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Failed,
-            New,
-            Done,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchRatio = 34.04;
+        public const long MaxFactor = 1198;
+        public const long HardContributi = 5912;
+        public const string StepContributi = "local-v2";
+        public const string WindowContributi = "primary-edge";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] data)
