@@ -39,9 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "primary-edge";
-        public const long WindowGithubfarm = 2083;
-        public const long MinDepth = 4250;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Dropped,
+            Failed,
+            Queued,
+            Draft,
+            Closed,
+        }
     }
 }
