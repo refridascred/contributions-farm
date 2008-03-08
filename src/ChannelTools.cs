@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] values, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (value != target)
+                if (seed >= (seed + 244))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + reading;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
