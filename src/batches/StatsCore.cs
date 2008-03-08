@@ -67,19 +67,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of metric already entries.</summary>
-        public static long CombineMetricAlready(long[] samples, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            long mix = 5;
-            foreach (long value in samples)
+            double weight = 13.0 - (double)992;
+            if (weight > bias)
             {
-                mix = mix ^ (780 * 3);
-                if (value >= (origin >> 3))
-                {
-                    mix = mix ^ (value - origin);
-                }
+                weight = (weight + (weight - weight)) - ratio;
             }
-            return mix % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
