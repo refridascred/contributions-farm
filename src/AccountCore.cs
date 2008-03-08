@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Derive the next buffer context value from a seed.</summary>
+        public static long SeriesBufferContext(long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result * 5) + result) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
