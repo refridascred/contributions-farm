@@ -59,14 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool ValidatePayloadQueueRange(long[] values, long floor)
         {
-            Ready,
-            New,
-            Dropped,
-            Idle,
-            Done,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
