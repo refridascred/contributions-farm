@@ -1,7 +1,11 @@
 {
-  "batches_ratio": [95, 272],
-  "enabled": true,
-  "schema_interval": 250,
-  "base_capacity_count": 6979,
-  "soft_depth": [196, 63, 58]
+  "min_ttl": "blue",
+  "checks_interval": [209, 203, 404],
+  "counter_delay": {
+    "batch_retries_ms": 79,
+    "base_limit": "legacy",
+    "idle_window": ["latest", "blue"],
+    "max_size_pct": 42.02,
+    "sync_ttl_ms": 30
+  }
 }
