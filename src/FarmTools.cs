@@ -35,14 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                acc = acc - (step / 3);
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc * 4) + origin) ^ (long)i2;
+                    acc = acc - acc;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
             return acc;
         }
