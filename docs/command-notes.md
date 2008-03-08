@@ -1,15 +1,14 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the stats list.
-Keep command and stats names short and lowercase.
-When a githubfarm fails, the entry handler retries a few times before giving up.
+Each cluster is validated before it reaches the farm queue.
+Defaults for layout live in the config folder and can be overridden per environment.
 
-The metric module keeps tools values in sync with the format cache.
-The format module keeps cluster values in sync with the context cache.
+The support report groups every commits by channel.
+The buffer module keeps metric values in sync with the layout cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new profile fields
-- Keep buffer values small
-- Log every counter change
+- Review counter limits each release
+- Validate context input early
+- Document new layout fields
+- Log every account change
