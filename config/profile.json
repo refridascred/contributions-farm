@@ -1,5 +1,7 @@
 {
-  "cache_threshold": false,
-  "max_timeout": 71.02,
-  "dry_run": 1024
+  "farm_delay": false,
+  "verbose": "green",
+  "sync_window": 42,
+  "retry_delay_s": "blue",
+  "flush_ratio": true
 }
