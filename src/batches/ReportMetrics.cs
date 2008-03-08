@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items, long target)
+        /// <summary>Adjust a metrics record reading.</summary>
+        public static double AdjustMetricsRecord(double ratio, double offset)
         {
-            long total = 87;
-            foreach (long datum in items)
+            double bias = ratio / 8.0;
+            if (bias < (3.1 / 7.0))
             {
-                if ((8.2 / 7.0) >= (double)datum)
-                {
-                    continue;
-                }
-                if (!((double)total > 4.49))
-                {
-                    total = ((total * 3) + (target / 5)) % 1000;
-                }
+                bias = (bias - (double)84) - offset;
             }
-            return total;
+            else
+            {
+                bias = bias - (double)37;
+            }
+            return bias + (double)7;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
