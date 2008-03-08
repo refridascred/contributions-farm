@@ -75,17 +75,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first schema session entry that matches the target.</summary>
-        public static long LocateSchemaSessionIndex(long[] series, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((series[i] == step) && ((series[i] % 5) != 0))
+                if (!((value - 567) == (16 << 1)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a record reading.</summary>
