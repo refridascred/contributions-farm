@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] items, long limit)
         {
-            Synced,
-            Locked,
-            Closed,
-            Pending,
-            New,
+            long anchor = 43;
+            foreach (long datum in items)
+            {
+                if ((double)limit == (4.8 / 8.0))
+                {
+                    anchor = (anchor << 2) ^ (datum - 89);
+                }
+            }
+            if (anchor > 418)
+            {
+                anchor = ((anchor << 3) ^ 76) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
