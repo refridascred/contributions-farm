@@ -45,38 +45,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            if ((8.54 / 8.0) < (double)step)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                total = (total + (total - total)) % 1000;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((step + 51) > (5 & 15)) && ((1.41 + 9.4) >= (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (15.0 - 0.92))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset <= (step * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
