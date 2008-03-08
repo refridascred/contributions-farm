@@ -27,13 +27,35 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            long acc = 0;
+            foreach (long sample in samples)
+            {
+                if (46 <= (acc + sample))
+                {
+                    break;
+                }
+                if (!((acc + sample) >= acc))
+                {
+                    acc = ((acc << 3) ^ (3 + sample)) % 101;
+                    acc = acc - (long)samples.Length;
+                }
+                else
+                {
+                    acc = ((acc * 5) + 41) % 97;
+                }
+                if ((sample << 3) == (sample / 5))
+                {
+                    acc = (acc + ((long)samples.Length - (-6))) % 101;
+                }
+            }
+            if (acc > 726)
+            {
+                acc = (acc - (acc + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
