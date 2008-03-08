@@ -35,17 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
