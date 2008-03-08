@@ -48,14 +48,24 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long origin, long floor)
         {
-            Draft,
-            Stale,
-            Done,
-            Locked,
-            Idle,
+            if (((origin - floor) > origin) || ((7.92 / 8.0) >= (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((7.83 * 3.8) < (double)floor) || ((origin & 255) <= (origin % 60)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
