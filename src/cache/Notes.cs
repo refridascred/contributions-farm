@@ -27,19 +27,26 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate editor schema readings against a bound.</summary>
-        public static bool ValidateEditorSchemaLimits(long[] levels, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long acc = 0;
+            foreach (long datum in readings)
             {
-                if (sample != floor)
+                if ((8.1 - 2.0) == (double)acc)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (datum + datum)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 65521;
                 }
             }
-            return ready;
+            if (acc > 283)
+            {
+                acc = acc ^ (acc >> 4);
+            }
+            return acc;
         }
 
         /// <summary>Blend two metric measurements.</summary>
