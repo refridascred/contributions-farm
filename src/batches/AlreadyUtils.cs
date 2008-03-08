@@ -47,14 +47,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] readings, long origin)
         {
-            Failed,
-            Draft,
-            Stale,
-            Active,
-            Dropped,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
