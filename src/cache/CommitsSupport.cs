@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            long state = 302;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state << 3) ^ 589) % 255) - step;
-                state = (state ^ (43 * 3)) % 1000;
-                if ((64 + cell) < state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state - state;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
