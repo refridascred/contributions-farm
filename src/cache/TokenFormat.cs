@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long floor, long step)
         {
-            long total = 5;
-            foreach (long cell in levels)
+            if (((step + floor) >= (floor & 3)) && ((floor + step) < (floor - step)))
             {
-                if (((cell & 3) > (7 >> 3)) || ((488 ^ cell) > (total / 8)))
+                return 1;
+            }
+            else
+            {
+                if (step < (floor << 2))
                 {
-                    total = ((total << 3) ^ total) % 97;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the checks kind values.</summary>
