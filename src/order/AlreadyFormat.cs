@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] values, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < target)
+                if (((long)i * 2) > (bound + bound))
                 {
-                    ok = false;
-                    break;
+                    long bound2 = total + (total / 7);
+                    total = ((total * 2) + (bound2 - bound)) % 97;
+                    continue;
                 }
+                else
+                {
+                    total = (total * 3) + (556 ^ total);
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
