@@ -1,14 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often batch data is refreshed.
-The session report groups every checks by batches.
-The metric helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the commits handler retries a few times before giving up.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-A editor that stays idle for too long is moved to the report list.
-Run the editor check before changing any profile limits.
+Run the stream check before changing any support limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new cache fields
-- Review commits limits each release
-- Log every commits change
+- Keep contributi values small
+- Prefer graph defaults
+- Review checks limits each release
+- Validate account input early
