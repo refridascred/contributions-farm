@@ -36,16 +36,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor ^ (target * 5)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
