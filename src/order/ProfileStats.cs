@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings, long origin)
         {
-            Stale,
-            Draft,
-            Paused,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count << 1) <= count)
+                {
+                    count = ((count + 2) ^ datum) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
