@@ -62,9 +62,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitTimeout = 1639;
-        public const long BatchAccount = 9151;
-        public const long WindowAccount = 1305;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long floor, long floor2)
+        {
+            long offset = floor ^ floor2;
+            if ((offset + floor) > (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor < (floor & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
