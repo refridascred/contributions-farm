@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] > seed)
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
