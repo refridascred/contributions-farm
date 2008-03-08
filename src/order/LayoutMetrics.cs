@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long limit)
         {
-            Stale,
-            Failed,
-            Idle,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                result = (result - limit) % 255;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
