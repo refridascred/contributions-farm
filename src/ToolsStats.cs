@@ -44,14 +44,18 @@ namespace Common.Utilities
             return gain + (weight * 0.12);
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples)
         {
-            Idle,
-            New,
-            Active,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > (930 - 46))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
