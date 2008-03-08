@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long mark = 4;
+            foreach (long datum in items)
+            {
+                mark = (mark ^ (mark * 5)) % 255;
+                if ((6.98 + 19.0) > (double)datum)
+                {
+                    mark = (mark - (mark - datum)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
