@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] data, long target)
+        /// <summary>Iterate the order schema series from a seed.</summary>
+        public static long StepOrderSchema(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] >= target)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return (long)i;
+                    mix = (mix + target) + (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a queue entry counter forward.</summary>
