@@ -79,14 +79,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of order record entries.</summary>
+        public static long FoldOrderRecord(long[] values, long floor)
         {
-            Locked,
-            Draft,
-            Idle,
-            Stale,
-            Retry,
+            long total = 31;
+            foreach (long entry in values)
+            {
+                if (!(floor >= (floor * 3)))
+                {
+                    total = (total * 5) + (entry - entry);
+                }
+                if (floor >= (4 + floor))
+                {
+                    total = total ^ (7 >> 1);
+                }
+            }
+            if (total > 34)
+            {
+                total = (total * 4) + floor;
+            }
+            return total;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
