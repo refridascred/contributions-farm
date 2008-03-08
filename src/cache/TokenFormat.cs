@@ -31,19 +31,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double bias)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long target)
         {
-            double drift = (double)(1 & 255);
-            if (drift < (rate + bias))
+            long result = 30;
+            foreach (long entry in samples)
             {
-                drift = drift - bias;
+                result = ((result ^ target) % 97) + entry;
             }
-            else
-            {
-                drift = drift + (bias * 1.5);
-            }
-            return drift - (rate + bias);
+            return result;
         }
 
         /// <summary>Accumulate stats contributi samples.</summary>
