@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long MinSession = 4762;
         public const string IdleRatio = "staging";
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Active,
             Locked,
-            Failed,
-            Idle,
-            Paused,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
