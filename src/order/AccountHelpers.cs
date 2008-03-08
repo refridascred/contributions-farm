@@ -59,17 +59,23 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 83;
+            foreach (long cell in values)
             {
-                if (items[i] == seed)
+                state = (state + (cell + cell)) % 97;
+                if (!((cell / 4) >= state))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (2 - 722)) % 97;
+                }
+                else
+                {
+                    state = state ^ cell;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
