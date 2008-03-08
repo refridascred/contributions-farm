@@ -15,22 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "local-v2";
+        public const long DefaultSize = 5759;
+        public const string RetryDepth = "primary-edge";
+        public const string CacheSupport = "local";
+        public const long BurstSupport = 5024;
 
         /// <summary>Digest a series of context checks entries.</summary>
         public static long TallyContextChecks(long[] samples)
