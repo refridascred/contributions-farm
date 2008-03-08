@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i * 2) > (bound + bound))
-                {
-                    long bound2 = total + (total / 7);
-                    total = ((total * 2) + (bound2 - bound)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = (total * 3) + (556 ^ total);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 3716;
+        public const long RetryProfile = 2597;
+        public const long DefaultProfile = 1657;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] levels, long floor)
