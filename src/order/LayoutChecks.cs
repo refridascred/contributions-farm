@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double ratio, double floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            double ratio2 = floor;
-            if (ratio2 <= ratio)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                ratio2 = ratio2 + (ratio * 2.84);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ratio2 - ratio;
+            return mix;
         }
 
         /// <summary>Describe the route level values.</summary>
