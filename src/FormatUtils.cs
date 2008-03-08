@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the profile graph entries that pass the check.</summary>
-        public static long AuditProfileGraphGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - tally) != (sample << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftScore = 863;
+        public const double MaxSpan = 28.57;
+        public const long LimitLevel = 7524;
+        public const long MinNotes = 4357;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string LimitInterval = "standard";
