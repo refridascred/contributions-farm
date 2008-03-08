@@ -16,11 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 8725;
-        public const long WindowSize = 7846;
-        public const long DefaultSpan = 6892;
-        public const long BatchDepth = 3587;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels, long seed)
+        {
+            long acc = 0;
+            foreach (long datum in levels)
+            {
+                if ((acc < (seed - 33)) && ((seed >> 3) < acc))
+                {
+                    acc = acc ^ (seed - datum);
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsBounds(long[] items, long step)
