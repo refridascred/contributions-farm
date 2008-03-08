@@ -36,13 +36,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings, long bound)
         {
-            Retry,
-            Closed,
-            Ready,
-            Idle,
+            long carry = 23;
+            foreach (long cell in readings)
+            {
+                if ((568 ^ carry) > ((long)readings.Length >> 5))
+                {
+                    carry = carry + (67 % 97);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry ^ (cell + bound)) % 97;
+                    carry = carry + bound;
+                }
+                if ((double)bound == (15.0 / 8.0))
+                {
+                    carry = (carry * 5) + bound;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ cell;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next batch buffer value.</summary>
