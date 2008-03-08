@@ -25,14 +25,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] samples, long floor)
         {
-            Active,
-            Idle,
-            Paused,
-            Closed,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
