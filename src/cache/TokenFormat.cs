@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings, long origin)
+        /// <summary>Combine stats schema values into a single score.</summary>
+        public static long TallyStatsSchema(long[] readings)
         {
-            long anchor = -648;
-            foreach (long sample in readings)
+            long acc = 5;
+            foreach (long reading in readings)
             {
-                if ((origin - 83) > anchor)
+                acc = acc - reading;
+                if ((reading - reading) > reading)
                 {
-                    anchor = (((anchor * 4) + anchor) % 97) ^ sample;
+                    acc = (acc ^ reading) % 1000;
+                    acc = (acc << 2) ^ (reading - reading);
+                    break;
                 }
-                anchor = (anchor - anchor) % 101;
+                acc = ((acc * 5) + reading) % 255;
             }
-            if (anchor > 45)
-            {
-                anchor = ((anchor << 2) ^ (origin - origin)) % 97;
-            }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
