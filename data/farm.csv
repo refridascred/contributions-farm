@@ -1,7 +1,8 @@
-id,state,weight,active,score
-1,latest,52.51,2.29,409
-2,750,staging,40.66,fallback
-3,blue,821,35.77,93
-4,250,860,529,26.93
-5,strict,111,84.45,770
-6,678,27.1,167,73.99
+id,active,level
+1,latest,edge
+2,773,18.05
+3,903,staging
+4,12,191
+5,primary,fallback
+6,229,82.45
+7,latest,157
