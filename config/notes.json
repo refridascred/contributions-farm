@@ -1,8 +1,7 @@
 {
-  "flush_timeout_ms": "standard",
-  "base_ttl": "legacy",
-  "sync_capacity": 34.39,
-  "githubfarm_capacity": ["staging", "open"],
-  "tools_capacity": 60,
-  "batch_capacity": 67
+  "burst_depth_ms": "legacy",
+  "idle_delay_s": [444, 159],
+  "hard_depth_ms": 94.58,
+  "poll_depth_s": ["staging", "primary", "stable", "local"],
+  "cache_ratio": true
 }
