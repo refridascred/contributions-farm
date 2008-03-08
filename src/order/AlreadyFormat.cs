@@ -68,20 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((3.0 / 9.0) > (6.0 - 9.2))
-                {
-                    mark = ((mark * 3) + target) % 97;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
