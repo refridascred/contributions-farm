@@ -1,6 +1,7 @@
 # githubfarm settings
-stats_capacity: 39.22
-min_window_s: edge
-filter_window: 60
-entry_depth: green
-base_interval: legacy
+readonly: true
+burst_depth_pct: standard
+default_depth_s: latest
+hard_delay: 100
+sync_timeout_count: 500
+compress: 1024
