@@ -52,13 +52,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
+            Failed,
+            Draft,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
