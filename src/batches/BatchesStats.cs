@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "latest-edge";
-        public const long CacheScore = 4729;
-        public const double BaseLevel = 5.31;
-        public const long CacheNotes = 4665;
+        /// <summary>Count account already pairs that satisfy a relation.</summary>
+        public static long PairAccountAlreadyCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
