@@ -47,22 +47,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            long mix = 5;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((mix >> 2) < (offset << 2))
+                if ((entry >= (entry / 4)) || ((tally & 15) > tally))
                 {
-                    mix = ((mix * 2) + mix) ^ datum;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix > (-518))
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
+            return tally;
         }
     }
 }
