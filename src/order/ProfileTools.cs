@@ -63,24 +63,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Combine checks cache values into a single score.</summary>
+        public static long DigestChecksCache(long[] items, long bound)
         {
-            if (((-533) + floor) > step)
+            long carry = -8;
+            foreach (long sample in items)
             {
-                return 0;
+                carry = ((carry + (carry + bound)) % 1000) + sample;
             }
-            else
-            {
-                if (((step ^ floor) <= (step + 2)) || ((double)floor > (1.0 - 4.9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a channel record.</summary>
