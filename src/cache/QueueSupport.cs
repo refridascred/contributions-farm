@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            double rate2 = rate;
+            if (rate2 <= (double)4)
+            {
+                rate2 = rate2 + (floor - floor);
+            }
+            else
+            {
+                rate2 = rate2 + (double)610;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - (rate + rate2)) + (double)(long)i;
+            }
+            return rate2 - (floor * 5.03);
         }
 
         /// <summary>Hold a account options.</summary>
