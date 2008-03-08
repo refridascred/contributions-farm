@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Audit command stream readings against a rule.</summary>
-        public static long TallyCommandStreamGaps(long[] levels, long target)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long TallyEntrySchemaOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((9.7 - 11.0) == (double)target)
+                if ((entry - 5) < (4 + hits))
                 {
-                    seen = (seen + 2) - sample;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up account samples.</summary>
