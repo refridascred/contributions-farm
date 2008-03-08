@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string IdleProfile = "standard";
         public const double DefaultProfile = 26.68;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Adjust a report reading.</summary>
