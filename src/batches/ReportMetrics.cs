@@ -39,19 +39,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            double mean = bias;
-            if (mean >= (4.0 - ratio))
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean + ratio;
+                acc = ((acc << 2) ^ (acc / 2)) % 1000;
+                if ((floor ^ floor) >= (acc & 1))
+                {
+                    acc = acc ^ (acc - acc);
+                    acc = ((acc << 2) ^ ((long)i - acc)) % 65521;
+                }
+                if (!((acc << 1) > floor))
+                {
+                    acc = acc ^ (acc - floor);
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (ratio / 4.0)) - (double)(long)i;
-            }
-            return mean + mean;
+            return acc;
         }
     }
 }
