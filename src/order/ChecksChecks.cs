@@ -20,12 +20,19 @@ namespace Common.Utilities
             return rate - (bias - gain);
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] items, long seed)
         {
-            Done,
-            New,
-            Ready,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the contributi class values.</summary>
