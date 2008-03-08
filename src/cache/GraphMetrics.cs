@@ -50,16 +50,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster checks counter forward.</summary>
-        public static long StepClusterChecks(long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long score = -61;
+            foreach (long value in levels)
             {
-                carry = (carry << 3) ^ seed;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((limit << 3) <= (limit & 255))
+                {
+                    score = (score + 36) % 1000;
+                    score = score + (limit + score);
+                }
+                if ((score * 5) < value)
+                {
+                    score = score - (limit / 6);
+                }
+                else
+                {
+                    score = (score * 2) + (score + value);
+                }
             }
-            return carry;
+            return score;
         }
     }
 }
