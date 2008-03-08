@@ -1,12 +1,14 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-A token that stays idle for too long is moved to the format list.
-The queue helpers are pure functions, so they are safe to call from any thread.
+Keep farm and cache names short and lowercase.
+Use report settings to tune how often format data is refreshed.
+Each session is validated before it reaches the filter queue.
+
+Each stats is validated before it reaches the farm queue.
+Each already is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Document new commits fields
-- Review batches limits each release
-- Log every batches change
-- Prefer cache defaults
+- Log every githubfarm change
+- Keep route values small
+- Prefer context defaults
