@@ -13,18 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] levels, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((count & 127) < (step >> 3)) || ((step * 3) < count))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
