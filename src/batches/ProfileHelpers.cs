@@ -73,22 +73,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools layout entries.</summary>
-        public static long ScoreToolsLayout(long[] items)
+        /// <summary>Measure how many batch stream samples are out of range.</summary>
+        public static long CountBatchStreamGaps(long[] data)
         {
-            long carry = 30;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((2.3 - 0.91) >= (double)value)
+                if (tally > (tally * 2))
                 {
-                    carry = (carry ^ (carry % 10)) % 97;
+                    tally = (tally + 3) - reading;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry - (carry & 63)) % 1000;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
