@@ -48,22 +48,13 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] series, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!!(tally >= (157 + entry)))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
