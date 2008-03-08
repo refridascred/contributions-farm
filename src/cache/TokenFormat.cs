@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((5.81 / 6.0) != (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
