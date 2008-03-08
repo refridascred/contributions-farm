@@ -66,15 +66,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double gain, double bias)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double load = (gain - 9.1) / 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load + (double)197) + (double)(long)i) - bias;
-            }
-            return load + (double)(-9);
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
