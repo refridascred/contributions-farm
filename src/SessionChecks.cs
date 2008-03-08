@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinWidth = "fallback-edge";
+        public const long HardCount = 73;
+        public const long BatchToken = 1435;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] items, long origin)
