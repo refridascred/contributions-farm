@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double ratio, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            double gain = ratio;
-            return (gain + (double)8) + span;
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value < (seen & 127))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
