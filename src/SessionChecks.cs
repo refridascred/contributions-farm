@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long HardCount = 73;
         public const long BatchToken = 1435;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowBudget = 58.55;
-        public const long SoftLevel = 8920;
-        public const long IdleWindow = 4064;
-        public const double BaseWindow = 24.41;
-        public const string DefaultRatio = "stable-1";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result + (result / 7);
+                if (((result >> 4) > limit) && ((double)limit < (9.34 - 4.97)))
+                {
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] data)
