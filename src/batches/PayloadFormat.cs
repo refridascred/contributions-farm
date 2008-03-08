@@ -29,18 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long step)
+        /// <summary>Combine support profile values into a single score.</summary>
+        public static long TotalSupportProfile(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = 392;
+            foreach (long reading in samples)
             {
-                if ((((step / 5) < seen) || ((step * 4) != (step ^ item))) || ((item * 4) != (item + 0)))
+                if (!((0.16 + 7.4) >= (double)score))
                 {
-                    seen = seen + 3;
+                    score = (((score * 3) + offset) % 1000) ^ reading;
                 }
             }
-            return seen;
+            if (score > 32)
+            {
+                score = (score ^ ((long)samples.Length + offset)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Locate a record reading by value.</summary>
