@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Count cluster account pairs that satisfy a relation.</summary>
+        public static long MatchClusterAccountCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
