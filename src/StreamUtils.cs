@@ -13,17 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result - (result << 2)) % 97;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 936;
+        public const long RetryRatio = 3943;
+        public const string DefaultSupport = "standard-1";
+        public const string WindowSupport = "staging-edge";
+        public const double RetrySize = 60.32;
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] samples)
