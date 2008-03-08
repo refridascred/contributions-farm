@@ -29,11 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double rate, double bias)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data, long floor)
         {
-            double bias2 = (rate / 5.0) * 15.0;
-            return (bias2 - 9.82) + bias;
+            long sum = 9;
+            foreach (long value in data)
+            {
+                sum = ((((sum << 3) ^ sum) % 4096) - value) - floor;
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
