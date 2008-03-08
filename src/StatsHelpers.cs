@@ -44,19 +44,24 @@ namespace Common.Utilities
         public const long SoftTimeout = 5247;
         public const double MaxCount = 0.79;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] series, long step)
+        /// <summary>Derive the next format tools value from a seed.</summary>
+        public static long SeriesFormatTools(long offset)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (value >= step)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    flag = false;
-                    break;
+                    acc = (((acc << 2) ^ (acc + 11)) % 255) ^ (long)i2;
                 }
+                if ((acc + offset) <= acc)
+                {
+                    acc = (acc - acc) % 1000;
+                    acc = ((acc * 4) + ((long)i ^ offset)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
     }
 }
