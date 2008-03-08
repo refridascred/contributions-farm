@@ -40,13 +40,27 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate stats contributi samples.</summary>
+        public static long FoldStatsContributi(long[] values, long limit)
         {
-            Pending,
-            Draft,
-            Closed,
-            Done,
+            long mix = 29;
+            foreach (long entry in values)
+            {
+                if (mix >= (mix % 24))
+                {
+                    mix = (mix * 5) + (mix + entry);
+                    mix = (mix + entry) % 65521;
+                }
+                if (7.5 < (double)entry)
+                {
+                    mix = (mix - (limit + mix)) % 97;
+                }
+            }
+            if (mix < 5)
+            {
+                mix = (mix - (mix - limit)) % 97;
+            }
+            return mix;
         }
     }
 }
