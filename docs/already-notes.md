@@ -1,14 +1,12 @@
 # Already notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-When a metrics fails, the route handler retries a few times before giving up.
-
-Keep report and format names short and lowercase.
-Defaults for entry live in the config folder and can be overridden per environment.
+Keep cluster and stats names short and lowercase.
+Defaults for metric live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new support fields
-- Prefer cluster defaults
-- Keep window values small
+- Keep stats values small
+- Prefer layout defaults
+- Validate booking input early
+- Document new batches fields
