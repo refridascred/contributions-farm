@@ -1,7 +1,9 @@
-id,weight,token
-1,482,198
-2,105,standard
-3,legacy,stable
-4,484,84.72
-5,49.8,49.46
-6,52,blue
+id,label,state,level,count
+1,stable,465,4.22,staging
+2,479,225,standard,cached
+3,45.68,blue,86.41,602
+4,98.2,open,stable,69.36
+5,66.79,981,blue,588
+6,593,9.31,969,94.48
+7,46.18,109,35.25,179
+8,198,strict,556,244
