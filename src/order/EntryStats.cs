@@ -39,14 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long target)
         {
-            Queued,
-            Paused,
-            Failed,
-            Draft,
-            Synced,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
