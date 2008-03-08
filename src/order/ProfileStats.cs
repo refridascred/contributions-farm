@@ -34,21 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 2;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state << 3) ^ (sample - offset);
             }
-            return hits;
+            if (state < 1)
+            {
+                state = state ^ 519;
+            }
+            return state;
         }
     }
 }
