@@ -31,17 +31,22 @@ namespace Common.Utilities
         public const long MaxLevel = 754;
         public const double HardSession = 44.46;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long seed)
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (items[i] >= seed)
+                if (((sample % 60) < seed) && ((seed % 60) <= (760 << 2)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
