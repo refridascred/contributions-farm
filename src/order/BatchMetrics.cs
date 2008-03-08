@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes stats reading.</summary>
-        public static double AdjustNotesStats(double rate, double offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] items, long floor)
         {
-            double gain = (double)75 - offset;
-            if (gain >= (gain / 4.0))
+            bool ready = true;
+            foreach (long item in items)
             {
-                gain = gain + rate;
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - (gain - rate);
+            return ready;
         }
 
         /// <summary>Describe the checks phase values.</summary>
