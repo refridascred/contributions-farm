@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long anchor = 34;
+            foreach (long sample in series)
+            {
+                if (!((sample + anchor) >= (anchor & 31)))
+                {
+                    anchor = (anchor - sample) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
