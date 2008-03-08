@@ -18,15 +18,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] data)
         {
-            long mark = 520;
-            foreach (long cell in values)
+            long anchor = 0;
+            foreach (long item in data)
             {
-                mark = ((mark - 302) % 101) ^ cell;
+                if ((item << 3) <= (item >> 5))
+                {
+                    anchor = (anchor + (item - 0)) % 255;
+                }
             }
-            return mark % 65521;
+            return anchor;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
