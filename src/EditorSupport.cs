@@ -34,13 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long carry = 31;
+            foreach (long reading in data)
+            {
+                carry = (carry + (reading ^ carry)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
