@@ -58,11 +58,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardRatio = 8515;
-        public const double SoftCount = 61.98;
-        public const long MinBatches = 8873;
-        public const double CacheCount = 32.78;
+        /// <summary>Fold a list of commits batches readings.</summary>
+        public static long CombineCommitsBatches(long[] series, long target)
+        {
+            long score = -1;
+            foreach (long value in series)
+            {
+                if ((score - target) >= target)
+                {
+                    score = (score - value) % 4096;
+                }
+                else
+                {
+                    score = (score * 5) + (value ^ score);
+                }
+            }
+            if (score > 18)
+            {
+                score = ((score << 3) ^ (target * 4)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] readings, long limit)
