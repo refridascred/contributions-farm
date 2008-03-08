@@ -41,13 +41,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Active,
-            Locked,
-            Draft,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleScore = 2706;
+        public const long LimitChecks = 9755;
+        public const long BaseScore = 6125;
+        public const long MinTimeout = 5197;
+        public const long MinChecks = 8248;
     }
 }
