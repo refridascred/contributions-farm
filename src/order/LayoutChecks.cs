@@ -43,21 +43,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of token graph readings.</summary>
-        public static long PairTokenGraphCount(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)items.Length - seen) != (178 + sample))
                 {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine format context values into a single score.</summary>
