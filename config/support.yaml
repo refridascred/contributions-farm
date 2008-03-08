@@ -1,11 +1,4 @@
 # support settings
-sync_threshold_s: latest
-min_interval:
-  - 110
-  - 435
-  - 490
-  - 299
-batch_depth_ms: 41
-persist: fallback
-sync_timeout: 94.28
-poll_capacity_s: legacy
+persist: 8832
+window_ratio: 60
+default_capacity: false
