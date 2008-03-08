@@ -48,38 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long target, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values, long floor)
         {
-            if (!((double)511 != (double)seed))
+            long sum = 216;
+            foreach (long datum in values)
             {
-                return 3;
+                sum = (((sum + 79) % 97) + datum) - floor;
             }
-            else
-            {
-                if ((4.33 / 7.0) < (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) == (target - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + target) >= (target * 2)) || ((double)seed == (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
