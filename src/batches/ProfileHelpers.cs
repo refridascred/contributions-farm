@@ -46,12 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 89.0;
-        public const long DefaultOrder = 1122;
-        public const long LimitScore = 6099;
-        public const double CacheOrder = 53.76;
-        public const double RetryOrder = 42.15;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series)
+        {
+            long mark = 406;
+            foreach (long entry in series)
+            {
+                if (((double)entry > (8.1 + 4.92)) || ((entry % 7) < (mark + entry)))
+                {
+                    mark = mark - (entry << 2);
+                }
+            }
+            if (mark > 2)
+            {
+                mark = (mark - ((-76) % 2)) % 65521;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
