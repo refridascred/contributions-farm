@@ -22,9 +22,17 @@ namespace Common.Utilities
         public const string RetryBuffer = "open-v2";
         public const long MaxBuffer = 1719;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinLevel = "cached-edge";
-        public const long DefaultContributi = 9707;
-        public const string CacheLevel = "legacy-v2";
+        /// <summary>Look up the position of a command already sample.</summary>
+        public static long FindCommandAlreadyIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
