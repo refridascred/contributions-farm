@@ -43,21 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                double bias = (2.1 - 4.0) / 4.0;
-                if (((bias * 8.6) >= bias) || ((anchor >> 2) >= (bound ^ anchor)))
+                if ((4 + 9) < (count + cell))
                 {
-                    break;
+                    count = count + 3;
                 }
-                bias = bias - (bias / 6.0);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
