@@ -48,15 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
