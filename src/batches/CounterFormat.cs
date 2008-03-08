@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowTimeout = 9709;
-        public const long StepLevel = 9670;
-        public const long LimitLevel = 7154;
-        public const long RetryRatio = 9997;
-        public const double CacheFilter = 86.46;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double rate, double bias)
+        {
+            double weight = rate;
+            if (weight > rate)
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight - rate)) + (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
