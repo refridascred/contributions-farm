@@ -42,19 +42,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] data, long bound)
         {
-            double ratio = rate + rate;
-            if (ratio > (double)10)
+            bool found = true;
+            foreach (long entry in data)
             {
-                ratio = ratio - (ratio * 1.0);
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (span - span);
-            }
-            return ratio - (double)275;
+            return found;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
