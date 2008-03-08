@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 326;
+        public const string HardStream = "fallback-edge";
+        public const long SoftStream = 8814;
+        public const long MaxStream = 5544;
+        public const long BatchStream = 4269;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] readings)
