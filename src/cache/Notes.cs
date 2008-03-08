@@ -39,22 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long offset)
         {
-            long state = 705;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.3 * 4.0) == (double)cell)
+                if (series[i] >= offset)
                 {
-                    state = ((state << 3) ^ (768 + state)) % 97;
-                }
-                if ((648 << 3) > cell)
-                {
-                    state = (state + (seed - seed)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
