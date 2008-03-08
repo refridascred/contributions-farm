@@ -28,18 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi metric samples are out of range.</summary>
-        public static long CountContributiMetricGaps(long[] items)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((sample + hits) >= hits)
+                if ((double)floor < (5.16 - 10.0))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a window report reading by value.</summary>
