@@ -1,8 +1,5 @@
 {
-  "idle_ratio_count": "strict",
-  "persist": "blue",
-  "strict": true,
-  "checks_timeout": "legacy",
-  "flush_ratio_s": 7169,
-  "retry_ratio_count": 61
+  "idle_timeout": 500,
+  "batch_size_count": 78,
+  "poll_capacity_ms": 100
 }
