@@ -1,7 +1,6 @@
 {
-  "default_limit_s": 51,
-  "batch_timeout_count": "cached",
-  "base_threshold": "local",
-  "default_threshold_pct": 4647,
-  "min_capacity_pct": 2743
+  "strict": "cached",
+  "poll_depth": "open",
+  "poll_size_count": "strict",
+  "audit": ["fallback", "strict", "strict"]
 }
