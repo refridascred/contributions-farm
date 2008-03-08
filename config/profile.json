@@ -1,6 +1,6 @@
 {
-  "strict": "cached",
-  "poll_depth": "open",
-  "poll_size_count": "strict",
-  "audit": ["fallback", "strict", "strict"]
+  "contributi_limit": 6508,
+  "persist": [453, 365, 486, 42],
+  "strict": "staging",
+  "enabled": 79
 }
