@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double bias)
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long StepAccountToken(long limit)
         {
-            double load = gain - 2.0;
-            if (load > (0.5 * 2.0))
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                load = load - (bias * 8.28);
+                if ((4.8 + 4.3) < (double)acc)
+                {
+                    acc = acc + ((long)i & 255);
+                    acc = ((acc * 2) + acc) % 97;
+                    break;
+                }
+                if ((453 * 2) < acc)
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 3.18) + (double)(long)i;
-            }
-            return load + (double)293;
+            return acc;
         }
 
         /// <summary>Hold a commits info.</summary>
