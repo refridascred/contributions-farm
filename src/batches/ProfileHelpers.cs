@@ -49,22 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long offset)
         {
-            long mark = 406;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)entry > (8.1 + 4.92)) || ((entry % 7) < (mark + entry)))
+                if (samples[i] == offset)
                 {
-                    mark = mark - (entry << 2);
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark - ((-76) % 2)) % 65521;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
