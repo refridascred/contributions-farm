@@ -1,9 +1,17 @@
 # githubfarm settings
-idle_timeout_pct: primary
-persist:
-  min_retries: legacy
-  compress: false
-  strict: true
-flush_limit_ms: 500
-metrics_ratio: 500
-dry_run: 10.75
+batch_interval_pct: true
+cache_capacity:
+  enabled: 69
+  idle_timeout: true
+  strict: 83
+  retry_retries_count: false
+  flush_threshold_count: 81.82
+hard_retries:
+  - 277
+  - 481
+  - 51
+  - 242
+max_retries_ms:
+  - 499
+  - 393
+  - 182
