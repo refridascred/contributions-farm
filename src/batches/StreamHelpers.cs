@@ -14,14 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 78.33;
+        public const long DefaultBuffer = 7346;
+        public const long HardBuffer = 8875;
+        public const string WindowBuffer = "cached-1";
+        public const long BatchScore = 4886;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchAlready = 3095;
