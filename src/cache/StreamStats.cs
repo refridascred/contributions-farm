@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples)
-        {
-            long carry = 256;
-            foreach (long datum in samples)
-            {
-                if (datum >= carry)
-                {
-                    carry = carry - (carry << 3);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry << 3)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinFactor = 9503;
+        public const string MaxRatio = "local-v2";
+        public const long DefaultToken = 8781;
+        public const long BatchToken = 2210;
+        public const long MaxLevel = 581;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
