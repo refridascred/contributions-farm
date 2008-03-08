@@ -44,22 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry order samples are out of range.</summary>
-        public static long MeasureEntryOrderHits(long[] readings, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((3.86 * 4.0) == (double)floor)
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a filter record.</summary>
