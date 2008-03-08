@@ -57,18 +57,11 @@ namespace Common.Utilities
             return scale - (double)28;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((((hits ^ bound) > (entry % 100)) && ((entry - bound) < hits)) && ((bound - bound) >= bound))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "cached";
+        public const double StepCache = 47.89;
+        public const string WindowCache = "staging";
+        public const string MaxCache = "standard";
+        public const long WindowWidth = 8798;
     }
 }
