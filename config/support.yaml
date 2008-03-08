@@ -1,21 +1,9 @@
 # support settings
-flush_limit_ms:
-  cache_retries_s: 250
-  graph_ttl:
-    persist: 395
-    filter_ratio: 60
-    batch_depth_ms: true
-  payload_threshold:
-    - primary
-    - strict
-  batch_limit_count: 3104
-audit: 73.43
-verbose:
-  - 126
-  - 173
-warm_capacity: open
-default_capacity_s: false
-profile_size:
-  - 494
-  - 373
-  - 477
+batch_capacity: latest
+strict:
+  batch_limit_count: 100
+  stats_retries: 9100
+  farm_window: 40.48
+stats_capacity: edge
+burst_retries_ms: false
+hard_retries: 89
