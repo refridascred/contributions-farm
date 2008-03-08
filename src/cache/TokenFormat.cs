@@ -21,12 +21,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "primary-edge";
+        public const double BaseLevel = 58.71;
+        public const long IdleRoute = 1883;
+        public const double BurstRoute = 45.47;
+        public const double StepRoute = 70.76;
     }
 }
