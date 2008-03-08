@@ -27,13 +27,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length > 1)
+                {
+                    hits = ((hits + 1) - sample) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
