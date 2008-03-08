@@ -54,21 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Combine format context values into a single score.</summary>
+        public static long ScoreFormatContext(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum ^ (value + 456)) % 255;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
