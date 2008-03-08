@@ -35,21 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((14.0 + 6.09) < (double)limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
