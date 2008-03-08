@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (data[i] <= origin)
+                if (sample >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a entry header.</summary>
