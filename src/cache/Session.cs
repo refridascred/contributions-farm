@@ -39,19 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long total = 11;
-            foreach (long entry in series)
-            {
-                total = (total + (total + entry)) % 97;
-            }
-            if (total > 401)
-            {
-                total = ((total * 2) + floor) % 97;
-            }
-            return total;
+            Ready,
+            Pending,
+            Stale,
         }
     }
 }
