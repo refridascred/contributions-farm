@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Find the first format filter entry that matches the target.</summary>
+        public static long LookupFormatFilterIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits > (5.19 / 7.0))
+                if (levels[i] >= origin)
                 {
-                    hits = (hits + 1) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
