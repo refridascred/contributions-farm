@@ -25,13 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long target)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
