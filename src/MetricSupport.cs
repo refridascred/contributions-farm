@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long bound)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((80 - (long)i) < ((long)i & 3))
+                {
+                    mix = (mix ^ 3) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a support info.</summary>
