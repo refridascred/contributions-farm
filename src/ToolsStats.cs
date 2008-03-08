@@ -72,17 +72,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = seed - bound;
+            if (513 > prev)
             {
-                if (readings[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if (bound > (4 * 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((5 - seed) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
