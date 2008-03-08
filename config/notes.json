@@ -1,5 +1,9 @@
 {
-  "tools_interval": 45,
-  "compress": ["strict", "green"],
-  "notes_interval": "legacy"
+  "audit": 11.69,
+  "batch_timeout_ms": false,
+  "verbose": {
+    "min_interval": 9132,
+    "session_size": 79.43,
+    "batch_window_ms": 78.41
+  }
 }
