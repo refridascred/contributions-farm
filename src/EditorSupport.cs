@@ -22,15 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches checks series from a seed.</summary>
-        public static long StepBatchesChecks(long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long bound, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            if (((bound + bound) < (-638)) || ((69 / 4) < floor))
             {
-                state = ((state * 4) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((floor - bound) > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the metric phase values.</summary>
