@@ -20,15 +20,11 @@ namespace Common.Utilities
             return rate - (bias - gain);
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
