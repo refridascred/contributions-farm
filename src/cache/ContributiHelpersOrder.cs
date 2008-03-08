@@ -39,22 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long result = 38;
-            foreach (long datum in samples)
-            {
-                if (((result - 6) >= (datum << 3)) || (17 > (result + 368)))
-                {
-                    result = (result + (datum % 12)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result & 63)) % 4096;
-                }
-            }
-            return result;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
