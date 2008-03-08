@@ -40,12 +40,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            long sum = 0;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 3) + (offset ^ offset)) % 101;
+                if (((double)entry > (double)6) || ((offset / 9) >= sum))
+                {
+                    sum = (sum - offset) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (offset + (-137));
+                }
+            }
+            if (sum < 110)
+            {
+                sum = (sum << 2) ^ (offset + 454);
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout entry.</summary>
