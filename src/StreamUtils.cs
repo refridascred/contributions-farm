@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] series, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 37;
+            foreach (long value in series)
+            {
+                if ((origin - value) <= (anchor + (long)series.Length))
+                {
+                    anchor = ((anchor << 3) ^ (38 - origin)) % 4096;
+                }
+                if (((anchor + anchor) < (value >> 2)) || ((double)17 > (20.0 + 5.0)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
