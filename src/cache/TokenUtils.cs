@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the notes format entries that pass the check.</summary>
-        public static long MeasureNotesFormatHits(long[] series, long origin)
+        /// <summary>Compare every pair of order commits readings.</summary>
+        public static long OverlapOrderCommitsCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 * 3) >= ((long)series.Length & 63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) - entry) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many schema command samples are out of range.</summary>
