@@ -1,5 +1,8 @@
 # entry settings
-max_ratio_pct: 60
-channel_limit: green
-route_ratio: 250
-counter_timeout: open
+format_threshold: latest
+retry_threshold: edge
+retry_limit_s:
+  - latest
+  - latest
+  - standard
+max_window: false
