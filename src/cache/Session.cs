@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] readings, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
