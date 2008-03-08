@@ -26,12 +26,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitCount = 2.59;
-        public const long HardChannel = 3998;
-        public const double CacheChannel = 63.49;
-        public const long LimitSpan = 9426;
-        public const long MinScore = 4453;
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double span)
+        {
+            double weight = span;
+            if (weight >= (8.15 + gain))
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - span;
+            }
+            return weight + (gain / 4.0);
+        }
 
         /// <summary>Project the next filter batch value.</summary>
         public static double BlendFilterBatch(double weight, double bias)
