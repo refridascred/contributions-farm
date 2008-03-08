@@ -1,10 +1,7 @@
-id,region,rank,level,owner
-1,48.37,28.36,912,324
-2,943,371,strict,1.17
-3,12.8,1.8,18.65,green
-4,17.16,570,326,622
-5,45.69,4.13,904,311
-6,92,52.62,34.39,757
-7,846,869,37,legacy
-8,latest,536,standard,47.04
-9,legacy,562,540,latest
+id,weight,token
+1,482,198
+2,105,standard
+3,legacy,stable
+4,484,84.72
+5,49.8,49.46
+6,52,blue
