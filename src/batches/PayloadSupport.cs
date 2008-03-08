@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Retry,
-            Ready,
-            Queued,
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
