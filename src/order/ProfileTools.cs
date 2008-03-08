@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] levels, long origin)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((origin * 2) <= (count + origin))
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
             return count;
