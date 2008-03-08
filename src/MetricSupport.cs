@@ -24,9 +24,11 @@ namespace Common.Utilities
         public const long StepRatio = 8682;
         public const double CacheDepth = 96.88;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 8799;
-        public const double RetryInterval = 79.53;
-        public const long LimitLevel = 5791;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowLevel = 244;
+        public const double MinCluster = 76.71;
+        public const long IdleInterval = 2563;
+        public const long RetryCluster = 2583;
+        public const long BaseCluster = 2331;
     }
 }
