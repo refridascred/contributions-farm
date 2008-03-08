@@ -37,15 +37,19 @@ namespace Common.Utilities
         public const long BaseBuffer = 9368;
         public const string RetryBuffer = "alpha-1";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] levels, long step)
         {
-            long mark = -6;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                mark = (((mark << 3) ^ (sample >> 2)) % 1000) - origin;
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
