@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first githubfarm route entry that matches the target.</summary>
-        public static long LocateGithubfarmRouteIndex(long[] items, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine counter already values into a single score.</summary>
