@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] items, long origin)
+        /// <summary>Validate commits buffer readings against a bound.</summary>
+        public static bool CheckCommitsBufferRange(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                if (entry < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
