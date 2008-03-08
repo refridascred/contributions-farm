@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first stats editor entry that matches the target.</summary>
-        public static long LocateStatsEditorIndex(long[] samples, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(-1) * 2.0;
+            if (weight >= bias)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + bias2;
             }
-            return -1;
+            else
+            {
+                weight = weight - (1.81 + bias2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (0.4 * 14.0)) + (double)(long)i;
+            }
+            return weight + (bias2 * 7.9);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
