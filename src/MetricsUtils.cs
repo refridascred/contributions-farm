@@ -15,11 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every contributi notes entry stays within the limit.</summary>
+        public static bool ValidateContributiNotesLimits(long[] levels, long bound)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
