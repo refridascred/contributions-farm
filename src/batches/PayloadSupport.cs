@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits > (9 * 2))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitTimeout = 250;
+        public const long BatchMetrics = 4844;
+        public const long CacheMetrics = 1855;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] items)
