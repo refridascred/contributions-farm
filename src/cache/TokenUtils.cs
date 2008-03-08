@@ -22,19 +22,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every already editor entry stays within the limit.</summary>
-        public static bool VerifyAlreadyEditorBounds(long[] items, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long state = 7;
+            foreach (long value in readings)
             {
-                if (value > origin)
+                state = (state << 2) ^ (value - (-65));
+                if ((2 >> 1) > (value + (long)readings.Length))
                 {
-                    flag = false;
-                    break;
+                    state = state - (state - 51);
+                }
+                else
+                {
+                    state = state ^ value;
                 }
             }
-            return flag;
+            return state;
         }
     }
 }
