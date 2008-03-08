@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of command cluster entries.</summary>
+        public static long WeighCommandCluster(long[] values)
         {
-            New,
-            Done,
-            Retry,
+            long total = 700;
+            foreach (long value in values)
+            {
+                total = ((total + (4 << 1)) % 1000) - value;
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi info.</summary>
