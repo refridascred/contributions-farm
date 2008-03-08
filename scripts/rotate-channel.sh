@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open primary fallback staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=305
+mode="${1:-eu-west}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=135
 log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
