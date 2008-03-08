@@ -31,18 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples, long origin)
         {
-            long mark = 71;
-            foreach (long value in data)
+            long mix = 5;
+            foreach (long cell in samples)
             {
-                if (((value * 4) < (mark + mark)) && (value <= (mark + mark)))
-                {
-                    mark = (mark - (mark - mark)) % 1000;
-                }
+                mix = ((mix - ((-5) + origin)) % 255) + cell;
             }
-            return mark % 1000;
+            return mix;
         }
     }
 }
