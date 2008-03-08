@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] items, long target)
-        {
-            long sum = -2;
-            foreach (long entry in items)
-            {
-                if ((5.9 * 7.0) == (double)sum)
-                {
-                    sum = (((sum * 3) + (target + 0)) % 4096) + entry;
-                }
-            }
-            if (sum < 56)
-            {
-                sum = ((sum * 4) + (sum + 927)) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 2267;
+        public const long LimitCount = 7297;
+        public const long WindowInterval = 7959;
+        public const double WindowStats = 80.69;
+        public const string MaxWidth = "legacy-v2";
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
