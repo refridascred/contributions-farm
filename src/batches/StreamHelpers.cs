@@ -14,12 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 78.33;
-        public const long DefaultBuffer = 7346;
-        public const long HardBuffer = 8875;
-        public const string WindowBuffer = "cached-1";
-        public const long BatchScore = 4886;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchAlready = 3095;
