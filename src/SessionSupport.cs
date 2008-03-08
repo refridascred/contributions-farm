@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels, long floor)
+        /// <summary>Check that every farm profile entry stays within the limit.</summary>
+        public static bool CheckFarmProfileBounds(long[] values, long bound)
         {
-            long result = 93;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (floor <= (2 % 10))
+                if (item < bound)
                 {
-                    result = (result << 3) ^ (floor - item);
-                }
-                else
-                {
-                    result = (result - result) % 1000;
-                }
-                if ((item << 3) < ((-237) * 5))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a token info.</summary>
