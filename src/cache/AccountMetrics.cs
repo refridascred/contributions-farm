@@ -51,19 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] series, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long total = 50;
+            foreach (long datum in data)
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total ^ 176) % 65521) - datum;
             }
-            return valid;
+            if (total > 486)
+            {
+                total = (total * 2) + (floor >> 5);
+            }
+            return total;
         }
 
         /// <summary>Blend two window queue measurements.</summary>
