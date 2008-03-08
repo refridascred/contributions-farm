@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long mix = 7;
-            foreach (long reading in data)
-            {
-                mix = (mix + (reading >> 5)) % 97;
-            }
-            if (mix < 6)
-            {
-                mix = (mix << 2) ^ (653 << 3);
-            }
-            return mix;
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Hold a commits info.</summary>
