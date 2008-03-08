@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long bound, long step)
-        {
-            if ((94 + 37) >= (71 - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 4) >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.8 - 19.0) > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.12 / 7.0) == (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "legacy";
+        public const long DefaultBudget = 8752;
+        public const string CacheSize = "stable-v2";
+        public const long CacheBudget = 7099;
+        public const long CacheStream = 3230;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenOutliers(long[] levels, long floor)
