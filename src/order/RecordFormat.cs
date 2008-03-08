@@ -42,11 +42,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 371;
-        public const long CacheGraph = 4080;
-        public const long IdleWidth = 607;
-        public const long DefaultFactor = 7348;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] data, long bound)
+        {
+            long mark = 402;
+            foreach (long cell in data)
+            {
+                mark = (((mark * 3) + (71 - 48)) % 255) ^ cell;
+                mark = (mark + (mark + 712)) % 4096;
+            }
+            if (mark < (-308))
+            {
+                mark = ((mark * 4) + (bound * 2)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count the checks filter entries that pass the check.</summary>
         public static long CountChecksFilterGaps(long[] readings, long target)
