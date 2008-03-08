@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] series, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if (!((9.0 - 3.5) != (double)floor))
             {
-                if (((origin + 913) >= (tally >> 1)) || (((-48) << 2) == (origin >> 1)))
+                return 6;
+            }
+            else
+            {
+                if ((0.83 - 2.0) != (double)floor)
                 {
-                    tally = (tally + 1) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a contributi record.</summary>
