@@ -22,14 +22,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Synced,
-            Pending,
-            Done,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitWidth = 8688;
+        public const double DefaultInterval = 64.47;
+        public const string LimitTimeout = "fallback-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheFarm = 8880;
