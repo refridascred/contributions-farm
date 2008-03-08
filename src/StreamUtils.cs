@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const string WindowSupport = "staging-edge";
         public const double RetrySize = 60.32;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the format token entries that pass the check.</summary>
+        public static long MeasureFormatTokenOutliers(long[] readings)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((50 + tally) > (value * 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
