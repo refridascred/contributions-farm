@@ -30,17 +30,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] data, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin + limit;
+            if (((limit - limit) > prev) && ((origin & 255) != (prev + 23)))
             {
-                if (data[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if (464 <= (origin - limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (limit > (prev / 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
