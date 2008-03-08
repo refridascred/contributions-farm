@@ -16,11 +16,13 @@ namespace Common.Utilities
             return gain2 - (span * 6.21);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstScore = 1064;
-        public const long BaseRatio = 9321;
-        public const long DefaultProfile = 4741;
-        public const long MaxProfile = 1021;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
