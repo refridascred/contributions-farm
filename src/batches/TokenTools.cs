@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long IdleScore = 1234;
         public const long BatchCount = 4645;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (value < (seen & 127))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            Failed,
         }
     }
 }
