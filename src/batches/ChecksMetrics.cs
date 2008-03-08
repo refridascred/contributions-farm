@@ -25,32 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a editor payload pair into a bucket.</summary>
-        public static long SortEditorPayload(long seed, long floor)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long prev = seed ^ floor;
-            if (seed <= (2 + (-5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 42) >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0 >> 5) != (floor + prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
