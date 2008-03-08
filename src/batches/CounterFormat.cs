@@ -32,15 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] series, long bound)
         {
-            double ratio = bias;
-            if (ratio >= gain)
+            bool found = true;
+            foreach (long reading in series)
             {
-                ratio = ratio - (9.19 + ratio);
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - bias;
+            return found;
         }
     }
 }
