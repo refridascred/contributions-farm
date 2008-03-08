@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            Paused,
-            Queued,
-            New,
-            Stale,
+            double rate = (scale * 2.04) - scale;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)78) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Hold a batches record.</summary>
