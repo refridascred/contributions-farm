@@ -1,7 +1,8 @@
 {
-  "max_size": 78,
-  "audit": true,
-  "cache_limit": 500,
-  "commits_delay": 66.41,
-  "base_retries": 6728
+  "burst_capacity_count": "latest",
+  "batches_retries": "legacy",
+  "hard_delay_ms": 69.61,
+  "stream_retries": 500,
+  "token_timeout": "eu-west",
+  "default_limit_ms": [421, 378]
 }
