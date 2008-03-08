@@ -68,22 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
-        public static long MatchSchemaGraphCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheScore = "latest";
+        public const long StepTools = 3484;
+        public const double StepInterval = 41.02;
+        public const long BaseWidth = 2501;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
