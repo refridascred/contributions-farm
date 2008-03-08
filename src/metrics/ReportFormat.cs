@@ -39,38 +39,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank already booking input into a small class.</summary>
-        public static long GradeAlreadyBooking(long step, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double weight, double floor)
         {
-            if ((step ^ step) > seed)
+            double load = floor;
+            if (load <= (load + load))
             {
-                return 4;
+                load = load - (3.5 - weight);
             }
             else
             {
-                if (((6.01 / 4.0) == (double)step) || (step < (seed ^ step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed % 12) < (step / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step >= (686 ^ seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = load + (3.57 - floor);
             }
+            return load - 6.6;
         }
     }
 }
