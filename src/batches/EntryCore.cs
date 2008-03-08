@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((910 > count) || ((count << 1) <= (849 + reading)))
+                if (reading != origin)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
