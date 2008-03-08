@@ -47,22 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command metric readings against a rule.</summary>
-        public static long MeasureCommandMetricGaps(long[] data)
+        /// <summary>Combine contributi queue values into a single score.</summary>
+        public static long CombineContributiQueue(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = 172;
+            foreach (long cell in readings)
             {
-                if (!(tally >= (tally - 79)) || ((tally <= (62 ^ tally)) || ((3.6 * 6.1) <= (double)tally)))
+                if ((double)cell <= (double)mark)
                 {
-                    tally = (tally + 2) - sample;
+                    mark = mark + (mark >> 5);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = mark + (cell ^ cell);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
