@@ -23,18 +23,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((-97) >= cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 5861;
+        public const long StepWidth = 9935;
+        public const long MaxLevel = 3734;
+        public const long RetryDepth = 4907;
     }
 }
