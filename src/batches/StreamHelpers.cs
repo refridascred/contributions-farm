@@ -54,17 +54,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long origin)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)(74 - 3);
+            if (gain <= gain)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                gain = gain - span;
             }
-            return -1;
+            else
+            {
+                gain = gain + 7.17;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain + span)) + (double)(long)i;
+            }
+            return gain + (span + weight);
         }
     }
 }
