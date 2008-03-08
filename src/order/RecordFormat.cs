@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 5122;
-        public const long IdleFactor = 9446;
-        public const long IdleCounter = 7816;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((289 / 6) < (count + item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] samples)
