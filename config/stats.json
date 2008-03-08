@@ -1,21 +1,6 @@
 {
-  "batch_limit": {
-    "cluster_ttl": 2591,
-    "channel_ttl": 30,
-    "retry_ttl_count": {
-      "burst_timeout": "legacy",
-      "poll_retries": "primary",
-      "cache_interval_ms": false,
-      "max_interval_s": 500
-    }
-  },
-  "account_ratio": 51,
-  "compress": {
-    "min_ratio": true,
-    "format_ttl": ["cached", "eu-west", "stable", "stable"],
-    "soft_delay": "staging",
-    "idle_delay_count": "latest",
-    "base_size_s": 8513,
-    "flush_interval_count": 45.12
-  }
+  "batch_threshold": false,
+  "audit": 60,
+  "filter_threshold": 6683,
+  "metrics_size": true
 }
