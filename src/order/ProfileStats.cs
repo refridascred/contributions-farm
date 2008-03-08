@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((offset ^ (long)i) > offset)
-                {
-                    acc = acc - (acc * 2);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Active,
+            Failed,
+            Ready,
         }
 
         /// <summary>Check that every entry context entry stays within the limit.</summary>
