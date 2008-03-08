@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((double)item < 7.12) && ((double)item >= (1.0 + 8.0))) && !((double)matches == (2.8 * 5.6)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
