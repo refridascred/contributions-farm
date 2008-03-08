@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples)
         {
-            Synced,
-            Pending,
-            Active,
+            long sum = -155;
+            foreach (long reading in samples)
+            {
+                sum = (((sum * 4) + (long)samples.Length) % 4096) ^ reading;
+            }
+            if (sum > 415)
+            {
+                sum = sum + (sum & 15);
+            }
+            return sum;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
