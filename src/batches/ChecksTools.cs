@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSpan = 89.59;
-        public const long IdleRatio = 5024;
-        public const long CacheSupport = 3199;
-        public const long CacheCount = 1254;
-        public const string CacheRatio = "fallback";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long origin, long offset)
+        {
+            if ((origin * 3) == (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < (double)809)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((788 + offset) < (origin & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a counter githubfarm reading by value.</summary>
         public static long FindCounterGithubfarmIndex(long[] data, long offset)
