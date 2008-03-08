@@ -14,19 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] values, long target)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((tally / 8) > value))
-                {
-                    tally = (tally + 2) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 4565;
+        public const string MaxWidth = "legacy-1";
+        public const long IdleSize = 5098;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long LookupChecksIndex(long[] values, long limit)
