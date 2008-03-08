@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((80 - (long)i) < ((long)i & 3))
-                {
-                    mix = (mix ^ 3) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
