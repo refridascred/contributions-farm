@@ -54,22 +54,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((step ^ cell) < (cell ^ (long)readings.Length))
+                if ((bound > 20) && ((bound / 8) <= bound))
                 {
-                    count = count + 2;
+                    total = total + ((long)i >> 1);
+                    total = (total ^ (8 - total)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
