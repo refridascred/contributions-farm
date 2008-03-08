@@ -75,18 +75,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (count > cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardSpan = 8566;
+        public const long StepToken = 1937;
+        public const long WindowFactor = 8683;
+        public const string BurstSize = "stable";
+        public const double CacheToken = 0.66;
     }
 }
