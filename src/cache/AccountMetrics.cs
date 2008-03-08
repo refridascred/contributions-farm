@@ -44,12 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double drift = scale + (scale * 9.0);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (1.7 / 5.0);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
