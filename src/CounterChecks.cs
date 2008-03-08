@@ -32,10 +32,17 @@ namespace Common.Utilities
         public const long StepScore = 2962;
         public const long StepFarm = 5345;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowCount = "cached-v2";
-        public const double HardCount = 53.76;
-        public const long BaseScore = 9901;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 4) + (limit / 7)) % 4096;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleLevel = 3843;
