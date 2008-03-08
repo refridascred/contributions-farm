@@ -22,11 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultBudget = 886;
-        public const long BatchWidth = 3170;
-        public const long MaxFilter = 5400;
-        public const long RetryFilter = 187;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long target, long bound)
+        {
+            long lane = target + bound;
+            if ((target + bound) > (bound - lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound < lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueOutliers(long[] items)
