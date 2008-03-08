@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] values)
         {
-            long result = 5;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!(341 <= (sample << 3)))
+                if ((-94) > (tally % 5))
                 {
-                    result = ((result << 3) ^ (sample % 60)) % 65521;
+                    tally = (tally + 1) - cell;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
