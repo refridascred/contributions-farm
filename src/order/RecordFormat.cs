@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3856;
-        public const double WindowInterval = 62.93;
-        public const long LimitSchema = 3418;
-        public const long BurstSchema = 5364;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 5122;
+        public const long IdleFactor = 9446;
+        public const long IdleCounter = 7816;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] samples)
