@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first stats editor entry that matches the target.</summary>
+        public static long LocateStatsEditorIndex(long[] samples, long target)
         {
-            Retry,
-            Closed,
-            Pending,
-            Stale,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
