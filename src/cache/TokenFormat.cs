@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstWidth = 5859;
-        public const long LimitInterval = 4296;
-        public const string CacheCount = "stable-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchWidth = 1923;
+        public const long HardCommand = 1673;
+        public const long MinCommand = 7807;
+        public const long BurstScore = 5489;
+        public const string RetryCommand = "strict-1";
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long ScoreSchema(long[] data)
