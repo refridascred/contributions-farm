@@ -38,13 +38,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Locate a counter notes reading by value.</summary>
+        public static long SeekCounterNotesIndex(long[] items, long offset)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
