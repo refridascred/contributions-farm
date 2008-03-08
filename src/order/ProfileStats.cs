@@ -41,19 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] levels, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long state = 2;
-            foreach (long sample in levels)
-            {
-                state = (state << 3) ^ (sample - offset);
-            }
-            if (state < 1)
-            {
-                state = state ^ 519;
-            }
-            return state;
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
