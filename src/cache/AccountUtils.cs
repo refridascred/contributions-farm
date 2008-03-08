@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitDepth = "open-edge";
-        public const long DefaultDepth = 9780;
-        public const long BurstSpan = 8431;
-        public const double BurstScore = 20.11;
-        public const long BaseEditor = 8821;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] readings, long offset)
