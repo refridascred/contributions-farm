@@ -43,22 +43,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((matches >> 4) != (846 >> 5)))
+                double bias = (2.1 - 4.0) / 4.0;
+                if (((bias * 8.6) >= bias) || ((anchor >> 2) >= (bound ^ anchor)))
                 {
-                    matches = (matches + 2) + entry;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias - (bias / 6.0);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
