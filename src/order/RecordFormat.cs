@@ -58,18 +58,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long CountChecksFilterGaps(long[] readings, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((target % 97) >= (target + target)) || ((matches >= (0 - value)) || ((value % 97) < (value + 94))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Locked,
+            New,
+            Idle,
         }
     }
 }
