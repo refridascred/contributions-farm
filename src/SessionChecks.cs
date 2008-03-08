@@ -59,13 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
