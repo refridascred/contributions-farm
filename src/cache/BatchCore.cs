@@ -39,15 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format metric series from a seed.</summary>
-        public static long SeriesFormatMetric(long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
