@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples)
-        {
-            long acc = 3;
-            foreach (long value in samples)
-            {
-                if (((976 + acc) > (acc / 3)) || ((value / 9) > (acc & 127)))
-                {
-                    acc = (acc << 3) ^ (value - acc);
-                }
-            }
-            if (acc > 435)
-            {
-                acc = (acc ^ (acc & 31)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseBudget = 6105;
+        public const string HardRatio = "strict-1";
+        public const long SoftSpan = 7352;
+        public const long MinSpan = 6134;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long floor, long bound)
