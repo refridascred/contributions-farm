@@ -20,19 +20,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long anchor = 44;
+            foreach (long item in values)
             {
-                if (sample > origin)
+                anchor = (anchor * 4) + (item * 3);
+                anchor = (anchor << 2) ^ (anchor - anchor);
+                if ((anchor >> 1) < (anchor + item))
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor ^ anchor;
                 }
             }
-            return ready;
+            if (anchor > 8)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 97;
+            }
+            return anchor;
         }
     }
 }
