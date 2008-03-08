@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double floor)
-        {
-            double gain = (double)(71 ^ 4);
-            if (gain > 2.9)
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (ratio * 2.0)) - (double)(long)i;
-            }
-            return gain - 19.0;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxBudget = 497;
+        public const string IdleAccount = "staging-1";
+        public const string BatchAccount = "primary-edge";
 
         /// <summary>Match up stream token samples.</summary>
         public static long CompareStreamTokenCount(long[] items)
