@@ -44,17 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long floor)
+        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
+        public static bool VerifyCacheGithubfarmRange(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (series[i] == floor)
+                if (entry < floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
