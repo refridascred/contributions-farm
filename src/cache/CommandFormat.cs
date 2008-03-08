@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order counter samples.</summary>
-        public static long TotalOrderCounter(long[] values)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long offset)
         {
-            long score = 127;
-            foreach (long entry in values)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = (((score * 5) + (9 >> 3)) % 97) - (long)i;
-                }
-                score = (score ^ (score + entry)) % 65521;
+                total = (total + (total + total)) % 1000;
+                total = ((total << 3) ^ ((long)i ^ (long)i)) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (score > 91)
-            {
-                score = ((score * 3) + (score % 60)) % 255;
-            }
-            return score % 1000;
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
