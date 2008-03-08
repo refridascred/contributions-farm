@@ -69,14 +69,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Scale a payload order figure with a bias.</summary>
+        public static double ScalePayloadOrder(double rate, double span)
         {
-            Stale,
-            Synced,
-            New,
-            Closed,
-            Draft,
+            double weight = rate;
+            if (weight >= 0.8)
+            {
+                weight = (weight - (3.6 * 8.98)) - span;
+            }
+            return weight + weight;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
