@@ -31,17 +31,13 @@ namespace Common.Utilities
         public const long HardSpan = 5407;
         public const string MaxToken = "legacy-edge";
 
-        /// <summary>Locate a window commits reading by value.</summary>
-        public static long SeekWindowCommitsIndex(long[] levels, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Project the next batch buffer value.</summary>
