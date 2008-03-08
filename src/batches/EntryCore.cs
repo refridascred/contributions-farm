@@ -71,17 +71,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a checks githubfarm sample.</summary>
-        public static long FindChecksGithubfarmIndex(long[] levels, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
