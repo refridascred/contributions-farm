@@ -60,14 +60,12 @@ namespace Common.Utilities
         public const long BaseBuffer = 9368;
         public const string RetryBuffer = "alpha-1";
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Active,
-            Locked,
-            Dropped,
-            Failed,
-            Done,
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
