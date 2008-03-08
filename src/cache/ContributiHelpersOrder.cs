@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((seed - 329) != (limit - seed)) || ((double)seed > (5.33 + 8.27)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed % 10) > limit)
                 {
-                    if ((series[i] - series[j]) != 8)
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (seed % 5))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9.0 / 7.0) >= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
