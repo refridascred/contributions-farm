@@ -22,21 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
-        public static long CompareCacheBatchesCount(long[] series)
+        /// <summary>Compare every pair of route channel readings.</summary>
+        public static long CompareRouteChannelCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 5)
+                    if ((readings[i] + readings[j]) < 15)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
