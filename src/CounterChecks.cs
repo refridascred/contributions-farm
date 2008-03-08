@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "local-edge";
+        public const string MaxRatio = "stable-v2";
+        public const double DefaultWidth = 20.7;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long bound, long origin)
