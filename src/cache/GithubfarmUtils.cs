@@ -39,24 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster editor readings.</summary>
-        public static long TotalClusterEditor(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            long score = 738;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                score = score + (60 + datum);
-                score = (score ^ (datum >> 4)) % 1000;
-                if (((3.0 + 3.3) <= (double)score) && ((datum / 8) == (datum ^ score)))
+                if (((5.0 / 3.0) >= (double)reading) && ((tally + reading) <= ((-892) << 3)))
                 {
-                    score = (score * 2) + score;
-                }
-                else
-                {
-                    score = (score ^ (3 + datum)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
