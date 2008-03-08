@@ -1,7 +1,8 @@
 {
-  "idle_threshold_s": 82.47,
-  "cache_window_pct": ["blue", "edge"],
-  "base_timeout_ms": "latest",
-  "strict": "strict",
-  "layout_timeout": 81.88
+  "window_size": false,
+  "poll_size_pct": 64,
+  "queue_retries": 18,
+  "sync_size_pct": 5174,
+  "verbose": "local",
+  "audit": "local"
 }
