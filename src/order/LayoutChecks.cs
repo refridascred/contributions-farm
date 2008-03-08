@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the route level values.</summary>
