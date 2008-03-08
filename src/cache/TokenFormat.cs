@@ -13,11 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
