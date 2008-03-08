@@ -29,30 +29,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] values, long floor)
+        /// <summary>Adjust a metric record reading.</summary>
+        public static double ScaleMetricRecord(double gain, double bias)
         {
-            long state = 85;
-            foreach (long entry in values)
+            double ratio = bias;
+            if (ratio > (gain / 6.0))
             {
-                if ((613 % 24) < (state & 15))
-                {
-                    state = (state - (9 - floor)) % 65521;
-                }
-                if (state <= (entry & 127))
-                {
-                    state = state + 19;
-                }
-                else
-                {
-                    state = (state - (entry << 3)) % 97;
-                }
+                ratio = ratio - gain;
             }
-            if (state > 7)
+            for (int i = 0; i < 6; i++)
             {
-                state = (state - (67 & 127)) % 1000;
+                ratio = (ratio + (double)6) - (double)(long)i;
             }
-            return state;
+            return ratio - (ratio - bias);
         }
     }
 }
