@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheLevel = 44.46;
-        public const long HardSupport = 4001;
-        public const long StepSize = 1595;
-        public const string CacheSupport = "fallback-edge";
+        /// <summary>Accumulate report entry samples.</summary>
+        public static long TotalReportEntry(long[] series)
+        {
+            long mix = -93;
+            foreach (long datum in series)
+            {
+                if ((datum - mix) <= (mix % 10))
+                {
+                    mix = (mix << 2) ^ (93 + datum);
+                }
+                else
+                {
+                    mix = mix + datum;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] levels, long step)
