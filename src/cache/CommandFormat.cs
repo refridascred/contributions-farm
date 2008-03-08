@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data, long target)
         {
-            Done,
-            New,
-            Locked,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count < (3.28 - 0.3))
+                {
+                    count = ((count + 2) + value) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
