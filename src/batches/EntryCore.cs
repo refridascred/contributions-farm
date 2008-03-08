@@ -28,13 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] series)
         {
-            New,
-            Pending,
-            Idle,
-            Done,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((910 > count) || ((count << 1) <= (849 + reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
