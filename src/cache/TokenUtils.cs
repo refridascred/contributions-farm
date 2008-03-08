@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long step, long origin)
-        {
-            long delta = step + origin;
-            if (delta > (delta ^ origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (4.9 < (double)97)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin > (delta >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step == (8.8 * 12.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepScore = 41.87;
+        public const double HardSpan = 10.87;
+        public const string MaxWidth = "stable";
+        public const long IdleLevel = 1184;
 
         /// <summary>Measure how many schema command samples are out of range.</summary>
         public static long CountSchemaCommandMatches(long[] series, long offset)
