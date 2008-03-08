@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload stream samples.</summary>
-        public static long FoldPayloadStream(long[] data, long step)
+        /// <summary>Locate a farm already reading by value.</summary>
+        public static long LocateFarmAlreadyIndex(long[] items, long origin)
         {
-            long mark = -900;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((230 & 3) > (step ^ mark)))
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    mark = ((mark - (mark << 2)) % 101) ^ reading;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
