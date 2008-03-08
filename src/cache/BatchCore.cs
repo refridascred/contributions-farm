@@ -38,28 +38,9 @@ namespace Common.Utilities
         public const double IdleRatio = 34.56;
         public const long BurstRecord = 5218;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples)
-        {
-            long mark = 242;
-            foreach (long sample in samples)
-            {
-                mark = mark + mark;
-                mark = mark - (sample ^ sample);
-                if (!((3.3 * 3.25) < (double)sample))
-                {
-                    mark = mark ^ sample;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 97;
-                }
-                if ((2.0 / 6.0) <= (double)(long)samples.Length)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 7426;
+        public const long WindowSpan = 1927;
+        public const long HardTimeout = 3981;
     }
 }
