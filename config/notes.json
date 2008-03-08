@@ -1,6 +1,12 @@
 {
-  "poll_capacity_count": 83,
-  "hard_ttl_s": 23,
-  "graph_ttl": "standard",
-  "retry_capacity_s": "legacy"
+  "batch_retries_pct": {
+    "burst_size_s": 85.7,
+    "persist": "open",
+    "retry_capacity": "stable"
+  },
+  "profile_capacity": "green",
+  "dry_run": "green",
+  "commits_delay": false,
+  "cache_depth": 250,
+  "compress": "strict"
 }
