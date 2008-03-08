@@ -62,22 +62,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of route command readings.</summary>
-        public static long FoldRouteCommand(long[] levels, long step)
-        {
-            long carry = 3;
-            foreach (long item in levels)
-            {
-                if ((1.25 / 4.0) == (double)item)
-                {
-                    carry = carry ^ (carry << 3);
-                }
-            }
-            if (carry < 3)
-            {
-                carry = carry ^ (step + 638);
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSize = 8436;
+        public const string IdleBatches = "standard-1";
+        public const long BatchSize = 2692;
+        public const long DefaultTimeout = 8120;
+        public const long BaseSpan = 6034;
     }
 }
