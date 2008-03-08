@@ -1,5 +1,12 @@
 {
-  "poll_retries_s": 46,
-  "base_timeout": 4,
-  "hard_size": "staging"
+  "dry_run": [241, 211, 500],
+  "soft_ttl_s": ["stable", "edge", "primary", "standard"],
+  "cache_size_pct": {
+    "poll_depth_pct": "strict",
+    "payload_window": true,
+    "warm_capacity_pct": "blue",
+    "compress": 2377
+  },
+  "retry_depth_pct": "legacy",
+  "strict": true
 }
