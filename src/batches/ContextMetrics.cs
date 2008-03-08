@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the stream mode values.</summary>
