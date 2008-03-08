@@ -81,12 +81,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings, long step)
         {
-            Closed,
-            Pending,
-            Draft,
+            long carry = 937;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ reading) % 65521;
+                carry = (carry - (step ^ carry)) % 65521;
+            }
+            if (carry < 794)
+            {
+                carry = ((carry << 3) ^ (step + step)) % 1000;
+            }
+            return carry;
         }
     }
 }
