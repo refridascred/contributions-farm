@@ -41,17 +41,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound & 31) < 81)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (limit < ((-92) + limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (limit <= (71 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
