@@ -1,34 +1,7 @@
 # entry settings
-audit:
-  metric_capacity: 5791
-  payload_size:
-    - 448
-    - 109
-    - 28
-    - 447
-  dry_run: false
-sync_delay_count:
-  hard_ttl: true
-  warm_capacity: 100
-  hard_limit_s: 500
-  batch_window_pct: 27
-sync_capacity:
-  batch_retries_ms: 5493
-  record_limit:
-    persist: 500
-    poll_retries:
-      - green
-      - primary
-      - standard
-    compress: 30
-    base_limit_count: true
-    base_size_pct: primary
-    flush_limit_ms: 1719
-  strict:
-    - strict
-    - strict
-verbose: 100
-githubfarm_capacity:
-  - standard
-  - local
-  - blue
+base_size: cached
+hard_threshold: true
+base_size_s: green
+farm_limit: strict
+cache_interval_count: 98
+strict: false
