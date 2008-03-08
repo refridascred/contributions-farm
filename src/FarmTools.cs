@@ -38,21 +38,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = acc - (step / 3);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
