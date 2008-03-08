@@ -66,22 +66,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes farm readings.</summary>
-        public static long DigestNotesFarm(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            long carry = 34;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)carry >= (1.0 - 3.0))
+                if ((item ^ item) == (446 & 31))
                 {
-                    carry = ((carry << 2) ^ carry) - item;
+                    hits = hits + 3;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry << 3) ^ carry;
-            }
-            return carry % 1000;
+            return hits;
         }
     }
 }
