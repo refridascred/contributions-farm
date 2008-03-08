@@ -28,11 +28,15 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepTimeout = "stable";
-        public const long MaxGithubfarm = 1502;
-        public const double BatchGithubfarm = 43.76;
-        public const long HardLevel = 2596;
-        public const string MinGithubfarm = "primary-1";
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double bias)
+        {
+            double gain = (double)(2 ^ 5);
+            if (gain < (double)341)
+            {
+                gain = (gain - (double)3) + bias;
+            }
+            return gain + ratio;
+        }
     }
 }
