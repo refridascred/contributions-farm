@@ -1,17 +1,5 @@
 # githubfarm settings
-strict:
-  - 194
-  - 145
-idle_size: 96.16
-verbose: 1523
-hard_capacity:
-  - 16
-  - 331
-  - 455
-  - 271
-default_depth:
-  - 446
-  - 446
-  - 261
-  - 427
-warm_capacity_count: fallback
+githubfarm_delay: 90.12
+persist: cached
+flush_ttl_s: blue
+hard_limit: true
