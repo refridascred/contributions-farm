@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 9701;
-        public const long IdleStats = 4727;
-        public const long DefaultStats = 7587;
-        public const long MinScore = 8513;
+        /// <summary>Derive the next filter queue value from a seed.</summary>
+        public static long IterateFilterQueue(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry ^ (582 / 5);
+                carry = (carry ^ (carry - (long)i)) % 1000;
+                if (!!((double)carry < (double)(-8)))
+                {
+                    carry = carry + (long)i;
+                    carry = (carry << 3) ^ (offset ^ carry);
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long seed, long offset)
