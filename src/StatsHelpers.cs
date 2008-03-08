@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const long MinBatches = 8873;
         public const double CacheCount = 32.78;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((959 + (long)items.Length) > (370 / 2))
+                if (value <= limit)
                 {
-                    tally = ((tally + 3) + value) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
