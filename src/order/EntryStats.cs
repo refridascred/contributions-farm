@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultCount = 5800;
+        public const long IdleBatch = 2604;
+        public const double SoftBudget = 20.5;
+        public const long SoftCount = 1421;
+        public const long BurstSpan = 640;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long ClassifyProfile(long target, long origin)
