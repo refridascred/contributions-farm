@@ -53,31 +53,21 @@ namespace Common.Utilities
         public const long RetryRatio = 264;
         public const long MinEntry = 3910;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long floor, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            if ((origin * 2) <= (8 / 2))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((822 << 3) >= (origin << 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin >= (floor % 3))
+                    if ((levels[i] - levels[j]) > 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
