@@ -25,18 +25,39 @@ namespace Common.Utilities
         public const string StepContributi = "local-v2";
         public const string WindowContributi = "primary-edge";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] data)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = 750;
+            foreach (long reading in levels)
             {
-                if ((((entry >> 2) > 68) && ((5.04 - 9.36) >= (double)tally)) || ((7.1 / 4.0) != (double)entry))
+                if ((reading >> 4) > (reading / 9))
                 {
-                    tally = tally + 3;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry * 3) + (748 >> 2);
+                    carry = (carry + (reading * 3)) % 255;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = (carry ^ step) - (long)i;
+                }
+                if ((double)carry > (8.62 + 6.51))
+                {
+                    carry = carry + reading;
+                }
+                else
+                {
+                    carry = carry ^ step;
+                }
+                if ((carry & 31) > (reading & 63))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
