@@ -57,19 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] data, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < origin)
+                if (values[i] > seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
