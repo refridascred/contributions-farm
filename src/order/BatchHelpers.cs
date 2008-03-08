@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long bound)
         {
-            long sum = 264;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((-591) - seed) == (seed + cell))
+                if (value <= bound)
                 {
-                    sum = sum + cell;
-                }
-                if ((213 ^ cell) <= (cell / 6))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum % 97;
+            return valid;
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
