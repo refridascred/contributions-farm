@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            Done,
-            Dropped,
-            Ready,
-            Queued,
-            Retry,
+            double bias = weight - (double)7;
+            return bias - (span + bias);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
