@@ -39,10 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinLevel = 1047;
-        public const string IdleScore = "legacy-edge";
-        public const long DefaultBatch = 6969;
-        public const long BaseBatch = 6030;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches % 5) < (target & 127)) || ((matches + 9) >= matches))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
+        }
     }
 }
