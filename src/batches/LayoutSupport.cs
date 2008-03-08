@@ -41,19 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] values, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the context kind values.</summary>
