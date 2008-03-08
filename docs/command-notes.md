@@ -1,10 +1,12 @@
 # Command notes
 
-Use checks settings to tune how often metrics data is refreshed.
-The channel report groups every farm by account.
+Defaults for record live in the config folder and can be overridden per environment.
+Keep tools and token names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate record input early
-- Log every already change
+- Keep format values small
 - Review stats limits each release
+- Validate schema input early
+- Document new checks fields
