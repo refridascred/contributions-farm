@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a context batches figure with a bias.</summary>
-        public static double SmoothContextBatches(double scale, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] levels, long offset)
         {
-            double ratio = (double)(322 & 127);
-            if (ratio > (scale + ratio))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                ratio = (ratio + 6.7) - floor;
+                if (sample < hits)
+                {
+                    hits = (hits + 1) + offset;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)3;
-            }
-            return ratio + (double)8;
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
