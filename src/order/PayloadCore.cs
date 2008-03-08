@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Done,
-            Synced,
-            Locked,
+            Closed,
+            Draft,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
