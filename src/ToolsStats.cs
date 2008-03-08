@@ -30,22 +30,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stats record readings against a rule.</summary>
-        public static long CountStatsRecordHits(long[] samples, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double gain = (bias / 3.0) + bias;
+            if (gain > weight)
             {
-                if ((double)hits != (6.27 - 5.7))
-                {
-                    hits = ((hits + 3) + value) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (double)61;
             }
-            return hits;
+            return gain + (weight * 0.12);
         }
 
         /// <summary>Describe the format status values.</summary>
