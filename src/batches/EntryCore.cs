@@ -40,19 +40,13 @@ namespace Common.Utilities
         public const string StepLevel = "local-1";
         public const long RetryWidth = 5365;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] readings, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Pending,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the command status values.</summary>
