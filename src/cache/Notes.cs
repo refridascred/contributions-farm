@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double rate2 = (bias / 9.0) * 7.32;
-            if (rate2 <= (double)231)
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 + (rate + rate2);
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
