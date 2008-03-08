@@ -1,6 +1,9 @@
-id,ratio,score,token
-1,61.07,open,37.74
-2,454,31.05,72.05
-3,781,74.57,98.1
-4,26.51,107,45.83
-5,eu-west,primary,97.71
+id,label,level,region
+1,22.53,533,8.56
+2,latest,25.08,open
+3,84.41,762,fallback
+4,75.41,149,244
+5,684,14.84,86
+6,2.95,544,primary
+7,637,primary,55.3
+8,69.68,891,legacy
