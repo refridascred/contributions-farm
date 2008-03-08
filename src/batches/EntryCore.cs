@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long seed)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample >= seed)
+                if (limit >= (carry ^ (long)i))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry * 5) + limit) % 1000;
                 }
+                else
+                {
+                    carry = (carry + ((long)i + carry)) % 101;
+                }
+                if ((limit - limit) >= (1 + (long)i))
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the checks mode values.</summary>
