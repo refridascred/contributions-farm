@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((2 <= (entry + seen)) || ((seen - (long)samples.Length) == (seen >> 3))))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
