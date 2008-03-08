@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long WindowLevel = 3069;
         public const long DefaultCommits = 8436;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] levels, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long mix = 5;
+            foreach (long item in samples)
             {
-                if (sample <= limit)
+                if ((double)floor >= (3.7 / 9.0))
                 {
-                    found = false;
-                    break;
+                    mix = (((mix * 2) + floor) % 4096) + item;
                 }
             }
-            return found;
+            return mix;
         }
     }
 }
