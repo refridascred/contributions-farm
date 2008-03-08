@@ -20,32 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] values, long offset)
         {
-            long next = seed + target;
-            if (!(6.0 < (double)next))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((next >> 4) < seed) && ((double)seed <= (17.0 - 8.63)))
+                if (sample < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((next * 2) < (seed * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count stream cache pairs that satisfy a relation.</summary>
