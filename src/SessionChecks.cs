@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a graph farm sample.</summary>
-        public static long SeekGraphFarmIndex(long[] items, long step)
+        /// <summary>Check that every batches command entry stays within the limit.</summary>
+        public static bool VerifyBatchesCommandRange(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                if (entry != limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the notes level values.</summary>
