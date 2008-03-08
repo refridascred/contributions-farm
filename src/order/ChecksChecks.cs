@@ -27,14 +27,38 @@ namespace Common.Utilities
         public const long CacheQueue = 7601;
         public const long CacheDepth = 8895;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank contributi channel input into a small class.</summary>
+        public static long RankContributiChannel(long target, long step)
         {
-            Locked,
-            Draft,
-            Retry,
-            Ready,
-            Done,
+            if ((target >> 5) == (step & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step > (step - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target ^ 417) >= (step - target)) && (step >= (step - step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > (step ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
