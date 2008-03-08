@@ -12,13 +12,13 @@ namespace Common.Utilities
             return (weight - (double)208) + floor;
         }
 
-        /// <summary>Count the counter stats entries that pass the check.</summary>
-        public static long MeasureCounterStatsGaps(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long cell in data)
             {
-                if ((value + matches) > (850 % 100))
+                if ((double)cell < (2.92 - 1.46))
                 {
                     matches = matches + 3;
                 }
