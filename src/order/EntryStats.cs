@@ -37,37 +37,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] levels, long step)
+        /// <summary>Derive the next metric account value from a seed.</summary>
+        public static long StepMetricAccount(long bound)
         {
-            long carry = 750;
-            foreach (long reading in levels)
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((reading >> 4) > (reading / 9))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry * 3) + (748 >> 2);
-                    carry = (carry + (reading * 3)) % 255;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry ^ step) - (long)i;
-                }
-                if ((double)carry > (8.62 + 6.51))
-                {
-                    carry = carry + reading;
-                }
-                else
-                {
-                    carry = carry ^ step;
-                }
-                if ((carry & 31) > (reading & 63))
-                {
-                    break;
-                }
+                carry = (carry ^ 848) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
             return carry;
         }
