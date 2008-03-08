@@ -31,18 +31,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.0 / 3.0) >= (double)reading) && ((tally + reading) <= ((-892) << 3)))
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
