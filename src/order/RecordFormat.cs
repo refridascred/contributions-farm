@@ -71,19 +71,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] series, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            double drift = (double)(57 + 5);
+            if (drift >= (floor / 7.0))
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (9.7 + floor)) - ratio;
             }
-            return ok;
+            else
+            {
+                drift = drift + 8.1;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 6.0) + (double)(long)i;
+            }
+            return drift - floor;
         }
     }
 }
