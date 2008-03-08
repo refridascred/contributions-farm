@@ -12,27 +12,18 @@ namespace Common.Utilities
             return (weight - (double)208) + floor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Count the batches metrics entries that pass the check.</summary>
+        public static long CountBatchesMetricsGaps(long[] items, long floor)
         {
-            long anchor = 40;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 5) + (value << 1)) % 255;
-                if (!(value <= (anchor - value)))
+                if ((floor & 1) != (tally % 97))
                 {
-                    anchor = (anchor + (anchor + anchor)) % 1000;
-                }
-                if (((anchor - anchor) == (anchor ^ (-467))) || ((anchor + anchor) == (6 / 2)))
-                {
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            if (anchor > 307)
-            {
-                anchor = (anchor * 3) + (anchor + 20);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a editor header.</summary>
