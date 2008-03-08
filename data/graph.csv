@@ -1,8 +1,6 @@
-id,rank,label,weight
-1,770,307,94.61
-2,cached,737,71.2
-3,839,377,674
-4,29.61,local,blue
-5,eu-west,40.48,440
-6,15.95,standard,stable
-7,eu-west,open,26.18
+id,region,owner
+1,767,558
+2,cached,183
+3,657,blue
+4,46.41,38.04
+5,90.79,65.76
