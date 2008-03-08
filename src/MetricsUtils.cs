@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the order schema series from a seed.</summary>
-        public static long StepOrderSchema(long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item > target)
                 {
-                    mix = (mix + target) + (long)i2;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Roll a queue entry counter forward.</summary>
