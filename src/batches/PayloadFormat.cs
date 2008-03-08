@@ -27,19 +27,38 @@ namespace Common.Utilities
             return bias3 - bias;
         }
 
-        /// <summary>Validate command stream readings against a bound.</summary>
-        public static bool CheckCommandStreamBounds(long[] data, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long step, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if ((double)step <= (10.0 - 8.5))
             {
-                if (cell >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((280 * 4) <= (bound / 2))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 3) > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)step == (18.0 - 18.0)) || (step >= (bound % 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
