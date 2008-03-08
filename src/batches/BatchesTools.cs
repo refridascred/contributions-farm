@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] data, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double drift = 12.0;
+            if (drift < 2.0)
             {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = ((drift + (double)649) - rate) - floor;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift + drift)) + (double)(long)i;
+            }
+            return drift + 1.48;
         }
     }
 }
