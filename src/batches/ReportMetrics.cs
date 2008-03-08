@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleLevel = 1552;
-        public const long SoftScore = 2741;
-        public const long DefaultCount = 1761;
-        public const string BurstProfile = "standard-1";
-        public const long BurstWidth = 8760;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items, long target)
+        {
+            long total = 87;
+            foreach (long datum in items)
+            {
+                if ((8.2 / 7.0) >= (double)datum)
+                {
+                    continue;
+                }
+                if (!((double)total > 4.49))
+                {
+                    total = ((total * 3) + (target / 5)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBuffer = 2819;
