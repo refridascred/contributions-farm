@@ -49,13 +49,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long seed)
         {
-            Retry,
-            Queued,
-            Stale,
-            Draft,
+            if ((seed * 5) <= (seed ^ 967))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step & 15) > step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
