@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] items)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (739 < matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
