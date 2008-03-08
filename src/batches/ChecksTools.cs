@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the already format series from a seed.</summary>
-        public static long IterateAlreadyFormat(long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                long prev = offset;
-                if ((double)mark < 6.6)
+                if ((double)bound >= (8.17 + 4.71))
                 {
-                    mark = (mark ^ (prev * 3)) % 65521;
-                    break;
+                    matches = (matches + 3) + item;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
