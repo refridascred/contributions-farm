@@ -49,21 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
