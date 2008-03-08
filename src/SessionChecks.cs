@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] data, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long acc = 7;
-            foreach (long datum in data)
-            {
-                acc = (acc << 2) ^ (datum >> 2);
-            }
-            if (acc < 502)
-            {
-                acc = acc + origin;
-            }
-            return acc % 1000;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
