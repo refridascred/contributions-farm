@@ -65,31 +65,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank metric layout input into a small class.</summary>
-        public static long BucketMetricLayout(long limit, long origin)
+        /// <summary>Fold a list of report cache readings.</summary>
+        public static long CombineReportCache(long[] levels, long target)
         {
-            if ((origin + limit) < limit)
+            long mark = 5;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit ^ limit) >= (origin / 7))
+                if (2.36 < (double)cell)
                 {
-                    return 4;
+                    mark = ((mark * 5) + ((long)levels.Length - mark)) % 97;
+                    break;
+                }
+                if (((3.57 - 0.6) == (double)cell) || ((mark * 4) > (mark - 271)))
+                {
+                    mark = mark ^ (target << 1);
                 }
                 else
                 {
-                    if ((origin - origin) > (limit % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark ^ target) % 1000;
                 }
             }
+            return mark;
         }
     }
 }
