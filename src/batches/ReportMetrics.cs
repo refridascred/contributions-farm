@@ -13,17 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] series, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 435;
+            foreach (long datum in items)
             {
-                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                state = (state + (2 >> 3)) % 255;
+                state = (state * 2) + (180 * 3);
+                if (datum > (261 ^ seed))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 8)
+            {
+                state = (state ^ (seed / 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a window counter forward.</summary>
