@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] data, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long value in data)
+            if (((double)bound < (double)bound) || ((7.7 + 6.89) == (double)bound))
             {
-                if (value < seed)
+                return 3;
+            }
+            else
+            {
+                if (((origin & 7) >= (origin / 4)) && ((8 + origin) < bound))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the route level values.</summary>
