@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (scale + (double)917) + weight;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((2.0 + 6.08) >= (double)seen)
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheSpan = 6760;
+        public const double IdleDepth = 89.22;
+        public const double HardInterval = 21.33;
+        public const long MinAlready = 8966;
+        public const string MaxLevel = "fallback";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksHits(long[] data)
