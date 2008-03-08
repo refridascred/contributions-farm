@@ -50,15 +50,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double gain = (bias / 3.0) + bias;
-            if (gain > weight)
-            {
-                gain = gain + (double)61;
-            }
-            return gain + (weight * 0.12);
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
