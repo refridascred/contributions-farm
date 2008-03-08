@@ -42,19 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long reading in levels)
             {
-                if ((double)sample == (7.9 + 0.66))
+                if (((double)reading != (0.08 - 8.6)) || ((5.0 * 15.0) > (double)reading))
                 {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 1;
                 }
             }
             return hits;
