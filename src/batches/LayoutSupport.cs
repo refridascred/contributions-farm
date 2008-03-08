@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const long BurstAccount = 4999;
         public const double BaseAccount = 26.42;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Retry,
-            Draft,
-            Stale,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitLevel = 64.94;
+        public const long RetryBatches = 1982;
+        public const long DefaultBatches = 1702;
+        public const long BurstRatio = 6927;
 
         /// <summary>Rank session tools input into a small class.</summary>
         public static long GradeSessionTools(long floor, long bound)
