@@ -43,18 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric queue entries that pass the check.</summary>
-        public static long CountMetricQueueGaps(long[] readings, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((11 >= (sample << 1)) && ((sample ^ sample) >= (sample + seed))))
+                if (!((matches >> 4) != (846 >> 5)))
                 {
-                    count = count + 3;
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
