@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (step + step);
-                total = ((total * 4) + (long)i) % 65521;
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
