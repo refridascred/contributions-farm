@@ -41,11 +41,15 @@ namespace Common.Utilities
             return weight + (weight / 3.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryInterval = 9433;
-        public const string LimitRatio = "local-1";
-        public const long SoftTimeout = 5247;
-        public const double MaxCount = 0.79;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Paused,
+            Locked,
+            New,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelHits(long[] items, long target)
