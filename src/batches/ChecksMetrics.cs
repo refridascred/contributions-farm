@@ -53,13 +53,31 @@ namespace Common.Utilities
         public const long RetryRatio = 264;
         public const long MinEntry = 3910;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long floor, long origin)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            if ((origin * 2) <= (8 / 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((822 << 3) >= (origin << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (floor % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
