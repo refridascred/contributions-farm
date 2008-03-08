@@ -61,12 +61,39 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long offset, long target)
         {
-            Draft,
-            Stale,
-            Retry,
+            long offset2 = offset ^ target;
+            if (((9.27 / 4.0) > (double)target) || ((offset % 60) < (offset ^ target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (425 <= (target / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target << 2) <= offset) && ((offset - target) >= (offset2 << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((5 << 2) > offset) || ((double)offset2 < (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
