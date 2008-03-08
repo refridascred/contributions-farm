@@ -43,21 +43,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of counter editor readings.</summary>
-        public static long MatchCounterEditorCount(long[] items)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
