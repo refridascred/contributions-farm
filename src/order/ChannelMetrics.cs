@@ -16,10 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 1223;
-        public const double DefaultSession = 90.05;
-        public const double StepFactor = 58.64;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Synced,
+            Done,
+            New,
+            Closed,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4956;
