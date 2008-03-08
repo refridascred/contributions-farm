@@ -1,5 +1,6 @@
 {
-  "retry_ratio_count": 26.65,
-  "sync_limit_pct": "legacy",
-  "record_capacity": "standard"
+  "hard_timeout": "standard",
+  "soft_ttl_count": true,
+  "commits_timeout": "green",
+  "max_ttl": false
 }
