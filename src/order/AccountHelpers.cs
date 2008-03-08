@@ -26,17 +26,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a buffer githubfarm counter forward.</summary>
-        public static long RollBufferGithubfarm(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor ^ (anchor << 3)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxFactor = 25.58;
+        public const long LimitQueue = 8630;
+        public const string RetryQueue = "alpha-1";
+        public const long IdleQueue = 266;
+        public const string BatchInterval = "strict-1";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
