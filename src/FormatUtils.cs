@@ -32,14 +32,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long seed)
         {
-            Stale,
-            Closed,
-            Paused,
-            Failed,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
