@@ -1,6 +1,5 @@
 # githubfarm settings
-soft_timeout: 500
-default_delay: local
-stats_ratio: stable
-notes_depth: false
-burst_capacity_ms: true
+batch_size_ms: 88.71
+flush_timeout: 95
+route_capacity: 25.7
+dry_run: 45.03
