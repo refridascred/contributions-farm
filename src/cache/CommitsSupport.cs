@@ -78,19 +78,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate batch context readings against a bound.</summary>
-        public static bool VerifyBatchContextRange(long[] values, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < floor)
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
