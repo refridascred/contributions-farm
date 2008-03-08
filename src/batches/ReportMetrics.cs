@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long step, long bound)
         {
-            Idle,
-            Active,
-            Ready,
+            if (!((bound + bound) != (bound - step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (17.0 * 6.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < 0.9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format record.</summary>
