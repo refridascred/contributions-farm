@@ -38,17 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long origin)
+        /// <summary>Accumulate editor githubfarm samples.</summary>
+        public static long ScoreEditorGithubfarm(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 22;
+            foreach (long entry in samples)
             {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - entry;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
