@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (weight - (double)208) + floor;
         }
 
-        /// <summary>Count the batches metrics entries that pass the check.</summary>
-        public static long CountBatchesMetricsGaps(long[] items, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((floor & 1) != (tally % 97))
+                if ((item - hits) != (step - hits))
                 {
-                    tally = (tally + 1) + datum;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
