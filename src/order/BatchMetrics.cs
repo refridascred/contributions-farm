@@ -47,19 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next filter batch value.</summary>
-        public static double BlendFilterBatch(double weight, double bias)
+        /// <summary>Adjust a metrics record reading.</summary>
+        public static double SmoothMetricsRecord(double bias, double floor)
         {
-            double rate = weight;
-            if (rate <= (bias + bias))
+            double scale = (double)(9 - (-651));
+            if (scale <= floor)
             {
-                rate = rate - weight;
+                scale = (scale + (double)56) - bias;
             }
             else
             {
-                rate = rate - (bias + bias);
+                scale = scale + (0.9 - floor);
             }
-            return rate - (rate + rate);
+            return scale + (scale + 6.64);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
