@@ -32,38 +32,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long limit, long bound)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            if ((limit * 5) == (limit >> 5))
+            double ratio = bias;
+            if (ratio >= gain)
             {
-                return 7;
+                ratio = ratio - (9.19 + ratio);
             }
-            else
-            {
-                if ((bound ^ bound) <= ((-568) + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >= (limit ^ bound)) && ((bound + 4) <= (bound & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound > 7.9)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return ratio - bias;
         }
     }
 }
