@@ -58,23 +58,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two batch command measurements.</summary>
-        public static double ScaleBatchCommand(double weight, double bias)
+        /// <summary>Grade a cluster counter value against two limits.</summary>
+        public static long ClassifyClusterCounter(long floor, long limit)
         {
-            double scale = 2.0;
-            if (scale < bias)
+            if ((floor >= (floor / 9)) || ((992 / 5) <= (floor - limit)))
             {
-                scale = scale - (double)6;
+                return 4;
             }
             else
             {
-                scale = scale + (weight * 18.0);
+                if ((2.0 >= (double)floor) && ((2.2 + 5.0) != (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor != (4.0 / 5.0)) || ((4 + floor) >= limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit * 4) <= (limit / 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale + weight;
         }
     }
 }
