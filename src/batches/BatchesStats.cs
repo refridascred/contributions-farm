@@ -35,32 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long origin, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] readings, long step)
         {
-            long edge = origin ^ target;
-            if (edge < (edge + origin))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge >> 2) <= target)
+                if ((step ^ cell) < (cell ^ (long)readings.Length))
                 {
-                    return 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((edge >> 1) < (origin + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
