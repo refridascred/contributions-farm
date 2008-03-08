@@ -1,5 +1,6 @@
 {
-  "compress": "stable",
-  "metric_capacity": true,
-  "metrics_timeout": "edge"
+  "metrics_depth": "fallback",
+  "verbose": 6.2,
+  "default_threshold_s": "strict",
+  "soft_limit_count": ["fallback", "green", "strict", "staging"]
 }
