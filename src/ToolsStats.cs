@@ -104,18 +104,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] data, long step)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + count) <= (datum >> 2))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Dropped,
+            Pending,
         }
     }
 }
