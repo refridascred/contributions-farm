@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 25.58;
-        public const double LimitCount = 48.79;
-        public const long IdleChannel = 3183;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] levels)
+        {
+            long anchor = -881;
+            foreach (long item in levels)
+            {
+                if ((anchor + item) == (anchor - item))
+                {
+                    anchor = anchor ^ (item - anchor);
+                }
+            }
+            if (anchor > 197)
+            {
+                anchor = (anchor << 2) ^ (anchor % 64);
+            }
+            return anchor;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double WindowCount = 37.14;
