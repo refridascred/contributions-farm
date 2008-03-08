@@ -67,12 +67,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank metric layout input into a small class.</summary>
+        public static long BucketMetricLayout(long limit, long origin)
         {
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            if ((origin + limit) < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit ^ limit) >= (origin / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - origin) > (limit % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
