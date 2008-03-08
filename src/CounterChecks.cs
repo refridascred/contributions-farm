@@ -62,23 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics layout reading.</summary>
-        public static double BlendMetricsLayout(double scale, double span)
+        /// <summary>Blend two stream metrics measurements.</summary>
+        public static double ProjectStreamMetrics(double scale, double floor)
         {
-            double ratio = (double)(130 << 3);
-            if (ratio <= (span - 4.01))
+            double scale2 = 1.89;
+            if (scale2 >= scale2)
             {
-                ratio = ratio + (span / 9.0);
+                scale2 = scale2 + scale;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio + (span * 2.41);
+                scale2 = (scale2 + (scale2 + floor)) + (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (4.89 + scale)) + (double)(long)i;
-            }
-            return ratio + scale;
+            return scale2 - 3.81;
         }
 
         /// <summary>Accumulate notes samples.</summary>
