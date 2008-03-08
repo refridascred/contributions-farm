@@ -37,11 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 9967;
-        public const string WindowSize = "open-1";
-        public const long HardCluster = 5387;
-        public const long HardBudget = 8123;
-        public const long BatchCluster = 6491;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((4.82 - 6.4) < (double)count)
+                {
+                    count = ((count + 3) ^ item) + seed;
+                }
+            }
+            return count;
+        }
     }
 }
