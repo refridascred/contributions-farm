@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long mark = 520;
+            foreach (long cell in values)
+            {
+                mark = ((mark - 302) % 101) ^ cell;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
