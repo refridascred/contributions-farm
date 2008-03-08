@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            if (((0 + seed) >= (seed % 10)) || ((limit - limit) >= (8 / 8)))
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit + limit) <= 2))
+                if (((-5) + entry) == (entry - acc))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    acc = acc ^ 94;
                 }
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of queue command readings.</summary>
