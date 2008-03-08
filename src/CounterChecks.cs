@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long MaxStream = 5544;
         public const long BatchStream = 4269;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long bound)
         {
-            long carry = 39;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 + cell) > (cell - cell))
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    carry = ((carry * 3) + (carry % 64)) % 97;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
