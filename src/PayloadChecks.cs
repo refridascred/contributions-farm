@@ -63,13 +63,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((6 + matches) >= (step + cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor options.</summary>
