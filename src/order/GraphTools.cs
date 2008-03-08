@@ -50,26 +50,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long CombineAlreadyCounter(long[] levels)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long score = 975;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ cell) < (cell + cell))
-                {
-                    score = (score << 2) ^ 566;
-                }
-                else
-                {
-                    score = (score ^ (cell >> 1)) % 255;
-                }
-            }
-            if (score < 98)
-            {
-                score = ((score << 2) ^ (score + score)) % 255;
-            }
-            return score % 97;
+            Pending,
+            Active,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
