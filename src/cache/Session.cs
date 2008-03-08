@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 6892;
         public const long BatchDepth = 3587;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] items, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((8.9 <= (double)seen) || (origin >= (seen + seen)))
+                if (cell >= step)
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
