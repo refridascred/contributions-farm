@@ -49,11 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheSize = 2235;
-        public const long WindowScore = 7177;
-        public const long CacheWidth = 5517;
-        public const long BurstSpan = 4163;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data)
+        {
+            long carry = 963;
+            foreach (long entry in data)
+            {
+                carry = (carry - (carry & 31)) - entry;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseLayout = 1716;
