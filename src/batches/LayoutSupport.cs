@@ -50,12 +50,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            Paused,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >= (sample - seen)) || ((double)sample == (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
