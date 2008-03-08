@@ -41,13 +41,15 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            double mean = (2.0 * 5.7) + 2.32;
+            if (mean < floor)
+            {
+                mean = (mean - (double)81) + bias;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
