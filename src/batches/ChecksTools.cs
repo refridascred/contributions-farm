@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double scale, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long limit)
         {
-            double ratio = (double)((-56) + 23);
-            for (int i = 0; i < 2; i++)
+            long next = step + limit;
+            if ((8 + limit) >= limit)
             {
-                ratio = ((ratio - (scale / 3.0)) + (double)(long)i) - offset;
+                return 0;
             }
-            return ratio - 8.1;
+            else
+            {
+                if ((step ^ step) == (next % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
