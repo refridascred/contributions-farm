@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count >> 2) > (value * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 6540;
+        public const long BaseWidth = 3240;
+        public const string StepBudget = "strict";
+        public const double WindowBudget = 24.07;
+        public const string IdleFormat = "cached";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
