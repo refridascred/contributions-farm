@@ -53,18 +53,12 @@ namespace Common.Utilities
         public const double CacheOrder = 53.76;
         public const double RetryOrder = 42.15;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((step - step) != (seen >> 5))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many batch stream samples are out of range.</summary>
