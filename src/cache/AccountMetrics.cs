@@ -13,17 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                if ((double)hits < (double)82)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ item) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
