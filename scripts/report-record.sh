@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge strict; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=326
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
