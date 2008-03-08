@@ -23,19 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] samples, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if (((seed - limit) < seed) || ((double)limit <= 7.0))
             {
-                if (entry < step)
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 2) < (seed + seed))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (double)9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit >= (7 - seed)) || ((5 - limit) >= (limit / 8)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
