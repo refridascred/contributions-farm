@@ -16,39 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long limit)
-        {
-            if ((offset & 7) == (0 - 627))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((444 << 2) == (limit + offset)) || ((8 - 4) > offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset / 2) == (limit + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset >> 1) >= offset) && (limit <= offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 1223;
+        public const double DefaultSession = 90.05;
+        public const double StepFactor = 58.64;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4956;
