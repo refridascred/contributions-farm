@@ -16,31 +16,11 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items)
-        {
-            long score = 42;
-            foreach (long datum in items)
-            {
-                if (((score % 97) != (datum * 4)) && ((score ^ datum) != (datum >> 3)))
-                {
-                    score = (score * 2) + (9 % 24);
-                }
-                if ((5.7 - 10.0) < (double)datum)
-                {
-                    score = ((score << 3) ^ (datum << 3)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score - score);
-                }
-            }
-            if (score > 1)
-            {
-                score = score ^ (score % 12);
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 3345;
+        public const long HardCommand = 3846;
+        public const long SoftCommand = 3648;
+        public const string RetrySize = "latest-edge";
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
