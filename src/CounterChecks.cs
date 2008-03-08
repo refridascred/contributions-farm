@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream metrics measurements.</summary>
-        public static double ProjectStreamMetrics(double scale, double floor)
+        /// <summary>Project the next filter command value.</summary>
+        public static double ScaleFilterCommand(double gain, double offset)
         {
-            double scale2 = 1.89;
-            if (scale2 >= scale2)
+            double bias = offset;
+            if (bias >= (double)3)
             {
-                scale2 = scale2 + scale;
+                bias = (bias + bias) + gain;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale2 = (scale2 + (scale2 + floor)) + (double)(long)i;
+                bias = bias + offset;
             }
-            return scale2 - 3.81;
+            return bias - (offset - 4.0);
         }
 
         /// <summary>Accumulate notes samples.</summary>
