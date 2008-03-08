@@ -47,19 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double rate, double floor)
-        {
-            double drift = 12.0;
-            if (drift < 2.0)
-            {
-                drift = ((drift + (double)649) - rate) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift + drift)) + (double)(long)i;
-            }
-            return drift + 1.48;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 89.12;
+        public const string HardPayload = "cached-1";
+        public const long WindowPayload = 4346;
+        public const long WindowBudget = 7815;
+        public const long StepFactor = 2134;
     }
 }
