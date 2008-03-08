@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a schema payload figure with a bias.</summary>
-        public static double ProjectSchemaPayload(double scale, double bias)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double bias, double bias2)
         {
-            double gain = (scale * 9.45) + (scale / 2.0);
-            return (gain - 4.7) + bias;
+            double ratio = (bias - bias) + bias2;
+            if (ratio < (1.6 + ratio))
+            {
+                ratio = ratio - (ratio - bias2);
+            }
+            else
+            {
+                ratio = ratio - (ratio / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Describe the entry status values.</summary>
