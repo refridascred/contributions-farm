@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long IdleScore = 623;
         public const long CacheLayout = 2003;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long anchor = 34;
-            foreach (long sample in series)
-            {
-                if (!((sample + anchor) >= (anchor & 31)))
-                {
-                    anchor = (anchor - sample) % 1000;
-                }
-            }
-            return anchor;
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
