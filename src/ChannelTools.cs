@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate commits record samples.</summary>
-        public static long CombineCommitsRecord(long[] levels)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long total = 326;
-            foreach (long cell in levels)
-            {
-                total = total - (total >> 3);
-                if ((8.13 / 8.0) > (double)cell)
-                {
-                    total = (total << 3) ^ cell;
-                }
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a context stats.</summary>
