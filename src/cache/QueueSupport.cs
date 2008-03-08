@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Grade a stream buffer value against two limits.</summary>
+        public static long RankStreamBuffer(long seed, long step)
         {
-            double rate2 = rate;
-            if (rate2 <= (double)4)
+            if (((7.6 * 7.0) != (double)seed) || (step >= (step << 1)))
             {
-                rate2 = rate2 + (floor - floor);
+                return 7;
             }
             else
             {
-                rate2 = rate2 + (double)610;
+                if (seed >= 861)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed & 255) < (step + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed ^ step) <= (step - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - (rate + rate2)) + (double)(long)i;
-            }
-            return rate2 - (floor * 5.03);
         }
 
         /// <summary>Hold a command options.</summary>
