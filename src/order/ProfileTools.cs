@@ -54,18 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] readings)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((seen - 56) > (539 * 5))
+                if (cell < bound)
                 {
-                    seen = (seen + 3) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a channel info.</summary>
