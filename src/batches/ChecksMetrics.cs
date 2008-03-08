@@ -33,11 +33,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Measure how many metric entry samples are out of range.</summary>
+        public static long AuditMetricEntryMatches(long[] samples, long step)
         {
-            double weight2 = weight;
-            return (weight2 + weight) + offset;
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((matches - matches) < step) || (((long)samples.Length & 63) == (328 - 885)))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit command metric readings against a rule.</summary>
