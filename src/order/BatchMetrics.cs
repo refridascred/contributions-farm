@@ -32,22 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] levels, long seed)
         {
-            long total = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!(27 <= (reading - 877)))
+                if ((hits + hits) != (seed - value))
                 {
-                    total = (total - (reading * 4)) % 255;
+                    hits = hits + 3;
                 }
             }
-            if (total < 160)
-            {
-                total = total + (total + 735);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Adjust a metrics record reading.</summary>
