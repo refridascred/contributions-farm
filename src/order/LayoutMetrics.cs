@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state + step) <= (step % 64))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state * 3) + (step ^ step);
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
