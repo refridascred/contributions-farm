@@ -39,11 +39,20 @@ namespace Common.Utilities
             return rate + 20.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "cached";
-        public const double StepCache = 47.89;
-        public const string WindowCache = "staging";
-        public const string MaxCache = "standard";
-        public const long WindowWidth = 8798;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((limit * 5) != (limit << 2)) || (limit < (result - result)))
+                {
+                    result = result - (result * 4);
+                }
+                result = (result - (result & 127)) % 65521;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
