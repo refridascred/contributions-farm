@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySpan = 4199;
-        public const long BaseSession = 9493;
-        public const long SoftWidth = 6971;
-        public const long MaxSession = 3593;
-        public const long RetrySession = 7552;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] data)
