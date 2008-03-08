@@ -38,26 +38,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = 670;
-            foreach (long entry in values)
-            {
-                if ((offset & 31) >= entry)
-                {
-                    mark = ((mark << 2) ^ (entry - mark)) % 101;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = (mark - (29 + (long)i)) % 101;
-                }
-                if (offset > (long)values.Length)
-                {
-                    mark = (mark - (entry - offset)) % 1000;
-                }
-            }
-            return mark;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the order phase values.</summary>
