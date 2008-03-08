@@ -47,19 +47,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] series, long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the counter class values.</summary>
