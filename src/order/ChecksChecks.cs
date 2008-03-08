@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] samples, long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long total = 324;
-            foreach (long reading in samples)
-            {
-                total = ((total - (reading % 5)) % 255) + origin;
-            }
-            if (total > 540)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 97;
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
