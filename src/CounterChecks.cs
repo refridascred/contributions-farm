@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 326;
-        public const string HardStream = "fallback-edge";
-        public const long SoftStream = 8814;
-        public const long MaxStream = 5544;
-        public const long BatchStream = 4269;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Dropped,
+            Stale,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long bound, long origin)
