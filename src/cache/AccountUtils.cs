@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 32.53;
+        public const double BaseFarm = 96.07;
+        public const double IdleWidth = 13.31;
+        public const long HardFarm = 6330;
+        public const long BatchFarm = 1033;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] values, long offset)
