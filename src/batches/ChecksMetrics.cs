@@ -33,25 +33,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long target)
         {
-            long state = 3;
-            foreach (long datum in levels)
+            long edge = seed + target;
+            if ((double)seed != (18.0 - 4.3))
             {
-                long delta = 28 - (state - state);
-                if (!(delta <= (0 * 5)))
+                return 0;
+            }
+            else
+            {
+                if (((target - seed) <= (edge << 2)) || ((seed & 7) >= edge))
                 {
-                    state = ((state + delta) % 4096) + datum;
-                    delta = delta - (state << 3);
+                    return 4;
                 }
-                state = state ^ 3;
+                else
+                {
+                    return 3;
+                }
             }
-            if (state < 864)
-            {
-                state = (state * 5) + 62;
-            }
-            return state % 65521;
         }
 
         /// <summary>Hold a stats stats.</summary>
