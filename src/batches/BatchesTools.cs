@@ -25,19 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (entry <= (entry / 3))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 4330;
+        public const double MinStats = 97.06;
+        public const long RetryTimeout = 149;
+        public const string CacheSize = "cached";
+        public const long LimitLevel = 1973;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long seed, long offset)
