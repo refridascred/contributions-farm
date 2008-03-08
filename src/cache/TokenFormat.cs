@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long LimitInterval = 4296;
         public const string CacheCount = "stable-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 5783;
-        public const long BatchEditor = 8861;
-        public const long BaseEditor = 4721;
-        public const long LimitSize = 3253;
-        public const long MinEditor = 6710;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] data)
+        {
+            long result = 505;
+            foreach (long sample in data)
+            {
+                result = ((result + (595 & 15)) % 101) + sample;
+            }
+            if (result < 1)
+            {
+                result = result + (result >> 1);
+            }
+            return result % 97;
+        }
     }
 }
