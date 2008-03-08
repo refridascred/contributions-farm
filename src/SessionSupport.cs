@@ -23,13 +23,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            long sum = 2;
+            foreach (long cell in items)
+            {
+                sum = sum - 87;
+                if ((7.64 / 5.0) <= (double)cell)
+                {
+                    sum = sum + (cell * 2);
+                }
+                if ((cell + sum) < (813 * 5))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a editor summary.</summary>
