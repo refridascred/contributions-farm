@@ -40,11 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long mark = 9;
+            foreach (long cell in samples)
+            {
+                if ((cell * 2) < target)
+                {
+                    mark = ((mark * 4) + (41 + target)) % 255;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
