@@ -25,12 +25,39 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long origin)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long edge = floor - origin;
+            if (((double)origin < (4.03 - 6.9)) && (floor < (7 & 63)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)edge >= (11.0 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (edge >= origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (4.02 >= (double)edge)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
