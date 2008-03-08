@@ -65,18 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] readings, long step)
+        /// <summary>Measure how many filter commits samples are out of range.</summary>
+        public static long TallyFilterCommitsMatches(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((6 + matches) >= (step + cell))
+                if (count < seed)
                 {
-                    matches = matches + 2;
+                    count = (count + 1) - datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a editor options.</summary>
