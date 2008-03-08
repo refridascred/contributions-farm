@@ -1,9 +1,8 @@
 {
-  "sync_interval_pct": true,
-  "buffer_ratio": [216, 245, 364, 96],
-  "soft_limit_count": {
-    "poll_interval_pct": 60,
-    "burst_depth_s": 7800,
-    "soft_window_s": [99, 113]
-  }
+  "readonly": "open",
+  "audit": 48.12,
+  "strict": "eu-west",
+  "verbose": false,
+  "burst_interval_ms": [449, 212],
+  "contributi_timeout": false
 }
