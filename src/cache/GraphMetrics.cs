@@ -49,17 +49,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] data, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 690;
+            foreach (long value in series)
             {
-                if ((data[i] <= target) && ((data[i] % 5) != 0))
+                if ((7.4 * 9.6) <= (double)floor)
                 {
-                    return (long)i;
+                    carry = (carry - (92 * 3)) % 255;
+                    carry = (carry * 2) + (floor - carry);
+                }
+                if ((7.0 / 9.0) != (double)value)
+                {
+                    carry = (carry * 4) + carry;
                 }
             }
-            return -1;
+            if (carry > 839)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Roll a cluster checks counter forward.</summary>
