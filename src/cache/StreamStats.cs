@@ -14,21 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((2.72 + 15.0) != (double)state))
                 {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (state - state);
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Locate a session report reading by value.</summary>
