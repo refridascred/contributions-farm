@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the account token series from a seed.</summary>
-        public static long StepAccountToken(long limit)
+        /// <summary>Count metric contributi pairs that satisfy a relation.</summary>
+        public static long OverlapMetricContributiCount(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.8 + 4.3) < (double)acc)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc + ((long)i & 255);
-                    acc = ((acc * 2) + acc) % 97;
-                    break;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((453 * 2) < acc)
-                {
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a commits info.</summary>
