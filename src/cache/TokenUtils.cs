@@ -28,24 +28,19 @@ namespace Common.Utilities
         public const string RetryBuffer = "open-v2";
         public const long MaxBuffer = 1719;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Check that every already editor entry stays within the limit.</summary>
+        public static bool VerifyAlreadyEditorBounds(long[] items, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                result = (result ^ ((-7) << 1)) % 4096;
-                if (limit > (result & 31))
+                if (value > origin)
                 {
-                    result = result - ((long)i / 7);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    result = (result + (limit % 3)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return flag;
         }
     }
 }
