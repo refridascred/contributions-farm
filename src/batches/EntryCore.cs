@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit >= (carry ^ (long)i))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 5) + limit) % 1000;
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry + ((long)i + carry)) % 101;
-                }
-                if ((limit - limit) >= (1 + (long)i))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
