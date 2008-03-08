@@ -33,39 +33,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] samples, long target)
         {
-            long bound = origin ^ floor;
-            if ((bound << 1) == (2 + 7))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (1.0 <= (double)origin)
+                if (reading >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor == (1.0 - 2.7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin > 9.3)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the route level values.</summary>
