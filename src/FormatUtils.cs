@@ -85,21 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache record samples.</summary>
-        public static long CompareCacheRecordCount(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
                 {
-                    if ((levels[i] - levels[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
