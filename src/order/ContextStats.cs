@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many counter session samples are out of range.</summary>
-        public static long TallyCounterSessionGaps(long[] data, long bound)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((bound * 4) >= (784 - bound))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine counter already values into a single score.</summary>
