@@ -51,18 +51,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items, long bound)
+        /// <summary>Roll a order context counter forward.</summary>
+        public static long StepOrderContext(long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(((10.0 / 7.0) >= (double)count) || ((count / 2) <= 100)))
-                {
-                    count = ((count + 1) ^ entry) + bound;
-                }
+                mark = (mark ^ (long)i) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Project the next format value.</summary>
