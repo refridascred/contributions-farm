@@ -37,16 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Accumulate record stream samples.</summary>
+        public static long WeighRecordStream(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long result = 21;
+            foreach (long entry in items)
             {
-                mix = mix - bound;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((2.4 + 10.0) == (double)result)
+                {
+                    result = ((result * 2) + (result - 3)) - entry;
+                }
             }
-            return mix;
+            if (result > 488)
+            {
+                result = (result - (585 << 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
