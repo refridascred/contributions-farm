@@ -28,15 +28,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Match up cluster buffer samples.</summary>
+        public static long OverlapClusterBufferCount(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Project the next commits value.</summary>
