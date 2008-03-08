@@ -1,6 +1,8 @@
-id,owner,weight,ratio
-1,primary,383,strict
-2,7.72,eu-west,edge
-3,strict,legacy,4.98
-4,257,164,staging
-5,345,primary,11.51
+id,owner,region
+1,675,open
+2,188,open
+3,89.2,20.8
+4,534,stable
+5,open,staging
+6,latest,59.21
+7,920,164
