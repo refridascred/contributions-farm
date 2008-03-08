@@ -34,21 +34,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of stream context readings.</summary>
-        public static long MatchStreamContextCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)72 >= (double)floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (16.0 - 3.53))
                 {
-                    if ((series[i] - series[j]) == 10)
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor > (19.0 / 6.0)))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + 132) >= (offset & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
