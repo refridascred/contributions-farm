@@ -27,14 +27,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Closed,
-            Dropped,
-            Pending,
-            New,
-            Synced,
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
