@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long step)
-        {
-            if (((double)limit >= (2.7 - 5.37)) && (limit <= (3 * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step >= 706)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 7614;
+        public const long HardGraph = 3479;
+        public const string BaseBudget = "stable-edge";
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteRange(long[] levels, long floor)
