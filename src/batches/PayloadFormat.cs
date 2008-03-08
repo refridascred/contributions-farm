@@ -14,15 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] data, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
