@@ -1,12 +1,5 @@
 {
-  "schema_threshold": 87,
-  "base_threshold_pct": "legacy",
-  "entry_timeout": {
-    "context_interval": false,
-    "command_depth": 60,
-    "soft_capacity": 1024,
-    "soft_depth": 1314
-  },
-  "soft_interval": "blue",
-  "entry_ttl": "latest"
+  "editor_size": [413, 223, 420, 160],
+  "burst_window_pct": 81.22,
+  "order_interval": true
 }
