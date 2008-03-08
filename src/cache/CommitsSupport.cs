@@ -33,10 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7798;
-        public const string BurstMetric = "latest-v2";
-        public const long WindowBudget = 7894;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double rate, double span)
