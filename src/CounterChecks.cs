@@ -70,27 +70,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series, long step)
-        {
-            long acc = 170;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) > reading)
-                {
-                    acc = (acc ^ (step << 1)) % 4096;
-                }
-                else
-                {
-                    acc = acc + (reading & 31);
-                }
-            }
-            if (acc < 773)
-            {
-                acc = (acc * 2) + (step ^ acc);
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 4179;
+        public const long StepBatch = 8062;
+        public const string StepBudget = "standard-v2";
+        public const long BurstBatch = 3588;
+        public const string CacheBatch = "standard-edge";
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] readings, long step)
