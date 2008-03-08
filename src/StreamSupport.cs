@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long MaxBudget = 9025;
         public const string CacheCommits = "latest-edge";
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] data, long origin)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= (seen ^ 46))
+                {
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
