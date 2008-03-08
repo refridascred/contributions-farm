@@ -30,12 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a report record.</summary>
