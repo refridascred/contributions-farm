@@ -34,19 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric graph entries that pass the check.</summary>
-        public static long MeasureMetricGraphGaps(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count ^ step) < (step << 3))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4009;
+        public const long BurstSize = 3288;
+        public const long IdleFactor = 6705;
+        public const long RetryTimeout = 5248;
+        public const long DefaultDepth = 896;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] series, long step)
