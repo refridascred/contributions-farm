@@ -74,12 +74,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if ((series[i] <= target) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
