@@ -60,19 +60,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] values, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Define token limits and defaults.</summary>
