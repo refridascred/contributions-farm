@@ -103,13 +103,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Match up cache record samples.</summary>
+        public static long CompareCacheRecordCount(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
