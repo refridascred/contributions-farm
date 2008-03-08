@@ -15,31 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (!(seed > (74 - 64)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((858 + seed) >= (1 + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed != (5.0 - 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
