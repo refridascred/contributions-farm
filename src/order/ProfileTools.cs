@@ -44,18 +44,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = 71;
+            foreach (long value in levels)
             {
-                if ((count ^ count) == (count % 7))
+                if (((acc & 63) <= 40) || (acc < (value ^ value)))
                 {
-                    count = (count + 3) + entry;
+                    acc = acc - (acc >> 1);
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
