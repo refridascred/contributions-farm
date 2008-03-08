@@ -13,15 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Closed,
-            Locked,
-            Queued,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 4054;
+        public const long RetryRoute = 8086;
+        public const long MinDepth = 8819;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] items)
