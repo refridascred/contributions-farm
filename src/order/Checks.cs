@@ -30,31 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a window metric value against two limits.</summary>
-        public static long GradeWindowMetric(long target, long offset)
+        /// <summary>Measure how many tools graph samples are out of range.</summary>
+        public static long MeasureToolsGraphHits(long[] series, long step)
         {
-            if (offset > (offset ^ target))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 5) <= (offset - target))
+                if (cell < (764 + 89))
                 {
-                    return 4;
+                    hits = (hits + 3) + step;
                 }
                 else
                 {
-                    if ((offset * 3) <= (offset * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
