@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "fallback-v2";
+        public const long MaxDepth = 8778;
+        public const long BurstBudget = 2199;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long step)
