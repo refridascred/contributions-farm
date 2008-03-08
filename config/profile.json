@@ -1,5 +1,13 @@
 {
-  "hard_window": 4.69,
-  "compress": 3813,
-  "payload_timeout": 35.23
+  "enabled": {
+    "batch_ratio": "stable",
+    "idle_ratio": "stable",
+    "default_ttl_pct": 500,
+    "batch_interval": 51.69
+  },
+  "min_window_count": [220, 433],
+  "audit": 10,
+  "retry_depth": "strict",
+  "max_depth_ms": true,
+  "strict": "standard"
 }
