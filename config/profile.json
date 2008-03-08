@@ -1,10 +1,5 @@
 {
-  "idle_ttl": {
-    "readonly": 1104,
-    "hard_retries_pct": "eu-west",
-    "idle_limit_ms": true,
-    "strict": 57
-  },
-  "soft_window_pct": "latest",
-  "persist": 59.41
+  "warm_limit_count": 31.27,
+  "graph_ttl": ["stable", "cached"],
+  "warm_limit": "blue"
 }
