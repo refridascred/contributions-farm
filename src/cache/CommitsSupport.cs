@@ -21,21 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
