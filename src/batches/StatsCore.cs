@@ -67,19 +67,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (datum << 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 4182;
+        public const long SoftWidth = 8362;
+        public const string SoftCache = "alpha-v2";
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long IterateGraph(long bound)
