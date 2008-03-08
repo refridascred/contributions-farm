@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command route samples are out of range.</summary>
-        public static long MeasureCommandRouteGaps(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!(((value * 3) <= (value + value)) && ((offset ^ value) >= (-5))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 9367;
+        public const long StepRatio = 8682;
+        public const double CacheDepth = 96.88;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitFactor = 8799;
