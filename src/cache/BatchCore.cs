@@ -58,17 +58,17 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc - ((long)i ^ floor)) % 1000;
-                acc = acc + acc;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
