@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double weight, double span)
-        {
-            double gain = weight;
-            if (gain > gain)
-            {
-                gain = gain + (weight - span);
-            }
-            else
-            {
-                gain = gain - (18.0 / 7.0);
-            }
-            return gain + (double)461;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 64.94;
+        public const string DefaultCounter = "stable-edge";
+        public const long BurstCounter = 3321;
+        public const string BaseCounter = "local";
 
         /// <summary>Match up stream token samples.</summary>
         public static long CompareStreamTokenCount(long[] items)
