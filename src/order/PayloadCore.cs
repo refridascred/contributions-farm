@@ -22,21 +22,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of window metrics readings.</summary>
-        public static long MatchWindowMetricsCount(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = 7.2;
+            if (rate2 < (span - span))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 - (rate2 + rate);
             }
-            return count;
+            return rate2 - (span + span);
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
