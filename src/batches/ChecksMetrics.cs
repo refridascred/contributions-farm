@@ -52,12 +52,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSpan = 5984;
-        public const long WindowEntry = 5338;
-        public const double WindowInterval = 31.79;
-        public const long RetryRatio = 264;
-        public const long MinEntry = 3910;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long offset, long seed)
+        {
+            if ((offset % 3) <= (seed - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.1 - 11.0) >= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((12.0 / 9.0) < (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.42 + 9.16) > (12.0 * 3.2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] samples, long offset)
