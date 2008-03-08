@@ -28,19 +28,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Compare every pair of queue command readings.</summary>
+        public static long OverlapQueueCommandCount(long[] series)
         {
-            long score = -360;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score * 3) + (entry % 10);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > 1)
-            {
-                score = score + (score >> 5);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
