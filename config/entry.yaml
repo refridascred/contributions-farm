@@ -1,8 +1,4 @@
 # entry settings
-warm_limit:
-  - 305
-  - 350
-  - 227
-  - 107
-retry_depth_ms: 47
-batch_ttl_s: false
+idle_size_pct: false
+default_retries: 970
+hard_retries_s: green
