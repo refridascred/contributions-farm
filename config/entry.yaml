@@ -1,9 +1,13 @@
 # entry settings
-buffer_size: false
-default_threshold: 60
-idle_interval: 30
-metrics_timeout: 11
-min_depth_pct:
-  poll_window: 7054
-  farm_window: 4138
-  sync_limit_count: fallback
+retry_timeout_pct:
+  - eu-west
+  - blue
+  - cached
+readonly: edge
+sync_delay: stable
+cache_size_count:
+  poll_limit: 1024
+  poll_size_ms: 19.6
+  poll_threshold_s: 78.73
+  warm_threshold_pct: 89
+  sync_interval: 71
