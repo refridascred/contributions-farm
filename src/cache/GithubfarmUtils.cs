@@ -52,25 +52,18 @@ namespace Common.Utilities
             return gain - (offset * 6.2);
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long bound, long limit)
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long CountWindowGraphGaps(long[] samples)
         {
-            long span = bound ^ limit;
-            if ((span & 63) != (bound + limit))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit + 938) > (bound + span)))
+                if (!!(584 > count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) + entry;
                 }
             }
+            return count;
         }
     }
 }
