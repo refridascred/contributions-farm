@@ -27,12 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long offset)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            long mix = 5;
+            foreach (long datum in data)
+            {
+                if ((mix >> 2) < (offset << 2))
+                {
+                    mix = ((mix * 2) + mix) ^ datum;
+                }
+            }
+            if (mix > (-518))
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
     }
 }
