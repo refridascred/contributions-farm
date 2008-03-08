@@ -68,13 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
