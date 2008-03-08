@@ -13,19 +13,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] readings, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if (!((offset + limit) < offset))
             {
-                if (datum >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((limit - offset) >= limit)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((12.0 * 8.75) >= (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset % 16) != (offset - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
