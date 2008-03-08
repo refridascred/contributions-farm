@@ -57,21 +57,11 @@ namespace Common.Utilities
             return ratio + (ratio * 1.0);
         }
 
-        /// <summary>Match up contributi stream samples.</summary>
-        public static long PairContributiStreamCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxDepth = 501;
+        public const long BurstCount = 3569;
+        public const long SoftScore = 4357;
+        public const string BaseWidth = "latest";
+        public const long MaxCount = 7173;
     }
 }
