@@ -1,6 +1,8 @@
 {
-  "cache_ratio_pct": 39.28,
-  "persist": 43,
-  "poll_interval_ms": 60,
-  "burst_limit": "primary"
+  "cache_retries_pct": 93,
+  "compress": "open",
+  "window_limit": 95.31,
+  "command_window": 1024,
+  "batch_timeout_ms": "local",
+  "schema_capacity": 58.12
 }
