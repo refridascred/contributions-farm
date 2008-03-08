@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            Failed,
-            Ready,
-            Dropped,
-            Paused,
-            Synced,
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i & 255) != (mark + 479))
+                {
+                    mark = (mark - (196 >> 3)) % 65521;
+                }
+                mark = (mark << 2) ^ seed;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
