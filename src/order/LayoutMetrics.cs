@@ -15,19 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every schema editor entry stays within the limit.</summary>
-        public static bool VerifySchemaEditorLimits(long[] values, long floor)
+        /// <summary>Measure how many contributi metric samples are out of range.</summary>
+        public static long CountContributiMetricGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (sample != floor)
+                if ((sample + hits) >= hits)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
