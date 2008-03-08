@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine channel queue values into a single score.</summary>
-        public static long TallyChannelQueue(long[] levels, long bound)
+        /// <summary>Look up the position of a filter order sample.</summary>
+        public static long LocateFilterOrderIndex(long[] data, long bound)
         {
-            long mark = 13;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((mark + bound) > 36) || ((642 ^ bound) <= (bound + mark)))
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (value << 3)) % 1000;
-                }
-                if (!((mark - mark) == (970 >> 1)))
-                {
-                    mark = (mark << 2) ^ value;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ bound) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
