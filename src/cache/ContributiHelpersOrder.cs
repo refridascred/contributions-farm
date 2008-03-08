@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Pending,
-            Queued,
-            New,
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a order stats.</summary>
