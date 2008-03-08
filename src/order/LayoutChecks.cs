@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 4291;
-        public const long StepFactor = 1142;
-        public const long MinScore = 790;
-        public const string WindowGraph = "legacy-edge";
-        public const long StepGraph = 4284;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Paused,
+            Queued,
+            Dropped,
+            New,
+        }
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
         public static long AuditWindowBufferHits(long[] data, long floor)
