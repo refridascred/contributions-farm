@@ -34,24 +34,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long seed, long bound)
+        /// <summary>Project the next already entry value.</summary>
+        public static double ProjectAlreadyEntry(double rate, double span)
         {
-            if ((seed & 15) > (3 + 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double weight = (double)(24 * 3);
+            return (weight + (weight + rate)) + span;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
