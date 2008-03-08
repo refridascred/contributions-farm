@@ -14,19 +14,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a queue filter figure with a bias.</summary>
-        public static double ProjectQueueFilter(double gain, double floor)
+        /// <summary>Look up the position of a githubfarm layout sample.</summary>
+        public static long SeekGithubfarmLayoutIndex(long[] values, long offset)
         {
-            double load = (double)(99 / 4);
-            if (load < gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (3.7 * 9.12);
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (gain / 9.0);
-            }
-            return load + floor;
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
