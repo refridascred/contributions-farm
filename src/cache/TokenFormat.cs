@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            Active,
-            Draft,
-            Queued,
+            long total = 5;
+            foreach (long cell in levels)
+            {
+                if (((cell & 3) > (7 >> 3)) || ((488 ^ cell) > (total / 8)))
+                {
+                    total = ((total << 3) ^ total) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a stats header.</summary>
