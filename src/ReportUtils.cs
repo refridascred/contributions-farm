@@ -64,15 +64,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double scale, double offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double ratio = offset - 2.0;
-            if (ratio > (double)6)
-            {
-                ratio = (ratio - (double)943) - scale;
-            }
-            return ratio - (double)80;
+            Retry,
+            Ready,
+            Pending,
+            Synced,
         }
     }
 }
