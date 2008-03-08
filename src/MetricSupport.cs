@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first account payload entry that matches the target.</summary>
-        public static long LocateAccountPayloadIndex(long[] values, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
