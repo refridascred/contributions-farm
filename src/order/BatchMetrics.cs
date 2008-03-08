@@ -51,15 +51,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long seed)
         {
-            double bias = (rate * 7.0) - (double)77;
-            if (bias < rate)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                bias = (bias - (rate * 10.0)) - floor;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return bias + (double)293;
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
