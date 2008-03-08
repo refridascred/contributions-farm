@@ -1,5 +1,14 @@
 {
-  "retry_interval": true,
-  "enabled": ["green", "staging", "green"],
-  "counter_retries": 74.27
+  "audit": {
+    "warm_size": false,
+    "record_limit": "green",
+    "poll_interval_ms": 30,
+    "compress": 250,
+    "idle_capacity": "stable"
+  },
+  "graph_size": ["green", "fallback", "cached"],
+  "poll_threshold_ms": true,
+  "min_threshold_pct": "edge",
+  "token_timeout": 50.38,
+  "dry_run": ["blue", "legacy", "fallback"]
 }
