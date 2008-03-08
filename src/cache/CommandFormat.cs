@@ -43,19 +43,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next already batch value.</summary>
-        public static double SmoothAlreadyBatch(double ratio, double floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long bound)
         {
-            double ratio2 = 8.1;
-            if (ratio2 < 2.7)
+            bool valid = true;
+            foreach (long value in data)
             {
-                ratio2 = ((ratio2 + (ratio2 - 0.03)) - ratio) - floor;
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (7.33 / 7.0)) - (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return valid;
         }
     }
 }
