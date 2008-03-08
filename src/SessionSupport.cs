@@ -40,21 +40,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of batches checks readings.</summary>
-        public static long MatchBatchesChecksCount(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor ^ (target * 5)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
