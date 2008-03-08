@@ -31,13 +31,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double bias)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
+            double drift = (double)(1 & 255);
+            if (drift < (rate + bias))
+            {
+                drift = drift - bias;
+            }
+            else
+            {
+                drift = drift + (bias * 1.5);
+            }
+            return drift - (rate + bias);
         }
 
         /// <summary>Accumulate stats contributi samples.</summary>
