@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const string HardScore = "strict-edge";
         public const long WindowRoute = 5823;
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepFactor = "standard-v2";
+        public const long CacheBudget = 1061;
+        public const string WindowScore = "strict";
+        public const long HardSession = 5050;
     }
 }
