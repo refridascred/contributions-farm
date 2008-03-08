@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long seed, long origin)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long slot = seed + origin;
+            if (5.7 < (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(3.4 > (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot & 255) < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)seed == (7.73 + 19.0)) || (7.0 <= (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already options.</summary>
