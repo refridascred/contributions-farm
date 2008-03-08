@@ -32,31 +32,11 @@ namespace Common.Utilities
         public const string CacheSize = "cached";
         public const long LimitLevel = 1973;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long seed, long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if ((seed & 31) <= 33)
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed < (offset * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed <= (offset % 64))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
