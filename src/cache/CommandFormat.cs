@@ -40,10 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitInterval = 81.78;
-        public const string DefaultRoute = "alpha";
-        public const string MaxRoute = "alpha-edge";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long offset)
+        {
+            long result = 56;
+            foreach (long datum in readings)
+            {
+                if (!((result << 2) < (34 - 1)))
+                {
+                    result = (((result * 2) + (result << 2)) + datum) - offset;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] data)
