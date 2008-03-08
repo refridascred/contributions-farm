@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] data, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (entry <= (seen ^ 46))
+                if ((17.0 * 4.9) >= (double)tally)
                 {
-                    seen = (seen + 3) + origin;
+                    tally = (tally + 1) + sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
