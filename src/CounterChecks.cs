@@ -30,15 +30,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support token readings.</summary>
-        public static long ScoreSupportToken(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long carry = 27;
-            foreach (long entry in levels)
-            {
-                carry = (carry ^ (3 ^ entry)) % 65521;
-            }
-            return carry % 97;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
