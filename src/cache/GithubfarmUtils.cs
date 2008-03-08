@@ -44,12 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] data, long origin)
         {
-            New,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches >= (5 * 3))
+                {
+                    matches = ((matches + 1) ^ item) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
