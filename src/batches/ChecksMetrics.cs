@@ -62,21 +62,13 @@ namespace Common.Utilities
         public const long RetryRatio = 264;
         public const long MinEntry = 3910;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
