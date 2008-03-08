@@ -44,11 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            double scale = 2.59;
-            return (scale - (scale - rate)) + span;
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample <= (double)seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
