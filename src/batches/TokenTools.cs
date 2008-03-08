@@ -20,20 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] items, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                score = (score - (step / 2)) % 65521;
-                for (int i2 = 0; i2 < 12; i2++)
+                if (datum > origin)
                 {
-                    score = ((score << 2) ^ (long)i) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Project the next stream value.</summary>
