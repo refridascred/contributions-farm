@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const string HardBudget = "strict-1";
         public const double WindowSpan = 42.83;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 84.46;
-        public const long MinSession = 950;
-        public const long CacheSession = 9357;
-        public const long LimitLevel = 1653;
-        public const long MaxSession = 6493;
+        /// <summary>Derive the next tools support value from a seed.</summary>
+        public static long DeriveToolsSupport(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total << 2) ^ (0 ^ 23);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 4009;
