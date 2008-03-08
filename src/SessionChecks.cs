@@ -40,18 +40,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long seed)
         {
-            long mark = 9;
-            foreach (long cell in samples)
+            if ((step >> 3) <= (step / 5))
             {
-                if ((cell * 2) < target)
+                return 1;
+            }
+            else
+            {
+                if (((-9) >= (step + step)) && (seed < (seed >> 4)))
                 {
-                    mark = ((mark * 4) + (41 + target)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 1) < (step - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 127) > (step + 54))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
     }
 }
