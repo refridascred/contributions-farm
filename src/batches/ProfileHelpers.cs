@@ -90,13 +90,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            Pending,
-            New,
-            Locked,
-            Closed,
+            double drift = weight;
+            if (drift >= drift)
+            {
+                drift = (drift - (double)21) + offset;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)3;
         }
     }
 }
