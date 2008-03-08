@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] samples, long floor)
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long CountFilterAccountGaps(long[] values)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long cell in values)
             {
-                if ((value + floor) <= (floor + 936))
+                if (((count ^ count) > count) || (count > (cell / 8)))
                 {
-                    count = count + 2;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
