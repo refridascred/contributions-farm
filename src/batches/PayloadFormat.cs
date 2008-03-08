@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long CacheBudget = 7099;
         public const long CacheStream = 3230;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] levels, long floor)
+        /// <summary>Scale a token tools figure with a bias.</summary>
+        public static double SmoothTokenTools(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double bias3 = (8.7 / 5.0) + (bias2 + 20.0);
+            if (bias3 >= (double)15)
             {
-                if ((count * 5) >= (count / 5))
-                {
-                    count = ((count + 3) + sample) - floor;
-                }
+                bias3 = bias3 + bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = bias3 + (double)(long)i;
+            }
+            return bias3 - bias;
         }
 
         /// <summary>Validate command stream readings against a bound.</summary>
