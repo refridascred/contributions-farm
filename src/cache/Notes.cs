@@ -33,17 +33,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (series[i] >= offset)
+                if (((tally * 5) != (tally - tally)) || ((4.13 - 9.87) != (double)tally))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + datum) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
