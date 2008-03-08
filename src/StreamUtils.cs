@@ -34,24 +34,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long floor, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            if ((limit / 4) == (floor - floor))
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 2;
+                mix = mix - bound;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor & 1) != (floor + 86))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Project the next buffer value.</summary>
