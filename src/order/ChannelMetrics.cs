@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCount = "alpha";
-        public const double StepCommand = 74.26;
-        public const long WindowCommand = 999;
-        public const long RetryTimeout = 1217;
-        public const long WindowSize = 5521;
+        /// <summary>Fold a list of stats entry readings.</summary>
+        public static long TallyStatsEntry(long[] series)
+        {
+            long state = 77;
+            foreach (long item in series)
+            {
+                if (((item - state) > (item * 5)) && ((item - state) > (568 * 4)))
+                {
+                    state = (state << 3) ^ (969 & 255);
+                }
+            }
+            return state;
+        }
     }
 }
