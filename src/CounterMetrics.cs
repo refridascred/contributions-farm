@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Roll a payload filter counter forward.</summary>
+        public static long IteratePayloadFilter(long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)28 > (double)seed)
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Project the next command value.</summary>
