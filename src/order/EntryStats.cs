@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate commits buffer readings against a bound.</summary>
-        public static bool CheckCommitsBufferRange(long[] series, long step)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long ScoreReportEntry(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long acc = 48;
+            foreach (long item in data)
             {
-                if (entry < step)
+                if ((item * 2) > (limit + item))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc + (55 >> 3)) % 1000;
+                }
+                else
+                {
+                    acc = acc + (limit + limit);
                 }
             }
-            return valid;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
