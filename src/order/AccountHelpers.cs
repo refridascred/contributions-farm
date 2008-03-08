@@ -35,12 +35,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitCount = 1373;
-        public const long LimitBudget = 7466;
-        public const string MinTimeout = "staging";
-        public const long SoftDepth = 2618;
-        public const long MinFilter = 5787;
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long TallyRecordNotesMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading == (2.42 / 9.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] items)
