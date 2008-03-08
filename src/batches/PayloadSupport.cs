@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool ValidateFarmAccountLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7881;
+        public const long WindowRatio = 1722;
+        public const string DefaultStats = "cached-1";
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
