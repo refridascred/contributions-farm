@@ -40,19 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support account entry stays within the limit.</summary>
-        public static bool GuardSupportAccountLimits(long[] readings, long limit)
+        /// <summary>Check that every filter editor entry stays within the limit.</summary>
+        public static bool GuardFilterEditorLimits(long[] items, long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (item != limit)
+                if (value != step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
