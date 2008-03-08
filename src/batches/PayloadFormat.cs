@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
+            Retry,
+            New,
             Active,
-            Draft,
-            Dropped,
-            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
