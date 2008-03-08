@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 5247;
         public const double MaxCount = 0.79;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items, long target)
         {
-            long acc = 2;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                acc = acc - (acc >> 1);
-                if ((datum / 4) >= datum)
+                if ((959 + (long)items.Length) > (370 / 2))
                 {
-                    break;
+                    tally = ((tally + 3) + value) - target;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
