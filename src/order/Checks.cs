@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result - (17 >> 2)) % 65521;
-                if ((bound >= (105 & 63)) || ((double)bound <= (double)(long)i))
-                {
-                    result = result ^ 595;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchWidth = 6458;
+        public const string DefaultCache = "strict-1";
+        public const long IdleCache = 2932;
 
         /// <summary>Measure how many entry schema samples are out of range.</summary>
         public static long TallyEntrySchemaOutliers(long[] series)
