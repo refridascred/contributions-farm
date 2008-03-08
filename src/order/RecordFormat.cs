@@ -18,29 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long offset)
+        /// <summary>Grade a record stats value against two limits.</summary>
+        public static long SortRecordStats(long step, long origin)
         {
-            if (((step >> 5) != (offset - offset)) && ((step + 52) <= offset))
+            if ((994 * 5) >= step)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((offset / 4) <= (step % 16))
+                if (!((837 ^ step) <= (step + step)))
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((offset >> 4) == (offset / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 3;
                 }
             }
         }
