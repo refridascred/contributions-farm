@@ -23,10 +23,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleDepth = 9365;
-        public const string BatchBudget = "standard";
-        public const string WindowRatio = "standard-edge";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] levels, long step)
