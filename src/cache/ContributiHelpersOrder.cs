@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long result = 5;
+            foreach (long sample in data)
+            {
+                if (!(341 <= (sample << 3)))
+                {
+                    result = ((result << 3) ^ (sample % 60)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a cache entry.</summary>
