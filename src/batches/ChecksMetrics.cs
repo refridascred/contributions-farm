@@ -43,13 +43,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long limit)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long lane = seed - limit;
+            if ((limit - 83) > (seed + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (94 > lane)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((lane << 2) >= ((-14) - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((lane + limit) >= 92) || ((seed / 4) != (lane & 63)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
