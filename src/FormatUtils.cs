@@ -44,22 +44,18 @@ namespace Common.Utilities
             return (weight + floor) + ratio;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((item + floor) > hits)
+                if ((reading - reading) == (reading & 15))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
