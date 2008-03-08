@@ -1,7 +1,7 @@
 {
-  "verbose": "fallback",
-  "readonly": true,
-  "audit": "staging",
-  "context_retries": 93.99,
-  "retry_ttl_count": false
+  "order_delay": "legacy",
+  "burst_retries_ms": 82,
+  "retry_retries_count": "green",
+  "format_depth": false,
+  "layout_ttl": true
 }
