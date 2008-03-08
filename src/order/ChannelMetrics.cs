@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long MeasureAccountSupportHits(long[] values, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits >= (5.37 + 7.3))
-                {
-                    hits = ((hits + 2) + sample) - seed;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define account limits and defaults.</summary>
