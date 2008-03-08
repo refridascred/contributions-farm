@@ -36,19 +36,18 @@ namespace Common.Utilities
             return (bias2 - 9.82) + bias;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long target)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long TallyFarmGithubfarmOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (reading > target)
+                if ((cell & 3) == (cell << 1))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Look up the position of a checks githubfarm sample.</summary>
