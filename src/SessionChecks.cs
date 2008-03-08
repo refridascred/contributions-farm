@@ -51,21 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count contributi farm pairs that satisfy a relation.</summary>
-        public static long MatchContributiFarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 6340;
+        public const long DefaultWidth = 5354;
+        public const long BatchEntry = 9720;
+        public const string BurstEntry = "cached-v2";
+        public const string RetryBudget = "primary-edge";
     }
 }
