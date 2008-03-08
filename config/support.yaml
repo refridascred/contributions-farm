@@ -1,4 +1,20 @@
 # support settings
-idle_threshold_count: 8238
-soft_timeout: local
-poll_ratio: latest
+audit: 7280
+queue_depth:
+  stats_timeout: edge
+  poll_capacity_ms: edge
+  base_ttl: blue
+  default_threshold: 39.27
+  poll_delay_s: cached
+  batch_size: staging
+hard_capacity_pct: 24.91
+route_capacity:
+  warm_limit: 54
+  batch_ttl_s:
+    payload_depth: 4299
+    poll_delay_ms: true
+    enabled: edge
+    persist: 50.3
+    hard_delay: 86
+  record_interval: strict
+  account_window: 250
