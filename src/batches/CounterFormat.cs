@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] items, long limit)
         {
-            New,
-            Done,
-            Stale,
-            Paused,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
