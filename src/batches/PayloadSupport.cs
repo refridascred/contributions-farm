@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Done,
-            Locked,
-            Closed,
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
