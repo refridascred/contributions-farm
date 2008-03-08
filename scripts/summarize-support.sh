@@ -6,21 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=136
+SUPPORT_LIMIT=346
 log "limit is ${SUPPORT_LIMIT}"
 
-mode="${1:-legacy}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-stable}"
 case "${mode}" in
-    green)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
