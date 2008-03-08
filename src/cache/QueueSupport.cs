@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 6910;
-        public const long DefaultFactor = 3053;
-        public const long BatchTimeout = 8065;
-        public const double WindowScore = 49.63;
-        public const long BaseProfile = 6958;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryWidth = "local-v2";
+        public const long MinSession = 5626;
+        public const long BatchLevel = 339;
+        public const long HardWidth = 391;
+        public const long RetryInterval = 7601;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double gain, double bias)
