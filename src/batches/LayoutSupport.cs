@@ -58,13 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
