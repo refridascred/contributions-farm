@@ -1,7 +1,13 @@
 # entry settings
-poll_window: true
-graph_threshold: false
-retry_interval: true
-default_interval: false
-min_capacity_pct: legacy
-hard_depth_s: 75.42
+contributi_timeout: strict
+burst_depth_ms: latest
+account_retries: edge
+readonly:
+  dry_run: 1291
+  max_capacity_ms: standard
+  retry_retries_ms: 1024
+  audit:
+    - 260
+    - 499
+buffer_threshold: 301
+retry_retries: true
