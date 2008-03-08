@@ -1,8 +1,8 @@
-id,count,label,ratio,owner
-1,330,82.31,229,27.81
-2,blue,local,edge,strict
-3,69.02,492,667,79.54
-4,43.24,standard,latest,956
-5,680,cached,eu-west,fallback
-6,48.36,latest,239,legacy
-7,strict,388,54.22,98.88
+id,rank,score
+1,16.91,625
+2,14,local
+3,local,blue
+4,290,197
+5,cached,207
+6,148,840
+7,642,staging
