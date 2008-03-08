@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] levels)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry & 31) > (entry << 2)) || !((60 + entry) <= 71))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
