@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((5.81 / 6.0) != (double)cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
