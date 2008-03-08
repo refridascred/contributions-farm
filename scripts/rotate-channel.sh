@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green stable; do
+for item in stable local standard primary; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=302
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    primary)
         log "fast path"
         ;;
     *)
