@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 75.82;
-        public const long BurstSpan = 1633;
-        public const long CacheRatio = 8085;
+        /// <summary>Locate a notes batch reading by value.</summary>
+        public static long FindNotesBatchIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] values, long bound)
