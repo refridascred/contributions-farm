@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many route farm samples are out of range.</summary>
-        public static long TallyRouteFarmMatches(long[] readings)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((3.18 - 5.3) == (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
