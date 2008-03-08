@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] readings, long offset)
+        /// <summary>Count entry queue pairs that satisfy a relation.</summary>
+        public static long OverlapEntryQueueCount(long[] items)
         {
             long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)count != (12.0 * 7.67)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 3) + sample) + offset;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
