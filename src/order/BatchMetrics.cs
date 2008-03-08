@@ -42,20 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultBudget = 7064;
+        public const long StepCount = 7482;
+        public const long BurstChecks = 9975;
+        public const string SoftSize = "staging";
+        public const long BaseChecks = 1356;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double rate, double floor)
