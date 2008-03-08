@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long MaxSession = 3593;
         public const long RetrySession = 7552;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
