@@ -26,14 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long floor)
         {
-            Locked,
-            Dropped,
-            Done,
-            Stale,
-            Active,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of token graph readings.</summary>
