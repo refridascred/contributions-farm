@@ -34,10 +34,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1445;
-        public const double StepDepth = 98.4;
-        public const long BatchContext = 1202;
-        public const string RetryContext = "strict-edge";
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
