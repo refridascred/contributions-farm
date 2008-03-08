@@ -48,24 +48,18 @@ namespace Common.Utilities
         public const long IdleWidth = 607;
         public const long DefaultFactor = 7348;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long seed2)
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long CountChecksFilterGaps(long[] readings, long target)
         {
-            if (((-396) ^ seed2) > 65)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (11.0 <= (double)seed)
+                if (((target % 97) >= (target + target)) || ((matches >= (0 - value)) || ((value % 97) < (value + 94))))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
