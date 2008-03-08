@@ -48,14 +48,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Validate cluster counter readings against a bound.</summary>
+        public static bool GuardClusterCounterLimits(long[] series, long origin)
         {
-            Dropped,
-            Retry,
-            Locked,
-            New,
-            Idle,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
