@@ -19,12 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches + matches) > ((long)values.Length >> 4))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
