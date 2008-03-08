@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const string HardBudget = "strict-1";
         public const double WindowSpan = 42.83;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 84.46;
+        public const long MinSession = 950;
+        public const long CacheSession = 9357;
+        public const long LimitLevel = 1653;
+        public const long MaxSession = 6493;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 4009;
