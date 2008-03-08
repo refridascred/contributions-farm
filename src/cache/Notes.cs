@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long floor)
+        /// <summary>Locate a payload contributi reading by value.</summary>
+        public static long SeekPayloadContributiIndex(long[] levels, long limit)
         {
-            if ((8 + 6) >= (35 + floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(16 <= (limit + limit)))
+                if (levels[i] < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit / 4) >= limit) || ((floor >> 4) < (311 & 127)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((15.0 - 8.3) >= (19.0 + 0.06))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
