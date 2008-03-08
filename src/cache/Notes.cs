@@ -23,10 +23,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 1940;
-        public const long StepTimeout = 2204;
-        public const long StepCommits = 8839;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryCount = 3226;
+        public const long LimitDepth = 1686;
+        public const long WindowSpan = 2478;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionOutliers(long[] items, long limit)
