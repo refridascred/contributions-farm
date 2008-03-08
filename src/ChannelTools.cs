@@ -34,18 +34,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] series, long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long edge = limit + floor;
+            if (((3.0 + 12.0) > (double)edge) || ((limit ^ 2) >= floor))
             {
-                if (seed >= (seed + 244))
+                return 3;
+            }
+            else
+            {
+                if ((limit >= (limit * 4)) || ((limit + 71) < (floor ^ floor)))
                 {
-                    count = (count + 2) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
