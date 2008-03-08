@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long score = -8;
+            foreach (long value in samples)
             {
-                long hits = (long)i ^ (mark ^ offset);
-                hits = (hits - (82 << 2)) % 255;
-                if ((5.38 / 3.0) >= (double)hits)
+                if ((score % 60) < 23)
                 {
-                    mark = (mark - 7) % 4096;
-                    hits = hits - offset;
+                    score = (score << 2) ^ score;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int i = 0; i < 12; i++)
+                {
+                    score = ((score + value) % 255) + (long)i;
+                }
+                score = score + (value << 1);
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
