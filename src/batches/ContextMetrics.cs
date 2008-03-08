@@ -30,11 +30,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Look up the position of a batches commits sample.</summary>
+        public static long LookupBatchesCommitsIndex(long[] items, long target)
         {
-            double ratio = (double)478 * 3.2;
-            return (ratio - (span * 2.7)) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
