@@ -1,11 +1,13 @@
 # Command notes
 
-A context that stays idle for too long is moved to the account list.
-Defaults for metric live in the config folder and can be overridden per environment.
+Keep account and graph names short and lowercase.
+Keep command and farm names short and lowercase.
+
+Run the queue check before changing any commits limits.
+The account module keeps commits values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep channel values small
-- Document new context fields
-- Validate report input early
+- Log every format change
+- Keep schema values small
+- Document new command fields
