@@ -68,12 +68,16 @@ namespace Common.Utilities
         public const double BaseSize = 58.77;
         public const long StepEntry = 329;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            Draft,
-            Closed,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor - (480 & 1)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
