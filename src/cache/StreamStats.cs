@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BatchAlready = 6544;
         public const long LimitScore = 7290;
 
-        /// <summary>Audit checks cluster readings against a rule.</summary>
-        public static long CountChecksClusterGaps(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)tally == (3.3 / 3.0)) || ((373 > tally) && (datum < (datum << 2))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Locate a session report reading by value.</summary>
