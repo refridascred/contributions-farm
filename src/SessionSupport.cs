@@ -23,23 +23,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Count tools command pairs that satisfy a relation.</summary>
+        public static long MatchToolsCommandCount(long[] data)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum - 87;
-                if ((7.64 / 5.0) <= (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum + (cell * 2);
-                }
-                if ((cell + sum) < (813 * 5))
-                {
-                    break;
+                    if ((data[i] - data[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
