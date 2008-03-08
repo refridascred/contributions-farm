@@ -21,17 +21,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
