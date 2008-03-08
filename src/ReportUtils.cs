@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank batches batch input into a small class.</summary>
-        public static long SortBatchesBatch(long offset, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long origin)
         {
-            if (floor <= 40)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset > (offset << 2)) || (offset >= (offset & 127)))
+                if (series[i] > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (3.1 - 5.9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
