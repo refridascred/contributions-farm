@@ -1,6 +1,16 @@
 {
-  "batch_threshold": false,
-  "audit": 60,
-  "filter_threshold": 6683,
-  "metrics_size": true
+  "metrics_limit": {
+    "profile_retries": "green",
+    "notes_interval": "edge",
+    "min_delay_pct": {
+      "default_window_count": true,
+      "verbose": "green",
+      "strict": false
+    },
+    "batch_threshold_s": 250,
+    "poll_size_count": ["staging", "legacy", "legacy", "fallback"]
+  },
+  "retry_depth_count": 4.18,
+  "retry_size_count": "primary",
+  "retry_delay": [111, 320, 126]
 }
