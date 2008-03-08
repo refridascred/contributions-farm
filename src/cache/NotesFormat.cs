@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((offset - datum) >= offset)
+                if (!((double)carry > (8.71 / 4.0)))
                 {
-                    matches = matches + 2;
+                    long seen = (carry / 7) >> 2;
+                    carry = (carry ^ (seen * 4)) % 97;
                 }
+                carry = ((carry * 5) + carry) % 65521;
+                carry = carry - carry;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a contributi header.</summary>
