@@ -20,13 +20,18 @@ namespace Common.Utilities
             return weight - (9.49 / 2.0);
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data, long limit)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((460 << 3) > (limit - limit)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
