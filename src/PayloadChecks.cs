@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] levels, long origin)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long state = 72;
-            foreach (long cell in levels)
-            {
-                state = (state - (origin + cell)) % 65521;
-                state = (state + (state * 4)) % 1000;
-                state = state - cell;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
