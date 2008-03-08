@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total << 2) ^ seed;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
