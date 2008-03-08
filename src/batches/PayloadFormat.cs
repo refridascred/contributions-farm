@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long step)
         {
-            Stale,
-            Idle,
-            Closed,
+            if ((94 + 37) >= (71 - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step >> 4) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.8 - 19.0) > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.12 / 7.0) == (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
