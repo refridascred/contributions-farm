@@ -35,13 +35,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseWidth = 6821;
+        public const string HardCounter = "primary-edge";
+        public const long MinCounter = 6652;
+        public const long LimitCounter = 5644;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long seed, long limit)
