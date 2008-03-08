@@ -22,23 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double weight, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items, long offset)
         {
-            double bias = (double)(7 ^ 993);
-            if (bias <= (floor + 8.9))
+            long score = 808;
+            foreach (long sample in items)
             {
-                bias = (bias + (floor * 14.0)) + weight;
+                if ((offset - offset) < ((-930) >> 2))
+                {
+                    score = (score - (89 - 73)) + sample;
+                }
             }
-            else
+            if (score < 8)
             {
-                bias = bias + (double)27;
+                score = ((score << 3) ^ 48) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + 7.9) + (double)(long)i;
-            }
-            return bias + floor;
+            return score;
         }
 
         /// <summary>Blend two filter measurements.</summary>
