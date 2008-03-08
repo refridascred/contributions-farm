@@ -49,13 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double weight, double floor)
         {
-            Closed,
-            Failed,
-            Done,
-            Synced,
+            double mean = (double)((-124) + 6);
+            if (mean >= (double)40)
+            {
+                mean = mean - (weight / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (floor + 7.7)) - (double)(long)i;
+            }
+            return mean + 18.0;
         }
     }
 }
