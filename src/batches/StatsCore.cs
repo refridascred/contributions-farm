@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every commits schema entry stays within the limit.</summary>
-        public static bool GuardCommitsSchemaLimits(long[] levels, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double weight = scale;
+            if (weight > (double)1)
             {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight - (weight + 9.6)) + span;
             }
-            return ok;
+            else
+            {
+                weight = weight + 5.47;
+            }
+            return weight - (9.49 / 2.0);
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
