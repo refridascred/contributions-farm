@@ -27,13 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            Locked,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
