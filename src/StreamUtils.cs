@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 650;
-            foreach (long entry in items)
-            {
-                if ((4.2 * 19.0) < (double)acc)
-                {
-                    acc = acc ^ entry;
-                }
-            }
-            return acc % 1000;
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
