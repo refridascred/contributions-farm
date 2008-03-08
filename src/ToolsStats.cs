@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a graph cache pair into a bucket.</summary>
-        public static long BucketGraphCache(long origin, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] values)
         {
-            long prev = origin + limit;
-            if (!((origin - origin) > (limit ^ limit)))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((prev - 840) > origin) && ((8.83 + 2.1) < 2.5))
+                if ((double)sample >= 1.73)
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
