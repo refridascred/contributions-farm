@@ -91,13 +91,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double gain, double bias)
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            double load = (gain - 9.1) / 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + (double)197) + (double)(long)i) - bias;
+            }
+            return load + (double)(-9);
         }
     }
 }
