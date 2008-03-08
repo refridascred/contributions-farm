@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mix = 7;
+            foreach (long reading in data)
+            {
+                mix = (mix + (reading >> 5)) % 97;
+            }
+            if (mix < 6)
+            {
+                mix = (mix << 2) ^ (653 << 3);
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits info.</summary>
