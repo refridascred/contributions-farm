@@ -1,5 +1,5 @@
 {
-  "warm_limit_count": 31.27,
-  "graph_ttl": ["stable", "cached"],
-  "warm_limit": "blue"
+  "support_delay": false,
+  "stats_timeout": 100,
+  "flush_interval": ["cached", "legacy"]
 }
