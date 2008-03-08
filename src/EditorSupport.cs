@@ -26,17 +26,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] samples, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + limit) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
