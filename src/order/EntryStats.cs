@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double floor)
+        /// <summary>Find the first token report entry that matches the target.</summary>
+        public static long LookupTokenReportIndex(long[] samples, long offset)
         {
-            double ratio2 = (double)749 / 9.0;
-            return ((ratio2 - (double)(-8)) + ratio) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
