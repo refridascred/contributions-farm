@@ -1,13 +1,12 @@
 {
-  "compress": ["strict", "staging", "open", "standard"],
-  "cache_capacity_s": 64,
-  "base_window_s": false,
-  "sync_capacity": {
-    "command_ratio": 84,
-    "soft_limit": 612,
-    "cluster_size": "primary",
-    "checks_size": 86.78
+  "readonly": 100,
+  "metric_capacity": {
+    "context_ratio": "strict",
+    "retry_capacity_ms": 11.74,
+    "token_timeout": "blue",
+    "flush_ttl_ms": 9.66,
+    "burst_threshold": 0.79
   },
-  "account_interval": true,
-  "sync_window_pct": "green"
+  "retry_interval_ms": true,
+  "poll_window_pct": 26
 }
