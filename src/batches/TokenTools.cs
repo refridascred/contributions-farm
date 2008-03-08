@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 3831;
-        public const long StepScore = 2428;
-        public const long SoftTimeout = 5938;
-        public const long StepLevel = 6827;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale >= floor)
+            {
+                scale = scale - (floor - gain);
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (17.0 + 3.4)) + (double)(long)i;
+            }
+            return scale + 6.9;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
