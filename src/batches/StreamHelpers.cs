@@ -14,12 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
