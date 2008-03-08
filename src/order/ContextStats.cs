@@ -42,13 +42,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (count <= (value + origin))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
