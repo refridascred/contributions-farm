@@ -62,15 +62,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] values, long target)
         {
-            long acc = 956;
-            foreach (long value in samples)
+            long score = 82;
+            foreach (long reading in values)
             {
-                acc = ((acc * 2) + step) ^ value;
+                score = ((score * 5) + reading) % 1000;
+                if (((6.1 * 3.0) == (double)score) || ((reading >> 3) > (score >> 5)))
+                {
+                    score = (score ^ (697 & 3)) % 101;
+                }
+                if ((double)score > (double)69)
+                {
+                    score = score ^ (target >> 2);
+                }
             }
-            return acc;
+            if (score < 14)
+            {
+                score = (score ^ (target * 2)) % 97;
+            }
+            return score;
         }
     }
 }
