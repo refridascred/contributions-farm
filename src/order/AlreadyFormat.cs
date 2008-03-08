@@ -37,19 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stream channel readings against a bound.</summary>
-        public static bool VerifyStreamChannelLimits(long[] values, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
