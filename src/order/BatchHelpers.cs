@@ -34,14 +34,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Paused,
-            Ready,
-            Queued,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxScore = 1547;
+        public const long RetryFarm = 4498;
+        public const long StepScore = 9850;
     }
 }
