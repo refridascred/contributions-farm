@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in edge local; do
+for item in legacy fallback stable; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=198
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-green}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
