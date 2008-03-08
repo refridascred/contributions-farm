@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            Stale,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
