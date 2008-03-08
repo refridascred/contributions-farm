@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate checks channel readings against a bound.</summary>
-        public static bool ValidateChecksChannelBounds(long[] values, long target)
+        /// <summary>Measure how many stats batches samples are out of range.</summary>
+        public static long AuditStatsBatchesGaps(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (entry > target)
+                if (!((double)cell <= (double)hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Roll a payload filter counter forward.</summary>
