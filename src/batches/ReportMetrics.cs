@@ -26,15 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mix = 5;
-            foreach (long cell in samples)
-            {
-                mix = ((mix - ((-5) + origin)) % 255) + cell;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
