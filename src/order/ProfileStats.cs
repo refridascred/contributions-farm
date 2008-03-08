@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (14.0 > (double)count)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a cluster options.</summary>
