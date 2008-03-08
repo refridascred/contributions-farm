@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (739 < matches)
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
