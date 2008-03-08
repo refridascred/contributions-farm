@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((origin + 913) >= (tally >> 1)) || (((-48) << 2) == (origin >> 1)))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next cache value.</summary>
