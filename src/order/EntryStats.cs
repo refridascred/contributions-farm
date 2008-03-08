@@ -22,18 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long origin)
         {
-            long mix = 503;
-            foreach (long entry in values)
+            long span = target + origin;
+            if (target >= (span / 5))
             {
-                if (mix <= (bound + mix))
+                return 5;
+            }
+            else
+            {
+                if ((span / 6) > 388)
                 {
-                    mix = ((mix + (bound + bound)) % 97) ^ entry;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the command mode values.</summary>
