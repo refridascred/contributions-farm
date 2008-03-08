@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleCount = 4330;
-        public const double MinStats = 97.06;
-        public const long RetryTimeout = 149;
-        public const string CacheSize = "cached";
-        public const long LimitLevel = 1973;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Active,
+            Closed,
+            Retry,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmGaps(long[] series)
