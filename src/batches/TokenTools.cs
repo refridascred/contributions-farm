@@ -18,23 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double gain, double floor)
+        /// <summary>Rank stats order input into a small class.</summary>
+        public static long GradeStatsOrder(long limit, long target)
         {
-            double scale = floor;
-            if (scale >= floor)
+            if (((limit + target) != (target & 1)) || ((2.51 + 6.63) != (double)limit))
             {
-                scale = scale - (floor - gain);
+                return 1;
             }
             else
             {
-                scale = scale + scale;
+                if (!((target % 64) > limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 100) <= (limit + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (17.0 + 3.4)) + (double)(long)i;
-            }
-            return scale + 6.9;
         }
 
         /// <summary>Describe the order kind values.</summary>
