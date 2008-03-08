@@ -41,19 +41,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a metrics record reading.</summary>
-        public static double SmoothMetricsRecord(double bias, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] items, long seed)
         {
-            double scale = (double)(9 - (-651));
-            if (scale <= floor)
+            bool found = true;
+            foreach (long entry in items)
             {
-                scale = (scale + (double)56) - bias;
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (0.9 - floor);
-            }
-            return scale + (scale + 6.64);
+            return found;
         }
 
         /// <summary>Project the next channel value.</summary>
