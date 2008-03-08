@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Measure how many route farm samples are out of range.</summary>
+        public static long TallyRouteFarmMatches(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((3.18 - 5.3) == (double)sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel header.</summary>
