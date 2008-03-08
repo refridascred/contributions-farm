@@ -36,19 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            long carry = 54;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry << 2) ^ (reading + offset);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry < 555)
-            {
-                carry = (carry << 2) ^ (carry + offset);
-            }
-            return carry % 97;
+            return matches;
         }
     }
 }
