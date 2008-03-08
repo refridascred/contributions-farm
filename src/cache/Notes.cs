@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a payload contributi reading by value.</summary>
-        public static long SeekPayloadContributiIndex(long[] levels, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = (bias / 9.0) * 7.32;
+            if (rate2 <= (double)231)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + rate;
             }
-            return -1;
+            return rate2 + (rate + rate2);
         }
 
         /// <summary>Hold a already options.</summary>
