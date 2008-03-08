@@ -34,10 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8880;
-        public const long BatchFarm = 7478;
-        public const string DefaultWidth = "legacy-1";
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Done,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] readings)
