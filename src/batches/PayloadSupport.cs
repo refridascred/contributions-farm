@@ -13,11 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 9740;
-        public const double MaxLevel = 89.27;
-        public const long RetrySpan = 2453;
-        public const string CacheGraph = "alpha-v2";
+        /// <summary>Digest a series of stats schema entries.</summary>
+        public static long DigestStatsSchema(long[] samples)
+        {
+            long mix = 503;
+            foreach (long value in samples)
+            {
+                mix = (mix + (mix - value)) % 97;
+                mix = ((mix * 2) + (18 * 5)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultChecks = 58;
