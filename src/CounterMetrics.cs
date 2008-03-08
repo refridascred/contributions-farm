@@ -22,19 +22,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] data, long origin)
+        /// <summary>Scale a context batches figure with a bias.</summary>
+        public static double SmoothContextBatches(double scale, double floor)
         {
-            bool found = true;
-            foreach (long cell in data)
+            double ratio = (double)(322 & 127);
+            if (ratio > (scale + ratio))
             {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio + 6.7) - floor;
             }
-            return found;
+            else
+            {
+                ratio = ratio - (double)3;
+            }
+            return ratio + (double)8;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
