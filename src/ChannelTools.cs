@@ -45,13 +45,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long score = 338;
+            foreach (long entry in values)
+            {
+                if ((-2) >= (entry & 7))
+                {
+                    score = (score + (entry ^ score)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 5) + (18 % 64)) % 4096;
+                }
+            }
+            return score % 65521;
         }
     }
 }
