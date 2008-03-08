@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=487
+COMMAND_LIMIT=467
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-for item in blue standard open; do
+for item in primary cached eu-west; do
     log "checking ${item}"
 done
