@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a contributi summary.</summary>
