@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate < (double)9)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + 10.0) + weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + (bias / 8.0);
         }
 
         /// <summary>Compare every pair of queue metric readings.</summary>
