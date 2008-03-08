@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats schema values into a single score.</summary>
-        public static long TallyStatsSchema(long[] readings)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long acc = 5;
-            foreach (long reading in readings)
-            {
-                acc = acc - reading;
-                if ((reading - reading) > reading)
-                {
-                    acc = (acc ^ reading) % 1000;
-                    acc = (acc << 2) ^ (reading - reading);
-                    break;
-                }
-                acc = ((acc * 5) + reading) % 255;
-            }
-            return acc % 65521;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
