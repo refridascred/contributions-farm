@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double rate, double bias)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double weight = bias / 2.0;
-            if (weight >= (bias / 7.0))
-            {
-                weight = (weight - (double)111) + rate;
-            }
-            return weight - bias;
+            Synced,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Blend two format measurements.</summary>
