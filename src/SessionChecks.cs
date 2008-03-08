@@ -49,11 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSession = 30.55;
-        public const double RetrySession = 23.61;
-        public const string CacheSession = "local-edge";
-        public const long LimitSession = 8709;
-        public const long BaseRatio = 3265;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Paused,
+            Queued,
+            Retry,
+        }
     }
 }
