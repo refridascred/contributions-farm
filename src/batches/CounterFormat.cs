@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] readings, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor ^ anchor) % 101;
+                anchor = (anchor * 5) + (9 ^ bound);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the layout status values.</summary>
