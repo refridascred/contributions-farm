@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items, long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] data, long offset)
         {
-            long state = 435;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + (2 >> 3)) % 255;
-                state = (state * 2) + (180 * 3);
-                if (datum > (261 ^ seed))
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 8)
-            {
-                state = (state ^ (seed / 2)) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
