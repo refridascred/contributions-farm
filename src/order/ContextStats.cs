@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 64.94;
-        public const string DefaultCounter = "stable-edge";
-        public const long BurstCounter = 3321;
-        public const string BaseCounter = "local";
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double floor)
+        {
+            double gain = (double)(71 ^ 4);
+            if (gain > 2.9)
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (ratio * 2.0)) - (double)(long)i;
+            }
+            return gain - 19.0;
+        }
 
         /// <summary>Match up stream token samples.</summary>
         public static long CompareStreamTokenCount(long[] items)
