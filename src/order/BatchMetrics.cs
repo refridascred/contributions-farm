@@ -42,12 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultBudget = 7064;
-        public const long StepCount = 7482;
-        public const long BurstChecks = 9975;
-        public const string SoftSize = "staging";
-        public const long BaseChecks = 1356;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 7581;
+        public const double IdleEditor = 53.93;
+        public const double BaseScore = 94.98;
+        public const long WindowRatio = 4022;
+        public const long MinRatio = 8514;
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double rate, double floor)
