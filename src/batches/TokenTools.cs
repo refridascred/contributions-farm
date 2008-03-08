@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] data)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (((2.18 * 1.9) < 4.39) && ((hits & 31) != (value - 22)))
+                if (sample != bound)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Project the next stream value.</summary>
