@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxWidth = "strict-edge";
-        public const long DefaultWidth = 6662;
-        public const string DefaultProfile = "primary-edge";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((tally / 8) > value))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit already format readings against a rule.</summary>
         public static long CountAlreadyFormatOutliers(long[] values, long offset)
