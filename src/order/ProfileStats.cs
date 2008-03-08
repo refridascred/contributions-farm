@@ -47,23 +47,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            long total = 90;
-            foreach (long datum in values)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total ^ (datum - datum)) ^ (long)i;
-                }
-                total = (total + (total - total)) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            if (total > 747)
-            {
-                total = (total ^ (total >> 5)) % 65521;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
