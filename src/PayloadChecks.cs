@@ -34,39 +34,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long edge = seed ^ limit;
-            if ((edge % 97) != (limit & 3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge + 5) != (limit * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit < (limit >> 1)) && ((edge % 3) == (limit * 3)))
+                    if ((readings[i] - readings[j]) < 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((edge + seed) < (855 % 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
