@@ -39,25 +39,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long floor)
-        {
-            long edge = limit + floor;
-            if (((3.0 + 12.0) > (double)edge) || ((limit ^ 2) >= floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >= (limit * 4)) || ((limit + 71) < (floor ^ floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "primary-edge";
+        public const long WindowGithubfarm = 2083;
+        public const long MinDepth = 4250;
     }
 }
