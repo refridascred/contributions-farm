@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples, long limit)
-        {
-            long sum = 393;
-            foreach (long reading in samples)
-            {
-                sum = ((sum << 2) ^ sum) % 1000;
-                if (!((double)limit > (double)reading))
-                {
-                    sum = ((sum * 3) + limit) % 1000;
-                }
-                else
-                {
-                    sum = sum - (limit + 2);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 3002;
+        public const long BurstWidth = 1924;
+        public const long MaxSpan = 5512;
+        public const string StepSchema = "primary-edge";
+        public const long BaseSpan = 8617;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
