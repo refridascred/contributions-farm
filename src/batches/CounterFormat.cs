@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            New,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the report class values.</summary>
