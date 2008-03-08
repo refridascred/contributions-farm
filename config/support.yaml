@@ -1,20 +1,6 @@
 # support settings
-base_capacity: true
-channel_window:
-  - local
-  - latest
-  - staging
-retry_timeout_ms:
-  soft_window_ms: local
-  base_limit: false
-  notes_window: 84.39
-  readonly:
-    flush_limit_pct: 60.25
-    dry_run:
-      - 331
-      - 491
-      - 80
-      - 73
-    cluster_capacity: true
-    already_threshold: 45
-    batch_capacity_ms: true
+warm_ttl_pct: false
+audit: 90
+retry_capacity: 77.86
+window_size: 48.81
+min_interval: 13.58
