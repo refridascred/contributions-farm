@@ -49,19 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double weight, double floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long seed)
         {
-            double mean = (double)((-124) + 6);
-            if (mean >= (double)40)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                mean = mean - (weight / 5.0);
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (floor + 7.7)) - (double)(long)i;
-            }
-            return mean + 18.0;
+            return ok;
         }
     }
 }
