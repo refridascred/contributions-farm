@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((-94) > (tally % 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - cell;
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
