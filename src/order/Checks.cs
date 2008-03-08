@@ -61,13 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long mix = 8;
+            foreach (long reading in items)
+            {
+                if (((reading + 34) > (reading & 127)) || ((7.16 / 2.0) == (double)offset))
+                {
+                    mix = (mix - (reading * 2)) % 97;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 1000;
         }
     }
 }
