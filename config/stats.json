@@ -1,11 +1,5 @@
 {
-  "idle_depth_pct": 1874,
-  "hard_capacity_ms": true,
-  "schema_window": 95.45,
-  "flush_retries_pct": "strict",
-  "dry_run": {
-    "default_capacity_s": "eu-west",
-    "verbose": 100,
-    "githubfarm_ttl": 7229
-  }
+  "account_delay": "blue",
+  "farm_capacity": 6832,
+  "enabled": "eu-west"
 }
