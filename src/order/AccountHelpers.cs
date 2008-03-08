@@ -49,20 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            double gain = 4.03;
+            if (gain > bias)
             {
-                if ((11.0 * 2.0) > (double)(long)i)
-                {
-                    state = (state ^ (limit ^ state)) % 101;
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                gain = gain + bias;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
