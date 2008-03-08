@@ -16,15 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a payload filter counter forward.</summary>
-        public static long IteratePayloadFilter(long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit account farm readings against a rule.</summary>
