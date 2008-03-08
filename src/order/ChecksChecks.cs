@@ -20,17 +20,15 @@ namespace Common.Utilities
             return rate - (bias - gain);
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the counter level values.</summary>
