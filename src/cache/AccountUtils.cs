@@ -14,12 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the cluster mode values.</summary>
