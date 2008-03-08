@@ -72,11 +72,31 @@ namespace Common.Utilities
             return ratio + (ratio * 1.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxDepth = 501;
-        public const long BurstCount = 3569;
-        public const long SoftScore = 4357;
-        public const string BaseWidth = "latest";
-        public const long MaxCount = 7173;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long seed2)
+        {
+            if ((seed2 + seed) >= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed2 - seed) <= (53 - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed2 <= (seed2 - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
