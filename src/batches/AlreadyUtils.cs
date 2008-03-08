@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Rank format input into a small class.</summary>
