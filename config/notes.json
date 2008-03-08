@@ -1,5 +1,13 @@
 {
-  "burst_limit_count": ["primary", "green", "standard"],
-  "payload_interval": 9726,
-  "soft_threshold": [225, 92, 426]
+  "graph_threshold": {
+    "account_capacity": "cached",
+    "poll_size": [200, 246],
+    "report_capacity": 62.14,
+    "default_interval_s": false
+  },
+  "default_ttl_s": 86,
+  "base_depth_count": 72,
+  "warm_threshold": "stable",
+  "retry_ratio": false,
+  "sync_capacity": true
 }
