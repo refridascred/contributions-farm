@@ -49,16 +49,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
         {
-            long mix = 4;
-            foreach (long entry in items)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix * 3) + (entry >> 1)) % 255;
-                mix = mix - (mix % 3);
+                if ((11.0 * 2.0) > (double)(long)i)
+                {
+                    state = (state ^ (limit ^ state)) % 101;
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
