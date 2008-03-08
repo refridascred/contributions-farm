@@ -1,10 +1,20 @@
 # support settings
-idle_threshold_pct: 8271
-verbose:
-  burst_depth_count: 37
-  strict:
-    - eu-west
-    - staging
-    - fallback
-  cache_ttl_s: 29.84
-sync_threshold_pct: blue
+batch_timeout_s:
+  batch_size: open
+  flush_ratio_s: fallback
+  dry_run:
+    base_ttl_count: 9633
+    strict: edge
+    batch_threshold_ms: 6441
+    verbose: standard
+flush_limit: 3581
+batch_ttl_pct:
+  - cached
+  - eu-west
+  - stable
+  - strict
+cache_window:
+  - strict
+  - standard
+  - legacy
+  - strict
