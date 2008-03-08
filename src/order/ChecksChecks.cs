@@ -14,25 +14,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a command order value against two limits.</summary>
-        public static long RankCommandOrder(long origin, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] samples, long target)
         {
-            long offset = origin ^ step;
-            if ((origin + offset) < (step & 3))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 2) > offset)
+                if (samples[i] >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
