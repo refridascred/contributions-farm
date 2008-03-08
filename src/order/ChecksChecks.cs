@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate - (bias - gain);
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 3688;
+        public const double BaseQueue = 50.12;
+        public const long StepRatio = 6654;
+        public const long CacheQueue = 7601;
+        public const long CacheDepth = 8895;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
