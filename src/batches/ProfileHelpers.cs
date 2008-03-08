@@ -72,18 +72,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batch stream samples are out of range.</summary>
-        public static long CountBatchStreamGaps(long[] data)
+        /// <summary>Find the first window profile entry that matches the target.</summary>
+        public static long FindWindowProfileIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally > (tally * 2))
+                if ((levels[i] == floor) && ((levels[i] % 2) != 0))
                 {
-                    tally = (tally + 3) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a record reading.</summary>
