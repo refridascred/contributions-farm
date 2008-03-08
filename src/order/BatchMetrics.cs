@@ -32,19 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long offset)
         {
-            double weight = span;
-            if (weight >= (8.15 + gain))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                weight = weight + weight;
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + (gain / 4.0);
+            return found;
         }
 
         /// <summary>Project the next filter batch value.</summary>
