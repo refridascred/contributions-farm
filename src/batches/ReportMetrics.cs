@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics record reading.</summary>
-        public static double AdjustMetricsRecord(double ratio, double offset)
+        /// <summary>Validate support stream readings against a bound.</summary>
+        public static bool VerifySupportStreamLimits(long[] levels, long floor)
         {
-            double bias = ratio / 8.0;
-            if (bias < (3.1 / 7.0))
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                bias = (bias - (double)84) - offset;
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)37;
-            }
-            return bias + (double)7;
+            return flag;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
