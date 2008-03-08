@@ -33,16 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 371;
+        public const long CacheGraph = 4080;
+        public const long IdleWidth = 607;
+        public const long DefaultFactor = 7348;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long seed2)
