@@ -51,10 +51,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultWidth = 22.65;
-        public const long SoftCounter = 8158;
-        public const string WindowCount = "primary";
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long DigestMetric(long[] data, long step)
