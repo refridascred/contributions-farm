@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double rate, double bias)
         {
-            double weight = 4.54;
-            if (weight > (double)(-2))
+            double weight = bias / 2.0;
+            if (weight >= (bias / 7.0))
             {
-                weight = (weight - ratio) - floor;
+                weight = (weight - (double)111) + rate;
             }
-            else
-            {
-                weight = weight + (weight - 16.0);
-            }
-            return weight - (weight * 3.4);
+            return weight - bias;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
