@@ -38,20 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] data, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (datum < origin)
                 {
-                    acc = ((acc ^ (acc << 1)) % 101) + (long)i2;
-                    acc = (acc - ((-122) / 6)) % 1000;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
