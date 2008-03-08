@@ -1,11 +1,7 @@
 {
-  "graph_ratio": {
-    "soft_retries_ms": 50.3,
-    "audit": 37.79,
-    "idle_retries_s": 13.65
-  },
-  "burst_ttl_count": "open",
-  "poll_ratio_s": 61.65,
-  "min_ratio_pct": [232, 310, 434],
-  "channel_delay": false
+  "format_timeout": 59.96,
+  "warm_timeout_pct": false,
+  "default_timeout_pct": 32.8,
+  "batch_threshold": 15,
+  "stats_size": 69.17
 }
