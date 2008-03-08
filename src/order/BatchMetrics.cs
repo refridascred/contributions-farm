@@ -75,13 +75,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] items)
         {
-            Draft,
-            Active,
-            Locked,
-            Dropped,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((446 & 7) < (count + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
