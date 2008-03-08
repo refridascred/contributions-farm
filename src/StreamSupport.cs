@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((17.0 * 4.9) >= (double)tally)
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
