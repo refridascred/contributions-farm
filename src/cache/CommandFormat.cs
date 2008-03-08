@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double bias)
         {
-            Synced,
-            Draft,
-            Ready,
+            double gain2 = (double)(9 % 100);
+            if (gain2 >= (bias * 19.0))
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (gain + gain)) + (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Count the channel tools entries that pass the check.</summary>
