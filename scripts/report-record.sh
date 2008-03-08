@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=63
+mode="${1:-fallback}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=246
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in edge open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
