@@ -25,14 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long seed, long offset)
         {
-            New,
-            Ready,
-            Dropped,
-            Closed,
-            Failed,
+            if (((59 * 2) == (offset / 5)) && ((offset + 528) > (offset & 31)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset > (4.64 / 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
