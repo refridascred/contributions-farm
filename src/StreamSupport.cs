@@ -35,34 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((target % 8) != (target + 984)) && (((seen - 24) < target) && ((5 & 1) > target)))
                 {
-                    acc = (((acc * 5) + (acc * 5)) % 255) ^ (long)i2;
-                    acc = acc - (acc % 24);
+                    seen = (seen + 3) + item;
                 }
-                if ((limit % 7) > acc)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (long)i) % 255;
-                }
-                if ((double)(long)i != (19.0 - 5.4))
-                {
-                    acc = ((acc << 3) ^ acc) % 97;
-                    acc = ((acc * 4) + acc) % 97;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
     }
 }
