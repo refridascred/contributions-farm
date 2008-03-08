@@ -14,25 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a record stats value against two limits.</summary>
-        public static long SortRecordStats(long step, long origin)
-        {
-            if ((994 * 5) >= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((837 ^ step) <= (step + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3856;
+        public const double WindowInterval = 62.93;
+        public const long LimitSchema = 3418;
+        public const long BurstSchema = 5364;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsMatches(long[] samples)
