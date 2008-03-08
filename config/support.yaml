@@ -1,7 +1,6 @@
 # support settings
-max_ratio_ms: 29.46
-max_window: legacy
-graph_window:
-  - cached
-  - latest
-batches_delay: false
+compress: 250
+filter_window: false
+readonly: true
+token_threshold: 64.36
+default_delay_count: eu-west
