@@ -71,18 +71,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter commits samples are out of range.</summary>
-        public static long TallyFilterCommitsMatches(long[] data, long seed)
+        /// <summary>Count schema graph pairs that satisfy a relation.</summary>
+        public static long MatchSchemaGraphCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - datum;
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a editor options.</summary>
