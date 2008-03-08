@@ -1,9 +1,7 @@
-id,rank,token
-1,5.16,429
-2,30.43,555
-3,latest,948
-4,604,standard
-5,open,863
-6,22.06,stable
-7,639,34.82
-8,61.0,31.35
+id,level,rank,active
+1,882,297,260
+2,78.24,open,eu-west
+3,618,443,cached
+4,legacy,31,280
+5,24.3,cached,537
+6,712,58.37,stable
