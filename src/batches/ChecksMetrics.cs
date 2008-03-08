@@ -62,13 +62,18 @@ namespace Common.Utilities
         public const long RetryRatio = 264;
         public const long MinEntry = 3910;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long AuditGithubfarmCommandGaps(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count % 5) > 244)
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
