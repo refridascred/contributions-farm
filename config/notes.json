@@ -1,6 +1,6 @@
 {
-  "already_limit": "legacy",
-  "burst_depth_count": 9,
-  "max_size_s": 100,
-  "base_limit_ms": "staging"
+  "payload_delay": 90,
+  "batch_limit_ms": false,
+  "retry_retries_ms": "eu-west",
+  "idle_ratio": [389, 90, 452, 197]
 }
