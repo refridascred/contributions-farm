@@ -53,23 +53,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double span)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double gain = (double)(74 - 3);
-            if (gain <= gain)
-            {
-                gain = gain - span;
-            }
-            else
-            {
-                gain = gain + 7.17;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain + span)) + (double)(long)i;
-            }
-            return gain + (span + weight);
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
