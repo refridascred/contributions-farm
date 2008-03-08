@@ -62,15 +62,18 @@ namespace Common.Utilities
             return rate + (11.0 * 9.1);
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((entry + hits) != (entry - hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
