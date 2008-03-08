@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BatchAlready = 6544;
         public const long LimitScore = 7290;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Audit checks cluster readings against a rule.</summary>
+        public static long CountChecksClusterGaps(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((double)tally == (3.3 / 3.0)) || ((373 > tally) && (datum < (datum << 2))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a session report reading by value.</summary>
