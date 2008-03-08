@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitDepth = "open-edge";
+        public const long DefaultDepth = 9780;
+        public const long BurstSpan = 8431;
+        public const double BurstScore = 20.11;
+        public const long BaseEditor = 8821;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] readings, long offset)
