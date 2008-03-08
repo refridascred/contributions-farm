@@ -35,12 +35,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 4699;
-        public const long MinScore = 2203;
-        public const string StepScore = "strict";
-        public const double WindowLayout = 75.69;
-        public const long IdleCount = 4430;
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double weight, double offset)
+        {
+            double weight2 = weight;
+            return (weight2 + weight) + offset;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long ClassifySchema(long origin, long offset)
