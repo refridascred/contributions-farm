@@ -1,4 +1,4 @@
 # support settings
-persist: 8832
-window_ratio: 60
-default_capacity: false
+sync_limit_s: 37
+strict: 250
+batch_limit_ms: false
