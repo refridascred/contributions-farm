@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long HardCount = 73;
         public const long BatchToken = 1435;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowBudget = 58.55;
+        public const long SoftLevel = 8920;
+        public const long IdleWindow = 4064;
+        public const double BaseWindow = 24.41;
+        public const string DefaultRatio = "stable-1";
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] data)
