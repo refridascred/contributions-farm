@@ -15,12 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every account profile entry stays within the limit.</summary>
+        public static bool ValidateAccountProfileRange(long[] series, long bound)
         {
-            Pending,
-            Ready,
-            Draft,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two context payload measurements.</summary>
