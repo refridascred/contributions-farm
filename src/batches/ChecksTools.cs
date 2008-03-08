@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const long CacheCount = 1254;
         public const string CacheRatio = "fallback";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 3485;
-        public const string LimitStream = "staging";
-        public const long DefaultStream = 9317;
-        public const string BaseStream = "legacy";
+        /// <summary>Validate batches cache readings against a bound.</summary>
+        public static bool VerifyBatchesCacheLimits(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
