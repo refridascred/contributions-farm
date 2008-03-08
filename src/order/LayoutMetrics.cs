@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long limit)
         {
-            if ((47 << 2) >= limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((228 > (target + target)) && ((target ^ 825) == (limit & 255)))
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 4) >= (target / 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every schema editor entry stays within the limit.</summary>
