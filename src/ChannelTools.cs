@@ -45,22 +45,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long seed)
         {
-            long score = 338;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((-2) >= (entry & 7))
+                if (levels[i] <= seed)
                 {
-                    score = (score + (entry ^ score)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 5) + (18 % 64)) % 4096;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
     }
 }
