@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit githubfarm checks readings against a rule.</summary>
-        public static long CountGithubfarmChecksOutliers(long[] data, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mark = 80;
+            foreach (long cell in items)
             {
-                if (count > (12 * 3))
+                if (((double)cell == (double)mark) || ((mark % 7) >= (mark & 7)))
                 {
-                    count = ((count + 3) ^ sample) - target;
+                    mark = ((mark * 3) + (cell >> 3)) % 65521;
+                }
+                if ((mark - mark) < (499 - mark))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Describe the schema phase values.</summary>
