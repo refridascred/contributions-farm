@@ -1,6 +1,15 @@
 {
-  "hard_timeout": "standard",
-  "soft_ttl_count": true,
-  "commits_timeout": "green",
-  "max_ttl": false
+  "filter_ttl": {
+    "flush_retries": true,
+    "cache_depth_count": 50,
+    "min_threshold": ["strict", "open"],
+    "poll_capacity_pct": "legacy",
+    "window_capacity": "staging",
+    "max_depth": 60
+  },
+  "idle_timeout_pct": [398, 206],
+  "base_threshold": "staging",
+  "channel_interval": 70.62,
+  "warm_depth_pct": 7971,
+  "retry_ttl_ms": [48, 34]
 }
