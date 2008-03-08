@@ -44,16 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long step)
+        /// <summary>Project the next batch buffer value.</summary>
+        public static double AdjustBatchBuffer(double ratio, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            double weight = (double)79;
+            if (weight <= (7.13 - 18.0))
             {
-                state = (state + ((long)i + state)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                weight = weight - (floor - weight);
             }
-            return state;
+            else
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (7.71 + ratio)) + (double)(long)i;
+            }
+            return weight - (weight / 4.0);
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
