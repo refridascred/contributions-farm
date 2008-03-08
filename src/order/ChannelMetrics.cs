@@ -23,12 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
