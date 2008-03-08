@@ -1,12 +1,6 @@
 {
-  "retry_ratio_pct": "fallback",
-  "cluster_interval": 1235,
-  "burst_capacity_ms": {
-    "base_delay_count": 100,
-    "idle_limit_s": ["cached", "strict", "latest"],
-    "soft_depth_ms": [312, 427],
-    "batch_depth": 61.94,
-    "metrics_capacity": [50, 8, 116, 131],
-    "notes_timeout": "legacy"
-  }
+  "retry_capacity": false,
+  "flush_retries": 8639,
+  "profile_interval": [127, 167],
+  "hard_ratio_ms": [284, 447, 24, 390]
 }
