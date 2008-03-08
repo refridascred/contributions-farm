@@ -55,19 +55,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] data, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < bound)
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
