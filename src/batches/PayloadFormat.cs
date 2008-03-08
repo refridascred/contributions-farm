@@ -38,21 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 1;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry ^ (step * 3)) ^ entry;
             }
-            return hits;
+            return carry;
         }
     }
 }
