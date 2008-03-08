@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long TallyStreamOrderMatches(long[] values, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((step & 127) > step)
+                {
+                    matches = (matches + 2) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
