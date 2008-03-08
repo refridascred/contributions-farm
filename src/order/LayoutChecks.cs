@@ -62,21 +62,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= floor)
                 {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
