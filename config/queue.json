@@ -1,5 +1,16 @@
 {
-  "buffer_ratio": "edge",
-  "base_timeout": 250,
-  "readonly": "fallback"
+  "route_capacity": {
+    "soft_limit_ms": 3806,
+    "default_size_pct": [52, 303],
+    "retry_interval_s": "eu-west",
+    "retry_ttl": {
+      "editor_ratio": "local",
+      "verbose": "latest",
+      "dry_run": 65.78
+    }
+  },
+  "batch_ratio_pct": ["stable", "primary"],
+  "enabled": "local",
+  "report_threshold": 1024,
+  "verbose": 53
 }
