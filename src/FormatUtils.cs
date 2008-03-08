@@ -97,11 +97,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
