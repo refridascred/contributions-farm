@@ -20,12 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long limit)
         {
-            Active,
-            Paused,
-            Locked,
+            if (((0 + seed) >= (seed % 10)) || ((limit - limit) >= (8 / 8)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((limit + limit) <= 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Compare every pair of queue command readings.</summary>
