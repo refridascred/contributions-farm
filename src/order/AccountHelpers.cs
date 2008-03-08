@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] readings, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the batch level values.</summary>
