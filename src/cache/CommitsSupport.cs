@@ -46,26 +46,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long total = 22;
-            foreach (long item in levels)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                if ((total / 2) != (item & 31))
+                if ((double)mix == (6.33 + 20.0))
                 {
-                    total = (total - (item ^ total)) % 101;
-                }
-                if ((item + total) < total)
-                {
-                    break;
+                    mix = ((mix * 5) + (mix - reading)) % 4096;
                 }
             }
-            if (total < 222)
+            if (mix > 97)
             {
-                total = ((total << 3) ^ total) % 65521;
+                mix = (mix + (mix - 308)) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Roll a session counter forward.</summary>
