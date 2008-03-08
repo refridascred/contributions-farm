@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate metrics buffer readings against a bound.</summary>
-        public static bool CheckMetricsBufferBounds(long[] data, long step)
+        /// <summary>Look up the position of a graph farm sample.</summary>
+        public static long SeekGraphFarmIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= step)
+                if ((items[i] > step) && ((items[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
