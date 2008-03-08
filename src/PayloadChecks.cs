@@ -79,18 +79,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] data, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = 985;
+            foreach (long datum in samples)
             {
-                if (((matches - 45) >= 819) && (((double)item > (6.8 / 6.0)) && ((matches - matches) > (item >> 2))))
+                if ((datum << 3) == (datum << 1))
                 {
-                    matches = (matches + 2) + limit;
+                    total = ((total << 3) ^ (total + 34)) % 65521;
                 }
             }
-            return matches;
+            if (total < 71)
+            {
+                total = (total << 2) ^ (total - total);
+            }
+            return total;
         }
     }
 }
