@@ -66,11 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "staging-1";
-        public const double DefaultRatio = 98.54;
-        public const string StepInterval = "fallback-edge";
-        public const string CacheFarm = "staging-edge";
-        public const long SoftFarm = 9153;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Ready,
+            New,
+            Dropped,
+            Idle,
+            Done,
+        }
     }
 }
