@@ -26,16 +26,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitCount = 2.59;
+        public const long HardChannel = 3998;
+        public const double CacheChannel = 63.49;
+        public const long LimitSpan = 9426;
+        public const long MinScore = 4453;
 
         /// <summary>Project the next filter batch value.</summary>
         public static double BlendFilterBatch(double weight, double bias)
