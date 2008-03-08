@@ -67,11 +67,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardSpan = 8566;
-        public const long StepToken = 1937;
-        public const long WindowFactor = 8683;
-        public const string BurstSize = "stable";
-        public const double CacheToken = 0.66;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Total { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
