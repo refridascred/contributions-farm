@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            Locked,
+            Stale,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
