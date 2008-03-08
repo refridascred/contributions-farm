@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 8688;
-        public const double DefaultInterval = 64.47;
-        public const string LimitTimeout = "fallback-edge";
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long CacheFarm = 8880;
