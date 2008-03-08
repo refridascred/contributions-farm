@@ -11,24 +11,14 @@ namespace Common.Utilities
         public const double BaseLevel = 5.31;
         public const long CacheNotes = 4665;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long step, long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if ((step - target) <= target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + step) < step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Failed,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
