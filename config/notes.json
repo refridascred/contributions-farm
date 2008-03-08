@@ -1,5 +1,13 @@
 {
-  "retry_delay": true,
-  "min_capacity": "standard",
-  "session_depth": "latest"
+  "soft_depth_ms": "green",
+  "min_size": {
+    "readonly": 2.99,
+    "order_threshold": 250,
+    "max_limit": 1201,
+    "schema_size": "staging",
+    "persist": "blue",
+    "warm_ratio_ms": "edge"
+  },
+  "max_retries_s": "standard",
+  "base_threshold_count": ["local", "standard", "staging"]
 }
