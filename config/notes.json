@@ -1,7 +1,5 @@
 {
-  "burst_depth_ms": "legacy",
-  "idle_delay_s": [444, 159],
-  "hard_depth_ms": 94.58,
-  "poll_depth_s": ["staging", "primary", "stable", "local"],
-  "cache_ratio": true
+  "command_window": "strict",
+  "cache_ratio": "eu-west",
+  "poll_interval_s": 82.33
 }
