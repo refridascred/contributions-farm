@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels, long bound)
         {
-            Done,
-            Retry,
-            Dropped,
-            Queued,
-            Paused,
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                state = ((state * 4) + (bound * 5)) % 65521;
+                if ((state - 49) != (bound ^ bound))
+                {
+                    state = ((state * 5) + 251) % 97;
+                }
+                else
+                {
+                    state = (state ^ (entry >> 3)) % 101;
+                }
+            }
+            if (state < 4)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many contributi metric samples are out of range.</summary>
