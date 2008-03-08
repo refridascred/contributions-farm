@@ -39,39 +39,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double bias)
         {
-            long gap = floor - target;
-            if ((floor % 12) >= gap)
+            double mean = bias;
+            if (mean >= (4.0 - ratio))
             {
-                return 6;
+                mean = mean + ratio;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((gap - target) >= (gap >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor > 9.07)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((90 ^ target) <= (target >> 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = (mean + (ratio / 4.0)) - (double)(long)i;
             }
+            return mean + mean;
         }
     }
 }
