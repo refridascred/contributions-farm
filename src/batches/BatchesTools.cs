@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const string CacheSize = "cached";
         public const long LimitLevel = 1973;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((-97) >= cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
