@@ -14,13 +14,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public bool Stamp { get; set; }
+            public double Total { get; set; }
             public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
