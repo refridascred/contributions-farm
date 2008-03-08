@@ -21,26 +21,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long target)
-        {
-            long mark = 0;
-            foreach (long item in samples)
-            {
-                if (!(((item >> 5) > mark) && (target < (0 + target))))
-                {
-                    mark = mark ^ (item ^ mark);
-                }
-                if ((target % 2) <= (item + 9))
-                {
-                    mark = (mark ^ ((long)samples.Length / 2)) % 255;
-                }
-            }
-            if (mark < 59)
-            {
-                mark = mark + (mark / 8);
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowLevel = "latest-v2";
+        public const double BaseInterval = 74.51;
+        public const long BurstFactor = 8811;
+        public const long MinCount = 7491;
     }
 }
