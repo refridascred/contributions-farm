@@ -1,17 +1,4 @@
 # githubfarm settings
-audit:
-  - 179
-  - 201
-  - 39
-retry_delay: 4133
-base_timeout:
-  strict: 250
-  warm_retries: 75
-  readonly: 47.77
-  enabled: false
-  counter_ratio: 60
-support_window: latest
-flush_size:
-  - 372
-  - 275
-  - 51
+report_window: 28.19
+batch_timeout_pct: 30
+metric_window: strict
