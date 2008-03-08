@@ -34,11 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinLevel = 9690;
-        public const string BaseInterval = "fallback";
-        public const string RetryGithubfarm = "fallback";
-        public const double CacheTimeout = 90.19;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the graph layout entries that pass the check.</summary>
         public static long CountGraphLayoutOutliers(long[] items)
