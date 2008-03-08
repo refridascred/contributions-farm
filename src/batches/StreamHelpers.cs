@@ -44,24 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long seed)
+        /// <summary>Digest a series of contributi notes entries.</summary>
+        public static long WeighContributiNotes(long[] data, long target)
         {
-            if ((seed * 5) <= (seed ^ 967))
+            long state = 6;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step & 15) > step)
+                state = ((state + ((long)data.Length >> 1)) + sample) - target;
+                if (!((100 ^ (-394)) == (long)data.Length))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    state = (state - (state + 590)) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
