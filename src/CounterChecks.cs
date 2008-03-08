@@ -36,20 +36,31 @@ namespace Common.Utilities
         public const double HardCount = 53.76;
         public const long BaseScore = 9901;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Rank report session input into a small class.</summary>
+        public static long BucketReportSession(long step, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            if (!((20.0 + 15.0) == (double)step))
             {
-                long lane = (mix / 5) % 97;
-                if (!((lane + lane) < step))
-                {
-                    lane = (lane ^ ((long)i ^ (long)i)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((offset + step) > (546 ^ 9)) && ((5.5 + 12.0) >= (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset <= (666 >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload tools samples are out of range.</summary>
