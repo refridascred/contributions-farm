@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 4105;
-        public const double HardSchema = 4.7;
-        public const string BurstSchema = "cached-edge";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of batches checks readings.</summary>
         public static long MatchBatchesChecksCount(long[] readings)
