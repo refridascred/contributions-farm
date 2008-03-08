@@ -14,13 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
+            Pending,
             Locked,
-            Paused,
-            Dropped,
-            Active,
+            Closed,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
