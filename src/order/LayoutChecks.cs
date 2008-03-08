@@ -30,18 +30,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long carry = 1;
-            foreach (long cell in series)
-            {
-                if ((75 >> 4) > cell)
-                {
-                    carry = ((carry * 4) + (16 + carry)) % 65521;
-                }
-            }
-            return carry % 97;
+            Locked,
+            Dropped,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
