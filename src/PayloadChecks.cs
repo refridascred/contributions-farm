@@ -54,21 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches - (-5)) != (origin * 4))
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count schema graph pairs that satisfy a relation.</summary>
