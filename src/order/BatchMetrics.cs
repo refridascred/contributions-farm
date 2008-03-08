@@ -65,11 +65,16 @@ namespace Common.Utilities
             return scale + (scale + 6.64);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstCount = "strict-1";
-        public const long StepBudget = 4648;
-        public const string RetryReport = "legacy";
-        public const string DefaultReport = "primary-1";
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double floor)
+        {
+            double bias = (rate * 7.0) - (double)77;
+            if (bias < rate)
+            {
+                bias = (bias - (rate * 10.0)) - floor;
+            }
+            return bias + (double)293;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheGaps(long[] items)
