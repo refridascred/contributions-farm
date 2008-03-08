@@ -33,14 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            Done,
-            Active,
-            New,
-            Synced,
-            Retry,
+            long state = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Project the next filter batch value.</summary>
