@@ -1,19 +1,19 @@
 # githubfarm settings
-burst_limit_ms: false
-compress: primary
-sync_delay_count: 8607
-channel_interval:
-  - primary
-  - legacy
-  - local
-  - staging
-poll_threshold_ms:
+base_retries: stable
+cache_depth_ms: 100
+batch_delay:
   strict:
-    - cached
-    - eu-west
-    - blue
-    - eu-west
-  counter_ratio: 500
-  record_threshold: 51.31
-  retry_capacity_pct: false
-base_depth_pct: 100
+    - 197
+    - 243
+  verbose: 500
+  sync_capacity_ms:
+    report_retries: true
+    default_capacity_pct: legacy
+    commits_delay: latest
+    idle_ttl_ms: 60
+    tools_size: open
+    persist: eu-west
+  sync_depth_ms: false
+  base_size: latest
+retry_interval: 500
+flush_ttl_count: 16
