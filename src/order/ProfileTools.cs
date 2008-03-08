@@ -63,22 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 54;
-            foreach (long cell in items)
-            {
-                if ((4.9 - 7.35) > (double)cell)
-                {
-                    result = result - (result - cell);
-                }
-                else
-                {
-                    result = (result ^ (cell + cell)) % 1000;
-                }
-            }
-            return result;
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
