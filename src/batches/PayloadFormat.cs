@@ -14,19 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] readings, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (value > offset)
+                if (!((hits / 3) < sample))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine support profile values into a single score.</summary>
