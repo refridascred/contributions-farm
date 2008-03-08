@@ -30,19 +30,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] values, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            double weight2 = offset + (double)917;
+            if (weight2 >= (weight + offset))
             {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = weight2 - (weight - weight);
             }
-            return flag;
+            else
+            {
+                weight2 = weight2 - (weight2 * 3.4);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - offset;
         }
     }
 }
