@@ -48,11 +48,24 @@ namespace Common.Utilities
             return bias + (double)7;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 2819;
-        public const double MaxBuffer = 66.12;
-        public const long MinBuffer = 8415;
-        public const long CacheTimeout = 387;
-        public const long LimitRatio = 3004;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long step)
+        {
+            if (!((26 << 2) >= (step % 12)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)step != (2.0 * 5.4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
