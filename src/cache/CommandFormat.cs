@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count cluster account pairs that satisfy a relation.</summary>
-        public static long MatchClusterAccountCount(long[] values)
+        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
+        public static long OverlapStreamClusterCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 9)
+                    if ((samples[i] - samples[j]) == 14)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate order counter samples.</summary>
