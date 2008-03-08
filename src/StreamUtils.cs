@@ -46,24 +46,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Derive the next batches account value from a seed.</summary>
+        public static long StepBatchesAccount(long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (mark < (mark % 12))
-                {
-                    long cur = mark;
-                    mark = (mark ^ cur) % 1000;
-                }
-                if (!(((long)i % 2) > mark))
-                {
-                    mark = ((mark << 2) ^ (mark % 24)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                sum = (sum ^ (47 - sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the commits level values.</summary>
