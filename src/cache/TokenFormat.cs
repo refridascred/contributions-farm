@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 9015;
+        public const double MinWidth = 80.55;
+        public const long IdleCache = 8183;
+        public const long SoftSpan = 5307;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
