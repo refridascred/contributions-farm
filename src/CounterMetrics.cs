@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long origin)
         {
-            double rate = (scale * 2.04) - scale;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (double)78) + (double)(long)i;
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - offset;
+            return -1;
         }
 
         /// <summary>Hold a batches record.</summary>
