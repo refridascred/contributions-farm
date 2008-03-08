@@ -12,11 +12,15 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSize = 9443;
-        public const string LimitBuffer = "alpha-1";
-        public const string RetryBuffer = "open-v2";
-        public const long MaxBuffer = 1719;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Retry,
+            New,
+            Locked,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Check that every already editor entry stays within the limit.</summary>
         public static bool VerifyAlreadyEditorBounds(long[] items, long origin)
