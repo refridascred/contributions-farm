@@ -38,13 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Roll a buffer githubfarm counter forward.</summary>
+        public static long RollBufferGithubfarm(long offset)
         {
-            Active,
-            Failed,
-            Paused,
-            Dropped,
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor ^ (anchor << 3)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
