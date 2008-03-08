@@ -1,8 +1,7 @@
 {
-  "tools_retries": 19,
-  "enabled": 57.85,
-  "max_threshold_ms": 51,
-  "stats_interval": "blue",
-  "flush_capacity_ms": 43,
-  "cache_capacity_s": true
+  "max_size": 78,
+  "audit": true,
+  "cache_limit": 500,
+  "commits_delay": 66.41,
+  "base_retries": 6728
 }
