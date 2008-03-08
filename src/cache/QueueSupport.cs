@@ -24,10 +24,13 @@ namespace Common.Utilities
             return rate2 - (floor * 5.03);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftChannel = "strict-edge";
-        public const long DefaultChannel = 5402;
-        public const double HardFactor = 39.88;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] data, long offset)
