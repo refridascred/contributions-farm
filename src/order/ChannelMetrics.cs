@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
