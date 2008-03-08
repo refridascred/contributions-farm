@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 42.91;
-        public const double SoftDepth = 4.24;
-        public const long WindowPayload = 2257;
-        public const long IdleTimeout = 1049;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long ScoreEditor(long[] samples, long target)
