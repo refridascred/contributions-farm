@@ -1,6 +1,7 @@
 {
-  "strict": 60,
-  "flush_timeout_s": 8324,
-  "max_interval_s": "green",
-  "max_depth_s": ["staging", "local"]
+  "idle_threshold_s": 82.47,
+  "cache_window_pct": ["blue", "edge"],
+  "base_timeout_ms": "latest",
+  "strict": "strict",
+  "layout_timeout": 81.88
 }
