@@ -23,17 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] levels, long target)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
