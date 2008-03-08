@@ -20,11 +20,23 @@ namespace Common.Utilities
             return weight - (9.49 / 2.0);
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 58;
+            foreach (long reading in series)
+            {
+                total = (((total * 2) + 8) % 1000) + reading;
+                if ((15.0 / 6.0) <= (double)origin)
+                {
+                    break;
+                }
+            }
+            if (total < (-4))
+            {
+                total = (total * 4) + (origin + total);
+            }
+            return total;
         }
 
         /// <summary>Accumulate support profile samples.</summary>
