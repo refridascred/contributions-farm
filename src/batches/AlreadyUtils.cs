@@ -25,26 +25,10 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long bound)
-        {
-            long cur = origin + bound;
-            if ((((-4) << 1) == (bound << 1)) && (origin > (bound - cur)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 97) != (92 + 20))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchInterval = "latest-1";
+        public const double WindowCount = 48.07;
+        public const long BurstProfile = 8140;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] levels, long step)
