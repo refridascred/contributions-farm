@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const long StepRatio = 8682;
         public const double CacheDepth = 96.88;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowLevel = 244;
-        public const double MinCluster = 76.71;
-        public const long IdleInterval = 2563;
-        public const long RetryCluster = 2583;
-        public const long BaseCluster = 2331;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Synced,
+            Dropped,
+            Closed,
+        }
     }
 }
