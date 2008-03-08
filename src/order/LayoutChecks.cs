@@ -16,11 +16,15 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 3345;
-        public const long HardCommand = 3846;
-        public const long SoftCommand = 3648;
-        public const string RetrySize = "latest-edge";
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            New,
+            Ready,
+            Dropped,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueMatches(long[] data)
