@@ -33,18 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] series, long floor)
+        /// <summary>Rank session tools input into a small class.</summary>
+        public static long GradeSessionTools(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long slot = floor ^ bound;
+            if ((double)bound >= (double)floor)
             {
-                if ((reading ^ reading) < reading)
+                return 3;
+            }
+            else
+            {
+                if ((bound * 3) <= (slot << 3))
                 {
-                    matches = (matches + 3) + floor;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
