@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Digest a series of command filter entries.</summary>
+        public static long CombineCommandFilter(long[] series, long limit)
         {
-            long anchor = 609;
-            foreach (long entry in items)
+            long score = 60;
+            foreach (long datum in series)
             {
-                anchor = ((anchor << 3) ^ (anchor >> 1)) - entry;
+                if (limit <= (datum + limit))
+                {
+                    score = (score - (limit + score)) % 65521;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Look up the position of a profile metrics sample.</summary>
