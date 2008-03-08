@@ -20,19 +20,13 @@ namespace Common.Utilities
             return load + (double)293;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double drift = 9.0;
-            if (drift < floor)
-            {
-                drift = (drift - (20.0 / 4.0)) + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - drift;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a queue counter forward.</summary>
