@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] readings, long step)
         {
-            Failed,
-            Dropped,
-            Done,
-            Retry,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
