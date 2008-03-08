@@ -20,21 +20,12 @@ namespace Common.Utilities
         public const long BurstScore = 5489;
         public const string RetryCommand = "strict-1";
 
-        /// <summary>Count session already pairs that satisfy a relation.</summary>
-        public static long PairSessionAlreadyCount(long[] samples)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Closed,
+            Retry,
         }
     }
 }
