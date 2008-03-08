@@ -1,14 +1,14 @@
 # Command notes
 
-A command that stays idle for too long is moved to the report list.
-Defaults for report live in the config folder and can be overridden per environment.
-When a account fails, the order handler retries a few times before giving up.
+When a session fails, the graph handler retries a few times before giving up.
+A entry that stays idle for too long is moved to the queue list.
 
-Use counter settings to tune how often graph data is refreshed.
-Each cache is validated before it reaches the githubfarm queue.
+A commits that stays idle for too long is moved to the notes list.
+The route helpers are pure functions, so they are safe to call from any thread.
+Keep queue and checks names short and lowercase.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep filter values small
-- Document new batch fields
+- Review account limits each release
+- Validate route input early
+- Document new githubfarm fields
