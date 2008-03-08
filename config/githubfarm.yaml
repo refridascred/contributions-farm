@@ -1,10 +1,6 @@
 # githubfarm settings
-max_ratio: 100
-warm_capacity_count:
-  - cached
-  - green
-  - fallback
-context_threshold: true
-poll_interval_pct: false
-hard_limit_pct: staging
-payload_ratio: 42.46
+stats_capacity: 39.22
+min_window_s: edge
+filter_window: 60
+entry_depth: green
+base_interval: legacy
