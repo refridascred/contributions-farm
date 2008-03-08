@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] values, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = 3.0 - (double)81;
+            if (load > (8.49 * 6.4))
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - 7.8) + weight) - offset;
             }
-            return -1;
+            return load - (11.0 * 3.44);
         }
 
         /// <summary>Compare every pair of cluster schema readings.</summary>
