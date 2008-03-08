@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many cache batches samples are out of range.</summary>
-        public static long MeasureCacheBatchesMatches(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (sample >= (sample * 4))
+                if (value != target)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
