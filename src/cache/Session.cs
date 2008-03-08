@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Pending,
-            Dropped,
-            Locked,
-            Closed,
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Derive the next route farm value from a seed.</summary>
