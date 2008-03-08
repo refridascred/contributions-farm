@@ -39,18 +39,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!(seen >= (seen >> 5)))
-                {
-                    seen = ((seen + 3) + item) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 3249;
+        public const long MinFactor = 2376;
+        public const string MinWidth = "latest";
     }
 }
