@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((origin * 2) <= (count + origin))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinScore = 8101;
+        public const long SoftContributi = 9839;
+        public const long StepRatio = 40;
+        public const double IdleScore = 53.64;
+        public const long MinContributi = 3638;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 6540;
