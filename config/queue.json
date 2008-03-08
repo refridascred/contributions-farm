@@ -1,27 +1,8 @@
 {
-  "base_ratio_pct": {
-    "schema_ttl": 52.21,
-    "flush_ratio": "latest",
-    "entry_window": {
-      "audit": "blue",
-      "soft_interval_count": 4554,
-      "hard_limit": 7280
-    },
-    "idle_retries_count": {
-      "already_size": 7163,
-      "readonly": "local",
-      "max_timeout": false
-    },
-    "hard_timeout": {
-      "flush_threshold_ms": 62.21,
-      "burst_window_pct": "stable",
-      "report_interval": 52,
-      "cluster_limit": 7,
-      "burst_size": 7692
-    }
-  },
-  "buffer_size": false,
-  "default_limit": 28.95,
-  "batch_interval": 92,
-  "filter_threshold": 33.84
+  "strict": "stable",
+  "flush_retries_pct": [471, 211, 399],
+  "enabled": 98,
+  "commits_ratio": "strict",
+  "batch_ttl_pct": 54,
+  "default_window": ["stable", "local"]
 }
