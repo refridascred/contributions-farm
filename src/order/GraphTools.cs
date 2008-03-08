@@ -55,12 +55,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] items, long origin)
         {
-            Done,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)origin <= 3.0)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
