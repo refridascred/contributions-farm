@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            New,
-            Queued,
-            Stale,
-            Pending,
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a already options.</summary>
