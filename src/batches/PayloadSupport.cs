@@ -41,25 +41,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long origin, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            long prev = origin ^ target;
-            if (((prev + target) < prev) && ((7.0 + 19.0) <= (double)target))
+            double rate = (double)829;
+            if (rate > (rate * 7.0))
             {
-                return 7;
+                rate = (rate + (double)38) - floor;
             }
             else
             {
-                if (target <= (prev - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = rate + (rate + bias);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
