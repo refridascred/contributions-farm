@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Fold a list of queue cache readings.</summary>
+        public static long WeighQueueCache(long[] values, long seed)
         {
-            long carry = 124;
-            foreach (long sample in levels)
+            long result = 753;
+            foreach (long value in values)
             {
-                if (((sample & 255) > (carry / 2)) || ((carry >> 1) != (carry << 1)))
+                if ((seed + value) >= seed)
                 {
-                    carry = (carry << 2) ^ (carry ^ sample);
+                    result = ((result << 2) ^ (result + value)) % 4096;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (sample + 90);
+                    result = (result * 3) + (value / 3);
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry - (carry >> 2);
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
