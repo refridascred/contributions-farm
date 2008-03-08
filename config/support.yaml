@@ -1,7 +1,4 @@
 # support settings
-readonly: true
-idle_threshold_ms: 500
-persist: true
-soft_ratio: 1024
-contributi_limit: 12
-cache_timeout_ms: 30
+idle_threshold_count: 8238
+soft_timeout: local
+poll_ratio: latest
