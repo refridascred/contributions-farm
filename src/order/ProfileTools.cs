@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of cluster profile readings.</summary>
