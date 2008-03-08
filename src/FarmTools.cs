@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] data, long step)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell << 3) > (count + step))
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
