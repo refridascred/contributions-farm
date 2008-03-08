@@ -51,11 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 6340;
-        public const long DefaultWidth = 5354;
-        public const long BatchEntry = 9720;
-        public const string BurstEntry = "cached-v2";
-        public const string RetryBudget = "primary-edge";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
