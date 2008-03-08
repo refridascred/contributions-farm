@@ -39,10 +39,19 @@ namespace Common.Utilities
             return ratio + (ratio * 1.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryInterval = 4877;
-        public const long WindowLevel = 3069;
-        public const long DefaultCommits = 8436;
+        /// <summary>Count the metric graph entries that pass the check.</summary>
+        public static long MeasureMetricGraphGaps(long[] readings, long step)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count ^ step) < (step << 3))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] samples, long floor)
