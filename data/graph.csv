@@ -1,7 +1,7 @@
-id,ratio,level,region,count
-1,strict,37.13,925,135
-2,blue,stable,98.73,626
-3,stable,primary,645,471
-4,233,327,latest,121
-5,880,68.62,15.44,959
-6,blue,696,560,70
+id,region,label
+1,51.54,23.32
+2,19,287
+3,350,957
+4,staging,43.63
+5,16.69,464
+6,584,507
