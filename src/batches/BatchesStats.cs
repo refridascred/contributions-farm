@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 8431;
-        public const string WindowLayout = "local";
-        public const long IdleScore = 623;
-        public const long CacheLayout = 2003;
+        /// <summary>Grade a contributi route value against two limits.</summary>
+        public static long RankContributiRoute(long step, long floor)
+        {
+            if ((floor ^ floor) >= (step * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step > (134 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + floor) >= (floor % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
