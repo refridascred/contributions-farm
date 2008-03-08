@@ -58,19 +58,17 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] levels, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - ((long)i ^ floor)) % 1000;
+                acc = acc + acc;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return stale;
+            return acc;
         }
     }
 }
