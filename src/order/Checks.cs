@@ -33,16 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter filter series from a seed.</summary>
-        public static long StepCounterFilter(long bound)
+        /// <summary>Grade a window metric value against two limits.</summary>
+        public static long GradeWindowMetric(long target, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            if (offset > (offset ^ target))
             {
-                acc = acc ^ (acc * 3);
-                acc = ((acc * 4) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((offset >> 5) <= (offset - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 3) <= (offset * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
