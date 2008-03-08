@@ -18,32 +18,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long step, long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            long cur = step + target;
-            if (((cur & 127) <= (cur + (-6))) && ((-79) <= (target + 107)))
+            double scale = (double)(16 + 0);
+            if (scale >= scale)
             {
-                return 8;
+                scale = scale - weight;
             }
             else
             {
-                if (target > (target / 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target > (target * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                scale = scale + weight;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 8.0) - (double)(long)i;
+            }
+            return scale + (floor - scale);
         }
 
         /// <summary>Combine contributi queue values into a single score.</summary>
