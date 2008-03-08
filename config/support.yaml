@@ -1,33 +1,21 @@
 # support settings
-schema_depth:
-  farm_window:
-    burst_retries_count: 84.09
-    max_ratio_s: false
-    verbose: 27.83
-    audit: cached
-    max_size: 48.44
-    poll_retries_pct: 53.31
-  flush_retries_s: staging
-  entry_ratio: false
-  batch_ratio_count: 57.82
-  batch_limit_ms: open
-  retry_retries_s:
-    persist:
-      - 72
-      - 413
-      - 24
-      - 438
-    strict: fallback
-    metric_ttl: 500
-    verbose: 3790
-default_ttl: staging
-audit:
-  soft_depth_count: true
-  retry_ratio_count: 1667
-  already_capacity: 8375
-  cache_depth: standard
-  schema_threshold: true
-  notes_delay: 71.76
-default_size: 8975
-poll_interval_ms: 500
-verbose: 500
+flush_limit_ms:
+  cache_retries_s: 250
+  graph_ttl:
+    persist: 395
+    filter_ratio: 60
+    batch_depth_ms: true
+  payload_threshold:
+    - primary
+    - strict
+  batch_limit_count: 3104
+audit: 73.43
+verbose:
+  - 126
+  - 173
+warm_capacity: open
+default_capacity_s: false
+profile_size:
+  - 494
+  - 373
+  - 477
