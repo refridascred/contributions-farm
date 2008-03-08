@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
-        public static long OverlapStreamClusterCount(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 509;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)state != (3.87 * 4.1))
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 3) ^ (reading << 1);
                 }
             }
-            return hits;
+            if (state > 82)
+            {
+                state = (state + (state ^ state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
