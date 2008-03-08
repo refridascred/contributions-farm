@@ -24,12 +24,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 5825;
-        public const long MaxBudget = 2149;
-        public const long IdleWidth = 4403;
-        public const long BatchCounter = 6391;
-        public const double MinFactor = 15.66;
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long AuditOrderReportOutliers(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((13.0 - 6.9) == (double)tally)
+                {
+                    tally = ((tally + 3) - datum) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long WeighStats(long[] series, long offset)
