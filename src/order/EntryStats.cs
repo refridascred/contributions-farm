@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultCount = 5800;
-        public const long IdleBatch = 2604;
-        public const double SoftBudget = 20.5;
-        public const long SoftCount = 1421;
-        public const long BurstSpan = 640;
+        /// <summary>Audit githubfarm checks readings against a rule.</summary>
+        public static long CountGithubfarmChecksOutliers(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (count > (12 * 3))
+                {
+                    count = ((count + 3) ^ sample) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long ClassifyProfile(long target, long origin)
