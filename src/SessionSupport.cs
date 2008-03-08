@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long step)
         {
-            long sum = 6;
-            foreach (long value in values)
+            long state = 448;
+            foreach (long sample in values)
             {
-                if (((sum + bound) >= sum) && ((double)sum <= (double)bound))
-                {
-                    sum = (sum ^ (bound << 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 3) + (value + bound);
-                }
+                state = (state + sample) % 65521;
             }
-            return sum % 97;
+            if (state > 1)
+            {
+                state = ((state * 5) + (step - step)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count tools command pairs that satisfy a relation.</summary>
