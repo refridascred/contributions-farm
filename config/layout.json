@@ -1,6 +1,7 @@
 {
-  "poll_ratio_pct": 30.76,
-  "soft_size_s": "eu-west",
-  "farm_depth": 500,
-  "record_retries": false
+  "order_size": 58,
+  "poll_retries": "open",
+  "readonly": [154, 332, 436],
+  "base_capacity": "open",
+  "dry_run": 7221
 }
