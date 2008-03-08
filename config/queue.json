@@ -1,12 +1,5 @@
 {
-  "tools_delay": 30,
-  "sync_delay_ms": {
-    "already_delay": 32.4,
-    "min_delay_s": 8,
-    "command_ratio": "blue",
-    "notes_ratio": "primary"
-  },
-  "idle_delay_count": 4801,
-  "default_capacity_ms": 84.95,
-  "readonly": 1024
+  "checks_depth": "eu-west",
+  "default_depth_pct": "standard",
+  "notes_depth": "latest"
 }
