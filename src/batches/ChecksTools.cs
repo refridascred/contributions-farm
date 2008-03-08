@@ -37,17 +37,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a counter githubfarm reading by value.</summary>
-        public static long FindCounterGithubfarmIndex(long[] data, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long origin, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin + step;
+            if ((step << 2) >= (prev ^ prev))
             {
-                if (data[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if (step > ((-5) ^ origin))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((step * 5) > origin) || (origin >= (origin >> 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
