@@ -29,13 +29,12 @@ namespace Common.Utilities
         public const long BatchFarm = 7478;
         public const string DefaultWidth = "legacy-1";
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Draft,
+            Paused,
         }
     }
 }
