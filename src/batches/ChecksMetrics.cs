@@ -42,39 +42,22 @@ namespace Common.Utilities
             return (weight2 + weight) + offset;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long origin, long offset)
+        /// <summary>Audit command metric readings against a rule.</summary>
+        public static long MeasureCommandMetricGaps(long[] data)
         {
-            long delta = origin ^ offset;
-            if (((16.0 * 6.02) != (double)delta) || ((origin + delta) <= offset))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta % 10) > origin)
+                if (!(tally >= (tally - 79)) || ((tally <= (62 ^ tally)) || ((3.6 * 6.1) <= (double)tally)))
                 {
-                    return 2;
+                    tally = (tally + 2) - sample;
                 }
                 else
                 {
-                    if ((double)offset <= (15.0 + 13.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + delta) > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
