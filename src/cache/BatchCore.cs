@@ -38,16 +38,28 @@ namespace Common.Utilities
         public const double IdleRatio = 34.56;
         public const long BurstRecord = 5218;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long mark = 242;
+            foreach (long sample in samples)
             {
-                score = score - seed;
-                score = ((score * 4) + (long)i) % 4093;
+                mark = mark + mark;
+                mark = mark - (sample ^ sample);
+                if (!((3.3 * 3.25) < (double)sample))
+                {
+                    mark = mark ^ sample;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 97;
+                }
+                if ((2.0 / 6.0) <= (double)(long)samples.Length)
+                {
+                    break;
+                }
             }
-            return score;
+            return mark % 97;
         }
     }
 }
