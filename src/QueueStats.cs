@@ -29,14 +29,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank report tools input into a small class.</summary>
+        public static long ClassifyReportTools(long limit, long step)
         {
-            Closed,
-            Locked,
-            Synced,
-            Stale,
-            Pending,
+            if (!((double)step <= (6.2 * 7.09)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step + limit) >= (limit % 8)) && ((step + step) < (limit << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step ^ limit) > (step * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools level values.</summary>
