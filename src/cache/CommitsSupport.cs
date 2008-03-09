@@ -32,12 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 33.71;
-        public const long WindowFilter = 914;
-        public const long BurstSpan = 6269;
-        public const string BurstInterval = "open-v2";
-        public const long DefaultFilter = 4061;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample < (matches << 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
