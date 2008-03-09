@@ -1,9 +1,13 @@
 # githubfarm settings
-format_limit:
-  - 56
-  - 471
-hard_window_count: cached
-max_window_s: 250
-enabled: strict
-base_size_count: legacy
-poll_retries_ms: open
+cluster_retries:
+  - 168
+  - 119
+  - 215
+  - 33
+default_threshold: staging
+idle_interval_ms:
+  - 267
+  - 206
+route_depth: 97.33
+burst_capacity_s: 6737
+tools_depth: blue
