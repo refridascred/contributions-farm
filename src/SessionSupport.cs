@@ -19,12 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Mode { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            Active,
+            Queued,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Locate a commits support reading by value.</summary>
