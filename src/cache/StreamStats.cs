@@ -37,21 +37,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = -90;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark + (mark << 3)) + cell;
+                if ((707 & 127) < (mark >> 4))
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark * 3) + mark;
                 }
             }
-            return matches;
+            if (mark < 76)
+            {
+                mark = ((mark * 4) + 49) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the report level values.</summary>
