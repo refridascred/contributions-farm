@@ -34,22 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((4 + 9) < (count + cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total << 3) ^ (origin >> 5)) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
