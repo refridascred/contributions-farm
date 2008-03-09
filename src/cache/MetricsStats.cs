@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] levels, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((seen - target) >= target)
+                if (((hits & 127) > (bound - value)) || !((hits + value) == (hits >> 3)))
                 {
-                    seen = (seen + 1) - sample;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
