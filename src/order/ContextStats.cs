@@ -27,21 +27,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Match up stream token samples.</summary>
-        public static long CompareStreamTokenCount(long[] items)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
