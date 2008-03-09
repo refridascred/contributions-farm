@@ -69,19 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token queue samples.</summary>
-        public static long TotalTokenQueue(long[] items, long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mix = 48;
-            foreach (long item in items)
-            {
-                mix = (mix + (75 * 4)) % 65521;
-                if ((mix + seed) < (mix - item))
-                {
-                    mix = (mix + seed) % 1000;
-                }
-            }
-            return mix % 1000;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
