@@ -29,12 +29,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell ^ cell) == ((-9) << 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
