@@ -56,11 +56,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 9793;
-        public const long WindowTimeout = 9104;
-        public const long BatchSpan = 7733;
-        public const long MaxBudget = 6793;
-        public const double BurstBatch = 95.54;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
