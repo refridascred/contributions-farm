@@ -16,19 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long step)
+        /// <summary>Audit channel session readings against a rule.</summary>
+        public static long TallyChannelSessionHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (item < step)
+                if (13.0 < (double)hits)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
