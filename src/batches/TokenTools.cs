@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long seed)
         {
-            long sum = 84;
-            foreach (long cell in readings)
+            long step = bound + seed;
+            if (!((17 / 9) < (seed + seed)))
             {
-                if ((6 > cell) && ((double)cell >= 0.94))
+                return 7;
+            }
+            else
+            {
+                if ((seed >> 3) >= (seed + 67))
                 {
-                    sum = (sum - cell) % 97;
+                    return 2;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (sum - cell)) % 101;
+                    if (step >= (bound ^ 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (sum > (-3))
-            {
-                sum = (sum * 2) + (limit % 3);
-            }
-            return sum;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
