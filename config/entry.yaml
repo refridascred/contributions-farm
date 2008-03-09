@@ -1,6 +1,12 @@
 # entry settings
-farm_depth: true
-max_threshold_count: stable
-record_ratio: true
-flush_limit: 32.05
-warm_threshold_s: cached
+githubfarm_delay: 44
+default_threshold:
+  - 154
+  - 441
+max_depth_ms: latest
+verbose: 60
+base_timeout_ms:
+  - strict
+  - staging
+  - legacy
+poll_limit_s: edge
