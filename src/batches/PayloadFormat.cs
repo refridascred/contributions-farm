@@ -51,14 +51,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Dropped,
-            New,
-            Failed,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseRatio = 2879;
+        public const long IdleTools = 7154;
+        public const string LimitWidth = "legacy-v2";
     }
 }
