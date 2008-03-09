@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long step, long floor)
+        /// <summary>Classify a support stream pair into a bucket.</summary>
+        public static long ClassifySupportStream(long origin, long limit)
         {
-            if ((step % 24) < (floor & 7))
+            if (limit >= (origin << 3))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((step + 73) <= (5 / 7))
+                if ((limit + origin) > (394 << 2))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    if ((limit - limit) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
