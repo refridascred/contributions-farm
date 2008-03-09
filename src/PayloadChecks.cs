@@ -23,22 +23,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] values, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading != (11.0 - 11.0))
+                if (samples[i] >= limit)
                 {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
