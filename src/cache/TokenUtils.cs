@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = 9;
+            foreach (long cell in data)
             {
-                if ((entry - tally) <= (entry - 358))
+                if ((limit & 31) < (limit * 4))
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor << 3) ^ (anchor << 1)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (cell + cell);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Blend two layout measurements.</summary>
