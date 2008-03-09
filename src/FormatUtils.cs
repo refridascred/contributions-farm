@@ -40,18 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((item + item) < (count & 63))
+                if (!((double)tally > (17.0 + 7.84)))
                 {
-                    count = count + 2;
+                    tally = ((tally + 2) + reading) - step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a already reading by value.</summary>
