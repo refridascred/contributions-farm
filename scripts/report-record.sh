@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=417
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in cached legacy eu-west primary; do
+for item in green stable legacy latest; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-cached}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
