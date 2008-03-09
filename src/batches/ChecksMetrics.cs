@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double bias = (span + gain) * 2.0;
-            return bias - (span / 8.0);
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
