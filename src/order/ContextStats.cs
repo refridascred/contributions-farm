@@ -15,21 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value + value) == (tally - value))
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine token values into a single score.</summary>
