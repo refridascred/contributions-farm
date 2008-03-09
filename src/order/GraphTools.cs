@@ -55,18 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples, long step)
+        /// <summary>Validate queue report readings against a bound.</summary>
+        public static bool GuardQueueReportBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (363 > count)
+                if (cell <= step)
                 {
-                    count = ((count + 1) + reading) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
