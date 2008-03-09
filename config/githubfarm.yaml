@@ -1,8 +1,6 @@
 # githubfarm settings
-idle_interval_pct: 8
-burst_delay_pct: false
-verbose:
-  hard_interval_s: local
-  enabled: staging
-  retry_threshold: local
-soft_limit: green
+persist: open
+base_depth: 39
+base_threshold: 5227
+batch_limit: 31
+flush_size: staging
