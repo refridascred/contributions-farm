@@ -1,18 +1,15 @@
 {
-  "min_size_count": "legacy",
-  "buffer_limit": "blue",
-  "hard_retries": {
-    "default_size": ["latest", "legacy", "edge", "green"],
-    "metric_window": "cached",
-    "warm_limit_pct": 23,
-    "buffer_threshold": {
-      "min_size_s": ["edge", "eu-west"],
-      "route_interval": 55,
-      "max_size_ms": "legacy",
-      "batch_retries_count": 1156,
-      "tools_size": 80.94,
-      "default_timeout_pct": 5.15
+  "retry_delay": false,
+  "audit": ["legacy", "standard", "blue", "open"],
+  "poll_size_pct": {
+    "batches_capacity": {
+      "layout_ttl": "legacy",
+      "base_interval_ms": [385, 295, 400, 34],
+      "window_capacity": true
     },
-    "hard_ratio_s": true
+    "compress": 30,
+    "min_depth_s": true,
+    "burst_size_ms": 500,
+    "idle_delay_ms": "standard"
   }
 }
