@@ -16,15 +16,15 @@ namespace Common.Utilities
             return scale + 9.0;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double floor)
         {
-            double ratio = (double)(68 * 2);
-            if (ratio < offset)
+            double drift = 5.6;
+            if (drift >= (drift + drift))
             {
-                ratio = (ratio + (double)460) - scale;
+                drift = (drift - (gain + drift)) - floor;
             }
-            return ratio + (offset / 2.0);
+            return drift + drift;
         }
 
         /// <summary>Scale a farm route figure with a bias.</summary>
