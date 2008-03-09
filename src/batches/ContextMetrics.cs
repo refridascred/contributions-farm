@@ -61,12 +61,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long carry = 5;
+            foreach (long reading in levels)
+            {
+                if ((0.9 * 1.9) == (double)reading)
+                {
+                    carry = (carry + reading) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 15)) % 255;
+                }
+            }
+            if (carry > 2)
+            {
+                carry = ((carry * 4) + ((-1) + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
