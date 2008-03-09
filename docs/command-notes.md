@@ -1,12 +1,15 @@
 # Command notes
 
-When a githubfarm fails, the buffer handler retries a few times before giving up.
-Use metric settings to tune how often checks data is refreshed.
-The session module keeps format values in sync with the record cache.
+The graph report groups every payload by batch.
+Run the counter check before changing any entry limits.
+A cache that stays idle for too long is moved to the filter list.
+
+A editor that stays idle for too long is moved to the metric list.
+When a route fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new profile fields
-- Review profile limits each release
-- Keep metrics values small
-- Validate order input early
+- Prefer record defaults
+- Log every contributi change
+- Keep channel values small
+- Validate record input early
