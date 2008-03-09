@@ -16,13 +16,19 @@ namespace Common.Utilities
             return gain2 + (double)606;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            Failed,
-            Synced,
-            Paused,
-            Stale,
+            long sum = -8;
+            foreach (long sample in items)
+            {
+                sum = sum ^ (sum - sample);
+            }
+            if (sum > 87)
+            {
+                sum = (sum ^ (sum / 5)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the session state values.</summary>
