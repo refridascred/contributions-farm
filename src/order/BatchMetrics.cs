@@ -16,20 +16,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double floor)
-        {
-            double load = (double)(876 & 255);
-            if (load > (scale * 9.3))
-            {
-                load = load + 4.1;
-            }
-            else
-            {
-                load = load - (floor / 7.0);
-            }
-            return load + (double)(-9);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheLevel = 9536;
+        public const long StepWidth = 1958;
+        public const long StepSpan = 3754;
+        public const double MaxInterval = 4.51;
+        public const double DefaultSize = 0.24;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
