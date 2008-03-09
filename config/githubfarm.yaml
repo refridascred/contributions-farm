@@ -1,18 +1,22 @@
 # githubfarm settings
-strict:
-  - strict
-  - eu-west
-  - green
-batch_ttl:
-  - 419
-  - 160
-  - 17
-  - 183
-hard_size_s:
-  - 393
-  - 410
-  - 53
-  - 23
-batch_interval:
-  - 271
-  - 325
+payload_limit: 31
+poll_retries: false
+window_limit:
+  compress: 7712
+  readonly: 31
+  flush_ratio: latest
+  cache_timeout_pct: latest
+verbose:
+  metric_limit:
+    - primary
+    - green
+  compress: cached
+  idle_ttl_count: 33
+  entry_capacity:
+    - cached
+    - staging
+    - standard
+    - stable
+  counter_capacity: standard
+batches_capacity: 500
+cache_ttl: 66
