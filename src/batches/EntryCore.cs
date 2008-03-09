@@ -71,21 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            long sum = 8;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 4) + (sum ^ datum)) % 97;
-                sum = (sum + (sum >> 2)) % 4096;
-                sum = ((sum << 2) ^ ((-13) % 10)) % 4096;
-                if ((datum < (datum - datum)) || ((datum + sum) < (datum % 24)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return count;
         }
     }
 }
