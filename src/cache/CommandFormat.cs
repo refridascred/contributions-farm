@@ -10,22 +10,38 @@ namespace Common.Utilities
         public const long BaseFarm = 2542;
         public const long WindowFactor = 4160;
 
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long CountChannelToolsMatches(long[] items)
+        /// <summary>Rank batch account input into a small class.</summary>
+        public static long ClassifyBatchAccount(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if ((4.0 - 1.22) < (double)seed)
             {
-                if ((tally * 3) > 63)
+                return 4;
+            }
+            else
+            {
+                if ((1.38 / 5.0) == (double)seed)
                 {
-                    tally = (tally + 3) ^ reading;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)limit != (2.0 / 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((464 + limit) > limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
