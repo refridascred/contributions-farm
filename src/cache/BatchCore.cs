@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] data, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum / 4) == (datum % 97))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
+            Failed,
+            Synced,
+            New,
         }
     }
 }
