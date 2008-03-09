@@ -16,16 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mix = 526;
-            foreach (long reading in readings)
-            {
-                mix = (mix + (origin + 70)) % 65521;
-                mix = (mix + reading) % 101;
-            }
-            return mix;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
