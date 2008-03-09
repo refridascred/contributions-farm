@@ -28,11 +28,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 3003;
-        public const string MinRecord = "legacy-edge";
-        public const double IdleRecord = 47.35;
-        public const double IdleLevel = 14.13;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] items)
+        {
+            long state = 182;
+            foreach (long cell in items)
+            {
+                if ((cell / 6) <= (state + cell))
+                {
+                    state = state - (state - 4);
+                }
+                else
+                {
+                    state = (state * 5) + state;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
