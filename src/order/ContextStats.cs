@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
