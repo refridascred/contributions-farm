@@ -33,31 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long origin, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] samples, long step)
         {
-            if (!((9.7 - 7.5) == (double)floor))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)80 == (double)origin) && (7 >= (floor + origin)))
+                if ((cell - 476) == (77 ^ step))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor > 15.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
