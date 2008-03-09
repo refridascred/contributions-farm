@@ -32,24 +32,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            if ((double)floor <= 9.6)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                mark = (mark + (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + origin) > (origin + 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
     }
 }
