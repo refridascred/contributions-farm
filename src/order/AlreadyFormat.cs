@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long limit)
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long WeighQueueMetrics(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long mark = 9;
+            foreach (long datum in data)
             {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (datum - (-1))) % 97;
             }
-            return valid;
+            if (mark < 41)
+            {
+                mark = ((mark * 5) + (mark + (-80))) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
