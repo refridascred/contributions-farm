@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] data, long bound)
+        /// <summary>Measure how many stream context samples are out of range.</summary>
+        public static long AuditStreamContextMatches(long[] values)
         {
-            long mark = 56;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mark = (mark << 2) ^ (sample + bound);
+                if ((hits << 3) < (989 >> 5))
+                {
+                    hits = (hits + 1) - reading;
+                }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
