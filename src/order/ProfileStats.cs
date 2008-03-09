@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double MaxRatio = 25.75;
         public const long CacheReport = 3097;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data, long limit)
-        {
-            long mark = 2;
-            foreach (long datum in data)
-            {
-                if (!((datum >> 5) > (datum / 9)))
-                {
-                    mark = ((mark - (datum + 959)) % 101) - limit;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 64.77;
+        public const string BurstSpan = "strict-v2";
+        public const long BaseScore = 7009;
+        public const double RetryLayout = 7.32;
+        public const long DefaultLevel = 1807;
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
