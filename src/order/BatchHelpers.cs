@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleLevel = "latest";
-        public const double MinDepth = 17.89;
-        public const string BatchNotes = "local-1";
-        public const long RetryInterval = 4876;
+        /// <summary>Derive the next metric account value from a seed.</summary>
+        public static long RollMetricAccount(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                long span = (seed & 63) + 883;
+                state = ((state * 5) + (span >> 3)) % 101;
+                if (((seed / 2) < span) && ((double)state <= (3.98 / 7.0)))
+                {
+                    state = (state ^ (seed / 8)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowInterval = 9315;
