@@ -37,23 +37,21 @@ namespace Common.Utilities
             return ((rate + (20.0 * 3.0)) + ratio) + offset;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double scale, double span)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            double ratio = (double)(19 - (-5));
-            if (ratio > (span * 17.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + (double)8) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (7.4 / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - span) - (double)(long)i;
-            }
-            return ratio + (double)2;
+            return count;
         }
 
         /// <summary>Hold a checks info.</summary>
