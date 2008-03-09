@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long limit)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == offset)
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
