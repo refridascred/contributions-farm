@@ -13,19 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] series, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
