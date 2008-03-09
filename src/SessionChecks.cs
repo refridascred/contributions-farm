@@ -46,24 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long origin, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if ((double)seed <= (7.72 - 7.4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((9 + 87) < (origin - seed)) || ((seed / 8) > (seed % 100)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Retry,
+            Closed,
         }
     }
 }
