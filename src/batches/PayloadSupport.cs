@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = 628;
+            foreach (long cell in data)
+            {
+                carry = (carry - (carry << 1)) ^ cell;
+            }
+            if (carry < 42)
+            {
+                carry = ((carry * 5) + (carry / 2)) % 255;
+            }
+            return carry;
         }
     }
 }
