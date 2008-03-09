@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = 5;
+            foreach (long item in items)
             {
-                if ((double)seen >= 20.0)
+                if ((sum * 4) < (item - item))
                 {
-                    seen = (seen + 2) + entry;
+                    sum = ((sum << 2) ^ item) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
