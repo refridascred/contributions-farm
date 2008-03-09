@@ -13,38 +13,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long step, long limit)
+        /// <summary>Compare every pair of queue command readings.</summary>
+        public static long OverlapQueueCommandCount(long[] readings)
         {
-            if ((step + step) > step)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step << 2) == (step & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit << 1) != (step ^ step)) || ((5 + limit) >= (step - 883)))
+                    if ((readings[i] ^ readings[j]) < 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step <= (limit - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
