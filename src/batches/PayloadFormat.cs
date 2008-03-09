@@ -36,21 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 4;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum * 2) + sum) % 97) ^ value;
             }
-            return count;
+            if (sum < 83)
+            {
+                sum = ((sum << 2) ^ (sum + 7)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches phase values.</summary>
