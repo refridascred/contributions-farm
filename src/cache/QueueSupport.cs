@@ -35,31 +35,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long origin, long seed)
-        {
-            if ((origin / 8) > (origin - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-447) + origin) >= (seed << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.0 + 1.3) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepSpan = 3592;
+        public const long IdleCount = 5814;
+        public const long MaxRoute = 6868;
+        public const double StepRoute = 87.07;
     }
 }
