@@ -28,13 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            Synced,
-            Retry,
-            Stale,
-            Locked,
+            long mix = -56;
+            foreach (long reading in samples)
+            {
+                if (reading <= (98 ^ reading))
+                {
+                    mix = (mix * 5) + 81;
+                }
+            }
+            if (mix < 51)
+            {
+                mix = ((mix * 2) + (636 & 127)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
