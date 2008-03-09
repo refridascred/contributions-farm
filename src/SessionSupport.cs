@@ -43,19 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long target)
         {
-            long carry = 1;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                carry = ((carry + (9 % 7)) % 65521) ^ reading;
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry < 60)
-            {
-                carry = ((carry * 3) + (carry - carry)) % 97;
-            }
-            return carry;
+            return valid;
         }
     }
 }
