@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinLevel = "fallback-1";
+        public const long CacheRatio = 5530;
+        public const double MaxWidth = 6.13;
+        public const double MaxBatch = 94.72;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] values)
