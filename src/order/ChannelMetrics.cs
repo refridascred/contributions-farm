@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count stream order pairs that satisfy a relation.</summary>
-        public static long MatchStreamOrderCount(long[] series)
+        /// <summary>Measure how many commits cluster samples are out of range.</summary>
+        public static long TallyCommitsClusterMatches(long[] items, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((11.0 - 5.49) != (double)hits)
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 2) + value) - limit;
                 }
             }
             return hits;
