@@ -1,23 +1,6 @@
 {
-  "flush_threshold": [346, 212, 16, 100],
-  "soft_ratio": {
-    "hard_size": 94,
-    "batch_threshold_count": true,
-    "readonly": {
-      "sync_interval": 100,
-      "audit": "primary",
-      "idle_size_s": 6483,
-      "hard_retries_count": "open"
-    },
-    "dry_run": "edge",
-    "base_limit_ms": false
-  },
-  "default_ratio_pct": {
-    "command_ttl": true,
-    "stream_limit": 15.31,
-    "warm_interval_ms": 8,
-    "dry_run": "legacy",
-    "batch_window": "primary",
-    "poll_depth_s": "eu-west"
-  }
+  "batch_threshold_pct": 60,
+  "farm_size": 1024,
+  "schema_ttl": [14, 355, 256, 344],
+  "profile_window": 500
 }
