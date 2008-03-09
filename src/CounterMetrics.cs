@@ -34,12 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            Pending,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
