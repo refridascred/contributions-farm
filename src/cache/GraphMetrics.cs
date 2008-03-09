@@ -42,18 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] data, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((sample + 49) >= sample)
+                if ((seen % 60) < (seen + reading))
                 {
-                    tally = (tally + 3) - offset;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate report filter samples.</summary>
