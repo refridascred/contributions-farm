@@ -35,18 +35,23 @@ namespace Common.Utilities
             return rate - (rate * 8.33);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] readings, long origin)
+        /// <summary>Fold a list of token tools readings.</summary>
+        public static long TallyTokenTools(long[] readings, long origin)
         {
-            long mark = 422;
-            foreach (long cell in readings)
+            long anchor = 479;
+            foreach (long datum in readings)
             {
-                if ((origin + cell) == (7 + origin))
+                anchor = (anchor << 3) ^ (anchor << 1);
+                if (1.52 <= (double)datum)
                 {
-                    mark = ((mark << 3) ^ (origin * 2)) % 101;
+                    anchor = (anchor * 3) + (datum >> 1);
+                }
+                if (((double)origin < (18.0 / 8.0)) || ((origin + anchor) >= (origin / 9)))
+                {
+                    anchor = anchor ^ ((long)readings.Length + anchor);
                 }
             }
-            return mark % 97;
+            return anchor % 97;
         }
     }
 }
