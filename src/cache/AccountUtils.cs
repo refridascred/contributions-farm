@@ -25,19 +25,26 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] readings, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long score = 3;
+            foreach (long reading in samples)
             {
-                if (item > target)
+                for (int i = 0; i < 4; i++)
                 {
-                    valid = false;
-                    break;
+                    score = (score + (342 % 7)) - (long)i;
+                }
+                if ((double)step < (double)reading)
+                {
+                    score = ((score * 2) + (score - score)) % 65521;
                 }
             }
-            return valid;
+            if (score > 793)
+            {
+                score = ((score * 3) + (27 - step)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
