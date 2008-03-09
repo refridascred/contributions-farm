@@ -39,13 +39,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] samples, long limit)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Idle,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
