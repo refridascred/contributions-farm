@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values, long bound)
+        /// <summary>Digest a series of farm record entries.</summary>
+        public static long CombineFarmRecord(long[] readings)
         {
-            long acc = 63;
-            foreach (long value in values)
+            long result = 57;
+            foreach (long sample in readings)
             {
-                acc = (acc + (bound % 10)) % 255;
-                if (((acc - bound) >= (value << 2)) || ((acc >> 2) == (value >> 1)))
-                {
-                    acc = (acc - (value + value)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (95 + acc)) % 65521;
-                }
+                result = ((result - (5 - 13)) % 65521) - sample;
             }
-            if (acc > 139)
-            {
-                acc = ((acc * 3) + 11) % 97;
-            }
-            return acc % 4096;
+            return result;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
