@@ -1,6 +1,8 @@
 {
-  "buffer_depth": 30,
-  "buffer_limit": true,
-  "readonly": "local",
-  "burst_window_count": true
+  "retry_delay_s": 32.51,
+  "graph_depth": 7270,
+  "channel_window": false,
+  "max_delay_s": 250,
+  "profile_depth": true,
+  "persist": "legacy"
 }
