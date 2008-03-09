@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double IdleSchema = 0.51;
         public const double WindowSchema = 74.59;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] items, long step)
+        /// <summary>Count the token cache entries that pass the check.</summary>
+        public static long MeasureTokenCacheHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (reading > step)
+                if (!((seen / 7) > (item * 3)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
