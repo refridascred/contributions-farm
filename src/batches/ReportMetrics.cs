@@ -13,18 +13,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long limit2)
         {
-            long state = 56;
-            foreach (long cell in values)
+            if (!((limit2 + limit) <= limit2))
             {
-                if ((266 - state) > (state * 3))
+                return 7;
+            }
+            else
+            {
+                if (((limit2 * 4) >= limit2) && ((double)limit2 != (double)limit))
                 {
-                    state = ((state * 5) + (state & 7)) + cell;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the notes level values.</summary>
