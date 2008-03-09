@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a stream batch reading by value.</summary>
-        public static long SeekStreamBatchIndex(long[] series, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 54;
+            foreach (long item in series)
             {
-                if (series[i] == target)
+                if ((double)acc > 5.91)
                 {
-                    return (long)i;
+                    acc = (acc - (item / 7)) % 101;
+                }
+                if (item > (item / 7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
