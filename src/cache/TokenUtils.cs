@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long MinChecks = 4053;
         public const long IdleChecks = 7671;
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Find the first counter already entry that matches the target.</summary>
+        public static long LookupCounterAlreadyIndex(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] <= limit)
                 {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
