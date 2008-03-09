@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain2 + (double)606;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Dropped,
-            Locked,
-            Stale,
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Match up order samples.</summary>
