@@ -1,8 +1,5 @@
 {
-  "notes_capacity": false,
-  "flush_ratio_pct": 50.0,
-  "compress": "green",
-  "batch_limit": 1250,
-  "strict": true,
-  "schema_limit": 2091
+  "idle_capacity_count": [106, 230],
+  "hard_depth": true,
+  "default_retries_ms": 66
 }
