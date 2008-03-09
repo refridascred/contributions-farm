@@ -30,24 +30,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((origin ^ sum) >= ((long)i - 666))
+                if ((cell + cell) < hits)
                 {
-                    sum = (sum - (origin / 3)) % 101;
-                    sum = (sum << 2) ^ origin;
+                    hits = hits + 1;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum * 4) + (sum / 5)) % 97) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
