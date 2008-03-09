@@ -23,18 +23,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long MeasureMetricsAccountMatches(long[] levels, long step)
+        /// <summary>Find the first editor checks entry that matches the target.</summary>
+        public static long SeekEditorChecksIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-4) + cell) <= (cell * 3))
+                if ((values[i] == limit) && ((values[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
