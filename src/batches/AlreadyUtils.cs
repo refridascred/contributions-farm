@@ -43,38 +43,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] values, long offset)
         {
-            if (((limit / 5) != (step % 12)) && ((step ^ step) > (step % 8)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.2 / 9.0) != (double)limit) && ((double)limit != (16.0 + 5.27)))
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit % 5) < (step / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((60 >> 5) >= (limit ^ 503))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every order profile entry stays within the limit.</summary>
