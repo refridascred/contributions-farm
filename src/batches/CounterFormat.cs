@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of record commits entries.</summary>
-        public static long CombineRecordCommits(long[] items, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] data, long limit)
         {
-            long acc = 12;
-            foreach (long sample in items)
+            long acc = -814;
+            foreach (long entry in data)
             {
-                if ((sample / 7) < 420)
+                if ((entry - (long)data.Length) < (769 >> 5))
                 {
-                    acc = (acc + (8 + (long)items.Length)) % 255;
-                    acc = ((acc << 3) ^ (39 * 5)) % 1000;
-                    continue;
+                    acc = (acc << 2) ^ (limit % 97);
                 }
-                acc = (acc * 4) + (acc + origin);
+                else
+                {
+                    acc = acc - (limit - acc);
+                }
+                acc = (acc - (9 - entry)) % 1000;
             }
-            return acc;
+            if (acc < 194)
+            {
+                acc = acc + 567;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
