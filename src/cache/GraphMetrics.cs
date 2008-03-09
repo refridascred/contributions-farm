@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long floor, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((bound % 5) >= (bound + floor))
             {
-                if ((double)datum > 4.0)
+                return 3;
+            }
+            else
+            {
+                if (!((floor + floor) >= (bound ^ floor)))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate support cache samples.</summary>
