@@ -67,14 +67,16 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const double MaxSpan = 6.9;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a window cache counter forward.</summary>
+        public static long DeriveWindowCache(long bound)
         {
-            Idle,
-            Locked,
-            Queued,
-            Paused,
-            Stale,
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark << 2) ^ (bound % 8)) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
