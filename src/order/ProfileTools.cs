@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const double IdleScore = 53.64;
         public const long MinContributi = 3638;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 6540;
-        public const long BaseWidth = 3240;
-        public const string StepBudget = "strict";
-        public const double WindowBudget = 24.07;
-        public const string IdleFormat = "cached";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long offset)
+        {
+            if ((2.0 + 15.0) < (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((87 - origin) > origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
