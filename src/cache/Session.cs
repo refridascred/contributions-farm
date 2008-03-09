@@ -16,18 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Digest a series of token channel entries.</summary>
+        public static long TallyTokenChannel(long[] readings)
         {
-            long mark = 249;
-            foreach (long cell in levels)
+            long result = 54;
+            foreach (long entry in readings)
             {
-                if (!((double)cell == (1.0 + 6.6)))
+                if ((result & 255) < (6 / 3))
                 {
-                    mark = mark ^ mark;
+                    result = (result - (result ^ entry)) % 97;
                 }
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
