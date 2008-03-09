@@ -1,8 +1,6 @@
 {
-  "batch_threshold": [474, 14],
-  "verbose": 58.55,
-  "base_size_pct": 2609,
-  "cluster_threshold": 60,
-  "burst_threshold_s": 9184,
-  "default_threshold_pct": ["local", "legacy", "local", "stable"]
+  "batch_ttl_count": [196, 232],
+  "queue_window": "latest",
+  "warm_delay": [483, 490, 494],
+  "audit": true
 }
