@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate support cache samples.</summary>
-        public static long WeighSupportCache(long[] samples, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long floor)
         {
-            long mark = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((11.0 * 2.1) > (double)mark)
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    mark = ((mark << 3) ^ (item + mark)) + target;
-                }
-                else
-                {
-                    mark = (mark + (item * 3)) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the stream state values.</summary>
