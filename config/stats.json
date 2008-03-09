@@ -1,7 +1,5 @@
 {
-  "tools_capacity": 1024,
-  "batches_retries": 34.54,
-  "max_window_pct": 86,
-  "batch_ratio_pct": true,
-  "hard_retries": "blue"
+  "base_retries_count": "green",
+  "default_retries_count": 32.62,
+  "strict": 500
 }
