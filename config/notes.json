@@ -1,17 +1,11 @@
 {
-  "enabled": "cached",
-  "dry_run": {
-    "default_depth_ms": 2971,
-    "stream_ttl": 6885,
-    "burst_capacity_count": "local",
-    "flush_size_ms": 62.93
+  "poll_threshold": {
+    "retry_delay": true,
+    "persist": 24,
+    "max_limit_pct": true,
+    "batch_size": true
   },
-  "default_window_count": "standard",
-  "warm_ratio": {
-    "warm_ratio_count": "legacy",
-    "sync_threshold_pct": 7467,
-    "min_timeout_pct": false,
-    "verbose": "latest",
-    "cache_timeout_ms": "eu-west"
-  }
+  "readonly": "legacy",
+  "burst_ttl_ms": 3775,
+  "poll_retries": 26
 }
