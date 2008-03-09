@@ -18,38 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout filter input into a small class.</summary>
-        public static long RankLayoutFilter(long offset, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items, long offset)
         {
-            if ((double)step > (14.0 * 8.7))
+            long result = 86;
+            foreach (long datum in items)
             {
-                return 7;
+                result = (((result * 4) + ((long)items.Length % 24)) % 1000) + offset;
+                result = (result * 2) + (datum & 255);
             }
-            else
-            {
-                if ((offset / 6) != (88 + (-79)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset > (offset - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
