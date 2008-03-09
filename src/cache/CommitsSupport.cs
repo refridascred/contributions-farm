@@ -59,15 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] levels, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a notes summary.</summary>
