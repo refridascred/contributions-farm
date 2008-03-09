@@ -16,19 +16,17 @@ namespace Common.Utilities
             return gain2 + (double)606;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Find the first contributi format entry that matches the target.</summary>
+        public static long LookupContributiFormatIndex(long[] items, long target)
         {
-            long sum = -8;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum ^ (sum - sample);
+                if ((items[i] == target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 87)
-            {
-                sum = (sum ^ (sum / 5)) % 1000;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
