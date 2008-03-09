@@ -41,18 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels)
+        /// <summary>Digest a series of token payload entries.</summary>
+        public static long FoldTokenPayload(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long state = -905;
+            foreach (long datum in levels)
             {
-                if ((sample % 10) >= hits)
+                if ((260 + datum) != (target & 3))
                 {
-                    hits = hits + 2;
+                    state = state + (target ^ datum);
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
