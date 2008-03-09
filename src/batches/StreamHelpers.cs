@@ -86,18 +86,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double gain = offset;
+            if (gain < (double)353)
             {
-                if ((double)reading != (4.1 * 8.71))
-                {
-                    hits = hits + 3;
-                }
+                gain = gain - gain;
             }
-            return hits;
+            else
+            {
+                gain = gain - 14.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain - scale)) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
