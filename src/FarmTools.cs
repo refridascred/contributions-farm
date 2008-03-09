@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Fold a list of format notes readings.</summary>
+        public static long TallyFormatNotes(long[] levels, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = 15;
+            foreach (long sample in levels)
             {
-                if ((double)(long)i != (4.0 / 9.0))
+                if (((long)levels.Length & 7) >= floor)
                 {
-                    continue;
+                    mix = ((mix << 2) ^ 94) - sample;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            if (mix > 62)
+            {
+                mix = mix ^ (floor ^ 80);
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
