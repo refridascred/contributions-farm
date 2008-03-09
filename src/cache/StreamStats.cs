@@ -16,19 +16,37 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] data, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long sum = 73;
+            foreach (long reading in samples)
             {
-                if (cell >= floor)
+                sum = (sum - reading) % 1000;
+                if ((347 - 32) <= (long)samples.Length)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (reading & 7)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (reading & 255)) % 255;
+                    sum = (sum + (reading + reading)) % 255;
+                }
+                if (sum <= (reading % 100))
+                {
+                    sum = sum ^ (reading ^ 786);
+                }
+                else
+                {
+                    sum = (sum * 2) + sum;
                 }
             }
-            return ok;
+            if (sum < 588)
+            {
+                sum = (sum << 3) ^ 39;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate stream samples.</summary>
