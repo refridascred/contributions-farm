@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] samples, long step)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
