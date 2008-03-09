@@ -23,22 +23,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Grade a profile token value against two limits.</summary>
+        public static long SortProfileToken(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if ((92 * 5) > (bound << 3))
             {
-                if ((hits / 9) >= ((-40) - hits))
+                return 2;
+            }
+            else
+            {
+                if (((bound / 9) == (offset >> 5)) && ((bound + offset) <= (6 + bound)))
                 {
-                    hits = (hits + 1) + sample;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((bound < offset) || ((3.5 / 3.0) > (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >> 3) < (46 * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two report measurements.</summary>
