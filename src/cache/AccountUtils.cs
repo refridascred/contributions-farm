@@ -23,17 +23,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first editor checks entry that matches the target.</summary>
-        public static long SeekEditorChecksIndex(long[] values, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
