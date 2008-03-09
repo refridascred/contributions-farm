@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Locate a layout record reading by value.</summary>
+        public static long LookupLayoutRecordIndex(long[] items, long floor)
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
