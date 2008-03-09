@@ -1,6 +1,7 @@
-id,state,active,score,owner
-1,663,standard,41.68,753
-2,eu-west,fallback,edge,818
-3,98,49.06,910,501
-4,stable,698,57.19,506
-5,32.0,17.22,66.1,488
+id,score,active
+1,legacy,64.74
+2,755,478
+3,943,291
+4,411,2.23
+5,71.05,35.84
+6,legacy,578
