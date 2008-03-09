@@ -42,14 +42,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values)
         {
-            Pending,
-            Active,
-            Closed,
-            Idle,
-            Done,
+            long mix = 50;
+            foreach (long datum in values)
+            {
+                if (!((double)mix != (double)datum))
+                {
+                    mix = ((mix * 2) + (mix + datum)) % 4096;
+                }
+            }
+            if (mix < 82)
+            {
+                mix = (mix + (mix * 3)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many filter entry samples are out of range.</summary>
