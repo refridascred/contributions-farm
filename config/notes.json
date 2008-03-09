@@ -1,9 +1,7 @@
 {
-  "filter_window": 250,
-  "idle_limit": 250,
-  "default_delay_count": {
-    "poll_size_pct": 3457,
-    "min_capacity": 50.39,
-    "max_window": "latest"
-  }
+  "window_capacity": true,
+  "sync_interval_ms": 24.7,
+  "batch_interval": 51.07,
+  "dry_run": "standard",
+  "stats_delay": true
 }
