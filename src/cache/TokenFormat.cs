@@ -22,23 +22,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] values, long offset)
         {
-            long state = 6;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(143 < (384 - item)))
+                if (values[i] == offset)
                 {
-                    state = (state + (item & 7)) % 255;
-                    break;
-                }
-                if (item <= (item << 3))
-                {
-                    state = (state * 4) + (state - state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
