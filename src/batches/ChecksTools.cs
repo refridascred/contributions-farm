@@ -25,17 +25,14 @@ namespace Common.Utilities
         public const string BaseScore = "stable-1";
         public const long BurstCount = 3276;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
