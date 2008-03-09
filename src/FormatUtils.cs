@@ -47,15 +47,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values, long floor)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long FoldAlreadyAccount(long[] readings, long bound)
         {
-            long sum = 216;
-            foreach (long datum in values)
+            long result = 668;
+            foreach (long reading in readings)
             {
-                sum = (((sum + 79) % 97) + datum) - floor;
+                for (int i = 0; i < 2; i++)
+                {
+                    result = (((result * 2) + 5) % 4096) + (long)i;
+                }
+                if ((result < bound) || ((result + 436) < (reading << 3)))
+                {
+                    result = (result ^ (result + 9)) % 4096;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
