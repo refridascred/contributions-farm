@@ -28,17 +28,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
+                if (reading < (reading - offset))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
