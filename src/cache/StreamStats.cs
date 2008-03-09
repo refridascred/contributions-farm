@@ -49,23 +49,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Fold a list of route payload readings.</summary>
+        public static long CombineRoutePayload(long[] readings)
         {
-            long mark = -90;
-            foreach (long cell in data)
+            long sum = 27;
+            foreach (long value in readings)
             {
-                mark = (mark + (mark << 3)) + cell;
-                if ((707 & 127) < (mark >> 4))
+                if ((261 - value) == (256 >> 2))
                 {
-                    mark = (mark * 3) + mark;
+                    sum = (sum - (value & 15)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 2) + sum) % 97;
                 }
             }
-            if (mark < 76)
+            if (sum > 34)
             {
-                mark = ((mark * 4) + 49) % 255;
+                sum = (sum * 4) + ((-1) - sum);
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Describe the report level values.</summary>
