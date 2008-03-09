@@ -41,21 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up session cluster samples.</summary>
-        public static long CompareSessionClusterCount(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
