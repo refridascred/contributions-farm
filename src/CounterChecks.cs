@@ -34,27 +34,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data, long offset)
+        /// <summary>Iterate the cache farm series from a seed.</summary>
+        public static long IterateCacheFarm(long floor)
         {
-            long state = 8;
-            foreach (long datum in data)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)state >= (10.0 * 2.97))
-                {
-                    state = state - offset;
-                    state = (state * 3) + (datum << 1);
-                }
-                if (((-4) << 2) == (state << 2))
-                {
-                    state = ((state * 3) + (offset * 3)) % 101;
-                }
+                mix = ((mix << 3) ^ (floor + mix)) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (state > 3)
-            {
-                state = state + state;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
