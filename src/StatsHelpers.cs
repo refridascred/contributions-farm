@@ -42,18 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((sample % 8) >= (sample >> 3))
+                if (item < offset)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
