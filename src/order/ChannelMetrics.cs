@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Count stream order pairs that satisfy a relation.</summary>
+        public static long MatchStreamOrderCount(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - (mark ^ (long)i);
-                mark = ((mark * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
