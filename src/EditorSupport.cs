@@ -67,19 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 3;
+            foreach (long reading in data)
             {
-                if (((anchor & 31) != (anchor / 6)) && (offset >= (558 & 3)))
+                if ((reading >> 5) == (247 - (long)data.Length))
                 {
-                    anchor = (anchor ^ offset) % 1000;
+                    acc = (acc ^ (7 >> 2)) % 1000;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            if (acc > 891)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
