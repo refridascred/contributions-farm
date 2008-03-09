@@ -62,19 +62,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] levels)
         {
-            long mix = 458;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix + (sample % 60)) % 101;
+                if ((9.0 * 7.37) > (double)(long)levels.Length)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            if (mix > 37)
-            {
-                mix = mix - (mix & 127);
-            }
-            return mix;
+            return hits;
         }
     }
 }
