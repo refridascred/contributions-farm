@@ -1,5 +1,6 @@
 {
-  "buffer_delay": 46.1,
-  "idle_size_ms": 38.65,
-  "report_interval": 8540
+  "warm_timeout_count": false,
+  "verbose": 77.63,
+  "enabled": ["primary", "open", "cached", "open"],
+  "hard_ttl": 19.92
 }
