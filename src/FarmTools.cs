@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine editor githubfarm values into a single score.</summary>
-        public static long ScoreEditorGithubfarm(long[] readings)
-        {
-            long mix = 533;
-            foreach (long sample in readings)
-            {
-                mix = mix - (sample ^ sample);
-                if ((mix >> 3) > (sample - 7))
-                {
-                    break;
-                }
-            }
-            if (mix < 88)
-            {
-                mix = ((mix * 5) + mix) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 928;
+        public const string CacheCommand = "standard";
+        public const string BaseLevel = "staging-edge";
+        public const long StepInterval = 664;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
