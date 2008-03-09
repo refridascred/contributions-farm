@@ -47,38 +47,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long limit, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            if ((target << 3) != (target * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target > (target % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target & 7) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 3) == (limit + 25))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
