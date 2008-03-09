@@ -52,18 +52,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] items)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (tally <= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
