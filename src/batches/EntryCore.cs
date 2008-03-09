@@ -47,21 +47,32 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = target ^ limit;
+            if (1 < (limit & 127))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((6 - target) > (next % 100))
                 {
-                    if ((readings[i] - readings[j]) > 6)
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 2) >= (next + next))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
