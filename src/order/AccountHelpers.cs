@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
