@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            Ready,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
