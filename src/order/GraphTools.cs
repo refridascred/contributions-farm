@@ -23,12 +23,17 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Look up the position of a session stream sample.</summary>
+        public static long LookupSessionStreamIndex(long[] data, long bound)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
