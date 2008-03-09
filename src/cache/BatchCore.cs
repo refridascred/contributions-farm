@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Blend two commits batch measurements.</summary>
+        public static double AdjustCommitsBatch(double ratio, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            double rate = 15.0;
+            if (rate > (double)756)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum - (floor / 9)) - (long)i2;
-                }
-                if (9.9 >= (double)(long)i)
-                {
-                    sum = (sum ^ floor) % 4096;
-                    sum = (sum ^ sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ floor) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                rate = rate - bias;
             }
-            return sum;
+            return rate - (7.0 + ratio);
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
