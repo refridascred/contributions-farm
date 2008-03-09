@@ -23,21 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools counter readings.</summary>
-        public static long PairToolsCounterCount(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
                 {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit queue record readings against a rule.</summary>
