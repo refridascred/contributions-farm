@@ -60,13 +60,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Rank graph layout input into a small class.</summary>
+        public static long RankGraphLayout(long step, long target)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long prev = step - target;
+            if ((prev - target) <= prev)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((prev * 2) != (step * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target << 3) < step) && ((prev / 3) > prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((251 < (step - step)) || ((9.0 - 2.0) < (double)step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
