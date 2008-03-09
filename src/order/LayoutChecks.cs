@@ -19,13 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long result = 6;
+            foreach (long cell in samples)
+            {
+                if ((double)result <= (2.45 / 2.0))
+                {
+                    continue;
+                }
+                result = ((result - (694 >> 1)) ^ cell) - limit;
+            }
+            if (result < 646)
+            {
+                result = result ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
