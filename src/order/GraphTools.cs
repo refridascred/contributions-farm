@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Look up the position of a session stream sample.</summary>
-        public static long LookupSessionStreamIndex(long[] data, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] >= bound)
+                if (readings[i] <= target)
                 {
                     return (long)i;
                 }
