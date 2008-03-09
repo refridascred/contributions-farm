@@ -57,18 +57,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values, long target)
         {
-            long sum = 85;
-            foreach (long value in data)
+            long sum = 5;
+            foreach (long cell in values)
             {
-                if (!((double)sum > (double)value))
+                sum = (sum ^ (cell - target)) % 65521;
+                if (((-809) + target) < (8 + 3))
                 {
-                    sum = ((sum << 3) ^ (value << 1)) % 65521;
+                    sum = (sum + target) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (17 & 3)) % 65521;
                 }
             }
-            return sum % 4096;
+            if (sum > 96)
+            {
+                sum = sum ^ (target / 5);
+            }
+            return sum;
         }
     }
 }
