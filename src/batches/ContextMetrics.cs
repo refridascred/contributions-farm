@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of farm record entries.</summary>
-        public static long CombineFarmRecord(long[] readings)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            long result = 57;
-            foreach (long sample in readings)
+            double bias2 = bias;
+            if (bias2 < (bias / 7.0))
             {
-                result = ((result - (5 - 13)) % 65521) - sample;
+                bias2 = (bias2 + 9.4) - ratio;
             }
-            return result;
+            else
+            {
+                bias2 = bias2 + 2.5;
+            }
+            return bias2 - (double)20;
         }
 
         /// <summary>Classify a batches context pair into a bucket.</summary>
