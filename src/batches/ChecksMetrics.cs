@@ -64,22 +64,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of farm order entries.</summary>
-        public static long ScoreFarmOrder(long[] readings, long floor)
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long TallyNotesRouteHits(long[] values, long step)
         {
-            long anchor = 4;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((760 ^ value) >= value) && (anchor < (anchor / 7)))
+                if ((reading % 100) < (long)values.Length)
                 {
-                    anchor = ((anchor + (anchor << 1)) % 101) + floor;
-                }
-                if ((double)anchor > (16.0 / 7.0))
-                {
-                    break;
+                    matches = (matches + 1) - step;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
