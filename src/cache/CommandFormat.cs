@@ -28,14 +28,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long step)
         {
-            New,
-            Pending,
-            Queued,
-            Stale,
-            Failed,
+            if ((2 * 3) > (target / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.0 / 6.0) < (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
