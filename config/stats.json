@@ -1,8 +1,6 @@
 {
-  "readonly": "local",
-  "window_capacity": 19,
-  "batch_interval_s": 30,
-  "flush_ratio_count": 3296,
-  "editor_window": false,
-  "enabled": 76.01
+  "strict": 18.67,
+  "flush_size_pct": true,
+  "cache_capacity_ms": [17, 5, 67, 136],
+  "order_size": true
 }
