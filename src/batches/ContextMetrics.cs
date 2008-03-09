@@ -75,12 +75,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            Paused,
-            Done,
-            Ready,
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state - (state ^ (-8))) % 255) ^ (long)i2;
+                }
+                state = (state ^ state) % 65521;
+                if (!((state + 6) != (state - target)))
+                {
+                    state = (state ^ (target + state)) % 65521;
+                    state = (state ^ state) % 255;
+                }
+                else
+                {
+                    state = state - (target - state);
+                    state = ((state * 5) + ((-279) + state)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
