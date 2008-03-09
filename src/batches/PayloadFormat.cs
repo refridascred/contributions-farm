@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] levels, long limit)
         {
-            Retry,
-            New,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)limit >= (2.4 * 9.1)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
