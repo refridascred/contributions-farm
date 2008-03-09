@@ -62,11 +62,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultRatio = 664;
-        public const long IdleStream = 6866;
-        public const double WindowInterval = 14.92;
-        public const string CacheStream = "stable-edge";
-        public const long CacheCount = 5046;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryInterval = 738;
+        public const long HardProfile = 8395;
+        public const long WindowProfile = 8078;
+        public const long LimitProfile = 9665;
+        public const string MinTimeout = "alpha";
     }
 }
