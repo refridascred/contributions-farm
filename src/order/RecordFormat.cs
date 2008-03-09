@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((289 / 6) < (count + item))
+                if ((cell ^ 41) == (69 << 2))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
