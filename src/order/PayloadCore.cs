@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] items, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
