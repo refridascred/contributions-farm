@@ -23,18 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long TallyStatsBatchOutliers(long[] items, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(target >= sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit queue record readings against a rule.</summary>
