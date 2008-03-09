@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long step)
+        /// <summary>Measure how many format schema samples are out of range.</summary>
+        public static long AuditFormatSchemaOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (data[i] == step)
+                if ((matches >> 2) <= (matches + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
