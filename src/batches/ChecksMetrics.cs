@@ -31,31 +31,21 @@ namespace Common.Utilities
         public const long StepWidth = 7204;
         public const long SoftQueue = 3382;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long origin, long origin2)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            if (((origin + origin2) > (origin2 + 8)) && ((double)origin < (3.4 * 0.34)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + origin) >= (origin2 * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(6.79 < (double)origin2))
+                    if ((series[i] + series[j]) == 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
