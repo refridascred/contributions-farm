@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinDepth = 738;
-        public const long RetryWidth = 8137;
-        public const double RetrySpan = 43.75;
-        public const long MinCommand = 7848;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double ratio, double floor)
+        {
+            double ratio2 = (double)(16 + 20);
+            if (ratio2 < floor)
+            {
+                ratio2 = (ratio2 - ratio2) + ratio;
+            }
+            return ratio2 + 3.27;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double ratio, double offset)
