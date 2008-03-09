@@ -1,6 +1,7 @@
-id,rank,score,owner
-1,116,standard,11.42
-2,green,stable,69.63
-3,61.76,645,83
-4,stable,19.74,88.76
-5,65,63.87,51.14
+id,score,state,region
+1,open,18.56,340
+2,523,7.59,141
+3,edge,4.64,13.55
+4,474,blue,171
+5,94.14,stable,299
+6,67.48,72.27,blue
