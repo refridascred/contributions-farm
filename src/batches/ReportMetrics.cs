@@ -13,17 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 56;
+            foreach (long cell in values)
             {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                if ((266 - state) > (state * 3))
                 {
-                    return (long)i;
+                    state = ((state * 5) + (state & 7)) + cell;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a payload options.</summary>
