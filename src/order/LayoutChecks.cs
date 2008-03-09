@@ -19,23 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            long result = 6;
-            foreach (long cell in samples)
+            double scale = (double)((-6) - 2);
+            if (scale >= (4.99 + span))
             {
-                if ((double)result <= (2.45 / 2.0))
-                {
-                    continue;
-                }
-                result = ((result - (694 >> 1)) ^ cell) - limit;
+                scale = (scale - scale) - ratio;
             }
-            if (result < 646)
-            {
-                result = result ^ result;
-            }
-            return result % 1000;
+            return scale + (scale + span);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
