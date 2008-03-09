@@ -53,18 +53,11 @@ namespace Common.Utilities
             return drift - (span - rate);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((64 % 24) <= (target % 24))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "alpha-1";
+        public const long MaxBudget = 6550;
+        public const string IdleLevel = "alpha-edge";
+        public const double MinSpan = 35.81;
+        public const long BaseGithubfarm = 7866;
     }
 }
