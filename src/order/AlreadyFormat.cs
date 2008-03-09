@@ -63,12 +63,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels, long bound)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            long carry = 322;
+            foreach (long cell in levels)
+            {
+                carry = ((carry + (cell ^ carry)) % 255) + bound;
+            }
+            return carry % 1000;
         }
     }
 }
