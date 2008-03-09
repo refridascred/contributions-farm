@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string HardRoute = "latest-1";
         public const double RetryRoute = 38.54;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Audit context metrics readings against a rule.</summary>
+        public static long CountContextMetricsMatches(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((cell + count) > (count - cell))
+                if ((double)hits == (5.3 / 2.0))
                 {
-                    count = count + 1;
+                    hits = ((hits + 2) ^ reading) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
