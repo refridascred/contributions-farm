@@ -68,9 +68,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 7858;
-        public const long IdleContext = 7191;
-        public const long LimitContext = 7433;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
