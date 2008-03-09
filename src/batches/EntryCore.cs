@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long target)
+        /// <summary>Locate a stream batch reading by value.</summary>
+        public static long SeekStreamBatchIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item << 3) != (target + (long)items.Length))
+                if (series[i] == target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
