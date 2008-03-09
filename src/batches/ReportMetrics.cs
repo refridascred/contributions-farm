@@ -27,11 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Retry,
+            Stale,
+            Dropped,
+            Closed,
         }
     }
 }
