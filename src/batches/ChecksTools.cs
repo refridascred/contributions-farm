@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Active,
-            Locked,
-            Stale,
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a queue header.</summary>
