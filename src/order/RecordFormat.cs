@@ -55,23 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double scale, double span)
+        /// <summary>Validate metric buffer readings against a bound.</summary>
+        public static bool CheckMetricBufferBounds(long[] values, long limit)
         {
-            double ratio = (double)(7 >> 5);
-            if (ratio > (double)565)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                ratio = ratio + (ratio + scale);
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (span * 7.03);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (5.6 * 1.01)) + (double)(long)i;
-            }
-            return ratio + scale;
+            return stale;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
