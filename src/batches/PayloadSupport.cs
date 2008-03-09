@@ -22,20 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double bias)
-        {
-            double ratio = 14.0;
-            if (ratio < (bias - 5.1))
-            {
-                ratio = (ratio - (double)53) - scale;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstSpan = "stable-edge";
+        public const long CacheWindow = 6120;
+        public const double HardWindow = 2.25;
+        public const double RetryWindow = 16.31;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
