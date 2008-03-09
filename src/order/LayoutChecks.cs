@@ -39,14 +39,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] data, long limit)
         {
-            Active,
-            Paused,
-            Idle,
-            Retry,
-            Stale,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of tools order readings.</summary>
