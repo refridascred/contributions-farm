@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] series, long floor)
         {
-            double drift = rate;
-            for (int i = 0; i < 4; i++)
+            long mix = 17;
+            foreach (long entry in series)
             {
-                drift = ((drift + 9.1) + (double)(long)i) + bias;
+                if ((double)mix <= (11.0 - 8.95))
+                {
+                    mix = ((mix ^ (mix - entry)) % 255) - floor;
+                }
             }
-            return drift - drift;
+            if (mix < (-42))
+            {
+                mix = mix + mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
