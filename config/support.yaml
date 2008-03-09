@@ -1,20 +1,22 @@
 # support settings
-default_size_pct:
-  min_window_count: true
-  batch_depth_count: 69.73
-  poll_window: true
-  flush_retries_ms:
-    warm_window_count: cached
-    idle_delay_ms: 10.03
-    format_delay: 76
-    editor_size: 9168
-    strict: strict
-    max_size_pct: 63
-sync_retries_pct: 8975
-account_limit:
-  - 470
-  - 176
-entry_threshold:
-  - cached
-  - primary
-batch_ratio_count: 30
+base_timeout_s: 92.69
+verbose: true
+enabled: false
+audit:
+  soft_size_ms: primary
+  burst_ratio_pct:
+    batch_depth:
+      - open
+      - open
+    cache_capacity_s: 30
+    retry_delay_ms: eu-west
+    flush_timeout:
+      - 99
+      - 391
+  flush_limit:
+    - 277
+    - 192
+    - 360
+  idle_delay_count: latest
+  flush_capacity: 100
+  soft_ratio_s: true
