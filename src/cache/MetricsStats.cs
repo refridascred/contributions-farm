@@ -47,12 +47,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            Dropped,
-            Locked,
-            Draft,
+            long acc = 789;
+            foreach (long sample in levels)
+            {
+                acc = (acc + (acc + sample)) % 97;
+                if ((double)sample > (double)acc)
+                {
+                    acc = (acc << 2) ^ (sample / 6);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (sample - 315)) % 65521;
+                }
+            }
+            if (acc < (-7))
+            {
+                acc = (acc << 3) ^ (acc ^ acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
