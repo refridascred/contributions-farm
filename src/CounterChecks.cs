@@ -70,12 +70,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] items)
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((7.2 * 1.13) >= (double)item) || ((count << 1) < item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
