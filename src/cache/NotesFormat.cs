@@ -14,31 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((262 + step) != (43 << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit ^ 0) >= (limit / 8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (step / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
