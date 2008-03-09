@@ -73,9 +73,18 @@ namespace Common.Utilities
         public const long WindowRatio = 9189;
         public const long IdleMetric = 7458;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 80.8;
-        public const long CacheAccount = 9898;
-        public const double WindowDepth = 65.73;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound % 60) > (entry >> 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
