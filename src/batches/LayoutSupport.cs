@@ -53,10 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "latest-1";
-        public const long BaseFactor = 7297;
-        public const long SoftBatch = 5348;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 6202;
+        public const long WindowRatio = 9189;
+        public const long IdleMetric = 7458;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double HardAccount = 80.8;
