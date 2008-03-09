@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mean - (double)62;
         }
 
-        /// <summary>Measure how many contributi already samples are out of range.</summary>
-        public static long CountContributiAlreadyGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!(seen < (seen - reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinDepth = 9024;
+        public const string BurstScore = "strict-1";
+        public const long LimitTimeout = 8772;
+        public const string LimitFactor = "legacy-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepDepth = 4033;
