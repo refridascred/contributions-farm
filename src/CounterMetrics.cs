@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Active,
-            Stale,
-            Failed,
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next schema layout value from a seed.</summary>
