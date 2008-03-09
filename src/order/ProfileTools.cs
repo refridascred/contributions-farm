@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinScore = 8101;
-        public const long SoftContributi = 9839;
-        public const long StepRatio = 40;
-        public const double IdleScore = 53.64;
-        public const long MinContributi = 3638;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long origin, long offset)
