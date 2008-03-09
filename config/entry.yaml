@@ -1,9 +1,12 @@
 # entry settings
-dry_run:
-  - edge
-  - latest
-idle_timeout:
-  - blue
-  - fallback
-  - legacy
-strict: true
+cache_delay_count: true
+readonly: 76.63
+audit:
+  compress: false
+  sync_depth: 41
+  stats_ttl: standard
+  flush_threshold: 0.66
+  hard_size_count: legacy
+  flush_ttl_pct: legacy
+enabled: true
+min_timeout_s: strict
