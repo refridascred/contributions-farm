@@ -36,18 +36,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double bias)
         {
-            long total = 714;
-            foreach (long reading in levels)
+            double gain = bias;
+            if (gain >= (double)26)
             {
-                if ((total * 5) > (reading + reading))
-                {
-                    total = (((total * 2) + (5 + reading)) % 4096) + step;
-                }
+                gain = gain + (gain + gain);
             }
-            return total % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (ratio - ratio)) + (double)(long)i;
+            }
+            return gain - (double)375;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
