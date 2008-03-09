@@ -1,12 +1,15 @@
 {
-  "max_depth_pct": 500,
-  "account_delay": true,
-  "burst_ttl": {
-    "sync_capacity": true,
-    "poll_delay_ms": 8043,
-    "burst_depth_pct": true
+  "hard_capacity_s": {
+    "idle_depth_pct": false,
+    "readonly": ["primary", "open"],
+    "burst_retries_count": 28,
+    "persist": 100,
+    "retry_ttl_count": 30,
+    "batch_timeout_ms": "cached"
   },
-  "compress": "staging",
-  "audit": 6621,
-  "dry_run": false
+  "support_ratio": false,
+  "batch_threshold_pct": "cached",
+  "flush_ratio_s": "legacy",
+  "cache_delay_ms": false,
+  "sync_threshold_pct": ["legacy", "primary"]
 }
