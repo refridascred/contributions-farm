@@ -13,12 +13,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long limit)
         {
-            Stale,
-            Dropped,
-            Active,
+            if ((step + step) > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step << 2) == (step & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit << 1) != (step ^ step)) || ((5 + limit) >= (step - 883)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step <= (limit - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
