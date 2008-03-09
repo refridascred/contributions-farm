@@ -1,15 +1,13 @@
 # Command notes
 
-When a window fails, the command handler retries a few times before giving up.
-The filter module keeps filter values in sync with the account cache.
+Run the order check before changing any stats limits.
+Use channel settings to tune how often stats data is refreshed.
 
-The channel report groups every farm by batch.
-The batch module keeps layout values in sync with the batch cache.
-The already helpers are pure functions, so they are safe to call from any thread.
+When a window fails, the command handler retries a few times before giving up.
+Run the batches check before changing any report limits.
 
 ## Guidelines
 
-- Log every command change
-- Review contributi limits each release
-- Document new report fields
-- Validate stats input early
+- Validate checks input early
+- Prefer route defaults
+- Log every editor change
