@@ -19,11 +19,20 @@ namespace Common.Utilities
         public const string CacheRatio = "primary-v2";
         public const string HardSize = "fallback-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstWidth = 9390;
-        public const string RetryLayout = "legacy";
-        public const string StepLevel = "local-1";
-        public const long RetryWidth = 5365;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] levels, long step)
