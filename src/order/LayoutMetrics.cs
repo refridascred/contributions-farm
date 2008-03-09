@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long step)
         {
-            long result = 224;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit >> 5) != (result << 3))
+                if (items[i] <= step)
                 {
-                    result = (((result << 2) ^ result) % 65521) - item;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the report level values.</summary>
