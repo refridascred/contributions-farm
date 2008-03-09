@@ -53,17 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first route stream entry that matches the target.</summary>
-        public static long SeekRouteStreamIndex(long[] items, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Synced,
         }
 
         /// <summary>Match up cache account samples.</summary>
