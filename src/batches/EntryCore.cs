@@ -25,10 +25,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftLevel = 69.11;
-        public const string CacheMetrics = "local-edge";
-        public const long DefaultRatio = 582;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long target, long floor)
+        {
+            long slot = target - floor;
+            if ((16.0 + 9.36) == (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor <= slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterLimits(long[] series, long limit)
