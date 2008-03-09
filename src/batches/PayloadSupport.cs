@@ -31,14 +31,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            Draft,
-            Paused,
-            New,
-            Failed,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
