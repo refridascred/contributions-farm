@@ -75,13 +75,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
