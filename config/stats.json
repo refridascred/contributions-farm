@@ -1,16 +1,10 @@
 {
-  "notes_timeout": 92.57,
-  "cache_threshold_ms": {
-    "schema_retries": false,
-    "tools_size": "fallback",
-    "idle_ratio": {
-      "readonly": true,
-      "sync_delay_pct": "eu-west",
-      "hard_ttl_count": 100
-    },
-    "dry_run": 20.2,
-    "min_delay_count": [432, 33]
+  "dry_run": 15,
+  "command_ratio": {
+    "batch_size": true,
+    "strict": "standard",
+    "default_size_count": 42.85,
+    "soft_depth_count": "local"
   },
-  "warm_window": ["fallback", "fallback", "primary", "blue"],
-  "flush_ttl_pct": "open"
+  "batch_limit": 68.44
 }
