@@ -14,23 +14,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long score = 6;
-            foreach (long item in readings)
+            long mark = 458;
+            foreach (long value in samples)
             {
-                score = (score - item) - target;
-                if ((item + item) < (item * 4))
+                if (!((value & 7) != (value * 3)))
                 {
-                    score = (score << 3) ^ (item + 2);
-                }
-                else
-                {
-                    score = (score - score) % 1000;
+                    mark = (mark - (value >> 3)) % 65521;
                 }
             }
-            return score;
+            if (mark > 0)
+            {
+                mark = mark + (mark / 2);
+            }
+            return mark;
         }
 
         /// <summary>Hold a filter info.</summary>
