@@ -13,26 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 34;
-            foreach (long cell in values)
-            {
-                if ((1.6 - 8.13) <= (double)acc)
-                {
-                    acc = ((acc * 4) + acc) % 65521;
-                }
-                if (((cell & 3) <= cell) || ((3.5 + 1.4) <= (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 64)
-            {
-                acc = (acc * 4) + (acc * 2);
-            }
-            return acc;
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define route limits and defaults.</summary>
