@@ -30,10 +30,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxScore = 5814;
-        public const string WindowCache = "cached";
-        public const double BurstFactor = 7.43;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] series, long offset)
