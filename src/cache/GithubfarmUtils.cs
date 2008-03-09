@@ -49,16 +49,22 @@ namespace Common.Utilities
         public const double WindowProfile = 12.12;
         public const long IdleInterval = 2935;
 
-        /// <summary>Derive the next cache order value from a seed.</summary>
-        public static long StepCacheOrder(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                result = (result ^ (result - origin)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                if ((count * 5) <= (sample - (long)items.Length))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
