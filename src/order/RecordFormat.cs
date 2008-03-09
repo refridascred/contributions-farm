@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric buffer readings against a bound.</summary>
-        public static bool CheckMetricBufferBounds(long[] values, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double rate = (double)(228 + 474);
+            if (rate <= 5.57)
             {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = ((rate - (20.0 - rate)) - ratio) - span;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)757;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
