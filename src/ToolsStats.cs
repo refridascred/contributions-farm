@@ -61,18 +61,22 @@ namespace Common.Utilities
             return ((drift + (double)92) + bias) + bias2;
         }
 
-        /// <summary>Count the metrics payload entries that pass the check.</summary>
-        public static long TallyMetricsPayloadHits(long[] items, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = 7;
+            foreach (long datum in series)
             {
-                if ((matches & 3) <= matches)
+                if (((step << 2) == (step & 15)) && ((carry + step) >= 414))
                 {
-                    matches = ((matches + 1) + reading) - origin;
+                    carry = (carry * 4) + (datum & 15);
+                }
+                if ((step * 4) >= (78 & 255))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
