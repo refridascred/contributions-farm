@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Dropped,
-            Paused,
-            Active,
-            Ready,
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
