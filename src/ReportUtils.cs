@@ -14,22 +14,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit record buffer readings against a rule.</summary>
-        public static long CountRecordBufferGaps(long[] data, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((cell - origin) > (origin - origin)) || ((origin - origin) > origin)))
+                if (levels[i] == bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
