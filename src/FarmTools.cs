@@ -33,17 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
