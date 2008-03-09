@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] items, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = 60;
+            foreach (long entry in levels)
             {
-                if ((matches & 7) > (value * 5))
+                if ((entry ^ entry) > (mix << 3))
                 {
-                    matches = (matches + 2) + floor;
+                    mix = mix + (28 << 3);
                 }
             }
-            return matches;
+            if (mix < 864)
+            {
+                mix = (mix - (mix >> 3)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of already batches readings.</summary>
