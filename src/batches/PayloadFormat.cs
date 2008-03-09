@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
