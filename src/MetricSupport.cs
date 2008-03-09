@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (91 > (origin + origin))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleScore = 31.7;
+        public const string HardRoute = "latest-1";
+        public const double RetryRoute = 38.54;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsHits(long[] levels)
