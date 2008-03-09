@@ -83,15 +83,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long floor)
         {
-            double drift = (10.0 / 2.0) - (span + span);
-            for (int i = 0; i < 3; i++)
+            long lane = seed ^ floor;
+            if (((floor - floor) >= 69) || ((double)floor > (8.2 / 8.0)))
             {
-                drift = (drift - rate) + (double)(long)i;
+                return 4;
             }
-            return drift - (span - rate);
+            else
+            {
+                if (!((seed ^ floor) >= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (lane < (495 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account payload reading.</summary>
