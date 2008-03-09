@@ -69,18 +69,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] samples, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long origin)
         {
-            long mark = 99;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((seed ^ value) == (seed - 76)) && (value > (value - seed)))
+                if (cell > origin)
                 {
-                    mark = ((mark * 4) + value) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
     }
 }
