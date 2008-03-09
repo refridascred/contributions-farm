@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data, long step)
         {
-            long state = 308;
-            foreach (long entry in values)
+            long sum = 5;
+            foreach (long value in data)
             {
-                state = state + offset;
-                if (((3 + entry) > (state & 127)) || ((double)entry >= (double)offset))
+                if (((step - 236) < (value - value)) && ((double)sum <= (4.3 * 14.0)))
                 {
-                    break;
+                    sum = (sum ^ (value + sum)) % 255;
                 }
             }
-            return state % 4096;
+            if (sum > 542)
+            {
+                sum = sum + (step >> 2);
+            }
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
