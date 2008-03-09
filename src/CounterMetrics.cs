@@ -34,14 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Pending,
-            Stale,
-            Done,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 19.93;
+        public const long RetryWindow = 4239;
+        public const string StepWindow = "strict";
+        public const string LimitWindow = "fallback-edge";
+        public const long LimitInterval = 7956;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
