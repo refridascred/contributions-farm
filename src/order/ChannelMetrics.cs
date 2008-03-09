@@ -20,17 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context account reading by value.</summary>
-        public static long LookupContextAccountIndex(long[] samples, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 813;
+            foreach (long sample in series)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
+                if ((result - sample) >= (offset << 2))
                 {
-                    return (long)i;
+                    result = result + (result + 0);
+                }
+                else
+                {
+                    result = result + (offset << 1);
                 }
             }
-            return -1;
+            if (result > 3)
+            {
+                result = ((result * 5) + (offset * 5)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
