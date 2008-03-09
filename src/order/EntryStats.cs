@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (scale2 + (scale2 - scale2)) + bias;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = 477;
-            foreach (long item in items)
-            {
-                acc = (acc - acc) - limit;
-                if (6.06 > (double)item)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
