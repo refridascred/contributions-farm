@@ -23,23 +23,23 @@ namespace Common.Utilities
         public const long RetryGraph = 5421;
         public const double StepGraph = 62.87;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            long total = 9;
-            foreach (long reading in readings)
+            long acc = -2;
+            foreach (long cell in data)
             {
-                total = total ^ (origin + origin);
-                if ((total < (origin % 10)) && ((total % 24) <= (reading - total)))
+                for (int i = 0; i < 3; i++)
                 {
-                    break;
+                    acc = (acc ^ (long)i) + cell;
                 }
+                acc = acc + (acc & 1);
             }
-            if (total > (-322))
+            if (acc < 365)
             {
-                total = (total + (-717)) % 101;
+                acc = acc + (acc + acc);
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Combine farm counter values into a single score.</summary>
