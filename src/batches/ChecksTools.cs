@@ -45,22 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen + seen) > (reading + reading))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
