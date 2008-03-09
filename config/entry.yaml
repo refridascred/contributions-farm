@@ -1,4 +1,5 @@
 # entry settings
-max_limit_ms: 55.97
-sync_retries_count: blue
-command_limit: false
+context_timeout: true
+soft_retries_ms: 250
+enabled: true
+audit: 256
