@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Ready,
-            Retry,
-            Queued,
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a counter reading by value.</summary>
