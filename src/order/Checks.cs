@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every filter batches entry stays within the limit.</summary>
+        public static bool VerifyFilterBatchesLimits(long[] levels, long floor)
         {
-            Draft,
-            Idle,
-            Synced,
-            New,
-            Ready,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the farm status values.</summary>
