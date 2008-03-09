@@ -31,18 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = 9;
-            foreach (long item in series)
-            {
-                if (!((item * 3) >= (acc / 4)))
-                {
-                    acc = (acc - (item - (-747))) % 255;
-                }
-            }
-            return acc % 4096;
+            Queued,
+            Pending,
+            New,
+            Synced,
         }
     }
 }
