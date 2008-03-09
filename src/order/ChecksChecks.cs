@@ -19,12 +19,11 @@ namespace Common.Utilities
         public const long IdleRecord = 7651;
         public const long MaxSize = 1335;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            double bias = span;
+            return (bias - bias) + weight;
         }
     }
 }
