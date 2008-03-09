@@ -21,25 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long offset, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long edge = offset ^ step;
-            if (edge <= (edge >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step >= (edge ^ edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Failed,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
