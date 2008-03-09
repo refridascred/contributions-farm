@@ -1,12 +1,16 @@
 # entry settings
-max_ratio_ms:
-  window_delay: 8974
+soft_ratio_s: 60
+hard_depth: 77
+idle_capacity_count:
+  - 341
+  - 285
+  - 429
+  - 464
+idle_window: standard
+sync_timeout:
+  burst_depth_ms: 44
   audit:
-    - primary
-    - stable
-    - stable
-    - green
-  batch_ratio_pct: 60
-strict: true
-flush_window_s: 20
-cache_interval: 36.92
+    - 402
+    - 313
+  tools_threshold: 274
+already_ratio: 35.73
