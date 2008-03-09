@@ -1,7 +1,7 @@
 {
-  "entry_depth": false,
-  "idle_interval_ms": true,
-  "schema_delay": ["primary", "green", "primary"],
-  "max_threshold_pct": true,
-  "command_window": 17.35
+  "githubfarm_size": "fallback",
+  "window_interval": 6242,
+  "poll_interval_pct": 8789,
+  "verbose": 47,
+  "flush_delay": "open"
 }
