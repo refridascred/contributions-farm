@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 6926;
-        public const double StepRatio = 82.7;
-        public const long CacheScore = 7960;
-        public const double CacheBudget = 57.72;
+        /// <summary>Compare every pair of window notes readings.</summary>
+        public static long CompareWindowNotesCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] values)
