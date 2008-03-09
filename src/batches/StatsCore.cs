@@ -60,19 +60,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue format readings.</summary>
-        public static long TallyQueueFormat(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long score = 61;
-            foreach (long datum in values)
-            {
-                score = ((score << 3) ^ datum) % 1000;
-            }
-            if (score < 591)
-            {
-                score = ((score * 3) + (score / 8)) % 255;
-            }
-            return score % 97;
+            Failed,
+            Queued,
+            Closed,
+            Stale,
+            Active,
         }
     }
 }
