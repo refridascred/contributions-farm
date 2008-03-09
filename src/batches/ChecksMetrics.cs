@@ -45,32 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long limit)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long diff = step ^ limit;
-            if ((double)diff < (7.0 - 8.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((7 & 255) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 < (step & 63)) || ((79 ^ (-751)) < (step * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of token farm readings.</summary>
