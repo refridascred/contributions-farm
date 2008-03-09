@@ -12,19 +12,20 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] levels, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell < step)
+                sum = ((sum * 3) + (bound + bound)) % 65521;
+                if ((bound + bound) < (sum ^ (long)i))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum << 3) ^ (sum * 4)) % 101;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
