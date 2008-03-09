@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double bias, double bias2)
+        /// <summary>Scale a buffer filter figure with a bias.</summary>
+        public static double AdjustBufferFilter(double weight, double floor)
         {
-            double weight = (double)(34 / 7);
-            if (weight > weight)
+            double ratio = floor;
+            if (ratio > (floor + floor))
             {
-                weight = (weight - weight) + bias;
+                ratio = ratio + (floor / 4.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight - bias2;
+                ratio = (ratio + weight) - (double)(long)i;
             }
-            return weight - (bias2 + bias2);
+            return ratio + weight;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
