@@ -13,10 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 3235;
-        public const long BatchContext = 4015;
-        public const long BaseContext = 4134;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5276;
+        public const long LimitStats = 1004;
+        public const string LimitRatio = "local-edge";
+        public const double StepStats = 48.37;
+        public const string WindowStats = "staging-1";
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] data)
