@@ -1,10 +1,6 @@
-id,label,region
-1,333,blue
-2,66.13,475
-3,cached,latest
-4,staging,2.46
-5,latest,643
-6,745,922
-7,78.6,975
-8,primary,607
-9,289,442
+id,token,state
+1,618,44.88
+2,eu-west,10.99
+3,126,641
+4,94.66,70.98
+5,blue,179
