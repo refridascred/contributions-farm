@@ -82,12 +82,13 @@ namespace Common.Utilities
         public const string BatchSpan = "staging-1";
         public const double WindowDepth = 72.92;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Stale,
-            Idle,
-            Ready,
+            New,
+            Pending,
+            Failed,
+            Retry,
         }
     }
 }
