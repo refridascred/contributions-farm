@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
+            public bool Mode { get; set; }
             public long Rank { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
