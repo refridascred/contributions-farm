@@ -79,11 +79,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
-        public static double SmoothGithubfarmCounter(double bias, double bias2)
-        {
-            double load = bias2;
-            return (load - (bias2 + 7.68)) + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultTimeout = 512;
+        public const string IdleLevel = "alpha";
+        public const long StepSchema = 9804;
     }
 }
