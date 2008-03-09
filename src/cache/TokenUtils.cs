@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long MinChecks = 4053;
         public const long IdleChecks = 7671;
 
-        /// <summary>Combine record schema values into a single score.</summary>
-        public static long CombineRecordSchema(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long result = 6;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 2) + (entry + entry)) % 65521;
-                if ((6.0 / 4.0) >= (double)(long)series.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
