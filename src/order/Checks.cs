@@ -36,27 +36,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series, long offset)
+        /// <summary>Audit route profile readings against a rule.</summary>
+        public static long MeasureRouteProfileOutliers(long[] values)
         {
-            long carry = 94;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = (carry << 2) ^ cell;
-                if ((double)804 == (double)cell)
+                if ((15.0 <= (double)value) && (((tally + value) >= (value >> 2)) || (tally >= (tally ^ tally))))
                 {
-                    carry = ((carry << 3) ^ (cell % 10)) % 1000;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (cell + carry)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            if (carry > 404)
-            {
-                carry = (carry * 4) + offset;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
