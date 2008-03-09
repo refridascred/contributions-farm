@@ -14,39 +14,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a support checks pair into a bucket.</summary>
-        public static long SortSupportChecks(long floor, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long span = floor + bound;
-            if (!(floor < (span & 31)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor <= (double)7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound <= span) && (span <= (bound + span)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every payload batch entry stays within the limit.</summary>
