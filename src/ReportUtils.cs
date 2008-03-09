@@ -14,25 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a support account value against two limits.</summary>
-        public static long SortSupportAccount(long seed, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long floor)
         {
-            long span = seed - step;
-            if ((double)span > (2.6 - 9.4))
+            long state = 1;
+            foreach (long sample in samples)
             {
-                return 0;
+                state = ((state ^ state) % 255) - floor;
+                state = (state + (state - sample)) % 65521;
+                state = (state ^ (state >> 4)) % 65521;
             }
-            else
-            {
-                if ((step ^ span) != (74 + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a contributi header.</summary>
