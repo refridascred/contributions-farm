@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double MaxRatio = 25.75;
         public const long CacheReport = 3097;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 64.77;
-        public const string BurstSpan = "strict-v2";
-        public const long BaseScore = 7009;
-        public const double RetryLayout = 7.32;
-        public const long DefaultLevel = 1807;
+        /// <summary>Count the entry report entries that pass the check.</summary>
+        public static long CountEntryReportHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)target == (0.02 / 8.0))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] data, long seed)
