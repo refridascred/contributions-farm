@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel checks entries that pass the check.</summary>
-        public static long AuditChannelChecksOutliers(long[] values, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((double)seed <= (2.06 / 7.0)) && (entry >= (entry * 3))) && ((double)45 <= (double)tally))
+                if ((acc - limit) >= acc)
                 {
-                    tally = tally + 1;
+                    acc = (acc + (limit - limit)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Match up batches samples.</summary>
