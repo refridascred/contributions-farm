@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight - (bias2 + bias2);
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data, long offset)
         {
-            Active,
-            Retry,
-            Draft,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((951 + tally) != (tally << 1))
+                {
+                    tally = ((tally + 1) + reading) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
