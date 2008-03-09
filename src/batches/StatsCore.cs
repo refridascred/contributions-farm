@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a session already counter forward.</summary>
-        public static long StepSessionAlready(long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long bound, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            long step = bound - limit;
+            if ((bound < (bound / 5)) && ((step >> 2) == ((-238) + bound)))
             {
-                if (!!(36 >= (sum << 3)))
+                return 7;
+            }
+            else
+            {
+                if ((step + bound) != (step + limit))
                 {
-                    sum = (sum << 2) ^ sum;
-                }
-                if (target >= (target - target))
-                {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    sum = sum - target;
+                    return 8;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
