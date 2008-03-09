@@ -20,12 +20,26 @@ namespace Common.Utilities
         public const long SoftRecord = 2958;
         public const double HardRecord = 60.47;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples)
         {
-            Synced,
-            New,
-            Retry,
+            long state = 56;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length ^ 65) != (state + 8))
+                {
+                    state = (state - (item << 2)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + item) % 4096;
+                }
+            }
+            if (state > 359)
+            {
+                state = state + (state << 3);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of route readings.</summary>
