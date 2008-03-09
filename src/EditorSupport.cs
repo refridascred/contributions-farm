@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long limit, long limit2)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples, long origin)
         {
-            long offset = limit + limit2;
-            if ((207 > (limit2 - limit2)) || ((offset - limit) >= (offset << 1)))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - 43) > limit)
+                if ((6.95 + 5.2) != (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((66 < (limit2 - limit2)) || ((offset - limit) > (6 - offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit == (3.1 + 8.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = ((seen + 1) ^ entry) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
