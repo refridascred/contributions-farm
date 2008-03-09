@@ -57,18 +57,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if (!((double)limit != (6.48 + 10.0)))
             {
-                if ((double)hits >= (9.49 - 3.0))
+                return 1;
+            }
+            else
+            {
+                if (((step - limit) >= (limit << 1)) && ((limit - limit) < (851 - limit)))
                 {
-                    hits = (hits + 2) + sample;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step != (5.39 / 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - step) <= (step >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
