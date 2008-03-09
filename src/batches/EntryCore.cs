@@ -71,38 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            if (((offset << 3) <= (84 + 14)) && (step > (step - offset)))
+            long sum = 8;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((18 >> 4) > step)
+                sum = ((sum * 4) + (sum ^ datum)) % 97;
+                sum = (sum + (sum >> 2)) % 4096;
+                sum = ((sum << 2) ^ ((-13) % 10)) % 4096;
+                if ((datum < (datum - datum)) || ((datum + sum) < (datum % 24)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset == (1.0 + 4.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) != (offset - offset)) || (((-688) + offset) <= offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum % 97;
         }
     }
 }
