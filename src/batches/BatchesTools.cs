@@ -23,16 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = (anchor * 4) + (anchor + target);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                total = ((total * 4) + total) % 97;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
     }
 }
