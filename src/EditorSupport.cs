@@ -38,11 +38,19 @@ namespace Common.Utilities
             return (bias + bias) + span;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftTimeout = 3023;
-        public const long CacheSession = 8780;
-        public const long SoftDepth = 8955;
-        public const long BaseTimeout = 3122;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((value & 3) == ((long)levels.Length + 547)) || ((1.0 / 2.0) > (double)value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long SeriesFormat(long offset)
