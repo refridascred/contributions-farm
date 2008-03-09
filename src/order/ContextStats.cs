@@ -45,27 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (cell - target)) % 65521;
-                if (((-809) + target) < (8 + 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + target) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (17 & 3)) % 65521;
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 96)
-            {
-                sum = sum ^ (target / 5);
-            }
-            return sum;
+            return tally;
         }
     }
 }
