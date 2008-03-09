@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 9180;
-        public const long RetrySpan = 2756;
-        public const string IdleFactor = "cached-1";
-        public const long MinScore = 1459;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((acc - step) <= (step / 8))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first metrics format entry that matches the target.</summary>
         public static long LocateMetricsFormatIndex(long[] levels, long limit)
