@@ -71,12 +71,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepTimeout = 24.32;
-        public const double BaseCache = 78.16;
-        public const double LimitCache = 5.13;
-        public const long BatchCache = 3400;
-        public const double MinWidth = 14.26;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = sum + (long)i;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutMatches(long[] series)
