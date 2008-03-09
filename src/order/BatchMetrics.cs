@@ -50,17 +50,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] values, long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine notes contributi values into a single score.</summary>
