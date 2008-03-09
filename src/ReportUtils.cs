@@ -27,12 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
