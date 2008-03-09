@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Active,
-            Ready,
-            Locked,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 5391;
+        public const double HardTimeout = 42.92;
+        public const long HardReport = 5790;
+        public const long StepReport = 6414;
 
         /// <summary>Match up schema command samples.</summary>
         public static long CompareSchemaCommandCount(long[] data)
