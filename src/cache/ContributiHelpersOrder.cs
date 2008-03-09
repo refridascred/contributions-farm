@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 3884;
-        public const string BurstBudget = "fallback-1";
-        public const long MaxGraph = 4049;
-        public const long CacheGraph = 3162;
-        public const long BurstLevel = 5767;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] items)
+        {
+            long mark = 79;
+            foreach (long cell in items)
+            {
+                mark = (mark ^ (mark >> 2)) ^ cell;
+                mark = (mark + (95 ^ (long)items.Length)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
