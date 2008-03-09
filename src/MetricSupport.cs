@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 5988;
+        public const double LimitSpan = 47.11;
+        public const long BurstTimeout = 1170;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long target, long origin)
