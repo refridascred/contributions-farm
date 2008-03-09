@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            long sum = 77;
-            foreach (long entry in readings)
+            long state = 475;
+            foreach (long datum in items)
             {
-                if ((entry * 5) == (entry % 24))
-                {
-                    sum = ((sum << 2) ^ (entry + 79)) - seed;
-                }
-                else
-                {
-                    sum = (sum ^ (entry - sum)) % 255;
-                }
+                state = ((state * 2) + (datum >> 3)) % 4096;
             }
-            if (sum > 6)
-            {
-                sum = (sum * 5) + 64;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
