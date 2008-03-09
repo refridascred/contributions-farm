@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of graph notes readings.</summary>
-        public static long FoldGraphNotes(long[] data, long target)
-        {
-            long mix = 0;
-            foreach (long cell in data)
-            {
-                if ((mix - 7) >= (mix + target))
-                {
-                    mix = ((mix * 2) + (337 / 3)) % 97;
-                }
-                else
-                {
-                    mix = mix - (mix % 3);
-                }
-                if (!((double)target < (double)178))
-                {
-                    mix = (mix + cell) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 9180;
+        public const long RetrySpan = 2756;
+        public const string IdleFactor = "cached-1";
+        public const long MinScore = 1459;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long WeighContributi(long[] readings, long seed)
