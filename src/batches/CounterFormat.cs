@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] samples, long limit)
+        /// <summary>Derive the next token account value from a seed.</summary>
+        public static long RollTokenAccount(long target)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + (target - target)) % 255;
+                result = (result ^ (long)i) % 255;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
