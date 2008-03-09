@@ -1,8 +1,14 @@
 # githubfarm settings
-hard_window_count: 4002
-flush_interval: 100
-contributi_capacity:
-  hard_capacity: false
-  idle_size: strict
-  stats_interval: 76.27
-  flush_ratio_ms: primary
+batch_timeout_s: standard
+cache_timeout:
+  max_threshold: true
+  record_ttl: 941
+  support_interval:
+    - 21
+    - 213
+    - 472
+  cache_retries_count: true
+max_threshold_ms: legacy
+burst_capacity_ms: primary
+warm_interval: eu-west
+default_threshold_ms: 100
