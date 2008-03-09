@@ -30,12 +30,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 1305;
-        public const long CacheDepth = 8086;
-        public const long SoftOrder = 3506;
-        public const string DefaultBudget = "strict";
-        public const long WindowOrder = 5430;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Queued,
+            Failed,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] readings)
