@@ -1,7 +1,8 @@
 {
-  "counter_depth": [284, 245],
-  "account_window": false,
-  "persist": "legacy",
-  "route_size": 3162,
-  "compress": true
+  "audit": 43.36,
+  "burst_ratio": ["green", "eu-west", "open"],
+  "readonly": "open",
+  "report_window": "latest",
+  "burst_timeout_s": 77.31,
+  "flush_capacity": "standard"
 }
