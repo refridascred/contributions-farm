@@ -19,26 +19,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long anchor = 89;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor ^ ((long)values.Length << 2);
-                }
-                else
-                {
-                    anchor = anchor + (item & 127);
-                }
-                if (!((double)item != (0.55 * 8.83)))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a queue entry.</summary>
