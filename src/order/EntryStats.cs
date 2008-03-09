@@ -54,18 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] series, long limit)
+        /// <summary>Locate a profile command reading by value.</summary>
+        public static long LocateProfileCommandIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit - seen) <= (sample + 833))
+                if (items[i] > offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
