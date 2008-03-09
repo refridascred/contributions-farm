@@ -13,14 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            Draft,
-            New,
-            Dropped,
-            Active,
-            Ready,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen == (10.0 * 5.0))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
