@@ -62,11 +62,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstFactor = 1196;
-        public const double MinInterval = 18.09;
-        public const string DefaultMetrics = "legacy-v2";
-        public const double RetryMetrics = 0.63;
-        public const long WindowMetrics = 6504;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((-523) << 3) <= reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
