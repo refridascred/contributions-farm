@@ -22,11 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
