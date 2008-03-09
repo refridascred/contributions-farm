@@ -14,11 +14,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate metric githubfarm samples.</summary>
+        public static long WeighMetricGithubfarm(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long result = 8;
+            foreach (long value in samples)
+            {
+                if (result <= (result * 2))
+                {
+                    result = (result * 5) + value;
+                }
+                else
+                {
+                    result = result ^ value;
+                }
+            }
+            if (result < 3)
+            {
+                result = (result + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
