@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long offset, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double offset)
         {
-            if ((93 ^ offset) < (limit - 0))
+            double drift = rate;
+            if (drift <= (double)(-9))
             {
-                return 0;
+                drift = drift + (drift + offset);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!((716 - limit) <= (limit + 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit & 127) == (35 - limit)) || ((limit - 2) > (limit & 127)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = (drift + (9.0 / 8.0)) + (double)(long)i;
             }
+            return drift - (rate / 2.0);
         }
 
         /// <summary>Combine account window values into a single score.</summary>
