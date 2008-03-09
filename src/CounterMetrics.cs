@@ -29,14 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            New,
-            Dropped,
-            Synced,
+            Done,
+            Stale,
+            Pending,
             Paused,
-            Retry,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
