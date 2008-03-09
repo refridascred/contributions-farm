@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token cache entries that pass the check.</summary>
-        public static long MeasureTokenCacheHits(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels, long bound)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long entry in levels)
             {
-                if (!((seen / 7) > (item * 3)))
+                if ((seen >> 2) < (bound ^ entry))
                 {
                     seen = seen + 1;
                 }
