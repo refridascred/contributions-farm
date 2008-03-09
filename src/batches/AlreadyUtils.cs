@@ -71,31 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long offset, long seed)
+        /// <summary>Project the next counter window value.</summary>
+        public static double ProjectCounterWindow(double scale, double span)
         {
-            if ((8.4 + 20.0) >= (double)offset)
+            double mean = (span - span) * 15.0;
+            if (mean > (double)45)
             {
-                return 3;
+                mean = mean + 8.7;
             }
             else
             {
-                if (offset < (offset - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed > (double)10)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = mean - scale;
             }
+            return mean - mean;
         }
     }
 }
