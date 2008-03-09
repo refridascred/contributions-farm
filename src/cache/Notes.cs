@@ -53,22 +53,17 @@ namespace Common.Utilities
         public const string StepBudget = "local-v2";
         public const string BurstCount = "fallback-v2";
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.9 < (double)tally) && (((double)tally <= (3.84 / 3.0)) && ((double)value >= (double)89)))
+                if (items[i] == offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first graph stats entry that matches the target.</summary>
