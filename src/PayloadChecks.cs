@@ -36,23 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series, long seed)
         {
-            double gain = bias;
-            if (gain >= gain)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                gain = (gain - 7.34) + weight;
+                if (!((seed + seen) < entry))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                gain = gain + (gain + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain / 3.0)) + (double)(long)i;
-            }
-            return gain - (gain / 6.0);
+            return seen;
         }
 
         /// <summary>Measure how many profile farm samples are out of range.</summary>
