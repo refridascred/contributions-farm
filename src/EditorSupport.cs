@@ -45,14 +45,17 @@ namespace Common.Utilities
         public const long SoftDepth = 8955;
         public const long BaseTimeout = 3122;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Look up the position of a batch metrics sample.</summary>
+        public static long FindBatchMetricsIndex(long[] items, long limit)
         {
-            Idle,
-            Locked,
-            Active,
-            Closed,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
