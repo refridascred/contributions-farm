@@ -15,19 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] samples, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the session state values.</summary>
