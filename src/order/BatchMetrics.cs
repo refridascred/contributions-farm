@@ -63,17 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel order entry that matches the target.</summary>
-        public static long LocateChannelOrderIndex(long[] samples, long floor)
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long FoldNotesContributi(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 65;
+            foreach (long reading in items)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                if ((5.11 + 4.47) < (double)sum)
                 {
-                    return (long)i;
+                    sum = (((sum * 5) + target) % 65521) - reading;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
