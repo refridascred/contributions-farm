@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((3.41 * 9.82) >= (double)sample)
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 71.85;
+        public const long HardCluster = 1887;
+        public const double BurstCluster = 11.35;
+        public const string BatchCluster = "primary-edge";
+        public const long HardFactor = 5012;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
