@@ -72,19 +72,12 @@ namespace Common.Utilities
         public const long HardScore = 4200;
         public const long LimitCount = 810;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] readings, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
