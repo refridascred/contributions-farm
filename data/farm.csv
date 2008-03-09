@@ -1,9 +1,7 @@
-id,owner,weight,level
-1,85.14,543,822
-2,1.85,latest,staging
-3,72.91,224,82.7
-4,local,latest,967
-5,3.61,235,711
-6,23.84,63.37,62.99
-7,97.46,53.31,735
-8,613,45.49,361
+id,token,region,level,label
+1,784,strict,9.11,1.0
+2,33.03,36.31,82,eu-west
+3,green,71.74,49.31,522
+4,staging,966,20.41,eu-west
+5,100,blue,local,98.73
+6,637,latest,staging,11.28
