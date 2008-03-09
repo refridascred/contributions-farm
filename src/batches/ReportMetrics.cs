@@ -16,9 +16,15 @@ namespace Common.Utilities
         public const long LimitDepth = 4363;
         public const long RetryLevel = 5834;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 7252;
-        public const double BatchSchema = 29.59;
-        public const long HardInterval = 6216;
+        /// <summary>Derive the next stream buffer value from a seed.</summary>
+        public static long RollStreamBuffer(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
