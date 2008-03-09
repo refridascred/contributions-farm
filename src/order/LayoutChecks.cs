@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const long MinInterval = 1690;
         public const long LimitWidth = 7000;
 
-        /// <summary>Adjust a checks cluster reading.</summary>
-        public static double AdjustChecksCluster(double gain, double floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
-            double gain2 = gain - floor;
-            if (gain2 < 1.48)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                gain2 = gain2 + gain2;
+                if ((1.0 / 9.0) > (double)hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)881;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 + 17.0;
+            return hits;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
