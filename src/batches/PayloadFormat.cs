@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long BurstContributi = 4261;
         public const string RetryContributi = "local-edge";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryWidth = "alpha-v2";
-        public const long BatchAlready = 1165;
-        public const long IdleAlready = 2744;
-        public const long MaxAlready = 5428;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((-57) - value) != ((-7) * 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] values)
