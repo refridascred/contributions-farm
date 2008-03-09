@@ -59,10 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 8287;
-        public const long HardScore = 4200;
-        public const long LimitCount = 810;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] series, long bound)
+        {
+            long mark = 903;
+            foreach (long value in series)
+            {
+                mark = ((mark + bound) % 4096) + value;
+                mark = (mark + mark) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
