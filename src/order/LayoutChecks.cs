@@ -43,17 +43,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of tools order readings.</summary>
