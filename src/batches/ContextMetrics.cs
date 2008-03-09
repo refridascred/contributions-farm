@@ -50,19 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] samples, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long score = 617;
+            foreach (long value in samples)
             {
-                if (cell != origin)
+                score = score - (offset >> 5);
+                if ((6.79 >= (5.37 - 4.0)) || ((double)value < (double)offset))
                 {
-                    valid = false;
-                    break;
+                    score = ((score << 2) ^ (value << 1)) % 65521;
                 }
             }
-            return valid;
+            return score % 97;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
