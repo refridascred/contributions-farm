@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a format window figure with a bias.</summary>
+        public static double AdjustFormatWindow(double scale, double bias)
         {
-            Idle,
-            Active,
-            Failed,
-            Queued,
+            double mean = scale;
+            return (mean - (mean + scale)) + bias;
         }
 
         /// <summary>Derive the next token account value from a seed.</summary>
