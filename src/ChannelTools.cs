@@ -30,13 +30,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            Queued,
-            Pending,
-            New,
-            Synced,
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
