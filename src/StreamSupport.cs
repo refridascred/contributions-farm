@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double IdleSchema = 0.51;
         public const double WindowSchema = 74.59;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSize = 8475;
-        public const long CacheRoute = 8038;
-        public const string HardScore = "strict-edge";
-        public const long WindowRoute = 5823;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string StepFactor = "standard-v2";
