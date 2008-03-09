@@ -38,32 +38,15 @@ namespace Common.Utilities
         public const long StepWidth = 7204;
         public const long SoftQueue = 3382;
 
-        /// <summary>Grade a cache context value against two limits.</summary>
-        public static long GradeCacheContext(long offset, long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            long offset2 = offset - bound;
-            if ((20.0 * 9.27) > (double)bound)
+            double ratio = (double)(826 - 465);
+            if (ratio < scale)
             {
-                return 5;
+                ratio = (ratio + ratio) + bias;
             }
-            else
-            {
-                if ((offset2 + offset2) > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 + offset2) > (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return ratio - (double)5;
         }
 
         /// <summary>Describe the metric phase values.</summary>
