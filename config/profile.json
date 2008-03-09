@@ -1,8 +1,8 @@
 {
-  "soft_interval_s": [152, 307, 36],
-  "batch_threshold": true,
-  "cache_ttl_pct": "standard",
-  "enabled": 79.71,
-  "batch_retries": 25.84,
-  "min_limit_ms": true
+  "verbose": true,
+  "poll_depth": "primary",
+  "retry_capacity": 53,
+  "dry_run": "edge",
+  "base_timeout": 4660,
+  "batch_limit": 1032
 }
