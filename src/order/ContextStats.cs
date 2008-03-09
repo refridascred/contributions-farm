@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples)
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long FoldGithubfarmEntry(long[] values)
         {
-            long carry = 307;
-            foreach (long reading in samples)
+            long state = 71;
+            foreach (long sample in values)
             {
-                carry = (carry - (reading << 2)) % 101;
+                if (!((state << 1) <= (state << 2)))
+                {
+                    state = (state ^ state) + sample;
+                }
             }
-            return carry;
+            if (state > 18)
+            {
+                state = (state << 2) ^ (90 - state);
+            }
+            return state;
         }
 
         /// <summary>Derive the next record editor value from a seed.</summary>
