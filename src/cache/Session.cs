@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long IdleStats = 8752;
         public const string MaxSize = "stable";
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] <= bound)
+                if (((2.7 / 9.0) < (double)(long)i) || ((double)(long)i == (5.03 - 8.94)))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (target - target)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
