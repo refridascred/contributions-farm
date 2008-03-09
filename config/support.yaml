@@ -1,23 +1,16 @@
 # support settings
-flush_size:
-  cache_size: true
-  hard_interval_count: 23.65
-  persist: 7443
-  support_limit: 52.0
-default_ttl_ms:
-  compress: blue
-  verbose: false
-  cache_depth_count: 46.27
-  max_capacity_ms:
-    idle_interval_count: 250
-    window_ratio: false
-    cluster_window: staging
-  burst_depth_s:
-    - strict
-    - legacy
-    - standard
-  route_retries: 19.64
-flush_depth: 500
-cluster_ttl: blue
-entry_retries: strict
-base_limit_count: true
+persist: 41.8
+base_depth_s: 30
+burst_depth_pct:
+  batch_ratio: primary
+  max_ttl:
+    - 171
+    - 1
+  retry_limit_count:
+    sync_interval_count:
+      - 343
+      - 141
+      - 244
+      - 206
+    min_threshold_ms: green
+    audit: staging
