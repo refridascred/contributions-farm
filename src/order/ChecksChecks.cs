@@ -24,19 +24,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine session githubfarm values into a single score.</summary>
-        public static long ScoreSessionGithubfarm(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long bound)
         {
-            long acc = 95;
-            foreach (long value in series)
+            long lane = origin ^ bound;
+            if ((origin << 1) < (origin << 2))
             {
-                acc = (acc << 3) ^ (value + acc);
+                return 8;
             }
-            if (acc < 3)
+            else
             {
-                acc = ((acc * 5) + (acc + acc)) % 4096;
+                if (((double)lane != (double)bound) || ((double)origin < 9.41))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 3) > (629 * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return acc;
         }
     }
 }
