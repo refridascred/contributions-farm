@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Dropped,
-            Closed,
+            Ready,
+            Stale,
             Failed,
-            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a report snapshot.</summary>
