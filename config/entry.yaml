@@ -1,12 +1,24 @@
 # entry settings
-cache_delay_count: true
-readonly: 76.63
-audit:
-  compress: false
-  sync_depth: 41
-  stats_ttl: standard
-  flush_threshold: 0.66
-  hard_size_count: legacy
-  flush_ttl_pct: legacy
-enabled: true
-min_timeout_s: strict
+verbose: strict
+compress:
+  - 253
+  - 269
+  - 153
+  - 195
+context_retries:
+  cache_delay:
+    - 259
+    - 329
+  idle_ttl_count:
+    default_ratio_s: false
+    flush_depth_pct: 72
+    record_timeout: true
+    persist: 100
+    idle_limit:
+      - 29
+      - 297
+      - 313
+      - 296
+  window_delay: false
+audit: cached
+base_size_ms: stable
