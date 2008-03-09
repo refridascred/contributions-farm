@@ -50,21 +50,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Accumulate report filter samples.</summary>
+        public static long TallyReportFilter(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 334;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((score + origin) >= (score << 1)) && ((score - value) == (value << 2)))
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (score - value)) % 1000;
                 }
             }
-            return hits;
+            if (score > 90)
+            {
+                score = score ^ (score - score);
+            }
+            return score;
         }
     }
 }
