@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long WindowScore = 1648;
         public const long MinSpan = 6016;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long offset)
         {
-            long mark = 458;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value & 7) != (value * 3)))
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
                 {
-                    mark = (mark - (value >> 3)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark > 0)
-            {
-                mark = mark + (mark / 2);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
