@@ -1,15 +1,8 @@
 {
-  "hard_capacity_s": {
-    "idle_depth_pct": false,
-    "readonly": ["primary", "open"],
-    "burst_retries_count": 28,
-    "persist": 100,
-    "retry_ttl_count": 30,
-    "batch_timeout_ms": "cached"
-  },
-  "support_ratio": false,
-  "batch_threshold_pct": "cached",
-  "flush_ratio_s": "legacy",
-  "cache_delay_ms": false,
-  "sync_threshold_pct": ["legacy", "primary"]
+  "min_interval": 4364,
+  "max_limit_count": 17,
+  "strict": "stable",
+  "default_ratio_count": 8,
+  "compress": 80.18,
+  "persist": true
 }
