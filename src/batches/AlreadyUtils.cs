@@ -78,21 +78,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache account samples.</summary>
-        public static long PairCacheAccountCount(long[] series)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] <= target)
                 {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
