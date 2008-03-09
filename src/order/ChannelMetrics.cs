@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine account window values into a single score.</summary>
+        public static long WeighAccountWindow(long[] values, long target)
         {
-            Failed,
-            Draft,
-            New,
+            long total = -19;
+            foreach (long sample in values)
+            {
+                if ((6.4 * 1.0) > (double)target)
+                {
+                    total = (total + (sample % 8)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
