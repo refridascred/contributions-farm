@@ -1,5 +1,8 @@
 {
-  "githubfarm_window": 500,
-  "strict": 4090,
-  "base_ttl_count": ["local", "open", "standard"]
+  "sync_threshold": false,
+  "verbose": "eu-west",
+  "burst_capacity_pct": "open",
+  "batches_timeout": true,
+  "compress": ["standard", "local", "eu-west", "cached"],
+  "sync_retries_s": true
 }
