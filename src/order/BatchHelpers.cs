@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)seen < 8.7)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowInterval = 9315;
+        public const long BaseDepth = 6734;
+        public const string HardScore = "cached-1";
+        public const double LimitBuffer = 22.85;
+        public const long BatchInterval = 8572;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] samples, long step)
