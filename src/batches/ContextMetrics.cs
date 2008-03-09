@@ -42,15 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm counter values into a single score.</summary>
-        public static long WeighFarmCounter(long[] readings, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings, long seed)
         {
-            long acc = 740;
-            foreach (long reading in readings)
+            long mix = -268;
+            foreach (long item in readings)
             {
-                acc = ((acc - (7 - 165)) + reading) - bound;
+                if ((double)mix != (double)item)
+                {
+                    mix = (((mix * 2) + mix) % 255) + seed;
+                }
+                else
+                {
+                    mix = ((mix * 4) + 45) % 1000;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
