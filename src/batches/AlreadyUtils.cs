@@ -43,11 +43,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long limit)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            if (((limit / 5) != (step % 12)) && ((step ^ step) > (step % 8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((5.2 / 9.0) != (double)limit) && ((double)limit != (16.0 + 5.27)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 5) < (step / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((60 >> 5) >= (limit ^ 503))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every order profile entry stays within the limit.</summary>
