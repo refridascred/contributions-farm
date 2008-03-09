@@ -42,12 +42,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Failed,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 48.71;
+        public const long StepInterval = 6649;
+        public const long CacheFactor = 3560;
+        public const double StepBatch = 6.09;
     }
 }
