@@ -1,7 +1,10 @@
-id,token,region,level,label
-1,784,strict,9.11,1.0
-2,33.03,36.31,82,eu-west
-3,green,71.74,49.31,522
-4,staging,966,20.41,eu-west
-5,100,blue,local,98.73
-6,637,latest,staging,11.28
+id,token,level
+1,370,edge
+2,8.93,973
+3,435,strict
+4,639,88.65
+5,local,990
+6,eu-west,284
+7,7.37,910
+8,primary,29.06
+9,595,36.62
