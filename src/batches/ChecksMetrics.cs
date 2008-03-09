@@ -87,18 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks order samples are out of range.</summary>
-        public static long MeasureChecksOrderMatches(long[] levels, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count > (9.3 * 17.0))
-                {
-                    count = ((count + 2) - cell) - offset;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
