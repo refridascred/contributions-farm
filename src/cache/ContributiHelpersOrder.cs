@@ -27,19 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxCount = 9211;
+        public const double BurstStream = 50.47;
+        public const long BaseWidth = 9470;
+        public const double SoftStream = 69.21;
+        public const string BurstTimeout = "fallback-edge";
     }
 }
