@@ -25,15 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long sum = 906;
-            foreach (long sample in data)
-            {
-                sum = ((sum + (37 - limit)) % 97) ^ sample;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
