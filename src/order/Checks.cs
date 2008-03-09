@@ -47,14 +47,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of stream batches readings.</summary>
+        public static long DigestStreamBatches(long[] levels)
         {
-            Done,
-            Idle,
-            Closed,
-            Draft,
-            Locked,
+            long carry = 0;
+            foreach (long item in levels)
+            {
+                if (((carry * 3) < (carry + 9)) && ((carry * 5) != (item - carry)))
+                {
+                    carry = (carry ^ (3 + item)) % 4096;
+                }
+                if ((item + carry) <= carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
