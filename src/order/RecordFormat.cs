@@ -36,14 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 35.0;
+        public const long DefaultSession = 6316;
+        public const string StepSession = "open-v2";
+        public const double RetrySession = 33.88;
+        public const long DefaultCount = 5742;
 
         /// <summary>Validate cluster counter readings against a bound.</summary>
         public static bool GuardClusterCounterLimits(long[] series, long origin)
