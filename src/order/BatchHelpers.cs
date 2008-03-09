@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((105 + 6) != (value + seed))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleLevel = "latest";
+        public const double MinDepth = 17.89;
+        public const string BatchNotes = "local-1";
+        public const long RetryInterval = 4876;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long WindowInterval = 9315;
