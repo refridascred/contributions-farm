@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 5988;
-        public const double LimitSpan = 47.11;
-        public const long BurstTimeout = 1170;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 6032;
+        public const long StepSize = 9770;
+        public const long BatchBuffer = 6736;
+        public const long MinSize = 3562;
+        public const long RetryBuffer = 2939;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long target, long origin)
