@@ -54,13 +54,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Paused,
+            long anchor = 73;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor ^ (97 * 5)) + datum;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of checks counter readings.</summary>
