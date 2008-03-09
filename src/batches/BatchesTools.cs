@@ -15,23 +15,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long limit, long step)
         {
-            long carry = 645;
-            foreach (long cell in readings)
+            long span = limit ^ step;
+            if ((31 > (span - 91)) || ((5 ^ span) >= step))
             {
-                if ((cell - cell) > (2 + cell))
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (double)limit)
                 {
-                    carry = (carry + 71) % 97;
+                    return 4;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry + cell)) % 101;
+                    return 7;
                 }
-                carry = ((carry * 2) + carry) % 1000;
             }
-            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
