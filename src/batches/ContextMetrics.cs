@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long acc = 63;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (acc + 355)) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = (acc + (bound % 10)) % 255;
+                if (((acc - bound) >= (value << 2)) || ((acc >> 2) == (value >> 1)))
+                {
+                    acc = (acc - (value + value)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (95 + acc)) % 65521;
+                }
             }
-            return acc;
+            if (acc > 139)
+            {
+                acc = ((acc * 3) + 11) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
