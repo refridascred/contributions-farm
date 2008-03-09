@@ -47,16 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a support reading.</summary>
