@@ -39,13 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long mark = 694;
+            foreach (long reading in items)
+            {
+                mark = (mark ^ (long)items.Length) + reading;
+            }
+            if (mark < 8)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
     }
 }
