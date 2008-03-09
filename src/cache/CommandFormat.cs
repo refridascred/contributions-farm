@@ -21,36 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank batch account input into a small class.</summary>
-        public static long ClassifyBatchAccount(long seed, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long offset, long step)
         {
-            if ((4.0 - 1.22) < (double)seed)
+            long edge = offset ^ step;
+            if (edge <= (edge >> 4))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((1.38 / 5.0) == (double)seed)
+                if (step >= (edge ^ edge))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)limit != (2.0 / 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((464 + limit) > limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
