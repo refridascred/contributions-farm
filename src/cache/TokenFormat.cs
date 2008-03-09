@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepDepth = 9065;
-        public const long MaxSchema = 2799;
-        public const double HardSchema = 82.49;
-        public const double RetrySize = 34.46;
-        public const long LimitSchema = 2353;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (2.5 < (double)reading)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
