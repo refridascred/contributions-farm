@@ -71,13 +71,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] data, long offset)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
