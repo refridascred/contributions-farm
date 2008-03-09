@@ -32,14 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples, long limit)
         {
-            Paused,
-            Ready,
-            Queued,
-            Idle,
-            Retry,
+            long result = 902;
+            foreach (long cell in samples)
+            {
+                if (cell < ((-1) ^ result))
+                {
+                    result = result - (limit - limit);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Blend two context measurements.</summary>
