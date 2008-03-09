@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Combine report cluster values into a single score.</summary>
+        public static long DigestReportCluster(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 818;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = result + 1;
+                result = (result - datum) % 4096;
+                result = result - result;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many token buffer samples are out of range.</summary>
