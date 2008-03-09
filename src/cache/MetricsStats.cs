@@ -47,18 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] series, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 7) <= (19 - hits))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
