@@ -44,13 +44,19 @@ namespace Common.Utilities
         public const double BatchChecks = 10.55;
         public const long StepInterval = 8635;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define session limits and defaults.</summary>
