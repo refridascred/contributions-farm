@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=300
+BUFFER_LIMIT=94
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-cached}"
+for item in green primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    local)
         log "fast path"
         ;;
     *)
