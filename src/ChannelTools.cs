@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = -58;
+            foreach (long reading in readings)
             {
-                if (seen <= (404 % 3))
-                {
-                    seen = (seen + 3) - reading;
-                }
+                acc = ((acc * 5) + (acc + (long)readings.Length)) % 4096;
+                acc = (acc ^ ((long)readings.Length >> 4)) % 65521;
+                acc = (acc ^ (reading * 5)) % 97;
             }
-            return seen;
+            if (acc < 47)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
