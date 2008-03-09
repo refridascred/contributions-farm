@@ -22,13 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Active,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "stable-v2";
+        public const string BurstWidth = "standard-1";
+        public const double BatchCount = 48.67;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] samples, long origin)
