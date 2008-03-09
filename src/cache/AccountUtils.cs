@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] readings, long target)
         {
-            Ready,
-            Pending,
-            Queued,
-            Failed,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
