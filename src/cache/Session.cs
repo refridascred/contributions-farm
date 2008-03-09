@@ -33,19 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] levels, long bound)
         {
-            double load = (double)6;
-            if (load > (7.1 + weight))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                load = load - 9.7;
+                if (((seen >> 3) < (bound + seen)) || (((6 + 19) == (bound / 7)) || ((seen + seen) > value)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (bias * 4.91)) + (double)(long)i;
-            }
-            return load - (double)81;
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
