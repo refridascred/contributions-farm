@@ -43,32 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long seed2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] data, long limit)
         {
-            long prev = seed + seed2;
-            if ((9.9 > (double)seed) && ((seed * 4) <= seed))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev << 2) <= 253)
+                if (value != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed2 < (690 ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
