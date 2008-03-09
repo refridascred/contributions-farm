@@ -49,12 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Pending,
-            Active,
-            Queued,
+            Failed,
+            Ready,
+            Paused,
         }
     }
 }
