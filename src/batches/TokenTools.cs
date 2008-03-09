@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] items, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (entry > bound)
+                if ((double)matches != (double)offset)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Rank entry checks input into a small class.</summary>
