@@ -29,17 +29,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a commits support reading by value.</summary>
-        public static long LocateCommitsSupportIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchSize = 35.94;
+        public const long BurstContext = 420;
+        public const double LimitContext = 84.17;
     }
 }
