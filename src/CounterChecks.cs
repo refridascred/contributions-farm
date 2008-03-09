@@ -26,12 +26,21 @@ namespace Common.Utilities
         public const long BatchContributi = 6440;
         public const long BurstContributi = 3743;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the cache farm series from a seed.</summary>
