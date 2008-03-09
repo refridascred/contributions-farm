@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstLevel = 6027;
-        public const long BatchTools = 3986;
-        public const double SoftWidth = 66.44;
-        public const double MinInterval = 53.65;
+        /// <summary>Match up cluster already samples.</summary>
+        public static long OverlapClusterAlreadyCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 7543;
