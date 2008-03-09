@@ -1,15 +1,16 @@
 # Command notes
 
-The graph report groups every payload by batch.
-Run the counter check before changing any entry limits.
-A cache that stays idle for too long is moved to the filter list.
+Run the tools check before changing any checks limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the stream handler retries a few times before giving up.
 
-A editor that stays idle for too long is moved to the metric list.
-When a route fails, the account handler retries a few times before giving up.
+Use counter settings to tune how often entry data is refreshed.
+The format report groups every order by context.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every contributi change
-- Keep channel values small
-- Validate record input early
+- Prefer channel defaults
+- Keep record values small
+- Log every already change
+- Document new channel fields
