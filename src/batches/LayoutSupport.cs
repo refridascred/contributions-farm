@@ -54,21 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] levels, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state << 3) ^ ((long)i + limit);
-                if ((double)(long)i == (double)state)
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
                 {
-                    state = (state - ((-71) >> 2)) % 97;
-                    state = (state - (limit / 7)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
