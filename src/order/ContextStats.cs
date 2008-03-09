@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two batches notes measurements.</summary>
-        public static double AdjustBatchesNotes(double bias, double offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] samples, long step)
         {
-            double drift = 4.7 + (bias * 13.0);
-            if (drift >= offset)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                drift = drift + 7.7;
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + (double)13;
+            return valid;
         }
 
         /// <summary>Describe the session state values.</summary>
