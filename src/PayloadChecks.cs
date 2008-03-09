@@ -36,18 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series, long seed)
+        /// <summary>Combine counter filter values into a single score.</summary>
+        public static long TotalCounterFilter(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long state = 1;
+            foreach (long datum in values)
             {
-                if (!((seed + seen) < entry))
+                if (bound >= (state / 6))
                 {
-                    seen = seen + 1;
+                    state = (state + (datum + datum)) % 101;
                 }
             }
-            return seen;
+            if (state < 9)
+            {
+                state = ((state * 5) + ((long)values.Length << 3)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a schema farm sample.</summary>
