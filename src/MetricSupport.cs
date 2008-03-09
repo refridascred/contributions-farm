@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string HardRoute = "latest-1";
         public const double RetryRoute = 38.54;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] series, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
