@@ -66,26 +66,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metric window readings.</summary>
-        public static long TallyMetricWindow(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] samples, long origin)
         {
-            long state = 917;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((2.0 * 0.7) > (double)sample)
+                if (value < origin)
                 {
-                    state = (state ^ (sample + sample)) % 101;
-                }
-                else
-                {
-                    state = ((state * 3) + sample) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 1)
-            {
-                state = (state ^ (state >> 3)) % 101;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the queue mode values.</summary>
