@@ -1,6 +1,12 @@
 # support settings
-min_window_ms: primary
-poll_capacity: 1467
-max_timeout_count: false
-persist: 7832
-editor_size: 3
+audit: open
+default_size: 250
+min_timeout_pct:
+  hard_ratio_ms: 20
+  hard_capacity_pct: 50
+  batch_capacity: 1024
+  flush_capacity_s: true
+  account_window: 6713
+warm_ttl_count: false
+burst_limit_pct: 48.18
+flush_interval: fallback
