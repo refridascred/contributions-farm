@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long MinInterval = 1690;
         public const long LimitWidth = 7000;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "latest";
-        public const long MinSize = 4248;
-        public const long StepChecks = 5574;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] samples, long limit)
