@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] readings, long offset)
         {
-            long state = 77;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                state = ((state << 2) ^ ((long)readings.Length / 4)) + item;
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state < 3)
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
