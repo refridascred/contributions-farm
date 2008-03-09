@@ -20,17 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 200;
+            foreach (long cell in readings)
             {
-                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                if ((double)mix >= 9.59)
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((cell / 8) >= mix)
+                {
+                    mix = (mix + mix) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (cell - cell)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
