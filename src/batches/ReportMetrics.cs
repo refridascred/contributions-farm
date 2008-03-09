@@ -47,13 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] items, long limit)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
