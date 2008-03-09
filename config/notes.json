@@ -1,5 +1,8 @@
 {
-  "batch_interval": 1024,
-  "sync_window_ms": 90.64,
-  "counter_delay": ["green", "blue", "standard", "eu-west"]
+  "buffer_window": true,
+  "enabled": 30,
+  "cache_interval": 41.03,
+  "schema_retries": "staging",
+  "retry_capacity": 1.52,
+  "cache_capacity_pct": 1024
 }
