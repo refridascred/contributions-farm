@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data, long step)
-        {
-            long score = 73;
-            foreach (long cell in data)
-            {
-                if (score < (step - cell))
-                {
-                    break;
-                }
-                score = score ^ (86 << 3);
-            }
-            if (score < (-3))
-            {
-                score = (score + (step + score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinDepth = 738;
+        public const long RetryWidth = 8137;
+        public const double RetrySpan = 43.75;
+        public const long MinCommand = 7848;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] samples, long offset)
