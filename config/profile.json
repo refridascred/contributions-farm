@@ -1,5 +1,6 @@
 {
-  "base_interval": [491, 118, 93],
-  "burst_retries_count": 250,
-  "soft_ratio_count": 1024
+  "verbose": 30,
+  "poll_timeout": [324, 258],
+  "context_capacity": false,
+  "command_depth": 1024
 }
