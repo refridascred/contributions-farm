@@ -14,18 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((hits / 3) < sample))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
