@@ -60,13 +60,15 @@ namespace Common.Utilities
         public const long LimitBudget = 8934;
         public const double StepReport = 70.15;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long floor)
         {
-            Retry,
-            Stale,
-            Pending,
-            Ready,
+            long mark = 50;
+            foreach (long value in items)
+            {
+                mark = (((mark + (mark << 3)) % 97) + value) + floor;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a already summary.</summary>
