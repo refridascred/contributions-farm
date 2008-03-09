@@ -41,19 +41,12 @@ namespace Common.Utilities
             return ratio - (double)65;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] series, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
