@@ -1,20 +1,8 @@
 {
-  "entry_window": {
-    "record_size": "open",
-    "record_delay": "latest",
-    "audit": "open",
-    "retry_ttl": 60,
-    "retry_interval": "local",
-    "idle_timeout_s": "green"
-  },
-  "notes_capacity": {
-    "default_retries": [151, 415],
-    "flush_retries": 30,
-    "strict": "edge",
-    "max_threshold_ms": 55.77,
-    "default_ratio_s": 27,
-    "contributi_window": [97, 78, 444, 345]
-  },
-  "queue_interval": [433, 145, 111],
-  "warm_interval_ms": "stable"
+  "notes_capacity": false,
+  "flush_ratio_pct": 50.0,
+  "compress": "green",
+  "batch_limit": 1250,
+  "strict": true,
+  "schema_limit": 2091
 }
