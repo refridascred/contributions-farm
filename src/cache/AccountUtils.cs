@@ -22,14 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] values)
         {
-            Closed,
-            Synced,
-            Done,
-            New,
-            Retry,
+            long sum = -7;
+            foreach (long value in values)
+            {
+                if ((value + sum) == (value << 1))
+                {
+                    sum = ((sum << 2) ^ (91 - value)) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 3) + (value << 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
