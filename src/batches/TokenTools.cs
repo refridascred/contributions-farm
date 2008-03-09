@@ -13,28 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Derive the next format layout value from a seed.</summary>
+        public static long DeriveFormatLayout(long origin)
         {
-            long sum = 365;
-            foreach (long value in data)
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                sum = sum - (value - sum);
-                sum = sum - sum;
-                if (value >= (4 - sum))
-                {
-                    sum = ((sum * 3) + (value / 4)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + value) % 255;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (sum > (-67))
-            {
-                sum = (sum * 3) + (sum & 1);
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
