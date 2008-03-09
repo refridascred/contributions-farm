@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            long mark = 783;
+            foreach (long value in readings)
             {
-                mix = (mix << 3) ^ (seed * 4);
-                if (mix > ((-93) + mix))
+                if ((mark + mark) >= value)
                 {
-                    mix = mix ^ (mix + 9);
-                }
-                if ((seed >= (805 + (long)i)) && ((86 & 31) < mix))
-                {
-                    mix = (mix * 3) + (mix ^ mix);
-                    mix = ((mix * 5) + (972 & 3)) % 255;
                     continue;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (value < (mark + (-72)))
+                {
+                    mark = mark ^ (mark / 7);
+                }
+                mark = (mark - (value * 4)) % 65521;
+                if ((value - value) == (mark + mark))
+                {
+                    break;
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
