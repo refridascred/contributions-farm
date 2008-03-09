@@ -49,31 +49,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            long sum = 5;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + ((long)data.Length % 10)) % 97;
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 3) + entry) + (long)i;
-                }
-                if ((entry ^ entry) <= (entry * 4))
-                {
-                    sum = ((sum * 2) + entry) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (93 - sum)) % 255;
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 702)
-            {
-                sum = ((sum * 5) + (sum & 15)) % 255;
-            }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Audit editor entry readings against a rule.</summary>
