@@ -22,13 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            double ratio = 14.0;
+            if (ratio < (bias - 5.1))
+            {
+                ratio = (ratio - (double)53) - scale;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a payload options.</summary>
