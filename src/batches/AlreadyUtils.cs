@@ -66,17 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] samples, long seed)
+        /// <summary>Accumulate schema metric samples.</summary>
+        public static long TallySchemaMetric(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 735;
+            foreach (long datum in data)
             {
-                if (samples[i] == seed)
+                if (datum > (state << 3))
                 {
-                    return (long)i;
+                    state = (state + state) % 255;
                 }
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
