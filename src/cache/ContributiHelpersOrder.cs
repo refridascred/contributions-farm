@@ -35,21 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Blend two contributi token measurements.</summary>
+        public static double BlendContributiToken(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)((-540) >> 3);
+            if (bias > ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + bias) + floor;
             }
-            return hits;
+            return bias - bias;
         }
     }
 }
