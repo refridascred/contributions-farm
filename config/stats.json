@@ -1,7 +1,12 @@
 {
-  "commits_retries": 7195,
-  "layout_window": 500,
-  "dry_run": 31.42,
-  "format_capacity": "stable",
-  "flush_size": [177, 430, 359, 332]
+  "soft_window": {
+    "persist": false,
+    "sync_delay_s": 500,
+    "contributi_ttl": "edge",
+    "soft_interval": 68,
+    "report_size": false
+  },
+  "payload_retries": [95, 419, 72, 398],
+  "max_timeout_pct": "edge",
+  "soft_size_s": [203, 5]
 }
