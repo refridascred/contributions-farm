@@ -21,13 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            New,
-            Closed,
-            Idle,
-            Stale,
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
