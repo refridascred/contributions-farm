@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry report entries that pass the check.</summary>
-        public static long CountEntryReportHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)target == (0.02 / 8.0))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSize = 6940;
+        public const long StepSize = 5000;
+        public const long LimitScore = 8105;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] data, long seed)
