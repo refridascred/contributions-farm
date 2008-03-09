@@ -29,14 +29,17 @@ namespace Common.Utilities
         public const double LimitBuffer = 22.85;
         public const long BatchInterval = 8572;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long bound)
         {
-            Idle,
-            Retry,
-            Active,
-            Locked,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
