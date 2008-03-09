@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 9616;
-        public const string StepSize = "strict";
-        public const double IdleContributi = 92.11;
-        public const long StepContributi = 8550;
-        public const double CacheScore = 91.64;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Done,
+            Idle,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Grade a notes editor value against two limits.</summary>
         public static long RankNotesEditor(long floor, long offset)
