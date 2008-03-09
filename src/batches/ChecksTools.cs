@@ -30,24 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank order token input into a small class.</summary>
-        public static long BucketOrderToken(long origin, long origin2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] readings)
         {
-            if (((origin + origin) != (origin2 + origin2)) || ((origin2 % 2) == (origin % 24)))
+            long mix = 79;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin < (12.0 + 16.0))
+                if (((mix ^ reading) < (mix + 921)) && ((mix / 4) >= mix))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    mix = (mix * 5) + (reading ^ 373);
                 }
             }
+            if (mix < 14)
+            {
+                mix = ((mix << 3) ^ (mix - 64)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a graph entry.</summary>
