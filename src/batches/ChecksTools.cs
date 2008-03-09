@@ -25,22 +25,17 @@ namespace Common.Utilities
             return mean + (floor + 12.0);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] samples)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((12 >= count) && (((5.5 - 5.3) < (6.7 / 6.0)) && (count >= (reading + (-32)))))
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
