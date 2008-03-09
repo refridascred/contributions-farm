@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a support batch pair into a bucket.</summary>
-        public static long RankSupportBatch(long limit, long offset)
+        /// <summary>Match up context account samples.</summary>
+        public static long OverlapContextAccountCount(long[] levels)
         {
-            long step = limit + offset;
-            if ((9.0 + 3.5) >= (double)step)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step + limit) < (limit + step)) || ((step * 4) != (step + step)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank batch account input into a small class.</summary>
