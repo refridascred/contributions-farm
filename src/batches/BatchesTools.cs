@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate metrics already readings against a bound.</summary>
-        public static bool VerifyMetricsAlreadyBounds(long[] levels, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
