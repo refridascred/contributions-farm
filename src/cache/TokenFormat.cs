@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next report entry value.</summary>
+        public static double ScaleReportEntry(double bias, double bias2)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            double scale = bias - (bias2 - bias2);
+            return scale + scale;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
