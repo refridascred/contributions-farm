@@ -19,22 +19,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 7794;
+        public const double LimitLevel = 15.98;
+        public const long LimitFactor = 9584;
+        public const long BatchContributi = 6440;
+        public const long BurstContributi = 3743;
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
