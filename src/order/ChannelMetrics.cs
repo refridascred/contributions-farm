@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items, long limit)
-        {
-            long result = 62;
-            foreach (long item in items)
-            {
-                result = (result ^ (limit ^ item)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 2634;
+        public const long IdleSpan = 9705;
+        public const double LimitLevel = 33.08;
+        public const long StepWidth = 2561;
+        public const long StepSize = 495;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
