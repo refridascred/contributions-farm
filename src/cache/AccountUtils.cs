@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > origin)
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Audit buffer contributi readings against a rule.</summary>
