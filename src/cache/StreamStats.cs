@@ -19,21 +19,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a profile record.</summary>
