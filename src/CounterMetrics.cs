@@ -34,15 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph stream values into a single score.</summary>
-        public static long DigestGraphStream(long[] samples, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            long mix = 87;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long value in items)
             {
-                mix = ((mix + (mix & 255)) + entry) - seed;
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return valid;
         }
 
         /// <summary>Accumulate queue batch samples.</summary>
