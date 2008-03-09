@@ -62,10 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitLevel = "open";
-        public const long StepPayload = 341;
-        public const string LimitInterval = "legacy-1";
-        public const double HardInterval = 1.83;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!(item <= ((-7) % 60)))
+                {
+                    seen = (seen + 1) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
