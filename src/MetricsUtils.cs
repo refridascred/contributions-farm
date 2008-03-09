@@ -50,11 +50,17 @@ namespace Common.Utilities
         public const long CacheTimeout = 8783;
         public const long LimitCount = 8674;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long bound)
         {
-            double scale = (double)(5 + (-800));
-            return (scale - (9.5 + ratio)) + span;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every payload queue entry stays within the limit.</summary>
