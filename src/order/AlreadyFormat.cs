@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] readings, long seed)
         {
-            double drift = (double)(214 * 4);
-            if (drift < drift)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                drift = (drift - (bias + drift)) + rate;
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (bias / 9.0)) + (double)(long)i;
-            }
-            return drift - (7.48 / 5.0);
+            return valid;
         }
 
         /// <summary>Match up entry samples.</summary>
