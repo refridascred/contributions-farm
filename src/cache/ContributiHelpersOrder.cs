@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Queued,
-            Idle,
-            Ready,
-            Done,
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
