@@ -88,19 +88,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 7168;
+        public const long IdleBatches = 8684;
+        public const long CacheBudget = 5220;
     }
 }
