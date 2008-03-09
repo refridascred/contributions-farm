@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a token stats figure with a bias.</summary>
-        public static double AdjustTokenStats(double bias, double offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long seed)
         {
-            double scale = offset;
-            if (scale >= (double)59)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + 9.1) - bias;
+                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)114;
-            }
-            return scale - (double)7;
+            return -1;
         }
 
         /// <summary>Rank layout filter input into a small class.</summary>
