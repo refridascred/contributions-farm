@@ -1,11 +1,11 @@
 # Command notes
 
-Run the checks check before changing any commits limits.
-Each editor is validated before it reaches the stats queue.
+The farm module keeps profile values in sync with the cache cache.
+The token helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Log every context change
-- Keep graph values small
-- Review already limits each release
-- Validate entry input early
+- Document new schema fields
+- Prefer profile defaults
+- Keep counter values small
