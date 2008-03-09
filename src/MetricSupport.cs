@@ -16,26 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] levels)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long carry = 61;
-            foreach (long sample in levels)
+            if ((step / 8) < (-4))
             {
-                if ((carry & 7) >= carry)
+                return 1;
+            }
+            else
+            {
+                if (((7.0 / 5.0) < (double)step) || ((820 - (-119)) >= offset))
                 {
-                    carry = carry - (53 + sample);
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry * 5) + 4;
+                    if ((15 + step) > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ (carry / 8)) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Rank window input into a small class.</summary>
