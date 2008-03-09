@@ -36,10 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxLevel = 77.92;
-        public const double WindowWidth = 48.46;
-        public const string SoftCounter = "standard-v2";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
