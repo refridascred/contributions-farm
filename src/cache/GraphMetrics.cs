@@ -48,9 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 7506;
-        public const long IdleWindow = 4429;
-        public const long MaxWindow = 7663;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Dropped,
+            Queued,
+            Idle,
+            New,
+            Draft,
+        }
     }
 }
