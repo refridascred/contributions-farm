@@ -1,8 +1,5 @@
 {
-  "retry_delay_s": 32.51,
-  "graph_depth": 7270,
-  "channel_window": false,
-  "max_delay_s": 250,
-  "profile_depth": true,
-  "persist": "legacy"
+  "retry_retries_count": 30,
+  "warm_size": 2,
+  "sync_depth": ["green", "eu-west", "cached", "latest"]
 }
