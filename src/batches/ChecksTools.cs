@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
