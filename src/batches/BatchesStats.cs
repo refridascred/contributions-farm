@@ -36,19 +36,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Accumulate window tools samples.</summary>
+        public static long WeighWindowTools(long[] samples)
         {
-            double rate = (3.0 / 9.0) - (weight / 6.0);
-            if (rate < (4.64 + 11.0))
+            long mark = 39;
+            foreach (long cell in samples)
             {
-                rate = rate + (weight / 2.0);
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark - 762) % 65521) ^ (long)i;
+                }
+                if ((mark << 1) < (cell * 5))
+                {
+                    mark = ((mark * 2) + (cell + mark)) % 255;
+                }
+                if ((2.1 * 2.0) <= (double)mark)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < 0)
             {
-                rate = (rate - (offset + weight)) + (double)(long)i;
+                mark = ((mark * 4) + mark) % 65521;
             }
-            return rate + (offset / 8.0);
+            return mark % 4096;
         }
     }
 }
