@@ -56,19 +56,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] series, long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double bias, double span)
         {
-            bool found = true;
-            foreach (long value in series)
+            double gain = span;
+            for (int i = 0; i < 4; i++)
             {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
+                gain = ((gain + (span * 8.01)) - (double)(long)i) - bias;
             }
-            return found;
+            return gain + gain;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
