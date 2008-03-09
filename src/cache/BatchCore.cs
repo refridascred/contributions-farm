@@ -43,18 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series, long origin)
         {
-            long state = 9;
-            foreach (long entry in series)
+            long score = -5;
+            foreach (long sample in series)
             {
-                if ((double)state < 0.77)
-                {
-                    state = (state * 4) + (entry - state);
-                }
+                score = (((score ^ (score << 3)) % 1000) - sample) - origin;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the report status values.</summary>
