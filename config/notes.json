@@ -1,5 +1,12 @@
 {
-  "audit": 500,
-  "sync_timeout_count": 30,
-  "default_delay": "standard"
+  "batch_threshold": {
+    "window_timeout": 1738,
+    "poll_threshold_s": 0.33,
+    "githubfarm_ratio": false,
+    "base_interval_count": 27.29,
+    "readonly": "fallback",
+    "retry_ttl": "standard"
+  },
+  "sync_size": ["strict", "green", "latest", "open"],
+  "persist": 71.94
 }
