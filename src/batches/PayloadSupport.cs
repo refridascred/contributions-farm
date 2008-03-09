@@ -16,18 +16,13 @@ namespace Common.Utilities
             return gain2 + (double)606;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] values, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - floor) > floor)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Hold a payload options.</summary>
