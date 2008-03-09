@@ -42,12 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] levels)
         {
-            Draft,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item >= (tally * 3)) && ((tally - 287) != (item % 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
