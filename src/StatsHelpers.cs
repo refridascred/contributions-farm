@@ -66,12 +66,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "open";
+        public const long BatchRoute = 4615;
+        public const long HardWidth = 3383;
     }
 }
