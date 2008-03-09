@@ -1,15 +1,5 @@
 {
-  "max_retries_pct": {
-    "poll_limit_s": true,
-    "max_interval_ms": 31,
-    "batch_capacity_pct": "latest",
-    "burst_threshold": [343, 327, 79],
-    "retry_retries": "blue"
-  },
-  "default_ttl_ms": {
-    "base_capacity_count": ["blue", "latest"],
-    "soft_retries_ms": 4531,
-    "compress": [436, 90, 114, 4]
-  },
-  "contributi_interval": 60
+  "readonly": [197, 475, 236, 84],
+  "sync_timeout_pct": 95.89,
+  "batch_size": ["strict", "local"]
 }
