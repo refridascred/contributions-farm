@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchRatio = 8921;
-        public const long MaxCommand = 5809;
-        public const long SoftCommand = 7692;
-        public const string RetryCommand = "strict-edge";
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountGaps(long[] values)
