@@ -16,12 +16,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinFactor = 6966;
-        public const double BatchGraph = 64.8;
-        public const long BurstGraph = 8781;
-        public const long RetryGraph = 5421;
-        public const double StepGraph = 62.87;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long bound)
+        {
+            if (offset <= (95 << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset / 6) >= (8 % 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] data)
