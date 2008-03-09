@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 9015;
-        public const double MinWidth = 80.55;
-        public const long IdleCache = 8183;
-        public const long SoftSpan = 5307;
+        /// <summary>Look up the position of a entry contributi sample.</summary>
+        public static long LocateEntryContributiIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double bias, double offset)
