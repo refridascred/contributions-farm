@@ -20,19 +20,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] items, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if (seed2 <= (seed2 + seed2))
             {
-                if (datum < floor)
+                return 0;
+            }
+            else
+            {
+                if (((seed % 24) < (seed ^ seed2)) || (seed < seed2))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (3.0 < (double)seed2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((8 & 127) < (888 + seed)) && ((double)seed2 >= (double)seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
