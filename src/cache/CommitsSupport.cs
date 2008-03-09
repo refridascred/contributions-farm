@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] data, long step)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long TallyStatsBatchOutliers(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                if (!(target >= sample))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit queue record readings against a rule.</summary>
