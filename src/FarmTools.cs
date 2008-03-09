@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long step)
+        /// <summary>Validate support batches readings against a bound.</summary>
+        public static bool CheckSupportBatchesBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((step * 2) <= 7)
+                if (sample != origin)
                 {
-                    count = (count + 1) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
