@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long floor, long bound)
-        {
-            if ((bound % 5) >= (bound + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor + floor) >= (bound ^ floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 8255;
+        public const string MaxSpan = "stable-1";
+        public const long StepStats = 3253;
+        public const string SoftTimeout = "staging-v2";
+        public const long HardWidth = 6231;
 
         /// <summary>Accumulate support cache samples.</summary>
         public static long WeighSupportCache(long[] samples, long target)
