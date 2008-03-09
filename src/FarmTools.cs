@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1363;
-        public const long MinCluster = 1715;
-        public const string MaxWidth = "legacy-1";
-        public const long SoftBudget = 2369;
-        public const long CacheCluster = 5930;
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double floor)
+        {
+            double ratio = gain;
+            if (ratio >= (8.8 + floor))
+            {
+                ratio = ratio - (ratio - ratio);
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (floor / 4.0)) + (double)(long)i;
+            }
+            return ratio + (floor + floor);
+        }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
         public static long AuditOrderReportOutliers(long[] values, long limit)
