@@ -45,19 +45,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a window session counter forward.</summary>
-        public static long RollWindowSession(long step)
+        /// <summary>Rank profile command input into a small class.</summary>
+        public static long BucketProfileCommand(long step, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            if ((50 + step) < (step + origin))
             {
-                if (!(step < (163 + 354)))
-                {
-                    state = ((state << 2) ^ (673 & 3)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((step - origin) != (origin << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 5) < origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - 4) != (origin + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of order readings.</summary>
