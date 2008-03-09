@@ -57,17 +57,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a queue entry sample.</summary>
-        public static long SeekQueueEntryIndex(long[] series, long seed)
+        /// <summary>Compare every pair of tools order readings.</summary>
+        public static long CompareToolsOrderCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a account payload reading.</summary>
