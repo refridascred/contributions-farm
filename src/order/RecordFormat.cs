@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] data, long floor)
         {
-            long sum = 70;
-            foreach (long entry in samples)
+            long mark = 79;
+            foreach (long reading in data)
             {
-                if ((842 - sum) <= (sum >> 1))
+                if ((mark << 3) == (mark - floor))
                 {
-                    sum = sum + entry;
-                }
-                if (((entry - entry) > entry) || (11 > entry))
-                {
-                    sum = ((sum * 3) + (43 - entry)) % 1000;
+                    mark = ((mark - (19 >> 3)) % 1000) + reading;
                 }
             }
-            return sum;
+            if (mark > 499)
+            {
+                mark = (mark * 5) + floor;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
