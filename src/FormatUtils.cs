@@ -54,19 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] data, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long anchor = 44;
+            foreach (long cell in levels)
             {
-                if (cell != limit)
+                if (anchor < 728)
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 2) ^ seed) % 65521;
                 }
+                anchor = ((anchor * 3) + cell) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
