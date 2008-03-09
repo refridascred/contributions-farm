@@ -1,7 +1,20 @@
 {
-  "sync_retries_pct": "standard",
-  "min_ttl": 3.99,
-  "record_limit": 1,
-  "audit": true,
-  "enabled": 250
+  "flush_depth_count": "open",
+  "flush_ttl_pct": {
+    "readonly": 100,
+    "persist": 89.48,
+    "session_depth": 69,
+    "idle_window_s": "latest",
+    "cache_depth": "eu-west"
+  },
+  "min_retries": {
+    "enabled": {
+      "batch_timeout": 36,
+      "stream_ratio": 88.93,
+      "githubfarm_ratio": 9889,
+      "soft_ttl_pct": "blue"
+    },
+    "strict": ["fallback", "strict"],
+    "base_ratio": "latest"
+  }
 }
