@@ -54,16 +54,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                sum = ((sum * 3) + (sum * 2)) % 65521;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (!((anchor - limit) >= (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = anchor - (anchor - limit);
+                }
+                if (((-747) + limit) >= (long)i)
+                {
+                    anchor = (anchor - (limit / 9)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
     }
 }
