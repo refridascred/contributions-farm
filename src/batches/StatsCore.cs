@@ -56,13 +56,11 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Weight { get; set; }
             public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
