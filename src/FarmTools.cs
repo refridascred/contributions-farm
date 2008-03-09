@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)sum >= (double)floor)
-                {
-                    break;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    sum = ((sum + floor) % 65521) ^ (long)i3;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
