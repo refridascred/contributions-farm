@@ -22,28 +22,35 @@ namespace Common.Utilities
         public const long BurstAccount = 4999;
         public const double BaseAccount = 26.42;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long origin, long bound)
+        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
+        public static long SortGithubfarmCounter(long origin, long target)
         {
-            if ((double)origin < (0.4 / 4.0))
+            if ((target + origin) >= (69 - origin))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (!((origin * 3) <= origin))
+                if ((origin % 100) > (origin + target))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound ^ origin) <= bound)
+                    if (target >= (origin - target))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if (target < (17 & 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
