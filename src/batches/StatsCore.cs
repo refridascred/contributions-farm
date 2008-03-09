@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long acc = 86;
-            foreach (long value in series)
-            {
-                acc = (acc ^ (acc * 4)) - value;
-            }
-            return acc % 4096;
+            Ready,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a notes options.</summary>
