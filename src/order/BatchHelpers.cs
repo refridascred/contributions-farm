@@ -18,17 +18,14 @@ namespace Common.Utilities
         public const double LimitBuffer = 22.85;
         public const long BatchInterval = 8572;
 
-        /// <summary>Fold a list of order buffer readings.</summary>
-        public static long TotalOrderBuffer(long[] levels)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long score = 11;
-            foreach (long entry in levels)
-            {
-                score = ((score << 2) ^ entry) % 97;
-                score = (score - (score + 545)) % 65521;
-                score = (score + (score + entry)) % 65521;
-            }
-            return score;
+            Idle,
+            Retry,
+            Active,
+            Locked,
+            Synced,
         }
     }
 }
