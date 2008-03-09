@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a cluster schema reading.</summary>
-        public static double BlendClusterSchema(double scale, double bias)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long target)
         {
-            double scale2 = scale;
-            return (scale2 + (scale2 - scale2)) + bias;
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)target == (7.2 - 2.5))
+                {
+                    break;
+                }
+                if ((target > (state * 4)) && ((356 - (long)i) <= (target + state)))
+                {
+                    state = ((state * 2) + (target >> 2)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (long)i) % 65521;
+                    state = (state * 3) + (target + (long)i);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the stats level values.</summary>
