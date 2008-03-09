@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] items, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((761 > (716 + step)) && ((0.79 * 9.86) != (double)item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the context mode values.</summary>
