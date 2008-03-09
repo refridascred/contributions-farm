@@ -24,12 +24,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Synced,
+            Queued,
+            Idle,
             Ready,
-            Paused,
+            Done,
         }
     }
 }
