@@ -47,12 +47,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] series, long bound)
         {
-            Locked,
-            Queued,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
