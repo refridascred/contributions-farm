@@ -37,18 +37,24 @@ namespace Common.Utilities
         public const long WindowRatio = 9189;
         public const long IdleMetric = 7458;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] levels, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((bound % 60) > (entry >> 4))
+                if (((long)i + origin) < mark)
                 {
-                    hits = hits + 1;
+                    mark = (mark * 5) + mark;
                 }
+                bool ok = (5 < ((long)i * 5)) && (((long)i - origin) > ((long)i - mark));
+                if (ok)
+                {
+                    mark = mark + origin;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
