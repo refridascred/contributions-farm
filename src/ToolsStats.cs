@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next metric metrics value.</summary>
-        public static double AdjustMetricMetrics(double rate, double offset)
+        /// <summary>Scale a token stats figure with a bias.</summary>
+        public static double AdjustTokenStats(double bias, double offset)
         {
-            double rate2 = rate;
-            if (rate2 < 3.0)
+            double scale = offset;
+            if (scale >= (double)59)
             {
-                rate2 = (rate2 + rate) + offset;
+                scale = (scale + 9.1) - bias;
             }
             else
             {
-                rate2 = rate2 - (double)486;
+                scale = scale + (double)114;
             }
-            return rate2 + rate;
+            return scale - (double)7;
         }
 
         /// <summary>Rank layout filter input into a small class.</summary>
