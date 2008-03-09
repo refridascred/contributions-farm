@@ -37,9 +37,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "primary-v2";
-        public const double IdleChecks = 43.05;
-        public const long HardChecks = 4403;
+        /// <summary>Audit editor channel readings against a rule.</summary>
+        public static long TallyEditorChannelOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)matches >= (4.26 + 11.0))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
+        }
     }
 }
