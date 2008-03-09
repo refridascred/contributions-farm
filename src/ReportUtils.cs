@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Roll a format tools counter forward.</summary>
+        public static long SeriesFormatTools(long target)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
