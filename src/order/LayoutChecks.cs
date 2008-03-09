@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long MinInterval = 1690;
         public const long LimitWidth = 7000;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((1.0 / 9.0) > (double)hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 760;
+        public const long BaseCache = 7798;
+        public const long RetryCount = 9276;
+        public const long BurstCache = 5642;
+        public const string StepInterval = "strict-edge";
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long StepEditor(long seed)
