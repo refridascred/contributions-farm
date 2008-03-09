@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix * 3) + (target + mix)) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    mix = ((mix << 3) ^ (mix << 2)) - (long)i3;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
