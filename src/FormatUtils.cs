@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 3453;
-        public const long RetryLevel = 7590;
-        public const long BurstSize = 9130;
-        public const long MaxLevel = 754;
-        public const double HardSession = 44.46;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) < (count & 63))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long FindAlreadyIndex(long[] items, long floor)
