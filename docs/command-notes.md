@@ -1,15 +1,10 @@
 # Command notes
 
-Keep payload and channel names short and lowercase.
-The filter module keeps filter values in sync with the report cache.
-Use farm settings to tune how often batch data is refreshed.
-
-When a report fails, the notes handler retries a few times before giving up.
-The batch module keeps metric values in sync with the schema cache.
+Keep account and command names short and lowercase.
+The batches module keeps notes values in sync with the window cache.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep format values small
-- Validate contributi input early
-- Prefer buffer defaults
+- Log every notes change
+- Prefer githubfarm defaults
+- Review counter limits each release
