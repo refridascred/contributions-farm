@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count the schema session entries that pass the check.</summary>
