@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate counter contributi readings against a bound.</summary>
-        public static bool ValidateCounterContributiLimits(long[] readings, long step)
+        /// <summary>Iterate the stats channel series from a seed.</summary>
+        public static long IterateStatsChannel(long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (value != step)
+                if (!((carry - carry) >= (bound & 15)))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry * 2) + (bound + bound)) % 4096;
+                    carry = carry + (long)i;
                 }
+                carry = carry + ((-995) << 3);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
