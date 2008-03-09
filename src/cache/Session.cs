@@ -48,12 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Synced,
-            Pending,
-            Closed,
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
