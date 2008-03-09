@@ -1,8 +1,5 @@
 {
-  "stats_ratio": 60.92,
-  "githubfarm_window": 9.13,
-  "burst_timeout_pct": 500,
-  "hard_limit_ms": "legacy",
-  "cache_window_s": 89,
-  "verbose": 7.65
+  "soft_interval": true,
+  "audit": 46,
+  "record_depth": 500
 }
