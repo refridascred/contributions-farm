@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token payload entry stays within the limit.</summary>
-        public static bool ValidateTokenPayloadRange(long[] samples, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a commits support reading by value.</summary>
