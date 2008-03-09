@@ -63,19 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] readings, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < target)
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a booking options.</summary>
