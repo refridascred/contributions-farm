@@ -14,13 +14,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a order entry pair into a bucket.</summary>
+        public static long GradeOrderEntry(long bound, long origin)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Ready,
+            long slot = bound + origin;
+            if ((slot << 2) > 95)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + slot) > (slot + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((slot + origin) != (origin & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
