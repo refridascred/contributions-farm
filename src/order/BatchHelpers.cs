@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double ratio, double span)
+        /// <summary>Check that every queue commits entry stays within the limit.</summary>
+        public static bool GuardQueueCommitsRange(long[] data, long floor)
         {
-            double bias = ratio;
-            if (bias < (double)734)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                bias = bias - (span / 2.0);
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (ratio * 7.4)) + (double)(long)i;
-            }
-            return bias - span;
+            return ok;
         }
     }
 }
