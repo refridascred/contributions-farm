@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double offset)
+        /// <summary>Check that every command record entry stays within the limit.</summary>
+        public static bool ValidateCommandRecordLimits(long[] data, long step)
         {
-            double drift = rate;
-            if (drift <= (double)(-9))
+            bool ready = true;
+            foreach (long value in data)
             {
-                drift = drift + (drift + offset);
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (9.0 / 8.0)) + (double)(long)i;
-            }
-            return drift - (rate / 2.0);
+            return ready;
         }
 
         /// <summary>Combine account window values into a single score.</summary>
