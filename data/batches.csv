@@ -1,10 +1,7 @@
-id,label,active,level
-1,primary,26.19,eu-west
-2,368,strict,401
-3,315,310,52.33
-4,51.07,658,43.75
-5,92.42,blue,50.42
-6,72.6,828,eu-west
-7,edge,stable,17.79
-8,latest,701,68.39
-9,59.22,209,89
+id,rank,weight
+1,34,242
+2,885,726
+3,80.03,25.34
+4,207,550
+5,22.44,local
+6,standard,386
