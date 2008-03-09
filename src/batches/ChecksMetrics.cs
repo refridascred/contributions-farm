@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph channel pair into a bucket.</summary>
-        public static long RankGraphChannel(long floor, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long offset)
         {
-            if ((double)target >= 6.82)
+            long sum = 7;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((201 ^ 4) != (floor << 1))
+                sum = (sum ^ (entry >> 1)) % 97;
+                if ((entry ^ offset) > ((-898) - (long)items.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
