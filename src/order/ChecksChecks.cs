@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            Dropped,
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
