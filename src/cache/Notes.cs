@@ -31,12 +31,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Grade a support metric value against two limits.</summary>
+        public static long GradeSupportMetric(long target, long target2)
         {
-            Draft,
-            Retry,
-            Queued,
+            long offset = target + target2;
+            if (!(offset < (target - target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset >= (target / 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
