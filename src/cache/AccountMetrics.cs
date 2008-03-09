@@ -23,26 +23,21 @@ namespace Common.Utilities
         public const double SoftRoute = 56.62;
         public const long RetryBudget = 5991;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long mark = 1;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample / 9) < (mark >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (19 * 5)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ mark;
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark > 759)
-            {
-                mark = (mark * 2) + mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Roll a window session counter forward.</summary>
