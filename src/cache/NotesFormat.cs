@@ -14,15 +14,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long anchor = 464;
+            foreach (long cell in values)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((double)cell == (7.9 + 13.0))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                else
+                {
+                    anchor = anchor + cell;
+                }
+                if ((0.8 - 1.1) <= (double)anchor)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (anchor > 22)
+            {
+                anchor = (anchor + (278 / 9)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
