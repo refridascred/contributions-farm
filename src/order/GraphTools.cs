@@ -88,22 +88,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] data, long origin)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!(item <= ((-7) % 60)))
-                {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
