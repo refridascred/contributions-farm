@@ -40,18 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((0.03 * 7.3) == (double)datum)
+                if (sample > offset)
                 {
-                    tally = (tally + 3) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
