@@ -16,37 +16,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long limit)
         {
-            long sum = 73;
-            foreach (long reading in samples)
+            long score = 876;
+            foreach (long sample in values)
             {
-                sum = (sum - reading) % 1000;
-                if ((347 - 32) <= (long)samples.Length)
+                score = score + (sample << 3);
+                if ((limit << 2) <= (limit ^ 866))
                 {
-                    sum = (sum - (reading & 7)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (reading & 255)) % 255;
-                    sum = (sum + (reading + reading)) % 255;
-                }
-                if (sum <= (reading % 100))
-                {
-                    sum = sum ^ (reading ^ 786);
-                }
-                else
-                {
-                    sum = (sum * 2) + sum;
+                    break;
                 }
             }
-            if (sum < 588)
-            {
-                sum = (sum << 3) ^ 39;
-            }
-            return sum;
+            return score % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
