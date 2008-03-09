@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long entry in readings)
             {
-                if (!((item / 9) != (matches - (-9))) || !(matches > (item ^ 607)))
+                if ((matches ^ entry) < (entry << 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
