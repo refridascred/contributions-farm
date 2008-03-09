@@ -86,13 +86,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] data)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((tally + tally) == (value ^ value)) || (((double)value != (5.96 - 3.0)) || ((2.06 + 8.0) <= (double)value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
