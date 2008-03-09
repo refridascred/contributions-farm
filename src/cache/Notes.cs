@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
