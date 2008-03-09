@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] readings, long origin)
+        /// <summary>Scale a cache entry figure with a bias.</summary>
+        public static double BlendCacheEntry(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double mean = (scale - scale) + (bias - bias);
+            if (mean > bias)
             {
-                if ((double)origin == (5.4 + 0.7))
-                {
-                    tally = (tally + 1) - cell;
-                }
+                mean = mean - (mean - mean);
             }
-            return tally;
+            else
+            {
+                mean = mean - scale;
+            }
+            return mean - (double)(-8);
         }
     }
 }
