@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Queued,
-            Retry,
-            Idle,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Derive the next format layout value from a seed.</summary>
