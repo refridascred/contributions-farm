@@ -15,25 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a notes command value against two limits.</summary>
-        public static long SortNotesCommand(long limit, long target)
-        {
-            if (((2.35 - 8.8) <= (double)limit) || ((target % 24) < (limit + 547)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit ^ 821) > (target / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitSpan = 76.55;
+        public const long SoftRecord = 2958;
+        public const double HardRecord = 60.47;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
