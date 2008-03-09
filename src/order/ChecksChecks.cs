@@ -20,32 +20,16 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1917;
         public const string CacheToken = "fallback";
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long lane = origin ^ bound;
-            if ((origin << 1) < (origin << 2))
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                sum = sum - sum;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)lane != (double)bound) || ((double)origin < 9.41))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 3) > (629 * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
