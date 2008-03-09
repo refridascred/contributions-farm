@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            double load = span;
+            if (load > load)
+            {
+                load = (load - (0.24 / 8.0)) - scale;
+            }
+            return load - load;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
