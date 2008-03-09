@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long floor)
-        {
-            if ((floor + origin) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor < origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin >= (0.9 / 3.0)) || ((floor - origin) > floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 48.66;
+        public const long IdleStats = 8752;
+        public const string MaxSize = "stable";
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] readings, long limit)
