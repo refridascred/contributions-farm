@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                long edge = limit << 1;
-                if (edge >= (839 ^ edge))
-                {
-                    edge = edge - ((long)i ^ 754);
-                    edge = ((edge << 3) ^ state) % 255;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
