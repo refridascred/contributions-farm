@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] data)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 4) == (65 ^ sample))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
