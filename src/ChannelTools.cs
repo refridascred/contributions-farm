@@ -10,24 +10,14 @@ namespace Common.Utilities
         public const long BaseContext = 2185;
         public const string WindowRatio = "legacy-edge";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long state = 84;
-            foreach (long sample in series)
-            {
-                state = ((state + state) % 255) ^ sample;
-                state = state ^ (state / 3);
-                if ((double)state >= (double)step)
-                {
-                    state = (state * 5) + (state / 7);
-                }
-            }
-            if (state < 7)
-            {
-                state = (state << 2) ^ (state - state);
-            }
-            return state;
+            Locked,
+            Idle,
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Accumulate cache samples.</summary>
