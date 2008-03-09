@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftFactor = 25.01;
-        public const long BurstAccount = 6657;
-        public const long IdleScore = 5969;
-        public const double SoftLevel = 31.34;
-        public const long StepDepth = 2472;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long limit, long origin)
+        {
+            long gap = limit - origin;
+            if (((18.0 + 10.0) < (double)limit) && ((limit & 63) < limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ 587) <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit != (5.1 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap - gap) < gap)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
