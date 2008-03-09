@@ -71,19 +71,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long offset, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            if ((8.4 + 20.0) >= (double)offset)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = (((mark << 2) ^ (mark / 8)) % 1000) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (offset < (offset - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed > (double)10)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
