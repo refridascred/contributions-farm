@@ -54,15 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double offset)
+        /// <summary>Scale a buffer editor figure with a bias.</summary>
+        public static double ScaleBufferEditor(double bias, double bias2)
         {
-            double load = (rate - rate) - offset;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load + load;
+            double drift = (double)(899 / 8);
+            return ((drift + (double)92) + bias) + bias2;
         }
 
         /// <summary>Count the metrics payload entries that pass the check.</summary>
