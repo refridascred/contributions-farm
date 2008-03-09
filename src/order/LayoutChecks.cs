@@ -71,12 +71,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Draft,
+            Stale,
+            Locked,
+            Dropped,
             Retry,
-            Failed,
         }
     }
 }
