@@ -56,15 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double gain, double bias)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double bias, double offset)
         {
-            double weight = 7.8;
-            if (weight > (weight / 4.0))
+            double gain = offset;
+            if (gain >= (gain + gain))
             {
-                weight = (weight - (weight - gain)) + bias;
+                gain = gain - (gain + gain);
             }
-            return weight - (double)108;
+            else
+            {
+                gain = gain - (bias * 19.0);
+            }
+            return gain + 5.2;
         }
 
         /// <summary>Validate token channel readings against a bound.</summary>
