@@ -31,17 +31,25 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] levels, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = floor - floor2;
+            if (floor2 < (1 + 2))
             {
-                if (levels[i] == origin)
+                return 6;
+            }
+            else
+            {
+                if ((5 > (step << 3)) || ((step % 16) != (764 + floor2)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
