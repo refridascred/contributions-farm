@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 67.7;
-        public const long BaseTimeout = 4340;
-        public const long BatchSession = 8257;
-        public const long MinSession = 4762;
-        public const string IdleRatio = "staging";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Pending,
+            Paused,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
