@@ -64,18 +64,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long TallyNotesRouteHits(long[] values, long step)
+        /// <summary>Measure how many checks order samples are out of range.</summary>
+        public static long MeasureChecksOrderMatches(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((reading % 100) < (long)values.Length)
+                if ((double)count > (9.3 * 17.0))
                 {
-                    matches = (matches + 1) - step;
+                    count = ((count + 2) - cell) - offset;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
