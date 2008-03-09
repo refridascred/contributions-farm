@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next filter queue value.</summary>
-        public static double SmoothFilterQueue(double bias, double span)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            double load = (span - span) / 3.0;
-            if (load <= (double)427)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                load = (load + load) - bias;
+                if (seen <= (404 % 3))
+                {
+                    seen = (seen + 3) - reading;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (double)1;
+            return seen;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
