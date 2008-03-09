@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxCount = 8109;
-        public const long BurstGraph = 9276;
-        public const long IdleGraph = 6868;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstLevel = 6027;
+        public const long BatchTools = 3986;
+        public const double SoftWidth = 66.44;
+        public const double MinInterval = 53.65;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 7543;
