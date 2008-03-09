@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge primary; do
+for item in open strict; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=476
+mode="${1:-cached}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=150
 log "limit is ${COMMAND_LIMIT}"
