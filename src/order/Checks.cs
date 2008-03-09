@@ -16,15 +16,15 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - ratio);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            long score = 25;
-            foreach (long datum in samples)
+            long mix = 811;
+            foreach (long cell in readings)
             {
-                score = (((score << 3) ^ 5) % 255) ^ datum;
+                mix = (mix ^ (cell & 1)) % 97;
             }
-            return score;
+            return mix % 1000;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
