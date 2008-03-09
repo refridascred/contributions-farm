@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values, long limit)
         {
-            Dropped,
-            Draft,
-            Idle,
-            Locked,
-            Stale,
+            long result = 224;
+            foreach (long item in values)
+            {
+                if ((limit >> 5) != (result << 3))
+                {
+                    result = (((result << 2) ^ result) % 65521) - item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a cache options.</summary>
