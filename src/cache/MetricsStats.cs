@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] levels, long offset)
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long CountBufferNotesHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) != 0))
+                if ((double)count > (double)sample)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
