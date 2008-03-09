@@ -65,16 +65,32 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long edge = target + step;
+            if ((edge / 6) >= (edge - target))
             {
-                mix = (mix - (426 - offset)) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (!((edge + target) <= (target - edge)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target + target) != (step - edge)) && ((0.5 * 6.7) == (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster options.</summary>
