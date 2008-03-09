@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double bias2 = bias;
-            if (bias2 < (bias / 7.0))
-            {
-                bias2 = (bias2 + 9.4) - ratio;
-            }
-            else
-            {
-                bias2 = bias2 + 2.5;
-            }
-            return bias2 - (double)20;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a entry metric value against two limits.</summary>
