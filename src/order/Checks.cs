@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] samples, long offset)
         {
-            double ratio2 = span * 2.0;
-            if (ratio2 > (ratio + ratio))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                ratio2 = ratio2 - (ratio2 * 2.5);
+                if ((1.89 / 8.0) <= (double)item)
+                {
+                    seen = (seen + 1) + offset;
+                }
             }
-            return ratio2 + (ratio2 - ratio);
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
