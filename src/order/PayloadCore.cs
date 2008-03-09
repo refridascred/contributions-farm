@@ -13,22 +13,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] readings, long target)
+        /// <summary>Roll a window tools counter forward.</summary>
+        public static long RollWindowTools(long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target + count) <= count)
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
