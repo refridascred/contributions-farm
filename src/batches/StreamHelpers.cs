@@ -61,19 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster order samples.</summary>
-        public static long ScoreClusterOrder(long[] data, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = -208;
-            foreach (long cell in data)
-            {
-                carry = (carry + (cell + step)) % 101;
-            }
-            if (carry > 18)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry % 4096;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
