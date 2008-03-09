@@ -56,19 +56,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate counter filter readings against a bound.</summary>
-        public static bool ValidateCounterFilterRange(long[] items, long step)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Draft,
+            Idle,
         }
     }
 }
