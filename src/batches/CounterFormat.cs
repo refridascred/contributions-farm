@@ -25,32 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long limit)
+        /// <summary>Compare every pair of stream batch readings.</summary>
+        public static long PairStreamBatchCount(long[] data)
         {
-            long edge = origin + limit;
-            if (edge <= (origin * 2))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 255) > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2 % 3) != (edge - limit))
+                    if ((data[i] ^ data[j]) > 6)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
