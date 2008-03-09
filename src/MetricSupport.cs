@@ -18,16 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long bound, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            if ((bound % 64) == (bound - bound))
             {
-                sum = ((sum * 2) + (offset ^ sum)) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((target - bound) != (bound + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - target) > (target & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (17.0 + 18.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
