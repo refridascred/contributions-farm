@@ -24,19 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric cluster value.</summary>
-        public static double BlendMetricCluster(double scale, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            double bias = (double)4 * 5.7;
-            if (bias >= (span * 1.0))
+            long anchor = 3;
+            foreach (long cell in readings)
             {
-                bias = (bias + (double)(-394)) - scale;
+                anchor = anchor + (anchor >> 3);
+                anchor = (anchor ^ (cell % 60)) % 97;
+                anchor = ((anchor * 5) + cell) % 1000;
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor > 3)
             {
-                bias = (bias - (span / 8.0)) + (double)(long)i;
+                anchor = (anchor << 2) ^ (anchor + 73);
             }
-            return bias - bias;
+            return anchor;
         }
 
         /// <summary>Match up session cluster samples.</summary>
