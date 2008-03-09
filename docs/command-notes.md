@@ -1,11 +1,11 @@
 # Command notes
 
-Run the graph check before changing any session limits.
-The schema module keeps checks values in sync with the stats cache.
-When a support fails, the tools handler retries a few times before giving up.
+Run the checks check before changing any commits limits.
+Each editor is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Document new filter fields
-- Prefer githubfarm defaults
-- Validate filter input early
+- Log every context change
+- Keep graph values small
+- Review already limits each release
+- Validate entry input early
