@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Ready,
-            New,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultCount = "open-edge";
+        public const double SoftRoute = 56.62;
+        public const long RetryBudget = 5991;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] items)
