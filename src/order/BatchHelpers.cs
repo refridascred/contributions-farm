@@ -34,12 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long bound)
         {
-            Locked,
-            Idle,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
