@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long target, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long limit)
         {
-            if ((17.0 >= (double)limit) && (27 > (limit & 7)))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((33 / 8) < ((-75) - limit))
+                if (sample < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 5) <= (47 >> 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((15.0 + 7.81) > (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
