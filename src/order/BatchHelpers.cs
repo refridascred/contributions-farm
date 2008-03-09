@@ -20,21 +20,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = -24;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)(long)data.Length < (9.1 / 9.0))
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix * 3) + ((long)data.Length << 1)) - cell) - bound;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every queue commits entry stays within the limit.</summary>
