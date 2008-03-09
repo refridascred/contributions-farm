@@ -26,13 +26,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a channel reading.</summary>
