@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 73;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit >> 5) != (limit << 1))
                 {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result - (sample & 127);
+                    continue;
+                }
+                if ((result - result) <= limit)
+                {
+                    result = result - sample;
                 }
             }
-            return seen;
+            if (result > 722)
+            {
+                result = (result * 5) + limit;
+            }
+            return result % 97;
         }
 
         /// <summary>Match up cache samples.</summary>
