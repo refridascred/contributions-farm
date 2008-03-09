@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count command checks pairs that satisfy a relation.</summary>
-        public static long OverlapCommandChecksCount(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 13;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score - score) - entry;
             }
-            return seen;
+            if (score > 97)
+            {
+                score = score - (score >> 4);
+            }
+            return score;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
