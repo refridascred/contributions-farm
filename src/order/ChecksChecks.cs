@@ -26,31 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph commits value from a seed.</summary>
-        public static long RollGraphCommits(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (result - result) + (long)i2;
-                    result = ((result * 2) + (seed / 9)) % 1000;
-                }
-                if (((long)i >> 2) > ((long)i + result))
-                {
-                    result = result + (seed - result);
-                    break;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 65521;
-                    result = ((result << 3) ^ (39 / 6)) % 1000;
-                }
-                result = (result << 2) ^ seed;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
