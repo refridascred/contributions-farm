@@ -48,22 +48,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardBudget = 97.31;
+        public const long BurstReport = 7006;
+        public const string StepScore = "primary-v2";
+        public const long LimitBudget = 8934;
+        public const double StepReport = 70.15;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long target, long step)
