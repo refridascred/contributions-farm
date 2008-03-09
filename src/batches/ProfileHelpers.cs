@@ -77,12 +77,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (6 << 1))
+                {
+                    count = (count + 1) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
