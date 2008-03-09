@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long BurstGraph = 9276;
         public const long IdleGraph = 6868;
 
-        /// <summary>Look up the position of a stats metrics sample.</summary>
-        public static long FindStatsMetricsIndex(long[] samples, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
