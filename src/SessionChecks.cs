@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((-5) + entry) == (entry - acc))
-                {
-                    acc = acc ^ 94;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Compare every pair of queue command readings.</summary>
