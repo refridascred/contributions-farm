@@ -41,22 +41,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series, long bound)
         {
-            long anchor = 449;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((anchor << 3) > (anchor + sample)))
+                if (bound >= (bound * 3))
                 {
-                    anchor = anchor + (61 / 4);
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (anchor < 206)
-            {
-                anchor = ((anchor * 3) + anchor) % 1000;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
