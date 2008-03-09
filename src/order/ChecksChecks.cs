@@ -23,18 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] readings, long step)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long carry = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value << 3) == (step - step))
+                if ((double)(long)i != (6.9 - 7.22))
                 {
-                    count = count + 2;
+                    break;
                 }
+                else
+                {
+                    carry = (carry + ((long)i / 7)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a support info.</summary>
