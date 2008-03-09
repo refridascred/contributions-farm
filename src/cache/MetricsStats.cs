@@ -41,20 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5810;
+        public const long CacheFormat = 9477;
+        public const double HardFormat = 64.21;
+        public const long BatchRatio = 3783;
 
         /// <summary>Rank tools context input into a small class.</summary>
         public static long ClassifyToolsContext(long origin, long seed)
