@@ -23,19 +23,31 @@ namespace Common.Utilities
         public const long RetryScore = 3745;
         public const long IdleCluster = 5812;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] levels, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long step)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if (step > (step << 3))
             {
-                if (entry >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((step % 8) != (991 - step))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((step << 1) < step) && ((limit + limit) != (limit - 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
