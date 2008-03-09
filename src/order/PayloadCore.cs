@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Derive the next order metric value from a seed.</summary>
+        public static long StepOrderMetric(long bound)
         {
-            Retry,
-            Idle,
-            Synced,
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((long)i != (bound + score))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score * 3) + (bound + score)) ^ (long)i2;
+                }
+                score = (score ^ ((long)i ^ (-82))) % 4096;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
