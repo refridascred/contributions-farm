@@ -29,15 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Pending,
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
