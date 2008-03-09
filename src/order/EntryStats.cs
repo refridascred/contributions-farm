@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (scale2 + (scale2 - scale2)) + bias;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Pending,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepLevel = 5995;
+        public const long BatchLevel = 1987;
+        public const double DefaultBudget = 50.47;
+        public const long BurstDepth = 6967;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long offset)
