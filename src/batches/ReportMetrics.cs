@@ -13,22 +13,29 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long limit2)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long seed)
         {
-            if (!((limit2 + limit) <= limit2))
+            if (((14.0 + 14.0) == (double)floor) || (seed <= (seed % 64)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (((limit2 * 4) >= limit2) && ((double)limit2 != (double)limit))
+                if (seed <= (floor + seed))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 0;
+                    if ((4.0 - 0.18) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
