@@ -50,19 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            long score = 617;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                score = score - (offset >> 5);
-                if ((6.79 >= (5.37 - 4.0)) || ((double)value < (double)offset))
+                if (tally < 777)
                 {
-                    score = ((score << 2) ^ (value << 1)) % 65521;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
