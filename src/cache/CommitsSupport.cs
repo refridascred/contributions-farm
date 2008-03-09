@@ -36,15 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Draft,
-            New,
-            Done,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 33.71;
+        public const long WindowFilter = 914;
+        public const long BurstSpan = 6269;
+        public const string BurstInterval = "open-v2";
+        public const long DefaultFilter = 4061;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
