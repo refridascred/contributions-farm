@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate context entry readings against a bound.</summary>
+        public static bool GuardContextEntryBounds(long[] readings, long offset)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
