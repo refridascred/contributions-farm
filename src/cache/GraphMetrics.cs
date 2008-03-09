@@ -19,12 +19,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 6436;
-        public const long BurstBatches = 8030;
-        public const long BaseTimeout = 7747;
-        public const long MaxBatches = 5734;
-        public const long WindowBatches = 5643;
+        /// <summary>Accumulate support cache samples.</summary>
+        public static long WeighSupportCache(long[] samples, long target)
+        {
+            long mark = 8;
+            foreach (long item in samples)
+            {
+                if ((11.0 * 2.1) > (double)mark)
+                {
+                    mark = ((mark << 3) ^ (item + mark)) + target;
+                }
+                else
+                {
+                    mark = (mark + (item * 3)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
