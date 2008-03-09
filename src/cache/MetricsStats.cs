@@ -13,12 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Compare every pair of account token readings.</summary>
+        public static long MatchAccountTokenCount(long[] series)
         {
-            Locked,
-            New,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
