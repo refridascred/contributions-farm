@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = 20;
+            foreach (long item in samples)
             {
-                if ((cell + cell) >= (hits - 9))
+                if ((68 % 60) <= (carry << 3))
                 {
-                    hits = hits + 1;
+                    carry = (carry + (item - carry)) + offset;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
