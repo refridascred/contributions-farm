@@ -1,5 +1,6 @@
 {
-  "command_window": "strict",
-  "cache_ratio": "eu-west",
-  "poll_interval_s": 82.33
+  "report_limit": false,
+  "hard_depth_ms": true,
+  "cache_retries_count": "cached",
+  "strict": 4804
 }
