@@ -1,6 +1,6 @@
 {
-  "report_limit": false,
-  "hard_depth_ms": true,
-  "cache_retries_count": "cached",
-  "strict": 4804
+  "batch_size": 60,
+  "batch_size_ms": 9349,
+  "contributi_threshold": ["strict", "green", "blue", "cached"],
+  "persist": "legacy"
 }
