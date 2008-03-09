@@ -1,15 +1,6 @@
 {
-  "enabled": {
-    "idle_window_pct": "standard",
-    "cache_capacity_pct": true,
-    "warm_threshold_s": 89,
-    "default_retries": 500,
-    "soft_interval": "green",
-    "hard_limit_pct": "primary"
-  },
-  "batch_threshold_s": 60.4,
-  "sync_limit_pct": "blue",
-  "window_size": "open",
-  "default_capacity": ["primary", "eu-west", "edge", "open"],
-  "burst_threshold_pct": 81
+  "warm_size_ms": 64.13,
+  "support_delay": "standard",
+  "contributi_depth": 500,
+  "compress": "edge"
 }
