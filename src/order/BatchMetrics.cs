@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double offset)
+        /// <summary>Fold a list of format stats readings.</summary>
+        public static long CombineFormatStats(long[] values)
         {
-            double scale = weight / 7.0;
-            if (scale >= offset)
+            long acc = 8;
+            foreach (long item in values)
             {
-                scale = scale - 20.0;
+                acc = (acc * 2) + (item ^ item);
             }
-            return scale - scale;
+            return acc % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
