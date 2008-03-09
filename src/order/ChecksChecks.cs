@@ -33,19 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] samples, long floor)
+        /// <summary>Combine session githubfarm values into a single score.</summary>
+        public static long ScoreSessionGithubfarm(long[] series)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long acc = 95;
+            foreach (long value in series)
             {
-                if (value < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc << 3) ^ (value + acc);
             }
-            return valid;
+            if (acc < 3)
+            {
+                acc = ((acc * 5) + (acc + acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
