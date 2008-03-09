@@ -56,19 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order profile entry stays within the limit.</summary>
-        public static bool ValidateOrderProfileRange(long[] items, long seed)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Idle,
+            Locked,
         }
     }
 }
