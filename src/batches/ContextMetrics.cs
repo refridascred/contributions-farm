@@ -65,22 +65,29 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long floor)
         {
-            if ((origin - origin) <= step)
+            if (((bound & 15) == (bound - floor)) && ((double)bound >= (double)floor))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (2.0 < (double)step)
+                if (!((bound / 4) == (35 + floor)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 7;
+                    if (floor < (bound + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
