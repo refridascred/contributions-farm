@@ -28,19 +28,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support batches readings against a bound.</summary>
-        public static bool CheckSupportBatchesBounds(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchTimeout = "primary-v2";
+        public const long HardTimeout = 4471;
+        public const long BurstScore = 5897;
+        public const long LimitScore = 6145;
     }
 }
