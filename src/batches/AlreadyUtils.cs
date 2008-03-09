@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a already commits counter forward.</summary>
-        public static long DeriveAlreadyCommits(long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] items, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                carry = ((carry << 2) ^ (floor * 3)) % 255;
-                if ((375 / 7) <= (74 - floor))
+                if ((761 > (716 + step)) && ((0.79 * 9.86) != (double)item))
                 {
-                    carry = (carry ^ (floor / 4)) % 65521;
-                    continue;
+                    hits = hits + 2;
                 }
-                carry = (carry + (carry >> 5)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the context mode values.</summary>
