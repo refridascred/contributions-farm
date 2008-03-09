@@ -55,31 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools context input into a small class.</summary>
-        public static long ClassifyToolsContext(long origin, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long offset)
         {
-            if ((seed & 7) <= (seed & 127))
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)seed == (8.69 - 2.6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((57 * 5) < (9 + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
