@@ -17,17 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark * 3) + (step << 2);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 3094;
+        public const long MinSession = 3825;
+        public const long BaseSession = 7306;
+        public const double BurstInterval = 23.23;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4956;
