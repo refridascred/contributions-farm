@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] values, long seed)
+        /// <summary>Roll a session already counter forward.</summary>
+        public static long StepSessionAlready(long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((926 + hits) > hits)
+                if (!!(36 >= (sum << 3)))
                 {
-                    hits = ((hits + 2) ^ value) - seed;
+                    sum = (sum << 2) ^ sum;
+                }
+                if (target >= (target - target))
+                {
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = sum - target;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a notes options.</summary>
