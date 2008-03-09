@@ -39,18 +39,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mix = 4;
+            foreach (long item in series)
             {
-                if ((62 + seen) != (sample + 268))
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix << 3) ^ (item << 3)) + bound;
             }
-            return seen;
+            if (mix > 3)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
