@@ -28,19 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] items, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
