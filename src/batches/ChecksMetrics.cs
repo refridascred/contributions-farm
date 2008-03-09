@@ -20,23 +20,18 @@ namespace Common.Utilities
             return mean - (double)62;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] data, long origin)
+        /// <summary>Measure how many contributi already samples are out of range.</summary>
+        public static long CountContributiAlreadyGaps(long[] levels)
         {
-            long acc = 555;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 2) + (acc + (long)data.Length)) % 4096;
-                if ((2 >= (46 + origin)) && ((acc % 64) == (7 - (long)data.Length)))
+                if (!(seen < (seen - reading)))
                 {
-                    acc = ((acc * 5) + origin) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (sample & 63);
+                    seen = seen + 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
