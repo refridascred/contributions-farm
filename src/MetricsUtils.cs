@@ -36,18 +36,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long AuditQueueContextOutliers(long[] data, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((seed % 10) >= (528 * 4)) || ((7.8 * 4.49) <= (double)sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Pending,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Blend two contributi measurements.</summary>
