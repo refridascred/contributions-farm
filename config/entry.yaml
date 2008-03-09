@@ -1,19 +1,15 @@
 # entry settings
-default_window_ms: 4317
-burst_retries_count: 8.77
-min_size_s:
-  context_retries:
-    enabled: 16
-    hard_size_ms: legacy
-    sync_ttl: 8629
-    idle_ratio_count: staging
-    poll_ttl_s: latest
-    filter_interval: 1024
-  default_retries: eu-west
-  githubfarm_retries: 87
-  queue_threshold: edge
-  min_delay:
-    base_timeout_s: eu-west
-    profile_delay: standard
-    strict: edge
-metric_capacity: false
+strict: green
+dry_run: true
+window_ratio: 60
+stream_size:
+  poll_ttl_count: 60
+  retry_ratio_s:
+    - 145
+    - 248
+  record_timeout: open
+  filter_timeout:
+    - edge
+    - fallback
+  batch_depth_s: 16.28
+  persist: 53.82
