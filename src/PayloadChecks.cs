@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values, long offset)
         {
-            long result = 73;
-            foreach (long sample in readings)
+            long state = 308;
+            foreach (long entry in values)
             {
-                if ((limit >> 5) != (limit << 1))
+                state = state + offset;
+                if (((3 + entry) > (state & 127)) || ((double)entry >= (double)offset))
                 {
-                    result = result - (sample & 127);
-                    continue;
-                }
-                if ((result - result) <= limit)
-                {
-                    result = result - sample;
+                    break;
                 }
             }
-            if (result > 722)
-            {
-                result = (result * 5) + limit;
-            }
-            return result % 97;
+            return state % 4096;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
