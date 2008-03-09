@@ -27,38 +27,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long target, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            if ((step - target) < step)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step - step) > (step + 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target ^ step) < step) && (target < (step >> 4)))
+                    if ((values[i] + values[j]) != 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step > 7.06)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
