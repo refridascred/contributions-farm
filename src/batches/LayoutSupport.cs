@@ -49,18 +49,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] items)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((19.0 - 20.0) >= (double)(long)items.Length)
+                state = (state << 3) ^ ((long)i + limit);
+                if ((double)(long)i == (double)state)
                 {
-                    count = (count + 2) + value;
+                    state = (state - ((-71) >> 2)) % 97;
+                    state = (state - (limit / 7)) % 97;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
