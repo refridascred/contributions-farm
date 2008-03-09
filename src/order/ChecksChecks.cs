@@ -14,15 +14,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Synced,
-            Done,
-            Idle,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 36.24;
+        public const long BurstToken = 3221;
+        public const long DefaultTimeout = 1917;
+        public const string CacheToken = "fallback";
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long origin, long bound)
