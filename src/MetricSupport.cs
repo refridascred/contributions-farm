@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long bound, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            if ((bound % 64) == (bound - bound))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - bound) != (bound + target))
+                if ((cell + count) > (count - cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - target) > (target & 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (17.0 + 18.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
