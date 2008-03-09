@@ -23,17 +23,22 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] <= target)
+                if ((11.0 / 4.0) == (double)sample)
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
