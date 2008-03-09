@@ -17,11 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 3094;
-        public const long MinSession = 3825;
-        public const long BaseSession = 7306;
-        public const double BurstInterval = 23.23;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 39.37;
+        public const long StepRecord = 6164;
+        public const long SoftRecord = 4661;
+        public const long MaxRecord = 7748;
+        public const double BurstRecord = 12.86;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4956;
