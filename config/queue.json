@@ -1,6 +1,8 @@
 {
-  "enabled": 2.66,
-  "soft_size_ms": 3.61,
-  "warm_retries_s": "fallback",
-  "hard_timeout_count": 34.09
+  "stats_ratio": 60.92,
+  "githubfarm_window": 9.13,
+  "burst_timeout_pct": 500,
+  "hard_limit_ms": "legacy",
+  "cache_window_s": 89,
+  "verbose": 7.65
 }
