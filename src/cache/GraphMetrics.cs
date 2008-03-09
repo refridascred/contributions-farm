@@ -54,18 +54,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit batches account readings against a rule.</summary>
-        public static long CountBatchesAccountGaps(long[] series, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample >> 5) < (630 >> 4)))
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 9793;
+        public const long WindowTimeout = 9104;
+        public const long BatchSpan = 7733;
+        public const long MaxBudget = 6793;
+        public const double BurstBatch = 95.54;
     }
 }
