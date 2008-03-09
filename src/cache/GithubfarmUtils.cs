@@ -18,13 +18,10 @@ namespace Common.Utilities
         public const long HardTools = 8106;
         public const long WindowTimeout = 1149;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Done,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchInterval = 21.73;
+        public const long RetryScore = 3745;
+        public const long IdleCluster = 5812;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] series)
