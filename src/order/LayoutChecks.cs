@@ -19,15 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series)
         {
-            double scale = (double)((-6) - 2);
-            if (scale >= (4.99 + span))
+            long anchor = 25;
+            foreach (long datum in series)
             {
-                scale = (scale - scale) - ratio;
+                anchor = ((anchor << 3) ^ (anchor * 3)) % 97;
+                anchor = anchor - (datum * 4);
             }
-            return scale + (scale + span);
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 4) + (anchor >> 3)) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
