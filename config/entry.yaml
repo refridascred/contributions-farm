@@ -1,21 +1,11 @@
 # entry settings
-editor_capacity: true
-max_depth_count: 17
-compress: primary
-burst_interval_ms:
-  cache_threshold_ms: 21.32
-  default_timeout_count: latest
-  support_capacity:
-    - strict
-    - stable
-    - green
-sync_window:
-  persist: 30
-  audit: open
-  support_window:
-    - 13
-    - 112
-    - 285
-    - 496
-  order_retries: green
-  retry_timeout_ms: fallback
+burst_limit_ms:
+  - 43
+  - 239
+verbose:
+  - edge
+  - strict
+  - eu-west
+  - standard
+hard_threshold: 30
+base_capacity: 30
