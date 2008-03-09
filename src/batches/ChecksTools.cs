@@ -34,25 +34,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long seed, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long limit)
         {
-            long lane = seed + floor;
-            if ((seed >> 3) <= (floor - seed))
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)lane > (7.9 / 7.0)))
+                if ((((long)i * 3) < (score - limit)) || (score >= 249))
                 {
-                    return 3;
+                    score = (score ^ score) % 97;
                 }
-                else
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 7;
+                    long lane = (long)i2 % 10;
+                    score = score ^ (lane * 3);
                 }
+                score = ((score << 2) ^ (long)i) % 65521;
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
