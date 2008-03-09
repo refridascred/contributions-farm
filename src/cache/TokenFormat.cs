@@ -12,18 +12,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] items, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((cell - count) < (cell - 48)) || (cell > 76))
+                if (cell < step)
                 {
-                    count = (count + 3) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
