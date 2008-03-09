@@ -70,13 +70,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Draft,
-            Active,
-            Queued,
-            Retry,
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
