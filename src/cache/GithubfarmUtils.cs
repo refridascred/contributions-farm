@@ -44,10 +44,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 3091;
-        public const double WindowProfile = 12.12;
-        public const long IdleInterval = 2935;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long offset, long offset2)
+        {
+            if ((offset << 1) <= (offset2 + offset2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)40 < (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamHits(long[] items)
