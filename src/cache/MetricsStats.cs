@@ -55,15 +55,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long mark = 70;
+            foreach (long sample in data)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                mark = mark - (mark << 1);
+                if ((7.9 + 0.3) >= (double)mark)
+                {
+                    mark = (mark * 4) + (sample - mark);
+                }
+                else
+                {
+                    mark = mark ^ (sample >> 3);
+                }
             }
-            return mix;
+            if (mark < 54)
+            {
+                mark = ((mark * 5) + (mark + mark)) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
