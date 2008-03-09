@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] readings, long step)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank editor batches input into a small class.</summary>
