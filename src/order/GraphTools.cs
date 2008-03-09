@@ -23,23 +23,18 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Audit entry filter readings against a rule.</summary>
+        public static long AuditEntryFilterGaps(long[] samples)
         {
-            long carry = 275;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry * 5) + carry;
-                if (item >= (item << 3))
+                if (9.91 > (double)datum)
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (carry < 510)
-            {
-                carry = carry - (carry >> 1);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
