@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] levels)
         {
-            Done,
-            Pending,
-            Synced,
-            Draft,
-            Stale,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - tally) <= (entry - 358))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first counter already entry that matches the target.</summary>
