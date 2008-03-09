@@ -25,13 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (step > (acc - step))
+                {
+                    acc = (acc * 3) + (step & 63);
+                }
+                if (((long)i ^ step) != (step * 4))
+                {
+                    acc = acc - ((long)i + acc);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate cache samples.</summary>
