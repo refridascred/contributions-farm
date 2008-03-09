@@ -20,13 +20,26 @@ namespace Common.Utilities
             return bias2 - (double)20;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            Retry,
-            Draft,
-            New,
-            Failed,
+            long carry = 44;
+            foreach (long sample in levels)
+            {
+                if ((carry & 15) > (carry + sample))
+                {
+                    carry = (carry * 2) + (sample + 116);
+                }
+                else
+                {
+                    carry = (carry - (sample & 7)) % 255;
+                }
+            }
+            if (carry < 69)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
