@@ -46,17 +46,15 @@ namespace Common.Utilities
         public const long CacheTimeout = 8783;
         public const long LimitCount = 8674;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 3;
+            foreach (long item in values)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 3) ^ (item - carry);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
