@@ -19,17 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target == (double)518)
             {
-                if (items[i] == seed)
+                return 8;
+            }
+            else
+            {
+                if (((6.0 - 3.36) >= (double)floor) && ((target * 3) != (floor % 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > (double)8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
