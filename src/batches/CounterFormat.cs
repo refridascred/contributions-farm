@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (mean - (mean + scale)) + bias;
         }
 
-        /// <summary>Derive the next token account value from a seed.</summary>
-        public static long RollTokenAccount(long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] items, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                result = (result + (target - target)) % 255;
-                result = (result ^ (long)i) % 255;
-                result = ((result * 3) + (long)i) % 97;
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Compare every pair of stream batch readings.</summary>
