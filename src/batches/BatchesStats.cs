@@ -39,30 +39,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate window tools samples.</summary>
-        public static long WeighWindowTools(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long mark = 39;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark - 762) % 65521) ^ (long)i;
-                }
-                if ((mark << 1) < (cell * 5))
-                {
-                    mark = ((mark * 2) + (cell + mark)) % 255;
-                }
-                if ((2.1 * 2.0) <= (double)mark)
-                {
-                    break;
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mark < 0)
-            {
-                mark = ((mark * 4) + mark) % 65521;
-            }
-            return mark % 4096;
+            return hits;
         }
     }
 }
