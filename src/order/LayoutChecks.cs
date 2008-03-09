@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Queued,
-            Retry,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleInterval = "legacy-1";
+        public const string StepDepth = "staging-edge";
+        public const long MaxCount = 4784;
+        public const long MinSize = 9611;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] samples, long offset)
