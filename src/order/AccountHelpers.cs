@@ -53,15 +53,14 @@ namespace Common.Utilities
         public const long BaseChecks = 1812;
         public const long RetryInterval = 1729;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Stale,
+            New,
+            Retry,
+            Queued,
+            Pending,
         }
     }
 }
