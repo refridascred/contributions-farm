@@ -46,14 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            New,
-            Dropped,
-            Queued,
-            Idle,
-            Ready,
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
