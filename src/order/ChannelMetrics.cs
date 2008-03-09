@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many commits cluster samples are out of range.</summary>
-        public static long TallyCommitsClusterMatches(long[] items, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
             long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((11.0 - 5.49) != (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 2) + value) - limit;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
