@@ -16,21 +16,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
