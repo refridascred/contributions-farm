@@ -32,32 +32,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long result = 58;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)result < (4.93 + 1.3)) || ((double)entry > (14.0 + 9.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result + (result & 63)) % 97;
-                }
-                else
-                {
-                    result = result + (entry + 77);
-                    result = ((result * 5) + (result & 63)) % 101;
-                }
-                if (((result * 2) > (entry + 960)) && (37 < (entry & 31)))
-                {
-                    result = (result - (result - 82)) % 1000;
-                    result = result - result;
-                }
-                if ((entry & 127) > (entry >> 1))
-                {
-                    result = (result * 5) + (result << 1);
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
