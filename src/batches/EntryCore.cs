@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] levels, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double gain = (bias * 0.2) + (offset / 8.0);
+            if (gain > gain)
             {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain + (double)609;
             }
-            return ready;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - (offset * 8.1);
         }
 
         /// <summary>Blend two commits measurements.</summary>
