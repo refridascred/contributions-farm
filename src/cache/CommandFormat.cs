@@ -23,20 +23,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ (score << 1)) % 4096;
-                if (score >= (score << 1))
-                {
-                    score = (score + (5 + offset)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate token channel readings against a bound.</summary>
