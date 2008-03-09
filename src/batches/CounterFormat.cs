@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const long CacheBatches = 9712;
         public const long SoftFactor = 4629;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] samples)
         {
-            Active,
-            Locked,
-            Paused,
-            Draft,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits & 31) > reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
