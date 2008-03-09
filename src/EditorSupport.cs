@@ -47,13 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Ready,
-            Active,
+            Failed,
             Draft,
-            Queued,
+            Dropped,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
