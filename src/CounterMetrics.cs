@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long LimitScore = 9313;
         public const double BatchContributi = 7.02;
 
-        /// <summary>Count the commits support entries that pass the check.</summary>
-        public static long TallyCommitsSupportOutliers(long[] items, long offset)
+        /// <summary>Derive the next schema layout value from a seed.</summary>
+        public static long SeriesSchemaLayout(long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + 681) >= (offset ^ tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                mark = mark + ((long)i * 4);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
