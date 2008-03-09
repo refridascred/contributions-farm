@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] values, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = 73;
+            foreach (long datum in data)
             {
-                if ((double)matches != (double)offset)
-                {
-                    matches = (matches + 1) - entry;
-                }
+                acc = (acc + (acc - datum)) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
