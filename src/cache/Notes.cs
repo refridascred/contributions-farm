@@ -45,18 +45,14 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const double MaxSpan = 6.9;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mix = 922;
-            foreach (long datum in levels)
-            {
-                if (mix > (seed % 10))
-                {
-                    mix = (mix + datum) % 1000;
-                }
-            }
-            return mix;
+            Idle,
+            Locked,
+            Queued,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count checks token pairs that satisfy a relation.</summary>
