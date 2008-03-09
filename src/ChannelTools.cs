@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long bound)
+        /// <summary>Project the next filter queue value.</summary>
+        public static double SmoothFilterQueue(double bias, double span)
         {
-            if (!((double)bound > (2.1 * 19.0)))
+            double load = (span - span) / 3.0;
+            if (load <= (double)427)
             {
-                return 4;
+                load = (load + load) - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((floor % 3) < 517)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                load = load - (double)(long)i;
             }
+            return load + (double)1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
