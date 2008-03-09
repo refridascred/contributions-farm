@@ -29,20 +29,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] readings, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
                 {
-                    carry = (carry ^ (43 >> 5)) ^ (long)i3;
+                    return (long)i;
                 }
-                carry = ((carry << 3) ^ (0 >> 1)) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
