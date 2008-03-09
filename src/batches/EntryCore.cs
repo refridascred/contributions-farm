@@ -38,19 +38,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double gain = (bias * 0.2) + (offset / 8.0);
-            if (gain > gain)
-            {
-                gain = gain + (double)609;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - (offset * 8.1);
+            Locked,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a filter header.</summary>
