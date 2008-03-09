@@ -24,23 +24,21 @@ namespace Common.Utilities
             return drift - (7.48 / 5.0);
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double bias, double bias2)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            double bias3 = (double)((-8) / 4);
-            if (bias3 < 8.97)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias3 = (bias3 - bias3) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias3 = bias3 - 1.33;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 + bias3) + (double)(long)i;
-            }
-            return bias3 - bias2;
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
