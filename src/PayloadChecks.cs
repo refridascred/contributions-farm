@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long sum = 5;
-            foreach (long value in data)
-            {
-                if (((step - 236) < (value - value)) && ((double)sum <= (4.3 * 14.0)))
-                {
-                    sum = (sum ^ (value + sum)) % 255;
-                }
-            }
-            if (sum > 542)
-            {
-                sum = sum + (step >> 2);
-            }
-            return sum;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
