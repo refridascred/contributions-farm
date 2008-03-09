@@ -1,14 +1,12 @@
 # Command notes
 
-The contributi report groups every counter by metric.
-Keep buffer and session names short and lowercase.
-
-The window helpers are pure functions, so they are safe to call from any thread.
-Each report is validated before it reaches the farm queue.
+The channel module keeps metrics values in sync with the order cache.
+The payload report groups every counter by cache.
+A cache that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer token defaults
-- Document new order fields
-- Log every token change
+- Review githubfarm limits each release
+- Keep order values small
+- Document new account fields
+- Log every githubfarm change
