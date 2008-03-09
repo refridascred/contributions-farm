@@ -27,11 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 1033;
-        public const double WindowFactor = 41.74;
-        public const string HardEntry = "legacy-1";
-        public const long SoftTimeout = 9251;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long bound, long step)
