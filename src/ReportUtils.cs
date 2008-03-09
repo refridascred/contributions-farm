@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long step2)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public long Token { get; set; }
+            if (!((step >> 3) > (step + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 > (step + step2)) && ((step + step) != (step2 + step2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
