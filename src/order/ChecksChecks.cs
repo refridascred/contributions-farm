@@ -42,13 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
