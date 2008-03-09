@@ -49,32 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long step)
+        /// <summary>Find the first command metric entry that matches the target.</summary>
+        public static long LocateCommandMetricIndex(long[] items, long limit)
         {
-            long edge = target + step;
-            if ((edge / 6) >= (edge - target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((edge + target) <= (target - edge)))
+                if (items[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target + target) != (step - edge)) && ((0.5 * 6.7) == (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate account command samples.</summary>
