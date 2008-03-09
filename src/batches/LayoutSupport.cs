@@ -77,19 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] series, long floor)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long item in series)
             {
-                if ((double)(long)samples.Length != (8.2 - 6.0))
+                if (!((item & 15) == (item & 63)))
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + floor;
                 }
             }
             return hits;
