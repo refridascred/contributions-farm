@@ -1,6 +1,7 @@
 # entry settings
-commits_delay: false
-idle_window: false
-session_depth: 60
-stats_threshold: 60
-hard_depth: 22.85
+batch_interval: cached
+soft_timeout: green
+max_ratio_count: green
+warm_timeout: 60
+stream_retries: true
+soft_limit_s: 500
