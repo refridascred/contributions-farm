@@ -35,21 +35,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings, long limit)
-        {
-            long score = 16;
-            foreach (long cell in readings)
-            {
-                score = ((score << 3) ^ (limit + limit)) % 255;
-                score = (score - (cell - cell)) % 65521;
-                if ((4 + cell) == (cell - cell))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryLevel = 2810;
+        public const double CacheCommand = 66.78;
+        public const long BurstBudget = 1487;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long seed, long floor)
