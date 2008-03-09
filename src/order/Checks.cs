@@ -33,19 +33,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] items, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Active,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
