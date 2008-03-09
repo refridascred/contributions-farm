@@ -1,6 +1,12 @@
 {
-  "strict": 18.67,
-  "flush_size_pct": true,
-  "cache_capacity_ms": [17, 5, 67, 136],
-  "order_size": true
+  "readonly": ["green", "cached"],
+  "max_depth_count": {
+    "compress": "legacy",
+    "warm_threshold_count": 8681,
+    "default_threshold": ["staging", "fallback", "latest", "edge"],
+    "readonly": 98,
+    "hard_threshold_s": ["green", "fallback", "legacy"],
+    "poll_interval_s": 2247
+  },
+  "stats_retries": 30.6
 }
