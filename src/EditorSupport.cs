@@ -37,17 +37,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = acc + step;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftTimeout = 3023;
+        public const long CacheSession = 8780;
+        public const long SoftDepth = 8955;
+        public const long BaseTimeout = 3122;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
