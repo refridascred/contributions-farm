@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Done,
-            Idle,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8179;
+        public const long CacheSize = 596;
+        public const double BatchTools = 95.13;
+        public const long MinTools = 3657;
 
         /// <summary>Grade a notes editor value against two limits.</summary>
         public static long RankNotesEditor(long floor, long offset)
