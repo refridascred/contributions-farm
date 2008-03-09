@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Count the account buffer entries that pass the check.</summary>
+        public static long TallyAccountBufferMatches(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (step > (acc - step))
+                if ((matches >> 4) > (value + 573))
                 {
-                    acc = (acc * 3) + (step & 63);
+                    matches = matches + 3;
                 }
-                if (((long)i ^ step) != (step * 4))
-                {
-                    acc = acc - ((long)i + acc);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
