@@ -1,12 +1,11 @@
 # Command notes
 
-The report module keeps command values in sync with the already cache.
-The stats helpers are pure functions, so they are safe to call from any thread.
-The record report groups every layout by graph.
+A queue that stays idle for too long is moved to the entry list.
+The filter module keeps entry values in sync with the buffer cache.
+A batch that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Log every batch change
-- Review notes limits each release
-- Document new contributi fields
-- Prefer session defaults
+- Keep schema values small
+- Review batches limits each release
+- Document new support fields
