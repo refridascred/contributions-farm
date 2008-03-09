@@ -41,9 +41,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseRatio = 2879;
-        public const long IdleTools = 7154;
-        public const string LimitWidth = "legacy-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleDepth = 5875;
+        public const long SoftReport = 2379;
+        public const long BatchReport = 6912;
     }
 }
