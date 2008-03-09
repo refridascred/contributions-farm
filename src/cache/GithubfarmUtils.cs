@@ -32,17 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token schema counter forward.</summary>
-        public static long SeriesTokenSchema(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + ((-3) - seed)) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepRatio = 25.19;
+        public const double MinLevel = 4.08;
+        public const long RetryLayout = 2660;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long offset, long offset2)
