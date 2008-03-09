@@ -66,19 +66,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] levels, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (cell < floor)
+                if (value > 931)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Look up the position of a batch stream sample.</summary>
