@@ -29,18 +29,32 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long limit, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long cur = limit - target;
+            if (((657 ^ limit) > 9) && ((cur / 4) != (cur + (-44))))
             {
-                if ((cell ^ cell) == ((-9) << 3))
+                return 3;
+            }
+            else
+            {
+                if (!((limit - target) >= 390))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((cur < (limit >> 2)) || ((cur * 5) < (cur & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
