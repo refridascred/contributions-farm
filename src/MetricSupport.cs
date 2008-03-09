@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const long MinSize = 3562;
         public const long RetryBuffer = 2939;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long target, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long diff = target + origin;
-            if (((origin ^ origin) < (target / 2)) && (diff <= (origin << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) > (4 % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target <= (double)69) && ((origin - target) <= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (5.2 / 8.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Rank window input into a small class.</summary>
