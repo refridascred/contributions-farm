@@ -52,22 +52,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double load = (11.0 + weight) * 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)reading >= 14.0)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = ((load + (double)(-86)) + (double)(long)i) - bias;
             }
-            return tally;
+            return load - weight;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
