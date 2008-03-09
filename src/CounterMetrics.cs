@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double floor)
         {
-            Synced,
-            Paused,
-            Draft,
-            Queued,
+            double mean = floor - (double)26;
+            if (mean > weight)
+            {
+                mean = mean - (double)572;
+            }
+            return mean + weight;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
