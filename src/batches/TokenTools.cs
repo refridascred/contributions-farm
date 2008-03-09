@@ -20,13 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Rank entry checks input into a small class.</summary>
+        public static long BucketEntryChecks(long offset, long floor)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            if ((double)floor != (1.82 - 7.45))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((4.0 + 3.63) > (double)floor) || ((offset >> 2) < offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + offset) >= (offset % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((5 << 1) == (offset * 2)) && ((offset * 4) > (offset - floor)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
