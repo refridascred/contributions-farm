@@ -19,19 +19,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double weight, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            double gain = 8.0;
-            if (gain >= (floor / 9.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (double)(-55);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (floor * 2.0)) + (double)(long)i;
-            }
-            return gain + (floor - weight);
+            return hits;
         }
     }
 }
