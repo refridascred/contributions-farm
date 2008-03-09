@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long offset)
         {
-            long acc = -58;
-            foreach (long reading in readings)
+            long span = seed - offset;
+            if ((double)offset > (1.7 + 0.42))
             {
-                acc = ((acc * 5) + (acc + (long)readings.Length)) % 4096;
-                acc = (acc ^ ((long)readings.Length >> 4)) % 65521;
-                acc = (acc ^ (reading * 5)) % 97;
+                return 2;
             }
-            if (acc < 47)
+            else
             {
-                acc = acc + (acc - acc);
+                if (((double)seed == (4.42 + 17.0)) || ((double)span == (8.0 + 4.6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset << 3) >= offset) && ((span / 6) == (83 % 60)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
