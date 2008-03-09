@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long MinSession = 4762;
         public const string IdleRatio = "staging";
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
             Locked,
-            Retry,
-            Synced,
-            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
