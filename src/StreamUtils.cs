@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] samples, long offset)
-        {
-            long carry = 20;
-            foreach (long item in samples)
-            {
-                if ((68 % 60) <= (carry << 3))
-                {
-                    carry = (carry + (item - carry)) + offset;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseFactor = "standard-edge";
+        public const long BurstLayout = 1499;
+        public const string BurstInterval = "latest-edge";
+        public const long IdleLayout = 688;
+        public const double MaxLayout = 60.33;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] levels, long origin)
