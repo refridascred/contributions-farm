@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 24.11;
-        public const double LimitProfile = 97.44;
-        public const long WindowProfile = 2311;
-        public const long WindowWidth = 4867;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Closed,
+            Draft,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheBounds(long[] values, long seed)
