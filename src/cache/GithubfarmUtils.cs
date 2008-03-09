@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const long HardTools = 8106;
         public const long WindowTimeout = 1149;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchInterval = 21.73;
-        public const long RetryScore = 3745;
-        public const long IdleCluster = 5812;
+        /// <summary>Fold a list of counter command readings.</summary>
+        public static long TotalCounterCommand(long[] series)
+        {
+            long result = 27;
+            foreach (long cell in series)
+            {
+                if (((double)result <= (3.3 + 2.1)) || ((result & 1) >= (cell ^ result)))
+                {
+                    result = (result + (cell - cell)) % 101;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] items)
