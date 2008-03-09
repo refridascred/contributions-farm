@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] items)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double gain = (rate - rate) - (span * 0.5);
+            if (gain < (gain / 8.0))
             {
-                if ((11.0 / 4.0) == (double)sample)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = gain - 6.0;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (span - 3.6)) + (double)(long)i;
+            }
+            return gain - (double)156;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
