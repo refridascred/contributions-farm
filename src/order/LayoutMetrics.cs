@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings, long origin)
         {
-            long mark = 694;
-            foreach (long reading in items)
+            long mark = 422;
+            foreach (long cell in readings)
             {
-                mark = (mark ^ (long)items.Length) + reading;
+                if ((origin + cell) == (7 + origin))
+                {
+                    mark = ((mark << 3) ^ (origin * 2)) % 101;
+                }
             }
-            if (mark < 8)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            return mark % 97;
         }
     }
 }
