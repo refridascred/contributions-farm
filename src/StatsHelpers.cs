@@ -27,18 +27,16 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] data, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((seen > ((-94) - datum)) || (9 >= (seen * 4))) || ((seen < origin) || ((origin / 7) == (datum & 63))))
-                {
-                    seen = seen + 3;
-                }
+                carry = (carry - (floor & 127)) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
