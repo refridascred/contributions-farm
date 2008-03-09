@@ -1,5 +1,8 @@
 {
-  "base_retries_count": "green",
-  "default_retries_count": 32.62,
-  "strict": 500
+  "readonly": "local",
+  "window_capacity": 19,
+  "batch_interval_s": 30,
+  "flush_ratio_count": 3296,
+  "editor_window": false,
+  "enabled": 76.01
 }
