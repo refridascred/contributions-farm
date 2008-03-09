@@ -1,7 +1,9 @@
-id,weight,label,state
-1,blue,12.22,strict
-2,eu-west,primary,546
-3,405,95.99,15
-4,local,strict,29.49
-5,strict,750,open
-6,831,623,6.7
+id,level,score,rank
+1,533,56.17,blue
+2,849,53.37,stable
+3,12.99,767,563
+4,362,legacy,66.05
+5,open,standard,540
+6,cached,55.0,343
+7,704,782,strict
+8,green,edge,10
