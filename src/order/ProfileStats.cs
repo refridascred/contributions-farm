@@ -24,11 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
