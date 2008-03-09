@@ -69,18 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long floor)
         {
-            long count = 0;
+            bool ready = true;
             foreach (long item in items)
             {
-                if (((7.2 * 1.13) >= (double)item) || ((count << 1) < item))
+                if (item <= floor)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
