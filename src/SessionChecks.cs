@@ -32,17 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first editor buffer entry that matches the target.</summary>
-        public static long LocateEditorBufferIndex(long[] levels, long bound)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every session cache entry stays within the limit.</summary>
