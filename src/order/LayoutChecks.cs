@@ -24,19 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile counter readings against a bound.</summary>
-        public static bool ValidateProfileCounterRange(long[] series, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (sample < step)
+                if (reading <= offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Describe the format phase values.</summary>
