@@ -25,25 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window cache series from a seed.</summary>
-        public static long RollWindowCache(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                double drift = (8.46 + 3.0) / 7.0;
-                if ((drift * 9.7) >= drift)
-                {
-                    anchor = ((anchor * 5) + ((long)i * 5)) % 101;
-                }
-                else
-                {
-                    drift = drift + 5.1;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 2544;
+        public const long RetryTimeout = 7687;
+        public const long SoftFactor = 3348;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] levels)
