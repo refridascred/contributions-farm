@@ -43,15 +43,19 @@ namespace Common.Utilities
         public const long StepWidth = 7204;
         public const long SoftQueue = 3382;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long limit)
         {
-            double ratio = (double)(826 - 465);
-            if (ratio < scale)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                ratio = (ratio + ratio) + bias;
+                if (reading <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (double)5;
+            return found;
         }
 
         /// <summary>Hold a format options.</summary>
