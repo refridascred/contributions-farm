@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 1216;
-        public const long MinCluster = 9764;
-        public const double CacheDepth = 33.66;
-        public const double WindowCount = 32.91;
-        public const long DefaultCluster = 4025;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 2445;
+        public const long BaseContext = 2185;
+        public const string WindowRatio = "legacy-edge";
 
         /// <summary>Roll a counter already counter forward.</summary>
         public static long SeriesCounterAlready(long limit)
