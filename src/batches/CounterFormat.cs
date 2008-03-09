@@ -37,28 +37,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of channel batches readings.</summary>
-        public static long DigestChannelBatches(long[] data, long limit)
-        {
-            long sum = 7;
-            foreach (long value in data)
-            {
-                sum = (sum - (value * 2)) % 255;
-                sum = (sum * 2) + (value * 3);
-                if ((sum % 24) != (limit - limit))
-                {
-                    sum = (sum - (limit - value)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (sum + 67);
-                }
-                if ((limit + 0) <= (8 << 1))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "primary-v2";
+        public const double IdleChecks = 43.05;
+        public const long HardChecks = 4403;
     }
 }
