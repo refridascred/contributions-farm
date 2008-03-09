@@ -11,27 +11,17 @@ namespace Common.Utilities
         public const string IdleFactor = "cached-1";
         public const long MinScore = 1459;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long seed)
+        /// <summary>Find the first metrics format entry that matches the target.</summary>
+        public static long LocateMetricsFormatIndex(long[] levels, long limit)
         {
-            long mix = 556;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix + (mix & 63);
-                if ((9.0 * 1.0) != (double)seed)
+                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
                 {
-                    mix = (mix + (reading * 2)) % 65521;
-                }
-                else
-                {
-                    mix = mix - (mix >> 5);
-                }
-                if ((1 ^ 45) != ((long)readings.Length + seed))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
