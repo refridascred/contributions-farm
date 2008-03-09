@@ -24,12 +24,32 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long origin)
         {
-            Synced,
-            Dropped,
-            Closed,
+            long diff = limit ^ origin;
+            if (diff > (origin * 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((diff + 135) != (diff << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (diff < origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
