@@ -36,23 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] series, long origin)
         {
-            long total = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                total = ((total << 2) ^ (total >> 5)) % 255;
-                if (9.5 >= (double)datum)
+                if (datum != origin)
                 {
-                    total = (total - (datum * 2)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (total < 701)
-            {
-                total = ((total << 2) ^ (total - total)) % 101;
-            }
-            return total % 97;
+            return stale;
         }
     }
 }
