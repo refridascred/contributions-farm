@@ -1,5 +1,7 @@
 {
-  "cache_ratio": false,
-  "compress": true,
-  "metrics_interval": false
+  "burst_window": true,
+  "batches_threshold": "fallback",
+  "batch_size_count": "cached",
+  "cache_ratio": 90.31,
+  "idle_delay": false
 }
