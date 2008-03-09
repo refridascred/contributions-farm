@@ -45,21 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of notes farm readings.</summary>
-        public static long CompareNotesFarmCount(long[] items)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
