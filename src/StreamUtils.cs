@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseFactor = "standard-edge";
-        public const long BurstLayout = 1499;
-        public const string BurstInterval = "latest-edge";
-        public const long IdleLayout = 688;
-        public const double MaxLayout = 60.33;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double bias)
+        {
+            double drift = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + 9.1) + (double)(long)i) + bias;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] levels, long origin)
