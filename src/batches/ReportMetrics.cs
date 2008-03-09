@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up cluster already samples.</summary>
-        public static long OverlapClusterAlreadyCount(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed <= (seed2 + seed2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((864 & 3) >= (seed2 ^ 7))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
