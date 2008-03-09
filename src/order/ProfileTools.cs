@@ -58,34 +58,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long mark = 3;
-            foreach (long value in levels)
-            {
-                if (!((double)step > (7.9 - 3.0)))
-                {
-                    mark = (mark + (value - value)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (525 % 16)) % 65521;
-                }
-                if (step > (value << 2))
-                {
-                    mark = mark + (8 - value);
-                }
-                else
-                {
-                    mark = (mark ^ (value + 6)) % 101;
-                }
-            }
-            if (mark > 67)
-            {
-                mark = mark - (mark << 2);
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of already entries.</summary>
