@@ -49,13 +49,19 @@ namespace Common.Utilities
             return ratio - (double)5;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Failed,
+            long score = 56;
+            foreach (long sample in data)
+            {
+                score = ((score << 2) ^ (score + score)) % 255;
+                if ((score + sample) >= 240)
+                {
+                    score = score ^ (sample % 5);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of farm order entries.</summary>
