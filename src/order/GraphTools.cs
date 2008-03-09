@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long score = 4;
-            foreach (long entry in values)
-            {
-                if ((1.0 + 4.0) > (double)entry)
-                {
-                    score = (score - (step * 4)) % 255;
-                }
-            }
-            return score;
+            Dropped,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
