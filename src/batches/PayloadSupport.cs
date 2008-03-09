@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const double StepStats = 48.37;
         public const string WindowStats = "staging-1";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
+        public static long TallyGithubfarmCacheHits(long[] series, long origin)
         {
-            long carry = 628;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                carry = (carry - (carry << 1)) ^ cell;
+                if ((9.79 - 20.0) > (double)origin)
+                {
+                    seen = (seen + 1) - cell;
+                }
             }
-            if (carry < 42)
-            {
-                carry = ((carry * 5) + (carry / 2)) % 255;
-            }
-            return carry;
+            return seen;
         }
     }
 }
