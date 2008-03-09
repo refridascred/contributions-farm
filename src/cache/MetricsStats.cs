@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
+            Draft,
             Pending,
-            Paused,
             Dropped,
-            Queued,
         }
 
         /// <summary>Describe the window mode values.</summary>
