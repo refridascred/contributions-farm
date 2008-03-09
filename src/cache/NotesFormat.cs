@@ -20,31 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values)
-        {
-            long anchor = 464;
-            foreach (long cell in values)
-            {
-                if ((double)cell == (7.9 + 13.0))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                else
-                {
-                    anchor = anchor + cell;
-                }
-                if ((0.8 - 1.1) <= (double)anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 22)
-            {
-                anchor = (anchor + (278 / 9)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowBudget = 88.59;
+        public const long IdleCount = 3879;
+        public const double BatchMetric = 33.25;
+        public const long BaseMetric = 6915;
+        public const string IdleMetric = "staging";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultRatio = 5306;
