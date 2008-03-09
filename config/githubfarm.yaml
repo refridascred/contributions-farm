@@ -1,11 +1,9 @@
 # githubfarm settings
-warm_capacity:
-  - 325
-  - 242
-window_ttl: false
-enabled: true
-readonly:
-  enabled: 69.46
-  queue_ratio: 36
-  payload_retries: 19
-order_depth: 61.02
+audit: 3
+metric_timeout: stable
+entry_threshold: edge
+min_capacity:
+  - 110
+  - 495
+  - 281
+dry_run: 1945
