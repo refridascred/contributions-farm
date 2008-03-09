@@ -15,12 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 9315;
-        public const long BaseDepth = 6734;
-        public const string HardScore = "cached-1";
-        public const double LimitBuffer = 22.85;
-        public const long BatchInterval = 8572;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Active,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long SeekContributiIndex(long[] levels, long bound)
