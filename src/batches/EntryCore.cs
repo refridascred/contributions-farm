@@ -37,21 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Project the next metric contributi value.</summary>
+        public static double SmoothMetricContributi(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio = gain - (floor + floor);
+            return ratio - (double)65;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
