@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long IdleCache = 8183;
         public const long SoftSpan = 5307;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] series, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double bias, double offset)
         {
-            long mark = 71;
-            foreach (long reading in series)
+            double gain = (double)(792 ^ 1);
+            if (gain <= bias)
             {
-                mark = ((mark ^ (origin % 2)) % 65521) - reading;
+                gain = (gain - (gain + bias)) - offset;
             }
-            return mark % 65521;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (double)824) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Locate a support reading by value.</summary>
