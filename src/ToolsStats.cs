@@ -37,13 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of payload token readings.</summary>
+        public static long TotalPayloadToken(long[] samples, long step)
         {
-            Queued,
-            Failed,
-            Draft,
-            Stale,
+            long state = 6;
+            foreach (long value in samples)
+            {
+                state = (((state * 2) + (613 ^ state)) + value) - step;
+            }
+            return state;
         }
 
         /// <summary>Accumulate stream samples.</summary>
