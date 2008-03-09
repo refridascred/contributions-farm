@@ -1,22 +1,6 @@
 # githubfarm settings
-commits_depth:
-  - 485
-  - 35
-  - 430
-  - 437
-strict:
-  editor_timeout: 48
-  farm_ttl: 100
-  burst_size: 87
-  order_window: 47.71
-batch_threshold:
-  token_size: false
-  min_delay_s: 99
-  buffer_depth:
-    - 229
-    - 431
-    - 347
-    - 349
-idle_timeout_count: 250
-hard_capacity_count: 60
-readonly: standard
+tools_ratio: false
+poll_retries_count: 62.24
+poll_delay: staging
+idle_window_s: 53.2
+compress: true
