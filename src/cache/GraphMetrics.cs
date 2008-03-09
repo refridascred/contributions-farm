@@ -30,13 +30,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            Locked,
-            Synced,
-            Stale,
-            Done,
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((origin ^ sum) >= ((long)i - 666))
+                {
+                    sum = (sum - (origin / 3)) % 101;
+                    sum = (sum << 2) ^ origin;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (((sum * 4) + (sum / 5)) % 97) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
