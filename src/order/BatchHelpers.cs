@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double BurstAlready = 22.63;
         public const long MinAlready = 8862;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((951 + tally) != (tally << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 1) + reading) + offset;
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
