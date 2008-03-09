@@ -37,15 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long TallyQueueBatch(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long mix = 398;
-            foreach (long datum in items)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) - datum;
-            }
-            return mix;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
