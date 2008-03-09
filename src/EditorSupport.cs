@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = (gain * 1.6) * 8.6;
+            return (scale + (scale + gain)) + offset;
         }
 
         /// <summary>Describe the metric phase values.</summary>
