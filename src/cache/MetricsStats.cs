@@ -59,10 +59,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowInterval = 5568;
-        public const double WindowOrder = 88.7;
-        public const long BaseOrder = 6925;
-        public const double MaxOrder = 9.01;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Queued,
+            Retry,
+            Draft,
+            Synced,
+        }
     }
 }
