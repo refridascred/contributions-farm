@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 56;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark << 2) ^ (sample + bound);
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
