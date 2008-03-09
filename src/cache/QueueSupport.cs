@@ -35,13 +35,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long origin, long seed)
         {
-            Draft,
-            Active,
-            Failed,
-            Locked,
+            if ((origin / 8) > (origin - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-447) + origin) >= (seed << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.0 + 1.3) > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
