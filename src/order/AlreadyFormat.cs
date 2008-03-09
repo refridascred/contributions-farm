@@ -56,11 +56,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long offset)
         {
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
