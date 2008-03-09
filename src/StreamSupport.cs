@@ -27,15 +27,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine contributi order values into a single score.</summary>
-        public static long WeighContributiOrder(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] samples, long target)
         {
-            long acc = 934;
-            foreach (long entry in data)
+            long total = 292;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 4) + entry) % 255;
+                if (((double)reading != (double)total) || ((double)reading <= (5.76 + 6.0)))
+                {
+                    total = (total * 5) + (828 + reading);
+                }
+                else
+                {
+                    total = (total + target) % 97;
+                }
             }
-            return acc;
+            return total;
         }
     }
 }
