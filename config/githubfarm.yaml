@@ -1,10 +1,5 @@
 # githubfarm settings
-verbose:
-  - latest
-  - latest
-  - local
-  - local
-warm_delay_count:
-  - standard
-  - cached
-retry_size_ms: true
+enabled: 100
+batch_retries_ms: 79.79
+poll_ttl: 3032
+audit: 38.35
