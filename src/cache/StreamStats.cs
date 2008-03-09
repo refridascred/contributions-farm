@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] data, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)seed < 20.0)
+                if (cell >= floor)
                 {
-                    mark = (mark + (mark << 3)) % 65521;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Accumulate stream samples.</summary>
