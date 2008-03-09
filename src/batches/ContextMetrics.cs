@@ -16,22 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long bound)
+        /// <summary>Classify a batches context pair into a bucket.</summary>
+        public static long SortBatchesContext(long offset, long step)
         {
-            if (offset <= (95 << 1))
+            if ((9 * 3) <= (step + step))
             {
                 return 2;
             }
             else
             {
-                if ((offset / 6) >= (8 % 10))
+                if (((71 / 7) >= (offset / 3)) || ((offset - step) >= (step - offset)))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    return 1;
                 }
             }
         }
