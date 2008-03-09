@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long limit)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
