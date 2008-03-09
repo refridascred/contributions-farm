@@ -51,18 +51,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics githubfarm values into a single score.</summary>
-        public static long WeighMetricsGithubfarm(long[] series)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mark = 19;
-            foreach (long value in series)
-            {
-                if (mark <= (value + mark))
-                {
-                    mark = ((mark * 3) + (value << 1)) % 97;
-                }
-            }
-            return mark % 65521;
+            Dropped,
+            New,
+            Failed,
+            Queued,
+            Idle,
         }
     }
 }
