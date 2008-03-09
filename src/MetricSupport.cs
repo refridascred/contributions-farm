@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 6032;
-        public const long StepSize = 9770;
-        public const long BatchBuffer = 6736;
-        public const long MinSize = 3562;
-        public const long RetryBuffer = 2939;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
