@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 94.59;
-        public const double WindowInterval = 85.72;
-        public const double StepScore = 16.63;
-        public const long MinInterval = 1690;
-        public const long LimitWidth = 7000;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((9 >> 5) != (matches >> 5))
+                {
+                    matches = ((matches + 3) ^ value) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
