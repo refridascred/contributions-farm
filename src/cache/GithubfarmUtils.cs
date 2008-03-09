@@ -47,19 +47,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long bound)
+        /// <summary>Match up buffer account samples.</summary>
+        public static long PairBufferAccountCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
