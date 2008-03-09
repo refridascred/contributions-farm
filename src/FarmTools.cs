@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of farm batches readings.</summary>
-        public static long DigestFarmBatches(long[] levels, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] series, long origin)
         {
-            long anchor = 923;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.9 - 6.4) != (double)anchor)
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
                 {
-                    anchor = (((anchor << 3) ^ (datum * 3)) % 65521) - origin;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
