@@ -35,18 +35,19 @@ namespace Common.Utilities
             return mean - 5.7;
         }
 
-        /// <summary>Count the window commits entries that pass the check.</summary>
-        public static long TallyWindowCommitsHits(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double gain2 = (bias / 7.0) - (double)83;
+            if (gain2 >= bias)
             {
-                if (1 <= (sample ^ 8))
-                {
-                    seen = seen + 1;
-                }
+                gain2 = (gain2 - bias) - gain;
             }
-            return seen;
+            else
+            {
+                gain2 = gain2 + (double)585;
+            }
+            return gain2 - 3.68;
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
