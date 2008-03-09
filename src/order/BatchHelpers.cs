@@ -20,18 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples)
         {
-            long mix = -24;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)(long)data.Length < (9.1 / 9.0))
+                if ((hits * 2) != (hits - hits))
                 {
-                    mix = (((mix * 3) + ((long)data.Length << 1)) - cell) - bound;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every queue commits entry stays within the limit.</summary>
