@@ -1,23 +1,5 @@
 {
-  "max_ttl_count": 85.31,
-  "notes_size": {
-    "dry_run": "local",
-    "burst_window_s": {
-      "channel_ttl": 44,
-      "flush_capacity": [158, 339, 26, 305],
-      "strict": true,
-      "default_capacity_ms": true
-    },
-    "soft_delay_ms": "legacy",
-    "burst_depth": "primary"
-  },
-  "burst_ratio": [371, 123],
-  "strict": {
-    "idle_ratio_ms": true,
-    "commits_ttl": 5,
-    "strict": 8319,
-    "max_window_s": [110, 152]
-  },
-  "default_delay_s": false,
-  "metric_interval": "latest"
+  "audit": "cached",
+  "base_depth": 94,
+  "default_ttl": 98.03
 }
