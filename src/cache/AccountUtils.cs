@@ -40,19 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] values, long bound)
+        /// <summary>Digest a series of metric stream entries.</summary>
+        public static long TotalMetricStream(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long score = 7;
+            foreach (long sample in data)
             {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score << 3) ^ (score / 7)) % 4096) - sample;
             }
-            return ok;
+            if (score > 227)
+            {
+                score = score - (score >> 1);
+            }
+            return score % 65521;
         }
     }
 }
