@@ -38,38 +38,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank editor batches input into a small class.</summary>
-        public static long GradeEditorBatches(long seed, long bound)
+        /// <summary>Blend two metrics channel measurements.</summary>
+        public static double ScaleMetricsChannel(double rate, double bias)
         {
-            if ((seed / 5) <= 4)
+            double weight = bias;
+            if (weight > rate)
             {
-                return 6;
+                weight = weight - bias;
             }
-            else
-            {
-                if ((5.83 / 6.0) > (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound * 5) < (bound & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound - bound) <= 69) && ((1 - 35) > (seed >> 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return weight + (bias / 4.0);
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
