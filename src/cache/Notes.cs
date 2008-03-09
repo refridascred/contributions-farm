@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] series, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long acc = 166;
+            foreach (long item in data)
             {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc << 3) ^ (item ^ acc);
             }
-            return stale;
+            if (acc < 304)
+            {
+                acc = ((acc * 2) + (acc + acc)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Grade a support metric value against two limits.</summary>
