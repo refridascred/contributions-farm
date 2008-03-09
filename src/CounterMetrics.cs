@@ -34,12 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine graph stream values into a single score.</summary>
+        public static long DigestGraphStream(long[] samples, long seed)
         {
-            Draft,
-            Paused,
-            Idle,
+            long mix = 87;
+            foreach (long entry in samples)
+            {
+                mix = ((mix + (mix & 255)) + entry) - seed;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate queue batch samples.</summary>
