@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -83;
+            foreach (long datum in levels)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (-7)) % 4096) + datum;
+                anchor = (anchor - ((-937) / 8)) % 65521;
             }
-            return -1;
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit commits account readings against a rule.</summary>
