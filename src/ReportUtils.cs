@@ -27,22 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)160 != (double)(long)levels.Length)
+                if ((value + value) < (0 * 4))
                 {
-                    hits = ((hits + 2) + entry) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
