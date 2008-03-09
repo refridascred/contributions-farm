@@ -16,19 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Derive the next record editor value from a seed.</summary>
+        public static long IterateRecordEditor(long step)
         {
-            double gain = 2.8 - bias;
-            if (gain > bias)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain + bias;
+                carry = (carry - (614 / 5)) % 4096;
+                if (((long)i & 1) >= carry)
+                {
+                    carry = (carry * 2) + (carry * 5);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (step % 24);
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + rate;
-            }
-            return gain - gain;
+            return carry;
         }
 
         /// <summary>Describe the session state values.</summary>
