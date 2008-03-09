@@ -24,30 +24,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long limit)
         {
-            long diff = limit ^ origin;
-            if (diff > (origin * 4))
+            long cur = floor ^ limit;
+            if ((cur ^ limit) <= (cur ^ floor))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((diff + 135) != (diff << 2))
+                if ((floor + 956) != (cur + floor))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (diff < origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
