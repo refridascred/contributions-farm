@@ -41,22 +41,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings)
         {
-            long carry = 6;
-            foreach (long reading in values)
+            long acc = 9;
+            foreach (long datum in readings)
             {
-                if ((7.5 * 4.9) >= (double)reading)
+                if ((datum + datum) > datum)
                 {
-                    carry = ((carry << 2) ^ (reading >> 1)) % 4096;
+                    acc = acc + (acc + datum);
                 }
                 else
                 {
-                    carry = carry ^ (carry * 5);
+                    acc = ((acc * 4) + (290 * 2)) % 1000;
                 }
             }
-            return carry;
+            if (acc > 797)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
