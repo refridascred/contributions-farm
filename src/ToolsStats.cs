@@ -20,32 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long seed2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples, long floor)
         {
-            long prev = seed + seed2;
-            if (seed <= (prev - prev))
+            long total = 4;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) <= (prev >> 1))
+                if (!(((-5) / 3) == (sample >> 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - seed) > (seed2 - prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = ((total << 3) ^ (sample - sample)) % 1000;
                 }
             }
+            if (total < 2)
+            {
+                total = ((total << 3) ^ floor) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Adjust a commits already reading.</summary>
