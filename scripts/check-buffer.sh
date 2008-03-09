@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict blue; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=300
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
