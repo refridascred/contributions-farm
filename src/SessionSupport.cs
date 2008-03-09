@@ -43,19 +43,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
