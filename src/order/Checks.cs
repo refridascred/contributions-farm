@@ -63,25 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long floor, long floor2)
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long AuditEntrySupportMatches(long[] values, long origin)
         {
-            long offset = floor ^ floor2;
-            if ((offset + floor) > (floor + floor))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor < (floor & 31))
+                if ((1.02 / 6.0) == (double)reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 2) - origin;
                 }
             }
+            return matches;
         }
     }
 }
