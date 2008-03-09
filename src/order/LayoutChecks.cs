@@ -42,14 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long target)
         {
-            Stale,
-            Ready,
-            New,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of tools order readings.</summary>
