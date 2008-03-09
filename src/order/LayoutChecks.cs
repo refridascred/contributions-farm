@@ -33,15 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] samples, long bound)
         {
-            double scale2 = span / 8.0;
-            if (scale2 < 5.0)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                scale2 = (scale2 + (double)93) + scale;
+                if (!((((long)samples.Length + bound) < 73) && ((bound + 2) >= (2 * 4))))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return scale2 - span;
+            return seen;
         }
 
         /// <summary>Describe the channel level values.</summary>
