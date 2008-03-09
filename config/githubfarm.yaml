@@ -1,22 +1,8 @@
 # githubfarm settings
-payload_limit: 31
-poll_retries: false
-window_limit:
-  compress: 7712
-  readonly: 31
-  flush_ratio: latest
-  cache_timeout_pct: latest
+idle_interval_pct: 8
+burst_delay_pct: false
 verbose:
-  metric_limit:
-    - primary
-    - green
-  compress: cached
-  idle_ttl_count: 33
-  entry_capacity:
-    - cached
-    - staging
-    - standard
-    - stable
-  counter_capacity: standard
-batches_capacity: 500
-cache_ttl: 66
+  hard_interval_s: local
+  enabled: staging
+  retry_threshold: local
+soft_limit: green
