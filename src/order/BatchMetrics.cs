@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 77.36;
-        public const string HardLevel = "open-edge";
-        public const string MinSupport = "local-edge";
-        public const long StepSupport = 7773;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double weight, double offset)
+        {
+            double scale = weight / 7.0;
+            if (scale >= offset)
+            {
+                scale = scale - 20.0;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
