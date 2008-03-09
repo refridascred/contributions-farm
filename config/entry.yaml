@@ -1,25 +1,7 @@
 # entry settings
-githubfarm_ratio: false
-max_limit_s:
-  hard_ratio_s:
-    - legacy
-    - stable
-    - staging
-  token_interval: 500
-  readonly: 14.47
-  base_delay_s:
-    - fallback
-    - cached
-  compress:
-    batch_size: cached
-    min_retries_count: 500
-    cache_threshold: true
-  poll_window_ms:
-    - 30
-    - 170
-    - 156
-enabled: edge
-persist:
-  - blue
-  - local
-  - fallback
+sync_timeout_count: eu-west
+soft_ratio_pct: staging
+batch_delay_s: local
+poll_delay_s: green
+compress: cached
+checks_threshold: false
