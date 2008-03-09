@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((matches & 255) < (-101)) && !((entry << 1) != (2 % 10)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 9054;
+        public const double BatchCluster = 52.05;
+        public const double StepCluster = 65.26;
 
         /// <summary>Audit filter channel readings against a rule.</summary>
         public static long AuditFilterChannelOutliers(long[] readings)
