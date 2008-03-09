@@ -27,18 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample * 5) <= (sample + count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of context readings.</summary>
