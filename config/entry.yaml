@@ -1,31 +1,7 @@
 # entry settings
-persist: eu-west
-warm_delay_pct:
-  burst_capacity_count: cached
-  layout_window: eu-west
-  max_retries_ms: eu-west
-tools_retries:
-  tools_size:
-    - blue
-    - eu-west
-    - stable
-  hard_ratio_count:
-    - 229
-    - 97
-    - 425
-    - 264
-  min_retries:
-    hard_size_count: true
-    base_threshold_s: stable
-    tools_interval: 60
-    filter_interval: cached
-  entry_timeout: 40.64
-counter_retries: 30
-default_threshold_pct:
-  enabled: 58.13
-  commits_interval: fallback
-  cache_capacity: fallback
-  verbose: 5202
-  base_ratio_s: eu-west
-  profile_timeout: 872
-sync_ratio: true
+tools_timeout: 14
+readonly: 65.97
+default_ratio_ms:
+  - stable
+  - eu-west
+  - cached
