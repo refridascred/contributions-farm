@@ -36,12 +36,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long bound, long target)
         {
-            Synced,
-            Active,
-            Dropped,
+            long step = bound + target;
+            if (step <= (bound >> 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.63 * 10.0) != (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
