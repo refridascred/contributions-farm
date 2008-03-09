@@ -37,11 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the stats phase values.</summary>
