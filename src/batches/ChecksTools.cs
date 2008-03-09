@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const string BaseScore = "stable-1";
         public const long BurstCount = 3276;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor - floor) <= floor)
+                if (data[i] == origin)
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
