@@ -49,11 +49,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report commits figure with a bias.</summary>
-        public static double AdjustReportCommits(double gain, double offset)
-        {
-            double scale = gain * 12.0;
-            return (scale - (gain + scale)) + offset;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 16.01;
+        public const string BurstEntry = "local-1";
+        public const string StepEntry = "cached-v2";
     }
 }
