@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] values, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 2) + (offset ^ sum)) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
