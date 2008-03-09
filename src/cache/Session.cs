@@ -21,31 +21,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long seed2)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if ((seed + seed) >= (seed - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 2) >= (556 + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((10.0 + 14.0) > (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a stats summary.</summary>
