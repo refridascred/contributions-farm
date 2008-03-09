@@ -95,22 +95,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] data)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (255 > (value >> 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Retry,
         }
     }
 }
