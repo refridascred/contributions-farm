@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            Pending,
+            Active,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
