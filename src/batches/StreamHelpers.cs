@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double weight, double bias)
-        {
-            double scale = weight;
-            if (scale <= (bias * 0.6))
-            {
-                scale = scale + (scale - weight);
-            }
-            return scale + 9.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 5097;
+        public const double HardTools = 6.09;
+        public const string MinRatio = "strict";
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double gain, double floor)
