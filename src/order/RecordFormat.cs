@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long step)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
