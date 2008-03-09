@@ -25,18 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seen < (561 + seen)) || ((4.7 / 3.0) >= (double)seen)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
