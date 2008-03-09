@@ -1,5 +1,7 @@
 {
-  "strict": 30,
-  "dry_run": true,
-  "schema_ratio": false
+  "flush_ttl_ms": ["cached", "cached", "primary", "staging"],
+  "retry_timeout_s": "green",
+  "persist": "staging",
+  "entry_timeout": 47,
+  "audit": 38.66
 }
