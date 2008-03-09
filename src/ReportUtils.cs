@@ -20,13 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Grade a support account value against two limits.</summary>
+        public static long SortSupportAccount(long seed, long step)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long span = seed - step;
+            if ((double)span > (2.6 - 9.4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step ^ span) != (74 + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
