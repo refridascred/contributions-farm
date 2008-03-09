@@ -20,19 +20,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate githubfarm stream readings against a bound.</summary>
-        public static bool ValidateGithubfarmStreamRange(long[] data, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
