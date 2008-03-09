@@ -15,25 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long limit, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long span = limit ^ step;
-            if ((31 > (span - 91)) || ((5 ^ span) >= step))
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)step == (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
