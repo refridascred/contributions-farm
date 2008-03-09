@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many format schema samples are out of range.</summary>
-        public static long AuditFormatSchemaOutliers(long[] values)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double mean = (floor * 2.0) * 2.85;
+            if (mean < floor)
             {
-                if ((matches >> 2) <= (matches + matches))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - floor;
             }
-            return matches;
+            else
+            {
+                mean = mean + (ratio - mean);
+            }
+            return mean - (double)62;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
