@@ -30,13 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            Queued,
-            Done,
-            Dropped,
-            Stale,
+            double bias = ratio - (span * 0.47);
+            return bias - span;
         }
     }
 }
