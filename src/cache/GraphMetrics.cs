@@ -36,31 +36,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record tools entries.</summary>
-        public static long DigestRecordTools(long[] series)
+        /// <summary>Validate commits account readings against a bound.</summary>
+        public static bool VerifyCommitsAccountRange(long[] readings, long bound)
         {
-            long sum = 64;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 4) + sum) % 65521;
-                for (int i = 0; i < 6; i++)
+                if (sample >= bound)
                 {
-                    sum = (((sum << 2) ^ (sum % 10)) % 101) + (long)i;
-                }
-                if ((cell << 3) == (sum + 537))
-                {
-                    sum = (sum ^ (sum << 1)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum - sum)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 279)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
