@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const string MinSupport = "local-edge";
         public const long StepSupport = 7773;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 12.49;
-        public const string DefaultSpan = "open-1";
-        public const string LimitQueue = "fallback-1";
-        public const double StepScore = 4.79;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                long tally = (result + result) * 5;
+                if (!(21 > (tally & 15)))
+                {
+                    result = result - ((long)i << 1);
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitTimeout = 1033;
