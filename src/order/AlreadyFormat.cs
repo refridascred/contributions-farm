@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long offset)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            if ((7.0 + 5.19) != (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset / 8) >= (0 << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target >= (9.53 * 19.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate command checks samples.</summary>
