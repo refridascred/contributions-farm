@@ -34,25 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry record pair into a bucket.</summary>
-        public static long RankEntryRecord(long step, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long origin)
         {
-            long next = step + target;
-            if (step >= (-228))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next & 3) <= (step << 2))
+                if (levels[i] == origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches entry.</summary>
