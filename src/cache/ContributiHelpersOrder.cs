@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double weight, double offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            double load = (double)(3 >> 1);
-            if (load > (offset + offset))
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (load - weight);
+                result = ((result << 2) ^ (result / 9)) % 255;
+                if ((offset & 127) < 292)
+                {
+                    long next = (offset % 12) + (3 + offset);
+                    result = ((result << 3) ^ (next + (long)i)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return load + weight;
+            return result;
         }
 
         /// <summary>Locate a layout batch reading by value.</summary>
