@@ -21,22 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits account readings against a rule.</summary>
-        public static long CountCommitsAccountHits(long[] readings, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double bias, double span)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double rate = span;
+            if (rate < rate)
             {
-                if ((626 - 6) <= (target - 73))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = (rate - (span - 3.0)) - bias;
             }
-            return seen;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (rate * 8.33);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
