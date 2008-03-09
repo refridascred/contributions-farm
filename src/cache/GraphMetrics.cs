@@ -52,14 +52,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Dropped,
-            Queued,
-            Idle,
-            New,
-            Draft,
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
