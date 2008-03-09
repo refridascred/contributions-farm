@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] items, long origin)
         {
-            Pending,
-            Idle,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (16 < entry)
+                {
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up layout format samples.</summary>
