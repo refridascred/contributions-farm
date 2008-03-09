@@ -1,11 +1,9 @@
 {
-  "burst_ratio": {
-    "flush_delay_ms": "blue",
-    "min_delay_count": 23.05,
-    "batch_capacity": "cached"
-  },
-  "verbose": ["stable", "primary", "open"],
-  "order_window": "strict",
-  "profile_delay": ["cached", "open"],
-  "hard_ttl": "blue"
+  "persist": 308,
+  "record_depth": 10.16,
+  "default_retries_count": {
+    "batch_delay": 4266,
+    "sync_capacity_ms": [209, 29],
+    "queue_window": 83.83
+  }
 }
