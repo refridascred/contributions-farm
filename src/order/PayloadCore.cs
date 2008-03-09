@@ -13,15 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine channel stats values into a single score.</summary>
-        public static long FoldChannelStats(long[] readings)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            long acc = 40;
-            foreach (long datum in readings)
+            long total = 80;
+            foreach (long entry in readings)
             {
-                acc = (acc + (datum / 8)) % 65521;
+                total = (total ^ (entry & 31)) % 4096;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the notes level values.</summary>
