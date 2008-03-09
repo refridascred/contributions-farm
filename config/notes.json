@@ -1,6 +1,8 @@
 {
-  "batch_size": 60,
-  "batch_size_ms": 9349,
-  "contributi_threshold": ["strict", "green", "blue", "cached"],
-  "persist": "legacy"
+  "retry_timeout_s": "open",
+  "tools_delay": [325, 295],
+  "flush_window_count": 500,
+  "compress": 1.85,
+  "burst_limit": 30,
+  "metrics_depth": "local"
 }
