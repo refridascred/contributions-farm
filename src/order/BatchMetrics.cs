@@ -81,18 +81,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Find the first channel order entry that matches the target.</summary>
+        public static long LocateChannelOrderIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((seen > (810 >> 1)) || (9.9 > (double)seen)) || ((item ^ seen) < ((long)items.Length ^ (long)items.Length)))
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
