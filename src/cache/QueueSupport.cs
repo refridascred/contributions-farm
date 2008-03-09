@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 56.73;
+        public const double DefaultSession = 4.91;
+        public const long MinBudget = 9608;
 
         /// <summary>Fold a list of contributi route readings.</summary>
         public static long CombineContributiRoute(long[] samples, long bound)
