@@ -25,23 +25,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double bias2 = bias;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 - (double)(-179);
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (double)6) + (double)(long)i;
-            }
-            return bias2 - ratio;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
