@@ -1,18 +1,17 @@
 # entry settings
-batch_retries: strict
-warm_size_pct: edge
-cache_interval:
-  batch_timeout_ms: edge
-  retry_ttl_pct: false
-  idle_ratio: 96.6
-  hard_interval: true
-sync_ratio_ms:
-  - 339
-  - 128
-  - 380
-contributi_threshold: standard
-sync_limit_pct:
-  - cached
-  - primary
+flush_capacity_s:
+  - standard
   - staging
-  - blue
+retry_delay_ms: false
+default_threshold_s: false
+stats_retries: 4
+poll_interval: true
+batch_size_pct:
+  commits_capacity: eu-west
+  flush_limit: stable
+  warm_depth:
+    poll_depth_ms: eu-west
+    warm_window_count: 335
+    soft_size: latest
+    default_threshold: 92.03
+    token_timeout: 97
