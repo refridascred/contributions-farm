@@ -69,17 +69,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] items, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 499;
+            foreach (long value in readings)
             {
-                if (items[i] < limit)
+                if (((carry ^ carry) != (origin % 5)) && ((value - (long)readings.Length) == (value & 7)))
                 {
-                    return (long)i;
+                    carry = (carry + (carry & 7)) % 101;
+                }
+                if (value < origin)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 4)
+            {
+                carry = carry - origin;
+            }
+            return carry % 65521;
         }
     }
 }
