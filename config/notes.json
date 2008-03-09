@@ -1,19 +1,14 @@
 {
-  "default_timeout_s": 20,
-  "default_size": 1024,
-  "sync_interval_pct": 7643,
-  "min_depth_ms": "staging",
-  "enabled": {
-    "checks_window": true,
-    "default_capacity": 60,
-    "token_threshold": {
-      "batch_ttl": 22,
-      "enabled": "legacy",
-      "readonly": true,
-      "max_limit_pct": "cached",
-      "audit": 500,
-      "persist": 7693
-    }
+  "min_depth": {
+    "already_retries": 3956,
+    "profile_ratio": false,
+    "burst_interval_pct": true,
+    "poll_depth_pct": true,
+    "token_timeout": false,
+    "retry_depth": 5
   },
-  "channel_depth": "stable"
+  "hard_ttl_s": 15,
+  "min_limit_s": "stable",
+  "metric_interval": false,
+  "default_interval_pct": 4900
 }
