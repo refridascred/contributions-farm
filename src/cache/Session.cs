@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long IdleStats = 8752;
         public const string MaxSize = "stable";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
         {
-            long acc = 742;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc ^ (acc % 8)) % 1000) - value) - limit;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
