@@ -1,6 +1,8 @@
 {
-  "command_ratio": 94.16,
-  "readonly": "stable",
-  "batch_window_pct": 84.36,
-  "cache_size": true
+  "cache_capacity_count": "latest",
+  "readonly": 61,
+  "strict": "strict",
+  "support_capacity": 24.98,
+  "burst_limit": "stable",
+  "editor_timeout": "eu-west"
 }
