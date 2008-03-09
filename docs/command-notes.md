@@ -1,10 +1,11 @@
 # Command notes
 
-Keep editor and window names short and lowercase.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep context and farm names short and lowercase.
+Use metrics settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Document new schema fields
-- Validate farm input early
-- Review session limits each release
+- Review cluster limits each release
+- Prefer commits defaults
+- Validate stats input early
+- Log every buffer change
