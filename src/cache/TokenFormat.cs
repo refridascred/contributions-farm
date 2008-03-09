@@ -13,15 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels, long seed)
         {
-            double load = span;
-            if (load <= load)
+            long mark = 848;
+            foreach (long sample in levels)
             {
-                load = load + (double)741;
+                if ((sample << 2) >= (6 ^ sample))
+                {
+                    mark = mark ^ (long)levels.Length;
+                }
             }
-            return load - (ratio - load);
+            if (mark < 833)
+            {
+                mark = (mark << 2) ^ (seed << 3);
+            }
+            return mark;
         }
 
         /// <summary>Locate a support reading by value.</summary>
