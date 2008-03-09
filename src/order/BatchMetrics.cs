@@ -44,18 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((446 & 7) < (count + datum))
+                if (((seen > (810 >> 1)) || (9.9 > (double)seen)) || ((item ^ seen) < ((long)items.Length ^ (long)items.Length)))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
