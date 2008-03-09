@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowInterval = 28.8;
-        public const long BaseRoute = 3070;
-        public const long WindowRoute = 1842;
-        public const double BatchLevel = 18.16;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] levels)
