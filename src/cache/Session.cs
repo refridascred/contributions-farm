@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Done,
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowInterval = 28.8;
+        public const long BaseRoute = 3070;
+        public const long WindowRoute = 1842;
+        public const double BatchLevel = 18.16;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long FoldFilter(long[] levels)
