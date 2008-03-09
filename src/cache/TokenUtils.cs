@@ -24,21 +24,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a stream order counter forward.</summary>
-        public static long RollStreamOrder(long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                long diff = ((-8) % 60) - ((long)i + 91);
-                if ((diff < (30 + 65)) || ((double)diff <= (1.08 - 9.2)))
+                mark = ((mark * 3) + (step % 60)) % 97;
+                if (!((0.7 / 5.0) <= (double)step))
                 {
-                    diff = ((diff * 3) + diff) % 97;
+                    mark = (mark - mark) % 97;
+                    mark = ((mark << 3) ^ step) % 4096;
                 }
-                anchor = (anchor + (floor & 1)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((double)138 >= (double)mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
