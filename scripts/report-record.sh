@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=217
+RECORD_LIMIT=287
 log "limit is ${RECORD_LIMIT}"
 
-for item in eu-west local edge open; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
