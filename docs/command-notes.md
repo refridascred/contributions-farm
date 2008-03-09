@@ -1,10 +1,10 @@
 # Command notes
 
-Keep support and counter names short and lowercase.
-Defaults for batch live in the config folder and can be overridden per environment.
+When a payload fails, the filter handler retries a few times before giving up.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep layout values small
-- Validate stream input early
+- Document new contributi fields
+- Validate entry input early
+- Prefer tools defaults
