@@ -77,21 +77,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count checks token pairs that satisfy a relation.</summary>
-        public static long CompareChecksTokenCount(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
