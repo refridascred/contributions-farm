@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const double BatchTools = 95.13;
         public const long MinTools = 3657;
 
-        /// <summary>Grade a notes editor value against two limits.</summary>
-        public static long RankNotesEditor(long floor, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] values, long seed)
         {
-            long cur = floor ^ offset;
-            if ((16.0 / 6.0) > (double)cur)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((20.0 * 5.44) == (double)offset)
+                if (datum < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur + cur) >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
