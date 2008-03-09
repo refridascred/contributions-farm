@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheFactor = 1127;
-        public const long SoftSchema = 8731;
-        public const long RetryTimeout = 1569;
-        public const double IdleSchema = 0.51;
-        public const double WindowSchema = 74.59;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the token cache entries that pass the check.</summary>
         public static long MeasureTokenCacheHits(long[] levels)
