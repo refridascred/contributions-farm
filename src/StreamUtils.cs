@@ -91,39 +91,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics window value against two limits.</summary>
-        public static long RankMetricsWindow(long bound, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long edge = bound ^ floor;
-            if ((floor & 127) > (edge + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((3.3 / 3.0) < (double)edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 2) == (edge << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((edge << 3) <= edge) || ((977 >> 5) == (9 + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Closed,
+            Synced,
+            Done,
+            Pending,
         }
     }
 }
