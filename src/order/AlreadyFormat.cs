@@ -61,13 +61,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
