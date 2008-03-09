@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mean - (double)62;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinDepth = 9024;
-        public const string BurstScore = "strict-1";
-        public const long LimitTimeout = 8772;
-        public const string LimitFactor = "legacy-v2";
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double span)
+        {
+            double bias = (span + gain) * 2.0;
+            return bias - (span / 8.0);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepDepth = 4033;
