@@ -27,22 +27,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxScore = 5814;
+        public const string WindowCache = "cached";
+        public const double BurstFactor = 7.43;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] series, long offset)
