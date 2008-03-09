@@ -59,16 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] series, long bound)
+        /// <summary>Audit stream metric readings against a rule.</summary>
+        public static long AuditStreamMetricOutliers(long[] readings)
         {
-            long mark = 903;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark + bound) % 4096) + value;
-                mark = (mark + mark) % 255;
+                if ((sample >> 1) >= (sample ^ count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a buffer record.</summary>
