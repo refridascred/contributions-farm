@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings, long step)
         {
-            double drift = (double)(89 ^ 958);
-            if (drift < (drift + drift))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                drift = drift + floor;
+                if (!(18.0 >= (double)step) && ((926 << 1) < (step + 2)))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return drift + (weight * 1.2);
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
