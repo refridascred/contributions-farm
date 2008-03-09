@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of record metric entries.</summary>
-        public static long FoldRecordMetric(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = 4;
-            foreach (long entry in values)
-            {
-                if (!((entry ^ entry) < ((long)values.Length - entry)))
-                {
-                    mark = (mark * 4) + (mark / 3);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark - entry);
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
