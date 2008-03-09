@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long StepWidth = 2561;
         public const long StepSize = 495;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long target, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if (((35 / 6) <= (target >> 4)) && (floor >= (floor - target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3 >> 5) >= (132 + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
