@@ -23,23 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] levels, long bound)
         {
-            long mix = 30;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((mix >> 1) == (216 & 31))
+                if (value >= bound)
                 {
+                    flag = false;
                     break;
                 }
-                mix = ((mix * 2) + (1 - mix)) + entry;
             }
-            if (mix > 2)
-            {
-                mix = (mix * 3) + (mix / 7);
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Project the next counter value.</summary>
