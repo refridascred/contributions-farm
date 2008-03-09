@@ -33,12 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
