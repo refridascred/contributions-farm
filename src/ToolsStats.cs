@@ -54,20 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels, long bound)
-        {
-            long total = 5;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    total = ((total - (bound % 3)) % 1000) ^ (long)i;
-                }
-                total = total - reading;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 1305;
+        public const long CacheDepth = 8086;
+        public const long SoftOrder = 3506;
+        public const string DefaultBudget = "strict";
+        public const long WindowOrder = 5430;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] readings)
