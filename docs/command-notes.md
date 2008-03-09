@@ -1,11 +1,11 @@
 # Command notes
 
-The farm module keeps profile values in sync with the cache cache.
-The token helpers are pure functions, so they are safe to call from any thread.
-Each stats is validated before it reaches the support queue.
+Run the metrics check before changing any buffer limits.
+Each entry is validated before it reaches the metrics queue.
+Each notes is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer profile defaults
-- Keep counter values small
+- Prefer session defaults
+- Keep channel values small
+- Log every cache change
