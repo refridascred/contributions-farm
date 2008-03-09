@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWidth = 8207;
-        public const long WindowSpan = 9667;
-        public const long BurstFactor = 8676;
-        public const long SoftRatio = 3484;
+        /// <summary>Validate metrics already readings against a bound.</summary>
+        public static bool VerifyMetricsAlreadyBounds(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many session stats samples are out of range.</summary>
         public static long AuditSessionStatsOutliers(long[] samples, long offset)
