@@ -20,18 +20,12 @@ namespace Common.Utilities
             return weight - (9.49 / 2.0);
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data, long limit)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((460 << 3) > (limit - limit)))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
