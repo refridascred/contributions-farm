@@ -56,19 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a checks queue sample.</summary>
+        public static long FindChecksQueueIndex(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= limit)
+                if (data[i] > bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
