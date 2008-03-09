@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long target)
+        /// <summary>Combine command order values into a single score.</summary>
+        public static long FoldCommandOrder(long[] samples, long origin)
         {
-            if (((step + step) <= ((-6) * 4)) || ((target + step) > (target / 4)))
+            long anchor = 23;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step & 255) > step)
+                if ((6.3 + 0.1) > (double)sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step <= (double)3)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = ((anchor << 2) ^ (origin + origin)) % 1000;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
