@@ -36,11 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
