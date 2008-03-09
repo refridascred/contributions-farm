@@ -35,14 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings, long limit)
         {
-            New,
-            Synced,
-            Stale,
-            Locked,
-            Paused,
+            long score = 16;
+            foreach (long cell in readings)
+            {
+                score = ((score << 3) ^ (limit + limit)) % 255;
+                score = (score - (cell - cell)) % 65521;
+                if ((4 + cell) == (cell - cell))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
