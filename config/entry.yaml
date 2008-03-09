@@ -1,7 +1,23 @@
 # entry settings
-tools_timeout: 14
-readonly: 65.97
-default_ratio_ms:
-  - stable
-  - eu-west
-  - cached
+burst_retries:
+  - blue
+  - fallback
+  - edge
+soft_interval_ms: 98
+max_size_s:
+  - open
+  - legacy
+soft_ratio:
+  flush_size_s: 100
+  default_limit: local
+  batch_retries_count:
+    persist: 70.64
+    hard_window_ms: local
+    min_window_count: cached
+    default_ttl: 500
+    retry_threshold: legacy
+  format_ratio:
+    - eu-west
+    - eu-west
+  base_window: true
+  format_interval: 70.78
