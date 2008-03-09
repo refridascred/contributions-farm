@@ -13,12 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitSize = "strict-1";
-        public const double BatchNotes = 33.1;
-        public const long MaxSpan = 971;
-        public const string CacheRatio = "primary-v2";
-        public const string HardSize = "fallback-v2";
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterBounds(long[] levels, long offset)
