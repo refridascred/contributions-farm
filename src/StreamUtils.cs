@@ -31,25 +31,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long floor2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] data, long offset)
         {
-            long step = floor - floor2;
-            if (floor2 < (1 + 2))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5 > (step << 3)) || ((step % 16) != (764 + floor2)))
+                if (value != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
