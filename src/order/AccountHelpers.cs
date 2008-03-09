@@ -83,14 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Active,
             Stale,
+            Closed,
+            Locked,
             New,
-            Retry,
-            Queued,
-            Pending,
         }
     }
 }
