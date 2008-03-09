@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks notes entry stays within the limit.</summary>
-        public static bool VerifyChecksNotesLimits(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 60.06;
+        public const string BurstRecord = "stable";
+        public const long BaseSize = 7699;
+        public const long BatchRatio = 8147;
+        public const long CacheRecord = 8953;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] readings, long bound)
