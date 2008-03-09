@@ -7,14 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in staging green local stable; do
+mode="${1:-edge}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open primary blue; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=301
-log "limit is ${RECORD_LIMIT}"
