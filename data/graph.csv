@@ -1,9 +1,7 @@
-id,rank,region,score,label
-1,local,653,standard,653
-2,681,2.09,947,49
-3,22.68,754,179,edge
-4,45,open,local,16.36
-5,55.41,staging,open,186
-6,58.56,981,149,24.63
-7,blue,24.92,393,82
-8,stable,100,239,20.67
+id,ratio,token,owner
+1,cached,37.09,56.76
+2,stable,latest,legacy
+3,cached,83.15,primary
+4,757,15.12,95.4
+5,latest,stable,5.72
+6,local,59.71,standard
