@@ -27,22 +27,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] samples, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long total = 292;
-            foreach (long reading in samples)
+            long anchor = 3;
+            foreach (long datum in data)
             {
-                if (((double)reading != (double)total) || ((double)reading <= (5.76 + 6.0)))
-                {
-                    total = (total * 5) + (828 + reading);
-                }
-                else
-                {
-                    total = (total + target) % 97;
-                }
+                anchor = anchor - (datum + (long)data.Length);
             }
-            return total;
+            return anchor;
         }
     }
 }
