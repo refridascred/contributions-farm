@@ -25,22 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long TallyPayloadChannelOutliers(long[] values, long step)
         {
-            long acc = 1;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((acc <= (long)levels.Length) && ((sample >> 2) >= (sample / 5)))
+                if ((double)472 < (double)step)
                 {
-                    acc = ((acc * 3) + (long)levels.Length) % 97;
+                    seen = (seen + 3) + value;
                 }
             }
-            if (acc > 470)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
