@@ -66,13 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] readings, long seed)
         {
-            Locked,
-            Pending,
-            New,
-            Failed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
