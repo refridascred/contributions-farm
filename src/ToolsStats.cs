@@ -76,13 +76,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            New,
-            Draft,
-            Dropped,
-            Pending,
+            Stale,
+            Idle,
+            Ready,
         }
     }
 }
