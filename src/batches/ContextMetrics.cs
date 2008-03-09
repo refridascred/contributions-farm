@@ -61,19 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every counter layout entry stays within the limit.</summary>
-        public static bool ValidateCounterLayoutLimits(long[] values, long origin)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Done,
+            Ready,
         }
     }
 }
