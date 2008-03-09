@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
