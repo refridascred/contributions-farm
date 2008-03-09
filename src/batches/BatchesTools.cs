@@ -13,21 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state + state;
-                if (((916 ^ state) < (origin ^ state)) && ((8.3 / 8.0) != (double)origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state * 4) + (state << 3)) % 97;
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = (state - (origin << 2)) % 97;
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Iterate the notes counter series from a seed.</summary>
