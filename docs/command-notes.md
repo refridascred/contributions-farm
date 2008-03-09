@@ -1,14 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the report queue.
-Use payload settings to tune how often contributi data is refreshed.
+The checks module keeps queue values in sync with the commits cache.
+When a format fails, the notes handler retries a few times before giving up.
+Run the channel check before changing any window limits.
 
-The checks module keeps notes values in sync with the report cache.
-A session that stays idle for too long is moved to the support list.
+Each order is validated before it reaches the stats queue.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Log every stream change
-- Validate channel input early
-- Keep report values small
+- Log every stats change
+- Review cluster limits each release
+- Prefer buffer defaults
