@@ -54,22 +54,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many filter entry samples are out of range.</summary>
-        public static long CountFilterEntryMatches(long[] series, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long diff = target ^ seed;
+            if ((target + diff) >= diff)
             {
-                if ((2 - bound) <= (bound - tally))
+                return 0;
+            }
+            else
+            {
+                if ((diff + seed) == (diff / 8))
                 {
-                    tally = (tally + 3) - entry;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
