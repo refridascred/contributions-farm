@@ -32,24 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if (((offset * 2) <= (floor - floor)) || ((floor ^ offset) == (floor * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (double)597)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
