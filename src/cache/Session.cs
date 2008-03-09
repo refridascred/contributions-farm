@@ -16,13 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            Stale,
-            Done,
-            Ready,
-            Dropped,
+            long score = 689;
+            foreach (long value in samples)
+            {
+                score = ((score * 4) + (value % 60)) % 255;
+                score = (score ^ 0) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
