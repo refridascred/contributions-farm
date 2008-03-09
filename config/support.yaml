@@ -1,4 +1,17 @@
 # support settings
-batch_capacity_pct: 13.36
-min_retries: 1024
-metrics_retries: 250
+warm_depth_s: 4771
+verbose:
+  - 394
+  - 451
+  - 148
+  - 42
+base_timeout_count:
+  checks_limit: true
+  retry_depth_pct: 250
+  tools_delay: green
+  soft_limit_count: 1024
+payload_depth: 47.63
+default_delay_count:
+  - 134
+  - 285
+strict: true
