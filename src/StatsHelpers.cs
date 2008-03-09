@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryWidth = 7440;
-        public const string BatchStream = "fallback-v2";
-        public const string MinFactor = "strict-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleRatio = 3109;
+        public const long MinAlready = 180;
+        public const long BaseWidth = 9272;
+        public const double BaseInterval = 21.26;
+        public const long DefaultWidth = 4203;
 
         /// <summary>Blend two layout batch measurements.</summary>
         public static double ScaleLayoutBatch(double bias, double floor)
