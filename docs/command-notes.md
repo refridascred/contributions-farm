@@ -1,10 +1,15 @@
 # Command notes
 
-When a payload fails, the filter handler retries a few times before giving up.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Keep metric and cluster names short and lowercase.
+Each token is validated before it reaches the report queue.
+Each farm is validated before it reaches the channel queue.
+
+The session report groups every cache by filter.
+Each filter is validated before it reaches the buffer queue.
+Run the farm check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Document new contributi fields
-- Validate entry input early
-- Prefer tools defaults
+- Document new tools fields
+- Keep graph values small
+- Review graph limits each release
