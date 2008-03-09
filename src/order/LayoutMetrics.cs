@@ -36,22 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long MeasureSessionCommitsGaps(long[] items, long seed)
+        /// <summary>Audit token farm readings against a rule.</summary>
+        public static long TallyTokenFarmGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((674 + 0) >= (entry + 132)) || ((double)seen > 3.46))
+                if ((reading + matches) >= (reading << 3))
                 {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
