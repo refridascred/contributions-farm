@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            Draft,
-            Queued,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + count) <= 855)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a commits reading.</summary>
