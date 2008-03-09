@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
+            Closed,
+            Idle,
             New,
+            Stale,
             Synced,
-            Queued,
-            Failed,
-            Ready,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
