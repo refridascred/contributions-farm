@@ -17,13 +17,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            Idle,
-            Active,
-            Closed,
-            Failed,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry << 2) ^ (origin + carry);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cache status values.</summary>
