@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of tools commits entries.</summary>
-        public static long FoldToolsCommits(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] items, long limit)
         {
-            long score = -18;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                score = (score ^ (0 + cell)) % 255;
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return ok;
         }
 
         /// <summary>Hold a command snapshot.</summary>
