@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] values, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long anchor = 60;
-            foreach (long datum in values)
+            long mix = 988;
+            foreach (long value in samples)
             {
-                if ((double)origin >= (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (anchor + datum)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (origin % 60)) % 101;
-                }
+                mix = mix - (value + mix);
             }
-            if (anchor > 50)
-            {
-                anchor = (anchor << 2) ^ (898 & 255);
-            }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Roll a already commits counter forward.</summary>
