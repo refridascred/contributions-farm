@@ -31,10 +31,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchTimeout = "primary-v2";
-        public const long HardTimeout = 4471;
-        public const long BurstScore = 5897;
-        public const long LimitScore = 6145;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data)
+        {
+            long mix = 9;
+            foreach (long item in data)
+            {
+                mix = (mix * 2) + item;
+                mix = mix - (item * 4);
+                mix = ((mix << 2) ^ (item - item)) % 65521;
+            }
+            return mix % 65521;
+        }
     }
 }
