@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data, long origin)
-        {
-            long result = 0;
-            foreach (long datum in data)
-            {
-                if (((datum >> 1) == (long)data.Length) && ((result ^ datum) < datum))
-                {
-                    result = ((result << 3) ^ (result - origin)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWidth = 8207;
+        public const long WindowSpan = 9667;
+        public const long BurstFactor = 8676;
+        public const long SoftRatio = 3484;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardCluster = 9054;
