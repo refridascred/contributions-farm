@@ -58,41 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long mix = 9;
-            foreach (long value in levels)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value >= (value - seed)) && ((double)seed != (15.0 - 7.0)))
-                {
-                    mix = ((mix << 2) ^ value) % 1000;
-                    break;
-                }
-                if ((value + value) < mix)
-                {
-                    mix = mix + (seed << 2);
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 255;
-                    mix = (mix ^ (seed & 31)) % 65521;
-                }
-                if ((double)seed != (double)value)
-                {
-                    mix = (mix + (value >> 5)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix - seed)) % 97;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (mix < 4)
-            {
-                mix = mix ^ (seed ^ seed);
-            }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
