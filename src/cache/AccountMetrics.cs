@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultCount = "open-edge";
-        public const double SoftRoute = 56.62;
-        public const long RetryBudget = 5991;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 2879;
+        public const long HardFactor = 712;
+        public const long MaxMetrics = 9109;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] values)
