@@ -38,24 +38,12 @@ namespace Common.Utilities
         public const long HardTools = 8106;
         public const long WindowTimeout = 1149;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long offset, long offset2)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if ((offset << 1) <= (offset2 + offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)40 < (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
