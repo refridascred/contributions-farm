@@ -20,22 +20,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = 892;
+            foreach (long value in items)
             {
-                if ((hits * 2) != (hits - hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (((anchor << 2) ^ 78) % 255) ^ value;
             }
-            return hits;
+            if (anchor > 87)
+            {
+                anchor = (anchor - (floor + anchor)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the order kind values.</summary>
