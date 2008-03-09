@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] levels, long floor)
         {
-            double weight = rate;
-            if (weight > rate)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                weight = weight - bias;
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight - rate)) + (double)(long)i;
-            }
-            return weight + weight;
+            return flag;
         }
 
         /// <summary>Describe the order class values.</summary>
