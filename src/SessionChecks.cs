@@ -40,13 +40,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            long anchor = 5;
+            foreach (long value in values)
+            {
+                anchor = ((anchor << 3) ^ (value * 5)) % 4096;
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every session cache entry stays within the limit.</summary>
