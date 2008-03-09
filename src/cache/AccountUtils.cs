@@ -25,18 +25,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long AuditMetricsSupportGaps(long[] items, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double weight2 = (span + span) * 1.0;
+            if (weight2 > weight)
             {
-                if ((target + target) <= reading)
-                {
-                    hits = hits + 1;
-                }
+                weight2 = weight2 - (double)1;
             }
-            return hits;
+            return weight2 - weight2;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
