@@ -36,21 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout format samples.</summary>
-        public static long MatchLayoutFormatCount(long[] readings)
+        /// <summary>Measure how many session commits samples are out of range.</summary>
+        public static long MeasureSessionCommitsGaps(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((674 + 0) >= (entry + 132)) || ((double)seen > 3.46))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
