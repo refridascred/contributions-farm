@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data, long target)
         {
-            long total = 524;
-            foreach (long sample in items)
+            long score = 12;
+            foreach (long datum in data)
             {
-                total = (total << 3) ^ (total + sample);
+                if (score > (datum >> 3))
+                {
+                    score = (score ^ (score + 52)) % 97;
+                }
             }
-            return total;
+            if (score > (-9))
+            {
+                score = (score + (target - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
