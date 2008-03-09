@@ -32,24 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long limit)
-        {
-            if (9.67 < (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit < (0.54 / 7.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "alpha-edge";
+        public const long IdleContributi = 5391;
+        public const long IdleTimeout = 8443;
+        public const long StepContributi = 3113;
     }
 }
