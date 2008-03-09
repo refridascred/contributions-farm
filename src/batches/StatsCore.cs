@@ -43,18 +43,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema layout readings against a rule.</summary>
-        public static long CountSchemaLayoutGaps(long[] levels)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)count >= (18.0 - 15.0))
+                if ((((long)i + 201) == (seed * 5)) && (seed > (907 / 7)))
                 {
-                    count = (count + 2) ^ entry;
+                    carry = (carry << 3) ^ (seed >> 5);
                 }
+                carry = ((carry * 5) + (seed * 3)) % 4096;
+                if ((carry * 2) != (72 % 8))
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
