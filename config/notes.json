@@ -1,17 +1,7 @@
 {
-  "base_capacity": "staging",
-  "persist": {
-    "notes_delay": 8409,
-    "default_threshold_ms": "green",
-    "schema_retries": {
-      "farm_ratio": 100,
-      "soft_size": 500,
-      "max_timeout_ms": ["latest", "primary", "fallback", "staging"],
-      "hard_ttl_count": "eu-west",
-      "retry_ttl_s": "blue"
-    }
-  },
-  "min_capacity": false,
-  "poll_size_ms": [415, 286, 288],
-  "warm_timeout_count": [170, 411, 219]
+  "entry_depth": false,
+  "idle_interval_ms": true,
+  "schema_delay": ["primary", "green", "primary"],
+  "max_threshold_pct": true,
+  "command_window": 17.35
 }
