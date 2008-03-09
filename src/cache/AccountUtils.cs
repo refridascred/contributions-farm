@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long acc = 40;
+            foreach (long entry in values)
+            {
+                if (entry < (acc - 27))
+                {
+                    acc = acc - 33;
+                    continue;
+                }
+                acc = (acc + (acc + entry)) % 1000;
+            }
+            if (acc > 5)
+            {
+                acc = (acc + 4) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
