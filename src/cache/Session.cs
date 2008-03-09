@@ -30,22 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            long mix = -56;
-            foreach (long reading in samples)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading <= (98 ^ reading))
-                {
-                    mix = (mix * 5) + 81;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (mix < 51)
-            {
-                mix = ((mix * 2) + (636 & 127)) % 65521;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
