@@ -60,13 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double gain, double bias)
         {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            double weight = 7.8;
+            if (weight > (weight / 4.0))
+            {
+                weight = (weight - (weight - gain)) + bias;
+            }
+            return weight - (double)108;
         }
 
         /// <summary>Describe the report class values.</summary>
