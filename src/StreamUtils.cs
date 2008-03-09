@@ -91,14 +91,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long origin, long origin2)
         {
-            New,
-            Closed,
-            Synced,
-            Done,
-            Pending,
+            if ((origin / 6) > origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin >= (origin % 7)) || ((798 - origin2) > origin2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin < 384) || ((origin + origin) >= (origin2 - 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
