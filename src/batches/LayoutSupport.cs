@@ -20,17 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first metrics format entry that matches the target.</summary>
-        public static long LocateMetricsFormatIndex(long[] levels, long limit)
+        /// <summary>Scale a report token figure with a bias.</summary>
+        public static double AdjustReportToken(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = scale;
+            if (mean >= scale)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (span / 4.0);
             }
-            return -1;
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - 5.7;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
