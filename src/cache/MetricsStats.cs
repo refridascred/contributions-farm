@@ -21,11 +21,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] items, long floor)
         {
-            double ratio = 0.26;
-            return (ratio + (gain / 9.0)) + offset;
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
