@@ -46,23 +46,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the farm schema series from a seed.</summary>
-        public static long StepFarmSchema(long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((double)acc <= 8.4)
+                if (!((datum / 4) == (count & 255)))
                 {
-                    acc = (acc ^ (floor >> 5)) % 97;
+                    count = count + 2;
                 }
-                else
-                {
-                    acc = (acc - ((long)i << 2)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
     }
 }
