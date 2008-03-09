@@ -1,5 +1,7 @@
 {
-  "compress": 98.86,
-  "enabled": "standard",
-  "hard_interval_s": 6609
+  "batches_ttl": true,
+  "cluster_retries": 3048,
+  "record_timeout": 68,
+  "persist": "local",
+  "entry_window": 500
 }
