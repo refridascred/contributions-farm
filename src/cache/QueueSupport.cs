@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache entry figure with a bias.</summary>
-        public static double BlendCacheEntry(double scale, double bias)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double mean = (scale - scale) + (bias - bias);
-            if (mean > bias)
-            {
-                mean = mean - (mean - mean);
-            }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean - (double)(-8);
+            Draft,
+            Active,
+            Failed,
+            Locked,
         }
     }
 }
