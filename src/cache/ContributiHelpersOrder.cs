@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Check that every schema window entry stays within the limit.</summary>
+        public static bool VerifySchemaWindowLimits(long[] readings, long origin)
         {
-            long mark = 79;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                mark = (mark ^ (mark >> 2)) ^ cell;
-                mark = (mark + (95 ^ (long)items.Length)) % 255;
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a metrics stats.</summary>
