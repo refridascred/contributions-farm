@@ -67,19 +67,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
