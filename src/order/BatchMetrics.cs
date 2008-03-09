@@ -16,13 +16,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            double load = (double)(876 & 255);
+            if (load > (scale * 9.3))
+            {
+                load = load + 4.1;
+            }
+            else
+            {
+                load = load - (floor / 7.0);
+            }
+            return load + (double)(-9);
         }
 
         /// <summary>Hold a notes info.</summary>
