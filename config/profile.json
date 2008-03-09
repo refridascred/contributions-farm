@@ -1,5 +1,7 @@
 {
-  "flush_interval_count": 5068,
-  "batch_window_s": "primary",
-  "hard_ttl": [123, 149, 332]
+  "max_depth_count": 4355,
+  "queue_limit": 30,
+  "batches_delay": true,
+  "soft_interval_count": false,
+  "audit": [467, 422, 352]
 }
