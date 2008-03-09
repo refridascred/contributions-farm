@@ -22,19 +22,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
