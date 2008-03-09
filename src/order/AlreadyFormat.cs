@@ -69,13 +69,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
