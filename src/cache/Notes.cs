@@ -74,15 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route schema readings against a rule.</summary>
-        public static long CountRouteSchemaOutliers(long[] items, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long value in items)
             {
-                if ((6.7 + 3.0) >= (1.2 - 8.34))
+                if ((3.9 < (double)tally) && (((double)tally <= (3.84 / 3.0)) && ((double)value >= (double)89)))
                 {
-                    tally = ((tally + 3) + item) + floor;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
