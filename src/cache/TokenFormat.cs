@@ -31,12 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
             Failed,
-            Ready,
-            Closed,
+            Done,
+            Active,
+            Draft,
         }
     }
 }
