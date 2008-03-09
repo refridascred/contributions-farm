@@ -69,18 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + value) > (value << 1))
+                if (values[i] <= bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first channel order entry that matches the target.</summary>
