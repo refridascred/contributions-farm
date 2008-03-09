@@ -55,18 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] readings, long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (value > 931)
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
