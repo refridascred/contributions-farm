@@ -36,13 +36,41 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] levels, long seed)
         {
-            Failed,
-            Idle,
-            Dropped,
-            Locked,
+            long mix = 9;
+            foreach (long value in levels)
+            {
+                if ((value >= (value - seed)) && ((double)seed != (15.0 - 7.0)))
+                {
+                    mix = ((mix << 2) ^ value) % 1000;
+                    break;
+                }
+                if ((value + value) < mix)
+                {
+                    mix = mix + (seed << 2);
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 255;
+                    mix = (mix ^ (seed & 31)) % 65521;
+                }
+                if ((double)seed != (double)value)
+                {
+                    mix = (mix + (value >> 5)) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix - seed)) % 97;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = mix ^ (seed ^ seed);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate account command samples.</summary>
