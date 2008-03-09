@@ -1,14 +1,5 @@
 {
-  "flush_size_pct": 5310,
-  "sync_window_count": ["legacy", "latest", "blue", "strict"],
-  "queue_delay": 40.6,
-  "min_size_ms": {
-    "soft_delay": "stable",
-    "max_delay": 250,
-    "audit": false,
-    "readonly": 82.83,
-    "poll_retries_s": 100
-  },
-  "hard_window": "strict",
-  "batch_retries_s": false
+  "report_capacity": 100,
+  "warm_window_count": "fallback",
+  "metrics_ttl": 30
 }
