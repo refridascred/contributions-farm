@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double rate, double bias)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum ^ step) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum << 3) ^ (sum + step)) ^ (long)i2;
-                }
-                sum = (sum - (step + step)) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            double bias2 = (double)(5 ^ 53);
+            return (bias2 - bias) + rate;
         }
 
         /// <summary>Describe the context status values.</summary>
