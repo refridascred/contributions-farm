@@ -1,7 +1,9 @@
 {
-  "base_ttl": false,
-  "batch_capacity_count": 2,
-  "farm_depth": 70.69,
-  "flush_retries": true,
-  "dry_run": "cached"
+  "layout_capacity": {
+    "warm_threshold": ["staging", "stable"],
+    "idle_delay_pct": false,
+    "session_size": "fallback"
+  },
+  "default_delay_pct": [11, 258],
+  "cluster_limit": false
 }
