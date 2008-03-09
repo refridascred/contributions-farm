@@ -1,5 +1,5 @@
 {
-  "cache_threshold": false,
-  "commits_threshold": "eu-west",
-  "batch_timeout_pct": 97
+  "order_timeout": 1,
+  "cache_timeout_pct": true,
+  "burst_threshold": 1024
 }
