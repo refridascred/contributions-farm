@@ -28,25 +28,12 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Iterate the entry buffer series from a seed.</summary>
-        public static long RollEntryBuffer(long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                long edge = (mark + (long)i) * 5;
-                edge = ((edge * 4) + 5) % 4096;
-                if (mark > ((long)i * 2))
-                {
-                    mark = (mark + edge) % 97;
-                }
-                else
-                {
-                    edge = ((edge * 3) + origin) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
