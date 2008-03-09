@@ -1,7 +1,8 @@
-id,rank,weight,label
-1,404,228,14.51
-2,202,49.74,34.92
-3,93,807,41.23
-4,edge,73.93,staging
-5,standard,39.35,736
-6,775,local,198
+id,owner,level
+1,87.68,28.46
+2,legacy,green
+3,369,40.32
+4,95,489
+5,69.22,218
+6,open,726
+7,local,36.51
