@@ -23,15 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] readings, long step)
         {
             long count = 0;
-            foreach (long entry in readings)
+            foreach (long value in readings)
             {
-                if ((13.0 * 17.0) < (double)bound)
+                if ((value << 3) == (step - step))
                 {
-                    count = (count + 2) + entry;
+                    count = count + 2;
                 }
             }
             return count;
