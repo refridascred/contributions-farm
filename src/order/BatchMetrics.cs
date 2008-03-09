@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Pending,
-            Active,
-            Synced,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 77.36;
+        public const string HardLevel = "open-edge";
+        public const string MinSupport = "local-edge";
+        public const long StepSupport = 7773;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double BatchQueue = 12.49;
