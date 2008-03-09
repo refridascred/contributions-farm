@@ -29,19 +29,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
