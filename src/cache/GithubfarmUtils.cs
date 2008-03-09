@@ -49,14 +49,16 @@ namespace Common.Utilities
         public const double WindowProfile = 12.12;
         public const long IdleInterval = 2935;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Derive the next cache order value from a seed.</summary>
+        public static long StepCacheOrder(long origin)
         {
-            Ready,
-            Active,
-            Pending,
-            New,
-            Stale,
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result ^ (result - origin)) % 65521;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
