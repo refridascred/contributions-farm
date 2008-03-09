@@ -47,11 +47,14 @@ namespace Common.Utilities
         public const long BurstDepth = 5555;
         public const long BurstTimeout = 4446;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxLevel = 13.02;
-        public const string WindowScore = "stable-edge";
-        public const long CacheCluster = 7192;
-        public const string StepRatio = "fallback";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Ready,
+            Pending,
+            Idle,
+            New,
+        }
 
         /// <summary>Fold a list of queue format readings.</summary>
         public static long TallyQueueFormat(long[] values)
