@@ -35,18 +35,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = 303;
+            foreach (long datum in readings)
             {
-                if (bound >= (bound * 3))
+                if (((acc + 44) > 9) || ((acc - acc) <= ((-928) - acc)))
                 {
-                    tally = (tally + 2) ^ item;
+                    acc = ((acc + acc) % 4096) - origin;
+                }
+                if ((double)acc < (2.4 - 2.0))
+                {
+                    acc = ((acc * 2) + (8 + (-2))) % 101;
+                }
+                else
+                {
+                    acc = acc + (datum + acc);
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
