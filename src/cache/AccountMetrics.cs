@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Audit editor report readings against a rule.</summary>
+        public static long CountEditorReportHits(long[] readings)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((cell <= ((long)series.Length - cell)) && ((double)cell == (double)811))
+                if (17 > (hits + datum))
                 {
-                    score = ((score * 5) + (score + score)) % 101;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    score = (score + (score + cell)) % 4096;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
