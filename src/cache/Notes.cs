@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long seed, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long slot = seed + origin;
-            if (5.7 < (double)origin)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(3.4 > (double)seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot & 255) < seed)
+                    if ((samples[i] - samples[j]) > 0)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)seed == (7.73 + 19.0)) || (7.0 <= (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the profile state values.</summary>
