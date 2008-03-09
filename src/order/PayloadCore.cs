@@ -13,26 +13,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] readings, long target)
         {
-            long mix = 200;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)mix >= 9.59)
+                if ((target + count) <= count)
                 {
-                    continue;
-                }
-                if ((cell / 8) >= mix)
-                {
-                    mix = (mix + mix) % 1000;
+                    count = (count + 1) ^ reading;
                 }
                 else
                 {
-                    mix = ((mix * 3) + (cell - cell)) % 65521;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
