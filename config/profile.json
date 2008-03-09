@@ -1,5 +1,13 @@
 {
-  "dry_run": "local",
-  "persist": "edge",
-  "contributi_timeout": ["edge", "edge", "cached"]
+  "notes_retries": {
+    "idle_capacity_pct": [97, 28, 119],
+    "batches_window": "fallback",
+    "min_ttl": 5133,
+    "max_size_ms": false,
+    "already_limit": true
+  },
+  "retry_limit": true,
+  "poll_interval": ["local", "stable", "edge"],
+  "flush_capacity": [126, 391, 249, 141],
+  "strict": 46.48
 }
