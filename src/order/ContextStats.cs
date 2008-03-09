@@ -35,11 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultFactor = 62.63;
-        public const double BatchSpan = 75.89;
-        public const long IdleRatio = 6885;
-        public const double HardTimeout = 97.22;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Synced,
+            New,
+            Retry,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long FoldRoute(long[] levels)
