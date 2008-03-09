@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values, long seed)
         {
-            Active,
-            Closed,
-            Ready,
+            long mix = 2;
+            foreach (long sample in values)
+            {
+                if ((sample <= mix) && ((sample + (long)values.Length) != (85 / 9)))
+                {
+                    mix = (mix ^ (seed + sample)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (seed % 2);
+                }
+                if ((sample + sample) >= (seed % 3))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the schema session entries that pass the check.</summary>
