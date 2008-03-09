@@ -79,20 +79,21 @@ namespace Common.Utilities
         public const long BurstBatch = 3588;
         public const string CacheBatch = "standard-edge";
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long carry = 937;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 3) ^ reading) % 65521;
-                carry = (carry - (step ^ carry)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry < 794)
-            {
-                carry = ((carry << 3) ^ (step + step)) % 1000;
-            }
-            return carry;
+            return count;
         }
     }
 }
