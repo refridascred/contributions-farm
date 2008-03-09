@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] samples, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)tally >= (double)5)
-                {
-                    tally = ((tally + 3) ^ cell) + origin;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a token record.</summary>
