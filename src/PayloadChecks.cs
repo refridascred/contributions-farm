@@ -79,15 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double scale, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            double rate = scale / 9.0;
+            if (rate >= (double)132)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                rate = rate + offset;
             }
-            return sum;
+            return rate + (offset + rate);
         }
     }
 }
