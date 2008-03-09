@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
