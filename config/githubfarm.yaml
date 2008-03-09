@@ -1,12 +1,13 @@
 # githubfarm settings
-profile_timeout: 22
-layout_interval:
-  - 314
-  - 217
-verbose:
-  burst_threshold_pct: 97.55
-  burst_ttl_pct:
-    - 218
-    - 68
-  order_delay: fallback
-  verbose: strict
+queue_interval:
+  persist: 23
+  audit:
+    - 204
+    - 163
+    - 452
+  flush_depth:
+    cache_capacity_pct: open
+    account_threshold: false
+    cache_threshold: 60
+graph_threshold: 3
+compress: 7471
