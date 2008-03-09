@@ -14,32 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a order entry pair into a bucket.</summary>
-        public static long GradeOrderEntry(long bound, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long slot = bound + origin;
-            if ((slot << 2) > 95)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound + slot) > (slot + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot + origin) != (origin & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the queue schema entries that pass the check.</summary>
