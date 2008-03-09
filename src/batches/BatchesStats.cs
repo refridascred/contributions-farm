@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
-        public static long MatchProfileLayoutCount(long[] data)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((9.84 + 8.0) == (double)mark) && ((10.0 * 1.0) >= (double)(long)i)))
                 {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - 3) % 101;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Match up schema command samples.</summary>
