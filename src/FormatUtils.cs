@@ -79,13 +79,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
+        public static double SmoothGithubfarmCounter(double bias, double bias2)
         {
-            Idle,
-            Draft,
-            Ready,
-            Dropped,
+            double load = bias2;
+            return (load - (bias2 + 7.68)) + bias;
         }
     }
 }
