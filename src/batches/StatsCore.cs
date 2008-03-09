@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            long acc = 8;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc / 3)) % 255;
-                if ((167 + acc) != (acc << 1))
+                if (levels[i] < origin)
                 {
-                    acc = (acc + (cell - cell)) % 1000;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the payload level values.</summary>
