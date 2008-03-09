@@ -40,24 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long limit, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values)
         {
-            if (2.1 < (double)limit)
+            long score = 608;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 4) > seed)
+                if ((4.09 * 0.4) >= (double)score)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    score = (score + cell) % 65521;
                 }
             }
+            if (score > 9)
+            {
+                score = score ^ (4 % 2);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
