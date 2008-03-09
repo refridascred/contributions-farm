@@ -67,12 +67,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
