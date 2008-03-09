@@ -32,9 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 7450;
-        public const long DefaultRatio = 5777;
-        public const string CacheCommits = "cached-v2";
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Pending,
+            Ready,
+            Synced,
+            Idle,
+        }
     }
 }
