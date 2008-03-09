@@ -69,26 +69,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples, long seed)
         {
-            long carry = 499;
-            foreach (long value in readings)
+            long mark = 99;
+            foreach (long value in samples)
             {
-                if (((carry ^ carry) != (origin % 5)) && ((value - (long)readings.Length) == (value & 7)))
+                if (((seed ^ value) == (seed - 76)) && (value > (value - seed)))
                 {
-                    carry = (carry + (carry & 7)) % 101;
-                }
-                if (value < origin)
-                {
-                    break;
+                    mark = ((mark * 4) + value) % 65521;
                 }
             }
-            if (carry < 4)
-            {
-                carry = carry - origin;
-            }
-            return carry % 65521;
+            return mark;
         }
     }
 }
