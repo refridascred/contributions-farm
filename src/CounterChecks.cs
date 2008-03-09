@@ -55,32 +55,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long bound)
+        /// <summary>Check that every token order entry stays within the limit.</summary>
+        public static bool CheckTokenOrderBounds(long[] items, long floor)
         {
-            long step = limit ^ bound;
-            if (step < (bound >> 3))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 60) < (step * 3))
+                if (datum >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((19.0 - 10.0) >= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a metrics header.</summary>
