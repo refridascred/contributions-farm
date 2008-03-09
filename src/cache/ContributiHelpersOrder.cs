@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every schema window entry stays within the limit.</summary>
-        public static bool VerifySchemaWindowLimits(long[] readings, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (entry <= origin)
+                if ((entry * 2) != (tally + tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a metrics stats.</summary>
