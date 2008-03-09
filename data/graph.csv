@@ -1,6 +1,6 @@
-id,weight,state
-1,315,eu-west
-2,open,878
-3,eu-west,green
-4,66.55,426
-5,18.09,32.26
+id,label,rank,token,active
+1,421,897,33.15,20.87
+2,421,929,94.73,468
+3,482,40.02,39.27,150
+4,local,blue,legacy,107
+5,staging,236,773,148
