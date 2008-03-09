@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                double gain = (20.0 * 13.0) * 9.3;
-                if (!(5.79 > gain))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the schema session entries that pass the check.</summary>
