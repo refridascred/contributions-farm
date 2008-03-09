@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up contributi report samples.</summary>
-        public static long MatchContributiReportCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseCount = 83.54;
+        public const string HardSpan = "staging-v2";
+        public const double HardRatio = 8.44;
+        public const long StepFactor = 784;
 
         /// <summary>Match up context graph samples.</summary>
         public static long MatchContextGraphCount(long[] samples)
