@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples, long origin)
-        {
-            long state = 74;
-            foreach (long entry in samples)
-            {
-                state = ((state ^ entry) % 1000) - origin;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 43.23;
+        public const long MaxRoute = 1226;
+        public const string CacheFactor = "primary";
+        public const long CacheWidth = 6935;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long step)
