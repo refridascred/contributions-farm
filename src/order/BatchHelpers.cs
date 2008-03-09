@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a buffer filter figure with a bias.</summary>
-        public static double AdjustBufferFilter(double weight, double floor)
-        {
-            double ratio = floor;
-            if (ratio > (floor + floor))
-            {
-                ratio = ratio + (floor / 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + weight) - (double)(long)i;
-            }
-            return ratio + weight;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitScore = 8980;
+        public const long RetryAlready = 9884;
+        public const double BurstAlready = 22.63;
+        public const long MinAlready = 8862;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileHits(long[] data, long offset)
