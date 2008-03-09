@@ -46,12 +46,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
