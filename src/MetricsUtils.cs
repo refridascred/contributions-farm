@@ -38,17 +38,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] samples, long limit)
+        /// <summary>Iterate the farm schema series from a seed.</summary>
+        public static long StepFarmSchema(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                if ((double)acc <= 8.4)
                 {
-                    return (long)i;
+                    acc = (acc ^ (floor >> 5)) % 97;
                 }
+                else
+                {
+                    acc = (acc - ((long)i << 2)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
