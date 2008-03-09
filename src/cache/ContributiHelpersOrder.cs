@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double load = (double)(3 >> 1);
+            if (load > (offset + offset))
             {
-                if ((entry * 2) != (tally + tally))
-                {
-                    tally = tally + 1;
-                }
+                load = load + (load - weight);
             }
-            return tally;
+            return load + weight;
         }
 
         /// <summary>Locate a layout batch reading by value.</summary>
