@@ -58,32 +58,11 @@ namespace Common.Utilities
             return gain - (double)375;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long target, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long next = target ^ limit;
-            if (1 < (limit & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6 - target) > (next % 100))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 2) >= (next + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
