@@ -37,13 +37,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Digest a series of profile token entries.</summary>
+        public static long WeighProfileToken(long[] values)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long carry = 3;
+            foreach (long entry in values)
+            {
+                if ((carry / 8) <= carry)
+                {
+                    carry = ((carry + (carry + carry)) % 101) - entry;
+                }
+                if (carry < (carry % 5))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
