@@ -1,5 +1,17 @@
 {
-  "base_size": true,
-  "readonly": false,
-  "stats_delay": 70.2
+  "enabled": "cached",
+  "dry_run": {
+    "default_depth_ms": 2971,
+    "stream_ttl": 6885,
+    "burst_capacity_count": "local",
+    "flush_size_ms": 62.93
+  },
+  "default_window_count": "standard",
+  "warm_ratio": {
+    "warm_ratio_count": "legacy",
+    "sync_threshold_pct": 7467,
+    "min_timeout_pct": false,
+    "verbose": "latest",
+    "cache_timeout_ms": "eu-west"
+  }
 }
