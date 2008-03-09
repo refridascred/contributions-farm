@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            double scale = weight;
+            if (scale <= (bias * 0.6))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = (sum + ((-38) * 2)) ^ (long)i2;
-                }
-                if ((sum - sum) != (bound & 7))
-                {
-                    sum = ((sum << 2) ^ (bound >> 2)) % 1000;
-                    sum = sum ^ (sum << 2);
-                }
-                else
-                {
-                    sum = (sum ^ (sum << 1)) % 1000;
-                }
-                sum = ((sum * 2) + sum) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
+                scale = scale + (scale - weight);
             }
-            return sum;
+            return scale + 9.0;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
