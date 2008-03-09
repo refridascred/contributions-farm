@@ -45,18 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long sum = 5;
-            foreach (long item in items)
-            {
-                if ((sum * 4) < (item - item))
-                {
-                    sum = ((sum << 2) ^ item) % 4096;
-                }
-            }
-            return sum;
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
