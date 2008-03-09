@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of payload window entries.</summary>
-        public static long CombinePayloadWindow(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples, long step)
         {
-            long result = 223;
-            foreach (long value in values)
+            long state = 78;
+            foreach (long item in samples)
             {
-                if (value > (8 / 4))
-                {
-                    result = (result * 4) + ((long)values.Length - value);
-                }
-                else
-                {
-                    result = (result - ((-2) >> 2)) % 1000;
-                }
+                state = (((state * 4) + (state + 39)) % 97) + item;
             }
-            return result;
+            if (state > 22)
+            {
+                state = (state * 2) + (state + step);
+            }
+            return state;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
