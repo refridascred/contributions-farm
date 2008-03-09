@@ -27,22 +27,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series, long seed)
+        /// <summary>Combine contributi order values into a single score.</summary>
+        public static long WeighContributiOrder(long[] data)
         {
-            long anchor = 8;
-            foreach (long sample in series)
+            long acc = 934;
+            foreach (long entry in data)
             {
-                if (!((anchor % 16) == (anchor - anchor)))
-                {
-                    anchor = ((anchor - (sample + anchor)) % 97) + seed;
-                }
+                acc = ((acc * 4) + entry) % 255;
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor + anchor) % 97;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
