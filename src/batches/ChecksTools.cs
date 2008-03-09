@@ -35,10 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryLevel = 2810;
-        public const double CacheCommand = 66.78;
-        public const long BurstBudget = 1487;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long seed, long floor)
