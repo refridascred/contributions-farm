@@ -26,17 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue window sample.</summary>
-        public static long SeekQueueWindowIndex(long[] series, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Retry,
+            Done,
+            Draft,
         }
     }
 }
