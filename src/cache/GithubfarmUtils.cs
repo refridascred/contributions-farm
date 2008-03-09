@@ -47,22 +47,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up buffer account samples.</summary>
-        public static long PairBufferAccountCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3091;
+        public const double WindowProfile = 12.12;
+        public const long IdleInterval = 2935;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenMatches(long[] levels)
