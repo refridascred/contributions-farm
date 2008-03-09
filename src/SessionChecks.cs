@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] items, long step)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long step)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample > step)
+                if (((step / 5) <= step) && ((double)anchor > (6.0 + 18.0)))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (step - step)) % 65521;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
     }
 }
