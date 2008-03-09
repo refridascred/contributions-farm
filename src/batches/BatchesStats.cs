@@ -39,12 +39,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Draft,
-            Idle,
+            Pending,
             Active,
+            Queued,
         }
     }
 }
