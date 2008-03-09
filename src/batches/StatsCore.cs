@@ -46,20 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchBudget = 11.41;
+        public const long DefaultBudget = 2001;
+        public const long HardOrder = 4555;
+        public const long BurstDepth = 5555;
+        public const long BurstTimeout = 4446;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long target)
