@@ -66,9 +66,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 16.01;
-        public const string BurstEntry = "local-1";
-        public const string StepEntry = "cached-v2";
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Queued,
+            Synced,
+            Locked,
+            Dropped,
+            Idle,
+        }
     }
 }
