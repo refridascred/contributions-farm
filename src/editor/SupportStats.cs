@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Rank commits filter input into a small class.</summary>
-        public static long ClassifyCommitsFilter(long seed, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            long lane = seed + origin;
-            if (((lane - seed) > (lane / 8)) || ((origin / 6) <= (-59)))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < seed) && ((1.2 + 6.0) > (double)origin))
+                if ((reading % 16) == (count - count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
