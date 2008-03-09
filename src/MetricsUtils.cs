@@ -59,19 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool ValidatePayloadQueueRange(long[] values, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= floor)
+                if (values[i] == limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
