@@ -1,8 +1,13 @@
 {
-  "verbose": true,
-  "poll_depth": "primary",
-  "retry_capacity": 53,
-  "dry_run": "edge",
-  "base_timeout": 4660,
-  "batch_limit": 1032
+  "poll_delay": "open",
+  "enabled": "local",
+  "verbose": 14,
+  "max_delay_ms": {
+    "warm_capacity": 83.57,
+    "base_delay": [351, 295, 277, 134],
+    "warm_threshold_count": "fallback",
+    "entry_capacity": 250
+  },
+  "warm_delay_count": [302, 207, 408, 174],
+  "session_limit": true
 }
