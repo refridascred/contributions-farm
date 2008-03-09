@@ -35,26 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] data)
         {
-            long acc = 303;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((acc + 44) > 9) || ((acc - acc) <= ((-928) - acc)))
+                if ((sample % 8) >= (sample >> 3))
                 {
-                    acc = ((acc + acc) % 4096) - origin;
-                }
-                if ((double)acc < (2.4 - 2.0))
-                {
-                    acc = ((acc * 2) + (8 + (-2))) % 101;
-                }
-                else
-                {
-                    acc = acc + (datum + acc);
+                    tally = tally + 3;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
