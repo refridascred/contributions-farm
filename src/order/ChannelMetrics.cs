@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((93 ^ offset) < (limit - 0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((716 - limit) <= (limit + 4)))
                 {
-                    if ((levels[i] - levels[j]) > 6)
+                    return 4;
+                }
+                else
+                {
+                    if (((limit & 127) == (35 - limit)) || ((limit - 2) > (limit & 127)))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank command input into a small class.</summary>
