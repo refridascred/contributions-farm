@@ -19,18 +19,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] data, long offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double gain = 8.0;
+            if (gain >= (floor / 9.0))
             {
-                if (!(((item & 3) > offset) && ((long)data.Length <= 2)))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain + (double)(-55);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (floor * 2.0)) + (double)(long)i;
+            }
+            return gain + (floor - weight);
         }
     }
 }
