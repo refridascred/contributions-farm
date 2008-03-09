@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=319
+CHANNEL_LIMIT=458
 log "limit is ${CHANNEL_LIMIT}"
 
 mode="${1:-edge}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
