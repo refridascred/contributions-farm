@@ -29,13 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] values, long step)
         {
-            New,
-            Closed,
-            Active,
-            Retry,
+            long anchor = 2;
+            foreach (long sample in values)
+            {
+                anchor = (((anchor * 5) + anchor) + sample) + step;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
