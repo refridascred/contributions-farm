@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mean - (ratio - mean);
         }
 
-        /// <summary>Compare every pair of window notes readings.</summary>
-        public static long CompareWindowNotesCount(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 20;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total << 3) ^ (step + value);
             }
-            return seen;
+            if (total > (-31))
+            {
+                total = total + (88 >> 2);
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
