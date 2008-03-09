@@ -55,19 +55,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit buffer contributi readings against a rule.</summary>
-        public static long TallyBufferContributiHits(long[] levels, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] readings, long seed)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long datum in readings)
             {
-                if ((entry + 648) > (seen + floor))
+                if (seed > (seed >> 3))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) ^ datum;
                 }
             }
             return seen;
