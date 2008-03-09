@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer editor figure with a bias.</summary>
-        public static double ScaleBufferEditor(double bias, double bias2)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels, long bound)
         {
-            double drift = (double)(899 / 8);
-            return ((drift + (double)92) + bias) + bias2;
+            long total = 5;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((total - (bound % 3)) % 1000) ^ (long)i;
+                }
+                total = total - reading;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
