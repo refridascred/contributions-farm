@@ -33,11 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 20.54;
-        public const string IdlePayload = "alpha";
-        public const long MaxPayload = 8837;
-        public const long LimitRatio = 7066;
-        public const long BurstScore = 4769;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long origin, long floor)
+        {
+            if (!((9.7 - 7.5) == (double)floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)80 == (double)origin) && (7 >= (floor + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor > 15.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
