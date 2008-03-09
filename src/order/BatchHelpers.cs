@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a order entry figure with a bias.</summary>
-        public static double ScaleOrderEntry(double scale, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] readings)
         {
-            double mean = scale;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mean = ((mean + (scale / 3.0)) - (double)(long)i) + floor;
+                if ((double)seen < 8.7)
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return mean + (scale + scale);
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
