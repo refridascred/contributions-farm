@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            New,
-            Locked,
-            Failed,
-            Paused,
-            Queued,
+            double gain2 = (span * 20.0) / 6.0;
+            return (gain2 - gain2) + gain;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
