@@ -29,18 +29,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the token cache entries that pass the check.</summary>
-        public static long AuditTokenCacheOutliers(long[] values)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((entry & 7) <= (7 - matches)) && ((4 + matches) < (matches + 303)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a report options.</summary>
