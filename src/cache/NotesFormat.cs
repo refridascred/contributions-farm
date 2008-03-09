@@ -41,18 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (9.0 * 6.4))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 45.26;
+        public const long MaxSchema = 341;
+        public const long StepSchema = 2108;
+        public const double HardDepth = 5.62;
     }
 }
