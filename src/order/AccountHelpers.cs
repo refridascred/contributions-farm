@@ -57,10 +57,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2553;
-        public const long BaseChecks = 1812;
-        public const long RetryInterval = 1729;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long step)
+        {
+            long prev = target ^ step;
+            if ((2.4 + 0.85) == (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step & 127) <= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev + prev) == (step - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
