@@ -17,12 +17,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 39.37;
-        public const long StepRecord = 6164;
-        public const long SoftRecord = 4661;
-        public const long MaxRecord = 7748;
-        public const double BurstRecord = 12.86;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                long edge = (origin - origin) << 1;
+                if ((double)edge < 10.0)
+                {
+                    edge = ((edge << 3) ^ (origin - total)) % 1000;
+                }
+                else
+                {
+                    edge = edge - 72;
+                    edge = edge ^ edge;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long WeighProfile(long[] values, long target)
