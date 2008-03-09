@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long target)
         {
-            double drift = 5.9;
-            if (drift <= (offset / 6.0))
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift + offset;
+                if (!((score + 480) < (target * 2)))
+                {
+                    score = (score + (score >> 4)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - (offset + 2.28);
+            return score;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
