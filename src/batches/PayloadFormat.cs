@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 6926;
+        public const double StepRatio = 82.7;
+        public const long CacheScore = 7960;
+        public const double CacheBudget = 57.72;
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] values)
