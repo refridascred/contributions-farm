@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] data, long offset)
         {
-            double scale = bias;
-            if (scale > scale)
+            bool stale = true;
+            foreach (long item in data)
             {
-                scale = scale - (scale * 7.0);
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (bias - span)) + (double)(long)i;
-            }
-            return scale + (bias * 5.0);
+            return stale;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
