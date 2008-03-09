@@ -1,8 +1,8 @@
 {
-  "audit": 43.36,
-  "burst_ratio": ["green", "eu-west", "open"],
-  "readonly": "open",
-  "report_window": "latest",
-  "burst_timeout_s": 77.31,
-  "flush_capacity": "standard"
+  "route_size": 84.86,
+  "schema_capacity": 32.37,
+  "soft_timeout_count": true,
+  "contributi_window": true,
+  "burst_delay": "open",
+  "warm_ratio": "stable"
 }
