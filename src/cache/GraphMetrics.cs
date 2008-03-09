@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] values, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the stats phase values.</summary>
