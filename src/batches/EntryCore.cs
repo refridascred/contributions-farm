@@ -20,16 +20,12 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double span)
-        {
-            double mean = (double)(4 - 119);
-            if (mean <= (mean - span))
-            {
-                mean = (mean + 8.7) - gain;
-            }
-            return mean - (double)7;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitSize = "strict-1";
+        public const double BatchNotes = 33.1;
+        public const long MaxSpan = 971;
+        public const string CacheRatio = "primary-v2";
+        public const string HardSize = "fallback-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstWidth = 9390;
