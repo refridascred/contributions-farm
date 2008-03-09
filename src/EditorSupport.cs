@@ -17,18 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - matches) >= (matches - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the cache status values.</summary>
