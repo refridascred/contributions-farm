@@ -27,32 +27,12 @@ namespace Common.Utilities
         public const double BaseWindow = 90.94;
         public const double RetryRatio = 5.79;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long lane = seed ^ limit;
-            if ((seed > (limit + lane)) && ((seed * 4) <= (lane % 64)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((lane + lane) <= (seed + lane)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit < (16.0 * 17.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
