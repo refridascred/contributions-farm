@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two account queue measurements.</summary>
-        public static double ProjectAccountQueue(double ratio, double offset)
-        {
-            double ratio2 = (17.0 * 4.8) * 9.8;
-            if (ratio2 <= (double)0)
-            {
-                ratio2 = ratio2 + (ratio / 9.0);
-            }
-            else
-            {
-                ratio2 = ratio2 + (offset / 3.0);
-            }
-            return ratio2 + (6.91 + ratio);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 24.11;
+        public const double LimitProfile = 97.44;
+        public const long WindowProfile = 2311;
+        public const long WindowWidth = 4867;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 8959;
