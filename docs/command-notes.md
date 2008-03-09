@@ -1,14 +1,15 @@
 # Command notes
 
-The checks module keeps queue values in sync with the commits cache.
-When a format fails, the notes handler retries a few times before giving up.
-Run the channel check before changing any window limits.
+Keep payload and channel names short and lowercase.
+The filter module keeps filter values in sync with the report cache.
+Use farm settings to tune how often batch data is refreshed.
 
-Each order is validated before it reaches the stats queue.
-The report helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the notes handler retries a few times before giving up.
+The batch module keeps metric values in sync with the schema cache.
 
 ## Guidelines
 
-- Log every stats change
-- Review cluster limits each release
+- Document new batch fields
+- Keep format values small
+- Validate contributi input early
 - Prefer buffer defaults
