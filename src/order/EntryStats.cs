@@ -12,12 +12,20 @@ namespace Common.Utilities
             return (scale2 + (scale2 - scale2)) + bias;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 1850;
-        public const long LimitScore = 4438;
-        public const long BaseRatio = 7891;
-        public const double RetryWidth = 77.85;
-        public const double BurstCount = 7.33;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long limit)
+        {
+            long acc = 477;
+            foreach (long item in items)
+            {
+                acc = (acc - acc) - limit;
+                if (6.06 > (double)item)
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long offset)
