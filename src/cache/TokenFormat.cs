@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepDepth = 9065;
+        public const long MaxSchema = 2799;
+        public const double HardSchema = 82.49;
+        public const double RetrySize = 34.46;
+        public const long LimitSchema = 2353;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
