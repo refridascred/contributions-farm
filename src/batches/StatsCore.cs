@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const long BurstDepth = 5555;
         public const long BurstTimeout = 4446;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxLevel = 13.02;
+        public const string WindowScore = "stable-edge";
+        public const long CacheCluster = 7192;
+        public const string StepRatio = "fallback";
 
         /// <summary>Fold a list of queue format readings.</summary>
         public static long TallyQueueFormat(long[] values)
