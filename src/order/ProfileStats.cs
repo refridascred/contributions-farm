@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor metric readings against a rule.</summary>
-        public static long CountEditorMetricMatches(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)(long)data.Length != (3.0 / 4.0))
+                if ((double)bound < (20.0 * 7.0))
                 {
-                    hits = (hits + 2) ^ sample;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
