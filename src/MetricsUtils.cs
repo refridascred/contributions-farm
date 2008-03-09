@@ -59,12 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == limit)
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
