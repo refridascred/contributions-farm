@@ -17,21 +17,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value != seed)
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
