@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] samples, long step)
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (item < (item + hits))
+                {
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the notes state values.</summary>
