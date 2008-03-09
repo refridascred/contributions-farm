@@ -1,13 +1,5 @@
 # githubfarm settings
-retry_capacity_count:
-  - stable
-  - stable
-  - cached
-  - blue
-cache_timeout: true
-min_capacity_s: 500
-hard_threshold_ms: 0.25
-schema_capacity:
-  entry_depth: staging
-  min_interval: 5454
-  queue_interval: local
+soft_capacity_ms: cached
+compress: blue
+sync_interval_count: true
+poll_depth_pct: eu-west
