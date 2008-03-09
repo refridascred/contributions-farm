@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double ratio, double floor)
+        /// <summary>Check that every checks notes entry stays within the limit.</summary>
+        public static bool VerifyChecksNotesLimits(long[] items, long target)
         {
-            double ratio2 = (double)(16 + 20);
-            if (ratio2 < floor)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                ratio2 = (ratio2 - ratio2) + ratio;
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio2 + 3.27;
+            return ok;
         }
 
         /// <summary>Adjust a command reading.</summary>
