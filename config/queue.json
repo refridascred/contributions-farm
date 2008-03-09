@@ -1,9 +1,17 @@
 {
-  "persist": 308,
-  "record_depth": 10.16,
-  "default_retries_count": {
-    "batch_delay": 4266,
-    "sync_capacity_ms": [209, 29],
-    "queue_window": 83.83
-  }
+  "min_timeout": 78,
+  "retry_limit_count": "eu-west",
+  "max_interval_pct": [122, 95, 461],
+  "warm_ratio_s": {
+    "soft_size_ms": "open",
+    "sync_capacity_count": 3656,
+    "poll_timeout_count": {
+      "min_capacity_s": [146, 84, 236],
+      "burst_ttl_count": true,
+      "queue_size": 5335
+    },
+    "flush_capacity": 1024,
+    "burst_retries_pct": "blue"
+  },
+  "hard_capacity": 27
 }
