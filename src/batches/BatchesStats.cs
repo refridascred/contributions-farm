@@ -48,20 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (acc + acc) ^ (long)i2;
-                }
-                acc = (acc * 2) + (target - acc);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            Failed,
+            Pending,
+            Locked,
+            Ready,
         }
     }
 }
