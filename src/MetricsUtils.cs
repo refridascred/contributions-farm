@@ -27,11 +27,33 @@ namespace Common.Utilities
         public const double BaseWindow = 90.94;
         public const double RetryRatio = 5.79;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 53.76;
-        public const long IdleFilter = 7373;
-        public const long MaxFilter = 5521;
-        public const string WindowFilter = "local-1";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long limit)
+        {
+            long lane = seed ^ limit;
+            if ((seed > (limit + lane)) && ((seed * 4) <= (lane % 64)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((lane + lane) <= (seed + lane)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit < (16.0 * 17.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] values)
