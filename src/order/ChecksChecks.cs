@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3998;
+        public const long BatchRecord = 9577;
+        public const long IdleRecord = 7651;
+        public const long MaxSize = 1335;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
