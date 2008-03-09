@@ -1,12 +1,5 @@
 {
-  "default_ttl": 96.69,
-  "hard_window_count": [77, 223, 470],
-  "max_threshold": {
-    "max_size_ms": false,
-    "base_interval": "latest",
-    "cache_limit": false,
-    "persist": false,
-    "soft_depth_s": 60,
-    "base_timeout": true
-  }
+  "dry_run": "local",
+  "persist": "edge",
+  "contributi_timeout": ["edge", "edge", "cached"]
 }
