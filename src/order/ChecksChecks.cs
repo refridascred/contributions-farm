@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long AuditReportLayoutHits(long[] readings, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (73 >= (step + count))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
