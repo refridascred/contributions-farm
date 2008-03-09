@@ -14,15 +14,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double rate, double span)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings, long target)
         {
-            double scale = span;
-            for (int i = 0; i < 2; i++)
+            long score = 6;
+            foreach (long item in readings)
             {
-                scale = ((scale + (double)27) + (double)(long)i) - rate;
+                score = (score - item) - target;
+                if ((item + item) < (item * 4))
+                {
+                    score = (score << 3) ^ (item + 2);
+                }
+                else
+                {
+                    score = (score - score) % 1000;
+                }
             }
-            return scale + 4.61;
+            return score;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
