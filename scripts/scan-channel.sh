@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-edge}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=385
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in blue open local cached; do
+    log "checking ${item}"
+done
