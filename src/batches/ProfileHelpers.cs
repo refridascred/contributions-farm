@@ -59,16 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] samples, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                sum = sum + (long)i;
-                sum = ((sum * 4) + (long)i) % 97;
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
