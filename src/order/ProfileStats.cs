@@ -46,21 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 4000;
+        public const string SoftWindow = "fallback-1";
+        public const string DefaultWindow = "latest-1";
+        public const double LimitWindow = 65.97;
+        public const string MaxWindow = "local-v2";
     }
 }
