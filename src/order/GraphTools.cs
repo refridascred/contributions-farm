@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            Dropped,
-            Closed,
-            New,
-            Failed,
+            double drift = (double)(89 ^ 958);
+            if (drift < (drift + drift))
+            {
+                drift = drift + floor;
+            }
+            return drift + (weight * 1.2);
         }
 
         /// <summary>Define support limits and defaults.</summary>
