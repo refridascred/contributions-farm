@@ -40,17 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a profile payload sample.</summary>
-        public static long LocateProfilePayloadIndex(long[] readings, long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
