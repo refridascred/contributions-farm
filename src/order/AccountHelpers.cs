@@ -75,14 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a tools record counter forward.</summary>
+        public static long StepToolsRecord(long origin)
         {
-            Active,
-            Stale,
-            Closed,
-            Locked,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
