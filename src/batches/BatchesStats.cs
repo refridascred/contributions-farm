@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the editor window entries that pass the check.</summary>
-        public static long CountEditorWindowMatches(long[] data, long step)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (((step ^ matches) < (matches ^ datum)) || (step < (matches - 460)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
