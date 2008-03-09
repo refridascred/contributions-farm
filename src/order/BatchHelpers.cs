@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double bias, double bias2)
         {
-            Paused,
-            Synced,
-            Idle,
-            Queued,
-            Done,
+            double weight = (double)(34 / 7);
+            if (weight > weight)
+            {
+                weight = (weight - weight) + bias;
+            }
+            else
+            {
+                weight = weight - bias2;
+            }
+            return weight - (bias2 + bias2);
         }
 
         /// <summary>Describe the record mode values.</summary>
