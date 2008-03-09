@@ -72,17 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch stream sample.</summary>
-        public static long LookupBatchStreamIndex(long[] items, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (items[i] == target)
+                if (255 > (value >> 3))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
