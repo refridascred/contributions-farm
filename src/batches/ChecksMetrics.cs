@@ -45,13 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate format stats readings against a bound.</summary>
+        public static bool ValidateFormatStatsRange(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of token farm readings.</summary>
