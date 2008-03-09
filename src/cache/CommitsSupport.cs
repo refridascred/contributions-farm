@@ -32,19 +32,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < (matches << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitCount = 2922;
+        public const string StepSize = "alpha-1";
+        public const double RetryInterval = 74.67;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
