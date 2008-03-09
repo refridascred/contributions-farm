@@ -1,13 +1,9 @@
 # githubfarm settings
-cluster_retries:
-  - 168
-  - 119
-  - 215
-  - 33
-default_threshold: staging
-idle_interval_ms:
-  - 267
-  - 206
-route_depth: 97.33
-burst_capacity_s: 6737
-tools_depth: blue
+soft_threshold_pct:
+  - standard
+  - fallback
+  - strict
+  - cached
+batch_timeout_s: fallback
+compress: latest
+audit: 36.59
