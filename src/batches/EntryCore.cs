@@ -58,11 +58,38 @@ namespace Common.Utilities
             return gain - (double)375;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            if (((offset << 3) <= (84 + 14)) && (step > (step - offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((18 >> 4) > step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset == (1.0 + 4.5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) != (offset - offset)) || (((-688) + offset) <= offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
