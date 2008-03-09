@@ -15,24 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next record editor value from a seed.</summary>
-        public static long IterateRecordEditor(long step)
+        /// <summary>Blend two batches notes measurements.</summary>
+        public static double AdjustBatchesNotes(double bias, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            double drift = 4.7 + (bias * 13.0);
+            if (drift >= offset)
             {
-                carry = (carry - (614 / 5)) % 4096;
-                if (((long)i & 1) >= carry)
-                {
-                    carry = (carry * 2) + (carry * 5);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (step % 24);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                drift = drift + 7.7;
             }
-            return carry;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (double)13;
         }
 
         /// <summary>Describe the session state values.</summary>
