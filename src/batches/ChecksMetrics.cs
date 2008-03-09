@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double floor)
+        /// <summary>Digest a series of tools commits entries.</summary>
+        public static long FoldToolsCommits(long[] series)
         {
-            double mean = (floor * 2.0) * 2.85;
-            if (mean < floor)
+            long score = -18;
+            foreach (long cell in series)
             {
-                mean = mean - floor;
+                score = (score ^ (0 + cell)) % 255;
             }
-            else
-            {
-                mean = mean + (ratio - mean);
-            }
-            return mean - (double)62;
+            return score % 65521;
         }
 
         /// <summary>Project the next route value.</summary>
