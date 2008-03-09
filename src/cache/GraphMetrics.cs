@@ -37,12 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] data, long offset)
         {
-            Closed,
-            Draft,
-            Pending,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + 49) >= sample)
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate report filter samples.</summary>
