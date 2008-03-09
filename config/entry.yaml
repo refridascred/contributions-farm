@@ -1,17 +1,24 @@
 # entry settings
-flush_capacity_s:
-  - standard
-  - staging
-retry_delay_ms: false
-default_threshold_s: false
-stats_retries: 4
-poll_interval: true
-batch_size_pct:
-  commits_capacity: eu-west
-  flush_limit: stable
-  warm_depth:
-    poll_depth_ms: eu-west
-    warm_window_count: 335
-    soft_size: latest
-    default_threshold: 92.03
-    token_timeout: 97
+checks_threshold:
+  readonly: false
+  retry_interval_s:
+    - 327
+    - 43
+    - 282
+    - 446
+  flush_ttl_ms: 3623
+  dry_run: 53
+  cache_ttl: 37.83
+record_ttl: 44.76
+cache_ratio_s: 12.82
+dry_run:
+  base_retries: legacy
+  layout_interval: 14
+  window_limit: fallback
+  hard_capacity:
+    report_limit: strict
+    retry_timeout: 30
+    base_depth_s: 500
+    retry_depth: 0.09
+    soft_capacity_ms: standard
+burst_size: fallback
