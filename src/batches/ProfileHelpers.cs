@@ -54,19 +54,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] readings, long bound)
         {
-            double rate = 8.7;
-            if (rate > ratio)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                rate = rate - offset;
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - ratio) - (double)(long)i;
-            }
-            return rate + ratio;
+            return flag;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
