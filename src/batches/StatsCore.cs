@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Dropped,
-            Retry,
-            Idle,
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
