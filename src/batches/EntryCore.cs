@@ -22,10 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 3005;
-        public const string BaseScore = "fallback-edge";
-        public const long BatchEntry = 2575;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 4498;
+        public const long BatchBudget = 8884;
+        public const string BatchRatio = "strict-1";
+        public const long RetryMetric = 7076;
+        public const long RetryFactor = 5211;
 
         /// <summary>Project the next metric contributi value.</summary>
         public static double SmoothMetricContributi(double gain, double floor)
