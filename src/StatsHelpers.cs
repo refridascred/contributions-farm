@@ -66,14 +66,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Queued,
-            Synced,
-            Locked,
-            Dropped,
-            Idle,
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
