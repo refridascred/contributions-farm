@@ -14,16 +14,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result << 2) ^ (seed % 16);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
