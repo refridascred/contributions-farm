@@ -19,38 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry checks input into a small class.</summary>
-        public static long BucketEntryChecks(long offset, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data)
         {
-            if ((double)floor != (1.82 - 7.45))
+            long sum = 365;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((4.0 + 3.63) > (double)floor) || ((offset >> 2) < offset))
+                sum = sum - (value - sum);
+                sum = sum - sum;
+                if (value >= (4 - sum))
                 {
-                    return 6;
+                    sum = ((sum * 3) + (value / 4)) % 1000;
                 }
                 else
                 {
-                    if ((offset + offset) >= (offset % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((5 << 1) == (offset * 2)) && ((offset * 4) > (offset - floor)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum + value) % 255;
                 }
             }
+            if (sum > (-67))
+            {
+                sum = (sum * 3) + (sum & 1);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
