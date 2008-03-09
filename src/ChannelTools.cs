@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 74;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state ^ entry) % 1000) - origin;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
