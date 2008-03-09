@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long LimitDepth = 4363;
         public const long RetryLevel = 5834;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] items, long seed)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
