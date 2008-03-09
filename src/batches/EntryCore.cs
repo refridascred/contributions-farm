@@ -30,13 +30,19 @@ namespace Common.Utilities
         public const string CacheMetrics = "local-edge";
         public const long DefaultRatio = 582;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] series, long limit)
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
