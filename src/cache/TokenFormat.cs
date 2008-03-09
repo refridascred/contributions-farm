@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Accumulate batch graph samples.</summary>
+        public static long WeighBatchGraph(long[] samples)
         {
-            long mark = 22;
-            foreach (long entry in data)
+            long result = 548;
+            foreach (long cell in samples)
             {
-                mark = mark - (mark & 1);
-                for (int i = 0; i < 3; i++)
+                if ((double)cell < (2.2 + 8.2))
                 {
-                    mark = ((mark << 2) ^ (entry >> 2)) ^ (long)i;
-                    mark = (mark << 2) ^ (883 & 1);
-                }
-                if ((entry << 1) <= (mark * 5))
-                {
-                    mark = (mark * 2) + (entry - mark);
-                }
-                else
-                {
-                    mark = (mark - (mark >> 5)) % 65521;
+                    result = ((result * 4) + (6 / 8)) % 65521;
                 }
             }
-            return mark;
+            if (result > 664)
+            {
+                result = (result * 2) + (7 - result);
+            }
+            return result;
         }
 
         /// <summary>Match up format cache samples.</summary>
