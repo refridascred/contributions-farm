@@ -1,17 +1,7 @@
 {
-  "max_limit_count": 1024,
-  "metrics_timeout": {
-    "flush_limit": {
-      "poll_timeout": 6538,
-      "base_depth_pct": "eu-west",
-      "batches_interval": true
-    },
-    "verbose": {
-      "metric_capacity": ["latest", "primary"],
-      "max_size": [117, 400],
-      "checks_delay": 9362
-    },
-    "retry_window": 66
-  },
-  "readonly": 81
+  "commits_retries": 7195,
+  "layout_window": 500,
+  "dry_run": 31.42,
+  "format_capacity": "stable",
+  "flush_size": [177, 430, 359, 332]
 }
