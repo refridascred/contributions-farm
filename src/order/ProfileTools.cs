@@ -76,17 +76,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long bound)
+        /// <summary>Audit editor entry readings against a rule.</summary>
+        public static long CountEditorEntryGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (values[i] < bound)
+                if (value < (seen - seed))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
