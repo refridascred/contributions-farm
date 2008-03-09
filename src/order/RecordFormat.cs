@@ -55,12 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 35.0;
-        public const long DefaultSession = 6316;
-        public const string StepSession = "open-v2";
-        public const double RetrySession = 33.88;
-        public const long DefaultCount = 5742;
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double scale, double span)
+        {
+            double ratio = (double)(7 >> 5);
+            if (ratio > (double)565)
+            {
+                ratio = ratio + (ratio + scale);
+            }
+            else
+            {
+                ratio = ratio - (span * 7.03);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (5.6 * 1.01)) + (double)(long)i;
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] samples, long target)
