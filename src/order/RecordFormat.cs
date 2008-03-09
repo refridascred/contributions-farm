@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long step)
+        /// <summary>Locate a checks buffer reading by value.</summary>
+        public static long LookupChecksBufferIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= step)
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
