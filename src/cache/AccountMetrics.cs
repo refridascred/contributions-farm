@@ -31,12 +31,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] items, long target)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= (5.4 + 5.8))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank profile command input into a small class.</summary>
