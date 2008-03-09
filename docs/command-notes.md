@@ -1,12 +1,11 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the counter queue.
-A window that stays idle for too long is moved to the order list.
-The payload module keeps stream values in sync with the already cache.
+Each stream is validated before it reaches the profile queue.
+The command report groups every buffer by layout.
+The format module keeps schema values in sync with the account cache.
 
 ## Guidelines
 
-- Review farm limits each release
-- Keep metrics values small
-- Log every format change
-- Validate metric input early
+- Keep notes values small
+- Document new contributi fields
+- Review route limits each release
