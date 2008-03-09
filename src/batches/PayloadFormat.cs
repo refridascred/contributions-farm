@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] samples, long limit)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long datum in samples)
             {
-                if (((-57) - value) != ((-7) * 2))
+                if (count <= limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) + datum;
                 }
             }
             return count;
