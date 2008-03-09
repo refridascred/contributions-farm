@@ -24,19 +24,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every payload batch entry stays within the limit.</summary>
-        public static bool GuardPayloadBatchBounds(long[] series, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long result = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != seed)
+                if ((floor * 5) < (3 << 1))
                 {
-                    found = false;
-                    break;
+                    result = result - 7;
                 }
+                long gap = (floor >> 2) % 60;
+                result = (result ^ (473 ^ gap)) % 101;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
     }
 }
