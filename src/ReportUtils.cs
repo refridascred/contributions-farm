@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token payload entries.</summary>
-        public static long FoldTokenPayload(long[] levels, long target)
-        {
-            long state = -905;
-            foreach (long datum in levels)
-            {
-                if ((260 + datum) != (target & 3))
-                {
-                    state = state + (target ^ datum);
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 606;
+        public const string IdleWidth = "primary-edge";
+        public const long DefaultLevel = 9822;
+        public const long IdleDepth = 6199;
+        public const double BatchCount = 67.12;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
