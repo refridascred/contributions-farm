@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 0;
+            foreach (long sample in items)
+            {
+                if ((sample > (mix - 93)) || ((double)mix < (double)sample))
+                {
+                    mix = (mix * 3) + (7 % 16);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Rank order token input into a small class.</summary>
