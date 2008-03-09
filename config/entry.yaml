@@ -1,15 +1,18 @@
 # entry settings
-strict: green
-dry_run: true
-window_ratio: 60
-stream_size:
-  poll_ttl_count: 60
-  retry_ratio_s:
-    - 145
-    - 248
-  record_timeout: open
-  filter_timeout:
-    - edge
-    - fallback
-  batch_depth_s: 16.28
-  persist: 53.82
+batch_retries: strict
+warm_size_pct: edge
+cache_interval:
+  batch_timeout_ms: edge
+  retry_ttl_pct: false
+  idle_ratio: 96.6
+  hard_interval: true
+sync_ratio_ms:
+  - 339
+  - 128
+  - 380
+contributi_threshold: standard
+sync_limit_pct:
+  - cached
+  - primary
+  - staging
+  - blue
