@@ -73,18 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor entry readings against a rule.</summary>
-        public static long CountEditorEntryGaps(long[] levels, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (value < (seen - seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
