@@ -1,5 +1,8 @@
 {
-  "strict": 57,
-  "support_threshold": "open",
-  "batch_size_ms": 4274
+  "batch_threshold": [474, 14],
+  "verbose": 58.55,
+  "base_size_pct": 2609,
+  "cluster_threshold": 60,
+  "burst_threshold_s": 9184,
+  "default_threshold_pct": ["local", "legacy", "local", "stable"]
 }
