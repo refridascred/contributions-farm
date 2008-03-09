@@ -41,19 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values, long target)
+        /// <summary>Roll a contributi notes counter forward.</summary>
+        public static long IterateContributiNotes(long limit)
         {
-            long result = -686;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result ^ (result ^ target)) % 97) ^ reading;
-                if ((3.19 * 17.0) == (double)target)
+                if (((long)i <= state) || ((state << 1) != (limit + (long)i)))
                 {
-                    result = (result ^ result) % 97;
+                    state = (state << 3) ^ (state % 2);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
     }
 }
