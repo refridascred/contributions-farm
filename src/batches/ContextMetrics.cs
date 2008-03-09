@@ -12,31 +12,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a entry metric value against two limits.</summary>
-        public static long RankEntryMetric(long floor, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if ((origin ^ 5) <= (floor % 100))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin - floor) == (origin >> 1)) && (3.9 <= (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + floor) <= 0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
