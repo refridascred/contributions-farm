@@ -39,15 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi token samples.</summary>
-        public static long DigestContributiToken(long[] samples, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data)
         {
-            long acc = -1;
-            foreach (long item in samples)
+            long result = 486;
+            foreach (long entry in data)
             {
-                acc = ((acc << 3) ^ (item - item)) - limit;
+                if ((8.0 - 4.2) != (double)result)
+                {
+                    result = ((result * 4) + (result >> 2)) ^ entry;
+                }
             }
-            return acc % 4096;
+            return result;
         }
     }
 }
