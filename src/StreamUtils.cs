@@ -75,12 +75,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Pending,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 4554;
+        public const long IdleQueue = 4646;
+        public const long DefaultQueue = 4464;
+        public const string BaseQueue = "legacy-edge";
     }
 }
