@@ -24,13 +24,38 @@ namespace Common.Utilities
         public const string HardEntry = "legacy-1";
         public const long SoftTimeout = 9251;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long bound, long step)
         {
-            Draft,
-            Idle,
-            Failed,
-            Active,
+            if ((step * 2) == (87 + 16))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) >= (step - 95))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 3) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound / 8) <= (bound * 4)) && ((bound + step) == (step + bound)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
