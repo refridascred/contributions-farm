@@ -43,24 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((((long)i + 201) == (seed * 5)) && (seed > (907 / 7)))
-                {
-                    carry = (carry << 3) ^ (seed >> 5);
-                }
-                carry = ((carry * 5) + (seed * 3)) % 4096;
-                if ((carry * 2) != (72 % 8))
-                {
-                    carry = carry + carry;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Retry,
+            Draft,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
