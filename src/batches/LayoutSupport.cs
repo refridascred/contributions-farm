@@ -40,23 +40,18 @@ namespace Common.Utilities
         public const long BaseWidth = 9134;
         public const string StepSize = "cached-1";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Count the context notes entries that pass the check.</summary>
+        public static long AuditContextNotesHits(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!(((long)i % 60) > (carry + (long)i)))
+                if ((512 - reading) > (matches + 2))
                 {
-                    carry = carry + (offset * 5);
+                    matches = matches + 3;
                 }
-                else
-                {
-                    carry = carry - carry;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
