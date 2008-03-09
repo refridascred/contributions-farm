@@ -18,17 +18,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long floor)
         {
-            long mix = 9;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix * 2) + item;
-                mix = mix - (item * 4);
-                mix = ((mix << 2) ^ (item - item)) % 65521;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
     }
 }
