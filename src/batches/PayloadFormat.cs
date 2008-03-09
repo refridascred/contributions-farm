@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batches buffer entry that matches the target.</summary>
-        public static long LocateBatchesBufferIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryWidth = "alpha-v2";
+        public const long BatchAlready = 1165;
+        public const long IdleAlready = 2744;
+        public const long MaxAlready = 5428;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] values)
