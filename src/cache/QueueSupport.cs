@@ -27,14 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Pending,
-            New,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 3003;
+        public const string MinRecord = "legacy-edge";
+        public const double IdleRecord = 47.35;
+        public const double IdleLevel = 14.13;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] items)
