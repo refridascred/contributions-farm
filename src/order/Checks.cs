@@ -59,17 +59,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first schema window entry that matches the target.</summary>
-        public static long LocateSchemaWindowIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 25.12;
+        public const long DefaultRecord = 3720;
+        public const double MinTimeout = 88.67;
     }
 }
