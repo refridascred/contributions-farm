@@ -43,15 +43,17 @@ namespace Common.Utilities
             return bias3 - bias2;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long offset)
         {
-            double load = (11.0 + weight) * 7.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + (double)(-86)) + (double)(long)i) - bias;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - weight;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
