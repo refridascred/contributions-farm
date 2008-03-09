@@ -32,12 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] levels, long step)
         {
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)hits == (double)step)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
     }
 }
