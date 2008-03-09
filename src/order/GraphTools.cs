@@ -41,22 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] data)
         {
-            long mix = 50;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)mix != (double)datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 2) + (mix + datum)) % 4096;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 82)
-            {
-                mix = (mix + (mix * 3)) % 255;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
