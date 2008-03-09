@@ -17,28 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of already batches readings.</summary>
-        public static long DigestAlreadyBatches(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] data)
         {
-            long score = 695;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (((score >> 2) > (score - reading)) && ((score << 2) <= (reading - reading)))
+                if ((reading - matches) >= (matches - matches))
                 {
-                    score = score ^ (score % 8);
-                    break;
+                    matches = matches + 3;
                 }
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (score - (557 >> 4)) + (long)i;
-                }
-                score = (score + (reading - 2)) % 4096;
             }
-            if (score < 78)
-            {
-                score = score ^ (score - 7);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the cache status values.</summary>
