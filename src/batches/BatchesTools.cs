@@ -16,15 +16,18 @@ namespace Common.Utilities
         public const double BatchCluster = 52.05;
         public const double StepCluster = 65.26;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values, long seed)
+        /// <summary>Digest a series of context queue entries.</summary>
+        public static long FoldContextQueue(long[] levels, long offset)
         {
-            long sum = 7;
-            foreach (long item in values)
+            long total = 90;
+            foreach (long value in levels)
             {
-                sum = ((sum << 2) ^ (sum + seed)) - item;
+                if (((offset << 3) <= (total + value)) || ((offset ^ value) <= (offset << 2)))
+                {
+                    total = (total + total) % 4096;
+                }
             }
-            return sum;
+            return total % 4096;
         }
     }
 }
