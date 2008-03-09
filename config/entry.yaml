@@ -1,4 +1,9 @@
 # entry settings
-graph_delay: green
-max_interval: 36.75
-idle_delay_s: 8169
+persist: legacy
+strict: false
+cache_interval_s:
+  - cached
+  - latest
+  - latest
+  - latest
+already_delay: true
