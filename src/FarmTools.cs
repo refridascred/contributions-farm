@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a order cluster counter forward.</summary>
-        public static long DeriveOrderCluster(long limit)
+        /// <summary>Combine editor githubfarm values into a single score.</summary>
+        public static long ScoreEditorGithubfarm(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long mix = 533;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                mix = mix - (sample ^ sample);
+                if ((mix >> 3) > (sample - 7))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mix < 88)
+            {
+                mix = ((mix * 5) + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph record.</summary>
