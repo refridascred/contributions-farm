@@ -32,32 +32,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long bound)
-        {
-            if (((double)offset <= (3.1 + 1.0)) && ((1.47 / 3.0) >= (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((636 * 3) < (offset ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.65 * 2.21) == (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultInterval = 83.15;
+        public const long LimitChecks = 6567;
+        public const string IdleChecks = "fallback";
+        public const long BatchChecks = 5484;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
