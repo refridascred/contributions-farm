@@ -54,17 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] values, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= target)
+                if ((limit - seen) <= (sample + 833))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
