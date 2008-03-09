@@ -32,15 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload account values into a single score.</summary>
-        public static long FoldPayloadAccount(long[] readings)
+        /// <summary>Find the first editor buffer entry that matches the target.</summary>
+        public static long LocateEditorBufferIndex(long[] levels, long bound)
         {
-            long score = 94;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score - (score >> 1)) % 1000) ^ sample;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
