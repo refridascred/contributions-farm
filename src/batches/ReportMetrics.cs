@@ -23,16 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Accumulate contributi token samples.</summary>
+        public static long DigestContributiToken(long[] samples, long limit)
         {
-            long mark = 7;
-            foreach (long value in series)
+            long acc = -1;
+            foreach (long item in samples)
             {
-                mark = mark ^ (963 % 10);
-                mark = (mark + value) % 101;
+                acc = ((acc << 3) ^ (item - item)) - limit;
             }
-            return mark % 65521;
+            return acc % 4096;
         }
     }
 }
