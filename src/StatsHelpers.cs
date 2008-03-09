@@ -28,12 +28,18 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] data, long origin)
         {
-            Idle,
-            Queued,
-            Locked,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((seen > ((-94) - datum)) || (9 >= (seen * 4))) || ((seen < origin) || ((origin / 7) == (datum & 63))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
