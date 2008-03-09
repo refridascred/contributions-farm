@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every format token entry stays within the limit.</summary>
+        public static bool VerifyFormatTokenRange(long[] series, long origin)
         {
-            Idle,
-            Locked,
-            Stale,
-            Dropped,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
