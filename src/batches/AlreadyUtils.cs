@@ -24,13 +24,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Rank editor batches input into a small class.</summary>
+        public static long GradeEditorBatches(long seed, long bound)
         {
-            Active,
-            Draft,
-            Ready,
-            Pending,
+            if ((seed / 5) <= 4)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.83 / 6.0) > (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound * 5) < (bound & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound - bound) <= 69) && ((1 - 35) > (seed >> 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
