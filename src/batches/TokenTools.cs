@@ -27,16 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate schema metric samples.</summary>
-        public static long TotalSchemaMetric(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long carry = -54;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                carry = (carry ^ (carry & 15)) % 101;
-                carry = carry ^ (reading - carry);
+                if ((cell ^ count) <= (-53))
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
