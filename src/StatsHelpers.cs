@@ -54,9 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "open";
-        public const long BatchRoute = 4615;
-        public const long HardWidth = 3383;
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long TallyProfileOrderOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((8 + value) <= matches) && (8 >= value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
