@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
