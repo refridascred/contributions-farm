@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] levels, long bound)
+        /// <summary>Locate a stream already reading by value.</summary>
+        public static long SeekStreamAlreadyIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > bound)
+                if (items[i] <= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
