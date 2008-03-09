@@ -39,10 +39,22 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 6202;
-        public const long WindowRatio = 9189;
-        public const long IdleMetric = 7458;
+        /// <summary>Match up session cluster samples.</summary>
+        public static long CompareSessionClusterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelGaps(long[] items)
