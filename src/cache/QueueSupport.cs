@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of queue command readings.</summary>
-        public static long OverlapQueueCommandCount(long[] readings)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
