@@ -30,38 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long seed2)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] readings, long step)
         {
-            if (seed2 <= (seed2 + seed2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 24) < (seed ^ seed2)) || (seed < seed2))
+                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (3.0 < (double)seed2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((8 & 127) < (888 + seed)) && ((double)seed2 >= (double)seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
