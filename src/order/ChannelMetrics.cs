@@ -12,10 +12,25 @@ namespace Common.Utilities
         public const long StepWidth = 2561;
         public const long StepSize = 495;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheBudget = 6848;
-        public const double CacheDepth = 83.95;
-        public const long LimitSpan = 15;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long target, long floor)
+        {
+            if (((35 / 6) <= (target >> 4)) && (floor >= (floor - target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3 >> 5) >= (132 + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4956;
