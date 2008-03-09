@@ -39,21 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of context editor readings.</summary>
-        public static long CompareContextEditorCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 2707;
+        public const long StepFactor = 9113;
+        public const long DefaultCommits = 2283;
+        public const double SoftCount = 45.26;
+        public const string RetryScore = "staging-edge";
     }
 }
