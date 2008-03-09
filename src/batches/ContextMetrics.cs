@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Queued,
-            Ready,
-            New,
-            Paused,
-            Closed,
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
