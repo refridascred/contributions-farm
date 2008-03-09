@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long seed, long step)
+        /// <summary>Find the first order cluster entry that matches the target.</summary>
+        public static long LookupOrderClusterIndex(long[] values, long floor)
         {
-            if ((step << 2) <= (236 - step))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step <= (step - 1))
+                if (values[i] <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
