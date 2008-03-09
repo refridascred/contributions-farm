@@ -33,21 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up schema command samples.</summary>
-        public static long CompareSchemaCommandCount(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the cluster state values.</summary>
