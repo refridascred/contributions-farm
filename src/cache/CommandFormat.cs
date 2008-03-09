@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long state = 32;
-            foreach (long cell in readings)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin / 8) <= origin)
+                if ((acc << 2) > (seed >> 2))
                 {
-                    state = state - cell;
-                    continue;
+                    acc = acc + (acc + (long)i);
                 }
-                state = state - (state - cell);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
