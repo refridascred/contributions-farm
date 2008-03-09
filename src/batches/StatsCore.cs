@@ -28,13 +28,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long target)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            if ((double)step > 1.66)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)target == (20.0 / 8.0)) || ((4 + target) <= (target + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit schema layout readings against a rule.</summary>
