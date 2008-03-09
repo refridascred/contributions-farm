@@ -41,11 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5810;
-        public const long CacheFormat = 9477;
-        public const double HardFormat = 64.21;
-        public const long BatchRatio = 3783;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 7) <= (19 - hits))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank tools context input into a small class.</summary>
         public static long ClassifyToolsContext(long origin, long seed)
