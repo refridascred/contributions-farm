@@ -62,18 +62,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long AuditEntrySupportMatches(long[] values, long origin)
+        /// <summary>Find the first schema window entry that matches the target.</summary>
+        public static long LocateSchemaWindowIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.02 / 6.0) == (double)reading)
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
                 {
-                    matches = (matches + 2) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
