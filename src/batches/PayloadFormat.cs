@@ -28,39 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long limit, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] readings)
         {
-            long gap = limit - bound;
-            if ((limit >> 3) != (limit / 8))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit <= (140 ^ 291)) || ((bound << 1) < bound))
+                if (!((seen < (561 + seen)) || ((4.7 / 3.0) >= (double)seen)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap + bound) != (limit - gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)gap == (6.1 / 3.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 2) ^ value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
