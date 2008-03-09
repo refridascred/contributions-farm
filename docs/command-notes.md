@@ -1,10 +1,14 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the graph list.
-Run the stats check before changing any stream limits.
+The contributi report groups every counter by metric.
+Keep buffer and session names short and lowercase.
+
+The window helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep order values small
-- Document new counter fields
+- Validate format input early
+- Prefer token defaults
+- Document new order fields
+- Log every token change
