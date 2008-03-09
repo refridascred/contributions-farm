@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a layout record reading by value.</summary>
-        public static long LookupLayoutRecordIndex(long[] items, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (items[i] >= floor)
+                if ((834 + value) < (hits << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
