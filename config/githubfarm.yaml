@@ -1,21 +1,19 @@
 # githubfarm settings
-min_delay_s: 48
-account_threshold: 97
-poll_delay_count: standard
-cache_ttl_s:
-  enabled:
-    default_ttl_count: latest
-    record_capacity:
-      - staging
-      - latest
-      - eu-west
-    default_capacity_s: 250
-    max_threshold_ms: strict
-    account_interval:
-      - 452
-      - 192
-    strict: 8847
-  metrics_ratio: stable
-  record_capacity: legacy
-  context_delay: 30
-strict: 94.8
+buffer_window: false
+poll_size: true
+audit:
+  order_limit:
+    report_capacity: true
+    soft_capacity: primary
+    min_timeout_pct: standard
+    context_interval: 5.49
+  cache_threshold_ms: 87.1
+  burst_retries_ms: 13
+  cache_depth_pct:
+    stream_threshold: 45.3
+    audit: 500
+    flush_ttl: edge
+    sync_size: staging
+    dry_run: fallback
+    cache_depth: true
+  soft_threshold_ms: 1024
