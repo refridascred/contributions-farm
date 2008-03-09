@@ -35,12 +35,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchBudget = 11.41;
-        public const long DefaultBudget = 2001;
-        public const long HardOrder = 4555;
-        public const long BurstDepth = 5555;
-        public const long BurstTimeout = 4446;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double scale, double span)
+        {
+            double ratio = (double)(19 - (-5));
+            if (ratio > (span * 17.0))
+            {
+                ratio = (ratio + (double)8) - scale;
+            }
+            else
+            {
+                ratio = ratio + (7.4 / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - span) - (double)(long)i;
+            }
+            return ratio + (double)2;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
