@@ -74,18 +74,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((((cell + 44) >= cell) && ((cell % 97) != (cell * 4))) && ((cell - matches) == ((long)series.Length + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Idle,
+            Closed,
+            Dropped,
+            Queued,
         }
     }
 }
