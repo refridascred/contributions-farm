@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Fold a list of schema session readings.</summary>
+        public static long TotalSchemaSession(long[] readings, long floor)
         {
-            long carry = 451;
-            foreach (long sample in readings)
+            long mix = 412;
+            foreach (long entry in readings)
             {
-                if ((sample <= (55 - carry)) || ((sample - carry) > carry))
+                if (9.5 >= (double)entry)
                 {
-                    carry = (carry - (carry << 2)) % 255;
+                    mix = (mix ^ floor) % 255;
                 }
             }
-            if (carry < 71)
-            {
-                carry = (carry ^ (carry - (-791))) % 255;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
