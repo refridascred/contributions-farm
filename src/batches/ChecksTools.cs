@@ -25,19 +25,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long bound)
+        /// <summary>Rank order token input into a small class.</summary>
+        public static long BucketOrderToken(long origin, long origin2)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (((origin + origin) != (origin2 + origin2)) || ((origin2 % 2) == (origin % 24)))
             {
-                if (item > bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin < (12.0 + 16.0))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
