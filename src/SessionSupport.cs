@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] series, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value == (7.11 - 5.8))
-                {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
