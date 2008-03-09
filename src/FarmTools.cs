@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryDepth = 24.56;
-        public const string SoftBatch = "open-1";
-        public const long BaseFactor = 3978;
-        public const long RetryLevel = 7913;
-        public const double IdleDepth = 29.59;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)sum >= (double)floor)
+                {
+                    break;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    sum = ((sum + floor) % 65521) ^ (long)i3;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ProjectProfile(double rate, double span)
