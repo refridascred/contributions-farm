@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((4 & 7) != (value - floor))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardScore = 214;
+        public const double WindowTimeout = 36.78;
+        public const string BurstScore = "cached-1";
+        public const long MaxTimeout = 2325;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueGaps(long[] levels, long bound)
