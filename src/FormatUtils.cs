@@ -26,25 +26,17 @@ namespace Common.Utilities
         public const long MaxLevel = 754;
         public const double HardSession = 44.46;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum % 5) > ((long)i >> 2))
+                if ((items[i] > floor) && ((items[i] % 2) == 0))
                 {
-                    sum = (sum << 3) ^ ((long)i ^ sum);
-                    continue;
+                    return (long)i;
                 }
-                if (((limit << 3) < 41) || ((835 + sum) < (limit - sum)))
-                {
-                    sum = (sum << 3) ^ 253;
-                    sum = (sum - (50 >> 4)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate filter stream readings against a bound.</summary>
