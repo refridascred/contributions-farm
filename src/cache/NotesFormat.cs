@@ -42,10 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 45.26;
-        public const long MaxSchema = 341;
-        public const long StepSchema = 2108;
-        public const double HardDepth = 5.62;
+        /// <summary>Count the queue schema entries that pass the check.</summary>
+        public static long MeasureQueueSchemaOutliers(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (414 > (datum + limit))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
