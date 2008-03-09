@@ -61,13 +61,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Check that every counter layout entry stays within the limit.</summary>
+        public static bool ValidateCounterLayoutLimits(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
