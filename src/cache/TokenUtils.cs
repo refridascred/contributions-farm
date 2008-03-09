@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] values)
         {
-            long anchor = 9;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((limit & 31) < (limit * 4))
+                if (((-46) ^ item) < (item + 793))
                 {
-                    anchor = ((anchor << 3) ^ (anchor << 1)) % 1000;
+                    count = count + 2;
                 }
                 else
                 {
-                    anchor = anchor + (cell + cell);
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
