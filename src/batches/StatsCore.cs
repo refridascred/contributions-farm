@@ -47,12 +47,11 @@ namespace Common.Utilities
         public const long BurstDepth = 5555;
         public const long BurstTimeout = 4446;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Ready,
-            Pending,
-            Idle,
+            Synced,
+            Active,
             New,
         }
 
