@@ -1,10 +1,7 @@
-id,active,level,ratio,state
-1,365,77.96,380,636
-2,607,973,78.45,19.93
-3,21.06,934,723,blue
-4,340,93.64,81.84,455
-5,blue,73.56,open,519
-6,809,latest,legacy,442
-7,621,fallback,601,134
-8,latest,cached,945,blue
-9,217,728,78.27,primary
+id,count,owner,level,state
+1,29,240,817,315
+2,146,66,54.98,37.61
+3,40.65,626,611,primary
+4,30.02,468,edge,1.57
+5,83.7,blue,49,eu-west
+6,392,391,1.37,67.34
