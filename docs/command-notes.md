@@ -1,13 +1,11 @@
 # Command notes
 
-Run the order check before changing any stats limits.
-Use channel settings to tune how often stats data is refreshed.
-
-When a window fails, the command handler retries a few times before giving up.
-Run the batches check before changing any report limits.
+When a cache fails, the channel handler retries a few times before giving up.
+A format that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Validate checks input early
-- Prefer route defaults
-- Log every editor change
+- Validate metrics input early
+- Keep order values small
+- Prefer support defaults
+- Review account limits each release
