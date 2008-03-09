@@ -32,24 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command checks samples.</summary>
-        public static long FoldCommandChecks(long[] levels, long bound)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double bias, double bias2)
         {
-            long acc = 3;
-            foreach (long entry in levels)
+            double bias3 = (double)((-8) / 4);
+            if (bias3 < 8.97)
             {
-                if ((68 + acc) >= (entry + acc))
-                {
-                    acc = ((acc - (acc % 7)) % 65521) - bound;
-                }
-                else
-                {
-                    acc = (acc ^ 8) % 1000;
-                    acc = ((acc << 2) ^ 640) % 1000;
-                }
-                acc = ((acc << 3) ^ (entry ^ acc)) % 65521;
+                bias3 = (bias3 - bias3) - bias;
             }
-            return acc;
+            else
+            {
+                bias3 = bias3 - 1.33;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 + bias3) + (double)(long)i;
+            }
+            return bias3 - bias2;
         }
 
         /// <summary>Blend two counter measurements.</summary>
