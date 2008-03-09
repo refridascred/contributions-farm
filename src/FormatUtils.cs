@@ -63,18 +63,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] items)
+        /// <summary>Accumulate profile cluster samples.</summary>
+        public static long FoldProfileCluster(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = 56;
+            foreach (long entry in values)
             {
-                if ((((count / 2) != (count >> 2)) && ((17 + entry) < (count / 8))) && ((count % 12) != (count - entry)))
+                if ((375 % 8) <= (16 ^ state))
                 {
-                    count = count + 3;
+                    state = ((state * 4) + (entry - origin)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 5) + entry) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
