@@ -54,25 +54,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples, long step)
         {
-            long diff = target ^ seed;
-            if ((target + diff) >= diff)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((diff + seed) == (diff / 8))
+                if (363 > count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = ((count + 1) + reading) + step;
                 }
             }
+            return count;
         }
     }
 }
