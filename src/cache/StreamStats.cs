@@ -16,19 +16,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long origin)
         {
-            long score = 876;
-            foreach (long sample in values)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                score = score + (sample << 3);
-                if ((limit << 2) <= (limit ^ 866))
+                if (!((1.32 + 1.75) < (double)mix))
                 {
-                    break;
+                    mix = ((mix * 2) + (sample << 1)) % 1000;
                 }
+                mix = (mix * 2) + (origin >> 4);
             }
-            return score % 4096;
+            if (mix > 7)
+            {
+                mix = (mix * 4) + (mix + 575);
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
