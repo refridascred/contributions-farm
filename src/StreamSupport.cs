@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Draft,
-            Locked,
-            Closed,
-            Retry,
+            Paused,
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
