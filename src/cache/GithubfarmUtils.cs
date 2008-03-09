@@ -62,18 +62,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] data, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = 0;
+            foreach (long entry in series)
             {
-                if (matches >= (5 * 3))
-                {
-                    matches = ((matches + 1) ^ item) + origin;
-                }
+                total = (((total << 3) ^ (12 + target)) % 1000) ^ entry;
             }
-            return matches;
+            if (total > (-430))
+            {
+                total = (total ^ (0 - total)) % 1000;
+            }
+            return total % 4096;
         }
     }
 }
