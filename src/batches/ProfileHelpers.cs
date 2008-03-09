@@ -73,20 +73,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate account command samples.</summary>
-        public static long CombineAccountCommand(long[] data, long target)
-        {
-            long acc = 5;
-            foreach (long cell in data)
-            {
-                acc = (((acc * 2) + ((long)data.Length - target)) % 1000) - cell;
-            }
-            if (acc > 939)
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepTimeout = 24.32;
+        public const double BaseCache = 78.16;
+        public const double LimitCache = 5.13;
+        public const long BatchCache = 3400;
+        public const double MinWidth = 14.26;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutMatches(long[] series)
