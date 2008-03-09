@@ -82,12 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] levels, long seed)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((seed - count) >= (count + seed))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
