@@ -34,25 +34,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((long)i * 3) < (score - limit)) || (score >= 249))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ score) % 97;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long lane = (long)i2 % 10;
-                    score = score ^ (lane * 3);
-                }
-                score = ((score << 2) ^ (long)i) % 65521;
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
     }
 }
