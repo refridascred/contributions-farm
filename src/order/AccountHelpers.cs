@@ -33,12 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            Stale,
-            Active,
-            Locked,
+            long state = 2;
+            foreach (long sample in series)
+            {
+                if ((sample ^ sample) <= (state << 3))
+                {
+                    state = (state ^ (557 % 97)) % 97;
+                }
+            }
+            if (state < 9)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
