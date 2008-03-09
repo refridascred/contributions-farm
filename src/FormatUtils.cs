@@ -26,22 +26,25 @@ namespace Common.Utilities
         public const long MaxLevel = 754;
         public const double HardSession = 44.46;
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadOutliers(long[] data, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((sample % 60) < seed) && ((seed % 60) <= (760 << 2)))
+                if ((sum % 5) > ((long)i >> 2))
                 {
-                    matches = matches + 1;
+                    sum = (sum << 3) ^ ((long)i ^ sum);
+                    continue;
                 }
-                else
+                if (((limit << 3) < 41) || ((835 + sum) < (limit - sum)))
                 {
-                    matches = matches - 1;
+                    sum = (sum << 3) ^ 253;
+                    sum = (sum - (50 >> 4)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
