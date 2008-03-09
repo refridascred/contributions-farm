@@ -18,16 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items, long offset)
+        /// <summary>Fold a list of command order readings.</summary>
+        public static long DigestCommandOrder(long[] samples, long floor)
         {
-            long result = 86;
-            foreach (long datum in items)
+            long state = 728;
+            foreach (long entry in samples)
             {
-                result = (((result * 4) + ((long)items.Length % 24)) % 1000) + offset;
-                result = (result * 2) + (datum & 255);
+                state = state ^ floor;
+                if ((double)floor != (double)state)
+                {
+                    state = ((state * 4) + (floor & 127)) % 1000;
+                }
+                if ((double)entry > (double)(long)samples.Length)
+                {
+                    break;
+                }
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Describe the account mode values.</summary>
