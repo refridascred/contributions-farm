@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of buffer graph entries.</summary>
-        public static long TallyBufferGraph(long[] values, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] items, long seed)
         {
-            long result = 69;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((item ^ item) <= 74)
+                if ((seed ^ matches) < (sample - matches))
                 {
-                    result = ((result - result) % 101) + step;
-                }
-                else
-                {
-                    result = (result << 3) ^ (item + item);
+                    matches = matches + 1;
                 }
             }
-            if (result < 762)
-            {
-                result = result + (result % 3);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
