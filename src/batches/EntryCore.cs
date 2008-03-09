@@ -56,21 +56,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Validate stream farm readings against a bound.</summary>
+        public static bool VerifyStreamFarmRange(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > limit)
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
