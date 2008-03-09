@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long bound)
+        /// <summary>Locate a context account reading by value.</summary>
+        public static long LookupContextAccountIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > bound)
+                if ((samples[i] <= floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
