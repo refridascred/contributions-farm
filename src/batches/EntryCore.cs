@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long acc = 54;
-            foreach (long item in series)
-            {
-                if ((double)acc > 5.91)
-                {
-                    acc = (acc - (item / 7)) % 101;
-                }
-                if (item > (item / 7))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
