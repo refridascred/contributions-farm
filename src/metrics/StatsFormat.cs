@@ -39,22 +39,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long MeasureCommitsFarmGaps(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (!!(count > (datum ^ count)))
+                if (reading > origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
