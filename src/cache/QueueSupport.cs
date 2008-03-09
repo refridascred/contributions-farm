@@ -30,25 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long offset, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] values, long floor)
         {
-            long prev = offset ^ bound;
-            if (!((prev - prev) != (38 & 31)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (prev > (offset * 2))
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
