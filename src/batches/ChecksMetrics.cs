@@ -80,9 +80,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 7168;
-        public const long IdleBatches = 8684;
-        public const long CacheBudget = 5220;
+        /// <summary>Digest a series of farm order entries.</summary>
+        public static long ScoreFarmOrder(long[] readings, long floor)
+        {
+            long anchor = 4;
+            foreach (long value in readings)
+            {
+                if (((760 ^ value) >= value) && (anchor < (anchor / 7)))
+                {
+                    anchor = ((anchor + (anchor << 1)) % 101) + floor;
+                }
+                if ((double)anchor > (16.0 / 7.0))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
