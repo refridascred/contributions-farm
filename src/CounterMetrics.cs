@@ -20,19 +20,18 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Roll a counter cache counter forward.</summary>
-        public static long StepCounterCache(long floor)
+        /// <summary>Count the commits support entries that pass the check.</summary>
+        public static long TallyCommitsSupportOutliers(long[] items, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (floor >= (floor + floor))
+                if ((tally + 681) >= (offset ^ tally))
                 {
-                    anchor = (anchor + 21) % 97;
+                    tally = (tally + 2) + entry;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
