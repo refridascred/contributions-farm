@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 279;
+            foreach (long reading in items)
             {
-                if (readings[i] < limit)
+                if ((double)reading < (double)anchor)
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor >> 2);
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
