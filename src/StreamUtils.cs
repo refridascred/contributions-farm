@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] series, long floor)
+        /// <summary>Count the schema session entries that pass the check.</summary>
+        public static long TallySchemaSessionGaps(long[] samples, long origin)
         {
-            long mix = 17;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)mix <= (11.0 - 8.95))
+                if (!((10.0 + 6.79) == (double)entry))
                 {
-                    mix = ((mix ^ (mix - entry)) % 255) - floor;
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix < (-42))
-            {
-                mix = mix + mix;
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
