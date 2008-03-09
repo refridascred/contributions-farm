@@ -22,24 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long offset)
+        /// <summary>Measure how many token buffer samples are out of range.</summary>
+        public static long AuditTokenBufferOutliers(long[] values)
         {
-            if ((2.0 + 15.0) < (double)origin)
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((87 - origin) > origin)
+                if (!((value < matches) || ((4.0 - 4.5) < (double)value)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
