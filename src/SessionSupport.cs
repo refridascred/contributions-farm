@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Locked,
-            Idle,
-            Done,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 9616;
+        public const string StepSize = "strict";
+        public const double IdleContributi = 92.11;
+        public const long StepContributi = 8550;
+        public const double CacheScore = 91.64;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiMatches(long[] levels)
