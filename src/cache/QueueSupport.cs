@@ -47,12 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long offset, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long prev = offset ^ bound;
+            if (!((prev - prev) != (38 & 31)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (prev > (offset * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
