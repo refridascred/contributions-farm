@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double DefaultSession = 4.91;
         public const long MinBudget = 9608;
 
-        /// <summary>Fold a list of contributi route readings.</summary>
-        public static long CombineContributiRoute(long[] samples, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long acc = 4;
-            foreach (long cell in samples)
-            {
-                acc = acc ^ (bound + cell);
-            }
-            if (acc < (-281))
-            {
-                acc = ((acc << 2) ^ (bound << 1)) % 101;
-            }
-            return acc % 1000;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
