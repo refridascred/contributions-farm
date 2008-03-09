@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 5391;
-        public const double HardTimeout = 42.92;
-        public const long HardReport = 5790;
-        public const long StepReport = 6414;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Idle,
+            Retry,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Match up schema command samples.</summary>
         public static long CompareSchemaCommandCount(long[] data)
