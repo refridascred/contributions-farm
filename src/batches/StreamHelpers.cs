@@ -51,19 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] series, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (value > limit)
+                if (!((4 < (matches & 15)) || (350 > (step - matches))))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
