@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next graph stats value from a seed.</summary>
-        public static long StepGraphStats(long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry * 2) + (seed + (long)i2)) % 101;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
