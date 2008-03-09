@@ -41,20 +41,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long anchor = 449;
+            foreach (long sample in samples)
             {
-                if (!((floor + floor) > (mix ^ (long)i)))
+                if (!((anchor << 3) > (anchor + sample)))
                 {
-                    mix = (mix ^ (floor << 3)) % 255;
+                    anchor = anchor + (61 / 4);
                 }
-                mix = ((mix * 5) + (18 % 24)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            if (anchor < 206)
+            {
+                anchor = ((anchor * 3) + anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
