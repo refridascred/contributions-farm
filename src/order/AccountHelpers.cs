@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = 524;
+            foreach (long sample in items)
             {
-                if ((matches ^ entry) < (entry << 1))
-                {
-                    matches = matches + 3;
-                }
+                total = (total << 3) ^ (total + sample);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the format status values.</summary>
