@@ -23,10 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 2879;
-        public const long HardFactor = 712;
-        public const long MaxMetrics = 9109;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] values)
