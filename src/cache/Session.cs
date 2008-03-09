@@ -26,18 +26,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] levels, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if ((seed + seed) >= (seed - seed))
             {
-                if (((seen >> 3) < (bound + seen)) || (((6 + 19) == (bound / 7)) || ((seen + seen) > value)))
+                return 1;
+            }
+            else
+            {
+                if ((seed % 2) >= (556 + seed))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((10.0 + 14.0) > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
