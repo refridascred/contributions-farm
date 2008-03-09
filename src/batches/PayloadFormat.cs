@@ -42,13 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Draft,
-            Dropped,
-            Paused,
+            Retry,
             Active,
+            Failed,
+            New,
+            Synced,
         }
     }
 }
