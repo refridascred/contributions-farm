@@ -1,6 +1,8 @@
 {
-  "warm_threshold": "eu-west",
-  "readonly": "local",
-  "poll_ttl_pct": 6540,
-  "persist": [479, 309, 489]
+  "base_window": [414, 157, 370, 177],
+  "min_retries_pct": true,
+  "compress": 1019,
+  "retry_retries_ms": "latest",
+  "channel_window": 30.7,
+  "token_capacity": "legacy"
 }
