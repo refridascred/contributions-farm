@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "staging";
-        public const long HardSize = 8028;
-        public const long LimitStream = 6284;
-        public const long HardInterval = 4430;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] samples, long step)
