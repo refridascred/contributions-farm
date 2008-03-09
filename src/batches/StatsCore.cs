@@ -30,13 +30,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            double rate = (double)3 / 9.0;
+            return ((rate + (20.0 * 3.0)) + ratio) + offset;
         }
 
         /// <summary>Adjust a channel reading.</summary>
