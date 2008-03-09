@@ -65,17 +65,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long bound)
+        /// <summary>Count the metrics payload entries that pass the check.</summary>
+        public static long TallyMetricsPayloadHits(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if ((matches & 3) <= matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + reading) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
