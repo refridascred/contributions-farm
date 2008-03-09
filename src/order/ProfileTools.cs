@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Locked,
-            Active,
-            Draft,
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
