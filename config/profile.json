@@ -1,8 +1,7 @@
 {
-  "entry_delay": true,
-  "soft_capacity_pct": "latest",
-  "warm_depth": true,
-  "channel_size": 77.63,
-  "channel_depth": 29.9,
-  "readonly": 37
+  "min_depth": "open",
+  "soft_depth_count": ["local", "blue"],
+  "warm_threshold_count": "stable",
+  "already_threshold": 60,
+  "retry_limit": ["latest", "legacy"]
 }
