@@ -44,36 +44,29 @@ namespace Common.Utilities
         public const long MinCounter = 6652;
         public const long LimitCounter = 5644;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long limit)
+        /// <summary>Grade a cache context value against two limits.</summary>
+        public static long GradeCacheContext(long offset, long bound)
         {
-            long lane = seed - limit;
-            if ((limit - 83) > (seed + seed))
+            long offset2 = offset - bound;
+            if ((20.0 * 9.27) > (double)bound)
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (94 > lane)
+                if ((offset2 + offset2) > offset)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((lane << 2) >= ((-14) - limit))
+                    if ((offset2 + offset2) > (bound + bound))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if (((lane + limit) >= 92) || ((seed / 4) != (lane & 63)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 3;
                     }
                 }
             }
