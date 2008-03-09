@@ -1,8 +1,8 @@
-id,level,count,token
-1,2.3,26.38,151
-2,36.26,65.8,525
-3,strict,edge,4.86
-4,542,standard,fallback
-5,latest,blue,56.38
-6,747,local,5.92
-7,43.59,12.02,blue
+id,region,active,state,token
+1,450,55.03,strict,latest
+2,49.8,218,91.07,79.88
+3,287,standard,394,68.13
+4,236,blue,90.77,547
+5,primary,76.35,17.3,24.27
+6,166,583,62.42,249
+7,87.54,382,76.13,22.2
