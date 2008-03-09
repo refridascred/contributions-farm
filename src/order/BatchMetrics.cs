@@ -12,25 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long step)
-        {
-            if (!((9.0 - 3.5) != (double)floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.83 - 2.0) != (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 12.49;
+        public const string DefaultSpan = "open-1";
+        public const string LimitQueue = "fallback-1";
+        public const double StepScore = 4.79;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitTimeout = 1033;
