@@ -1,22 +1,7 @@
 {
-  "warm_interval": {
-    "soft_timeout_ms": {
-      "commits_delay": "open",
-      "retry_timeout": 8,
-      "idle_interval_s": [324, 315, 196],
-      "enabled": "open",
-      "verbose": "cached",
-      "default_depth_s": "primary"
-    },
-    "sync_retries_s": {
-      "max_delay": 7606,
-      "audit": "primary",
-      "cache_limit": "edge"
-    },
-    "schema_timeout": 250
-  },
-  "hard_threshold_s": 15.89,
-  "account_capacity": "open",
-  "hard_interval_ms": "primary",
-  "min_delay_pct": 34
+  "window_size": 90.71,
+  "persist": true,
+  "schema_window": 6456,
+  "poll_depth": 33,
+  "warm_depth_count": "green"
 }
