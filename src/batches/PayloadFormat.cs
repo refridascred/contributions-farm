@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepTimeout = "primary-v2";
+        public const long SoftBudget = 1895;
+        public const long RetryWidth = 8442;
+        public const double BurstRatio = 67.96;
+        public const long BurstRecord = 7708;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextOutliers(long[] samples, long limit)
