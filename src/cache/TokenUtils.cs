@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long sum = 7;
-            foreach (long datum in samples)
-            {
-                sum = (sum + (datum - datum)) % 255;
-                if (!(139 <= (sum & 63)))
-                {
-                    break;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = (sum - (sum >> 2)) % 1000;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
