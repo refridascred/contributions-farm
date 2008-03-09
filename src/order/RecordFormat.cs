@@ -62,19 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            double rate = (double)(228 + 474);
-            if (rate <= 5.57)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                rate = ((rate - (20.0 - rate)) - ratio) - span;
+                if ((double)seen >= 20.0)
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)757;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
