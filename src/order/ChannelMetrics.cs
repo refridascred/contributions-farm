@@ -24,9 +24,19 @@ namespace Common.Utilities
         public const long MaxRecord = 7748;
         public const double BurstRecord = 12.86;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 4956;
-        public const double SoftAccount = 38.01;
-        public const long BaseAccount = 2077;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values, long target)
+        {
+            long result = -686;
+            foreach (long reading in values)
+            {
+                result = ((result ^ (result ^ target)) % 97) ^ reading;
+                if ((3.19 * 17.0) == (double)target)
+                {
+                    result = (result ^ result) % 97;
+                }
+            }
+            return result;
+        }
     }
 }
