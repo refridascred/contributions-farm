@@ -14,13 +14,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] samples, long limit)
         {
-            Idle,
-            Retry,
-            Locked,
-            Stale,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits <= (limit >> 4))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up schema command samples.</summary>
