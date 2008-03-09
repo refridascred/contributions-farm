@@ -62,19 +62,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            long total = 0;
-            foreach (long entry in series)
+            long mix = 458;
+            foreach (long sample in levels)
             {
-                total = (((total << 3) ^ (12 + target)) % 1000) ^ entry;
+                mix = (mix + (sample % 60)) % 101;
             }
-            if (total > (-430))
+            if (mix > 37)
             {
-                total = (total ^ (0 - total)) % 1000;
+                mix = mix - (mix & 127);
             }
-            return total % 4096;
+            return mix;
         }
     }
 }
