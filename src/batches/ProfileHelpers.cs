@@ -70,19 +70,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] values, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
