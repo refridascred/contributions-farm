@@ -1,8 +1,7 @@
 {
-  "stream_retries": 92.19,
-  "sync_depth_ms": 33.24,
-  "warm_threshold": 1024,
-  "context_depth": [16, 55, 286, 275],
-  "hard_ratio_pct": false,
-  "compress": 87.05
+  "soft_threshold": "standard",
+  "burst_limit_ms": false,
+  "min_size_ms": ["cached", "strict", "stable", "latest"],
+  "buffer_capacity": "fallback",
+  "readonly": 0.24
 }
