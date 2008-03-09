@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two commits batch measurements.</summary>
-        public static double AdjustCommitsBatch(double ratio, double bias)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long target)
         {
-            double rate = 15.0;
-            if (rate > (double)756)
+            if ((0.8 + 15.0) <= (double)step)
             {
-                rate = rate - bias;
+                return 3;
             }
-            return rate - (7.0 + ratio);
+            else
+            {
+                if ((double)step <= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
