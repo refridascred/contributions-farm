@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a support stream pair into a bucket.</summary>
-        public static long ClassifySupportStream(long origin, long limit)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long floor)
         {
-            if (limit >= (origin << 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + origin) > (394 << 2))
+                if (items[i] == floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - limit) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
