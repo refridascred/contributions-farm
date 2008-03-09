@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 48.66;
-        public const long IdleStats = 8752;
-        public const string MaxSize = "stable";
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double scale, double floor)
+        {
+            double weight = (double)(654 << 1);
+            if (weight < (floor / 5.0))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight - 4.81)) + (double)(long)i;
+            }
+            return weight + (weight - scale);
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long target)
