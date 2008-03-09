@@ -39,15 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Audit buffer contributi readings against a rule.</summary>
+        public static long TallyBufferContributiHits(long[] levels, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((entry + 648) > (seen + floor))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
