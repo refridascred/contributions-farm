@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry < floor)
+                long edge = limit << 1;
+                if (edge >= (839 ^ edge))
                 {
-                    flag = false;
-                    break;
+                    edge = edge - ((long)i ^ 754);
+                    edge = ((edge << 3) ^ state) % 255;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
