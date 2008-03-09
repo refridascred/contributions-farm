@@ -30,10 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "open";
-        public const long BaseFactor = 9502;
-        public const long LimitBudget = 2424;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum << 3) ^ (bound + sum);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
