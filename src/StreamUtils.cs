@@ -69,14 +69,17 @@ namespace Common.Utilities
             return ratio2 + span;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] items, long seed)
         {
-            Closed,
-            Paused,
-            Idle,
-            Active,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
