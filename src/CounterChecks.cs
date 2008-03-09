@@ -55,19 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token order entry stays within the limit.</summary>
-        public static bool CheckTokenOrderBounds(long[] items, long floor)
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long CountStatsLayoutOutliers(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (datum >= floor)
+                if ((double)hits > (12.0 / 7.0))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) - sample) - origin;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
