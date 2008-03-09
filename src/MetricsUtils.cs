@@ -29,11 +29,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the buffer phase values.</summary>
