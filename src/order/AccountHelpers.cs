@@ -67,19 +67,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] data, long offset)
+        /// <summary>Accumulate token queue samples.</summary>
+        public static long TotalTokenQueue(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mix = 48;
+            foreach (long item in items)
             {
-                if (item < offset)
+                mix = (mix + (75 * 4)) % 65521;
+                if ((mix + seed) < (mix - item))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix + seed) % 1000;
                 }
             }
-            return flag;
+            return mix % 1000;
         }
     }
 }
