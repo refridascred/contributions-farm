@@ -1,4 +1,10 @@
 # support settings
-flush_threshold_count: 30
-idle_window_count: 60
-min_limit_ms: 79.52
+persist: 9352
+channel_ratio:
+  - 249
+  - 250
+  - 324
+warm_timeout:
+  - open
+  - staging
+  - local
