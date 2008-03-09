@@ -31,13 +31,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the route kind values.</summary>
