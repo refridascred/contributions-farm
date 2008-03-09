@@ -1,5 +1,7 @@
 {
-  "readonly": [197, 475, 236, 84],
-  "sync_timeout_pct": 95.89,
-  "batch_size": ["strict", "local"]
+  "counter_depth": [284, 245],
+  "account_window": false,
+  "persist": "legacy",
+  "route_size": 3162,
+  "compress": true
 }
