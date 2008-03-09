@@ -30,18 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound ^ matches) >= cell)
+                if ((levels[i] < offset) && ((levels[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
