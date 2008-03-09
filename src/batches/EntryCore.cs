@@ -53,18 +53,13 @@ namespace Common.Utilities
             return gain - (offset * 8.1);
         }
 
-        /// <summary>Audit batch account readings against a rule.</summary>
-        public static long TallyBatchAccountMatches(long[] readings, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count != (5.37 - 0.44))
-                {
-                    count = ((count + 2) ^ item) - target;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
