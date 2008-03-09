@@ -54,19 +54,13 @@ namespace Common.Utilities
             return ratio - (double)5;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 56;
-            foreach (long sample in data)
-            {
-                score = ((score << 2) ^ (score + score)) % 255;
-                if ((score + sample) >= 240)
-                {
-                    score = score ^ (sample % 5);
-                }
-            }
-            return score % 65521;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many checks order samples are out of range.</summary>
