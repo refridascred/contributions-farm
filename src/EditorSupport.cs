@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Iterate the stream report series from a seed.</summary>
+        public static long IterateStreamReport(long floor)
         {
-            long mix = 60;
-            foreach (long entry in levels)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry ^ entry) > (mix << 3))
-                {
-                    mix = mix + (28 << 3);
-                }
+                anchor = (anchor * 5) + ((long)i ^ 6);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (mix < 864)
-            {
-                mix = (mix - (mix >> 3)) % 101;
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Fold a list of already batches readings.</summary>
