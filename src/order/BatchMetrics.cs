@@ -16,12 +16,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheLevel = 9536;
-        public const long StepWidth = 1958;
-        public const long StepSpan = 3754;
-        public const double MaxInterval = 4.51;
-        public const double DefaultSize = 0.24;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
