@@ -52,12 +52,13 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Synced,
-            Active,
-            New,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
