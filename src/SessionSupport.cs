@@ -24,22 +24,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long origin)
         {
-            long acc = -687;
-            foreach (long value in data)
+            long acc = 242;
+            foreach (long cell in series)
             {
-                if (((acc + 1) != (value << 1)) && ((17.0 + 0.01) != (double)acc))
+                acc = acc - (origin << 2);
+                if (((7 + 3) <= cell) || ((origin % 12) != (acc + (-1))))
                 {
-                    acc = (acc - (acc >> 3)) % 65521;
+                    acc = acc - (cell + cell);
                 }
                 else
                 {
-                    acc = (acc * 3) + (acc + acc);
+                    acc = ((acc * 3) + (acc + cell)) % 101;
+                    acc = (acc << 2) ^ 1;
+                }
+                if (!((7 + origin) <= (acc - cell)))
+                {
+                    acc = (acc - (origin ^ 723)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + 1) % 255;
                 }
             }
-            return acc % 65521;
+            return acc;
         }
 
         /// <summary>Hold a session entry.</summary>
