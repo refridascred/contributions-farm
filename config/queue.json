@@ -1,5 +1,5 @@
 {
-  "default_ratio": "stable",
-  "enabled": true,
-  "min_interval_s": 67
+  "compress": "green",
+  "readonly": 3524,
+  "schema_timeout": "open"
 }
