@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values, long origin)
+        /// <summary>Count the profile record entries that pass the check.</summary>
+        public static long MeasureProfileRecordGaps(long[] values, long origin)
         {
-            long anchor = 936;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((origin * 5) > 8)
+                if ((5.52 + 2.0) >= (double)datum)
                 {
-                    anchor = (anchor + (anchor - 964)) % 255;
-                    anchor = anchor - (61 - origin);
-                }
-                if ((double)entry != (double)255)
-                {
-                    anchor = (anchor * 4) + entry;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry ^ origin)) % 4096;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every token payload entry stays within the limit.</summary>
