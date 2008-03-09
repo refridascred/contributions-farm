@@ -24,25 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] series, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                mark = ((mark * 3) + (step % 60)) % 97;
-                if (!((0.7 / 5.0) <= (double)step))
+                if (value <= seed)
                 {
-                    mark = (mark - mark) % 97;
-                    mark = ((mark << 3) ^ step) % 4096;
+                    ready = false;
+                    break;
                 }
-                if ((double)138 >= (double)mark)
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
