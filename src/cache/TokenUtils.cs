@@ -22,19 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] levels, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long target)
         {
-            long anchor = 28;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                anchor = (anchor - (anchor ^ 5)) % 255;
-                if (seed >= (seed + value))
+                if (reading != target)
                 {
-                    anchor = anchor - (seed << 2);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
     }
 }
