@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Paused,
-            Queued,
-            Dropped,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 94.59;
+        public const double WindowInterval = 85.72;
+        public const double StepScore = 16.63;
+        public const long MinInterval = 1690;
+        public const long LimitWidth = 7000;
 
         /// <summary>Adjust a checks cluster reading.</summary>
         public static double AdjustChecksCluster(double gain, double floor)
