@@ -13,11 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Blend two layout batch measurements.</summary>
+        public static double ScaleLayoutBatch(double bias, double floor)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
+            double load = 12.0;
+            if (load >= (bias / 2.0))
+            {
+                load = load + (7.08 - load);
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load + (load - load);
         }
 
         /// <summary>Iterate the entry buffer series from a seed.</summary>
