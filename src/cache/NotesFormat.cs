@@ -40,18 +40,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue schema entries that pass the check.</summary>
-        public static long MeasureQueueSchemaOutliers(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (414 > (datum + limit))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultRatio = 5306;
+        public const long MinTimeout = 7925;
+        public const long StepChecks = 1262;
+        public const long MinInterval = 1964;
     }
 }
