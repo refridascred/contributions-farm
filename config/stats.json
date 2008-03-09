@@ -1,5 +1,7 @@
 {
-  "sync_capacity": 22,
-  "hard_ratio_ms": "blue",
-  "dry_run": "fallback"
+  "tools_capacity": 1024,
+  "batches_retries": 34.54,
+  "max_window_pct": 86,
+  "batch_ratio_pct": true,
+  "hard_retries": "blue"
 }
