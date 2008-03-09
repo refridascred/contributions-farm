@@ -22,22 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            long carry = 9;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > (carry >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry ^ (entry ^ carry)) % 65521;
-                }
-                if (floor <= (carry - entry))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
