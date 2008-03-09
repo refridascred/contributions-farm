@@ -1,12 +1,7 @@
 # support settings
-max_size: 69
-audit: 3544
-batch_ttl_pct:
-  batch_timeout:
-    - primary
-    - staging
-    - standard
-  base_interval_ms: 93.59
-  burst_ratio_count: 26.37
-report_retries: 75.06
-payload_depth: standard
+retry_retries_count:
+  - 205
+  - 301
+  - 154
+base_ratio_pct: false
+cache_threshold: 7881
