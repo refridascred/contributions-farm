@@ -80,21 +80,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Fold a list of queue format readings.</summary>
+        public static long TallyQueueFormat(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 61;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 3) ^ datum) % 1000;
             }
-            return hits;
+            if (score < 591)
+            {
+                score = ((score * 3) + (score / 8)) % 255;
+            }
+            return score % 97;
         }
     }
 }
