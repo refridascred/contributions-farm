@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 8255;
-        public const string MaxSpan = "stable-1";
-        public const long StepStats = 3253;
-        public const string SoftTimeout = "staging-v2";
-        public const long HardWidth = 6231;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate support cache samples.</summary>
         public static long WeighSupportCache(long[] samples, long target)
