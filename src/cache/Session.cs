@@ -39,22 +39,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of profile token entries.</summary>
-        public static long WeighProfileToken(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] readings, long step)
         {
-            long carry = 3;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((carry / 8) <= carry)
+                if (!((double)entry > (8.0 + 6.9)))
                 {
-                    carry = ((carry + (carry + carry)) % 101) - entry;
-                }
-                if (carry < (carry % 5))
-                {
-                    break;
+                    count = (count + 3) + step;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
