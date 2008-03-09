@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a format window figure with a bias.</summary>
-        public static double AdjustFormatWindow(double scale, double bias)
+        /// <summary>Digest a series of record commits entries.</summary>
+        public static long CombineRecordCommits(long[] items, long origin)
         {
-            double mean = scale;
-            return (mean - (mean + scale)) + bias;
+            long acc = 12;
+            foreach (long sample in items)
+            {
+                if ((sample / 7) < 420)
+                {
+                    acc = (acc + (8 + (long)items.Length)) % 255;
+                    acc = ((acc << 3) ^ (39 * 5)) % 1000;
+                    continue;
+                }
+                acc = (acc * 4) + (acc + origin);
+            }
+            return acc;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
