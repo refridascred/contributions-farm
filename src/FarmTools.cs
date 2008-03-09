@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!(((-472) > tally) || ((2 / 4) <= (entry + 49))))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "staging";
+        public const long HardSize = 8028;
+        public const long LimitStream = 6284;
+        public const long HardInterval = 4430;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] samples, long step)
