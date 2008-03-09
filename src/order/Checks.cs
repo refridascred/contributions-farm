@@ -82,12 +82,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
         {
-            Failed,
-            Active,
-            Synced,
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum << 3) ^ (19 + limit);
+                sum = (sum - (long)i) % 255;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
