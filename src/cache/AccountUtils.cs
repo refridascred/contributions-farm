@@ -39,11 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 8244;
-        public const string RetryWindow = "standard-v2";
-        public const string HardRatio = "legacy-v2";
-        public const long LimitScore = 3159;
-        public const double HardWindow = 44.07;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
