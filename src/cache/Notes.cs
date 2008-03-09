@@ -33,31 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long floor)
+        /// <summary>Measure how many commits stream samples are out of range.</summary>
+        public static long TallyCommitsStreamOutliers(long[] samples, long seed)
         {
-            if (((-4) < (limit % 60)) && ((floor >> 3) > limit))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(floor >= (limit + floor)))
+                if (((-5) >> 1) >= (seed >> 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 6) != (0 + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 1) - reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
