@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double span)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double gain = (rate - rate) - (span * 0.5);
-            if (gain < (gain / 8.0))
-            {
-                gain = gain - 6.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (span - 3.6)) + (double)(long)i;
-            }
-            return gain - (double)156;
+            Draft,
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank entry githubfarm input into a small class.</summary>
