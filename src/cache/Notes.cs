@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepBudget = 674;
+        public const long BatchFarm = 5551;
+        public const long MinFarm = 9479;
+        public const double BaseLevel = 1.23;
+        public const double HardDepth = 91.08;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long limit, long floor)
