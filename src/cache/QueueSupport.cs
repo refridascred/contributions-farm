@@ -30,17 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] values, long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Dropped,
+            Stale,
         }
     }
 }
