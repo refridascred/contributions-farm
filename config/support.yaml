@@ -1,10 +1,24 @@
 # support settings
-persist: 9352
-channel_ratio:
-  - 249
-  - 250
-  - 324
-warm_timeout:
-  - open
-  - staging
-  - local
+hard_retries_count: eu-west
+burst_ratio_ms:
+  - 439
+  - 225
+  - 116
+  - 101
+max_ratio: local
+dry_run:
+  min_depth:
+    retry_ttl: open
+    enabled: 9
+    buffer_delay: fallback
+    compress: 21.71
+    context_depth: 5573
+  enabled: cached
+  idle_delay_pct: 65.07
+  record_threshold: cached
+  readonly: false
+tools_retries:
+  sync_ratio_pct: green
+  strict: standard
+  batch_threshold: primary
+  persist: 45.79
