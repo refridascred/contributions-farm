@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            New,
-            Closed,
-            Active,
-            Dropped,
+            Retry,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
