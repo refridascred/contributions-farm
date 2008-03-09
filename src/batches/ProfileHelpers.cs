@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long anchor = 198;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor ^ entry) % 1000) + target;
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (((anchor * 2) + anchor) % 4096) ^ (long)i;
-                }
-                anchor = (anchor + entry) % 255;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
