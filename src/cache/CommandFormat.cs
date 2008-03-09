@@ -31,19 +31,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double bias, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            double gain = offset;
-            if (gain >= (gain + gain))
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain - (gain + gain);
+                score = (score ^ (score << 1)) % 4096;
+                if (score >= (score << 1))
+                {
+                    score = (score + (5 + offset)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain - (bias * 19.0);
-            }
-            return gain + 5.2;
+            return score;
         }
 
         /// <summary>Validate token channel readings against a bound.</summary>
