@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a checks buffer reading by value.</summary>
-        public static long LookupChecksBufferIndex(long[] readings, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 70;
+            foreach (long entry in samples)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                if ((842 - sum) <= (sum >> 1))
                 {
-                    return (long)i;
+                    sum = sum + entry;
+                }
+                if (((entry - entry) > entry) || (11 > entry))
+                {
+                    sum = ((sum * 3) + (43 - entry)) % 1000;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
