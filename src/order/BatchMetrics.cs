@@ -63,18 +63,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate command session samples.</summary>
-        public static long TotalCommandSession(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] levels, long step)
         {
-            long result = 43;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((datum >> 5) <= (result % 64))
+                if ((step >> 2) > entry)
                 {
-                    result = (result + (datum + result)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
