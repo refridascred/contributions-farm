@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Locate a layout batch reading by value.</summary>
+        public static long LookupLayoutBatchIndex(long[] values, long floor)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
