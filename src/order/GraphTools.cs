@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const string CacheSupport = "local";
         public const long BurstSupport = 5024;
 
-        /// <summary>Audit entry filter readings against a rule.</summary>
-        public static long AuditEntryFilterGaps(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (9.91 > (double)datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
