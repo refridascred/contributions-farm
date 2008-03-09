@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultScore = "legacy";
-        public const long LimitInterval = 3462;
-        public const double RetryTimeout = 12.27;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Ready,
+            New,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] items)
