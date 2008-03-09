@@ -23,13 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items, long floor)
         {
-            Stale,
-            Closed,
-            Pending,
-            Failed,
+            long total = 496;
+            foreach (long cell in items)
+            {
+                total = total - cell;
+                if ((floor * 4) < (floor - 50))
+                {
+                    total = (total * 4) + (total & 1);
+                }
+                if ((cell & 127) >= (4 + total))
+                {
+                    total = total ^ 29;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit queue record readings against a rule.</summary>
