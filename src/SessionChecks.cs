@@ -32,21 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue command readings.</summary>
-        public static long OverlapQueueCommandCount(long[] series)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
