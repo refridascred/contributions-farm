@@ -1,6 +1,20 @@
 {
-  "batch_ttl_count": [196, 232],
-  "queue_window": "latest",
-  "warm_delay": [483, 490, 494],
-  "audit": true
+  "entry_window": {
+    "record_size": "open",
+    "record_delay": "latest",
+    "audit": "open",
+    "retry_ttl": 60,
+    "retry_interval": "local",
+    "idle_timeout_s": "green"
+  },
+  "notes_capacity": {
+    "default_retries": [151, 415],
+    "flush_retries": 30,
+    "strict": "edge",
+    "max_threshold_ms": 55.77,
+    "default_ratio_s": 27,
+    "contributi_window": [97, 78, 444, 345]
+  },
+  "queue_interval": [433, 145, 111],
+  "warm_interval_ms": "stable"
 }
