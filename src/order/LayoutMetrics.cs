@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const string WindowInterval = "legacy-1";
         public const long WindowTools = 1198;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Project the next batch format value.</summary>
+        public static double ProjectBatchFormat(double weight, double span)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            double load = weight;
+            if (load <= span)
+            {
+                load = load - 5.22;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (weight / 9.0)) + (double)(long)i;
+            }
+            return load + (double)754;
         }
     }
 }
