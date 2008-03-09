@@ -27,12 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample * 5) <= (sample + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
