@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data, long bound)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((4.0 / 4.0) > (double)datum)
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
