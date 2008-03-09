@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] readings, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale > scale)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale = scale - (scale * 7.0);
             }
-            return -1;
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (bias - span)) + (double)(long)i;
+            }
+            return scale + (bias * 5.0);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
