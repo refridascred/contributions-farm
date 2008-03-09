@@ -48,39 +48,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long seed)
-        {
-            if ((seed + seed) >= (seed - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed / 7) != (seed << 2)) && (256 < (seed + 25)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= (seed / 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < (step >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 6569;
+        public const string StepBudget = "local-v2";
+        public const string BurstCount = "fallback-v2";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] items)
