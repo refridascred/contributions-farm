@@ -21,32 +21,18 @@ namespace Common.Utilities
         public const long BatchRatio = 8147;
         public const long CacheRecord = 8953;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long floor, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] samples, long origin)
         {
-            long prev = floor ^ bound;
-            if (((double)prev >= (6.0 + 7.43)) || ((double)floor < (double)bound))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 6) >= (prev & 127))
+                if ((607 << 1) >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((488 & 3) >= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
