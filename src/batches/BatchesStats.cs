@@ -42,10 +42,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 48.71;
-        public const long StepInterval = 6649;
-        public const long CacheFactor = 3560;
-        public const double StepBatch = 6.09;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (acc + acc) ^ (long)i2;
+                }
+                acc = (acc * 2) + (target - acc);
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
