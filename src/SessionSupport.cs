@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the profile record entries that pass the check.</summary>
-        public static long MeasureProfileRecordGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((5.52 + 2.0) >= (double)datum)
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSpan = 47.99;
+        public const long BaseSession = 663;
+        public const long SoftSession = 6140;
+        public const long WindowRatio = 4399;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
