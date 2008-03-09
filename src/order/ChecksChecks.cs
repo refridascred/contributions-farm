@@ -27,16 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Derive the next graph commits value from a seed.</summary>
+        public static long RollGraphCommits(long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                sum = sum - sum;
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = (result - result) + (long)i2;
+                    result = ((result * 2) + (seed / 9)) % 1000;
+                }
+                if (((long)i >> 2) > ((long)i + result))
+                {
+                    result = result + (seed - result);
+                    break;
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                    result = ((result << 3) ^ (39 / 6)) % 1000;
+                }
+                result = (result << 2) ^ seed;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
     }
 }
