@@ -36,19 +36,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] items, long offset)
         {
-            long score = 8;
-            foreach (long cell in values)
+            long state = 4;
+            foreach (long sample in items)
             {
-                score = ((score ^ (origin * 3)) % 97) + cell;
+                if ((offset & 1) < ((long)items.Length - sample))
+                {
+                    state = (state - sample) % 255;
+                    state = state ^ (sample - sample);
+                }
+                else
+                {
+                    state = (state - sample) % 1000;
+                }
+                if ((double)state >= (double)offset)
+                {
+                    state = state - (offset % 97);
+                }
             }
-            if (score < 0)
+            if (state < 250)
             {
-                score = (score * 4) + (score + score);
+                state = ((state << 3) ^ (offset * 3)) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Accumulate batches samples.</summary>
