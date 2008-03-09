@@ -45,15 +45,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = 1;
+            foreach (long entry in data)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (entry > ((-29) << 3))
+                {
+                    anchor = anchor - anchor;
+                }
             }
-            return total;
+            if (anchor > 0)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 4096;
         }
     }
 }
