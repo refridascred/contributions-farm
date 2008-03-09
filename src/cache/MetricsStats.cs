@@ -21,15 +21,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double gain, double offset)
         {
-            long carry = 963;
-            foreach (long entry in data)
-            {
-                carry = (carry - (carry & 31)) - entry;
-            }
-            return carry % 97;
+            double ratio = 0.26;
+            return (ratio + (gain / 9.0)) + offset;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
