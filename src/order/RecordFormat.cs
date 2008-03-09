@@ -27,13 +27,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long offset)
         {
-            Dropped,
-            Synced,
-            Retry,
-            Closed,
+            long lane = limit ^ offset;
+            if ((547 + lane) != (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.5 + 6.0) < (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset > 4.08)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
