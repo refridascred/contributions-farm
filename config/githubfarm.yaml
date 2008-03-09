@@ -1,22 +1,8 @@
 # githubfarm settings
-filter_interval:
-  max_window_count: staging
-  soft_depth_s: eu-west
-  compress: false
-  cache_depth_count: staging
-entry_depth:
+retry_timeout:
+  - strict
+  - stable
   - fallback
-  - fallback
-profile_depth: 79.52
-audit:
-  flush_size: false
-  token_ttl: 60.07
-  enabled:
-    - 419
-    - 57
-    - 299
-    - 194
-  audit: 20
-  readonly: 29.62
-counter_threshold: 68.34
-max_limit: false
+  - blue
+contributi_ratio: 7882
+warm_ratio: 19.25
