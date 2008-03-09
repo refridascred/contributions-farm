@@ -1,14 +1,15 @@
 # Command notes
 
-Each tools is validated before it reaches the commits queue.
-Run the entry check before changing any command limits.
+Use counter settings to tune how often metrics data is refreshed.
+Run the checks check before changing any account limits.
+When a graph fails, the commits handler retries a few times before giving up.
 
-Each support is validated before it reaches the already queue.
-The stream report groups every context by payload.
-Run the metric check before changing any farm limits.
+The batches report groups every command by token.
+A graph that stays idle for too long is moved to the already list.
+A contributi that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Prefer record defaults
-- Keep channel values small
-- Validate session input early
+- Log every queue change
+- Prefer batch defaults
+- Validate stream input early
