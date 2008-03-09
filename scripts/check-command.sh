@@ -7,18 +7,18 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in edge primary standard; do
+for item in local primary edge cached; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
