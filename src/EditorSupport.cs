@@ -43,14 +43,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Retry,
-            Locked,
-            Failed,
-            Dropped,
+            Ready,
             Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
