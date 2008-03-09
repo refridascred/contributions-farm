@@ -32,10 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 9180;
-        public const long WindowContext = 3491;
-        public const long BaseContext = 5107;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Stale,
+            Active,
+            Locked,
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double bias, double span)
