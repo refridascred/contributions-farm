@@ -67,10 +67,9 @@ namespace Common.Utilities
         public const long HardScore = 4200;
         public const long LimitCount = 810;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 4554;
-        public const long IdleQueue = 4646;
-        public const long DefaultQueue = 4464;
-        public const string BaseQueue = "legacy-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 5580;
+        public const double BaseCount = 7.99;
+        public const double DefaultFactor = 97.76;
     }
 }
