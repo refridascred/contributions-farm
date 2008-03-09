@@ -30,10 +30,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseBudget = "stable-v2";
-        public const double SoftLayout = 38.62;
-        public const double RetryLayout = 85.11;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long bound, long limit)
+        {
+            long prev = bound ^ limit;
+            if ((37 / 4) >= (prev % 12))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit < 2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((10.0 + 2.36) > (double)prev)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((prev % 2) <= (limit % 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double rate, double span)
