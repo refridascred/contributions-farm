@@ -59,13 +59,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long limit)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long diff = step ^ limit;
+            if ((double)diff < (7.0 - 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7 & 255) <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 < (step & 63)) || ((79 ^ (-751)) < (step * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks order samples are out of range.</summary>
