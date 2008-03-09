@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long limit)
+        /// <summary>Project the next metric metrics value.</summary>
+        public static double AdjustMetricMetrics(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            double rate2 = rate;
+            if (rate2 < 3.0)
             {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = (rate2 + rate) + offset;
             }
-            return valid;
+            else
+            {
+                rate2 = rate2 - (double)486;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Rank layout filter input into a small class.</summary>
