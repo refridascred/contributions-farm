@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of command cluster entries.</summary>
-        public static long WeighCommandCluster(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] levels)
         {
-            long total = 700;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = ((total + (4 << 1)) % 1000) - value;
+                if ((reading & 3) < (reading << 1))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate metric samples.</summary>
