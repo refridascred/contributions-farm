@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowCount = 2013;
-        public const double BatchLevel = 35.26;
-        public const long HardSize = 333;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series)
+        {
+            long result = 9;
+            foreach (long cell in series)
+            {
+                if (cell <= ((long)series.Length - 7))
+                {
+                    result = result ^ 421;
+                }
+                else
+                {
+                    result = (result - (71 - (-49))) % 97;
+                }
+            }
+            if (result < (-96))
+            {
+                result = (result ^ (result - result)) % 1000;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
