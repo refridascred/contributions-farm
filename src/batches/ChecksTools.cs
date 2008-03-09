@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double mean = scale;
-            if (mean >= 1.3)
-            {
-                mean = mean - mean;
-            }
-            return mean + (floor + 12.0);
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
