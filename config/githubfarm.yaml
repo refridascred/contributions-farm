@@ -1,5 +1,11 @@
 # githubfarm settings
-default_window_pct: true
-readonly: false
-graph_retries: false
-max_depth_count: 60
+warm_capacity:
+  - 325
+  - 242
+window_ttl: false
+enabled: true
+readonly:
+  enabled: 69.46
+  queue_ratio: 36
+  payload_retries: 19
+order_depth: 61.02
