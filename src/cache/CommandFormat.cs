@@ -29,18 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            long result = 56;
-            foreach (long datum in readings)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((result << 2) < (34 - 1)))
-                {
-                    result = (((result * 2) + (result << 2)) + datum) - offset;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return result % 65521;
+            return state;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
