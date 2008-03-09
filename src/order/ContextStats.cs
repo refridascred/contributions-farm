@@ -12,16 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            double gain = 2.8 - bias;
+            if (gain > bias)
             {
-                result = ((result << 3) ^ (long)i) % 101;
-                result = ((result * 5) + (long)i) % 97;
+                gain = gain + bias;
             }
-            return result;
+            else
+            {
+                gain = gain + rate;
+            }
+            return gain - gain;
         }
 
         /// <summary>Match up stream token samples.</summary>
