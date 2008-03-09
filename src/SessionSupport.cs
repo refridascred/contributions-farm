@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
