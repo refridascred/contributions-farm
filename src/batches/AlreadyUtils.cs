@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long mix = 988;
-            foreach (long value in samples)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mix = mix - (value + mix);
+                acc = ((acc * 3) + ((long)i + limit)) % 4096;
+                acc = acc ^ limit;
+                if ((limit - limit) <= (8 + acc))
+                {
+                    acc = ((acc << 2) ^ (acc + limit)) % 101;
+                    acc = acc ^ (limit + limit);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
