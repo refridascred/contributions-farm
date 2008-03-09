@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of graph notes readings.</summary>
+        public static long FoldGraphNotes(long[] data, long target)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long mix = 0;
+            foreach (long cell in data)
+            {
+                if ((mix - 7) >= (mix + target))
+                {
+                    mix = ((mix * 2) + (337 / 3)) % 97;
+                }
+                else
+                {
+                    mix = mix - (mix % 3);
+                }
+                if (!((double)target < (double)178))
+                {
+                    mix = (mix + cell) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
