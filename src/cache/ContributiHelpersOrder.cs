@@ -36,22 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long sum = 9;
-            foreach (long cell in values)
-            {
-                if (!(limit >= cell))
-                {
-                    sum = ((sum * 5) + (limit % 3)) % 65521;
-                }
-                if ((9.97 >= (double)sum) || ((double)limit < 0.5))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            Synced,
+            Active,
+            Dropped,
         }
     }
 }
