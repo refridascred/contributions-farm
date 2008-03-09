@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] series, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                if ((double)(long)i != (4.0 / 9.0))
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
