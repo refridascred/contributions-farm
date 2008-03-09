@@ -69,19 +69,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter stream readings against a bound.</summary>
-        public static bool CheckFilterStreamBounds(long[] readings, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc + (step - step);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the counter kind values.</summary>
