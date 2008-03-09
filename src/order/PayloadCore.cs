@@ -39,11 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 12.14;
+        public const double LimitFactor = 4.69;
+        public const long LimitInterval = 4682;
     }
 }
