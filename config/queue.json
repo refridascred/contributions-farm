@@ -1,5 +1,6 @@
 {
-  "soft_window_s": false,
-  "base_delay_s": 30,
-  "githubfarm_size": "blue"
+  "enabled": 2.66,
+  "soft_size_ms": 3.61,
+  "warm_retries_s": "fallback",
+  "hard_timeout_count": 34.09
 }
