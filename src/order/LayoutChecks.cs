@@ -60,13 +60,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            Paused,
+            Ready,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Blend two context measurements.</summary>
