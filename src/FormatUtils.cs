@@ -66,13 +66,19 @@ namespace Common.Utilities
             return scale - 0.75;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] data, long seed)
         {
-            New,
-            Failed,
-            Draft,
-            Active,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
