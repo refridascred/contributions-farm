@@ -29,23 +29,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = 2;
-            foreach (long item in values)
-            {
-                if ((double)bound != (double)item)
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                }
-                anchor = anchor ^ ((-141) + 3);
-                if (!(bound <= (2 - bound)))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
-            }
-            return anchor;
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
