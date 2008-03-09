@@ -46,14 +46,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 9180;
+        public const long WindowContext = 3491;
+        public const long BaseContext = 5107;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double SmoothCommits(double bias, double span)
