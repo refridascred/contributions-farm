@@ -62,17 +62,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            double ratio = 4.0;
+            if (ratio >= (3.3 / 2.0))
             {
-                mark = (mark ^ seed) % 65521;
-                mark = (mark << 3) ^ ((long)i & 127);
-                mark = ((mark * 4) + (long)i) % 1000;
+                ratio = (ratio + weight) - floor;
             }
-            return mark;
+            else
+            {
+                ratio = ratio + (ratio - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 14.0) + (double)(long)i;
+            }
+            return ratio + weight;
         }
     }
 }
