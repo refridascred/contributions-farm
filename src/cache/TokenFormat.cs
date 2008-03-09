@@ -13,22 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels, long seed)
+        /// <summary>Match up format cache samples.</summary>
+        public static long CompareFormatCacheCount(long[] values)
         {
-            long mark = 848;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample << 2) >= (6 ^ sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ (long)levels.Length;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 833)
-            {
-                mark = (mark << 2) ^ (seed << 3);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Locate a support reading by value.</summary>
