@@ -40,18 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((((double)hits == (double)datum) || (datum > hits)) || (((hits ^ hits) < datum) && ((hits - hits) < (918 * 5))))
+                if ((0.03 * 7.3) == (double)datum)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
