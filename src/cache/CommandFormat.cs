@@ -44,24 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long target, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((2 * 3) > (target / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.0 / 6.0) < (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the report class values.</summary>
