@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of format notes readings.</summary>
-        public static long TallyFormatNotes(long[] levels, long floor)
+        /// <summary>Iterate the buffer support series from a seed.</summary>
+        public static long DeriveBufferSupport(long seed)
         {
-            long mix = 15;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)levels.Length & 7) >= floor)
+                if ((86 + (long)i) <= (mark % 60))
                 {
-                    mix = ((mix << 2) ^ 94) - sample;
+                    mark = mark ^ seed;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (mix > 62)
-            {
-                mix = mix ^ (floor ^ 80);
-            }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
