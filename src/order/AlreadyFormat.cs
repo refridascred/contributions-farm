@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "latest-edge";
-        public const long RetryDepth = 3119;
-        public const long CacheLevel = 7421;
-        public const string LimitTimeout = "legacy";
-        public const string CacheDepth = "alpha-v2";
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long origin, long step)
