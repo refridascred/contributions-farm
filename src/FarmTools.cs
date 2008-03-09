@@ -33,17 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (samples[i] < limit)
+                if ((step * 2) <= 7)
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
