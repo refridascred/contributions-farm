@@ -1,11 +1,22 @@
 # support settings
-batch_size:
-  - legacy
+format_timeout:
+  - strict
+  - edge
   - stable
-  - local
-  - fallback
-readonly: 1024
-batch_ratio_pct:
-  - 413
-  - 20
-  - 188
+  - cached
+warm_retries_count:
+  queue_capacity: 17
+  default_interval_pct: fallback
+  cache_limit: 48.16
+  window_timeout:
+    - 394
+    - 186
+    - 108
+  poll_retries: false
+  default_interval_ms: stable
+compress:
+  - 113
+  - 148
+batch_timeout: latest
+default_capacity: 33
+record_size: false
