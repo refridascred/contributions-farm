@@ -1,14 +1,7 @@
 {
-  "min_depth": {
-    "already_retries": 3956,
-    "profile_ratio": false,
-    "burst_interval_pct": true,
-    "poll_depth_pct": true,
-    "token_timeout": false,
-    "retry_depth": 5
-  },
-  "hard_ttl_s": 15,
-  "min_limit_s": "stable",
-  "metric_interval": false,
-  "default_interval_pct": 4900
+  "order_retries": [343, 423],
+  "burst_limit_ms": 6259,
+  "flush_retries_ms": [262, 492, 46, 188],
+  "retry_window_s": "eu-west",
+  "cache_window_s": 1024
 }
