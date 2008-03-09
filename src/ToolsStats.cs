@@ -61,22 +61,18 @@ namespace Common.Utilities
             return ((drift + (double)92) + bias) + bias2;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            long carry = 7;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((step << 2) == (step & 15)) && ((carry + step) >= 414))
+                if ((62 + seen) != (sample + 268))
                 {
-                    carry = (carry * 4) + (datum & 15);
-                }
-                if ((step * 4) >= (78 & 255))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
