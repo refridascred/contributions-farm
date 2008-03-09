@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] samples, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
