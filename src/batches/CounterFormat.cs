@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metric buffer samples are out of range.</summary>
-        public static long TallyMetricBufferGaps(long[] data, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count ^ datum) == (count - datum))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
