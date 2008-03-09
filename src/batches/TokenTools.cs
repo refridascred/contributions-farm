@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] levels, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long offset2)
         {
-            long total = 1;
-            foreach (long sample in levels)
+            if ((double)offset2 <= (7.0 - 3.7))
             {
-                if (sample <= target)
+                return 5;
+            }
+            else
+            {
+                if (offset < offset2)
                 {
-                    total = ((total << 3) ^ (total << 1)) % 101;
+                    return 4;
                 }
-                if ((target + sample) != (target / 7))
+                else
                 {
-                    break;
+                    if ((3.9 * 7.87) <= (2.0 / 9.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
