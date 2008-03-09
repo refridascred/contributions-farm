@@ -58,12 +58,14 @@ namespace Common.Utilities
         public const long LimitBudget = 8934;
         public const double StepReport = 70.15;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardSize = 7820;
-        public const double IdleSpan = 24.84;
-        public const long WindowNotes = 8751;
-        public const long BatchFactor = 3973;
-        public const string RetryLevel = "cached-v2";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Retry,
+            Stale,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
