@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const double BaseWindow = 90.94;
         public const double RetryRatio = 5.79;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long bound)
         {
-            Pending,
-            New,
-            Done,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
