@@ -20,19 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] values, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long mix = 526;
+            foreach (long reading in readings)
             {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix + (origin + 70)) % 65521;
+                mix = (mix + reading) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Validate support batches readings against a bound.</summary>
