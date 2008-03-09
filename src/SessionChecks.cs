@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((entry - seen) < seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of queue command readings.</summary>
