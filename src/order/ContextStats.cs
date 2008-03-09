@@ -24,15 +24,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Ready,
-            Dropped,
-            Draft,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxWidth = "fallback-1";
+        public const double RetryCommits = 40.22;
+        public const double BaseCommits = 18.13;
+        public const long RetryScore = 4203;
+        public const string SoftScore = "fallback-1";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] readings)
