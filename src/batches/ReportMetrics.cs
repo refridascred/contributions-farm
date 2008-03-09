@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long BurstGraph = 9276;
         public const long IdleGraph = 6868;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 7543;
+        public const long CacheSize = 2884;
+        public const long LimitDepth = 4363;
+        public const long RetryLevel = 5834;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 7252;
