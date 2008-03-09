@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long SoftDepth = 8955;
         public const long BaseTimeout = 3122;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] readings, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (4 < (limit & 31))
+                if (((anchor & 31) != (anchor / 6)) && (offset >= (558 & 3)))
                 {
-                    matches = (matches + 3) + entry;
+                    anchor = (anchor ^ offset) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
