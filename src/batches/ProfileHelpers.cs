@@ -45,17 +45,19 @@ namespace Common.Utilities
         public const double RetrySpan = 43.75;
         public const long MinCommand = 7848;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = 8.7;
+            if (rate > ratio)
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - ratio) - (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
