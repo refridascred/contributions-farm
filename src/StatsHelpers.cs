@@ -42,26 +42,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits batches readings.</summary>
-        public static long CombineCommitsBatches(long[] series, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] samples)
         {
-            long score = -1;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((score - target) >= target)
+                if ((double)entry > 12.0)
                 {
-                    score = (score - value) % 4096;
-                }
-                else
-                {
-                    score = (score * 5) + (value ^ score);
+                    matches = matches + 3;
                 }
             }
-            if (score > 18)
-            {
-                score = ((score << 3) ^ (target * 4)) % 255;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
