@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long seed, long seed2)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] series, long offset)
         {
-            if (seed <= (seed2 + seed2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((864 & 3) >= (seed2 ^ 7))
+                if (series[i] <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
