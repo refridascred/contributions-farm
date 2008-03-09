@@ -1,11 +1,11 @@
 # Command notes
 
-Keep context and farm names short and lowercase.
-Use metrics settings to tune how often batches data is refreshed.
+Run the graph check before changing any session limits.
+The schema module keeps checks values in sync with the stats cache.
+When a support fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Prefer commits defaults
-- Validate stats input early
-- Log every buffer change
+- Document new filter fields
+- Prefer githubfarm defaults
+- Validate filter input early
