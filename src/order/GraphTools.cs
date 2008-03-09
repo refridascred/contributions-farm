@@ -19,12 +19,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "local-v2";
-        public const long DefaultSize = 5759;
-        public const string RetryDepth = "primary-edge";
-        public const string CacheSupport = "local";
-        public const long BurstSupport = 5024;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
+        {
+            long carry = 83;
+            foreach (long item in series)
+            {
+                long tally = (item << 3) >> 4;
+                if (tally > (tally - item))
+                {
+                    carry = (carry + (item + 8)) % 4096;
+                    carry = (carry << 2) ^ (5 & 7);
+                }
+                if ((carry << 2) <= 637)
+                {
+                    carry = (carry + carry) % 65521;
+                }
+            }
+            if (carry < 66)
+            {
+                carry = carry + (carry & 63);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
