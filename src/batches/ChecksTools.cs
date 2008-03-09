@@ -26,22 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] samples)
         {
-            long mix = 79;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((mix ^ reading) < (mix + 921)) && ((mix / 4) >= mix))
+                if ((12 >= count) && (((5.5 - 5.3) < (6.7 / 6.0)) && (count >= (reading + (-32)))))
                 {
-                    mix = (mix * 5) + (reading ^ 373);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix < 14)
-            {
-                mix = ((mix << 3) ^ (mix - 64)) % 97;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
