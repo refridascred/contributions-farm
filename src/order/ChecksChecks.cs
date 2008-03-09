@@ -14,23 +14,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)(long)i != (6.9 - 7.22))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry + ((long)i / 7)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Done,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Combine session githubfarm values into a single score.</summary>
