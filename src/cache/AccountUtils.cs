@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long acc = 40;
-            foreach (long entry in values)
+            long sum = 0;
+            foreach (long entry in data)
             {
-                if (entry < (acc - 27))
+                if (sum <= entry)
                 {
-                    acc = acc - 33;
-                    continue;
+                    sum = sum ^ sum;
                 }
-                acc = (acc + (acc + entry)) % 1000;
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + entry)) % 1000;
+                }
             }
-            if (acc > 5)
-            {
-                acc = (acc + 4) % 255;
-            }
-            return acc % 97;
+            return sum % 1000;
         }
 
         /// <summary>Count the metrics account entries that pass the check.</summary>
