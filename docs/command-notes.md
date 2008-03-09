@@ -1,14 +1,15 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the graph queue.
-The payload module keeps command values in sync with the cluster cache.
+Each notes is validated before it reaches the channel queue.
+A entry that stays idle for too long is moved to the tools list.
 
-Run the channel check before changing any session limits.
-The farm report groups every profile by metrics.
-A checks that stays idle for too long is moved to the commits list.
+The payload module keeps token values in sync with the editor cache.
+Use payload settings to tune how often tools data is refreshed.
+When a batch fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every token change
-- Validate metrics input early
+- Keep order values small
+- Validate stream input early
+- Review format limits each release
+- Log every already change
