@@ -19,17 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] values, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 5) + (seed - mix)) % 65521;
-                mix = (mix ^ (23 ^ mix)) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
