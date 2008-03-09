@@ -30,12 +30,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long target, long step)
         {
-            Stale,
-            Done,
-            Active,
+            if ((step - target) < step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step - step) > (step + 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target ^ step) < step) && (target < (step >> 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step > 7.06)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
