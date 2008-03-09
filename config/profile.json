@@ -1,8 +1,5 @@
 {
-  "flush_interval_pct": true,
-  "buffer_ratio": "eu-west",
-  "default_timeout_s": 100,
-  "strict": true,
-  "burst_limit_count": "strict",
-  "sync_ttl": [185, 311, 65]
+  "buffer_delay": 46.1,
+  "idle_size_ms": 38.65,
+  "report_interval": 8540
 }
