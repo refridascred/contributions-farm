@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitInterval = 1431;
-        public const long BurstCommits = 4240;
-        public const double SoftCount = 86.57;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long floor)
+        {
+            long sum = 8;
+            foreach (long entry in values)
+            {
+                if (((1.3 / 5.0) < (double)sum) && ((1.9 + 5.96) >= (double)sum))
+                {
+                    sum = ((sum ^ (322 + sum)) % 97) ^ entry;
+                }
+            }
+            if (sum < 165)
+            {
+                sum = sum - (floor & 3);
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
