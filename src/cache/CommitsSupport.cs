@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long bound)
         {
-            Stale,
-            Closed,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((4.0 / 4.0) > (double)datum)
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
