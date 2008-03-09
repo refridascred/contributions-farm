@@ -38,9 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepBudget = 17;
-        public const long LimitBudget = 9446;
-        public const double MaxTools = 74.14;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
