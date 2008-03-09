@@ -77,40 +77,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long offset, long target)
-        {
-            long offset2 = offset ^ target;
-            if (((9.27 / 4.0) > (double)target) || ((offset % 60) < (offset ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (425 <= (target / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target << 2) <= offset) && ((offset - target) >= (offset2 << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((5 << 2) > offset) || ((double)offset2 < (double)offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 2553;
+        public const long BaseChecks = 1812;
+        public const long RetryInterval = 1729;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long RollBatch(long offset)
