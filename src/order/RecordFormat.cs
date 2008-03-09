@@ -32,17 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue counter entry that matches the target.</summary>
-        public static long LookupQueueCounterIndex(long[] data, long origin)
+        /// <summary>Check that every batches schema entry stays within the limit.</summary>
+        public static bool CheckBatchesSchemaLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                if (sample < target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the commits kind values.</summary>
