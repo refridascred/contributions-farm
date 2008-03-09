@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            double mean = (double)(8 ^ 55);
-            if (mean < (ratio / 5.0))
+            long mark = 31;
+            foreach (long sample in readings)
             {
-                mean = (mean + (double)266) - floor;
+                mark = (mark - (mark + sample)) % 255;
             }
-            return mean - (ratio - mean);
+            return mark;
         }
 
         /// <summary>Accumulate payload samples.</summary>
