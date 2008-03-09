@@ -1,7 +1,10 @@
-id,region,score,ratio,count
-1,41,947,667,eu-west
-2,34.18,210,legacy,30.03
-3,39.18,14.98,94.14,78
-4,697,75.54,staging,40.03
-5,925,fallback,129,989
-6,48.14,893,7,892
+id,score,rank
+1,91.29,631
+2,716,blue
+3,legacy,17.44
+4,stable,blue
+5,949,781
+6,985,96
+7,latest,standard
+8,fallback,8.36
+9,48.11,57.23
