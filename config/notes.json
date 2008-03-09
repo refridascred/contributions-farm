@@ -1,15 +1,5 @@
 {
-  "retry_delay": false,
-  "audit": ["legacy", "standard", "blue", "open"],
-  "poll_size_pct": {
-    "batches_capacity": {
-      "layout_ttl": "legacy",
-      "base_interval_ms": [385, 295, 400, 34],
-      "window_capacity": true
-    },
-    "compress": 30,
-    "min_depth_s": true,
-    "burst_size_ms": 500,
-    "idle_delay_ms": "standard"
-  }
+  "audit": 500,
+  "sync_timeout_count": 30,
+  "default_delay": "standard"
 }
