@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Retry,
-            Dropped,
-            Paused,
-            Failed,
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
