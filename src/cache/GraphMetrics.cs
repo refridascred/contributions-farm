@@ -43,19 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen % 60) < (seen + reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleRatio = 91.75;
+        public const long StepTimeout = 6744;
+        public const string CacheScore = "primary-v2";
+        public const string WindowBuffer = "stable-1";
+        public const long MinBuffer = 5841;
 
         /// <summary>Accumulate report filter samples.</summary>
         public static long TallyReportFilter(long[] series, long origin)
