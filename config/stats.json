@@ -1,6 +1,5 @@
 {
-  "checks_threshold": "open",
-  "verbose": [297, 149, 400],
-  "burst_depth_count": true,
-  "filter_delay": 8759
+  "cache_threshold": false,
+  "commits_threshold": "eu-west",
+  "batch_timeout_pct": 97
 }
