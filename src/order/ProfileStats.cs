@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long FoldFormatLayout(long[] values, long limit)
+        /// <summary>Audit editor metric readings against a rule.</summary>
+        public static long CountEditorMetricMatches(long[] data)
         {
-            long acc = 219;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((limit + (long)values.Length) == (item >> 2)) && ((4 + item) <= (limit & 7)))
+                if ((double)(long)data.Length != (3.0 / 4.0))
                 {
-                    acc = acc - ((-72) ^ item);
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
