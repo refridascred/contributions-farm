@@ -21,24 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a schema checks counter forward.</summary>
-        public static long RollSchemaChecks(long seed)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i ^ seed) >= (state + state))
-                {
-                    state = state ^ (state & 7);
-                }
-                state = (state * 2) + seed;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state + (seed - seed)) % 1000) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            New,
+            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
