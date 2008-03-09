@@ -32,12 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "fallback";
-        public const long BatchPayload = 7225;
-        public const long LimitPayload = 5972;
-        public const string MaxPayload = "legacy-1";
-        public const string MaxTimeout = "primary-1";
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Idle,
+            Stale,
+            Active,
+            Draft,
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
