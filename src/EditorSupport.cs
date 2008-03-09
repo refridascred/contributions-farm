@@ -61,19 +61,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long offset, long target)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long step = offset ^ target;
+            if ((target / 7) >= (offset + step))
             {
-                if (sample < floor)
+                return 5;
+            }
+            else
+            {
+                if (!((target ^ step) == (offset + target)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset > (step - 0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
