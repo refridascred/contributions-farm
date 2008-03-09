@@ -1,17 +1,8 @@
 {
-  "strict": 8793,
-  "poll_threshold_count": false,
-  "poll_interval": 250,
-  "sync_ttl_pct": {
-    "idle_capacity_count": true,
-    "queue_ttl": {
-      "min_ttl_ms": ["green", "stable"],
-      "burst_threshold": false,
-      "flush_ratio_s": 100
-    },
-    "persist": false,
-    "editor_limit": false
-  },
-  "readonly": 1024,
-  "retry_depth": "blue"
+  "retry_size_pct": 250,
+  "cache_capacity": 77.25,
+  "base_window_count": 96.08,
+  "retry_size_s": "blue",
+  "verbose": 3211,
+  "support_ttl": 60
 }
