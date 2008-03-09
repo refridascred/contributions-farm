@@ -14,26 +14,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metric githubfarm samples.</summary>
-        public static long WeighMetricGithubfarm(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            long result = 8;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (result <= (result * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result * 5) + value;
-                }
-                else
-                {
-                    result = result ^ value;
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 3)
-            {
-                result = (result + result) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
