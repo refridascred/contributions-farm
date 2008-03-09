@@ -43,32 +43,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long step = limit - bound;
-            if ((704 ^ bound) < limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit + 5) < (bound + 162)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (6.7 <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a metrics commits counter forward.</summary>
