@@ -48,18 +48,12 @@ namespace Common.Utilities
             return load - (double)81;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] readings, long step)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry > (8.0 + 6.9)))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Closed,
         }
     }
 }
