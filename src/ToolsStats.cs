@@ -20,22 +20,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples, long floor)
+        /// <summary>Rank layout filter input into a small class.</summary>
+        public static long RankLayoutFilter(long offset, long step)
         {
-            long total = 4;
-            foreach (long sample in samples)
+            if ((double)step > (14.0 * 8.7))
             {
-                if (!(((-5) / 3) == (sample >> 5)))
+                return 7;
+            }
+            else
+            {
+                if ((offset / 6) != (88 + (-79)))
                 {
-                    total = ((total << 3) ^ (sample - sample)) % 1000;
+                    return 6;
+                }
+                else
+                {
+                    if (step <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset > (offset - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (total < 2)
-            {
-                total = ((total << 3) ^ floor) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Adjust a commits reading.</summary>
