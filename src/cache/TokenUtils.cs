@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double mean = (double)(72 * 5);
-            if (mean <= (9.8 - span))
-            {
-                mean = (mean - mean) - gain;
-            }
-            else
-            {
-                mean = mean - (span / 9.0);
-            }
-            return mean - (double)808;
+            Done,
+            Pending,
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first counter already entry that matches the target.</summary>
