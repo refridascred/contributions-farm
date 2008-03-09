@@ -33,16 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Roll a counter already counter forward.</summary>
+        public static long SeriesCounterAlready(long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result << 2) ^ (result & 63)) % 255;
-                result = ((result * 2) + (long)i) % 101;
+                if (!((total + total) <= limit))
+                {
+                    total = total + (795 >> 2);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Accumulate cache samples.</summary>
