@@ -34,38 +34,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
-        public static long SortGithubfarmCounter(long origin, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            if ((target + origin) >= (69 - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 100) > (origin + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= (origin - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target < (17 & 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
