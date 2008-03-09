@@ -1,20 +1,5 @@
 {
-  "audit": {
-    "enabled": ["cached", "strict", "cached"],
-    "batch_threshold": 1024,
-    "sync_interval": "legacy",
-    "base_retries_pct": {
-      "channel_size": 62,
-      "retry_threshold_ms": 9.37,
-      "base_depth": 99,
-      "persist": 71.09,
-      "strict": "cached",
-      "soft_limit_pct": 5682
-    },
-    "readonly": 12.87
-  },
-  "base_timeout_pct": true,
-  "default_ttl_count": ["legacy", "eu-west", "local"],
-  "report_window": true,
-  "default_ratio_pct": 60
+  "base_size": true,
+  "readonly": false,
+  "stats_delay": 70.2
 }
