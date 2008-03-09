@@ -34,19 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long carry = 313;
+            foreach (long reading in samples)
             {
-                if (value != offset)
+                if (reading > (97 % 12))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry - (reading & 31)) % 4096) - bound;
                 }
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
