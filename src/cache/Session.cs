@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((reading & 3) < (reading << 1))
+                if ((3.5 - 4.95) > (double)bound)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
