@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 8659;
-        public const long LimitRatio = 8058;
-        public const long BatchQueue = 3253;
-        public const long MaxSpan = 2457;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double bias)
+        {
+            double drift = (double)(214 * 4);
+            if (drift < drift)
+            {
+                drift = (drift - (bias + drift)) + rate;
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (bias / 9.0)) + (double)(long)i;
+            }
+            return drift - (7.48 / 5.0);
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double bias, double bias2)
