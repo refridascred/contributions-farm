@@ -39,17 +39,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] items, long seed)
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long TallyQueueBatch(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 398;
+            foreach (long datum in items)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ (mix + mix)) - datum;
             }
-            return -1;
+            return mix;
         }
     }
 }
