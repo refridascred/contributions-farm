@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(((-472) > tally) || ((2 / 4) <= (entry + 49))))
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
