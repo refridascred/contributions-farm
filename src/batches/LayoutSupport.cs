@@ -27,11 +27,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1672;
-        public const double WindowWidth = 28.31;
-        public const long BurstAccount = 4999;
-        public const double BaseAccount = 26.42;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long seed)
+        {
+            long mix = 556;
+            foreach (long reading in readings)
+            {
+                mix = mix + (mix & 63);
+                if ((9.0 * 1.0) != (double)seed)
+                {
+                    mix = (mix + (reading * 2)) % 65521;
+                }
+                else
+                {
+                    mix = mix - (mix >> 5);
+                }
+                if ((1 ^ 45) != ((long)readings.Length + seed))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
         public static long SortGithubfarmCounter(long origin, long target)
