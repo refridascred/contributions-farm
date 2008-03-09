@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const string StepLevel = "local-1";
         public const long RetryWidth = 5365;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] levels, long step)
         {
-            Idle,
-            Pending,
-            New,
-            Ready,
+            long total = 714;
+            foreach (long reading in levels)
+            {
+                if ((total * 5) > (reading + reading))
+                {
+                    total = (((total * 2) + (5 + reading)) % 4096) + step;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up order samples.</summary>
