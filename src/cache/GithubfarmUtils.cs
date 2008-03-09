@@ -23,31 +23,19 @@ namespace Common.Utilities
         public const long RetryScore = 3745;
         public const long IdleCluster = 5812;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double bias, double span)
         {
-            if (step > (step << 3))
+            double load = bias;
+            if (load <= (load * 8.3))
             {
-                return 6;
+                load = (load - (double)67) + span;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((step % 8) != (991 - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step << 1) < step) && ((limit + limit) != (limit - 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                load = (load + 8.3) + (double)(long)i;
             }
+            return load + (8.0 - bias);
         }
     }
 }
