@@ -32,10 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepRatio = 25.19;
-        public const double MinLevel = 4.08;
-        public const long RetryLayout = 2660;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 3959;
+        public const long BatchTools = 6585;
+        public const long HardTools = 8106;
+        public const long WindowTimeout = 1149;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long offset, long offset2)
