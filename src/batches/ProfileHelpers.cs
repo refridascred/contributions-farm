@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 60.06;
-        public const string BurstRecord = "stable";
-        public const long BaseSize = 7699;
-        public const long BatchRatio = 8147;
-        public const long CacheRecord = 8953;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long ScoreStream(long[] values, long origin)
