@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a contributi notes counter forward.</summary>
-        public static long IterateContributiNotes(long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((long)i <= state) || ((state << 1) != (limit + (long)i)))
-                {
-                    state = (state << 3) ^ (state % 2);
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
