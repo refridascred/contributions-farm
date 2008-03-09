@@ -36,14 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Retry,
-            Failed,
-            Paused,
-            Active,
-            Synced,
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate account command samples.</summary>
