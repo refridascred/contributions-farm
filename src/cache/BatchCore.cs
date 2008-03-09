@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double scale, double span)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double drift = scale;
-            if (drift <= (drift - drift))
-            {
-                drift = (drift + scale) - span;
-            }
-            return drift - (scale + scale);
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
