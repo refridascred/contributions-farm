@@ -13,21 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up batch buffer samples.</summary>
-        public static long OverlapBatchBufferCount(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score ^ (score - score)) % 65521;
+                score = (score + (long)i) % 101;
+                score = (score ^ (score + (long)i)) % 4096;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Locate a support reading by value.</summary>
