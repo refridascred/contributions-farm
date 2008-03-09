@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] series, long step)
         {
-            long anchor = -83;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                anchor = ((anchor + (-7)) % 4096) + datum;
-                anchor = (anchor - ((-937) / 8)) % 65521;
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
