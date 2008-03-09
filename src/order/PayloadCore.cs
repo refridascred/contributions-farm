@@ -39,9 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 12.14;
-        public const double LimitFactor = 4.69;
-        public const long LimitInterval = 4682;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 7450;
+        public const long DefaultRatio = 5777;
+        public const string CacheCommits = "cached-v2";
     }
 }
