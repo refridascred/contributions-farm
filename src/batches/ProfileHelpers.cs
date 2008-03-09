@@ -49,17 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first command metric entry that matches the target.</summary>
-        public static long LocateCommandMetricIndex(long[] items, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Paused,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate account command samples.</summary>
