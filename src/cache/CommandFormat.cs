@@ -64,19 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Done,
+            New,
+            Paused,
         }
     }
 }
