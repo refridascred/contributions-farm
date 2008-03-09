@@ -1,7 +1,8 @@
 {
-  "strict": "blue",
-  "enabled": ["edge", "stable", "primary"],
-  "hard_ratio_s": true,
-  "base_retries_count": 9117,
-  "burst_depth_count": "green"
+  "soft_window_ms": [341, 56, 453],
+  "cache_limit_s": true,
+  "poll_interval_ms": true,
+  "default_interval": 1465,
+  "batch_size": [493, 189],
+  "default_size_s": 78.92
 }
