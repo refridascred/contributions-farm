@@ -56,13 +56,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank tools context input into a small class.</summary>
+        public static long ClassifyToolsContext(long origin, long seed)
         {
-            Queued,
-            Retry,
-            Draft,
-            Synced,
+            if ((seed & 7) <= (seed & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed == (8.69 - 2.6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((57 * 5) < (9 + seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
