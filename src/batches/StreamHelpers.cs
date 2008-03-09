@@ -76,11 +76,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a filter format reading.</summary>
-        public static double BlendFilterFormat(double scale, double bias)
-        {
-            double weight = (scale * 9.1) - (bias * 0.2);
-            return weight - scale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3568;
+        public const string MaxTimeout = "stable";
+        public const string MinSession = "standard-1";
     }
 }
