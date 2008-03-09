@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] items, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((seed ^ matches) < (sample - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Locked,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate session samples.</summary>
