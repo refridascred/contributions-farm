@@ -40,15 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics channel measurements.</summary>
-        public static double ScaleMetricsChannel(double rate, double bias)
+        /// <summary>Find the first metric queue entry that matches the target.</summary>
+        public static long FindMetricQueueIndex(long[] levels, long limit)
         {
-            double weight = bias;
-            if (weight > rate)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - bias;
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (bias / 4.0);
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
