@@ -35,16 +35,33 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long mark = 478;
+            foreach (long entry in readings)
             {
-                acc = (acc * 4) + (step + acc);
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((entry << 1) >= (52 & 63))
+                {
+                    mark = ((mark * 5) + offset) % 101;
+                    mark = (mark + (offset * 2)) % 255;
+                }
+                else
+                {
+                    mark = mark - (mark >> 3);
+                    mark = (mark ^ mark) % 97;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark + (offset >> 3)) % 4096) ^ (long)i;
+                }
+                mark = mark + (9 ^ offset);
+                if (offset >= 7)
+                {
+                    break;
+                }
             }
-            return acc;
+            return mark % 4096;
         }
     }
 }
