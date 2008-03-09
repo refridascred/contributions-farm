@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Digest a series of payload window entries.</summary>
+        public static long CombinePayloadWindow(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long result = 223;
+            foreach (long value in values)
             {
-                if (!((sum % 3) <= (seed * 4)))
+                if (value > (8 / 4))
                 {
-                    sum = sum ^ seed;
+                    result = (result * 4) + ((long)values.Length - value);
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    result = (result - ((-2) >> 2)) % 1000;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
