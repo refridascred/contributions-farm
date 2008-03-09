@@ -29,10 +29,32 @@ namespace Common.Utilities
         public const long CacheLevel = 7694;
         public const long StepQueue = 1494;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 7246;
-        public const long IdleContext = 6116;
-        public const double SoftContext = 76.4;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long floor, long origin)
+        {
+            if ((floor % 100) < (floor >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 2) < (origin + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + floor) > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double IdleRatio = 91.75;
