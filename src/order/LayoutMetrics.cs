@@ -15,12 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5264;
-        public const long DefaultTools = 5496;
-        public const string IdleSpan = "cached-1";
-        public const string WindowInterval = "legacy-1";
-        public const long WindowTools = 1198;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] readings)
