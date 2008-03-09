@@ -55,11 +55,19 @@ namespace Common.Utilities
             return gain - (gain / 6.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitCount = 5906;
-        public const long MinAccount = 8330;
-        public const long HardSpan = 4321;
-        public const long MinRatio = 7148;
+        /// <summary>Measure how many profile farm samples are out of range.</summary>
+        public static long AuditProfileFarmMatches(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit + 9) < (sample + (long)levels.Length))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long ClassifyContributi(long target, long origin)
