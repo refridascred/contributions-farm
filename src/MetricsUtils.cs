@@ -42,15 +42,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = 3;
-            foreach (long item in values)
-            {
-                carry = (carry << 3) ^ (item - carry);
-            }
-            return carry;
+            Locked,
+            Dropped,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Iterate the farm schema series from a seed.</summary>
