@@ -64,17 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                score = (score - score) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
