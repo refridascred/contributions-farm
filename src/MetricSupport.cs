@@ -22,25 +22,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 85.34;
         public const string LimitCount = "staging";
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long cur = floor ^ limit;
-            if ((cur ^ limit) <= (cur ^ floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 956) != (cur + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Idle,
+            New,
+            Active,
         }
     }
 }
