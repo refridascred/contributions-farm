@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = 73;
-            foreach (long datum in data)
-            {
-                acc = (acc + (acc - datum)) % 97;
-            }
-            return acc;
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
