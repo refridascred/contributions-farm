@@ -43,16 +43,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultScore = 52.71;
+        public const long HardCounter = 6264;
+        public const long HardInterval = 8763;
+        public const long BurstWidth = 1;
+        public const string RetryBudget = "staging-1";
 
         /// <summary>Digest a series of profile token entries.</summary>
         public static long WeighProfileToken(long[] values)
