@@ -46,19 +46,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (reading <= seed)
+                if (((datum + datum) < (datum << 1)) || (((94 << 1) < datum) && ((double)datum <= (15.0 - 9.0))))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank record input into a small class.</summary>
