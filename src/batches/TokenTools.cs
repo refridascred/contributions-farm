@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
