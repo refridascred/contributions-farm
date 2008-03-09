@@ -37,26 +37,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a support metric value against two limits.</summary>
-        public static long GradeSupportMetric(long target, long target2)
-        {
-            long offset = target + target2;
-            if (!(offset < (target - target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (target / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 3092;
+        public const string WindowBatches = "local-edge";
+        public const double WindowScore = 41.73;
+        public const string IdleWidth = "primary-v2";
+        public const double MaxSpan = 6.9;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long WeighBatches(long[] levels, long seed)
