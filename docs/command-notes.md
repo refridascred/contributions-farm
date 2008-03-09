@@ -1,12 +1,12 @@
 # Command notes
 
-The channel module keeps metrics values in sync with the order cache.
-The payload report groups every counter by cache.
-A cache that stays idle for too long is moved to the report list.
+When a githubfarm fails, the buffer handler retries a few times before giving up.
+Use metric settings to tune how often checks data is refreshed.
+The session module keeps format values in sync with the record cache.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep order values small
-- Document new account fields
-- Log every githubfarm change
+- Document new profile fields
+- Review profile limits each release
+- Keep metrics values small
+- Validate order input early
