@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 3005;
+        public const string BaseScore = "fallback-edge";
+        public const long BatchEntry = 2575;
 
         /// <summary>Project the next metric contributi value.</summary>
         public static double SmoothMetricContributi(double gain, double floor)
