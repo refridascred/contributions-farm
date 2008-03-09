@@ -1,5 +1,6 @@
 {
-  "order_timeout": 1,
-  "cache_timeout_pct": true,
-  "burst_threshold": 1024
+  "buffer_depth": 30,
+  "buffer_limit": true,
+  "readonly": "local",
+  "burst_window_count": true
 }
