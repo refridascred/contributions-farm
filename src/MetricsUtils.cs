@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum + sum) > (sum - offset))
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ (offset + 844)) % 1000;
                 }
+                sum = sum + ((long)i + sum);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the tools mode values.</summary>
