@@ -71,12 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Find the first graph stats entry that matches the target.</summary>
+        public static long SeekGraphStatsIndex(long[] items, long bound)
         {
-            Retry,
-            Active,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
