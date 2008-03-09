@@ -50,18 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] data)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double scale = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((datum / 4) == (count & 255)))
-                {
-                    count = count + 2;
-                }
+                scale = (scale - (ratio / 4.0)) + (double)(long)i;
             }
-            return count;
+            return scale + bias;
         }
     }
 }
