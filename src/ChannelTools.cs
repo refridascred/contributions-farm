@@ -40,12 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate buffer filter samples.</summary>
+        public static long CombineBufferFilter(long[] samples, long origin)
         {
-            Draft,
-            Retry,
-            Paused,
+            long anchor = 341;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor - (value + 81)) % 97) + origin;
+            }
+            return anchor;
         }
     }
 }
