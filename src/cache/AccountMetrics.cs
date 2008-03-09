@@ -63,21 +63,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Fold a list of checks counter readings.</summary>
+        public static long WeighChecksCounter(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 692;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum * 4) + 1) - cell) + step;
             }
-            return tally;
+            return sum % 1000;
         }
     }
 }
