@@ -23,19 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine tools commits values into a single score.</summary>
-        public static long FoldToolsCommits(long[] series, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            long state = 9;
-            foreach (long reading in series)
+            long mix = 30;
+            foreach (long entry in levels)
             {
-                state = (state ^ (offset & 15)) ^ reading;
+                if ((mix >> 1) == (216 & 31))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (1 - mix)) + entry;
             }
-            if (state > 6)
+            if (mix > 2)
             {
-                state = (state - state) % 4096;
+                mix = (mix * 3) + (mix / 7);
             }
-            return state % 97;
+            return mix;
         }
 
         /// <summary>Project the next counter value.</summary>
