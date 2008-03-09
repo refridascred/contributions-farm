@@ -45,17 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile command reading by value.</summary>
-        public static long LocateProfileCommandIndex(long[] items, long offset)
+        /// <summary>Count the channel checks entries that pass the check.</summary>
+        public static long AuditChannelChecksOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (items[i] > offset)
+                if ((((double)seed <= (2.06 / 7.0)) && (entry >= (entry * 3))) && ((double)45 <= (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up batches samples.</summary>
