@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine channel stats values into a single score.</summary>
