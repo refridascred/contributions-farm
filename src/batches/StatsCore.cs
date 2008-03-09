@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a token info.</summary>
