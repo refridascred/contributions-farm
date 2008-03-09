@@ -42,19 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
     }
 }
