@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] levels, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (!((double)limit >= (2.4 * 9.1)))
+                if (item < offset)
                 {
-                    seen = (seen + 3) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of window notes readings.</summary>
