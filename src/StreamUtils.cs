@@ -40,11 +40,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long floor)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long acc = 98;
+            foreach (long reading in data)
+            {
+                if ((-4) >= (acc >> 2))
+                {
+                    acc = (acc ^ acc) - floor;
+                }
+                else
+                {
+                    acc = acc + (reading + acc);
+                }
+            }
+            if (acc > (-4))
+            {
+                acc = (acc ^ (952 + 490)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a support reading.</summary>
