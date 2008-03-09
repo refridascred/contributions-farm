@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((7.61 * 3.0) <= (double)reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
