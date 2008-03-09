@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long MeasureGraphContributiHits(long[] data)
         {
-            long state = 182;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((cell / 6) <= (state + cell))
+                if ((reading + count) != (reading ^ (-2)))
                 {
-                    state = state - (state - 4);
+                    count = count + 1;
                 }
                 else
                 {
-                    state = (state * 5) + state;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
