@@ -23,14 +23,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Match up schema command samples.</summary>
+        public static long CompareSchemaCommandCount(long[] data)
         {
-            Stale,
-            Dropped,
-            Synced,
-            Pending,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
