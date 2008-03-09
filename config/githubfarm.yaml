@@ -1,6 +1,4 @@
 # githubfarm settings
-persist: open
-base_depth: 39
-base_threshold: 5227
-batch_limit: 31
-flush_size: staging
+farm_interval: 42
+githubfarm_ratio: 96.67
+layout_capacity: 16.94
