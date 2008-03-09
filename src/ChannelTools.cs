@@ -10,38 +10,24 @@ namespace Common.Utilities
         public const long BaseContext = 2185;
         public const string WindowRatio = "legacy-edge";
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long step)
         {
-            if ((target << 2) < (target + target))
+            long state = 84;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + target) > 5)
+                state = ((state + state) % 255) ^ sample;
+                state = state ^ (state / 3);
+                if ((double)state >= (double)step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target < (origin + 82))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin / 3) > (origin / 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state * 5) + (state / 7);
                 }
             }
+            if (state < 7)
+            {
+                state = (state << 2) ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Accumulate cache samples.</summary>
