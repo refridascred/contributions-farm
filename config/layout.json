@@ -1,7 +1,5 @@
 {
-  "soft_threshold": "standard",
-  "burst_limit_ms": false,
-  "min_size_ms": ["cached", "strict", "stable", "latest"],
-  "buffer_capacity": "fallback",
-  "readonly": 0.24
+  "base_delay": false,
+  "poll_capacity_ms": true,
+  "sync_interval": 5622
 }
