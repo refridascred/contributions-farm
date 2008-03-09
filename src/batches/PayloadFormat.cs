@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long bound, long bound2)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            if (325 < (bound * 3))
+            double mean = (double)(8 ^ 55);
+            if (mean < (ratio / 5.0))
             {
-                return 6;
+                mean = (mean + (double)266) - floor;
             }
-            else
-            {
-                if ((double)bound <= (1.12 / 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((-386) > (bound >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean - (ratio - mean);
         }
 
         /// <summary>Compare every pair of window notes readings.</summary>
