@@ -60,21 +60,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)step > (7.9 - 3.0)))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark + (value - value)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (525 % 16)) % 65521;
+                }
+                if (step > (value << 2))
+                {
+                    mark = mark + (8 - value);
+                }
+                else
+                {
+                    mark = (mark ^ (value + 6)) % 101;
                 }
             }
-            return matches;
+            if (mark > 67)
+            {
+                mark = mark - (mark << 2);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of already entries.</summary>
