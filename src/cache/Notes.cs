@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Classify a cache channel pair into a bucket.</summary>
+        public static long SortCacheChannel(long step, long seed)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long slot = step ^ seed;
+            if ((double)seed == (double)731)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step & 255) >= (slot + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed >= slot)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
