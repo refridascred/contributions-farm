@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL
+    token TEXT,
+    created_at TIMESTAMP,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
 
-INSERT INTO commits_records (count, state, ratio) VALUES (18, 'staging', 8.01);
-INSERT INTO commits_records (count, state, ratio) VALUES (71, 'edge', 57.71);
+INSERT INTO commits_records (count, token, level) VALUES (10, 'standard', 92);
