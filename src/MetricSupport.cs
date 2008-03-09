@@ -22,14 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Queued,
-            Stale,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5807;
+        public const double CacheTimeout = 85.34;
+        public const string LimitCount = "staging";
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long floor, long limit)
