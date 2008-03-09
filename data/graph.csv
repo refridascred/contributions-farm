@@ -1,7 +1,6 @@
-id,ratio,token,owner
-1,cached,37.09,56.76
-2,stable,latest,legacy
-3,cached,83.15,primary
-4,757,15.12,95.4
-5,latest,stable,5.72
-6,local,59.71,standard
+id,rank,score,owner
+1,116,standard,11.42
+2,green,stable,69.63
+3,61.76,645,83
+4,stable,19.74,88.76
+5,65,63.87,51.14
