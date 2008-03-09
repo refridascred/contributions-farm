@@ -42,12 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 606;
-        public const string IdleWidth = "primary-edge";
-        public const long DefaultLevel = 9822;
-        public const long IdleDepth = 6199;
-        public const double BatchCount = 67.12;
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double floor)
+        {
+            double weight = 5.5;
+            if (weight > 1.97)
+            {
+                weight = (weight + (rate * 4.2)) - floor;
+            }
+            return weight + (0.64 + weight);
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
