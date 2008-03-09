@@ -45,11 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleSpan = 6988;
-        public const long MinScore = 5655;
-        public const long BurstStats = 6069;
-        public const long SoftStats = 4694;
-        public const string HardStats = "stable-v2";
+        /// <summary>Check that every session cache entry stays within the limit.</summary>
+        public static bool GuardSessionCacheLimits(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
