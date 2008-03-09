@@ -1,4 +1,26 @@
 # support settings
-checks_delay: 22.81
-warm_size: 33
-hard_ttl_s: cached
+sync_delay: 93
+sync_interval_pct: 30
+retry_threshold: 60
+session_interval:
+  enabled:
+    persist: cached
+    poll_capacity_pct: true
+    filter_threshold: legacy
+    verbose: edge
+    idle_timeout: cached
+    batch_size_ms:
+      - open
+      - stable
+      - strict
+      - open
+  compress: 89.45
+  verbose:
+    - standard
+    - standard
+    - staging
+support_timeout:
+  - 481
+  - 410
+  - 498
+  - 378
