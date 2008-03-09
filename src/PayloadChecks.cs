@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] samples)
         {
-            long anchor = -68;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(anchor < (sample >> 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + (anchor * 4)) % 1000;
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (7 ^ anchor)) % 1000;
-                }
-                if ((4 + anchor) != (anchor * 4))
-                {
-                    anchor = ((anchor << 2) ^ (sample - anchor)) % 1000;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 616)
-            {
-                anchor = ((anchor * 2) + (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
