@@ -1,7 +1,5 @@
 {
-  "window_size": 90.71,
-  "persist": true,
-  "schema_window": 6456,
-  "poll_depth": 33,
-  "warm_depth_count": "green"
+  "flush_interval_count": 5068,
+  "batch_window_s": "primary",
+  "hard_ttl": [123, 149, 332]
 }
