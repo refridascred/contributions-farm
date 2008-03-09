@@ -1,8 +1,5 @@
 {
-  "retry_timeout_s": "open",
-  "tools_delay": [325, 295],
-  "flush_window_count": 500,
-  "compress": 1.85,
-  "burst_limit": 30,
-  "metrics_depth": "local"
+  "strict": 57,
+  "support_threshold": "open",
+  "batch_size_ms": 4274
 }
