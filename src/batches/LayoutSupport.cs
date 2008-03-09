@@ -49,18 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context notes entries that pass the check.</summary>
-        public static long AuditContextNotesHits(long[] data)
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long DigestEntryBatch(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = -7;
+            foreach (long entry in series)
             {
-                if ((512 - reading) > (matches + 2))
+                if (acc >= (acc % 5))
                 {
-                    matches = matches + 3;
+                    acc = ((acc ^ (acc % 3)) % 1000) - entry;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
