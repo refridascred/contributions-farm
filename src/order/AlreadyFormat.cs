@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "latest-edge";
+        public const long RetryDepth = 3119;
+        public const long CacheLevel = 7421;
+        public const string LimitTimeout = "legacy";
+        public const string CacheDepth = "alpha-v2";
 
         /// <summary>Match up entry samples.</summary>
         public static long CompareEntryCount(long[] items)
