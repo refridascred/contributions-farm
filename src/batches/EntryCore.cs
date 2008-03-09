@@ -43,19 +43,18 @@ namespace Common.Utilities
             return gain - (offset * 8.1);
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double bias)
+        /// <summary>Audit batch account readings against a rule.</summary>
+        public static long TallyBatchAccountMatches(long[] readings, long target)
         {
-            double gain = bias;
-            if (gain >= (double)26)
+            long count = 0;
+            foreach (long item in readings)
             {
-                gain = gain + (gain + gain);
+                if ((double)count != (5.37 - 0.44))
+                {
+                    count = ((count + 2) ^ item) - target;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (ratio - ratio)) + (double)(long)i;
-            }
-            return gain - (double)375;
+            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
