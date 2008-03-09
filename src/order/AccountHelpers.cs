@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!((double)floor < 4.6))
+                if (!((item / 9) != (matches - (-9))) || !(matches > (item ^ 607)))
                 {
-                    long tally = 222 & 3;
-                    state = (state - (tally - floor)) % 4096;
-                }
-                if (((6 - floor) > state) || ((floor / 5) < floor))
-                {
-                    state = (state << 2) ^ (6 + state);
-                    continue;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    state = ((state * 4) + (floor & 15)) % 65521;
-                    state = (state - state) % 255;
+                    matches = matches - 1;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
