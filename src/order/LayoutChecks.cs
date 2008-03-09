@@ -25,19 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long offset)
+        /// <summary>Look up the position of a commits support sample.</summary>
+        public static long FindCommitsSupportIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= offset)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
