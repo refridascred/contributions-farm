@@ -40,22 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Look up the position of a profile payload sample.</summary>
+        public static long LocateProfilePayloadIndex(long[] readings, long target)
         {
-            long state = 2;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample ^ sample) <= (state << 3))
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
                 {
-                    state = (state ^ (557 % 97)) % 97;
+                    return (long)i;
                 }
             }
-            if (state < 9)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
