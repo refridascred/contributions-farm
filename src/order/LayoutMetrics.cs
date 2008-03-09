@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
