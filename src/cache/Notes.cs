@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long target, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long edge = target + offset;
-            if ((double)edge != (double)352)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target / 4) != (target - edge))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 3) <= (target + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
