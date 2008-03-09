@@ -7,14 +7,13 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging cached fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
-
-COMMAND_LIMIT=205
-log "limit is ${COMMAND_LIMIT}"
+log "total ${total}"
