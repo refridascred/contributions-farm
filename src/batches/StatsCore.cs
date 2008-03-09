@@ -28,16 +28,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total << 3) ^ (origin >> 5)) % 4096;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
