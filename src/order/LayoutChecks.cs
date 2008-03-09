@@ -46,10 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchCount = 8195;
-        public const string HardRatio = "primary";
-        public const double MinEditor = 1.71;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - entry) > (entry % 60))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long seed, long floor)
