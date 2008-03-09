@@ -20,32 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long origin)
+        /// <summary>Blend two queue contributi measurements.</summary>
+        public static double AdjustQueueContributi(double gain, double span)
         {
-            long acc = 242;
-            foreach (long cell in series)
-            {
-                acc = acc - (origin << 2);
-                if (((7 + 3) <= cell) || ((origin % 12) != (acc + (-1))))
-                {
-                    acc = acc - (cell + cell);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc + cell)) % 101;
-                    acc = (acc << 2) ^ 1;
-                }
-                if (!((7 + origin) <= (acc - cell)))
-                {
-                    acc = (acc - (origin ^ 723)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 2) + 1) % 255;
-                }
-            }
-            return acc;
+            double mean = gain;
+            return (mean + 5.1) + span;
         }
 
         /// <summary>Hold a route options.</summary>
