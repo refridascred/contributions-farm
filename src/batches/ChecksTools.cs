@@ -14,16 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            double mean = scale;
+            if (mean >= 1.3)
             {
-                acc = acc - (target & 63);
-                acc = ((acc * 3) + (long)i) % 97;
+                mean = mean - mean;
             }
-            return acc;
+            return mean + (floor + 12.0);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
