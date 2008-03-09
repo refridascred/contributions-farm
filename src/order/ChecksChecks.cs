@@ -13,11 +13,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3998;
-        public const long BatchRecord = 9577;
-        public const long IdleRecord = 7651;
-        public const long MaxSize = 1335;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long offset, long origin)
+        {
+            if ((offset ^ origin) < (origin + 686))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.1 < (double)origin) || ((offset % 24) == (origin / 8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= (4.6 + 4.8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double weight, double span)
