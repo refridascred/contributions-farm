@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = 9;
-            foreach (long sample in data)
-            {
-                carry = ((carry * 3) + (carry - sample)) % 255;
-                if (carry > (349 - 79))
-                {
-                    carry = ((carry << 3) ^ (sample - carry)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (carry / 8)) % 97;
-                }
-                if (1.8 > (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
