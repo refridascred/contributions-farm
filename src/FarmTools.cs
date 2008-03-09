@@ -23,12 +23,12 @@ namespace Common.Utilities
             return scale + 4.61;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == floor)
+                if (series[i] < origin)
                 {
                     return (long)i;
                 }
