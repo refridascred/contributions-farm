@@ -38,19 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue commits entry stays within the limit.</summary>
-        public static bool GuardQueueCommitsRange(long[] data, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Done,
+            Failed,
         }
     }
 }
