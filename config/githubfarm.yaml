@@ -1,9 +1,10 @@
 # githubfarm settings
-soft_threshold_pct:
+verbose:
+  - latest
+  - latest
+  - local
+  - local
+warm_delay_count:
   - standard
-  - fallback
-  - strict
   - cached
-batch_timeout_s: fallback
-compress: latest
-audit: 36.59
+retry_size_ms: true
