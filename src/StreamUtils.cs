@@ -52,26 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data)
         {
-            long acc = 98;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((-4) >= (acc >> 2))
+                if ((matches + 481) <= (matches + 0))
                 {
-                    acc = (acc ^ acc) - floor;
-                }
-                else
-                {
-                    acc = acc + (reading + acc);
+                    matches = (matches + 1) + sample;
                 }
             }
-            if (acc > (-4))
-            {
-                acc = (acc ^ (952 + 490)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
