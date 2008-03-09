@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((long)i & 255) != (mark + 479))
+                if (!((seen + seen) < (seen / 7)))
                 {
-                    mark = (mark - (196 >> 3)) % 65521;
+                    seen = (seen + 3) + item;
                 }
-                mark = (mark << 2) ^ seed;
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
