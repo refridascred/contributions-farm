@@ -25,12 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 19.93;
-        public const long RetryWindow = 4239;
-        public const string StepWindow = "strict";
-        public const string LimitWindow = "fallback-edge";
-        public const long LimitInterval = 7956;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 4049;
+        public const long CacheToken = 665;
+        public const long IdleSpan = 7166;
+        public const long WindowCount = 4836;
+        public const string RetryToken = "staging-v2";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] samples)
