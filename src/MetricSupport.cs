@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleScore = 31.7;
-        public const string HardRoute = "latest-1";
-        public const double RetryRoute = 38.54;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] series, long floor)
