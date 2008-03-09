@@ -35,21 +35,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum / 4) == (datum % 97))
                 {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + bound;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
