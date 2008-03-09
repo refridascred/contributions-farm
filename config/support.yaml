@@ -1,5 +1,6 @@
 # support settings
-filter_ratio: fallback
-contributi_interval: false
-min_delay_ms: false
-record_retries: open
+audit: 82
+base_ttl_pct: stable
+sync_retries_ms: open
+route_size: staging
+session_depth: 100
