@@ -48,22 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long mix = -268;
-            foreach (long item in readings)
-            {
-                if ((double)mix != (double)item)
-                {
-                    mix = (((mix * 2) + mix) % 255) + seed;
-                }
-                else
-                {
-                    mix = ((mix * 4) + 45) % 1000;
-                }
-            }
-            return mix;
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
