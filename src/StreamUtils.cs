@@ -26,18 +26,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format token entries that pass the check.</summary>
-        public static long MeasureFormatTokenOutliers(long[] readings)
+        /// <summary>Classify a entry record pair into a bucket.</summary>
+        public static long RankEntryRecord(long step, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long next = step + target;
+            if (step >= (-228))
             {
-                if ((50 + tally) > (value * 4))
+                return 0;
+            }
+            else
+            {
+                if ((next & 3) <= (step << 2))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
