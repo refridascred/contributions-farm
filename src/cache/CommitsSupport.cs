@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 9349;
+        public const long MinSpan = 6757;
+        public const long DefaultQueue = 6653;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] levels, long limit)
