@@ -41,17 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] readings, long offset)
+        /// <summary>Check that every account report entry stays within the limit.</summary>
+        public static bool VerifyAccountReportBounds(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (readings[i] >= offset)
+                if (datum >= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a layout record.</summary>
