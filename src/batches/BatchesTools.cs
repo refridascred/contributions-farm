@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long BurstFactor = 8676;
         public const long SoftRatio = 3484;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 9054;
-        public const double BatchCluster = 52.05;
-        public const double StepCluster = 65.26;
+        /// <summary>Measure how many session stats samples are out of range.</summary>
+        public static long AuditSessionStatsOutliers(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally != (double)(long)samples.Length)
+                {
+                    tally = ((tally + 1) + item) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of context queue entries.</summary>
         public static long FoldContextQueue(long[] levels, long offset)
