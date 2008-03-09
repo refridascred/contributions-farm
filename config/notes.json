@@ -1,9 +1,6 @@
 {
-  "layout_capacity": {
-    "warm_threshold": ["staging", "stable"],
-    "idle_delay_pct": false,
-    "session_size": "fallback"
-  },
-  "default_delay_pct": [11, 258],
-  "cluster_limit": false
+  "support_interval": [207, 176, 36, 380],
+  "soft_ratio_count": ["open", "eu-west", "green", "local"],
+  "dry_run": 6186,
+  "max_limit": true
 }
