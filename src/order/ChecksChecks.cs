@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items, long target)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long anchor = 17;
+            foreach (long value in items)
+            {
+                anchor = ((anchor + (value % 5)) % 4096) + target;
+                if ((double)value != (1.2 - 3.91))
+                {
+                    anchor = anchor - value;
+                }
+            }
+            if (anchor > 42)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
