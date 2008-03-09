@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long floor)
+        /// <summary>Audit record buffer readings against a rule.</summary>
+        public static long CountRecordBufferGaps(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
+                if (!(((cell - origin) > (origin - origin)) || ((origin - origin) > origin)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
