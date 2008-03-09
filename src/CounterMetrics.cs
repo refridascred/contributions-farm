@@ -41,21 +41,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up layout checks samples.</summary>
-        public static long PairLayoutChecksCount(long[] levels)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) < 10)
+                    if ((series[i] + series[j]) != 8)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
