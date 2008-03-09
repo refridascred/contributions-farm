@@ -27,21 +27,15 @@ namespace Common.Utilities
             return ratio + (offset / 2.0);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Scale a farm route figure with a bias.</summary>
+        public static double BlendFarmRoute(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 6.9;
+            if (rate <= floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - (rate - 0.28)) + scale;
             }
-            return count;
+            return rate + (double)247;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
