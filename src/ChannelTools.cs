@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long offset)
-        {
-            long span = seed - offset;
-            if ((double)offset > (1.7 + 0.42))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed == (4.42 + 17.0)) || ((double)span == (8.0 + 4.6)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset << 3) >= offset) && ((span / 6) == (83 % 60)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 1216;
+        public const long MinCluster = 9764;
+        public const double CacheDepth = 33.66;
+        public const double WindowCount = 32.91;
+        public const long DefaultCluster = 4025;
 
         /// <summary>Roll a counter already counter forward.</summary>
         public static long SeriesCounterAlready(long limit)
