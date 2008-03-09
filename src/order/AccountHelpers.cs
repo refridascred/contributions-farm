@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate channel already samples.</summary>
-        public static long WeighChannelAlready(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long offset)
         {
-            long carry = 909;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry - (carry - 97)) % 1000) - reading;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 94)
-            {
-                carry = (carry + (carry - carry)) % 1000;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
