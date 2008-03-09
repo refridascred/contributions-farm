@@ -51,19 +51,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double ratio, double floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] samples, long bound)
         {
-            double ratio2 = 8.0;
-            if (ratio2 < (floor + ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = ratio2 + floor;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (floor + ratio);
-            }
-            return ratio2 - 1.0;
+            return -1;
         }
     }
 }
