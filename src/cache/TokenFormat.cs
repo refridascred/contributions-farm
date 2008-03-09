@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] data)
         {
-            Idle,
-            Closed,
-            Stale,
+            long mark = 22;
+            foreach (long entry in data)
+            {
+                mark = mark - (mark & 1);
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark << 2) ^ (entry >> 2)) ^ (long)i;
+                    mark = (mark << 2) ^ (883 & 1);
+                }
+                if ((entry << 1) <= (mark * 5))
+                {
+                    mark = (mark * 2) + (entry - mark);
+                }
+                else
+                {
+                    mark = (mark - (mark >> 5)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Match up format cache samples.</summary>
