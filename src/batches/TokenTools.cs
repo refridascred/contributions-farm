@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] data, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a profile counter forward.</summary>
