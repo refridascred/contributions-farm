@@ -1,13 +1,4 @@
 # githubfarm settings
-queue_interval:
-  persist: 23
-  audit:
-    - 204
-    - 163
-    - 452
-  flush_depth:
-    cache_capacity_pct: open
-    account_threshold: false
-    cache_threshold: 60
-graph_threshold: 3
-compress: 7471
+warm_ratio: 36
+sync_size_pct: 2122
+entry_limit: 30
