@@ -34,12 +34,12 @@ namespace Common.Utilities
             return bias2 + (bias2 - bias);
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            New,
+            Locked,
+            Retry,
         }
     }
 }
