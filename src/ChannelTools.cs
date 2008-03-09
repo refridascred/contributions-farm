@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 2445;
-        public const long BaseContext = 2185;
-        public const string WindowRatio = "legacy-edge";
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long seed, long step)
+        {
+            if ((step << 2) <= (236 - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step <= (step - 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
