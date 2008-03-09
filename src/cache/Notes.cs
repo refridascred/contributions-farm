@@ -76,22 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Audit route schema readings against a rule.</summary>
+        public static long CountRouteSchemaOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((0.7 * 6.95) >= (double)hits) || ((18.0 / 6.0) == (double)item))
+                if ((6.7 + 3.0) >= (1.2 - 8.34))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = ((tally + 3) + item) + floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up tools samples.</summary>
