@@ -33,15 +33,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((value + value) > (value << 1))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
