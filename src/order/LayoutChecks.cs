@@ -33,14 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            Retry,
-            Idle,
-            Active,
-            New,
-            Done,
+            double scale2 = span / 8.0;
+            if (scale2 < 5.0)
+            {
+                scale2 = (scale2 + (double)93) + scale;
+            }
+            return scale2 - span;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
