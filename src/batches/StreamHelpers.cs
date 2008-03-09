@@ -66,9 +66,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 3568;
-        public const string MaxTimeout = "stable";
-        public const string MinSession = "standard-1";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
