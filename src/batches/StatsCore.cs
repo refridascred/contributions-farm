@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long bound, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings, long seed)
         {
-            long step = bound - limit;
-            if ((bound < (bound / 5)) && ((step >> 2) == ((-238) + bound)))
+            long sum = 77;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step + bound) != (step + limit))
+                if ((entry * 5) == (entry % 24))
                 {
-                    return 6;
+                    sum = ((sum << 2) ^ (entry + 79)) - seed;
                 }
                 else
                 {
-                    return 8;
+                    sum = (sum ^ (entry - sum)) % 255;
                 }
             }
+            if (sum > 6)
+            {
+                sum = (sum * 5) + 64;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
