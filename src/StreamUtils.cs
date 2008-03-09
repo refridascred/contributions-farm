@@ -66,19 +66,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Fold a list of metric window readings.</summary>
+        public static long TallyMetricWindow(long[] samples)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio * 1.8))
+            long state = 917;
+            foreach (long sample in samples)
             {
-                ratio2 = ratio2 - (ratio + ratio);
+                if ((2.0 * 0.7) > (double)sample)
+                {
+                    state = (state ^ (sample + sample)) % 101;
+                }
+                else
+                {
+                    state = ((state * 3) + sample) % 1000;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (state < 1)
             {
-                ratio2 = ratio2 - (double)(long)i;
+                state = (state ^ (state >> 3)) % 101;
             }
-            return ratio2 + span;
+            return state;
         }
 
         /// <summary>Describe the queue mode values.</summary>
