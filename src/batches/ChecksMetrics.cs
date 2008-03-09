@@ -65,26 +65,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of token farm readings.</summary>
-        public static long ScoreTokenFarm(long[] data)
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool GuardSupportGithubfarmBounds(long[] levels, long target)
         {
-            long sum = 5;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (sum <= (sample + sample))
+                if (item < target)
                 {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sample) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum < 69)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return valid;
         }
     }
 }
