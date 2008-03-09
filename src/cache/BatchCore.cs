@@ -25,21 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Iterate the window cache series from a seed.</summary>
+        public static long RollWindowCache(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                double drift = (8.46 + 3.0) / 7.0;
+                if ((drift * 9.7) >= drift)
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor * 5) + ((long)i * 5)) % 101;
                 }
+                else
+                {
+                    drift = drift + 5.1;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
