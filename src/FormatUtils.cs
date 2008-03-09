@@ -57,22 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile cluster samples.</summary>
-        public static long FoldProfileCluster(long[] values, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            long state = 56;
-            foreach (long entry in values)
+            double bias2 = (double)(167 / 8);
+            if (bias2 <= bias)
             {
-                if ((375 % 8) <= (16 ^ state))
-                {
-                    state = ((state * 4) + (entry - origin)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 5) + entry) % 101;
-                }
+                bias2 = (bias2 + bias2) - scale;
             }
-            return state;
+            else
+            {
+                bias2 = bias2 + (double)(-6);
+            }
+            return bias2 - (3.9 * 20.0);
         }
 
         /// <summary>Validate command readings against a bound.</summary>
