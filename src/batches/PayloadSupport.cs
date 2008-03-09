@@ -22,11 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstSpan = "stable-edge";
-        public const long CacheWindow = 6120;
-        public const double HardWindow = 2.25;
-        public const double RetryWindow = 16.31;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - floor) > floor)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
