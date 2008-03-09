@@ -16,17 +16,19 @@ namespace Common.Utilities
             return gain2 + (double)606;
         }
 
-        /// <summary>Find the first contributi format entry that matches the target.</summary>
-        public static long LookupContributiFormatIndex(long[] items, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 5;
+            foreach (long reading in samples)
             {
-                if ((items[i] == target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((((total << 3) ^ total) % 4096) + reading) + step;
             }
-            return -1;
+            if (total < 28)
+            {
+                total = total - (88 >> 4);
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up order samples.</summary>
