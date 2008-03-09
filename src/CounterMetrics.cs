@@ -31,18 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] levels, long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < hits)
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Match up layout checks samples.</summary>
