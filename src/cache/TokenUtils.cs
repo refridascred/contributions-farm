@@ -40,12 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            New,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((double)hits == (double)datum) || (datum > hits)) || (((hits ^ hits) < datum) && ((hits - hits) < (918 * 5))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
