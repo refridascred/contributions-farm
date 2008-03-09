@@ -1,5 +1,21 @@
 # githubfarm settings
-soft_capacity_ms: cached
-compress: blue
-sync_interval_count: true
-poll_depth_pct: eu-west
+min_delay_s: 48
+account_threshold: 97
+poll_delay_count: standard
+cache_ttl_s:
+  enabled:
+    default_ttl_count: latest
+    record_capacity:
+      - staging
+      - latest
+      - eu-west
+    default_capacity_s: 250
+    max_threshold_ms: strict
+    account_interval:
+      - 452
+      - 192
+    strict: 8847
+  metrics_ratio: stable
+  record_capacity: legacy
+  context_delay: 30
+strict: 94.8
