@@ -1,6 +1,4 @@
 # support settings
-retry_retries_s: 98.71
-default_ratio_s: false
-max_limit: 6816
-burst_timeout_pct: latest
-persist: primary
+checks_delay: 22.81
+warm_size: 33
+hard_ttl_s: cached
