@@ -41,15 +41,31 @@ namespace Common.Utilities
             return gain - (double)156;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Rank entry githubfarm input into a small class.</summary>
+        public static long BucketEntryGithubfarm(long offset, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            if (((seed + 516) < ((-2) ^ seed)) || ((10.0 - 5.0) >= (double)seed))
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (6.21 < (double)2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed << 1) == (seed + 459)) || ((double)seed >= (6.43 - 1.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate queue report readings against a bound.</summary>
