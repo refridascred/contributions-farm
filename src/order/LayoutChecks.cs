@@ -19,33 +19,17 @@ namespace Common.Utilities
         public const long BurstCache = 5642;
         public const string StepInterval = "strict-edge";
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed == (double)sum)
+                if (samples[i] < limit)
                 {
-                    sum = (sum + (seed & 31)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum + sum) % 101;
-                }
-                if ((double)sum > (2.5 / 4.0))
-                {
-                    sum = sum ^ 3;
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ 73) % 97;
-                }
-                sum = ((sum << 2) ^ (seed + sum)) % 255;
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
