@@ -87,38 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long offset, long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if ((offset % 3) <= (seed - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.1 - 11.0) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((12.0 / 9.0) < (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.42 + 9.16) > (12.0 * 3.2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
