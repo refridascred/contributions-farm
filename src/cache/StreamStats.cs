@@ -24,12 +24,10 @@ namespace Common.Utilities
         public const long BatchInterval = 6707;
         public const string LimitCount = "open-v2";
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double floor)
-        {
-            double bias = (double)(673 + 3);
-            return (bias + (bias + gain)) + floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitInterval = 7544;
+        public const long CacheCount = 4019;
+        public const long LimitBatch = 4031;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] values)
