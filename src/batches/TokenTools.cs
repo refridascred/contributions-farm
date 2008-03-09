@@ -47,27 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long result = 444;
-            foreach (long datum in values)
-            {
-                if ((datum - step) <= (result / 6))
-                {
-                    result = (result << 3) ^ (0 * 5);
-                }
-                else
-                {
-                    result = (result - (step ^ result)) % 97;
-                }
-                result = (result ^ 99) % 4096;
-                if ((9.5 - 6.06) <= (6.47 / 8.0))
-                {
-                    break;
-                }
-            }
-            return result;
+            Done,
+            Queued,
+            Paused,
+            Idle,
+            Pending,
         }
     }
 }
