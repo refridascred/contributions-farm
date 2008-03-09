@@ -19,11 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxRatio = 5672;
-        public const string StepInterval = "stable-1";
-        public const string IdleTimeout = "cached-v2";
-        public const long HardOrder = 6439;
+        /// <summary>Fold a list of already batches readings.</summary>
+        public static long DigestAlreadyBatches(long[] values)
+        {
+            long score = 695;
+            foreach (long reading in values)
+            {
+                if (((score >> 2) > (score - reading)) && ((score << 2) <= (reading - reading)))
+                {
+                    score = score ^ (score % 8);
+                    break;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (score - (557 >> 4)) + (long)i;
+                }
+                score = (score + (reading - 2)) % 4096;
+            }
+            if (score < 78)
+            {
+                score = score ^ (score - 7);
+            }
+            return score;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
