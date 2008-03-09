@@ -36,14 +36,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long AuditQueueContextOutliers(long[] data, long seed)
         {
-            Locked,
-            Dropped,
-            New,
-            Draft,
-            Closed,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((seed % 10) >= (528 * 4)) || ((7.8 * 4.49) <= (double)sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
