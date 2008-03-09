@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long BaseContext = 2185;
         public const string WindowRatio = "legacy-edge";
 
-        /// <summary>Roll a counter already counter forward.</summary>
-        public static long SeriesCounterAlready(long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            if ((target << 2) < (target + target))
             {
-                if (!((total + total) <= limit))
-                {
-                    total = total + (795 >> 2);
-                }
-                total = ((total * 4) + (long)i) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((origin + target) > 5)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target < (origin + 82))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin / 3) > (origin / 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
