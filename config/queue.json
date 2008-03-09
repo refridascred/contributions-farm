@@ -1,8 +1,11 @@
 {
-  "min_interval": 4364,
-  "max_limit_count": 17,
-  "strict": "stable",
-  "default_ratio_count": 8,
-  "compress": 80.18,
-  "persist": true
+  "default_retries_count": {
+    "stats_interval": 500,
+    "batch_retries": false,
+    "filter_capacity": 47.06,
+    "batch_ttl": 29.0
+  },
+  "default_delay": false,
+  "strict": 9770,
+  "poll_window_count": 30
 }
