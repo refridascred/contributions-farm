@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] data, long target)
+        /// <summary>Match up context graph samples.</summary>
+        public static long MatchContextGraphCount(long[] samples)
         {
-            long score = 12;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score > (datum >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ (score + 52)) % 97;
+                    if ((samples[i] - samples[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > (-9))
-            {
-                score = (score + (target - score)) % 97;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a layout record.</summary>
