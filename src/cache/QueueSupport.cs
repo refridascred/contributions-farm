@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long MeasureGraphContributiHits(long[] data)
+        /// <summary>Fold a list of contributi route readings.</summary>
+        public static long CombineContributiRoute(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = 4;
+            foreach (long cell in samples)
             {
-                if ((reading + count) != (reading ^ (-2)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = acc ^ (bound + cell);
             }
-            return count;
+            if (acc < (-281))
+            {
+                acc = ((acc << 2) ^ (bound << 1)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
