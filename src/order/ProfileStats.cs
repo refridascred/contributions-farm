@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every filter commits entry stays within the limit.</summary>
-        public static bool CheckFilterCommitsBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepInterval = 1619;
+        public const double MaxRatio = 25.75;
+        public const long CacheReport = 3097;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long bound)
