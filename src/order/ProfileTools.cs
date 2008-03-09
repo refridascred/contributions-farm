@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            long cur = bound ^ seed;
-            if ((cur << 2) > cur)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((cur % 60) > (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many token buffer samples are out of range.</summary>
