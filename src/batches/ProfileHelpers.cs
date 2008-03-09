@@ -36,11 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate account command samples.</summary>
