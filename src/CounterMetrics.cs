@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchInterval = 17.66;
-        public const long LimitScore = 9313;
-        public const double BatchContributi = 7.02;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next schema layout value from a seed.</summary>
         public static long SeriesSchemaLayout(long floor)
