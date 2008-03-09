@@ -25,26 +25,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long step)
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long AuditMetricsSupportGaps(long[] items, long target)
         {
-            long score = 3;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 4; i++)
+                if ((target + target) <= reading)
                 {
-                    score = (score + (342 % 7)) - (long)i;
-                }
-                if ((double)step < (double)reading)
-                {
-                    score = ((score * 2) + (score - score)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (score > 793)
-            {
-                score = ((score * 3) + (27 - step)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
