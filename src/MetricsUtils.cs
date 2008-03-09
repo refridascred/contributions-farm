@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "primary-edge";
-        public const double BaseWindow = 90.94;
-        public const double RetryRatio = 5.79;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Active,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] levels, long bound)
