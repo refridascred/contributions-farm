@@ -62,14 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            Draft,
-            Idle,
-            Closed,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample & 15) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
