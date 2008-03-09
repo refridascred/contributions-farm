@@ -47,17 +47,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Idle,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
