@@ -20,22 +20,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of window filter readings.</summary>
-        public static long FoldWindowFilter(long[] readings)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long total = 3;
-            foreach (long reading in readings)
+            double bias2 = bias;
+            if (bias2 >= bias)
             {
-                if (!((46 - reading) >= total))
-                {
-                    total = total + (reading / 7);
-                }
+                bias2 = bias2 - (double)(-179);
             }
-            if (total > 621)
+            else
             {
-                total = (total + (total - (long)readings.Length)) % 101;
+                bias2 = bias2 - bias2;
             }
-            return total % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (double)6) + (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
