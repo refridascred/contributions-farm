@@ -1,8 +1,13 @@
 {
-  "base_window": [414, 157, 370, 177],
-  "min_retries_pct": true,
-  "compress": 1019,
-  "retry_retries_ms": "latest",
-  "channel_window": 30.7,
-  "token_capacity": "legacy"
+  "batch_ttl_pct": 7351,
+  "channel_ttl": 5528,
+  "retry_capacity_count": ["edge", "legacy", "open", "legacy"],
+  "idle_ttl": {
+    "enabled": 536,
+    "hard_window_count": false,
+    "poll_interval_pct": 60,
+    "burst_interval_s": "green",
+    "report_threshold": "stable"
+  },
+  "readonly": 30
 }
