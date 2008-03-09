@@ -69,39 +69,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long target, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long edge = target - floor;
-            if (target >= (target + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((97 + floor) != (target >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor & 3) <= (edge >> 1)) && ((8.1 * 20.0) != (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor & 127) != (edge % 64))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
