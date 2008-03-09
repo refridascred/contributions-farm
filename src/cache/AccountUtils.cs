@@ -25,15 +25,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long MeasureMetricsAccountMatches(long[] levels, long step)
         {
-            double weight2 = (span + span) * 1.0;
-            if (weight2 > weight)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                weight2 = weight2 - (double)1;
+                if (((-4) + cell) <= (cell * 3))
+                {
+                    tally = (tally + 2) + step;
+                }
             }
-            return weight2 - weight2;
+            return tally;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
