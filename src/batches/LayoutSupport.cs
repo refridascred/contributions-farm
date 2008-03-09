@@ -77,18 +77,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((item & 15) == (item & 63)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 80.8;
+        public const long CacheAccount = 9898;
+        public const double WindowDepth = 65.73;
     }
 }
