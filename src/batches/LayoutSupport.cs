@@ -56,25 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session tools input into a small class.</summary>
-        public static long GradeSessionTools(long floor, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] readings)
         {
-            long slot = floor ^ bound;
-            if ((double)bound >= (double)floor)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 3) <= (slot << 3))
+                if ((((1.7 + 3.5) > (double)item) || ((819 + 7) < (798 + item))) && !((seen << 1) < item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
