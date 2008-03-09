@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const string LimitWindow = "fallback-edge";
         public const long LimitInterval = 7956;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] samples)
         {
-            Active,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen < (seen + seen))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
