@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit channel session readings against a rule.</summary>
-        public static long TallyChannelSessionHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (13.0 < (double)hits)
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinFactor = 6966;
+        public const double BatchGraph = 64.8;
+        public const long BurstGraph = 8781;
+        public const long RetryGraph = 5421;
+        public const double StepGraph = 62.87;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] readings, long origin)
