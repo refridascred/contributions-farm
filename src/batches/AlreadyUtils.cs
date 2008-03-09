@@ -78,19 +78,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter window value.</summary>
-        public static double ProjectCounterWindow(double scale, double span)
+        /// <summary>Match up cache account samples.</summary>
+        public static long PairCacheAccountCount(long[] series)
         {
-            double mean = (span - span) * 15.0;
-            if (mean > (double)45)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + 8.7;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean - mean;
+            return matches;
         }
     }
 }
