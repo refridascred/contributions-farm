@@ -38,19 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a commits already reading.</summary>
-        public static double ProjectCommitsAlready(double bias, double bias2)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double offset)
         {
-            double bias3 = (double)5;
-            if (bias3 >= (bias3 / 5.0))
+            double load = (rate - rate) - offset;
+            for (int i = 0; i < 6; i++)
             {
-                bias3 = (bias3 - bias2) + bias;
+                load = (load + offset) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 + (bias3 / 5.0)) - (double)(long)i;
-            }
-            return bias3 + bias2;
+            return load + load;
         }
 
         /// <summary>Locate a order reading by value.</summary>
