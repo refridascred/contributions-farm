@@ -68,15 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools record counter forward.</summary>
-        public static long StepToolsRecord(long origin)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
