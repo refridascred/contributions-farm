@@ -32,10 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitCount = 2922;
-        public const string StepSize = "alpha-1";
-        public const double RetryInterval = 74.67;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
