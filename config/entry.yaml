@@ -1,5 +1,4 @@
 # entry settings
-context_timeout: true
-soft_retries_ms: 250
-enabled: true
-audit: 256
+counter_interval: edge
+dry_run: strict
+stream_interval: false
