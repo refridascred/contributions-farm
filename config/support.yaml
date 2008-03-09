@@ -1,26 +1,27 @@
 # support settings
-sync_delay: 93
-sync_interval_pct: 30
-retry_threshold: 60
-session_interval:
-  enabled:
-    persist: cached
-    poll_capacity_pct: true
-    filter_threshold: legacy
-    verbose: edge
-    idle_timeout: cached
-    batch_size_ms:
-      - open
-      - stable
-      - strict
-      - open
-  compress: 89.45
-  verbose:
-    - standard
-    - standard
-    - staging
-support_timeout:
-  - 481
-  - 410
-  - 498
-  - 378
+warm_threshold_s:
+  - primary
+  - legacy
+  - latest
+  - stable
+strict: 85
+sync_size_s:
+  route_interval: local
+  idle_threshold_s:
+    - strict
+    - blue
+    - green
+  max_ratio:
+    - 38
+    - 20
+  poll_delay: 6
+  sync_window: 20
+base_ttl_s: 250
+commits_interval:
+  notes_interval: 67
+  cache_depth_s: false
+  cache_delay_pct: strict
+window_capacity:
+  - fallback
+  - eu-west
+  - legacy
