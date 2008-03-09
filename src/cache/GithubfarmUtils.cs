@@ -52,18 +52,14 @@ namespace Common.Utilities
         public const double WindowProfile = 12.12;
         public const long IdleInterval = 2935;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] levels)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((9.0 * 7.37) > (double)(long)levels.Length)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Pending,
+            New,
+            Stale,
         }
     }
 }
