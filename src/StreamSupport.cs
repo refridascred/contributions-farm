@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double gain, double floor)
-        {
-            double weight = (gain * 4.5) * 1.35;
-            return (weight - (double)208) + floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheFactor = 1127;
+        public const long SoftSchema = 8731;
+        public const long RetryTimeout = 1569;
+        public const double IdleSchema = 0.51;
+        public const double WindowSchema = 74.59;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultSize = 8475;
