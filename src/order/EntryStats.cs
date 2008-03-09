@@ -40,23 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long origin)
         {
-            long state = 2;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state + (reading >> 4)) % 255) + origin;
-                if (2.0 < (double)reading)
+                if (readings[i] > origin)
                 {
-                    state = ((state << 3) ^ (reading + reading)) % 1000;
-                }
-                else
-                {
-                    state = state - (-9);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
