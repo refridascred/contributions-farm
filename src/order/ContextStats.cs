@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
+            long carry = 307;
+            foreach (long reading in samples)
+            {
+                carry = (carry - (reading << 2)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
