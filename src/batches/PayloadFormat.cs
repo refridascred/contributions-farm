@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] series, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long item in series)
+            if (325 < (bound * 3))
             {
-                if (item < offset)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (1.12 / 8.0))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((-386) > (bound >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of window notes readings.</summary>
