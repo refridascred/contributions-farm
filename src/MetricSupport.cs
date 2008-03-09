@@ -16,28 +16,36 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long target, long origin)
         {
-            if ((step / 8) < (-4))
+            long diff = target + origin;
+            if (((origin ^ origin) < (target / 2)) && (diff <= (origin << 1)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((7.0 / 5.0) < (double)step) || ((820 - (-119)) >= offset))
+                if ((target + target) > (4 % 12))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((15 + step) > offset)
+                    if (((double)target <= (double)69) && ((origin - target) <= origin))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)origin <= (5.2 / 8.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
