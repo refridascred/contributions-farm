@@ -79,19 +79,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample & 15) >= tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 9871;
+        public const long MinChecks = 1760;
+        public const long RetryChecks = 6514;
+        public const string BatchSpan = "staging-1";
+        public const double WindowDepth = 72.92;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
