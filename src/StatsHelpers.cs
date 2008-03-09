@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Failed,
+            New,
             Ready,
-            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Blend two layout batch measurements.</summary>
