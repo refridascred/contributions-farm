@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the account buffer entries that pass the check.</summary>
-        public static long TallyAccountBufferMatches(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((matches >> 4) > (value + 573))
+                if (datum < step)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the batch class values.</summary>
