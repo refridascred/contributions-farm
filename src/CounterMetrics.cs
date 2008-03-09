@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] samples, long seed)
+        /// <summary>Roll a counter cache counter forward.</summary>
+        public static long StepCounterCache(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) == 0))
+                if (floor >= (floor + floor))
                 {
-                    return (long)i;
+                    anchor = (anchor + 21) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the route level values.</summary>
