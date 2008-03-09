@@ -27,19 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long state = 315;
-            foreach (long datum in values)
-            {
-                state = ((state + (state / 8)) % 65521) ^ datum;
-            }
-            if (state > 99)
-            {
-                state = ((state << 2) ^ (6 + state)) % 97;
-            }
-            return state;
+            Locked,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
