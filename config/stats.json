@@ -1,5 +1,16 @@
 {
-  "report_capacity": 100,
-  "warm_window_count": "fallback",
-  "metrics_ttl": 30
+  "notes_timeout": 92.57,
+  "cache_threshold_ms": {
+    "schema_retries": false,
+    "tools_size": "fallback",
+    "idle_ratio": {
+      "readonly": true,
+      "sync_delay_pct": "eu-west",
+      "hard_ttl_count": 100
+    },
+    "dry_run": 20.2,
+    "min_delay_count": [432, 33]
+  },
+  "warm_window": ["fallback", "fallback", "primary", "blue"],
+  "flush_ttl_pct": "open"
 }
