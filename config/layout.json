@@ -1,6 +1,8 @@
 {
-  "burst_timeout_s": "edge",
-  "hard_threshold_pct": 500,
-  "sync_ratio_s": [312, 323, 310, 301],
-  "idle_timeout_pct": "local"
+  "default_interval_ms": ["edge", "strict", "standard"],
+  "channel_ttl": "eu-west",
+  "sync_ttl_ms": "stable",
+  "buffer_ratio": true,
+  "cache_depth_count": 15.94,
+  "base_limit": 500
 }
