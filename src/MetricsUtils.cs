@@ -14,25 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long seed, long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double offset)
         {
-            long bound2 = seed + bound;
-            if (((double)bound2 <= (double)bound) || ((double)bound > (double)bound2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed + bound) > (bound2 + bound2)) || ((56 >> 1) < (bound + seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double rate = offset;
+            return (rate - (double)198) + gain;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
