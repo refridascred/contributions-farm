@@ -1,8 +1,6 @@
 {
-  "soft_depth_pct": ["standard", "edge"],
-  "verbose": "cached",
-  "sync_capacity_ms": ["legacy", "cached", "cached"],
-  "base_interval_pct": ["green", "fallback"],
-  "session_depth": 80.7,
-  "min_capacity": 4693
+  "readonly": 100,
+  "soft_interval": true,
+  "retry_capacity_ms": 1720,
+  "min_delay_ms": "eu-west"
 }
