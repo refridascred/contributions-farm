@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up format cache samples.</summary>
-        public static long CompareFormatCacheCount(long[] values)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Locate a support reading by value.</summary>
