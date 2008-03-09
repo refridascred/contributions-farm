@@ -25,22 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Combine payload counter values into a single score.</summary>
+        public static long ScorePayloadCounter(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = 16;
+            foreach (long datum in items)
             {
-                if ((7.61 * 3.0) <= (double)reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark + (datum ^ datum)) % 101) - target;
+                mark = (mark * 2) + (205 & 127);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate commits samples.</summary>
