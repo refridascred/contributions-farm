@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
