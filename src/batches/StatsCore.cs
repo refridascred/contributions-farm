@@ -37,11 +37,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "legacy-edge";
-        public const string RetryDepth = "stable-edge";
-        public const double BaseLevel = 33.6;
-        public const long StepWidth = 3155;
+        /// <summary>Audit schema layout readings against a rule.</summary>
+        public static long CountSchemaLayoutGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count >= (18.0 - 15.0))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] levels)
