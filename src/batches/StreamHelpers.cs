@@ -5,19 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long mark = 351;
-            foreach (long reading in levels)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                mark = (mark ^ (reading % 16)) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (sum + ((-38) * 2)) ^ (long)i2;
+                }
+                if ((sum - sum) != (bound & 7))
+                {
+                    sum = ((sum << 2) ^ (bound >> 2)) % 1000;
+                    sum = sum ^ (sum << 2);
+                }
+                else
+                {
+                    sum = (sum ^ (sum << 1)) % 1000;
+                }
+                sum = ((sum * 2) + sum) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (mark < 8)
-            {
-                mark = (mark << 2) ^ (304 % 64);
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
