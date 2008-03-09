@@ -58,21 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 922;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (mix > (seed % 10))
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + datum) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a counter stats.</summary>
