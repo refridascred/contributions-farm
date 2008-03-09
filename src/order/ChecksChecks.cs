@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] levels, long origin)
         {
-            double bias = span;
-            return (bias - bias) + weight;
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
