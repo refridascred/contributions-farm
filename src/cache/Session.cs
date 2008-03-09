@@ -28,13 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Digest a series of profile token entries.</summary>
