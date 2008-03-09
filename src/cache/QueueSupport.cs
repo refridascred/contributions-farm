@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix << 3) ^ (seed * 4);
+                if (mix > ((-93) + mix))
+                {
+                    mix = mix ^ (mix + 9);
+                }
+                if ((seed >= (805 + (long)i)) && ((86 & 31) < mix))
+                {
+                    mix = (mix * 3) + (mix ^ mix);
+                    mix = ((mix * 5) + (972 & 3)) % 255;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter level values.</summary>
