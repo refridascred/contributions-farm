@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a report filter reading.</summary>
-        public static double ProjectReportFilter(double gain, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            double rate = floor / 9.0;
-            if (rate >= (floor * 19.0))
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate + 5.4) + gain;
+                acc = ((acc * 3) + (acc + 355)) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return rate + (double)116;
+            return acc;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
