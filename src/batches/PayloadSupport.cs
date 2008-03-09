@@ -22,22 +22,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (0.59 >= (double)value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
