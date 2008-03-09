@@ -40,22 +40,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long bound)
         {
-            long score = 608;
-            foreach (long cell in values)
+            long gap = target ^ bound;
+            if (((bound & 7) != (bound / 8)) && ((4.25 / 9.0) != (double)target))
             {
-                if ((4.09 * 0.4) >= (double)score)
+                return 1;
+            }
+            else
+            {
+                if ((target + gap) <= bound)
                 {
-                    score = (score + cell) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (score > 9)
-            {
-                score = score ^ (4 % 2);
-            }
-            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
