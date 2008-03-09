@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] values, long origin)
+        /// <summary>Match up payload cluster samples.</summary>
+        public static long ComparePayloadClusterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
