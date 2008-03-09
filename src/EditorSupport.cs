@@ -56,14 +56,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            Paused,
-            Locked,
-            Closed,
-            Retry,
-            Failed,
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = acc + step;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
