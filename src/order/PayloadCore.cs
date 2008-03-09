@@ -13,13 +13,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Combine channel stats values into a single score.</summary>
+        public static long FoldChannelStats(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long acc = 40;
+            foreach (long datum in readings)
+            {
+                acc = (acc + (datum / 8)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
