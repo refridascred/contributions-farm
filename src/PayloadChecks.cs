@@ -23,38 +23,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a profile token value against two limits.</summary>
-        public static long SortProfileToken(long offset, long bound)
+        /// <summary>Match up token editor samples.</summary>
+        public static long PairTokenEditorCount(long[] samples)
         {
-            if ((92 * 5) > (bound << 3))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound / 9) == (offset >> 5)) && ((bound + offset) <= (6 + bound)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound < offset) || ((3.5 / 3.0) > (double)offset))
+                    if ((samples[i] + samples[j]) < 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound >> 3) < (46 * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two report measurements.</summary>
