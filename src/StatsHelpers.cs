@@ -39,19 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] data, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (item < offset)
+                if (value > seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
