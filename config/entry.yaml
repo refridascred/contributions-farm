@@ -1,4 +1,6 @@
 # entry settings
-counter_interval: edge
-dry_run: strict
-stream_interval: false
+commits_delay: false
+idle_window: false
+session_depth: 60
+stats_threshold: 60
+hard_depth: 22.85
