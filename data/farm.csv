@@ -1,6 +1,9 @@
-id,token,count
-1,green,fallback
-2,346,480
-3,standard,30.98
-4,85.86,408
-5,local,strict
+id,owner,weight,level
+1,85.14,543,822
+2,1.85,latest,staging
+3,72.91,224,82.7
+4,local,latest,967
+5,3.61,235,711
+6,23.84,63.37,62.99
+7,97.46,53.31,735
+8,613,45.49,361
