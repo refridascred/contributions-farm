@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Dropped,
-            Paused,
-            Stale,
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
