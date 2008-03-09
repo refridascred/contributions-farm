@@ -32,18 +32,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (((double)offset <= (3.1 + 1.0)) && ((1.47 / 3.0) >= (double)offset))
             {
-                if ((item >= (tally * 3)) && ((tally - 287) != (item % 3)))
+                return 1;
+            }
+            else
+            {
+                if ((636 * 3) < (offset ^ bound))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((9.65 * 2.21) == (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
