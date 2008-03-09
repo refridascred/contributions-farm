@@ -1,12 +1,12 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT,
-    weight REAL
+    owner TEXT NOT NULL,
+    created_at TIMESTAMP,
+    ratio REAL,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_weight ON cluster_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_created_at ON cluster_logs (created_at);
 
-INSERT INTO cluster_logs (active, state, token, weight) VALUES (4, 'standard', 'legacy', 59.76);
+INSERT INTO cluster_logs (owner, ratio, token) VALUES ('latest', 16.68, 'eu-west');
