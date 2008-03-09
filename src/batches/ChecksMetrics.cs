@@ -86,18 +86,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels, long seed)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double drift = (double)(625 + 6);
+            if (drift > drift)
             {
-                if ((seed - count) >= (count + seed))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                drift = (drift + floor) - scale;
             }
-            return count;
+            else
+            {
+                drift = drift - (6.85 + 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (floor - floor);
         }
     }
 }
