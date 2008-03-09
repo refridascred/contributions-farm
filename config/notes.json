@@ -1,12 +1,7 @@
 {
-  "cluster_ttl": "cached",
-  "batch_limit_ms": {
-    "retry_delay": "eu-west",
-    "base_ttl_ms": "stable",
-    "min_window_count": 100,
-    "max_retries": "cached"
-  },
-  "batch_delay": ["eu-west", "eu-west", "legacy"],
-  "compress": "eu-west",
-  "idle_threshold_ms": 19.8
+  "base_interval": [318, 228, 465],
+  "cache_ttl_count": "eu-west",
+  "support_delay": "stable",
+  "profile_size": ["edge", "strict", "strict", "cached"],
+  "flush_window_count": 100
 }
