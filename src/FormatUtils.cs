@@ -14,10 +14,39 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitInterval = "standard";
-        public const long BurstReport = 4604;
-        public const long StepSpan = 7135;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long floor)
+        {
+            if ((7.4 / 6.0) < (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ floor) <= (floor / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 5) == (floor & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + step) != (floor >> 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long IdleSession = 3453;
