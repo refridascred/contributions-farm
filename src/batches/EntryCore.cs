@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data)
         {
-            Ready,
-            Done,
-            Pending,
+            long anchor = 243;
+            foreach (long value in data)
+            {
+                if (((double)anchor <= (double)value) && ((value + anchor) >= (value - anchor)))
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = anchor + (37 + anchor);
+                }
+            }
+            if (anchor > 495)
+            {
+                anchor = (anchor + (anchor << 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Combine tools commits values into a single score.</summary>
