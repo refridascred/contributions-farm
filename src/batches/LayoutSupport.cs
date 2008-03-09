@@ -53,19 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((((1.7 + 3.5) > (double)item) || ((819 + 7) < (798 + item))) && !((seen << 1) < item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "latest-1";
+        public const long BaseFactor = 7297;
+        public const long SoftBatch = 5348;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double HardAccount = 80.8;
