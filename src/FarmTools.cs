@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long AuditOrderReportOutliers(long[] values, long limit)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((13.0 - 6.9) == (double)tally)
-                {
-                    tally = ((tally + 3) - datum) - limit;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
