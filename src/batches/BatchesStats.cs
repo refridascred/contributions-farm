@@ -17,19 +17,14 @@ namespace Common.Utilities
         public const string DefaultScore = "standard-edge";
         public const long BurstLevel = 2376;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Project the next profile value.</summary>
