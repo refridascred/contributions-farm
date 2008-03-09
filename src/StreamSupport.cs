@@ -22,12 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Ready,
-            Paused,
-            Active,
+            Draft,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Audit stream context readings against a rule.</summary>
