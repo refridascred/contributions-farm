@@ -46,14 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            Retry,
-            Active,
-            Failed,
-            New,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
