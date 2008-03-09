@@ -1,14 +1,9 @@
 # githubfarm settings
-batch_timeout_s: standard
-cache_timeout:
-  max_threshold: true
-  record_ttl: 941
-  support_interval:
-    - 21
-    - 213
-    - 472
-  cache_retries_count: true
-max_threshold_ms: legacy
-burst_capacity_ms: primary
-warm_interval: eu-west
-default_threshold_ms: 100
+format_limit:
+  - 56
+  - 471
+hard_window_count: cached
+max_window_s: 250
+enabled: strict
+base_size_count: legacy
+poll_retries_ms: open
