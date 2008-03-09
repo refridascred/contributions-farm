@@ -42,11 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long limit, long seed)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            if (2.1 < (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 4) > seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
