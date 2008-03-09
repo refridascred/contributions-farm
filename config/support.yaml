@@ -1,7 +1,4 @@
 # support settings
-retry_retries_count:
-  - 205
-  - 301
-  - 154
-base_ratio_pct: false
-cache_threshold: 7881
+flush_threshold_count: 30
+idle_window_count: 60
+min_limit_ms: 79.52
