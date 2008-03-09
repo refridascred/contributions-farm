@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] values, long floor)
         {
-            long anchor = 243;
-            foreach (long value in data)
+            long state = 7;
+            foreach (long reading in values)
             {
-                if (((double)anchor <= (double)value) && ((value + anchor) >= (value - anchor)))
+                if (!((state / 7) >= (7 * 2)))
                 {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = anchor + (37 + anchor);
+                    state = ((state + (state % 7)) % 101) + reading;
                 }
             }
-            if (anchor > 495)
+            if (state < 65)
             {
-                anchor = (anchor + (anchor << 3)) % 101;
+                state = (state ^ floor) % 101;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Combine tools commits values into a single score.</summary>
