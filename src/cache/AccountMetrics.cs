@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinSpan = 6265;
+        public const long IdleCounter = 6891;
+        public const double SoftCounter = 44.46;
+        public const long CacheCounter = 5661;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
