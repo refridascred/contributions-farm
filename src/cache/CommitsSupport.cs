@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] series, long step)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] levels, long limit)
         {
-            long result = 91;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= step)
+                if (levels[i] == limit)
                 {
-                    result = (result + (item + item)) % 101;
-                }
-                else
-                {
-                    result = result + (result + step);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
