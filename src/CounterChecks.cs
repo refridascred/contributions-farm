@@ -19,24 +19,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values)
         {
-            if (562 >= (origin + bound))
+            long anchor = 89;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (17.0 + 7.2))
+                if (item >= anchor)
                 {
-                    return 0;
+                    anchor = anchor ^ ((long)values.Length << 2);
                 }
                 else
                 {
-                    return 3;
+                    anchor = anchor + (item & 127);
+                }
+                if (!((double)item != (0.55 * 8.83)))
+                {
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a queue entry.</summary>
