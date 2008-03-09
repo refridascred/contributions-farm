@@ -20,22 +20,13 @@ namespace Common.Utilities
             return bias2 - (double)20;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] values, long bound)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long result = 7;
-            foreach (long item in values)
-            {
-                if (((item * 2) >= bound) && ((result - (long)values.Length) >= (bound * 5)))
-                {
-                    result = ((result << 3) ^ bound) % 1000;
-                }
-            }
-            if (result < 2)
-            {
-                result = (result * 3) + result;
-            }
-            return result;
+            Retry,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
