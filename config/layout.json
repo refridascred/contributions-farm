@@ -1,7 +1,8 @@
 {
-  "batches_ttl": true,
-  "cluster_retries": 3048,
-  "record_timeout": 68,
-  "persist": "local",
-  "entry_window": 500
+  "idle_ratio_pct": 8869,
+  "enabled": true,
+  "schema_interval": 38,
+  "audit": "blue",
+  "batches_size": "green",
+  "readonly": 6155
 }
