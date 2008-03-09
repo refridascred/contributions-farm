@@ -28,13 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] values, long seed)
+        /// <summary>Check that every token payload entry stays within the limit.</summary>
+        public static bool ValidateTokenPayloadRange(long[] samples, long origin)
         {
             bool valid = true;
-            foreach (long datum in values)
+            foreach (long entry in samples)
             {
-                if (datum < seed)
+                if (entry < origin)
                 {
                     valid = false;
                     break;
