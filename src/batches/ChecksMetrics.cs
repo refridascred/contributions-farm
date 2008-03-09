@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long step)
         {
-            long span = floor + offset;
-            if (((span / 3) < span) || ((9.06 + 0.1) != (double)span))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >> 4) <= (floor * 5))
+                if (data[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a graph channel pair into a bucket.</summary>
