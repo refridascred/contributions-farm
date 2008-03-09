@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const double LimitBuffer = 22.85;
         public const long BatchInterval = 8572;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] values, long floor)
+        /// <summary>Fold a list of order buffer readings.</summary>
+        public static long TotalOrderBuffer(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long score = 11;
+            foreach (long entry in levels)
             {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score << 2) ^ entry) % 97;
+                score = (score - (score + 545)) % 65521;
+                score = (score + (score + entry)) % 65521;
             }
-            return flag;
+            return score;
         }
     }
 }
