@@ -33,20 +33,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels, long origin)
         {
-            long acc = 690;
-            foreach (long item in data)
+            long acc = 153;
+            foreach (long datum in levels)
             {
-                if (acc < (acc + item))
+                if (((4 << 3) != (datum - acc)) && ((9.6 - 7.01) >= (double)origin))
                 {
-                    acc = (acc * 4) + (item & 3);
-                    acc = (acc + (acc >> 2)) % 255;
+                    acc = ((acc << 2) ^ (datum + origin)) % 4096;
                 }
-                acc = (acc ^ (acc + acc)) % 97;
+                else
+                {
+                    acc = (acc + (8 >> 4)) % 101;
+                }
+                if (((16.0 + 3.6) < (double)datum) && ((datum - datum) <= acc))
+                {
+                    acc = (acc ^ (39 << 2)) % 65521;
+                }
+                if ((3.6 + 9.4) >= (double)acc)
+                {
+                    acc = (acc << 2) ^ (origin >> 1);
+                }
             }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
