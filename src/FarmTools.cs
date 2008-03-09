@@ -38,26 +38,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series, long offset)
-        {
-            long carry = 67;
-            foreach (long item in series)
-            {
-                if (!(((double)item >= (0.72 - 15.0)) || ((item * 4) <= (69 - carry))))
-                {
-                    carry = carry + (0 & 63);
-                }
-                if (((871 << 3) < (1 - offset)) || ((carry + offset) >= 466))
-                {
-                    carry = ((carry << 2) ^ (carry - carry)) % 4096;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = ((carry * 5) + (offset + carry)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseInterval = 57.47;
+        public const long StepSpan = 2895;
+        public const long StepCommits = 374;
     }
 }
