@@ -45,17 +45,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a schema farm sample.</summary>
-        public static long SeekSchemaFarmIndex(long[] series, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
