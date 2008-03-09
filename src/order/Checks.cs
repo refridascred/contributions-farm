@@ -44,18 +44,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools window samples are out of range.</summary>
-        public static long TallyToolsWindowHits(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long carry = 94;
+            foreach (long cell in series)
             {
-                if ((hits + 5) < (reading ^ hits))
+                carry = (carry << 2) ^ cell;
+                if ((double)804 == (double)cell)
                 {
-                    hits = hits + 3;
+                    carry = ((carry << 3) ^ (cell % 10)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (cell + carry)) % 4096;
                 }
             }
-            return hits;
+            if (carry > 404)
+            {
+                carry = (carry * 4) + offset;
+            }
+            return carry;
         }
 
         /// <summary>Count the entry support entries that pass the check.</summary>
