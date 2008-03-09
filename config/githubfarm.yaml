@@ -1,6 +1,8 @@
 # githubfarm settings
-tools_ratio: false
-poll_retries_count: 62.24
-poll_delay: staging
-idle_window_s: 53.2
-compress: true
+hard_window_count: 4002
+flush_interval: 100
+contributi_capacity:
+  hard_capacity: false
+  idle_size: strict
+  stats_interval: 76.27
+  flush_ratio_ms: primary
