@@ -49,10 +49,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 74.18;
-        public const string RetryStream = "alpha-v2";
-        public const double LimitStream = 96.21;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxLevel = 77.92;
+        public const double WindowWidth = 48.46;
+        public const string SoftCounter = "standard-v2";
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
