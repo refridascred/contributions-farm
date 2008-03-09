@@ -41,18 +41,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] series, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = -795;
+            foreach (long cell in data)
             {
-                if (!((double)tally > (17.0 + 7.84)))
+                if ((double)anchor > 0.67)
                 {
-                    tally = ((tally + 2) + reading) - step;
+                    anchor = ((anchor - floor) % 97) + cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor % 100)) % 65521;
+                }
+                if ((5.5 - 2.9) < (double)floor)
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Adjust a already reading.</summary>
