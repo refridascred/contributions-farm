@@ -60,27 +60,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            if ((limit / 4) != (limit - limit))
             {
-                if (!((anchor - limit) >= (long)i))
+                return 6;
+            }
+            else
+            {
+                if ((origin + limit) > limit)
                 {
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    anchor = anchor - (anchor - limit);
+                    if ((origin - origin) >= (origin % 60))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                if (((-747) + limit) >= (long)i)
-                {
-                    anchor = (anchor - (limit / 9)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
         }
     }
 }
