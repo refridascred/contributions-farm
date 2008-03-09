@@ -46,19 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long origin, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            if ((double)seed <= (7.72 - 7.4))
             {
-                if (((step / 5) <= step) && ((double)anchor > (6.0 + 18.0)))
-                {
-                    anchor = ((anchor << 2) ^ (step - step)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (((9 + 87) < (origin - seed)) || ((seed / 8) > (seed % 100)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
