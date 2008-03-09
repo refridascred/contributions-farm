@@ -24,14 +24,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
         {
-            Active,
-            Queued,
-            Retry,
-            New,
-            Locked,
+            long acc = -687;
+            foreach (long value in data)
+            {
+                if (((acc + 1) != (value << 1)) && ((17.0 + 0.01) != (double)acc))
+                {
+                    acc = (acc - (acc >> 3)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 3) + (acc + acc);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
