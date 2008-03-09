@@ -51,18 +51,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats layout samples are out of range.</summary>
-        public static long CountStatsLayoutOutliers(long[] values, long origin)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits > (12.0 / 7.0))
-                {
-                    hits = ((hits + 3) - sample) - origin;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
