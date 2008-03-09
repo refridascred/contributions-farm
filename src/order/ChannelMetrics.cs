@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long StepWidth = 2561;
         public const long StepSize = 495;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Synced,
-            Done,
-            New,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheBudget = 6848;
+        public const double CacheDepth = 83.95;
+        public const long LimitSpan = 15;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4956;
