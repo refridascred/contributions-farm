@@ -74,11 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account payload reading.</summary>
-        public static double BlendAccountPayload(double scale, double floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double gain = floor - 7.76;
-            return gain + scale;
+            Draft,
+            Retry,
+            Failed,
         }
     }
 }
