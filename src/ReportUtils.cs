@@ -55,18 +55,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] items)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(13.0 < (double)matches))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            New,
         }
     }
 }
