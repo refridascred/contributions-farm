@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up payload metric samples.</summary>
-        public static long PairPayloadMetricCount(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 451;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample <= (55 - carry)) || ((sample - carry) > carry))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (carry << 2)) % 255;
                 }
             }
-            return count;
+            if (carry < 71)
+            {
+                carry = (carry ^ (carry - (-791))) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
