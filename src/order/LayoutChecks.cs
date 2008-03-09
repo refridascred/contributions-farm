@@ -60,32 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long seed, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long lane = seed ^ floor;
-            if (((floor - floor) >= 69) || ((double)floor > (8.2 / 8.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed ^ floor) >= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (lane < (495 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Adjust a account payload reading.</summary>
