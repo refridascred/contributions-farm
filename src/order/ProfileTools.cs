@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine report cluster values into a single score.</summary>
-        public static long DigestReportCluster(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long seed)
         {
-            long result = 818;
-            foreach (long datum in data)
+            long cur = bound ^ seed;
+            if ((cur << 2) > cur)
             {
-                result = result + 1;
-                result = (result - datum) % 4096;
-                result = result - result;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((cur % 60) > (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many token buffer samples are out of range.</summary>
