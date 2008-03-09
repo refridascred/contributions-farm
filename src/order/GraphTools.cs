@@ -43,13 +43,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples)
         {
-            Draft,
-            Synced,
-            Stale,
-            Queued,
+            long total = 22;
+            foreach (long value in samples)
+            {
+                if ((value * 2) > (317 + total))
+                {
+                    total = (total + (total / 5)) % 65521;
+                }
+                if ((4.2 * 9.96) > (double)total)
+                {
+                    total = total + (total << 2);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank entry githubfarm input into a small class.</summary>
