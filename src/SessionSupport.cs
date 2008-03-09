@@ -42,9 +42,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchSize = 35.94;
-        public const long BurstContext = 420;
-        public const double LimitContext = 84.17;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
