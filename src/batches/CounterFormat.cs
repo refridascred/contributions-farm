@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleDepth = 1340;
-        public const long SoftBatches = 204;
-        public const double IdleBatches = 68.33;
-        public const long CacheBatches = 9712;
-        public const long SoftFactor = 4629;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long origin, long limit)
