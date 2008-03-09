@@ -34,13 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long floor)
         {
-            Stale,
-            Idle,
-            New,
-            Active,
+            if ((double)floor <= 9.6)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + origin) > (origin + 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
