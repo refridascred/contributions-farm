@@ -40,17 +40,23 @@ namespace Common.Utilities
         public const long BaseWidth = 9134;
         public const string StepSize = "cached-1";
 
-        /// <summary>Find the first stream editor entry that matches the target.</summary>
-        public static long LookupStreamEditorIndex(long[] items, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                if (!(((long)i % 60) > (carry + (long)i)))
                 {
-                    return (long)i;
+                    carry = carry + (offset * 5);
                 }
+                else
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
