@@ -47,15 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long limit)
         {
-            double weight = 5.5;
-            if (weight > 1.97)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight + (rate * 4.2)) - floor;
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + (0.64 + weight);
+            return -1;
         }
 
         /// <summary>Blend two tools measurements.</summary>
