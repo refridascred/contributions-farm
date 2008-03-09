@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] levels, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((19.0 >= (double)entry) || ((double)(long)levels.Length > 9.0))
-                {
-                    tally = (tally + 2) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a payload options.</summary>
