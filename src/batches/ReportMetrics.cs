@@ -47,19 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] items, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mark = 7;
+            foreach (long value in series)
             {
-                if (item < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark ^ (963 % 10);
+                mark = (mark + value) % 101;
             }
-            return ready;
+            return mark % 65521;
         }
     }
 }
