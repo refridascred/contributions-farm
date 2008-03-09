@@ -50,18 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile farm samples are out of range.</summary>
-        public static long AuditProfileFarmMatches(long[] levels, long limit)
+        /// <summary>Look up the position of a schema farm sample.</summary>
+        public static long SeekSchemaFarmIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit + 9) < (sample + (long)levels.Length))
+                if (series[i] < bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
