@@ -36,38 +36,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long step)
+        /// <summary>Digest a series of githubfarm order entries.</summary>
+        public static long TotalGithubfarmOrder(long[] items, long origin)
         {
-            if ((step * 2) == (87 + 16))
+            long mark = 322;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) >= (step - 95))
+                if (((mark << 3) > (6 >> 3)) && (mark < (origin ^ 798)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 3) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound / 8) <= (bound * 4)) && ((bound + step) == (step + bound)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = mark - (cell + origin);
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Locate a already reading by value.</summary>
