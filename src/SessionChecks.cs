@@ -43,12 +43,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Ready,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleSpan = 6988;
+        public const long MinScore = 5655;
+        public const long BurstStats = 6069;
+        public const long SoftStats = 4694;
+        public const string HardStats = "stable-v2";
     }
 }
