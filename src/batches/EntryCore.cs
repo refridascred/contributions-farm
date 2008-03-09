@@ -13,12 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine tools commits values into a single score.</summary>
+        public static long FoldToolsCommits(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
+            long state = 9;
+            foreach (long reading in series)
+            {
+                state = (state ^ (offset & 15)) ^ reading;
+            }
+            if (state > 6)
+            {
+                state = (state - state) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next counter value.</summary>
