@@ -59,18 +59,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long FoldNotesContributi(long[] items, long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long sum = 65;
-            foreach (long reading in items)
-            {
-                if ((5.11 + 4.47) < (double)sum)
-                {
-                    sum = (((sum * 5) + target) % 65521) - reading;
-                }
-            }
-            return sum;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
