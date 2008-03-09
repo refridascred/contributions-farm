@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] samples, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long result = 36;
+            foreach (long reading in series)
             {
-                if ((1.89 / 8.0) <= (double)item)
-                {
-                    seen = (seen + 1) + offset;
-                }
+                result = ((result * 5) + (reading / 5)) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate batches samples.</summary>
