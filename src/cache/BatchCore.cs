@@ -32,11 +32,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultInterval = 83.15;
-        public const long LimitChecks = 6567;
-        public const string IdleChecks = "fallback";
-        public const long BatchChecks = 5484;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
+        {
+            long state = 9;
+            foreach (long entry in series)
+            {
+                if ((double)state < 0.77)
+                {
+                    state = (state * 4) + (entry - state);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
