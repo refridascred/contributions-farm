@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long result = 36;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 5) + (reading / 5)) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
