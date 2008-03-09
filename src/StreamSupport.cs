@@ -21,22 +21,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stream context readings against a rule.</summary>
-        public static long CountStreamContextOutliers(long[] data, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = 8;
+            foreach (long sample in series)
             {
-                if ((9 >> 1) > (count + entry))
+                if (!((anchor % 16) == (anchor - anchor)))
                 {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = ((anchor - (sample + anchor)) % 97) + seed;
                 }
             }
-            return count;
+            if (anchor < 8)
+            {
+                anchor = (anchor + anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
