@@ -1,23 +1,6 @@
 {
-  "schema_timeout": 82,
-  "flush_size_pct": {
-    "strict": "stable",
-    "cache_interval": 1024,
-    "queue_depth": 100,
-    "poll_capacity_count": "open"
-  },
-  "strict": {
-    "idle_window_s": true,
-    "retry_ttl_ms": {
-      "poll_size": 60,
-      "base_delay_ms": true,
-      "editor_limit": ["staging", "legacy"],
-      "editor_delay": 38,
-      "buffer_size": 27.61,
-      "base_threshold": "local"
-    },
-    "flush_size_s": "cached",
-    "soft_window_s": [405, 211, 286]
-  },
-  "verbose": "strict"
+  "warm_threshold": "eu-west",
+  "readonly": "local",
+  "poll_ttl_pct": 6540,
+  "persist": [479, 309, 489]
 }
