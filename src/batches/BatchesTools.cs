@@ -30,18 +30,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of context queue entries.</summary>
-        public static long FoldContextQueue(long[] levels, long offset)
+        /// <summary>Iterate the notes counter series from a seed.</summary>
+        public static long RollNotesCounter(long limit)
         {
-            long total = 90;
-            foreach (long value in levels)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((offset << 3) <= (total + value)) || ((offset ^ value) <= (offset << 2)))
+                if (limit < (score ^ score))
                 {
-                    total = (total + total) % 4096;
+                    score = ((score * 2) + (34 ^ 33)) % 1000;
                 }
+                if (!((score ^ score) >= ((long)i ^ limit)))
+                {
+                    score = (score + (limit % 3)) % 4096;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return total % 4096;
+            return score;
         }
     }
 }
