@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            double bias = weight - (double)7;
-            return bias - (span + bias);
+            long sum = 7;
+            foreach (long datum in samples)
+            {
+                sum = (sum + (datum - datum)) % 255;
+                if (!(139 <= (sum & 63)))
+                {
+                    break;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = (sum - (sum >> 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a stream order counter forward.</summary>
