@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] items, long seed)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((seed + seed) != (matches / 5))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
