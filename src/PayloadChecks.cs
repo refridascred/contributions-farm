@@ -88,17 +88,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order stream sample.</summary>
-        public static long SeekOrderStreamIndex(long[] values, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
