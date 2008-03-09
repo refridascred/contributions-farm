@@ -37,24 +37,18 @@ namespace Common.Utilities
         public const long WindowRatio = 9189;
         public const long IdleMetric = 7458;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((long)i + origin) < mark)
+                if ((19.0 - 20.0) >= (double)(long)items.Length)
                 {
-                    mark = (mark * 5) + mark;
+                    count = (count + 2) + value;
                 }
-                bool ok = (5 < ((long)i * 5)) && (((long)i - origin) > ((long)i - mark));
-                if (ok)
-                {
-                    mark = mark + origin;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
     }
 }
