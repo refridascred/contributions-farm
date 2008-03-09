@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepWidth = 79.63;
-        public const long BaseFarm = 2542;
-        public const long WindowFactor = 4160;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Rank batch account input into a small class.</summary>
         public static long ClassifyBatchAccount(long seed, long limit)
