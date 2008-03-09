@@ -1,16 +1,8 @@
 {
-  "default_capacity": true,
-  "sync_ttl_pct": 7566,
-  "batch_ratio": {
-    "verbose": 2996,
-    "persist": false,
-    "burst_interval_ms": ["legacy", "green", "blue"],
-    "editor_interval": "local",
-    "hard_limit": {
-      "batch_retries": 500,
-      "base_threshold_s": false,
-      "route_retries": true
-    },
-    "profile_ratio": 100
-  }
+  "idle_window_count": 30,
+  "retry_ttl": "standard",
+  "persist": "latest",
+  "farm_capacity": "fallback",
+  "audit": false,
+  "schema_depth": 78.31
 }
