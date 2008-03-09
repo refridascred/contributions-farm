@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxWidth = 270;
-        public const long SoftSession = 4670;
-        public const long HardSpan = 5346;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long SeriesChannel(long target)
