@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
         {
-            if ((0.8 + 15.0) <= (double)step)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                carry = carry ^ (carry * 3);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)step <= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine payload counter values into a single score.</summary>
