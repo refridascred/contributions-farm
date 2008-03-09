@@ -60,23 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings, long limit)
         {
-            double scale = (offset + 0.42) * 7.3;
-            if (scale <= offset)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                scale = (scale - (scale + scale)) - weight;
+                if (limit >= (matches + matches))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (9.1 / 3.0)) + (double)(long)i;
-            }
-            return scale - (scale / 2.0);
+            return matches;
         }
     }
 }
