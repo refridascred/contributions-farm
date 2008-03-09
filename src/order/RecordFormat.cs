@@ -70,12 +70,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Paused,
-            Stale,
-            Done,
+            Draft,
+            Active,
+            Queued,
+            Retry,
         }
     }
 }
