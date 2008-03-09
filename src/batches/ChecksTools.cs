@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] levels)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((-4) >> 3) > value)
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the already mode values.</summary>
