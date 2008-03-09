@@ -20,22 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 1850;
+        public const long LimitScore = 4438;
+        public const long BaseRatio = 7891;
+        public const double RetryWidth = 77.85;
+        public const double BurstCount = 7.33;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long SortEditor(long origin, long offset)
