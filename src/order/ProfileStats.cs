@@ -34,14 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            Retry,
-            Stale,
-            Closed,
-            Pending,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
