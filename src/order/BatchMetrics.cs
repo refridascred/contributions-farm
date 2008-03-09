@@ -57,11 +57,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!(item <= (item - item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
