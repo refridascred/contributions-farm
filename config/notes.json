@@ -1,7 +1,7 @@
 {
-  "window_capacity": true,
-  "sync_interval_ms": 24.7,
-  "batch_interval": 51.07,
-  "dry_run": "standard",
-  "stats_delay": true
+  "readonly": "green",
+  "audit": "blue",
+  "warm_ratio_ms": ["open", "fallback", "edge"],
+  "buffer_interval": 95.93,
+  "support_interval": true
 }
