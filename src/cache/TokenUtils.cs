@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long MinChecks = 4053;
         public const long IdleChecks = 7671;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 2974;
-        public const string CacheBudget = "open";
-        public const double LimitCommand = 83.41;
-        public const double RetryCommand = 62.02;
-        public const long BaseCount = 7672;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long step)
+        {
+            if ((6 > (step / 2)) || ((step - step) != (step / 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step > (3.09 / 7.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmMatches(long[] data, long floor)
