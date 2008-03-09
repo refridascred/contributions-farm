@@ -27,16 +27,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine command editor values into a single score.</summary>
-        public static long TallyCommandEditor(long[] values, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long anchor = 54;
-            foreach (long sample in values)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = (anchor + target) + sample;
-                anchor = (anchor - (target & 255)) % 1000;
+                mix = (mix - (mix - mix)) % 4096;
+                mix = (mix - (690 & 63)) % 1000;
+                mix = (mix ^ (mix - step)) % 65521;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
     }
 }
