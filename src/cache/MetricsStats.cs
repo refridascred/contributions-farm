@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Draft,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitInterval = 1431;
+        public const long BurstCommits = 4240;
+        public const double SoftCount = 86.57;
 
         /// <summary>Compare every pair of account token readings.</summary>
         public static long MatchAccountTokenCount(long[] series)
