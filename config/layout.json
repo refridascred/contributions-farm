@@ -1,8 +1,19 @@
 {
-  "idle_window_count": 30,
-  "retry_ttl": "standard",
-  "persist": "latest",
-  "farm_capacity": "fallback",
-  "audit": false,
-  "schema_depth": 78.31
+  "cache_depth_pct": "cached",
+  "dry_run": {
+    "hard_interval_pct": 30.47,
+    "audit": true,
+    "default_capacity_pct": true,
+    "report_ratio": {
+      "base_delay_s": false,
+      "retry_interval_pct": 72,
+      "compress": 18.09
+    },
+    "cluster_capacity": true,
+    "session_window": true
+  },
+  "flush_ratio": ["edge", "green", "cached", "legacy"],
+  "stats_ratio": false,
+  "persist": 21,
+  "githubfarm_ttl": "primary"
 }
