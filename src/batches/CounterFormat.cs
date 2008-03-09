@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Derive the next token account value from a seed.</summary>
