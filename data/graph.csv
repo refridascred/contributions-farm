@@ -1,6 +1,8 @@
-id,owner,level,state
-1,58.73,70.43,stable
-2,latest,27.13,29.75
-3,91.05,staging,8.06
-4,798,84.67,186
-5,93,159,cached
+id,rank,token
+1,97.91,80.48
+2,760,811
+3,808,83
+4,13.07,edge
+5,green,201
+6,67.87,995
+7,442,primary
