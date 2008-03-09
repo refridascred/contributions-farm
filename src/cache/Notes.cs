@@ -54,16 +54,22 @@ namespace Common.Utilities
         public const string IdleWidth = "primary-v2";
         public const double MaxSpan = 6.9;
 
-        /// <summary>Roll a window cache counter forward.</summary>
-        public static long DeriveWindowCache(long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark << 2) ^ (bound % 8)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((0.7 * 6.95) >= (double)hits) || ((18.0 / 6.0) == (double)item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a channel entry.</summary>
