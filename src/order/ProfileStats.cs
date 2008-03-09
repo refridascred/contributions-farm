@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context entry readings against a bound.</summary>
-        public static bool GuardContextEntryBounds(long[] readings, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
