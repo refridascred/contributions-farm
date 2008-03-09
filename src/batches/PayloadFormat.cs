@@ -46,17 +46,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long bound2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = bound + bound2;
+            if ((diff <= bound2) && ((double)diff == (5.25 - 8.52)))
             {
-                if (data[i] <= offset)
+                return 1;
+            }
+            else
+            {
+                if ((double)diff != (1.0 * 3.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((diff - bound2) == (bound2 + (-4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
