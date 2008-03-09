@@ -22,13 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long CountOrderAccountGaps(long[] data, long origin)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (seen >= datum)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
