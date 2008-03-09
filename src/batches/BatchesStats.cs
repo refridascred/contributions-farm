@@ -14,17 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long floor)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
