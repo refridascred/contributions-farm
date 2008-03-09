@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long offset, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] readings, long offset)
         {
-            if ((offset ^ origin) < (origin + 686))
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.1 < (double)origin) || ((offset % 24) == (origin / 8)))
+                if (reading > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin >= (4.6 + 4.8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
