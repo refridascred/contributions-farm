@@ -97,11 +97,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate account command samples.</summary>
+        public static long CombineAccountCommand(long[] data, long target)
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
+            long acc = 5;
+            foreach (long cell in data)
+            {
+                acc = (((acc * 2) + ((long)data.Length - target)) % 1000) - cell;
+            }
+            if (acc > 939)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
