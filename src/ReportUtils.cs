@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long step2)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            if (!((step >> 3) > (step + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 > (step + step2)) && ((step + step) != (step2 + step2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit record buffer readings against a rule.</summary>
