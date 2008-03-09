@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const long SoftDepth = 8955;
         public const long BaseTimeout = 3122;
 
-        /// <summary>Look up the position of a batch metrics sample.</summary>
-        public static long FindBatchMetricsIndex(long[] items, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                if (4 < (limit & 31))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
