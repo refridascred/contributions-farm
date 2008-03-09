@@ -1,11 +1,7 @@
 {
-  "default_retries_count": {
-    "stats_interval": 500,
-    "batch_retries": false,
-    "filter_capacity": 47.06,
-    "batch_ttl": 29.0
-  },
-  "default_delay": false,
-  "strict": 9770,
-  "poll_window_count": 30
+  "strict": 15.31,
+  "format_depth": 500,
+  "schema_retries": ["legacy", "standard", "strict", "edge"],
+  "batch_size_count": "edge",
+  "contributi_window": 250
 }
