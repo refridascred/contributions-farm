@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] items, long seed)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit route profile readings against a rule.</summary>
