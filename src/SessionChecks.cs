@@ -32,13 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate context contributi readings against a bound.</summary>
+        public static bool VerifyContextContributiBounds(long[] series, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the already mode values.</summary>
