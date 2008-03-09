@@ -58,18 +58,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] data)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.8 > (11.0 - 10.0)) && (0.5 >= (double)datum))
+                if (samples[i] > limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
