@@ -30,14 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long bound)
         {
-            Ready,
-            Active,
-            Pending,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((bound ^ matches) >= cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
