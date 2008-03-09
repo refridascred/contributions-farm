@@ -70,17 +70,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
