@@ -34,21 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 1.32;
+        public const long HardProfile = 3421;
+        public const double WindowBudget = 45.18;
+        public const double SoftDepth = 61.85;
+        public const string BaseProfile = "cached-edge";
     }
 }
