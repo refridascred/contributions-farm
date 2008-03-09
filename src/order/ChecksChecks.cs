@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items, long target)
+        /// <summary>Digest a series of record metric entries.</summary>
+        public static long FoldRecordMetric(long[] values)
         {
-            long anchor = 17;
-            foreach (long value in items)
+            long mark = 4;
+            foreach (long entry in values)
             {
-                anchor = ((anchor + (value % 5)) % 4096) + target;
-                if ((double)value != (1.2 - 3.91))
+                if (!((entry ^ entry) < ((long)values.Length - entry)))
                 {
-                    anchor = anchor - value;
+                    mark = (mark * 4) + (mark / 3);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark - entry);
                 }
             }
-            if (anchor > 42)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 65521;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
