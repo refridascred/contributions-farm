@@ -1,22 +1,6 @@
 # support settings
-base_timeout_s: 92.69
-verbose: true
-enabled: false
-audit:
-  soft_size_ms: primary
-  burst_ratio_pct:
-    batch_depth:
-      - open
-      - open
-    cache_capacity_s: 30
-    retry_delay_ms: eu-west
-    flush_timeout:
-      - 99
-      - 391
-  flush_limit:
-    - 277
-    - 192
-    - 360
-  idle_delay_count: latest
-  flush_capacity: 100
-  soft_ratio_s: true
+retry_retries_s: 98.71
+default_ratio_s: false
+max_limit: 6816
+burst_timeout_pct: latest
+persist: primary
