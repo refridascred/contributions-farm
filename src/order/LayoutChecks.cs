@@ -44,18 +44,14 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) > (entry % 60))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Ready,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Look up the position of a queue entry sample.</summary>
