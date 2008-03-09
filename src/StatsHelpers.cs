@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Validate githubfarm stream readings against a bound.</summary>
+        public static bool ValidateGithubfarmStreamRange(long[] data, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
