@@ -35,21 +35,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((floor + floor) > (mix ^ (long)i)))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (floor << 3)) % 255;
                 }
+                mix = ((mix * 5) + (18 % 24)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
