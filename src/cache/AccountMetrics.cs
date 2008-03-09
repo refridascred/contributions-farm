@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if (items[i] >= origin)
+                if ((cell <= ((long)series.Length - cell)) && ((double)cell == (double)811))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (score + score)) % 101;
+                }
+                else
+                {
+                    score = (score + (score + cell)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
