@@ -13,23 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double weight = offset;
-            if (weight >= (double)689)
-            {
-                weight = (weight + offset) - rate;
-            }
-            else
-            {
-                weight = weight + (weight / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight * 4.11)) + (double)(long)i;
-            }
-            return weight + (offset / 3.0);
+            Stale,
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
