@@ -26,11 +26,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            double weight = (double)96 / 6.0;
-            return (weight - scale) + span;
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
