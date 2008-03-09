@@ -44,26 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long TallyToolsWindowHits(long[] series)
         {
-            long acc = 9;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((datum + datum) > datum)
+                if ((hits + 5) < (reading ^ hits))
                 {
-                    acc = acc + (acc + datum);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (290 * 2)) % 1000;
+                    hits = hits + 3;
                 }
             }
-            if (acc > 797)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the entry support entries that pass the check.</summary>
