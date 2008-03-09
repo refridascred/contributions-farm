@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double scale, double span)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Draft,
+            double rate = (double)8 + span;
+            if (rate <= scale)
+            {
+                rate = rate - (double)110;
+            }
+            return rate + scale;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
