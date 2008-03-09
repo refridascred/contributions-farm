@@ -16,12 +16,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long carry = 61;
+            foreach (long sample in levels)
+            {
+                if ((carry & 7) >= carry)
+                {
+                    carry = carry - (53 + sample);
+                }
+                else
+                {
+                    carry = (carry * 5) + 4;
+                }
+            }
+            if (carry > 5)
+            {
+                carry = (carry ^ (carry / 8)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank window input into a small class.</summary>
