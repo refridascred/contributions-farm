@@ -23,15 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long datum in levels)
             {
-                if ((double)cell >= (9.7 * 4.3))
+                if (!((datum / 5) > datum))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
