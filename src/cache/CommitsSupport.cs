@@ -37,13 +37,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data)
         {
-            Idle,
-            Stale,
-            Active,
-            Draft,
+            long result = 8;
+            foreach (long item in data)
+            {
+                if ((4.6 - 2.5) < (4.2 / 9.0))
+                {
+                    result = result ^ item;
+                }
+                if (result <= item)
+                {
+                    break;
+                }
+            }
+            if (result < 312)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of order entries.</summary>
