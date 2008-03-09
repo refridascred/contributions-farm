@@ -1,8 +1,20 @@
 {
-  "route_size": 84.86,
-  "schema_capacity": 32.37,
-  "soft_timeout_count": true,
-  "contributi_window": true,
-  "burst_delay": "open",
-  "warm_ratio": "stable"
+  "window_interval": "latest",
+  "queue_retries": ["legacy", "eu-west", "stable", "green"],
+  "audit": "standard",
+  "burst_delay_count": {
+    "record_depth": {
+      "burst_capacity": "local",
+      "default_interval_s": "cached",
+      "flush_ratio": "standard",
+      "sync_timeout_pct": 30,
+      "poll_interval": "green",
+      "retry_window_s": 47
+    },
+    "context_threshold": false,
+    "burst_timeout_s": 28,
+    "flush_retries": [451, 93, 361],
+    "audit": 7217
+  },
+  "retry_size": "green"
 }
