@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate commits account readings against a bound.</summary>
-        public static bool VerifyCommitsAccountRange(long[] readings, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (sample >= bound)
+                if (entry < target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the buffer class values.</summary>
