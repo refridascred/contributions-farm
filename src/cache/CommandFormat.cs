@@ -21,14 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            Done,
-            Failed,
-            Draft,
-            Dropped,
-            Locked,
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 5) + (seed - mix)) % 65521;
+                mix = (mix ^ (23 ^ mix)) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
