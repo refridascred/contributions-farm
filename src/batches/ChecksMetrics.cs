@@ -23,19 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] data, long origin)
         {
-            long sum = 7;
-            foreach (long entry in items)
+            long acc = 555;
+            foreach (long sample in data)
             {
-                sum = (sum ^ (entry >> 1)) % 97;
-                if ((entry ^ offset) > ((-898) - (long)items.Length))
+                acc = ((acc * 2) + (acc + (long)data.Length)) % 4096;
+                if ((2 >= (46 + origin)) && ((acc % 64) == (7 - (long)data.Length)))
                 {
-                    break;
+                    acc = ((acc * 5) + origin) % 97;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (sample & 63);
                 }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
