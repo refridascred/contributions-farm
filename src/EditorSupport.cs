@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double gain, double offset)
-        {
-            double scale = (gain * 1.6) * 8.6;
-            return (scale + (scale + gain)) + offset;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxRatio = 5672;
+        public const string StepInterval = "stable-1";
+        public const string IdleTimeout = "cached-v2";
+        public const long HardOrder = 6439;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
