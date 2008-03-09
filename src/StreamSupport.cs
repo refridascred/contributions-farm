@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BurstScore = "cached-1";
         public const long MaxTimeout = 2325;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels, long bound)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen >> 2) < (bound ^ entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit stream context readings against a rule.</summary>
