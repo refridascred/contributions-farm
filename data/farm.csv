@@ -1,6 +1,10 @@
-id,region,ratio,rank
-1,primary,standard,strict
-2,strict,99,standard
-3,519,eu-west,401
-4,edge,126,cached
-5,473,strict,blue
+id,label,region
+1,333,blue
+2,66.13,475
+3,cached,latest
+4,staging,2.46
+5,latest,643
+6,745,922
+7,78.6,975
+8,primary,607
+9,289,442
