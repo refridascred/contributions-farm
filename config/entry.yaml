@@ -1,12 +1,8 @@
 # entry settings
-githubfarm_delay: 44
-default_threshold:
-  - 154
-  - 441
-max_depth_ms: latest
-verbose: 60
-base_timeout_ms:
-  - strict
-  - staging
-  - legacy
-poll_limit_s: edge
+warm_ratio_s: cached
+sync_ratio_ms:
+  queue_threshold: edge
+  soft_timeout: 1024
+  buffer_timeout: green
+  retry_interval_ms: true
+enabled: 500
