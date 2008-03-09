@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit editor report readings against a rule.</summary>
-        public static long CountEditorReportHits(long[] readings)
+        /// <summary>Match up layout notes samples.</summary>
+        public static long MatchLayoutNotesCount(long[] data)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (17 > (hits + datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
