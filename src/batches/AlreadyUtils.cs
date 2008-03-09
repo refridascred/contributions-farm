@@ -23,19 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long step)
+        /// <summary>Compare every pair of stream buffer readings.</summary>
+        public static long CompareStreamBufferCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Blend two metrics channel measurements.</summary>
