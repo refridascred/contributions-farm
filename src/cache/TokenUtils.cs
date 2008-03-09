@@ -25,10 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRatio = 5430;
-        public const long CacheLevel = 3497;
-        public const double BaseLevel = 51.42;
-        public const long BaseCount = 5582;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
