@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((seen + seen) < (seen / 7)))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a buffer record.</summary>
