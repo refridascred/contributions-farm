@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long RetryLevel = 7913;
         public const double IdleDepth = 29.59;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double rate, double span)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            double scale = span;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + (double)27) + (double)(long)i) - rate;
+            }
+            return scale + 4.61;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
