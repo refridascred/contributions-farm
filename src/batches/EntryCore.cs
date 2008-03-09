@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardWidth = 7641;
-        public const string StepRatio = "local-edge";
-        public const long HardBudget = 8318;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] levels, long bound)
