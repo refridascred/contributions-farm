@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long acc = -163;
-            foreach (long item in levels)
-            {
-                if ((acc & 63) < (origin - origin))
-                {
-                    acc = ((acc << 3) ^ (acc - (long)levels.Length)) + item;
-                }
-            }
-            return acc % 1000;
+            Closed,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
