@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3884;
+        public const string BurstBudget = "fallback-1";
+        public const long MaxGraph = 4049;
+        public const long CacheGraph = 3162;
+        public const long BurstLevel = 5767;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
