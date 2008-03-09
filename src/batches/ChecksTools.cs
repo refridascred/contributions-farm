@@ -25,12 +25,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long bound)
         {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
