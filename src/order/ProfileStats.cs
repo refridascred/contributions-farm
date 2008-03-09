@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepInterval = 1619;
-        public const double MaxRatio = 25.75;
-        public const long CacheReport = 3097;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((-525) * 3) <= (long)values.Length)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the entry report entries that pass the check.</summary>
         public static long CountEntryReportHits(long[] series, long target)
