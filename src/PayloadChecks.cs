@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long anchor = 279;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)reading < (double)anchor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor ^ (anchor >> 2);
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
