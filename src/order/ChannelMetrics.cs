@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const long StepWidth = 2561;
         public const long StepSize = 495;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            Active,
-            Dropped,
-            Closed,
-            Synced,
+            long mark = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark * 3) + (step << 2);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
