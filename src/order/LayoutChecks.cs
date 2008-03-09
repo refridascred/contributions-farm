@@ -14,18 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)items.Length >> 2) != (seen * 3))
+                if (samples[i] == offset)
                 {
-                    seen = (seen + 3) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate profile counter readings against a bound.</summary>
