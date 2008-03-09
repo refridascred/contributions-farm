@@ -46,21 +46,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias;
+            if (gain >= gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - 7.34) + weight;
             }
-            return matches;
+            else
+            {
+                gain = gain + (gain + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain / 3.0)) + (double)(long)i;
+            }
+            return gain - (gain / 6.0);
         }
 
         /// <summary>Describe the notes class values.</summary>
