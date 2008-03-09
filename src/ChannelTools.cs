@@ -45,22 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 1;
-            foreach (long entry in data)
-            {
-                if (entry > ((-29) << 3))
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor % 4096;
+            Draft,
+            Retry,
+            Paused,
         }
     }
 }
