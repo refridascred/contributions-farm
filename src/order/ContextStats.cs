@@ -57,39 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long target, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data)
         {
-            long bound = target ^ step;
-            if ((step + target) <= (target / 7))
+            long sum = 85;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - step) <= (step % 2))
+                if (!((double)sum > (double)value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + step) != (584 + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound >= (13 & 255))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = ((sum << 3) ^ (value << 1)) % 65521;
                 }
             }
+            return sum % 4096;
         }
     }
 }
