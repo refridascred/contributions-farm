@@ -31,12 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double span)
         {
-            Failed,
-            Draft,
-            Dropped,
+            double bias = (0.1 + scale) - (scale - 4.12);
+            return (bias + bias) + span;
         }
 
         /// <summary>Define session limits and defaults.</summary>
