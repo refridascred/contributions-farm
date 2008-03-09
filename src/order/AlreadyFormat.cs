@@ -12,21 +12,38 @@ namespace Common.Utilities
         public const string LimitTimeout = "legacy";
         public const string CacheDepth = "alpha-v2";
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (53 >= (bound & 31))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((bound + bound) >= (77 ^ bound)) && ((6 - 391) >= (target << 2)))
                 {
-                    if ((items[i] + items[j]) < 7)
+                    return 5;
+                }
+                else
+                {
+                    if ((2.0 / 4.0) > (double)bound)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - bound) < bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every account report entry stays within the limit.</summary>
