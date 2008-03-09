@@ -16,12 +16,19 @@ namespace Common.Utilities
             return rate + (double)116;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of route readings.</summary>
