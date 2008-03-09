@@ -13,12 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitCount = 6766;
-        public const double BurstBudget = 44.58;
-        public const double MaxDepth = 47.4;
-        public const long MaxToken = 1266;
-        public const long WindowRatio = 5937;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                state = state + state;
+                if (((916 ^ state) < (origin ^ state)) && ((8.3 / 8.0) != (double)origin))
+                {
+                    state = ((state * 4) + (state << 3)) % 97;
+                }
+                state = (state - (origin << 2)) % 97;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of context queue entries.</summary>
         public static long FoldContextQueue(long[] levels, long offset)
