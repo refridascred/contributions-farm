@@ -1,24 +1,4 @@
 # entry settings
-checks_threshold:
-  readonly: false
-  retry_interval_s:
-    - 327
-    - 43
-    - 282
-    - 446
-  flush_ttl_ms: 3623
-  dry_run: 53
-  cache_ttl: 37.83
-record_ttl: 44.76
-cache_ratio_s: 12.82
-dry_run:
-  base_retries: legacy
-  layout_interval: 14
-  window_limit: fallback
-  hard_capacity:
-    report_limit: strict
-    retry_timeout: 30
-    base_depth_s: 500
-    retry_depth: 0.09
-    soft_capacity_ms: standard
-burst_size: fallback
+graph_delay: green
+max_interval: 36.75
+idle_delay_s: 8169
