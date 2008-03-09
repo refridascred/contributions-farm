@@ -1,19 +1,5 @@
 {
-  "poll_delay_s": 88,
-  "soft_delay_pct": false,
-  "poll_threshold": ["standard", "fallback"],
-  "payload_size": false,
-  "batch_depth_pct": {
-    "idle_capacity": 39.71,
-    "hard_ratio_count": "staging",
-    "retry_retries_count": {
-      "enabled": 78.34,
-      "session_ratio": 68.75,
-      "idle_window": 30,
-      "stream_window": 96.24,
-      "flush_depth_ms": 29.65
-    },
-    "commits_size": ["blue", "legacy", "eu-west"]
-  },
-  "soft_threshold_count": true
+  "githubfarm_window": 500,
+  "strict": 4090,
+  "base_ttl_count": ["local", "open", "standard"]
 }
