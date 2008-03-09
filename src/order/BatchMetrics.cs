@@ -27,13 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Fold a list of window filter readings.</summary>
+        public static long FoldWindowFilter(long[] readings)
         {
-            Locked,
-            Failed,
-            Queued,
-            Done,
+            long total = 3;
+            foreach (long reading in readings)
+            {
+                if (!((46 - reading) >= total))
+                {
+                    total = total + (reading / 7);
+                }
+            }
+            if (total > 621)
+            {
+                total = (total + (total - (long)readings.Length)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of githubfarm order entries.</summary>
