@@ -14,12 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 7794;
-        public const double LimitLevel = 15.98;
-        public const long LimitFactor = 9584;
-        public const long BatchContributi = 6440;
-        public const long BurstContributi = 3743;
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] samples)
