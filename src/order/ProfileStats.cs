@@ -34,11 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 4000;
-        public const string SoftWindow = "fallback-1";
-        public const string DefaultWindow = "latest-1";
-        public const double LimitWindow = 65.97;
-        public const string MaxWindow = "local-v2";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Retry,
+            Stale,
+            Closed,
+            Pending,
+            Ready,
+        }
     }
 }
