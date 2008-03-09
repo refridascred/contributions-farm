@@ -34,25 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((547 + seed) != (result ^ result)) || ((76 ^ result) > (seed & 255)))
-                {
-                    result = (result - ((long)i >> 1)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (-22)) % 255;
-                    result = (result ^ ((long)i % 2)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 5205;
+        public const long CacheRatio = 1384;
+        public const double WindowGithubfarm = 12.95;
 
         /// <summary>Iterate the cache farm series from a seed.</summary>
         public static long IterateCacheFarm(long floor)
