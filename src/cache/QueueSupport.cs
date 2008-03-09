@@ -47,10 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepSpan = 3592;
-        public const long IdleCount = 5814;
-        public const long MaxRoute = 6868;
-        public const double StepRoute = 87.07;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
