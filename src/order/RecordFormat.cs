@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const double RetrySession = 33.88;
         public const long DefaultCount = 5742;
 
-        /// <summary>Validate cluster counter readings against a bound.</summary>
-        public static bool GuardClusterCounterLimits(long[] series, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != origin)
+                if (samples[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
