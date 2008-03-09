@@ -39,18 +39,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data)
-        {
-            long result = 486;
-            foreach (long entry in data)
-            {
-                if ((8.0 - 4.2) != (double)result)
-                {
-                    result = ((result * 4) + (result >> 2)) ^ entry;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 7252;
+        public const double BatchSchema = 29.59;
+        public const long HardInterval = 6216;
     }
 }
