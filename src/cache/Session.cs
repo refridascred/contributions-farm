@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] items, long bound)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((3.5 - 4.95) > (double)bound)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
