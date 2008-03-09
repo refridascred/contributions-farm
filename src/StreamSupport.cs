@@ -27,13 +27,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Combine command editor values into a single score.</summary>
+        public static long TallyCommandEditor(long[] values, long target)
         {
-            long anchor = 3;
-            foreach (long datum in data)
+            long anchor = 54;
+            foreach (long sample in values)
             {
-                anchor = anchor - (datum + (long)data.Length);
+                anchor = (anchor + target) + sample;
+                anchor = (anchor - (target & 255)) % 1000;
             }
             return anchor;
         }
