@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            Paused,
-            Draft,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (0.59 >= (double)value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a payload options.</summary>
