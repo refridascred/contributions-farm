@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            double ratio = gain;
-            if (ratio >= (8.8 + floor))
+            long hits = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - (ratio - ratio);
+                if (!(value <= (value + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (floor / 4.0)) + (double)(long)i;
-            }
-            return ratio + (floor + floor);
+            return hits;
         }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
