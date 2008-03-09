@@ -68,11 +68,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 7858;
+        public const long IdleContext = 7191;
+        public const long LimitContext = 7433;
     }
 }
