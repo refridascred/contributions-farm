@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a stream stats value against two limits.</summary>
-        public static long GradeStreamStats(long origin, long bound)
+        /// <summary>Check that every filter commits entry stays within the limit.</summary>
+        public static bool CheckFilterCommitsBounds(long[] items, long offset)
         {
-            long delta = origin - bound;
-            if ((0 ^ bound) >= (delta >> 5))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (bound << 1))
+                if (datum != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)delta != (0.52 - 5.7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a cluster options.</summary>
