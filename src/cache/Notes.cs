@@ -56,15 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double bias)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double weight = (gain + bias) + (gain * 7.0);
-            if (weight >= (gain * 2.08))
-            {
-                weight = weight - gain;
-            }
-            return weight + weight;
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
