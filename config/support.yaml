@@ -1,16 +1,11 @@
 # support settings
-persist: 41.8
-base_depth_s: 30
-burst_depth_pct:
-  batch_ratio: primary
-  max_ttl:
-    - 171
-    - 1
-  retry_limit_count:
-    sync_interval_count:
-      - 343
-      - 141
-      - 244
-      - 206
-    min_threshold_ms: green
-    audit: staging
+batch_size:
+  - legacy
+  - stable
+  - local
+  - fallback
+readonly: 1024
+batch_ratio_pct:
+  - 413
+  - 20
+  - 188
