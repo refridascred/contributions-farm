@@ -32,19 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples, long limit)
-        {
-            long result = 902;
-            foreach (long cell in samples)
-            {
-                if (cell < ((-1) ^ result))
-                {
-                    result = result - (limit - limit);
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseBudget = "stable-v2";
+        public const double SoftLayout = 38.62;
+        public const double RetryLayout = 85.11;
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double rate, double span)
