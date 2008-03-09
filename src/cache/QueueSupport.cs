@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mark = 783;
-            foreach (long value in readings)
-            {
-                if ((mark + mark) >= value)
-                {
-                    continue;
-                }
-                if (value < (mark + (-72)))
-                {
-                    mark = mark ^ (mark / 7);
-                }
-                mark = (mark - (value * 4)) % 65521;
-                if ((value - value) == (mark + mark))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
