@@ -23,21 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up token editor samples.</summary>
-        public static long PairTokenEditorCount(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)reading != (11.0 - 11.0))
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two report measurements.</summary>
