@@ -54,9 +54,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 25.12;
-        public const long DefaultRecord = 3720;
-        public const double MinTimeout = 88.67;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + (sum * 2)) % 65521;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
