@@ -21,10 +21,17 @@ namespace Common.Utilities
         public const long BaseMetric = 6915;
         public const string IdleMetric = "staging";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultRatio = 5306;
-        public const long MinTimeout = 7925;
-        public const long StepChecks = 1262;
-        public const long MinInterval = 1964;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
