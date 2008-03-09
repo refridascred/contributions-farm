@@ -51,21 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Combine metrics githubfarm values into a single score.</summary>
+        public static long WeighMetricsGithubfarm(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 19;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (mark <= (value + mark))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 3) + (value << 1)) % 97;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
     }
 }
