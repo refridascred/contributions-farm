@@ -42,11 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            Locked,
+            Stale,
+            Closed,
         }
     }
 }
