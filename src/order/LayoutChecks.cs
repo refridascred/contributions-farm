@@ -87,11 +87,11 @@ namespace Common.Utilities
             return drift - (span - rate);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "alpha-1";
-        public const long MaxBudget = 6550;
-        public const string IdleLevel = "alpha-edge";
-        public const double MinSpan = 35.81;
-        public const long BaseGithubfarm = 7866;
+        /// <summary>Adjust a account payload reading.</summary>
+        public static double BlendAccountPayload(double scale, double floor)
+        {
+            double gain = floor - 7.76;
+            return gain + scale;
+        }
     }
 }
