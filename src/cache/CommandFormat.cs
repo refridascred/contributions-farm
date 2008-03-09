@@ -71,12 +71,19 @@ namespace Common.Utilities
             return weight - (double)108;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate token channel readings against a bound.</summary>
+        public static bool CheckTokenChannelLimits(long[] levels, long target)
         {
-            Dropped,
-            New,
-            Synced,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
