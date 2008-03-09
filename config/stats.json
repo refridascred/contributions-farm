@@ -1,5 +1,5 @@
 {
-  "retry_retries_count": 30,
-  "warm_size": 2,
-  "sync_depth": ["green", "eu-west", "cached", "latest"]
+  "sync_capacity": 22,
+  "hard_ratio_ms": "blue",
+  "dry_run": "fallback"
 }
