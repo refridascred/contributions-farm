@@ -41,21 +41,15 @@ namespace Common.Utilities
         public const long IdleRatio = 6885;
         public const double HardTimeout = 97.22;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score << 2) ^ datum) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
