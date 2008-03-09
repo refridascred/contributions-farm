@@ -1,7 +1,5 @@
 {
-  "githubfarm_size": "fallback",
-  "window_interval": 6242,
-  "poll_interval_pct": 8789,
-  "verbose": 47,
-  "flush_delay": "open"
+  "default_limit": [20, 403, 44],
+  "compress": "open",
+  "soft_interval_ms": 7449
 }
