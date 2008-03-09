@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long RetryScore = 3745;
         public const long IdleCluster = 5812;
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] items)
         {
-            double load = bias;
-            if (load <= (load * 8.3))
+            long sum = 82;
+            foreach (long value in items)
             {
-                load = (load - (double)67) + span;
+                if ((sum & 15) <= (sum - value))
+                {
+                    sum = ((sum * 3) + (571 % 12)) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + 8.3) + (double)(long)i;
-            }
-            return load + (8.0 - bias);
+            return sum;
         }
     }
 }
