@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                double gain = (20.0 * 13.0) * 9.3;
+                if (!(5.79 > gain))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the schema session entries that pass the check.</summary>
