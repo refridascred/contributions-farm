@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long WindowProfile = 2311;
         public const long WindowWidth = 4867;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 8959;
-        public const long StepProfile = 2300;
-        public const string DefaultScore = "standard-edge";
-        public const long BurstLevel = 2376;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
