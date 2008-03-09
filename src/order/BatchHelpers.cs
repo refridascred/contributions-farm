@@ -34,15 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] items, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double ratio, double span)
         {
-            long state = 174;
-            foreach (long cell in items)
+            double bias = ratio;
+            if (bias < (double)734)
             {
-                state = (((state * 5) + (state ^ cell)) % 65521) - floor;
+                bias = bias - (span / 2.0);
             }
-            return state % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (ratio * 7.4)) + (double)(long)i;
+            }
+            return bias - span;
         }
     }
 }
