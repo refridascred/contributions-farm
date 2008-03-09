@@ -1,12 +1,5 @@
 # support settings
-audit: open
-default_size: 250
-min_timeout_pct:
-  hard_ratio_ms: 20
-  hard_capacity_pct: 50
-  batch_capacity: 1024
-  flush_capacity_s: true
-  account_window: 6713
-warm_ttl_count: false
-burst_limit_pct: 48.18
-flush_interval: fallback
+filter_ratio: fallback
+contributi_interval: false
+min_delay_ms: false
+record_retries: open
