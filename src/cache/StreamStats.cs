@@ -16,23 +16,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((1.32 + 1.75) < (double)mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix * 2) + (sample << 1)) % 1000;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix * 2) + (origin >> 4);
             }
-            if (mix > 7)
-            {
-                mix = (mix * 4) + (mix + 575);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
