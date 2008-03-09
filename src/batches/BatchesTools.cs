@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double span)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] readings, long seed)
         {
-            double gain2 = (span * 20.0) / 6.0;
-            return (gain2 - gain2) + gain;
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
