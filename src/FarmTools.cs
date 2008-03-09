@@ -32,18 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] levels, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = 6;
+            foreach (long item in samples)
             {
-                if ((double)hits == (double)step)
+                if ((item >> 2) <= mark)
                 {
-                    hits = (hits + 2) ^ reading;
+                    mark = (mark + (item % 16)) % 1000;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
     }
 }
