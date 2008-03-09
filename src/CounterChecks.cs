@@ -57,13 +57,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long bound)
         {
-            Synced,
-            Draft,
-            Locked,
-            Active,
+            long step = limit ^ bound;
+            if (step < (bound >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit % 60) < (step * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((19.0 - 10.0) >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
