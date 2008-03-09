@@ -1,7 +1,6 @@
 {
-  "strict": 15.31,
-  "format_depth": 500,
-  "schema_retries": ["legacy", "standard", "strict", "edge"],
-  "batch_size_count": "edge",
-  "contributi_window": 250
+  "max_threshold_s": "legacy",
+  "notes_size": 35.94,
+  "warm_timeout_ms": "local",
+  "soft_ttl_pct": "primary"
 }
