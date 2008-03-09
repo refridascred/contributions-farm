@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 86;
+            foreach (long value in series)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (acc * 4)) - value;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Hold a notes options.</summary>
