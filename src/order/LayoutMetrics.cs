@@ -46,23 +46,12 @@ namespace Common.Utilities
         public const string WindowInterval = "legacy-1";
         public const long WindowTools = 1198;
 
-        /// <summary>Fold a list of token tools readings.</summary>
-        public static long TallyTokenTools(long[] readings, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long anchor = 479;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor << 3) ^ (anchor << 1);
-                if (1.52 <= (double)datum)
-                {
-                    anchor = (anchor * 3) + (datum >> 1);
-                }
-                if (((double)origin < (18.0 / 8.0)) || ((origin + anchor) >= (origin / 9)))
-                {
-                    anchor = anchor ^ ((long)readings.Length + anchor);
-                }
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
