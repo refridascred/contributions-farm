@@ -1,10 +1,6 @@
-id,label,score
-1,759,390
-2,38,552
-3,fallback,eu-west
-4,blue,fallback
-5,22.9,primary
-6,738,288
-7,10.09,962
-8,83.9,20.98
-9,235,885
+id,token,count
+1,green,fallback
+2,346,480
+3,standard,30.98
+4,85.86,408
+5,local,strict
