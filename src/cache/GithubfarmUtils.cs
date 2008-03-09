@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 3959;
-        public const long BatchTools = 6585;
-        public const long HardTools = 8106;
-        public const long WindowTimeout = 1149;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((7.0 - 9.17) == (double)item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of counter command readings.</summary>
         public static long TotalCounterCommand(long[] series)
