@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long origin)
         {
-            long mark = 4;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (mark * 5)) % 255;
-                if ((6.98 + 19.0) > (double)datum)
+                if (readings[i] >= origin)
                 {
-                    mark = (mark - (mark - datum)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
