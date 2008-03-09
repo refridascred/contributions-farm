@@ -58,15 +58,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Locate a order farm reading by value.</summary>
+        public static long FindOrderFarmIndex(long[] values, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
