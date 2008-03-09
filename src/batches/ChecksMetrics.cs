@@ -31,19 +31,31 @@ namespace Common.Utilities
         public const long StepWidth = 7204;
         public const long SoftQueue = 3382;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long origin, long origin2)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if (((origin + origin2) > (origin2 + 8)) && ((double)origin < (3.4 * 0.34)))
             {
-                if (reading <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((origin2 + origin) >= (origin2 * 4))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(6.79 < (double)origin2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
