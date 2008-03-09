@@ -68,19 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue report readings against a bound.</summary>
-        public static bool GuardQueueReportBounds(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitLevel = "open";
+        public const long StepPayload = 341;
+        public const string LimitInterval = "legacy-1";
+        public const double HardInterval = 1.83;
     }
 }
