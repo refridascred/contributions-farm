@@ -29,19 +29,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 8296;
+        public const double MaxCounter = 89.24;
+        public const double CacheSize = 94.18;
+        public const long SoftDepth = 9714;
     }
 }
