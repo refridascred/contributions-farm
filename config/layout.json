@@ -1,8 +1,5 @@
 {
-  "sync_threshold": false,
-  "verbose": "eu-west",
-  "burst_capacity_pct": "open",
-  "batches_timeout": true,
-  "compress": ["standard", "local", "eu-west", "cached"],
-  "sync_retries_s": true
+  "compress": 98.86,
+  "enabled": "standard",
+  "hard_interval_s": 6609
 }
