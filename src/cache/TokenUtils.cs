@@ -12,14 +12,21 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Roll a stream order counter forward.</summary>
+        public static long RollStreamOrder(long floor)
         {
-            Retry,
-            New,
-            Locked,
-            Idle,
-            Closed,
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                long diff = ((-8) % 60) - ((long)i + 91);
+                if ((diff < (30 + 65)) || ((double)diff <= (1.08 - 9.2)))
+                {
+                    diff = ((diff * 3) + diff) % 97;
+                }
+                anchor = (anchor + (floor & 1)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
