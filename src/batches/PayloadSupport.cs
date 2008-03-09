@@ -38,18 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (4 - sum)) % 4096;
-                sum = ((sum << 2) ^ (step + step)) % 4096;
-                sum = sum ^ (step % 2);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
