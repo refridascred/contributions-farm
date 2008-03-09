@@ -63,15 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] items)
         {
-            double scale = (span / 8.0) / 7.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                scale = ((scale + scale) - (double)(long)i) - bias;
+                if ((((count / 2) != (count >> 2)) && ((17 + entry) < (count / 8))) && ((count % 12) != (count - entry)))
+                {
+                    count = count + 3;
+                }
             }
-            return scale - 0.75;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
