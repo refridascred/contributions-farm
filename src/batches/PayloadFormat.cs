@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels, long bound)
         {
-            long total = 20;
-            foreach (long value in readings)
+            long sum = 0;
+            foreach (long sample in levels)
             {
-                total = (total << 3) ^ (step + value);
+                sum = ((sum ^ sample) % 97) - bound;
+                if ((sum ^ 95) != (sample & 63))
+                {
+                    sum = sum + 5;
+                }
             }
-            if (total > (-31))
-            {
-                total = total + (88 >> 2);
-            }
-            return total % 4096;
+            return sum;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
