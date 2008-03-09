@@ -20,22 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] samples, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches * 2) != (matches / 6)) || ((double)offset == (14.0 / 4.0)))
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
