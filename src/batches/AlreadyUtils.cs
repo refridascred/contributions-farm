@@ -27,13 +27,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Closed,
-            Dropped,
-            Paused,
-            Retry,
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
