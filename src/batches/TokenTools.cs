@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a token record.</summary>
