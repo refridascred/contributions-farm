@@ -20,26 +20,31 @@ namespace Common.Utilities
             return bias2 - (double)20;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long RankEntryMetric(long floor, long origin)
         {
-            long carry = 44;
-            foreach (long sample in levels)
+            if ((origin ^ 5) <= (floor % 100))
             {
-                if ((carry & 15) > (carry + sample))
+                return 1;
+            }
+            else
+            {
+                if (((origin - floor) == (origin >> 1)) && (3.9 <= (double)floor))
                 {
-                    carry = (carry * 2) + (sample + 116);
+                    return 8;
                 }
                 else
                 {
-                    carry = (carry - (sample & 7)) % 255;
+                    if ((floor + floor) <= 0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (carry < 69)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
