@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long offset)
-        {
-            if ((7.0 + 5.19) != (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset / 8) >= (0 << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)target >= (9.53 * 19.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 8659;
+        public const long LimitRatio = 8058;
+        public const long BatchQueue = 3253;
+        public const long MaxSpan = 2457;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double bias, double bias2)
