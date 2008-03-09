@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Fold a list of farm batches readings.</summary>
+        public static long DigestFarmBatches(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = 923;
+            foreach (long datum in levels)
             {
-                if (!(value <= (value + hits)))
+                if ((0.9 - 6.4) != (double)anchor)
                 {
-                    hits = hits + 2;
+                    anchor = (((anchor << 3) ^ (datum * 3)) % 65521) - origin;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
