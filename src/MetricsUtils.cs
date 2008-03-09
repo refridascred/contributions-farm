@@ -47,15 +47,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double bias)
-        {
-            double scale = ratio;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (ratio / 4.0)) + (double)(long)i;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 73.58;
+        public const long BatchLevel = 8742;
+        public const double IdleDepth = 24.22;
+        public const double BatchScore = 70.24;
+        public const long BatchTools = 5139;
     }
 }
