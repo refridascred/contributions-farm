@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Classify a format counter pair into a bucket.</summary>
+        public static long BucketFormatCounter(long limit, long target)
         {
-            double mean = weight;
-            if (mean <= (span / 8.0))
+            if (!((limit + target) < (79 % 64)))
             {
-                mean = mean + (double)38;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + 8.82) - (double)(long)i;
+                if ((limit - 717) == (limit + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit <= (limit * 5)) || ((955 + 86) >= (target + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mean + weight;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
