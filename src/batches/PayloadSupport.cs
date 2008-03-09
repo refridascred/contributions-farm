@@ -16,19 +16,21 @@ namespace Common.Utilities
             return gain2 + (double)606;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long total = 5;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((((total << 3) ^ total) % 4096) + reading) + step;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 28)
-            {
-                total = total - (88 >> 4);
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
