@@ -19,11 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            Pending,
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Match up contributi samples.</summary>
