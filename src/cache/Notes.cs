@@ -58,11 +58,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count checks token pairs that satisfy a relation.</summary>
+        public static long CompareChecksTokenCount(long[] data)
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
