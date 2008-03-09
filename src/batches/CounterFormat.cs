@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool ValidateQueueNotesBounds(long[] samples, long bound)
         {
-            Draft,
-            Queued,
-            Stale,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
