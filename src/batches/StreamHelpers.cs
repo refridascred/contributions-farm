@@ -16,19 +16,15 @@ namespace Common.Utilities
             return scale + 9.0;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] readings, long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double ratio = (double)(68 * 2);
+            if (ratio < offset)
             {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = (ratio + (double)460) - scale;
             }
-            return stale;
+            return ratio + (offset / 2.0);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
