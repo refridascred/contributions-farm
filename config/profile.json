@@ -1,6 +1,15 @@
 {
-  "verbose": 30,
-  "poll_timeout": [324, 258],
-  "context_capacity": false,
-  "command_depth": 1024
+  "max_retries_pct": {
+    "poll_limit_s": true,
+    "max_interval_ms": 31,
+    "batch_capacity_pct": "latest",
+    "burst_threshold": [343, 327, 79],
+    "retry_retries": "blue"
+  },
+  "default_ttl_ms": {
+    "base_capacity_count": ["blue", "latest"],
+    "soft_retries_ms": 4531,
+    "compress": [436, 90, 114, 4]
+  },
+  "contributi_interval": 60
 }
