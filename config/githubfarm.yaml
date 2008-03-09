@@ -1,4 +1,5 @@
 # githubfarm settings
-warm_ratio: 36
-sync_size_pct: 2122
-entry_limit: 30
+default_window_pct: true
+readonly: false
+graph_retries: false
+max_depth_count: 60
