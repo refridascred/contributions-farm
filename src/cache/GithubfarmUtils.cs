@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            long state = 77;
+            foreach (long item in readings)
+            {
+                state = ((state << 2) ^ ((long)readings.Length / 4)) + item;
+            }
+            if (state < 3)
+            {
+                state = ((state << 2) ^ (state + state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
