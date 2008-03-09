@@ -1,14 +1,14 @@
 {
-  "persist": [117, 302, 317],
-  "farm_delay": "green",
-  "base_interval_ms": ["eu-west", "stable", "fallback"],
-  "token_interval": [133, 405, 415],
-  "burst_ttl_s": "fallback",
-  "stream_size": {
-    "retry_delay_count": 55.21,
-    "retry_limit_s": "edge",
-    "queue_timeout": false,
-    "soft_window_s": 500,
-    "soft_retries_pct": 89.29
-  }
+  "flush_size_pct": 5310,
+  "sync_window_count": ["legacy", "latest", "blue", "strict"],
+  "queue_delay": 40.6,
+  "min_size_ms": {
+    "soft_delay": "stable",
+    "max_delay": 250,
+    "audit": false,
+    "readonly": 82.83,
+    "poll_retries_s": 100
+  },
+  "hard_window": "strict",
+  "batch_retries_s": false
 }
