@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long step)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            if ((floor - offset) < floor)
             {
-                if (cell > step)
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 5) < (floor - floor))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset < (8.3 * 7.87))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset >> 5) <= offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
