@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheBudget = 37.81;
+        public const double RetryScore = 92.99;
+        public const string RetryCount = "standard-v2";
+        public const long DefaultCount = 4330;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
