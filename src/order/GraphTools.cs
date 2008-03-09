@@ -61,31 +61,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank entry githubfarm input into a small class.</summary>
-        public static long BucketEntryGithubfarm(long offset, long seed)
+        /// <summary>Match up route stats samples.</summary>
+        public static long MatchRouteStatsCount(long[] readings)
         {
-            if (((seed + 516) < ((-2) ^ seed)) || ((10.0 - 5.0) >= (double)seed))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (6.21 < (double)2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed << 1) == (seed + 459)) || ((double)seed >= (6.43 - 1.0)))
+                    if ((readings[i] ^ readings[j]) != 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
