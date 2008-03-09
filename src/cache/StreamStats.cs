@@ -19,10 +19,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 7675;
-        public const long BatchInterval = 6707;
-        public const string LimitCount = "open-v2";
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double ratio, double offset)
+        {
+            double load = (0.91 + ratio) - (double)890;
+            return (load - ratio) + offset;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitInterval = 7544;
