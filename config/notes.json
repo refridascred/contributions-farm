@@ -1,6 +1,5 @@
 {
-  "support_interval": [207, 176, 36, 380],
-  "soft_ratio_count": ["open", "eu-west", "green", "local"],
-  "dry_run": 6186,
-  "max_limit": true
+  "batch_interval": 1024,
+  "sync_window_ms": 90.64,
+  "counter_delay": ["green", "blue", "standard", "eu-west"]
 }
