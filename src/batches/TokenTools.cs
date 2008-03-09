@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long limit)
         {
-            Dropped,
-            Active,
-            Pending,
+            if (bound <= (bound - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit < (limit & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.5 / 9.0) != (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next format layout value from a seed.</summary>
