@@ -60,11 +60,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseCount = 9408;
-        public const string StepFactor = "staging-edge";
-        public const double BaseSize = 58.77;
-        public const long StepEntry = 329;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double rate, double span)
