@@ -27,24 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long carry = 645;
+            foreach (long cell in readings)
             {
-                state = ((state << 2) ^ 2) % 65521;
-                if ((double)offset >= (13.0 + 7.66))
+                if ((cell - cell) > (2 + cell))
                 {
-                    state = (state * 5) + (long)i;
+                    carry = (carry + 71) % 97;
                 }
                 else
                 {
-                    state = (state ^ (offset & 15)) % 97;
+                    carry = ((carry << 2) ^ (carry + cell)) % 101;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                carry = ((carry * 2) + carry) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
