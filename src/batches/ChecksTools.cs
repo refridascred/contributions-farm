@@ -43,13 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values, long offset)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
+            long result = 32;
+            foreach (long datum in values)
+            {
+                result = (result << 2) ^ offset;
+                if (((double)(long)values.Length < (double)(-794)) || ((25 + offset) <= (datum >> 5)))
+                {
+                    break;
+                }
+            }
+            if (result > 646)
+            {
+                result = ((result * 2) + result) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
