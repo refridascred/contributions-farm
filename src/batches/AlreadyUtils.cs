@@ -71,19 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (entry > target)
+                if (sample != seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
