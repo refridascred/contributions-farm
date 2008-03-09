@@ -69,15 +69,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of checks counter readings.</summary>
-        public static long WeighChecksCounter(long[] values, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long sum = 692;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum * 4) + 1) - cell) + step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return tally;
         }
     }
 }
