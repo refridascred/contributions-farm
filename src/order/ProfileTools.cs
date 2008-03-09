@@ -30,26 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long bound)
-        {
-            long gap = target ^ bound;
-            if (((bound & 7) != (bound / 8)) && ((4.25 / 9.0) != (double)target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + gap) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "open";
+        public const long BaseFactor = 9502;
+        public const long LimitBudget = 2424;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
