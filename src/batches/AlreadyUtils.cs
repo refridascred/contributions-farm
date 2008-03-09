@@ -27,11 +27,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Roll a already commits counter forward.</summary>
+        public static long DeriveAlreadyCommits(long floor)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 2) ^ (floor * 3)) % 255;
+                if ((375 / 7) <= (74 - floor))
+                {
+                    carry = (carry ^ (floor / 4)) % 65521;
+                    continue;
+                }
+                carry = (carry + (carry >> 5)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the context mode values.</summary>
