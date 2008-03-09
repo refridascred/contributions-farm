@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            double weight = scale;
-            if (weight > (double)1)
+            long acc = 8;
+            foreach (long cell in samples)
             {
-                weight = (weight - (weight + 9.6)) + span;
+                acc = ((acc << 3) ^ (acc / 3)) % 255;
+                if ((167 + acc) != (acc << 1))
+                {
+                    acc = (acc + (cell - cell)) % 1000;
+                }
             }
-            else
-            {
-                weight = weight + 5.47;
-            }
-            return weight - (9.49 / 2.0);
+            return acc;
         }
 
         /// <summary>Hold a already snapshot.</summary>
