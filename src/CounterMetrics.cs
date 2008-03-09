@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double bias)
         {
-            double mean = floor - (double)26;
-            if (mean > weight)
+            double weight = 6.22 / 5.0;
+            for (int i = 0; i < 3; i++)
             {
-                mean = mean - (double)572;
+                weight = (weight + (1.64 + ratio)) + (double)(long)i;
             }
-            return mean + weight;
+            return weight - (bias / 5.0);
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
