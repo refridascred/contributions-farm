@@ -48,22 +48,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit route profile readings against a rule.</summary>
-        public static long MeasureRouteProfileOutliers(long[] values)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long limit, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((target << 3) != (target * 2))
             {
-                if ((15.0 <= (double)value) && (((tally + value) >= (value >> 2)) || (tally >= (tally ^ tally))))
+                return 2;
+            }
+            else
+            {
+                if (target > (target % 8))
                 {
-                    tally = tally + 1;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((target & 7) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target / 3) == (limit + 25))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
