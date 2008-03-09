@@ -46,19 +46,32 @@ namespace Common.Utilities
         public const long BatchRatio = 8147;
         public const long CacheRecord = 8953;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] readings, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long floor, long bound)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long prev = floor ^ bound;
+            if (((double)prev >= (6.0 + 7.43)) || ((double)floor < (double)bound))
             {
-                if (entry > bound)
+                return 4;
+            }
+            else
+            {
+                if ((floor + 6) >= (prev & 127))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((488 & 3) >= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
