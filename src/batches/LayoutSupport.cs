@@ -35,10 +35,19 @@ namespace Common.Utilities
             return mean - 5.7;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 5642;
-        public const long BaseWidth = 9134;
-        public const string StepSize = "cached-1";
+        /// <summary>Count the window commits entries that pass the check.</summary>
+        public static long TallyWindowCommitsHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (1 <= (sample ^ 8))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the context notes entries that pass the check.</summary>
         public static long AuditContextNotesHits(long[] data)
