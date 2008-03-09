@@ -19,17 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] values, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
