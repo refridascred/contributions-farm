@@ -37,15 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
