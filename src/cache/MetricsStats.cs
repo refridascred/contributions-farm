@@ -33,18 +33,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long CountBufferNotesHits(long[] readings)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)count > (double)sample)
+                long slot = (step ^ (long)i) & 63;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = count + 1;
+                    long cur = (slot & 255) << 3;
+                    sum = ((sum ^ (74 - cur)) % 255) ^ (long)i2;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
