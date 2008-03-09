@@ -53,18 +53,18 @@ namespace Common.Utilities
         public const double LimitMetrics = 77.09;
         public const string BatchMetrics = "stable-edge";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] levels)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long value in levels)
             {
-                if (((value & 3) == ((long)levels.Length + 547)) || ((1.0 / 2.0) > (double)value))
+                if ((value * 3) < value)
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
