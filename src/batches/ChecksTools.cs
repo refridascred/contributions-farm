@@ -16,18 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            long mix = 0;
-            foreach (long sample in items)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample > (mix - 93)) || ((double)mix < (double)sample))
-                {
-                    mix = (mix * 3) + (7 % 16);
-                }
+                acc = acc - (target & 63);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
