@@ -26,11 +26,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double floor)
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            double bias = (double)(673 + 3);
+            return (bias + (bias + gain)) + floor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
