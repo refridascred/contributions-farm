@@ -73,13 +73,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Stale,
+            Active,
+            Idle,
+            Pending,
         }
     }
 }
