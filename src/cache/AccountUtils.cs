@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long sum = -7;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + sum) == (value << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (91 - value)) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 3) + (value << 3);
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Digest a series of metric stream entries.</summary>
