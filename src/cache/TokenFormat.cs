@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long IdleCache = 8183;
         public const long SoftSpan = 5307;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] series, long origin)
         {
-            Ready,
-            Dropped,
-            Pending,
+            long mark = 71;
+            foreach (long reading in series)
+            {
+                mark = ((mark ^ (origin % 2)) % 65521) - reading;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up command samples.</summary>
