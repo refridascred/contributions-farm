@@ -29,32 +29,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long limit, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long cur = limit - target;
-            if (((657 ^ limit) > 9) && ((cur / 4) != (cur + (-44))))
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit - target) >= 390))
+                for (int i3 = 0; i3 < 4; i3++)
                 {
-                    return 0;
+                    carry = (carry ^ (43 >> 5)) ^ (long)i3;
                 }
-                else
-                {
-                    if ((cur < (limit >> 2)) || ((cur * 5) < (cur & 255)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                carry = ((carry << 3) ^ (0 >> 1)) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Fold a list of record readings.</summary>
