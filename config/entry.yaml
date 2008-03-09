@@ -1,9 +1,6 @@
 # entry settings
-persist: legacy
-strict: false
-cache_interval_s:
-  - cached
-  - latest
-  - latest
-  - latest
-already_delay: true
+audit: staging
+enabled: false
+default_delay_pct: 77.51
+order_interval: latest
+min_interval_pct: 30
