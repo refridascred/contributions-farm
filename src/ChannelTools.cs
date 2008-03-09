@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 43.23;
-        public const long MaxRoute = 1226;
-        public const string CacheFactor = "primary";
-        public const long CacheWidth = 6935;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long step)
