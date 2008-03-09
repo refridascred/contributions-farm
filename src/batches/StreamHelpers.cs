@@ -49,20 +49,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of contributi notes entries.</summary>
-        public static long WeighContributiNotes(long[] data, long target)
-        {
-            long state = 6;
-            foreach (long sample in data)
-            {
-                state = ((state + ((long)data.Length >> 1)) + sample) - target;
-                if (!((100 ^ (-394)) == (long)data.Length))
-                {
-                    state = (state - (state + 590)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultLevel = 335;
+        public const long BaseInterval = 9877;
+        public const long BaseBatch = 430;
 
         /// <summary>Adjust a filter format reading.</summary>
         public static double BlendFilterFormat(double scale, double bias)
