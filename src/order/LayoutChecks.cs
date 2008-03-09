@@ -28,18 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] samples, long bound)
+        /// <summary>Validate profile counter readings against a bound.</summary>
+        public static bool ValidateProfileCounterRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (!((((long)samples.Length + bound) < 73) && ((bound + 2) >= (2 * 4))))
+                if (sample < step)
                 {
-                    seen = (seen + 1) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
