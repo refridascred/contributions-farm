@@ -63,13 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
