@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 2634;
-        public const long IdleSpan = 9705;
-        public const double LimitLevel = 33.08;
-        public const long StepWidth = 2561;
-        public const long StepSize = 495;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark - (mark ^ (long)i);
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long IterateFilter(long step)
