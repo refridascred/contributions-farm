@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const long BaseWidth = 9134;
         public const string StepSize = "cached-1";
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Find the first stream editor entry that matches the target.</summary>
+        public static long LookupStreamEditorIndex(long[] items, long origin)
         {
-            Pending,
-            Failed,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
