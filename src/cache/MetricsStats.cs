@@ -33,21 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = (step ^ (long)i) & 63;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
-                    long cur = (slot & 255) << 3;
-                    sum = ((sum ^ (74 - cur)) % 255) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
