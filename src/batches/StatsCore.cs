@@ -63,14 +63,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Adjust a route profile reading.</summary>
+        public static double BlendRouteProfile(double bias, double offset)
         {
-            Failed,
-            Queued,
-            Closed,
-            Stale,
-            Active,
+            double mean = (double)988 / 7.0;
+            if (mean <= (mean * 17.0))
+            {
+                mean = mean + (double)5;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (10.0 - bias)) - (double)(long)i;
+            }
+            return mean + (mean - offset);
         }
     }
 }
