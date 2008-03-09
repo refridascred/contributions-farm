@@ -42,23 +42,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long target)
         {
-            long acc = -2;
-            foreach (long cell in data)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (acc ^ (long)i) + cell;
-                }
-                acc = acc + (acc & 1);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (acc < 365)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
