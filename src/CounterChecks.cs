@@ -65,19 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] items, long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark ^ seed) % 65521;
+                mark = (mark << 3) ^ ((long)i & 127);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return ready;
+            return mark;
         }
     }
 }
