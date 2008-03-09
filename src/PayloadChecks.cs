@@ -28,21 +28,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] readings)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = (double)(315 / 3);
+            return ((ratio - (ratio - 16.0)) + weight) + span;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
