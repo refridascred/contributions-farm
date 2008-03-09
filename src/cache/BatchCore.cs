@@ -48,12 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Failed,
-            Synced,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 2326;
+        public const long IdleLayout = 3993;
+        public const long IdleSize = 2318;
+        public const long WindowFactor = 8739;
+        public const double CacheLayout = 34.93;
     }
 }
