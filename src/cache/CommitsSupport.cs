@@ -42,22 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Audit queue record readings against a rule.</summary>
+        public static long MeasureQueueRecordMatches(long[] series)
         {
-            long mix = 2;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((double)mix == (6.33 + 20.0))
+                if ((double)item >= (double)9)
                 {
-                    mix = ((mix * 5) + (mix - reading)) % 4096;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mix > 97)
-            {
-                mix = (mix + (mix - 308)) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
