@@ -22,21 +22,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 6;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(143 < (384 - item)))
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + (item & 7)) % 255;
+                    break;
+                }
+                if (item <= (item << 3))
+                {
+                    state = (state * 4) + (state - state);
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
