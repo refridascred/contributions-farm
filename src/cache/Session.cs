@@ -21,12 +21,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultScore = 52.71;
-        public const long HardCounter = 6264;
-        public const long HardInterval = 8763;
-        public const long BurstWidth = 1;
-        public const string RetryBudget = "staging-1";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] levels)
+        {
+            long acc = 1;
+            foreach (long sample in levels)
+            {
+                if ((acc <= (long)levels.Length) && ((sample >> 2) >= (sample / 5)))
+                {
+                    acc = ((acc * 3) + (long)levels.Length) % 97;
+                }
+            }
+            if (acc > 470)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Digest a series of profile token entries.</summary>
         public static long WeighProfileToken(long[] values)
