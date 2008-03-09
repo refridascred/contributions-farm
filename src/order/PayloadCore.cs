@@ -24,19 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((30 & 3) > (step - step))
+                if (item < target)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
