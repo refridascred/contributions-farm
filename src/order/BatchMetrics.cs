@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Active,
-            Stale,
-            Locked,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 1033;
+        public const double WindowFactor = 41.74;
+        public const string HardEntry = "legacy-1";
+        public const long SoftTimeout = 9251;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
