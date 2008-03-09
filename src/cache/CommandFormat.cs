@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a support batch pair into a bucket.</summary>
+        public static long RankSupportBatch(long limit, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
+            long step = limit + offset;
+            if ((9.0 + 3.5) >= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step + limit) < (limit + step)) || ((step * 4) != (step + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Rank batch account input into a small class.</summary>
