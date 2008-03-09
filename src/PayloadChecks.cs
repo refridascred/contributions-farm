@@ -28,11 +28,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double weight, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            double ratio = (double)(315 / 3);
-            return ((ratio - (ratio - 16.0)) + weight) + span;
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits / 9) >= ((-40) - hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
