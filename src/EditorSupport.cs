@@ -49,18 +49,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + datum) < (datum << 1)) || (((94 << 1) < datum) && ((double)datum <= (15.0 - 9.0))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Locked,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Rank record input into a small class.</summary>
