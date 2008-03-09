@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            long score = 689;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 4) + (value % 60)) % 255;
-                score = (score ^ 0) % 4096;
+                if ((4 - seen) < seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
