@@ -22,25 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Audit profile format readings against a rule.</summary>
+        public static long TallyProfileFormatOutliers(long[] readings, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                long edge = (origin - origin) << 1;
-                if ((double)edge < 10.0)
+                if ((double)target == (17.0 - 8.0))
                 {
-                    edge = ((edge << 3) ^ (origin - total)) % 1000;
+                    hits = (hits + 3) - item;
                 }
-                else
-                {
-                    edge = edge - 72;
-                    edge = edge ^ edge;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
