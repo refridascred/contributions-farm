@@ -37,12 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum ^ sum) % 1000;
+                sum = sum ^ ((long)i + (long)i);
+                sum = (sum ^ (sum ^ origin)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
