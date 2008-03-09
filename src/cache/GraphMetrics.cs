@@ -44,19 +44,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the buffer class values.</summary>
