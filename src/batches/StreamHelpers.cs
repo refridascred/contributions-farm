@@ -64,23 +64,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Adjust a filter format reading.</summary>
+        public static double BlendFilterFormat(double scale, double bias)
         {
-            double gain = offset;
-            if (gain < (double)353)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain - 14.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain - scale)) + (double)(long)i;
-            }
-            return gain + gain;
+            double weight = (scale * 9.1) - (bias * 0.2);
+            return weight - scale;
         }
     }
 }
