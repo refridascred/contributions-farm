@@ -48,40 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long bound, long limit)
-        {
-            long prev = bound ^ limit;
-            if ((37 / 4) >= (prev % 12))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit < 2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((10.0 + 2.36) > (double)prev)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((prev % 2) <= (limit % 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 8195;
+        public const string HardRatio = "primary";
+        public const double MinEditor = 1.71;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long seed, long floor)
