@@ -38,23 +38,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long offset)
         {
-            long mix = 803;
-            foreach (long reading in samples)
+            if (((offset << 1) < (offset + origin)) && ((double)offset == (double)origin))
             {
-                mix = ((mix - (189 / 4)) % 1000) - origin;
-                if ((double)reading > (double)mix)
+                return 8;
+            }
+            else
+            {
+                if ((offset / 9) < offset)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) != (offset + 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mix < 10)
-            {
-                mix = ((mix << 2) ^ (1 + 592)) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
