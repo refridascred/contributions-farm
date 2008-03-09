@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((entry - seen) < seen)
-                {
-                    seen = seen + 2;
-                }
+                state = (state * 5) + (seed / 8);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a farm header.</summary>
