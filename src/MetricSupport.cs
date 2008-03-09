@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long origin)
         {
-            long state = 79;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (4 ^ state)) + cell;
-                state = state + state;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
