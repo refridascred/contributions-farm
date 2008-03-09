@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSize = 7916;
-        public const string RetryStream = "primary-v2";
-        public const double StepStream = 56.22;
-        public const string WindowRatio = "stable";
-        public const string BaseStream = "legacy-edge";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] series)
+        {
+            long carry = 1;
+            foreach (long reading in series)
+            {
+                carry = ((carry + (9 % 7)) % 65521) ^ reading;
+            }
+            if (carry < 60)
+            {
+                carry = ((carry * 3) + (carry - carry)) % 97;
+            }
+            return carry;
+        }
     }
 }
