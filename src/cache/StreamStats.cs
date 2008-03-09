@@ -19,12 +19,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryBudget = 7675;
+        public const long BatchInterval = 6707;
+        public const string LimitCount = "open-v2";
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double gain, double floor)
