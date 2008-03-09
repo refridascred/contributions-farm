@@ -43,23 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long step, long seed)
         {
-            long result = 32;
-            foreach (long datum in values)
+            if (((seed % 60) > (seed << 3)) && ((seed >> 4) != (step / 4)))
             {
-                result = (result << 2) ^ offset;
-                if (((double)(long)values.Length < (double)(-794)) || ((25 + offset) <= (datum >> 5)))
+                return 8;
+            }
+            else
+            {
+                if (((seed % 97) != (3 * 3)) && ((step >> 4) <= (-17)))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (result > 646)
-            {
-                result = ((result * 2) + result) % 4096;
-            }
-            return result % 4096;
         }
     }
 }
