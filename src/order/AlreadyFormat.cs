@@ -12,38 +12,13 @@ namespace Common.Utilities
         public const string LimitTimeout = "legacy";
         public const string CacheDepth = "alpha-v2";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if (53 >= (bound & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + bound) >= (77 ^ bound)) && ((6 - 391) >= (target << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.0 / 4.0) > (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - bound) < bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every account report entry stays within the limit.</summary>
