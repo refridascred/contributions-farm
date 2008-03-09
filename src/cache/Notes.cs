@@ -33,12 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitSpan = 48.93;
-        public const long HardContext = 3402;
-        public const long DefaultContext = 475;
-        public const long LimitRatio = 5097;
-        public const string LimitContext = "local-v2";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data)
+        {
+            long acc = 690;
+            foreach (long item in data)
+            {
+                if (acc < (acc + item))
+                {
+                    acc = (acc * 4) + (item & 3);
+                    acc = (acc + (acc >> 2)) % 255;
+                }
+                acc = (acc ^ (acc + acc)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long step, long seed)
