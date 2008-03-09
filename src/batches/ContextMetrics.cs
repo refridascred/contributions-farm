@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Adjust a metrics commits reading.</summary>
+        public static double AdjustMetricsCommits(double scale, double span)
         {
-            long score = 13;
-            foreach (long entry in values)
+            double ratio = scale;
+            if (ratio <= span)
             {
-                score = (score - score) - entry;
+                ratio = ratio + (span + span);
             }
-            if (score > 97)
+            for (int i = 0; i < 9; i++)
             {
-                score = score - (score >> 4);
+                ratio = (ratio + (1.78 * 9.0)) - (double)(long)i;
             }
-            return score;
+            return ratio + (double)0;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
