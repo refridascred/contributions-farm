@@ -22,15 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long mix = 811;
-            foreach (long cell in readings)
-            {
-                mix = (mix ^ (cell & 1)) % 97;
-            }
-            return mix % 1000;
+            Draft,
+            Idle,
+            Synced,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the farm status values.</summary>
