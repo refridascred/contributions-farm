@@ -1,5 +1,15 @@
 {
-  "audit": "cached",
-  "base_depth": 94,
-  "default_ttl": 98.03
+  "cache_ttl_ms": 27,
+  "idle_window_ms": {
+    "readonly": ["fallback", "local", "edge", "blue"],
+    "contributi_depth": 31.75,
+    "burst_depth_pct": "blue",
+    "min_size": false,
+    "warm_size_s": true,
+    "min_limit_count": "primary"
+  },
+  "readonly": [183, 428, 469],
+  "stream_capacity": [374, 27],
+  "compress": "latest",
+  "base_delay_ms": "legacy"
 }
