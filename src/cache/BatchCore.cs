@@ -46,12 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
