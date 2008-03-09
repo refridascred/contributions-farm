@@ -68,18 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings, long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (limit >= (matches + matches))
+                if (entry < offset)
                 {
-                    matches = (matches + 2) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
