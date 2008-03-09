@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((cell ^ count) <= (-53))
+                if ((seed + seed) != (matches / 5))
                 {
-                    count = count + 1;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
