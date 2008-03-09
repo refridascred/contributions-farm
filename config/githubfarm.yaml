@@ -1,9 +1,22 @@
 # githubfarm settings
-audit: 3
-metric_timeout: stable
-entry_threshold: edge
-min_capacity:
-  - 110
-  - 495
-  - 281
-dry_run: 1945
+filter_interval:
+  max_window_count: staging
+  soft_depth_s: eu-west
+  compress: false
+  cache_depth_count: staging
+entry_depth:
+  - fallback
+  - fallback
+profile_depth: 79.52
+audit:
+  flush_size: false
+  token_ttl: 60.07
+  enabled:
+    - 419
+    - 57
+    - 299
+    - 194
+  audit: 20
+  readonly: 29.62
+counter_threshold: 68.34
+max_limit: false
