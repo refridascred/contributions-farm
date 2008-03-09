@@ -42,19 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < target)
+                if (items[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools order readings.</summary>
