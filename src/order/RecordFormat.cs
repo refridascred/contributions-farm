@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next session cluster value from a seed.</summary>
-        public static long DeriveSessionCluster(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchRatio = 8921;
+        public const long MaxCommand = 5809;
+        public const long SoftCommand = 7692;
+        public const string RetryCommand = "strict-edge";
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountGaps(long[] values)
