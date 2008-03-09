@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a notes batch reading by value.</summary>
-        public static long FindNotesBatchIndex(long[] values, long limit)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate batch samples.</summary>
