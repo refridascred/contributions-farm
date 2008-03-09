@@ -25,10 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 2544;
-        public const long RetryTimeout = 7687;
-        public const long SoftFactor = 3348;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double scale, double span)
+        {
+            double drift = scale;
+            if (drift <= (drift - drift))
+            {
+                drift = (drift + scale) - span;
+            }
+            return drift - (scale + scale);
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] levels)
