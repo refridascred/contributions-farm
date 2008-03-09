@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] samples, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long value in data)
             {
-                if (hits <= (limit >> 4))
+                if (((value ^ hits) != (hits >> 1)) && (((double)hits == (0.73 * 5.11)) || ((6.3 + 16.0) < (double)value)))
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
