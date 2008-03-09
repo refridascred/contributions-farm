@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double rate, double bias)
-        {
-            double bias2 = 8.1;
-            if (bias2 > bias2)
-            {
-                bias2 = (bias2 + (rate + bias2)) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + 8.0) + (double)(long)i;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchInterval = 17.66;
+        public const long LimitScore = 9313;
+        public const double BatchContributi = 7.02;
 
         /// <summary>Count the commits support entries that pass the check.</summary>
         public static long TallyCommitsSupportOutliers(long[] items, long offset)
