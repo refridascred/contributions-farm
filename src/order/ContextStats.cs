@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Roll a notes batch counter forward.</summary>
+        public static long DeriveNotesBatch(long seed)
         {
-            Retry,
-            Synced,
-            Ready,
-            Paused,
-            Locked,
+            long total = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total - seed;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
