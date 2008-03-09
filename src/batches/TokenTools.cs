@@ -26,14 +26,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long limit2)
         {
-            Done,
-            Queued,
-            Paused,
-            Idle,
-            Pending,
+            if (limit <= (399 / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit2 > (limit2 - 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
