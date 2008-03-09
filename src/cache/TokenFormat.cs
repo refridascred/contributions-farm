@@ -27,19 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double scale, double span)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            double gain = (double)3 / 3.0;
-            if (gain < (scale / 5.0))
+            double weight = (gain * 7.72) * 7.16;
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain - (gain * 7.53);
+                weight = (weight - (floor + floor)) + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (span + 9.1);
+            return weight - (double)(-76);
         }
     }
 }
