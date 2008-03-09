@@ -32,13 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            if (9.67 < (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit < (0.54 / 7.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
