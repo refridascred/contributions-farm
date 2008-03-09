@@ -61,21 +61,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up cache account samples.</summary>
-        public static long CompareCacheAccountCount(long[] items)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = target - origin;
+            if (!((10.0 + 4.0) >= (double)slot))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((slot / 8) < target)
                 {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
