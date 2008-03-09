@@ -24,19 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] readings, long target)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
