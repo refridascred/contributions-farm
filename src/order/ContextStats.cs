@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a notes batch counter forward.</summary>
-        public static long DeriveNotesBatch(long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total - seed;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Closed,
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
