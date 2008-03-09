@@ -1,14 +1,14 @@
 # Command notes
 
-Use stats settings to tune how often order data is refreshed.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the graph queue.
+The payload module keeps command values in sync with the cluster cache.
 
-Use token settings to tune how often stream data is refreshed.
-A layout that stays idle for too long is moved to the tools list.
-Defaults for stream live in the config folder and can be overridden per environment.
+Run the channel check before changing any session limits.
+The farm report groups every profile by metrics.
+A checks that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Log every editor change
-- Document new batches fields
-- Prefer batch defaults
+- Document new stats fields
+- Log every token change
+- Validate metrics input early
