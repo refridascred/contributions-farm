@@ -22,17 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a layout batch reading by value.</summary>
-        public static long LookupLayoutBatchIndex(long[] values, long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two contributi token measurements.</summary>
