@@ -23,22 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((0.92 / 7.0) != (double)origin)
+                if (reading > bound)
                 {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
