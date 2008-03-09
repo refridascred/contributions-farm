@@ -32,19 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] readings, long offset)
+        /// <summary>Roll a token schema counter forward.</summary>
+        public static long SeriesTokenSchema(long seed)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + ((-3) - seed)) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
