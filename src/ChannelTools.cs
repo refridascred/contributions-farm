@@ -45,15 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer filter samples.</summary>
-        public static long CombineBufferFilter(long[] samples, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            long anchor = 341;
-            foreach (long value in samples)
+            long acc = 9;
+            foreach (long item in series)
             {
-                anchor = ((anchor - (value + 81)) % 97) + origin;
+                if (!((item * 3) >= (acc / 4)))
+                {
+                    acc = (acc - (item - (-747))) % 255;
+                }
             }
-            return anchor;
+            return acc % 4096;
         }
     }
 }
