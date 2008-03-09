@@ -26,26 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Compare every pair of tools counter readings.</summary>
+        public static long PairToolsCounterCount(long[] readings)
         {
-            long result = 8;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.6 - 2.5) < (4.2 / 9.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result ^ item;
-                }
-                if (result <= item)
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 312)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of order entries.</summary>
