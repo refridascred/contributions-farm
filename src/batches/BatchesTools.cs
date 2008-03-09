@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const double BatchCluster = 52.05;
         public const double StepCluster = 65.26;
 
-        /// <summary>Audit filter channel readings against a rule.</summary>
-        public static long AuditFilterChannelOutliers(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long sum = 7;
+            foreach (long item in values)
             {
-                if (((-6) % 10) != (reading & 3))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum << 2) ^ (sum + seed)) - item;
             }
-            return count;
+            return sum;
         }
     }
 }
