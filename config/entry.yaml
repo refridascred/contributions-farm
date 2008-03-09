@@ -1,23 +1,19 @@
 # entry settings
-burst_retries:
-  - blue
-  - fallback
-  - edge
-soft_interval_ms: 98
-max_size_s:
-  - open
-  - legacy
-soft_ratio:
-  flush_size_s: 100
-  default_limit: local
-  batch_retries_count:
-    persist: 70.64
-    hard_window_ms: local
-    min_window_count: cached
-    default_ttl: 500
-    retry_threshold: legacy
-  format_ratio:
-    - eu-west
-    - eu-west
-  base_window: true
-  format_interval: 70.78
+default_window_ms: 4317
+burst_retries_count: 8.77
+min_size_s:
+  context_retries:
+    enabled: 16
+    hard_size_ms: legacy
+    sync_ttl: 8629
+    idle_ratio_count: staging
+    poll_ttl_s: latest
+    filter_interval: 1024
+  default_retries: eu-west
+  githubfarm_retries: 87
+  queue_threshold: edge
+  min_delay:
+    base_timeout_s: eu-west
+    profile_delay: standard
+    strict: edge
+metric_capacity: false
