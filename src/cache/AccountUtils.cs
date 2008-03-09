@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Ready,
-            Stale,
-            Failed,
-            Draft,
-            Done,
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
