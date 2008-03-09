@@ -33,19 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            long mix = 593;
-            foreach (long value in levels)
+            double load = (double)6;
+            if (load > (7.1 + weight))
             {
-                mix = (mix + (mix - value)) % 65521;
+                load = load - 9.7;
             }
-            if (mix < 5)
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix + (floor >> 5);
+                load = (load - (bias * 4.91)) + (double)(long)i;
             }
-            return mix % 1000;
+            return load - (double)81;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
