@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitLevel = "strict-v2";
-        public const long SoftRatio = 8832;
-        public const string StepBudget = "latest-1";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long limit, long origin)
+        {
+            long step = limit + origin;
+            if ((limit + (-98)) < 8)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - limit) > (step << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
         public static long FindStatsMetricsIndex(long[] samples, long step)
