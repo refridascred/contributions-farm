@@ -1,11 +1,6 @@
 # entry settings
-readonly: open
-poll_delay_count:
-  persist: 18.8
-  farm_threshold: 8
-  verbose: fallback
-  route_ratio: legacy
-record_timeout: standard
-flush_limit_ms: staging
-base_interval_s: false
-warm_capacity: fallback
+farm_depth: true
+max_threshold_count: stable
+record_ratio: true
+flush_limit: 32.05
+warm_threshold_s: cached
