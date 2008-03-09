@@ -1,15 +1,14 @@
 # Command notes
 
-The order module keeps stats values in sync with the payload cache.
-A route that stays idle for too long is moved to the layout list.
-Run the profile check before changing any window limits.
+Each tools is validated before it reaches the commits queue.
+Run the entry check before changing any command limits.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Keep editor and format names short and lowercase.
-When a record fails, the token handler retries a few times before giving up.
+Each support is validated before it reaches the already queue.
+The stream report groups every context by payload.
+Run the metric check before changing any farm limits.
 
 ## Guidelines
 
-- Review route limits each release
-- Prefer account defaults
-- Keep editor values small
+- Prefer record defaults
+- Keep channel values small
+- Validate session input early
