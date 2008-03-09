@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine account window values into a single score.</summary>
-        public static long WeighAccountWindow(long[] values, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long bound)
         {
-            long total = -19;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.4 * 1.0) > (double)target)
+                if (readings[i] > bound)
                 {
-                    total = (total + (sample % 8)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
