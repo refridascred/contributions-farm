@@ -75,11 +75,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstFactor = 1196;
+        public const double MinInterval = 18.09;
+        public const string DefaultMetrics = "legacy-v2";
+        public const double RetryMetrics = 0.63;
+        public const long WindowMetrics = 6504;
     }
 }
