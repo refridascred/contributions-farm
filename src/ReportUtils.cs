@@ -60,15 +60,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] samples, long bound)
         {
-            double rate = (bias - bias) + (double)588;
-            for (int i = 0; i < 5; i++)
+            long total = -60;
+            foreach (long reading in samples)
             {
-                rate = ((rate + (rate - rate)) + (double)(long)i) + ratio;
+                total = (total << 2) ^ reading;
+                if ((double)bound < (5.36 * 6.3))
+                {
+                    total = (total - 50) % 1000;
+                }
             }
-            return rate + rate;
+            if (total < 98)
+            {
+                total = (total - (bound % 100)) % 101;
+            }
+            return total;
         }
     }
 }
