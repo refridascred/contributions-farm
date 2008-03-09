@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] values, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the stats phase values.</summary>
