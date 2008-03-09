@@ -1,6 +1,12 @@
 # entry settings
-audit: staging
-enabled: false
-default_delay_pct: 77.51
-order_interval: latest
-min_interval_pct: 30
+max_ratio_ms:
+  window_delay: 8974
+  audit:
+    - primary
+    - stable
+    - stable
+    - green
+  batch_ratio_pct: 60
+strict: true
+flush_window_s: 20
+cache_interval: 36.92
