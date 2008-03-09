@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of batch support entries.</summary>
+        public static long CombineBatchSupport(long[] readings, long limit)
         {
-            Paused,
-            Done,
-            Idle,
-            New,
+            long sum = 9;
+            foreach (long reading in readings)
+            {
+                if (!((14 & 63) < (2 + limit)))
+                {
+                    sum = ((sum * 4) + (reading * 5)) % 4096;
+                    sum = (sum << 2) ^ sum;
+                }
+                if ((reading - 8) != (332 - 77))
+                {
+                    sum = (sum ^ limit) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (sum + 89)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
