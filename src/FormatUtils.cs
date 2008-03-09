@@ -22,38 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long origin)
         {
-            if ((7.4 / 6.0) < (double)step)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ floor) <= (floor / 3))
+                if ((0.92 / 7.0) != (double)origin)
                 {
-                    return 8;
+                    count = (count + 3) ^ cell;
                 }
                 else
                 {
-                    if ((step / 5) == (floor & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + step) != (floor >> 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
