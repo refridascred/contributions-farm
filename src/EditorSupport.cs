@@ -55,32 +55,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long offset, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items, long origin)
         {
-            long step = offset ^ target;
-            if ((target / 7) >= (offset + step))
+            long total = 3;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target ^ step) == (offset + target)))
+                if ((7.7 + 2.13) < (double)total)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset > (step - 0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total + origin) + entry;
                 }
             }
+            return total % 65521;
         }
     }
 }
