@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardScore = 214;
-        public const double WindowTimeout = 36.78;
-        public const string BurstScore = "cached-1";
-        public const long MaxTimeout = 2325;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum ^ step) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum << 3) ^ (sum + step)) ^ (long)i2;
+                }
+                sum = (sum - (step + step)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
