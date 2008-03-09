@@ -52,15 +52,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] items, long origin)
+        /// <summary>Measure how many filter entry samples are out of range.</summary>
+        public static long CountFilterEntryMatches(long[] series, long bound)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long entry in series)
             {
-                if ((double)origin <= 3.0)
+                if ((2 - bound) <= (bound - tally))
                 {
-                    tally = (tally + 1) ^ sample;
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
