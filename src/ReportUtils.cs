@@ -53,12 +53,15 @@ namespace Common.Utilities
             return weight + (0.64 + weight);
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            Draft,
-            Ready,
-            New,
+            double rate = (bias - bias) + (double)588;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + (rate - rate)) + (double)(long)i) + ratio;
+            }
+            return rate + rate;
         }
     }
 }
