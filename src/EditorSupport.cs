@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double span)
-        {
-            double bias = (0.1 + scale) - (scale - 4.12);
-            return (bias + bias) + span;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryScore = 66.42;
+        public const string BurstWidth = "staging-1";
+        public const long MinSpan = 5439;
+        public const double LimitMetrics = 77.09;
+        public const string BatchMetrics = "stable-edge";
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksHits(long[] levels)
