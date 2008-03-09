@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long target, long limit)
         {
-            double rate2 = (offset - offset) - (double)4;
-            if (rate2 <= (7.0 * 3.76))
+            if ((17.0 >= (double)limit) && (27 > (limit & 7)))
             {
-                rate2 = (rate2 - 8.43) + rate;
+                return 4;
             }
-            return rate2 + rate2;
+            else
+            {
+                if ((33 / 8) < ((-75) - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 5) <= (47 >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((15.0 + 7.81) > (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
