@@ -31,21 +31,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((547 + seed) != (result ^ result)) || ((76 ^ result) > (seed & 255)))
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - ((long)i >> 1)) % 4096;
                 }
+                else
+                {
+                    result = ((result << 2) ^ (-22)) % 255;
+                    result = (result ^ ((long)i % 2)) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Iterate the cache farm series from a seed.</summary>
