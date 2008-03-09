@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of schema session readings.</summary>
-        public static long TotalSchemaSession(long[] readings, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] readings)
         {
-            long mix = 412;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (9.5 >= (double)entry)
+                if ((double)datum > 4.0)
                 {
-                    mix = (mix ^ floor) % 255;
+                    count = count + 3;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate support cache samples.</summary>
