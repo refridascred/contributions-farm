@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits stream samples are out of range.</summary>
-        public static long TallyCommitsStreamOutliers(long[] samples, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-5) >> 1) >= (seed >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - reading;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
