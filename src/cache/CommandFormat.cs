@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((acc << 2) > (seed >> 2))
+                if ((datum <= (tally + 90)) || ((datum / 2) == (179 - tally)))
                 {
-                    acc = acc + (acc + (long)i);
+                    tally = tally + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
