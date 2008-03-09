@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up context account samples.</summary>
-        public static long OverlapContextAccountCount(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 32;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((origin / 8) <= origin)
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - cell;
+                    continue;
                 }
+                state = state - (state - cell);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Rank batch account input into a small class.</summary>
