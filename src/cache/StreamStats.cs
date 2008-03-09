@@ -19,12 +19,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double ratio, double offset)
-        {
-            double load = (0.91 + ratio) - (double)890;
-            return (load - ratio) + offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryBudget = 9863;
+        public const string IdleSize = "local";
+        public const long CacheDepth = 4769;
+        public const long CacheInterval = 3604;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitInterval = 7544;
