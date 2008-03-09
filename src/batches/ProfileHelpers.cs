@@ -31,31 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] items, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values, long limit)
         {
-            long state = 4;
-            foreach (long sample in items)
+            long result = 14;
+            foreach (long value in values)
             {
-                if ((offset & 1) < ((long)items.Length - sample))
-                {
-                    state = (state - sample) % 255;
-                    state = state ^ (sample - sample);
-                }
-                else
-                {
-                    state = (state - sample) % 1000;
-                }
-                if ((double)state >= (double)offset)
-                {
-                    state = state - (offset % 97);
-                }
+                result = ((result << 3) ^ (limit % 100)) + value;
             }
-            if (state < 250)
+            if (result > 0)
             {
-                state = ((state << 3) ^ (offset * 3)) % 1000;
+                result = (result * 4) + (result & 255);
             }
-            return state;
+            return result;
         }
 
         /// <summary>Locate a order farm reading by value.</summary>
