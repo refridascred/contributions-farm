@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long MinChecks = 4053;
         public const long IdleChecks = 7671;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long step)
+        /// <summary>Combine record schema values into a single score.</summary>
+        public static long CombineRecordSchema(long[] series)
         {
-            if ((6 > (step / 2)) || ((step - step) != (step / 4)))
+            long result = 6;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step > (3.09 / 7.0))
+                result = ((result * 2) + (entry + entry)) % 65521;
+                if ((6.0 / 4.0) >= (double)(long)series.Length)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
