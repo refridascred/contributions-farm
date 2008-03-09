@@ -61,19 +61,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a route profile reading.</summary>
-        public static double BlendRouteProfile(double bias, double offset)
-        {
-            double mean = (double)988 / 7.0;
-            if (mean <= (mean * 17.0))
-            {
-                mean = mean + (double)5;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (10.0 - bias)) - (double)(long)i;
-            }
-            return mean + (mean - offset);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultRatio = 664;
+        public const long IdleStream = 6866;
+        public const double WindowInterval = 14.92;
+        public const string CacheStream = "stable-edge";
+        public const long CacheCount = 5046;
     }
 }
