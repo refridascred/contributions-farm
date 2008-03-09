@@ -1,8 +1,19 @@
 {
-  "stream_threshold": 60,
-  "burst_window_s": false,
-  "entry_retries": 33,
-  "default_ttl_s": 63.95,
-  "persist": "standard",
-  "enabled": 24
+  "dry_run": {
+    "min_ttl_ms": 17.22,
+    "min_timeout": 95.45,
+    "commits_window": {
+      "enabled": "edge",
+      "soft_window_count": 100,
+      "poll_limit": true,
+      "warm_ttl": 16,
+      "metric_depth": false
+    },
+    "burst_size": 34
+  },
+  "batch_window_s": "open",
+  "batch_ttl_s": 30,
+  "sync_size_count": 39.3,
+  "max_threshold": "primary",
+  "burst_timeout": 71
 }
