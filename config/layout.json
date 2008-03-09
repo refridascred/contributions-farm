@@ -1,6 +1,6 @@
 {
-  "warm_size_ms": 64.13,
-  "support_delay": "standard",
-  "contributi_depth": 500,
-  "compress": "edge"
+  "notes_depth": 16.87,
+  "route_timeout": 42.65,
+  "cache_window_ms": 79,
+  "flush_depth_pct": [259, 363]
 }
