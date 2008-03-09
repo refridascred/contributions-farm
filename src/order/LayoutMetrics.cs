@@ -22,15 +22,15 @@ namespace Common.Utilities
         public const string WindowInterval = "legacy-1";
         public const long WindowTools = 1198;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
         {
             long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
+                    if ((readings[i] + readings[j]) > 10)
                     {
                         seen = seen + 1;
                     }
