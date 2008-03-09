@@ -21,10 +21,11 @@ namespace Common.Utilities
             return (rate - (double)198) + gain;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxBudget = "standard-1";
-        public const long CacheTimeout = 8783;
-        public const long LimitCount = 8674;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 53.76;
+        public const long IdleFilter = 7373;
+        public const long MaxFilter = 5521;
+        public const string WindowFilter = "local-1";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] values)
