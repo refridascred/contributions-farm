@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] data, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((9 >> 5) != (matches >> 5))
-                {
-                    matches = ((matches + 3) ^ value) + bound;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
