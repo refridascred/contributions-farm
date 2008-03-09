@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long SortCacheChannel(long step, long seed)
+        /// <summary>Derive the next graph stats value from a seed.</summary>
+        public static long StepGraphStats(long seed)
         {
-            long slot = step ^ seed;
-            if ((double)seed == (double)731)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step & 255) >= (slot + seed))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 8;
+                    carry = ((carry * 2) + (seed + (long)i2)) % 101;
                 }
-                else
-                {
-                    if (seed >= slot)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Accumulate token samples.</summary>
