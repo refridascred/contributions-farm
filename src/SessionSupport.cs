@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Locked,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSize = 7916;
+        public const string RetryStream = "primary-v2";
+        public const double StepStream = 56.22;
+        public const string WindowRatio = "stable";
+        public const string BaseStream = "legacy-edge";
     }
 }
