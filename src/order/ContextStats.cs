@@ -51,15 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double floor)
         {
-            long score = 2;
-            foreach (long datum in levels)
+            double ratio2 = 8.0;
+            if (ratio2 < (floor + ratio))
             {
-                score = ((score << 2) ^ datum) % 65521;
+                ratio2 = ratio2 + floor;
             }
-            return score;
+            else
+            {
+                ratio2 = ratio2 + (floor + ratio);
+            }
+            return ratio2 - 1.0;
         }
     }
 }
