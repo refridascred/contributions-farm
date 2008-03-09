@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-for item in legacy primary green staging; do
+CHANNEL_LIMIT=19
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west green open primary; do
     log "checking ${item}"
 done
