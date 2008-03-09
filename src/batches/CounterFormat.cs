@@ -28,12 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] values, long limit)
         {
-            Pending,
-            Failed,
-            Idle,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits * 5) >= (limit / 3))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
