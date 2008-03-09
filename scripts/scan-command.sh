@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue latest eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-local}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in open staging; do
+    log "checking ${item}"
+done
