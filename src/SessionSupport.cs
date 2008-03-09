@@ -34,11 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 1.32;
-        public const long HardProfile = 3421;
-        public const double WindowBudget = 45.18;
-        public const double SoftDepth = 61.85;
-        public const string BaseProfile = "cached-edge";
+        /// <summary>Locate a commits support reading by value.</summary>
+        public static long LocateCommitsSupportIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
