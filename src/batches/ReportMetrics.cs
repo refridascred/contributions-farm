@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const long SoftRatio = 8832;
         public const string StepBudget = "latest-1";
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long seed)
+        /// <summary>Look up the position of a stats metrics sample.</summary>
+        public static long FindStatsMetricsIndex(long[] samples, long step)
         {
-            if (((14.0 + 14.0) == (double)floor) || (seed <= (seed % 64)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= (floor + seed))
+                if (samples[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.0 - 0.18) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
