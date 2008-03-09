@@ -70,11 +70,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long seed)
         {
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
