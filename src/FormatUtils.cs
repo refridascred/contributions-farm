@@ -55,19 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            long anchor = 44;
-            foreach (long cell in levels)
+            double scale = (span / 8.0) / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (anchor < 728)
-                {
-                    anchor = ((anchor << 2) ^ seed) % 65521;
-                }
-                anchor = ((anchor * 3) + cell) % 1000;
+                scale = ((scale + scale) - (double)(long)i) - bias;
             }
-            return anchor;
+            return scale - 0.75;
         }
 
         /// <summary>Describe the profile status values.</summary>
