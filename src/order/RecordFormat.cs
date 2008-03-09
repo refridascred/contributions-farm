@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] data, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] series)
         {
-            long mark = 79;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((mark << 3) == (mark - floor))
+                if ((datum - datum) < seen)
                 {
-                    mark = ((mark - (19 >> 3)) % 1000) + reading;
+                    seen = seen + 2;
                 }
             }
-            if (mark > 499)
-            {
-                mark = (mark * 5) + floor;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Hold a graph entry.</summary>
