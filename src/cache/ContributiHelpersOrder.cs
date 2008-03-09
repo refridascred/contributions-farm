@@ -36,25 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long bound, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            long step = bound + target;
-            if (step <= (bound >> 4))
+            long total = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.63 * 10.0) != (double)target)
+                total = ((total << 2) ^ (total >> 5)) % 255;
+                if (9.5 >= (double)datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    total = (total - (datum * 2)) % 97;
                 }
             }
+            if (total < 701)
+            {
+                total = ((total << 2) ^ (total - total)) % 101;
+            }
+            return total % 97;
         }
     }
 }
