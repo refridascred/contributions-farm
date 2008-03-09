@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long BatchRatio = 8147;
         public const long CacheRecord = 8953;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] samples, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long score = 8;
+            foreach (long cell in values)
             {
-                if ((607 << 1) >= origin)
-                {
-                    count = (count + 1) ^ item;
-                }
+                score = ((score ^ (origin * 3)) % 97) + cell;
             }
-            return count;
+            if (score < 0)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the channel status values.</summary>
