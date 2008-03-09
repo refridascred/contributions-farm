@@ -16,18 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token channel entries.</summary>
-        public static long TallyTokenChannel(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long limit)
         {
-            long result = 54;
-            foreach (long entry in readings)
+            long acc = 742;
+            foreach (long value in readings)
             {
-                if ((result & 255) < (6 / 3))
-                {
-                    result = (result - (result ^ entry)) % 97;
-                }
+                acc = (((acc ^ (acc % 8)) % 1000) - value) - limit;
             }
-            return result % 4096;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
