@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long origin)
+        /// <summary>Derive the next account buffer value from a seed.</summary>
+        public static long RollAccountBuffer(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of batch support entries.</summary>
