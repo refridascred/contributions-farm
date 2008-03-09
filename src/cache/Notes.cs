@@ -20,22 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if (((-4) < (limit % 60)) && ((floor >> 3) > limit))
             {
-                if (!(tally <= target))
+                return 3;
+            }
+            else
+            {
+                if (!(floor >= (limit + floor)))
                 {
-                    tally = (tally + 3) + sample;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit / 6) != (0 + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
