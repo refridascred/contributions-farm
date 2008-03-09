@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double offset)
-        {
-            double rate = offset;
-            return (rate - (double)198) + gain;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "primary-edge";
+        public const double BaseWindow = 90.94;
+        public const double RetryRatio = 5.79;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BurstFilter = 53.76;
