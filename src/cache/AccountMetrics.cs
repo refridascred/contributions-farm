@@ -49,13 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Roll a window session counter forward.</summary>
+        public static long RollWindowSession(long step)
         {
-            Draft,
-            Synced,
-            Locked,
-            Failed,
+            long state = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(step < (163 + 354)))
+                {
+                    state = ((state << 2) ^ (673 & 3)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of order readings.</summary>
