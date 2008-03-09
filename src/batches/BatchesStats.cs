@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] data)
+        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
+        public static long MatchProfileLayoutCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value ^ hits) != (hits >> 1)) && (((double)hits == (0.73 * 5.11)) || ((6.3 + 16.0) < (double)value)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up schema command samples.</summary>
