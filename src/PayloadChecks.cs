@@ -82,18 +82,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (((floor ^ offset) > 8) && ((double)floor < (8.6 - 4.58)))
             {
-                if (((tally + tally) == (value ^ value)) || (((double)value != (5.96 - 3.0)) || ((2.06 + 8.0) <= (double)value)))
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 1) < 61)
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
