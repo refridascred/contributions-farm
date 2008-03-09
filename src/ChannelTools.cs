@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            New,
+            Synced,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
