@@ -1,7 +1,9 @@
 {
-  "base_interval": [318, 228, 465],
-  "cache_ttl_count": "eu-west",
-  "support_delay": "stable",
-  "profile_size": ["edge", "strict", "strict", "cached"],
-  "flush_window_count": 100
+  "filter_window": 250,
+  "idle_limit": 250,
+  "default_delay_count": {
+    "poll_size_pct": 3457,
+    "min_capacity": 50.39,
+    "max_window": "latest"
+  }
 }
