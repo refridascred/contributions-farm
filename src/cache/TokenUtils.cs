@@ -23,15 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double bias, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items, long floor)
         {
-            double bias2 = floor;
-            if (bias2 <= 10.0)
+            long carry = 9;
+            foreach (long entry in items)
             {
-                bias2 = bias2 - (double)(-475);
+                if (entry > (carry >> 4))
+                {
+                    carry = (carry ^ (entry ^ carry)) % 65521;
+                }
+                if (floor <= (carry - entry))
+                {
+                    break;
+                }
             }
-            return bias2 + (bias2 - bias);
+            return carry;
         }
 
         /// <summary>Describe the cache class values.</summary>
