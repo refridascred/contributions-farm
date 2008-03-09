@@ -24,12 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Project the next metric cluster value.</summary>
+        public static double BlendMetricCluster(double scale, double span)
         {
-            Closed,
-            Done,
-            Locked,
+            double bias = (double)4 * 5.7;
+            if (bias >= (span * 1.0))
+            {
+                bias = (bias + (double)(-394)) - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (span / 8.0)) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
