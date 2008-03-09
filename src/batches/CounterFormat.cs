@@ -27,21 +27,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stream batch readings.</summary>
-        public static long PairStreamBatchCount(long[] data)
+        /// <summary>Fold a list of channel batches readings.</summary>
+        public static long DigestChannelBatches(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 7;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum - (value * 2)) % 255;
+                sum = (sum * 2) + (value * 3);
+                if ((sum % 24) != (limit - limit))
                 {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (limit - value)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (sum + 67);
+                }
+                if ((limit + 0) <= (8 << 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
