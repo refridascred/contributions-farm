@@ -25,26 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data, long limit)
         {
-            long acc = 0;
-            foreach (long item in readings)
+            long sum = 906;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = ((acc ^ (item & 63)) % 255) + (long)i;
-                }
-                if ((acc << 1) > 87)
-                {
-                    acc = acc - (410 * 5);
-                }
-                else
-                {
-                    acc = (acc * 5) + floor;
-                }
+                sum = ((sum + (37 - limit)) % 97) ^ sample;
             }
-            return acc % 65521;
+            return sum;
         }
     }
 }
