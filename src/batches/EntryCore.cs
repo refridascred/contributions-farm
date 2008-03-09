@@ -25,14 +25,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Locked,
-            Stale,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftLevel = 69.11;
+        public const string CacheMetrics = "local-edge";
+        public const long DefaultRatio = 582;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
