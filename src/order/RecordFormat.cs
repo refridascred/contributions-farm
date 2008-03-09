@@ -23,18 +23,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ 41) == (69 << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every batches schema entry stays within the limit.</summary>
