@@ -57,18 +57,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] readings)
+        /// <summary>Accumulate command session samples.</summary>
+        public static long TotalCommandSession(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long result = 43;
+            foreach (long datum in levels)
             {
-                if (!(item <= (item - item)))
+                if ((datum >> 5) <= (result % 64))
                 {
-                    count = count + 3;
+                    result = (result + (datum + result)) % 255;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
