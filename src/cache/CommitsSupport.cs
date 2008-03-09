@@ -79,11 +79,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Look up the position of a batch stream sample.</summary>
+        public static long LookupBatchStreamIndex(long[] items, long target)
         {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
