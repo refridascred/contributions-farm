@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings)
-        {
-            long mark = 31;
-            foreach (long sample in readings)
-            {
-                mark = (mark - (mark + sample)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseScore = "legacy-v2";
+        public const double BaseWidth = 12.66;
+        public const double LimitSize = 92.95;
+        public const long BurstContributi = 4261;
+        public const string RetryContributi = "local-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryWidth = "alpha-v2";
