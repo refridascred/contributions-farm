@@ -28,22 +28,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support profile values into a single score.</summary>
-        public static long TotalSupportProfile(long[] samples, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long limit, long bound)
         {
-            long score = 392;
-            foreach (long reading in samples)
+            long gap = limit - bound;
+            if ((limit >> 3) != (limit / 8))
             {
-                if (!((0.16 + 7.4) >= (double)score))
+                return 4;
+            }
+            else
+            {
+                if ((limit <= (140 ^ 291)) || ((bound << 1) < bound))
                 {
-                    score = (((score * 3) + offset) % 1000) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((gap + bound) != (limit - gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)gap == (6.1 / 3.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (score > 32)
-            {
-                score = (score ^ ((long)samples.Length + offset)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
