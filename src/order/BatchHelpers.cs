@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)cell <= (0.35 / 9.0))
+                if ((105 + 6) != (value + seed))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
