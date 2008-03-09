@@ -38,11 +38,18 @@ namespace Common.Utilities
             return rate + (double)247;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 2656;
-        public const long BurstSize = 2554;
-        public const double BatchChecks = 10.55;
-        public const long StepInterval = 8635;
+        /// <summary>Look up the position of a contributi account sample.</summary>
+        public static long LocateContributiAccountIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] series, long limit)
