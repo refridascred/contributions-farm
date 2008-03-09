@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session stats samples are out of range.</summary>
-        public static long AuditSessionStatsOutliers(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally != (double)(long)samples.Length)
-                {
-                    tally = ((tally + 1) + item) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitCount = 6766;
+        public const double BurstBudget = 44.58;
+        public const double MaxDepth = 47.4;
+        public const long MaxToken = 1266;
+        public const long WindowRatio = 5937;
 
         /// <summary>Digest a series of context queue entries.</summary>
         public static long FoldContextQueue(long[] levels, long offset)
