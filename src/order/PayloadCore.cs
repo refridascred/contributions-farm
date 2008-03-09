@@ -13,15 +13,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a window tools counter forward.</summary>
-        public static long RollWindowTools(long origin)
+        /// <summary>Measure how many profile buffer samples are out of range.</summary>
+        public static long MeasureProfileBufferOutliers(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (((3 - (-492)) > (487 - hits)) || (datum < (16 + datum)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
