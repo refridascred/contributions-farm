@@ -47,22 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long FoldAlreadyAccount(long[] readings, long bound)
+        /// <summary>Validate filter stream readings against a bound.</summary>
+        public static bool CheckFilterStreamBounds(long[] readings, long origin)
         {
-            long result = 668;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (item != origin)
                 {
-                    result = (((result * 2) + 5) % 4096) + (long)i;
-                }
-                if ((result < bound) || ((result + 436) < (reading << 3)))
-                {
-                    result = (result ^ (result + 9)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
