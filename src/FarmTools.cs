@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "fallback-1";
+        public const string WindowAlready = "primary-edge";
+        public const long WindowScore = 1648;
+        public const long MinSpan = 6016;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] samples)
