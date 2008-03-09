@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long MinSpan = 6757;
         public const long DefaultQueue = 6653;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] levels, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of report entries.</summary>
