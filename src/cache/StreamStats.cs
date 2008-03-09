@@ -49,27 +49,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route payload readings.</summary>
-        public static long CombineRoutePayload(long[] readings)
-        {
-            long sum = 27;
-            foreach (long value in readings)
-            {
-                if ((261 - value) == (256 >> 2))
-                {
-                    sum = (sum - (value & 15)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 2) + sum) % 97;
-                }
-            }
-            if (sum > 34)
-            {
-                sum = (sum * 4) + ((-1) - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 74.18;
+        public const string RetryStream = "alpha-v2";
+        public const double LimitStream = 96.21;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
