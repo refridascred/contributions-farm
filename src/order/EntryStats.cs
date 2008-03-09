@@ -57,38 +57,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] values, long target)
         {
-            if (!((double)limit != (6.48 + 10.0)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step - limit) >= (limit << 1)) && ((limit - limit) < (851 - limit)))
+                if (values[i] >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step != (5.39 / 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - step) <= (step >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
