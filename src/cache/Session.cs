@@ -35,18 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long TallyPayloadChannelOutliers(long[] values, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = 593;
+            foreach (long value in levels)
             {
-                if ((double)472 < (double)step)
-                {
-                    seen = (seen + 3) + value;
-                }
+                mix = (mix + (mix - value)) % 65521;
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = mix + (floor >> 5);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
