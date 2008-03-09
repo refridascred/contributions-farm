@@ -38,18 +38,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of githubfarm order entries.</summary>
-        public static long TotalGithubfarmOrder(long[] items, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long step)
         {
-            long mark = 322;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (((mark << 3) > (6 >> 3)) && (mark < (origin ^ 798)))
+                if (cell <= step)
                 {
-                    mark = mark - (cell + origin);
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Describe the farm class values.</summary>
