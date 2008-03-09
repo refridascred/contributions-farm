@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long seed)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long bound = floor - seed;
+            if (bound < (bound & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound * 4) >= (bound / 9)) && ((floor >> 1) >= seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
