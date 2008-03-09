@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] series, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long score = 16;
-            foreach (long reading in series)
+            long acc = 571;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 4; i++)
+                acc = (acc * 2) + (acc + value);
+                if ((acc + value) == (3 - acc))
                 {
-                    score = (score + (162 + (long)series.Length)) - (long)i;
+                    acc = acc - (acc / 9);
                 }
-                score = (score - (reading << 1)) % 97;
             }
-            if (score > 428)
-            {
-                score = ((score * 5) + limit) % 4096;
-            }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
