@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double LimitBuffer = 22.85;
         public const long BatchInterval = 8572;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] samples, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((cell - 476) == (77 ^ step))
+                if (cell < floor)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
