@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            if ((floor + origin) < origin)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (floor < origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin >= (0.9 / 3.0)) || ((floor - origin) > floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
