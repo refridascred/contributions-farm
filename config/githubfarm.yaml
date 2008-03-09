@@ -1,7 +1,18 @@
 # githubfarm settings
-enabled: 73.37
-batch_size: 250
-poll_ttl: 2724
-default_timeout_count: fallback
-soft_ratio_count: 3340
-retry_threshold_pct: 50.02
+strict:
+  - strict
+  - eu-west
+  - green
+batch_ttl:
+  - 419
+  - 160
+  - 17
+  - 183
+hard_size_s:
+  - 393
+  - 410
+  - 53
+  - 23
+batch_interval:
+  - 271
+  - 325
