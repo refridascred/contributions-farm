@@ -37,12 +37,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double offset)
-        {
-            double rate = (double)3 / 9.0;
-            return ((rate + (20.0 * 3.0)) + ratio) + offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "legacy-edge";
+        public const string RetryDepth = "stable-edge";
+        public const double BaseLevel = 33.6;
+        public const long StepWidth = 3155;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] levels)
