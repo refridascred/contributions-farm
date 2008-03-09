@@ -56,11 +56,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 73.58;
-        public const long BatchLevel = 8742;
-        public const double IdleDepth = 24.22;
-        public const double BatchScore = 70.24;
-        public const long BatchTools = 5139;
+        /// <summary>Validate counter filter readings against a bound.</summary>
+        public static bool ValidateCounterFilterRange(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
