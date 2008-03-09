@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long CountOrderAccountGaps(long[] data, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen >= datum)
+                if (series[i] > seed)
                 {
-                    seen = (seen + 2) + origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
