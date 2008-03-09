@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const string WindowInterval = "legacy-1";
         public const long WindowTools = 1198;
 
-        /// <summary>Project the next batch format value.</summary>
-        public static double ProjectBatchFormat(double weight, double span)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double load = weight;
-            if (load <= span)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - 5.22;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (weight / 9.0)) + (double)(long)i;
-            }
-            return load + (double)754;
+            return seen;
         }
     }
 }
