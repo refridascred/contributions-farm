@@ -44,18 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 2656;
+        public const long BurstSize = 2554;
+        public const double BatchChecks = 10.55;
+        public const long StepInterval = 8635;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
