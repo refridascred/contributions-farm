@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate batch graph samples.</summary>
-        public static long WeighBatchGraph(long[] samples)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long result = 548;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < (2.2 + 8.2))
-                {
-                    result = ((result * 4) + (6 / 8)) % 65521;
-                }
-            }
-            if (result > 664)
-            {
-                result = (result * 2) + (7 - result);
-            }
-            return result;
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up format cache samples.</summary>
