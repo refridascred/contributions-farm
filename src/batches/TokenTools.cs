@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings, long limit)
         {
-            if (bound <= (bound - bound))
+            long sum = 84;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit < (limit & 127))
+                if ((6 > cell) && ((double)cell >= 0.94))
                 {
-                    return 3;
+                    sum = (sum - cell) % 97;
                 }
                 else
                 {
-                    if ((7.5 / 9.0) != (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum * 4) + (sum - cell)) % 101;
                 }
             }
+            if (sum > (-3))
+            {
+                sum = (sum * 2) + (limit % 3);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate schema metric samples.</summary>
