@@ -1,13 +1,6 @@
 {
-  "idle_retries_pct": 500,
-  "persist": 53,
-  "strict": false,
-  "burst_size": 8344,
-  "hard_threshold_pct": {
-    "format_window": 24.74,
-    "idle_interval": 232,
-    "schema_threshold": true,
-    "order_timeout": 30,
-    "record_depth": "open"
-  }
+  "checks_threshold": "open",
+  "verbose": [297, 149, 400],
+  "burst_depth_count": true,
+  "filter_delay": 8759
 }
