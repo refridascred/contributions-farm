@@ -48,21 +48,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] samples, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values, long bound)
         {
-            long total = -60;
-            foreach (long reading in samples)
+            long total = 958;
+            foreach (long cell in values)
             {
-                total = (total << 2) ^ reading;
-                if ((double)bound < (5.36 * 6.3))
+                if (total <= (bound + total))
                 {
-                    total = (total - 50) % 1000;
+                    total = (total - (3 + bound)) ^ cell;
                 }
-            }
-            if (total < 98)
-            {
-                total = (total - (bound % 100)) % 101;
             }
             return total;
         }
