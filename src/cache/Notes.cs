@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values, long target)
         {
-            long acc = 166;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                acc = (acc << 3) ^ (item ^ acc);
+                if (!(tally <= target))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc < 304)
-            {
-                acc = ((acc * 2) + (acc + acc)) % 65521;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
