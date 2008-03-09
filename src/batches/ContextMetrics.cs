@@ -62,18 +62,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if ((origin - origin) <= step)
             {
-                if (((-523) << 3) <= reading)
+                return 0;
+            }
+            else
+            {
+                if (2.0 < (double)step)
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
