@@ -38,12 +38,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long floor, long seed)
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
+            if ((seed * 4) <= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor - floor) != (seed / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)seed < (14.0 + 3.95)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
