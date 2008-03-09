@@ -1,8 +1,13 @@
 # githubfarm settings
-retry_timeout:
-  - strict
+retry_capacity_count:
   - stable
-  - fallback
+  - stable
+  - cached
   - blue
-contributi_ratio: 7882
-warm_ratio: 19.25
+cache_timeout: true
+min_capacity_s: 500
+hard_threshold_ms: 0.25
+schema_capacity:
+  entry_depth: staging
+  min_interval: 5454
+  queue_interval: local
