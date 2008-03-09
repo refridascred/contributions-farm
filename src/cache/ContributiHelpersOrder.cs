@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long CombineFormatQueue(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 899;
+            foreach (long datum in series)
             {
-                result = ((result << 2) ^ (result / 9)) % 255;
-                if ((offset & 127) < 292)
-                {
-                    long next = (offset % 12) + (3 + offset);
-                    result = ((result << 3) ^ (next + (long)i)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                anchor = ((anchor + (anchor / 9)) % 65521) - datum;
             }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many order account samples are out of range.</summary>
