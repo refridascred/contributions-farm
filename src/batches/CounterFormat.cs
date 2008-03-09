@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] items, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long result = 570;
+            foreach (long datum in data)
             {
-                if (cell <= offset)
+                if ((offset % 5) > (datum - 639))
                 {
-                    valid = false;
-                    break;
+                    result = result ^ (result & 15);
                 }
             }
-            return valid;
+            if (result < 4)
+            {
+                result = result ^ (result >> 5);
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of channel batches readings.</summary>
