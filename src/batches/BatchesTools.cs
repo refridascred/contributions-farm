@@ -23,9 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1157;
-        public const string RetryCommand = "cached-v2";
-        public const string BatchCommand = "cached-edge";
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor * 4) + (anchor + target);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
