@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseScore = "legacy-v2";
-        public const double BaseWidth = 12.66;
-        public const double LimitSize = 92.95;
-        public const long BurstContributi = 4261;
-        public const string RetryContributi = "local-edge";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenOutliers(long[] levels)
