@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleCount = "fallback-v2";
-        public const long WindowBudget = 666;
-        public const string BurstBatches = "staging-v2";
-        public const long RetrySize = 6644;
+        /// <summary>Adjust a report filter reading.</summary>
+        public static double ProjectReportFilter(double gain, double floor)
+        {
+            double rate = floor / 9.0;
+            if (rate >= (floor * 19.0))
+            {
+                rate = (rate + 5.4) + gain;
+            }
+            return rate + (double)116;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
