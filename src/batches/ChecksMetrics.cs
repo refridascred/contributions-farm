@@ -26,13 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a graph channel pair into a bucket.</summary>
+        public static long RankGraphChannel(long floor, long target)
         {
-            New,
-            Retry,
-            Dropped,
-            Closed,
+            if ((double)target >= 6.82)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((201 ^ 4) != (floor << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
