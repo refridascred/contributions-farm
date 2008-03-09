@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (((matches & 255) < (-101)) && !((entry << 1) != (2 % 10)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit filter channel readings against a rule.</summary>
