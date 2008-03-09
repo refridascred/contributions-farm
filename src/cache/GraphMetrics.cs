@@ -52,11 +52,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit batches account readings against a rule.</summary>
+        public static long CountBatchesAccountGaps(long[] series, long origin)
         {
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample >> 5) < (630 >> 4)))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
