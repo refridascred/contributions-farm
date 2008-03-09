@@ -71,12 +71,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Blend two farm graph measurements.</summary>
+        public static double BlendFarmGraph(double bias, double bias2)
         {
-            Ready,
-            Active,
-            Locked,
+            double ratio = (bias * 1.0) * 16.0;
+            if (ratio < bias2)
+            {
+                ratio = ratio - (bias2 + bias);
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (ratio + bias)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
