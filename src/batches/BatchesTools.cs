@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] readings, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double weight, double span)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double mean = weight;
+            if (mean <= (span / 8.0))
             {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (double)38;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 8.82) - (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
