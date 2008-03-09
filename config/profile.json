@@ -1,6 +1,8 @@
 {
-  "readonly": 100,
-  "soft_interval": true,
-  "retry_capacity_ms": 1720,
-  "min_delay_ms": "eu-west"
+  "soft_interval_s": [152, 307, 36],
+  "batch_threshold": true,
+  "cache_ttl_pct": "standard",
+  "enabled": 79.71,
+  "batch_retries": 25.84,
+  "min_limit_ms": true
 }
