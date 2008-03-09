@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((score + 480) < (target * 2)))
-                {
-                    score = (score + (score >> 4)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
