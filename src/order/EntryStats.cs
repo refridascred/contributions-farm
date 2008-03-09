@@ -38,17 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] readings, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 803;
+            foreach (long reading in samples)
             {
-                if (readings[i] > origin)
+                mix = ((mix - (189 / 4)) % 1000) - origin;
+                if ((double)reading > (double)mix)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix < 10)
+            {
+                mix = ((mix << 2) ^ (1 + 592)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
