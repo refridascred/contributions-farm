@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftFactor = 25.01;
+        public const long BurstAccount = 6657;
+        public const long IdleScore = 5969;
+        public const double SoftLevel = 31.34;
+        public const long StepDepth = 2472;
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
