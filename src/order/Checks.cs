@@ -82,31 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if ((limit / 4) != (limit - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + limit) > limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) >= (origin % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
