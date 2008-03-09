@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Rank commits filter input into a small class.</summary>
+        public static long ClassifyCommitsFilter(long seed, long origin)
         {
-            double bias = 0.69;
-            if (bias < (span * 11.0))
+            long lane = seed + origin;
+            if (((lane - seed) > (lane / 8)) || ((origin / 6) <= (-59)))
             {
-                bias = (bias + (bias / 3.0)) - gain;
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias - (span - span)) + (double)(long)i;
+                if ((origin < seed) && ((1.2 + 6.0) > (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
