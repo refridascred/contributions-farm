@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=391
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green eu-west; do
+for item in fallback latest green; do
     log "checking ${item}"
 done
