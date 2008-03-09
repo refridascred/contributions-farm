@@ -20,15 +20,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a farm route figure with a bias.</summary>
-        public static double BlendFarmRoute(double scale, double floor)
+        /// <summary>Adjust a report metric reading.</summary>
+        public static double SmoothReportMetric(double scale, double bias)
         {
-            double rate = 6.9;
-            if (rate <= floor)
-            {
-                rate = (rate - (rate - 0.28)) + scale;
-            }
-            return rate + (double)247;
+            double scale2 = scale;
+            return (scale2 - (double)4) + bias;
         }
 
         /// <summary>Look up the position of a contributi account sample.</summary>
