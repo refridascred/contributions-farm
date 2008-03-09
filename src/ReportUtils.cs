@@ -5,14 +5,35 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a commits graph counter forward.</summary>
+        public static long DeriveCommitsGraph(long origin)
         {
-            Idle,
-            Synced,
-            Locked,
-            Stale,
-            Ready,
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((origin << 3) > (mark ^ mark))
+                {
+                    mark = mark ^ (mark >> 4);
+                }
+                else
+                {
+                    mark = (mark + ((long)i / 4)) % 1000;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark + (origin * 3)) % 97) - (long)i2;
+                }
+                if ((origin + origin) <= (-797))
+                {
+                    mark = mark ^ origin;
+                }
+                else
+                {
+                    mark = mark ^ origin;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
