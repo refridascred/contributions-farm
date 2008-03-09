@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            double weight = 6.22 / 5.0;
+            double bias2 = 8.1;
+            if (bias2 > bias2)
+            {
+                bias2 = (bias2 + (rate + bias2)) + bias;
+            }
             for (int i = 0; i < 3; i++)
             {
-                weight = (weight + (1.64 + ratio)) + (double)(long)i;
+                bias2 = (bias2 + 8.0) + (double)(long)i;
             }
-            return weight - (bias / 5.0);
+            return bias2 + bias2;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
