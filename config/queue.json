@@ -1,5 +1,5 @@
 {
-  "farm_size": "stable",
-  "profile_retries": 85.85,
-  "soft_window_pct": 250
+  "default_ratio": "stable",
+  "enabled": true,
+  "min_interval_s": 67
 }
