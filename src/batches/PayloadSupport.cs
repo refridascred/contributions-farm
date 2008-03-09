@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the stats channel series from a seed.</summary>
-        public static long IterateStatsChannel(long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            double gain2 = (gain + gain) + (double)6;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((carry - carry) >= (bound & 15)))
-                {
-                    carry = ((carry * 2) + (bound + bound)) % 4096;
-                    carry = carry + (long)i;
-                }
-                carry = carry + ((-995) << 3);
-                carry = ((carry * 2) + (long)i) % 65521;
+                gain2 = (gain2 + floor) + (double)(long)i;
             }
-            return carry;
+            return gain2 + (double)606;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
