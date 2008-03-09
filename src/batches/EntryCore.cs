@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowScore = 90.94;
-        public const long BaseRatio = 5456;
-        public const string WindowSpan = "fallback-v2";
-        public const long IdleInterval = 9741;
-        public const long StepAccount = 9419;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Ready,
+            Done,
+            Pending,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string LimitSize = "strict-1";
