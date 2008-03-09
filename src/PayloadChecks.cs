@@ -85,24 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long offset)
+        /// <summary>Look up the position of a order stream sample.</summary>
+        public static long SeekOrderStreamIndex(long[] values, long target)
         {
-            if (((floor ^ offset) > 8) && ((double)floor < (8.6 - 4.58)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 1) < 61)
+                if (values[i] > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
