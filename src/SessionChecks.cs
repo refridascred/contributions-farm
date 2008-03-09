@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Measure how many channel contributi samples are out of range.</summary>
+        public static long CountChannelContributiMatches(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen != (0.4 + 9.06))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
