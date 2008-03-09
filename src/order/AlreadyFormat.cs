@@ -21,19 +21,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every account report entry stays within the limit.</summary>
-        public static bool VerifyAccountReportBounds(long[] samples, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
