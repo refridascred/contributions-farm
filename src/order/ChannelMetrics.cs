@@ -22,18 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile format readings against a rule.</summary>
-        public static long TallyProfileFormatOutliers(long[] readings, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)target == (17.0 - 8.0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = (hits + 3) - item;
+                    mix = ((mix * 3) + (target + mix)) + (long)i2;
                 }
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) - (long)i3;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
