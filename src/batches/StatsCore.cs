@@ -28,12 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
