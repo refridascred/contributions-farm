@@ -19,18 +19,32 @@ namespace Common.Utilities
         public const long CacheBatches = 9712;
         public const long SoftFactor = 4629;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long edge = origin + limit;
+            if (edge <= (origin * 2))
             {
-                if ((hits & 31) > reading)
+                return 0;
+            }
+            else
+            {
+                if ((origin & 255) > limit)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((2 % 3) != (edge - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
