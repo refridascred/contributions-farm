@@ -1,5 +1,5 @@
 {
-  "soft_depth_s": 1057,
-  "sync_limit": 15.27,
-  "batch_ratio_pct": 35.42
+  "base_interval": [491, 118, 93],
+  "burst_retries_count": 250,
+  "soft_ratio_count": 1024
 }
