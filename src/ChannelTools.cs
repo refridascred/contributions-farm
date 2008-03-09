@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const long BaseContext = 2185;
         public const string WindowRatio = "legacy-edge";
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Locked,
-            Idle,
-            Active,
-            Pending,
-            Done,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
