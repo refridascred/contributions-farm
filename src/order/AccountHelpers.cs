@@ -56,15 +56,17 @@ namespace Common.Utilities
         public const long LimitBudget = 8934;
         public const double StepReport = 70.15;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] data, long origin)
         {
-            long mark = 50;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark + (mark << 3)) % 97) + value) + floor;
+                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate token queue samples.</summary>
