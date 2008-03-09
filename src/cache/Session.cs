@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double scale, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] levels, long seed)
         {
-            double weight = (double)(654 << 1);
-            if (weight < (floor / 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - weight;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (weight - 4.81)) + (double)(long)i;
-            }
-            return weight + (weight - scale);
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
