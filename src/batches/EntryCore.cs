@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double scale, double floor)
-        {
-            double bias = scale;
-            if (bias > (floor - 9.42))
-            {
-                bias = bias - (double)16;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (floor + scale)) + (double)(long)i;
-            }
-            return bias + scale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowScore = 90.94;
+        public const long BaseRatio = 5456;
+        public const string WindowSpan = "fallback-v2";
+        public const long IdleInterval = 9741;
+        public const long StepAccount = 9419;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string LimitSize = "strict-1";
