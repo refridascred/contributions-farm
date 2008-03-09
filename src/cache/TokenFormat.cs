@@ -22,26 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] levels, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            long anchor = 779;
-            foreach (long datum in levels)
+            double gain = (double)3 / 3.0;
+            if (gain < (scale / 5.0))
             {
-                if ((((-1) - anchor) > (anchor % 100)) || ((datum & 15) == (143 % 97)))
-                {
-                    anchor = (anchor + (88 * 2)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (datum + seed);
-                }
-                if ((seed + datum) != (datum - 9))
-                {
-                    break;
-                }
+                gain = gain - (gain * 7.53);
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (span + 9.1);
         }
     }
 }
