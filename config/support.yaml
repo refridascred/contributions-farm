@@ -1,10 +1,12 @@
 # support settings
-warm_interval:
-  - 383
-  - 232
-  - 31
-  - 352
-dry_run: green
-poll_threshold_ms: fallback
-strict: 25
-compress: 3030
+max_size: 69
+audit: 3544
+batch_ttl_pct:
+  batch_timeout:
+    - primary
+    - staging
+    - standard
+  base_interval_ms: 93.59
+  burst_ratio_count: 26.37
+report_retries: 75.06
+payload_depth: standard
