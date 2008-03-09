@@ -1,13 +1,8 @@
 {
-  "poll_delay": "open",
-  "enabled": "local",
-  "verbose": 14,
-  "max_delay_ms": {
-    "warm_capacity": 83.57,
-    "base_delay": [351, 295, 277, 134],
-    "warm_threshold_count": "fallback",
-    "entry_capacity": 250
-  },
-  "warm_delay_count": [302, 207, 408, 174],
-  "session_limit": true
+  "entry_delay": true,
+  "soft_capacity_pct": "latest",
+  "warm_depth": true,
+  "channel_size": 77.63,
+  "channel_depth": 29.9,
+  "readonly": 37
 }
