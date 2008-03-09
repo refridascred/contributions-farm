@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
             public bool Limit { get; set; }
-            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next counter value.</summary>
