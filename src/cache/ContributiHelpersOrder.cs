@@ -20,13 +20,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            New,
-            Retry,
-            Dropped,
-            Active,
+            Synced,
+            Ready,
+            Paused,
         }
     }
 }
