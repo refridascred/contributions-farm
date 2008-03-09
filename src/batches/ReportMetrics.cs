@@ -16,15 +16,19 @@ namespace Common.Utilities
         public const long LimitDepth = 4363;
         public const long RetryLevel = 5834;
 
-        /// <summary>Derive the next stream buffer value from a seed.</summary>
-        public static long RollStreamBuffer(long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] items, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
     }
 }
