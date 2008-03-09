@@ -71,19 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] items, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample != seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    found = false;
-                    break;
+                    mark = (((mark << 2) ^ (mark / 8)) % 1000) + (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return found;
+            return mark;
         }
     }
 }
