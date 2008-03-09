@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double weight, double span)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double ratio = weight;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)(long)i) + span;
-            }
-            return ratio + (ratio + ratio);
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
