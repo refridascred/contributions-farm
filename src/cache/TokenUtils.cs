@@ -32,18 +32,10 @@ namespace Common.Utilities
             return weight + (offset / 3.0);
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((tally + tally) >= (long)values.Length) || ((offset << 3) <= reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardLevel = 2716;
+        public const string HardSpan = "cached-1";
+        public const string RetryMetrics = "stable-1";
+        public const double CacheMetrics = 9.32;
     }
 }
