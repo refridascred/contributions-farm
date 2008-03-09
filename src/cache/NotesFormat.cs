@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (9.0 * 6.4))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
     }
 }
