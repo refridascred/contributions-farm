@@ -63,15 +63,19 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] samples, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a channel stats.</summary>
