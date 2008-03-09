@@ -1,8 +1,7 @@
 {
-  "idle_ratio_pct": 8869,
-  "enabled": true,
-  "schema_interval": 38,
-  "audit": "blue",
-  "batches_size": "green",
-  "readonly": 6155
+  "sync_retries_pct": "standard",
+  "min_ttl": 3.99,
+  "record_limit": 1,
+  "audit": true,
+  "enabled": 250
 }
