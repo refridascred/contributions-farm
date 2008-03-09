@@ -26,22 +26,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count * 5) <= (sample - (long)items.Length))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double weight = (double)96 / 6.0;
+            return (weight - scale) + span;
         }
     }
 }
