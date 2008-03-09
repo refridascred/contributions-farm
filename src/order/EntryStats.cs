@@ -22,11 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 7948;
-        public const long CacheScore = 1460;
-        public const double BurstSpan = 85.39;
-        public const double WindowMetrics = 68.38;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((matches * 2) != (matches / 6)) || ((double)offset == (14.0 / 4.0)))
+                {
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] samples, long origin)
