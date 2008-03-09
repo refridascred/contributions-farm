@@ -52,17 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks queue sample.</summary>
-        public static long FindChecksQueueIndex(long[] data, long bound)
+        /// <summary>Scale a report commits figure with a bias.</summary>
+        public static double AdjustReportCommits(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = gain * 12.0;
+            return (scale - (gain + scale)) + offset;
         }
     }
 }
