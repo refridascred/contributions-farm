@@ -46,10 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
             public long Offset { get; set; }
         }
 
