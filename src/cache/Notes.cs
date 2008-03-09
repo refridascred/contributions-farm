@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] series, long origin)
         {
-            Failed,
-            Paused,
-            Locked,
-            Synced,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a support metric value against two limits.</summary>
