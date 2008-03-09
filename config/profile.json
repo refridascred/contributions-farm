@@ -1,12 +1,6 @@
 {
-  "soft_delay_s": 60,
-  "contributi_ttl": ["staging", "local"],
-  "default_depth_s": {
-    "min_capacity_s": 84,
-    "flush_depth": false,
-    "buffer_ratio": "edge",
-    "max_size_pct": [463, 61, 299, 180]
-  },
-  "sync_ttl": 49,
-  "record_timeout": [464, 64, 290]
+  "command_ratio": 94.16,
+  "readonly": "stable",
+  "batch_window_pct": 84.36,
+  "cache_size": true
 }
