@@ -1,29 +1,8 @@
 {
-  "command_retries": [37, 413],
-  "flush_ttl_pct": "staging",
-  "base_depth": 7853,
-  "max_threshold": {
-    "compress": 58.63,
-    "commits_depth": {
-      "soft_delay_count": 88.17,
-      "default_limit_pct": 6073,
-      "batch_depth": "legacy"
-    },
-    "idle_threshold_s": "open",
-    "retry_retries": ["local", "staging"],
-    "persist": 33.3,
-    "sync_interval_count": 7812
-  },
-  "min_interval_count": 60,
-  "burst_delay_s": {
-    "sync_ratio": {
-      "farm_retries": 100,
-      "base_limit": 3889,
-      "poll_size": [500, 383],
-      "profile_threshold": 9,
-      "cache_size": ["eu-west", "fallback", "blue"]
-    },
-    "dry_run": 84,
-    "batch_size": "cached"
-  }
+  "soft_depth_pct": ["standard", "edge"],
+  "verbose": "cached",
+  "sync_capacity_ms": ["legacy", "cached", "cached"],
+  "base_interval_pct": ["green", "fallback"],
+  "session_depth": 80.7,
+  "min_capacity": 4693
 }
