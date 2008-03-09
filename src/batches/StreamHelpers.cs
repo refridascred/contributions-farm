@@ -63,10 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultLevel = 335;
-        public const long BaseInterval = 9877;
-        public const long BaseBatch = 430;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item << 2) != (bound - bound))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a filter format reading.</summary>
         public static double BlendFilterFormat(double scale, double bias)
