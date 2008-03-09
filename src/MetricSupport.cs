@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const string HardRoute = "latest-1";
         public const double RetryRoute = 38.54;
 
-        /// <summary>Audit context metrics readings against a rule.</summary>
-        public static long CountContextMetricsMatches(long[] items, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)hits == (5.3 / 2.0))
-                {
-                    hits = ((hits + 2) ^ reading) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
