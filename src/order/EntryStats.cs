@@ -40,31 +40,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long origin)
         {
-            if (((offset << 1) < (offset + origin)) && ((double)offset == (double)origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 9) < offset)
+                if (data[i] < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) != (offset + 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
