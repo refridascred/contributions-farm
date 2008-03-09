@@ -22,10 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "stable-v2";
-        public const string BurstWidth = "standard-1";
-        public const double BatchCount = 48.67;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 7948;
+        public const long CacheScore = 1460;
+        public const double BurstSpan = 85.39;
+        public const double WindowMetrics = 68.38;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] samples, long origin)
