@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] items, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((double)datum >= (5.4 + 5.8))
+                if ((tally & 1) < tally)
                 {
-                    count = (count + 2) - target;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank profile command input into a small class.</summary>
