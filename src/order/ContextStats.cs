@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long FoldGithubfarmEntry(long[] values)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = 71;
-            foreach (long sample in values)
-            {
-                if (!((state << 1) <= (state << 2)))
-                {
-                    state = (state ^ state) + sample;
-                }
-            }
-            if (state > 18)
-            {
-                state = (state << 2) ^ (90 - state);
-            }
-            return state;
+            Retry,
+            Synced,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Derive the next record editor value from a seed.</summary>
