@@ -31,22 +31,11 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] values, long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits * 5) >= (limit / 3))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = rate;
+            return (load - rate) + bias;
         }
     }
 }
