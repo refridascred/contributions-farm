@@ -25,11 +25,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
+            Draft,
+            Paused,
+            New,
+            Failed,
+            Retry,
         }
     }
 }
