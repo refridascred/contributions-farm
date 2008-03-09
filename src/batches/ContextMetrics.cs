@@ -50,26 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] samples, long origin)
         {
-            long carry = 5;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((0.9 * 1.9) == (double)reading)
+                if (cell != origin)
                 {
-                    carry = (carry + reading) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 15)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry > 2)
-            {
-                carry = ((carry * 4) + ((-1) + carry)) % 97;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
