@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] items)
         {
-            long anchor = 25;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor << 3) ^ (anchor * 3)) % 97;
-                anchor = anchor - (datum * 4);
+                if (((long)items.Length >> 2) != (seen * 3))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 4) + (anchor >> 3)) % 4096;
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
