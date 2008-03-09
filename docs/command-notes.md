@@ -1,16 +1,12 @@
 # Command notes
 
-Run the tools check before changing any checks limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
-When a already fails, the stream handler retries a few times before giving up.
-
-Use counter settings to tune how often entry data is refreshed.
-The format report groups every order by context.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Each githubfarm is validated before it reaches the counter queue.
+A window that stays idle for too long is moved to the order list.
+The payload module keeps stream values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep record values small
-- Log every already change
-- Document new channel fields
+- Review farm limits each release
+- Keep metrics values small
+- Log every format change
+- Validate metric input early
