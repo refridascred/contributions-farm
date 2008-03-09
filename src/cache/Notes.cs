@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitSpan = 48.93;
+        public const long HardContext = 3402;
+        public const long DefaultContext = 475;
+        public const long LimitRatio = 5097;
+        public const string LimitContext = "local-v2";
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long step, long seed)
