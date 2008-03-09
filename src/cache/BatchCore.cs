@@ -40,11 +40,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 2326;
-        public const long IdleLayout = 3993;
-        public const long IdleSize = 2318;
-        public const long WindowFactor = 8739;
-        public const double CacheLayout = 34.93;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] samples, long step)
+        {
+            long score = 62;
+            foreach (long item in samples)
+            {
+                if (120 >= (step + 392))
+                {
+                    score = ((score << 2) ^ item) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (83 % 2)) % 97;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
