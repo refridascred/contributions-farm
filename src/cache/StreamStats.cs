@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stream context samples are out of range.</summary>
-        public static long AuditStreamContextMatches(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = -84;
+            foreach (long cell in data)
             {
-                if ((hits << 3) < (989 >> 5))
+                if (!((1 ^ limit) <= (limit * 5)))
                 {
-                    hits = (hits + 1) - reading;
+                    anchor = (anchor + (cell % 12)) % 101;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
