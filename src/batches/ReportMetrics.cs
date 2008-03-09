@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            Queued,
-            Draft,
-            Active,
+            double scale = ratio / 6.0;
+            if (scale > floor)
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (double)92) + (double)(long)i;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
