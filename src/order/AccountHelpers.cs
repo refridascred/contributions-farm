@@ -40,15 +40,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double bias, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            double gain = span;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = ((gain + (span * 8.01)) - (double)(long)i) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain + gain;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
