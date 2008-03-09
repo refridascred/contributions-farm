@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter already entry that matches the target.</summary>
-        public static long LookupCounterAlreadyIndex(long[] items, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = floor;
+            if (bias2 <= 10.0)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - (double)(-475);
             }
-            return -1;
+            return bias2 + (bias2 - bias);
         }
 
         /// <summary>Hold a tools entry.</summary>
