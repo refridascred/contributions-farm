@@ -71,15 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series, long origin)
         {
-            long carry = 322;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry + (cell ^ carry)) % 255) + bound;
+                if ((double)origin <= (0.6 - 0.9))
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            return carry % 1000;
+            return seen;
         }
     }
 }
