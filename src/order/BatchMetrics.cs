@@ -27,12 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long state = 315;
+            foreach (long datum in values)
+            {
+                state = ((state + (state / 8)) % 65521) ^ datum;
+            }
+            if (state > 99)
+            {
+                state = ((state << 2) ^ (6 + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
