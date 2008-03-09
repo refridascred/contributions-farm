@@ -31,17 +31,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
