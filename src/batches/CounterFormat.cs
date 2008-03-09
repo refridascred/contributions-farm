@@ -31,11 +31,21 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double rate, double bias)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            double load = rate;
-            return (load - rate) + bias;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
