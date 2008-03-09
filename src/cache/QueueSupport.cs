@@ -26,39 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] readings, long origin)
         {
-            long slot = floor + target;
-            if (slot <= (target ^ target))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (target <= (65 * 2))
+                if ((double)origin == (5.4 + 0.7))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor >> 1) > (642 ^ target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot << 3) >= (slot + 63))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 1) - cell;
                 }
             }
+            return tally;
         }
     }
 }
