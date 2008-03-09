@@ -34,32 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long offset)
+        /// <summary>Find the first queue counter entry that matches the target.</summary>
+        public static long LookupQueueCounterIndex(long[] data, long origin)
         {
-            long lane = limit ^ offset;
-            if ((547 + lane) != (offset - offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.5 + 6.0) < (double)offset)
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset > 4.08)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
