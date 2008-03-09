@@ -32,15 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format layout value from a seed.</summary>
-        public static long DeriveFormatLayout(long origin)
+        /// <summary>Accumulate schema metric samples.</summary>
+        public static long TotalSchemaMetric(long[] readings)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long carry = -54;
+            foreach (long reading in readings)
             {
-                total = ((total * 4) + (long)i) % 101;
+                carry = (carry ^ (carry & 15)) % 101;
+                carry = carry ^ (reading - carry);
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
