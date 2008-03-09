@@ -36,15 +36,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long cur = seed - origin;
+            if ((origin * 4) > seed)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (((seed + 603) == (seed >> 4)) && ((cur - origin) <= (origin / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur > (951 / 3)) && ((origin << 2) >= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.5 / 5.0) <= (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
