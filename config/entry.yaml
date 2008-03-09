@@ -1,24 +1,13 @@
 # entry settings
-verbose: strict
+buffer_retries: 3688
 compress:
-  - 253
-  - 269
-  - 153
-  - 195
-context_retries:
-  cache_delay:
-    - 259
-    - 329
-  idle_ttl_count:
-    default_ratio_s: false
-    flush_depth_pct: 72
-    record_timeout: true
-    persist: 100
-    idle_limit:
-      - 29
-      - 297
-      - 313
-      - 296
-  window_delay: false
-audit: cached
-base_size_ms: stable
+  - latest
+  - local
+  - stable
+  - open
+default_retries_pct: 30
+editor_timeout:
+  min_retries_ms: fallback
+  default_window_ms: latest
+  enabled: strict
+cache_depth_ms: staging
