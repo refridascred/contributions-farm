@@ -1,22 +1,9 @@
 # entry settings
-filter_interval: false
-default_retries_ms:
-  enabled:
-    - staging
-    - cached
-    - legacy
-  audit:
-    - 384
-    - 353
-  flush_retries: false
-  burst_limit_ms:
-    warm_capacity_s: strict
-    enabled:
-      - 100
-      - 322
-      - 434
-    warm_limit:
-      - cached
-      - edge
-      - staging
-cache_depth: 57.2
+dry_run:
+  - edge
+  - latest
+idle_timeout:
+  - blue
+  - fallback
+  - legacy
+strict: true
