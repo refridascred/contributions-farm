@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] readings, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Grade a support account value against two limits.</summary>
