@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double bias, double offset)
+        /// <summary>Match up batch buffer samples.</summary>
+        public static long OverlapBatchBufferCount(long[] samples)
         {
-            double gain = (double)(792 ^ 1);
-            if (gain <= bias)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (gain + bias)) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (double)824) - (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Locate a support reading by value.</summary>
