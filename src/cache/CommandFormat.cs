@@ -64,13 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Draft,
-            Done,
+            Dropped,
             New,
-            Paused,
+            Synced,
         }
     }
 }
