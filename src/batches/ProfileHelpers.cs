@@ -77,22 +77,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] readings, long floor)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry > (6 << 1))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
