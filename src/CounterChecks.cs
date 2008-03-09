@@ -39,16 +39,18 @@ namespace Common.Utilities
         public const long CacheRatio = 1384;
         public const double WindowGithubfarm = 12.95;
 
-        /// <summary>Iterate the cache farm series from a seed.</summary>
-        public static long IterateCacheFarm(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix << 3) ^ (floor + mix)) % 1000;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (!(((long)samples.Length + cell) != (cell >> 5)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a batches info.</summary>
