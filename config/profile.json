@@ -1,8 +1,11 @@
 {
-  "cache_capacity_count": "latest",
-  "readonly": 61,
-  "strict": "strict",
-  "support_capacity": 24.98,
-  "burst_limit": "stable",
-  "editor_timeout": "eu-west"
+  "default_timeout": "open",
+  "hard_capacity": "cached",
+  "account_limit": {
+    "base_limit_s": "primary",
+    "soft_depth": 62,
+    "retry_limit_pct": "edge",
+    "poll_retries": false,
+    "filter_timeout": 5
+  }
 }
