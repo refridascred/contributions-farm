@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] items, long limit)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((cell - count) < (cell - 48)) || (cell > 76))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two report measurements.</summary>
