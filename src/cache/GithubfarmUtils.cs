@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine command order values into a single score.</summary>
-        public static long FoldCommandOrder(long[] samples, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long anchor = 23;
-            foreach (long sample in samples)
-            {
-                if ((6.3 + 0.1) > (double)sample)
-                {
-                    anchor = ((anchor << 2) ^ (origin + origin)) % 1000;
-                }
-            }
-            return anchor % 97;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
