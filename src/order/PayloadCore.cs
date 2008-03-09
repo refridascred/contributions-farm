@@ -37,19 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double span)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            double ratio = rate;
-            if (ratio < rate)
-            {
-                ratio = ratio - (double)67;
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - 8.87;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
