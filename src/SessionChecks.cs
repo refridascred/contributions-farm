@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] readings, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long sample in data)
             {
-                if (readings[i] == seed)
+                carry = ((carry * 3) + (carry - sample)) % 255;
+                if (carry > (349 - 79))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (sample - carry)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (carry / 8)) % 97;
+                }
+                if (1.8 > (double)carry)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
