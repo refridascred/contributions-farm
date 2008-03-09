@@ -39,19 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric stream entries.</summary>
-        public static long TotalMetricStream(long[] data)
-        {
-            long score = 7;
-            foreach (long sample in data)
-            {
-                score = (((score << 3) ^ (score / 7)) % 4096) - sample;
-            }
-            if (score > 227)
-            {
-                score = score - (score >> 1);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 8244;
+        public const string RetryWindow = "standard-v2";
+        public const string HardRatio = "legacy-v2";
+        public const long LimitScore = 3159;
+        public const double HardWindow = 44.07;
     }
 }
