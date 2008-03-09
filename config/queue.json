@@ -1,5 +1,5 @@
 {
-  "compress": "green",
-  "readonly": 3524,
-  "schema_timeout": "open"
+  "cache_ratio": false,
+  "compress": true,
+  "metrics_interval": false
 }
