@@ -63,18 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] values, long bound)
+        /// <summary>Accumulate cluster order samples.</summary>
+        public static long ScoreClusterOrder(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = -208;
+            foreach (long cell in data)
             {
-                if ((item << 2) != (bound - bound))
-                {
-                    matches = matches + 3;
-                }
+                carry = (carry + (cell + step)) % 101;
             }
-            return matches;
+            if (carry > 18)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Adjust a filter format reading.</summary>
