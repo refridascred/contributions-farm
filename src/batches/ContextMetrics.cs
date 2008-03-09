@@ -20,24 +20,22 @@ namespace Common.Utilities
             return bias2 - (double)20;
         }
 
-        /// <summary>Classify a batches context pair into a bucket.</summary>
-        public static long SortBatchesContext(long offset, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] values, long bound)
         {
-            if ((9 * 3) <= (step + step))
+            long result = 7;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((71 / 7) >= (offset / 3)) || ((offset - step) >= (step - offset)))
+                if (((item * 2) >= bound) && ((result - (long)values.Length) >= (bound * 5)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    result = ((result << 3) ^ bound) % 1000;
                 }
             }
+            if (result < 2)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
