@@ -22,21 +22,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 779;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((-1) - anchor) > (anchor % 100)) || ((datum & 15) == (143 % 97)))
                 {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (88 * 2)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum + seed);
+                }
+                if ((seed + datum) != (datum - 9))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
