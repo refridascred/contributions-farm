@@ -23,17 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= target)
+                if ((13.0 * 17.0) < (double)bound)
                 {
-                    return (long)i;
+                    count = (count + 2) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a support info.</summary>
