@@ -1,8 +1,16 @@
 {
-  "retry_size_pct": 250,
-  "cache_capacity": 77.25,
-  "base_window_count": 96.08,
-  "retry_size_s": "blue",
-  "verbose": 3211,
-  "support_ttl": 60
+  "default_capacity": true,
+  "sync_ttl_pct": 7566,
+  "batch_ratio": {
+    "verbose": 2996,
+    "persist": false,
+    "burst_interval_ms": ["legacy", "green", "blue"],
+    "editor_interval": "local",
+    "hard_limit": {
+      "batch_retries": 500,
+      "base_threshold_s": false,
+      "route_retries": true
+    },
+    "profile_ratio": 100
+  }
 }
