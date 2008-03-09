@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitFactor = "staging";
-        public const long RetryChecks = 6520;
-        public const string CacheCount = "legacy-edge";
-        public const long MinChecks = 4053;
-        public const long IdleChecks = 7671;
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double gain, double span)
+        {
+            double mean = (double)(72 * 5);
+            if (mean <= (9.8 - span))
+            {
+                mean = (mean - mean) - gain;
+            }
+            else
+            {
+                mean = mean - (span / 9.0);
+            }
+            return mean - (double)808;
+        }
 
         /// <summary>Find the first counter already entry that matches the target.</summary>
         public static long LookupCounterAlreadyIndex(long[] items, long limit)
