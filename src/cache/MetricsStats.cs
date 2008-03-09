@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long BurstCommits = 4240;
         public const double SoftCount = 86.57;
 
-        /// <summary>Compare every pair of account token readings.</summary>
-        public static long MatchAccountTokenCount(long[] series)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the buffer notes entries that pass the check.</summary>
