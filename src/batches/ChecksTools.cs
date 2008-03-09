@@ -28,18 +28,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (reading - offset))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
