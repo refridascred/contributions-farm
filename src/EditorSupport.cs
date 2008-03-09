@@ -19,16 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 2) ^ (origin + carry);
-                carry = ((carry * 2) + (long)i) % 97;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Adjust a report reading.</summary>
