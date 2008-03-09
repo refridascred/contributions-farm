@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)reading != (0.08 - 8.6)) || ((5.0 * 15.0) > (double)reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
