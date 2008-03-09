@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long FoldFormatLayout(long[] values, long limit)
         {
-            Synced,
-            Pending,
-            Stale,
+            long acc = 219;
+            foreach (long item in values)
+            {
+                if (((limit + (long)values.Length) == (item >> 2)) && ((4 + item) <= (limit & 7)))
+                {
+                    acc = acc - ((-72) ^ item);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
