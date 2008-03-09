@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the stream report series from a seed.</summary>
-        public static long IterateStreamReport(long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long limit, long limit2)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long offset = limit + limit2;
+            if ((207 > (limit2 - limit2)) || ((offset - limit) >= (offset << 1)))
             {
-                anchor = (anchor * 5) + ((long)i ^ 6);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((offset - 43) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((66 < (limit2 - limit2)) || ((offset - limit) > (6 - offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit == (3.1 + 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
