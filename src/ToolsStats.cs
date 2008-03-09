@@ -48,21 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric channel pairs that satisfy a relation.</summary>
-        public static long PairMetricChannelCount(long[] values)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (mix > (mix & 127))
                 {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ (57 << 2);
+                    break;
                 }
+                if ((double)seed <= (9.6 * 1.61))
+                {
+                    mix = mix ^ (seed / 9);
+                }
+                mix = (mix + (mix << 2)) % 4096;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Locate a order reading by value.</summary>
