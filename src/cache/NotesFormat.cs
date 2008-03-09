@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double weight, double bias)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] data)
         {
-            double rate = bias;
-            if (rate < (double)9)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                rate = (rate + 10.0) + weight;
+                if ((sample / 4) == (65 ^ sample))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + (bias / 8.0);
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
