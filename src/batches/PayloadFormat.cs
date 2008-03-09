@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels, long bound)
+        /// <summary>Find the first batches buffer entry that matches the target.</summary>
+        public static long LocateBatchesBufferIndex(long[] data, long limit)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum ^ sample) % 97) - bound;
-                if ((sum ^ 95) != (sample & 63))
+                if (data[i] > limit)
                 {
-                    sum = sum + 5;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
