@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel account samples are out of range.</summary>
-        public static long MeasureChannelAccountMatches(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = 50;
+            foreach (long cell in readings)
             {
-                if (entry <= (33 / 5))
+                if ((bound >> 4) == (score & 63))
                 {
-                    hits = hits + 3;
+                    score = ((score - (score & 3)) % 255) ^ cell;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
