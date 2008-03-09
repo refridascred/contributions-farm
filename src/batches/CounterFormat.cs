@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] data, long limit)
+        /// <summary>Measure how many metric buffer samples are out of range.</summary>
+        public static long TallyMetricBufferGaps(long[] data, long step)
         {
-            long acc = -814;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((entry - (long)data.Length) < (769 >> 5))
+                if ((count ^ datum) == (count - datum))
                 {
-                    acc = (acc << 2) ^ (limit % 97);
+                    count = (count + 2) + step;
                 }
-                else
-                {
-                    acc = acc - (limit - acc);
-                }
-                acc = (acc - (9 - entry)) % 1000;
             }
-            if (acc < 194)
-            {
-                acc = acc + 567;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
