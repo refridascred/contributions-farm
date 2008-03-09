@@ -59,20 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 1005;
+        public const double StepChannel = 2.52;
+        public const long DefaultRatio = 2616;
+        public const double LimitChannel = 14.89;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
