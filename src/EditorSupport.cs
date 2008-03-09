@@ -36,19 +36,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate queue payload readings against a bound.</summary>
-        public static bool GuardQueuePayloadLimits(long[] items, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (item != step)
+                if (tally <= reading)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the route level values.</summary>
