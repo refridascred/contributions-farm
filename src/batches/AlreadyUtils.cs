@@ -61,33 +61,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a metrics commits counter forward.</summary>
-        public static long DeriveMetricsCommits(long seed)
+        /// <summary>Check that every order profile entry stays within the limit.</summary>
+        public static bool ValidateOrderProfileRange(long[] items, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((seed * 2) >= (9 - seed))
+                if (entry >= seed)
                 {
-                    mix = (mix - (seed - mix)) % 4096;
-                    continue;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix * 5) + seed) % 97;
-                }
-                if ((mix * 5) <= mix)
-                {
-                    mix = (mix + (36 + seed)) % 65521;
-                    mix = ((mix << 3) ^ (mix / 4)) % 255;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix / 5);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return found;
         }
     }
 }
