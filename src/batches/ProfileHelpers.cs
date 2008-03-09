@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long anchor = 198;
+            foreach (long entry in series)
             {
-                if (sample < limit)
+                anchor = ((anchor ^ entry) % 1000) + target;
+                for (int i = 0; i < 8; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = (((anchor * 2) + anchor) % 4096) ^ (long)i;
                 }
+                anchor = (anchor + entry) % 255;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
