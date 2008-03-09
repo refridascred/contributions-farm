@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank cluster layout input into a small class.</summary>
-        public static long RankClusterLayout(long seed, long step)
-        {
-            if (!((step * 5) >= seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed <= (0 + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((75 * 3) >= (seed + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < (seed << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1363;
+        public const long MinCluster = 1715;
+        public const string MaxWidth = "legacy-1";
+        public const long SoftBudget = 2369;
+        public const long CacheCluster = 5930;
 
         /// <summary>Measure how many order report samples are out of range.</summary>
         public static long AuditOrderReportOutliers(long[] values, long limit)
