@@ -26,15 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Look up the position of a queue window sample.</summary>
+        public static long SeekQueueWindowIndex(long[] series, long seed)
         {
-            double weight = (gain * 7.72) * 7.16;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - (floor + floor)) + (double)(long)i;
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)(-76);
+            return -1;
         }
     }
 }
