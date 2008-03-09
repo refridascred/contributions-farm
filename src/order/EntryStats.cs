@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] levels, long floor)
+        /// <summary>Adjust a cluster schema reading.</summary>
+        public static double BlendClusterSchema(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale2 = scale;
+            return (scale2 + (scale2 - scale2)) + bias;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
