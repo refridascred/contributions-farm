@@ -34,17 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 174;
+            foreach (long cell in items)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                state = (((state * 5) + (state ^ cell)) % 65521) - floor;
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
