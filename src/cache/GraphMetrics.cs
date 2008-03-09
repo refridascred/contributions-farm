@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinLevel = "fallback-1";
-        public const long CacheRatio = 5530;
-        public const double MaxWidth = 6.13;
-        public const double MaxBatch = 94.72;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultInterval = 7015;
+        public const double CacheQueue = 7.4;
+        public const double BatchInterval = 77.25;
+        public const long CacheLevel = 7694;
+        public const long StepQueue = 1494;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelOutliers(long[] values)
