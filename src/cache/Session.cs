@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((2.7 / 9.0) < (double)(long)i) || ((double)(long)i == (5.03 - 8.94)))
-                {
-                    total = ((total << 3) ^ (target - target)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
