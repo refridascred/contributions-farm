@@ -1,7 +1,7 @@
-id,region,level,label
-1,979,331,staging
-2,98.86,30.3,592
-3,364,275,eu-west
-4,894,243,fallback
-5,237,520,latest
-6,439,60.98,32.78
+id,weight,label,state
+1,blue,12.22,strict
+2,eu-west,primary,546
+3,405,95.99,15
+4,local,strict,29.49
+5,strict,750,open
+6,831,623,6.7
