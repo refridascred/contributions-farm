@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 36.24;
-        public const long BurstToken = 3221;
-        public const long DefaultTimeout = 1917;
-        public const string CacheToken = "fallback";
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally < (origin >> 1))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long IterateBuffer(long bound)
