@@ -23,21 +23,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
