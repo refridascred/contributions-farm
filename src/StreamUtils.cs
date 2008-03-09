@@ -67,20 +67,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 8287;
+        public const long HardScore = 4200;
+        public const long LimitCount = 810;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MaxQueue = 4554;
