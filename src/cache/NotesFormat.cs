@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long floor)
         {
-            Retry,
-            Synced,
-            Idle,
-            Draft,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
