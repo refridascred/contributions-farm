@@ -1,8 +1,6 @@
-id,region,active,state,token
-1,450,55.03,strict,latest
-2,49.8,218,91.07,79.88
-3,287,standard,394,68.13
-4,236,blue,90.77,547
-5,primary,76.35,17.3,24.27
-6,166,583,62.42,249
-7,87.54,382,76.13,22.2
+id,state,active,score,owner
+1,663,standard,41.68,753
+2,eu-west,fallback,edge,818
+3,98,49.06,910,501
+4,stable,698,57.19,506
+5,32.0,17.22,66.1,488
