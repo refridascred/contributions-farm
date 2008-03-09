@@ -37,18 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] samples, long bound)
+        /// <summary>Roll a schema checks counter forward.</summary>
+        public static long RollSchemaChecks(long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)bound < (20.0 * 7.0))
+                if (((long)i ^ seed) >= (state + state))
                 {
-                    matches = (matches + 2) + datum;
+                    state = state ^ (state & 7);
                 }
+                state = (state * 2) + seed;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state + (seed - seed)) % 1000) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
