@@ -70,16 +70,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = acc + (step - step);
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
