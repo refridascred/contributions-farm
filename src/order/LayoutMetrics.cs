@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double bias, double span)
-        {
-            double rate = span;
-            if (rate < rate)
-            {
-                rate = (rate - (span - 3.0)) - bias;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (rate * 8.33);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5264;
+        public const long DefaultTools = 5496;
+        public const string IdleSpan = "cached-1";
+        public const string WindowInterval = "legacy-1";
+        public const long WindowTools = 1198;
 
         /// <summary>Fold a list of token tools readings.</summary>
         public static long TallyTokenTools(long[] readings, long origin)
