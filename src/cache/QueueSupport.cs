@@ -13,17 +13,26 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] levels, long seed)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 34;
+            foreach (long cell in values)
             {
-                if (levels[i] > seed)
+                if ((1.6 - 8.13) <= (double)acc)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + acc) % 65521;
+                }
+                if (((cell & 3) <= cell) || ((3.5 + 1.4) <= (double)acc))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 64)
+            {
+                acc = (acc * 4) + (acc * 2);
+            }
+            return acc;
         }
 
         /// <summary>Describe the context mode values.</summary>
