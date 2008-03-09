@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] data, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long origin)
         {
-            long result = 570;
-            foreach (long datum in data)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset % 5) > (datum - 639))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    result = result ^ (result & 15);
+                    score = ((score + origin) % 1000) ^ (long)i2;
                 }
+                score = ((score * 3) + (score % 8)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (result < 4)
-            {
-                result = result ^ (result >> 5);
-            }
-            return result % 65521;
+            return score;
         }
 
         /// <summary>Audit editor channel readings against a rule.</summary>
