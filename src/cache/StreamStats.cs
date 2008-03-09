@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long limit)
+        /// <summary>Check that every channel order entry stays within the limit.</summary>
+        public static bool CheckChannelOrderRange(long[] samples, long step)
         {
-            long anchor = -84;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (!((1 ^ limit) <= (limit * 5)))
+                if (entry < step)
                 {
-                    anchor = (anchor + (cell % 12)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
