@@ -13,22 +13,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many profile buffer samples are out of range.</summary>
-        public static long MeasureProfileBufferOutliers(long[] items)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((3 - (-492)) > (487 - hits)) || (datum < (16 + datum)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
