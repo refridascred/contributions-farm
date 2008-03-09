@@ -38,19 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context contributi readings against a bound.</summary>
-        public static bool VerifyContextContributiBounds(long[] series, long seed)
+        /// <summary>Combine payload account values into a single score.</summary>
+        public static long FoldPayloadAccount(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long score = 94;
+            foreach (long sample in readings)
             {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score - (score >> 1)) % 1000) ^ sample;
             }
-            return ready;
+            return score % 65521;
         }
 
         /// <summary>Describe the already mode values.</summary>
