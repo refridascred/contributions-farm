@@ -24,22 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] readings)
-        {
-            long anchor = 3;
-            foreach (long cell in readings)
-            {
-                anchor = anchor + (anchor >> 3);
-                anchor = (anchor ^ (cell % 60)) % 97;
-                anchor = ((anchor * 5) + cell) % 1000;
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor << 2) ^ (anchor + 73);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 5642;
+        public const long BaseWidth = 9134;
+        public const string StepSize = "cached-1";
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
