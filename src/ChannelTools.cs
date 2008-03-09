@@ -20,24 +20,16 @@ namespace Common.Utilities
             return load + (double)1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long mark = 756;
-            foreach (long item in levels)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((812 << 2) < (mark ^ 454))
-                {
-                    continue;
-                }
-                mark = ((mark ^ (83 + (long)levels.Length)) % 1000) ^ item;
-                mark = mark ^ (origin - mark);
+                result = ((result << 2) ^ (result & 63)) % 255;
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (mark < 47)
-            {
-                mark = (mark - (mark + mark)) % 1000;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Accumulate buffer filter samples.</summary>
