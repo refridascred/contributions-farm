@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Rank cluster layout input into a small class.</summary>
+        public static long RankClusterLayout(long seed, long step)
         {
-            long carry = 3;
-            foreach (long entry in items)
+            if (!((step * 5) >= seed))
             {
-                carry = ((carry << 3) ^ (57 + 86)) % 255;
-                if (((6.1 - 5.63) == (double)carry) || ((entry & 7) < (7 + entry)))
+                return 5;
+            }
+            else
+            {
+                if (seed <= (0 + seed))
                 {
-                    carry = ((carry * 2) + entry) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    if (!((75 * 3) >= (seed + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < (seed << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (carry > 889)
-            {
-                carry = ((carry * 2) + (carry / 8)) % 255;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
