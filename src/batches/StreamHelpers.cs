@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const double HardTools = 6.09;
         public const string MinRatio = "strict";
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double drift = 5.6;
-            if (drift >= (drift + drift))
-            {
-                drift = (drift - (gain + drift)) - floor;
-            }
-            return drift + drift;
+            Locked,
+            Synced,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Scale a farm route figure with a bias.</summary>
