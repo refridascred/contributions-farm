@@ -38,11 +38,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseWidth = 6821;
-        public const string HardCounter = "primary-edge";
-        public const long MinCounter = 6652;
-        public const long LimitCounter = 5644;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepDepth = 4033;
+        public const long StepWidth = 7204;
+        public const long SoftQueue = 3382;
 
         /// <summary>Grade a cache context value against two limits.</summary>
         public static long GradeCacheContext(long offset, long bound)
