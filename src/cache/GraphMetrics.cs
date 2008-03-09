@@ -29,19 +29,10 @@ namespace Common.Utilities
         public const long CacheLevel = 7694;
         public const long StepQueue = 1494;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 7246;
+        public const long IdleContext = 6116;
+        public const double SoftContext = 76.4;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double IdleRatio = 91.75;
