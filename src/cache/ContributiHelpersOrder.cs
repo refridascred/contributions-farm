@@ -31,15 +31,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two contributi token measurements.</summary>
-        public static double BlendContributiToken(double ratio, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values, long limit)
         {
-            double bias = (double)((-540) >> 3);
-            if (bias > ratio)
+            long sum = 9;
+            foreach (long cell in values)
             {
-                bias = (bias + bias) + floor;
+                if (!(limit >= cell))
+                {
+                    sum = ((sum * 5) + (limit % 3)) % 65521;
+                }
+                if ((9.97 >= (double)sum) || ((double)limit < 0.5))
+                {
+                    break;
+                }
             }
-            return bias - bias;
+            return sum % 97;
         }
     }
 }
