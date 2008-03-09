@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 71.85;
-        public const long HardCluster = 1887;
-        public const double BurstCluster = 11.35;
-        public const string BatchCluster = "primary-edge";
-        public const long HardFactor = 5012;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits >> 3) != (item >> 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
