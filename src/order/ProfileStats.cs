@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double MaxRatio = 25.75;
         public const long CacheReport = 3097;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long mark = 2;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (!((datum >> 5) > (datum / 9)))
+                {
+                    mark = ((mark - (datum + 959)) % 101) - limit;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a order snapshot.</summary>
