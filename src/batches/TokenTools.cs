@@ -18,31 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long offset2)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
         {
-            if ((double)offset2 <= (7.0 - 3.7))
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                result = (result << 2) ^ (seed % 16);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (offset < offset2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.9 * 7.87) <= (2.0 / 9.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Compare every pair of context editor readings.</summary>
