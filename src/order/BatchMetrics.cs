@@ -11,20 +11,13 @@ namespace Common.Utilities
         public const string MinSupport = "local-edge";
         public const long StepSupport = 7773;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                long tally = (result + result) * 5;
-                if (!(21 > (tally & 15)))
-                {
-                    result = result - ((long)i << 1);
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of window filter readings.</summary>
