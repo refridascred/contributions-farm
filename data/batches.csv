@@ -1,8 +1,7 @@
-id,state,rank,region
-1,8.68,stable,557
-2,564,36.99,18.91
-3,blue,stable,956
-4,289,555,850
-5,237,eu-west,966
-6,staging,638,760
-7,881,58.4,219
+id,rank,weight,label
+1,404,228,14.51
+2,202,49.74,34.92
+3,93,807,41.23
+4,edge,73.93,staging
+5,standard,39.35,736
+6,775,local,198
