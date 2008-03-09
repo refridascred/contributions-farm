@@ -43,18 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] readings, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double ratio = rate;
+            if (ratio < rate)
             {
-                if (((matches % 5) < (target & 127)) || ((matches + 9) >= matches))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                ratio = ratio - (double)67;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio - 8.87;
         }
     }
 }
