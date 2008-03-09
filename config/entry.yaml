@@ -1,7 +1,11 @@
 # entry settings
-batch_interval: cached
-soft_timeout: green
-max_ratio_count: green
-warm_timeout: 60
-stream_retries: true
-soft_limit_s: 500
+readonly: open
+poll_delay_count:
+  persist: 18.8
+  farm_threshold: 8
+  verbose: fallback
+  route_ratio: legacy
+record_timeout: standard
+flush_limit_ms: staging
+base_interval_s: false
+warm_capacity: fallback
