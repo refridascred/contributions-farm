@@ -67,9 +67,19 @@ namespace Common.Utilities
         public const long HardScore = 4200;
         public const long LimitCount = 810;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitBudget = 5580;
-        public const double BaseCount = 7.99;
-        public const double DefaultFactor = 97.76;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
