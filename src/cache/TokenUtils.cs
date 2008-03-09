@@ -25,18 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((floor + item) != (item % 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRatio = 5430;
+        public const long CacheLevel = 3497;
+        public const double BaseLevel = 51.42;
+        public const long BaseCount = 5582;
     }
 }
