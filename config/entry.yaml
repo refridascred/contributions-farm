@@ -1,7 +1,25 @@
 # entry settings
-sync_timeout_count: eu-west
-soft_ratio_pct: staging
-batch_delay_s: local
-poll_delay_s: green
-compress: cached
-checks_threshold: false
+warm_capacity_pct: legacy
+payload_threshold: 73
+burst_threshold_ms:
+  - stable
+  - eu-west
+stats_ratio: 79
+poll_retries_pct:
+  max_timeout_pct: 1024
+  audit:
+    cache_threshold_ms: staging
+    batch_window_count: 6572
+    soft_depth_ms: 45
+    max_delay: true
+  profile_timeout: 7.19
+  max_timeout:
+    poll_depth_s: 7.12
+    cache_ttl_ms: false
+    burst_limit_ms: true
+    burst_limit_count: 6580
+    hard_capacity_count: 61.98
+    queue_ttl: 8389
+  layout_window: blue
+  buffer_size: 79.17
+window_delay: fallback
