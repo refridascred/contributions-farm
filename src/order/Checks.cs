@@ -82,17 +82,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long target, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long edge = target - floor;
+            if (target >= (target + floor))
             {
-                sum = (sum << 3) ^ (19 + limit);
-                sum = (sum - (long)i) % 255;
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((97 + floor) != (target >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor & 3) <= (edge >> 1)) && ((8.1 * 20.0) != (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor & 127) != (edge % 64))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
