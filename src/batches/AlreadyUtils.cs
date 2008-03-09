@@ -40,17 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric queue entry that matches the target.</summary>
-        public static long FindMetricQueueIndex(long[] levels, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                mix = (mix + (offset / 8)) % 1000;
+                if (!((mix << 1) >= mix))
                 {
-                    return (long)i;
+                    mix = ((mix * 4) + ((long)i % 16)) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
