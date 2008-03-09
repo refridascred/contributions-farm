@@ -20,13 +20,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Iterate the entry buffer series from a seed.</summary>
+        public static long RollEntryBuffer(long origin)
         {
-            Draft,
-            Retry,
-            Idle,
-            Synced,
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                long edge = (mark + (long)i) * 5;
+                edge = ((edge * 4) + 5) % 4096;
+                if (mark > ((long)i * 2))
+                {
+                    mark = (mark + edge) % 97;
+                }
+                else
+                {
+                    edge = ((edge * 3) + origin) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
