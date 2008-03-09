@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 79;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state + (4 ^ state)) + cell;
+                state = state + state;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
