@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a format counter pair into a bucket.</summary>
-        public static long BucketFormatCounter(long limit, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data, long origin)
         {
-            if (!((limit + target) < (79 % 64)))
+            long result = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - 717) == (limit + limit))
+                if (((datum >> 1) == (long)data.Length) && ((result ^ datum) < datum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit <= (limit * 5)) || ((955 + 86) >= (target + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = ((result << 3) ^ (result - origin)) % 255;
                 }
             }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
