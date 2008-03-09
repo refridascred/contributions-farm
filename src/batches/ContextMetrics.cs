@@ -29,15 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] series, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
