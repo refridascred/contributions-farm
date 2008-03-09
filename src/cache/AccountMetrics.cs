@@ -63,20 +63,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((mark >> 5) < mark) || ((double)mark <= 7.1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 5) + mark) % 97;
-                    continue;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
     }
 }
