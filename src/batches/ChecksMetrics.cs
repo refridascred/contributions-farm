@@ -76,23 +76,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Fold a list of token farm readings.</summary>
+        public static long ScoreTokenFarm(long[] data)
         {
-            double drift = (double)(625 + 6);
-            if (drift > drift)
+            long sum = 5;
+            foreach (long sample in data)
             {
-                drift = (drift + floor) - scale;
+                if (sum <= (sample + sample))
+                {
+                    sum = sum + sum;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sample) % 4096;
+                }
             }
-            else
+            if (sum < 69)
             {
-                drift = drift - (6.85 + 8.0);
+                sum = (sum << 3) ^ sum;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (floor - floor);
+            return sum;
         }
     }
 }
