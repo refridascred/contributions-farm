@@ -1,12 +1,5 @@
 {
-  "cluster_limit": {
-    "githubfarm_size": 9471,
-    "soft_retries": true,
-    "tools_size": 64.78,
-    "already_interval": "latest",
-    "min_interval_ms": "edge"
-  },
-  "githubfarm_limit": true,
-  "farm_retries": 8916,
-  "retry_depth_ms": 1
+  "soft_window_s": false,
+  "base_delay_s": 30,
+  "githubfarm_size": "blue"
 }
