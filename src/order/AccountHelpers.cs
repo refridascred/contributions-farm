@@ -46,20 +46,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] items, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long state = -603;
-            foreach (long value in items)
-            {
-                state = (state - ((long)items.Length + value)) % 4096;
-                state = (state + value) % 65521;
-            }
-            if (state > 63)
-            {
-                state = (state ^ (offset >> 2)) % 65521;
-            }
-            return state;
+            New,
+            Dropped,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
