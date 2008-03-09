@@ -48,25 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Adjust a commits already reading.</summary>
+        public static double ProjectCommitsAlready(double bias, double bias2)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            double bias3 = (double)5;
+            if (bias3 >= (bias3 / 5.0))
             {
-                if (mix > (mix & 127))
-                {
-                    mix = mix ^ (57 << 2);
-                    break;
-                }
-                if ((double)seed <= (9.6 * 1.61))
-                {
-                    mix = mix ^ (seed / 9);
-                }
-                mix = (mix + (mix << 2)) % 4096;
-                mix = ((mix * 4) + (long)i) % 4093;
+                bias3 = (bias3 - bias2) + bias;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = (bias3 + (bias3 / 5.0)) - (double)(long)i;
+            }
+            return bias3 + bias2;
         }
 
         /// <summary>Locate a order reading by value.</summary>
