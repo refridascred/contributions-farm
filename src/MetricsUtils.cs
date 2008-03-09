@@ -29,11 +29,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            Done,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the stream phase values.</summary>
