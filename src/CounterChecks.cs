@@ -72,12 +72,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 4179;
-        public const long StepBatch = 8062;
-        public const string StepBudget = "standard-v2";
-        public const long BurstBatch = 3588;
-        public const string CacheBatch = "standard-edge";
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] series)
