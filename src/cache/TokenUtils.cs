@@ -32,10 +32,18 @@ namespace Common.Utilities
             return weight + (offset / 3.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardLevel = 2716;
-        public const string HardSpan = "cached-1";
-        public const string RetryMetrics = "stable-1";
-        public const double CacheMetrics = 9.32;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((floor + item) != (item % 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
