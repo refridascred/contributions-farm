@@ -55,30 +55,22 @@ namespace Common.Utilities
         public const long LimitBudget = 8934;
         public const double StepReport = 70.15;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long floor, long seed)
         {
-            long prev = target ^ step;
-            if ((2.4 + 0.85) == (double)target)
+            if (seed > (floor - seed))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((step & 127) <= target)
+                if ((double)floor > 4.05)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((prev + prev) == (step - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 8;
                 }
             }
         }
