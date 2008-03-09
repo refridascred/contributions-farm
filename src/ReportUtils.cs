@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a format tools counter forward.</summary>
-        public static long SeriesFormatTools(long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Idle,
+            Synced,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
