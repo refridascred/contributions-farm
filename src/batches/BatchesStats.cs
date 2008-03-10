@@ -29,38 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if ((floor << 1) >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((7.37 - 15.0) >= (double)origin) || ((floor % 16) < (88 + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (floor % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)94)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a farm entry.</summary>
