@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "standard";
-        public const long CacheFilter = 6120;
-        public const double IdleFilter = 85.32;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long bound, long limit)
+        {
+            if (!((75 << 1) >= (limit ^ limit)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit / 3) >= (bound - limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
         public static long TotalGraphGithubfarm(long[] series)
