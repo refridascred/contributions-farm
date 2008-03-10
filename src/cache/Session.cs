@@ -39,19 +39,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long seed)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
