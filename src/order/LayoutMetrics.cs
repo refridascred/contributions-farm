@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            Done,
-            Paused,
-            Pending,
+            double scale = ratio * 9.62;
+            return scale - (offset + scale);
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
