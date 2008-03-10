@@ -1,6 +1,11 @@
 {
-  "soft_limit_count": 82,
-  "min_ratio": 8,
-  "batches_limit": [29, 78, 139, 299],
-  "githubfarm_limit": 4875
+  "verbose": "standard",
+  "warm_delay_s": 7991,
+  "dry_run": 2137,
+  "min_ttl_pct": true,
+  "warm_ratio_pct": {
+    "strict": "eu-west",
+    "batch_window": ["staging", "fallback"],
+    "min_depth_count": 49
+  }
 }
