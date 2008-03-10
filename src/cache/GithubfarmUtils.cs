@@ -48,11 +48,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchCount = 590;
-        public const long BatchDepth = 3986;
-        public const string IdleEntry = "alpha-v2";
-        public const double RetryEntry = 89.37;
-        public const long WindowBudget = 9887;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            New,
+            Ready,
+            Synced,
+            Closed,
+            Active,
+        }
     }
 }
