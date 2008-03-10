@@ -49,19 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] items, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] items)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (datum > bound)
+                if (!!(entry >= 20))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
