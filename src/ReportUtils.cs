@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((state % 16) < 7)
+                {
+                    state = (state - ((long)i % 2)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a notes header.</summary>
