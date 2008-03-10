@@ -45,19 +45,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate stream context readings against a bound.</summary>
-        public static bool ValidateStreamContextBounds(long[] levels, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
