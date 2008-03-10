@@ -1,7 +1,19 @@
 {
-  "readonly": false,
-  "githubfarm_window": 30,
-  "metrics_timeout": 1.24,
-  "audit": true,
-  "strict": "eu-west"
+  "format_ttl": true,
+  "min_threshold": 526,
+  "cache_depth_s": {
+    "default_limit": "latest",
+    "sync_interval_ms": true,
+    "strict": "fallback"
+  },
+  "contributi_ttl": 8730,
+  "max_depth_count": false,
+  "cache_timeout_s": {
+    "readonly": "blue",
+    "max_size": 30,
+    "soft_retries_ms": 7018,
+    "poll_threshold_s": "staging",
+    "sync_ttl_count": 93.68,
+    "contributi_ttl": ["staging", "open", "green", "strict"]
+  }
 }
