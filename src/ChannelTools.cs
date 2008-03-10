@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] readings, long target)
+        /// <summary>Check that every account session entry stays within the limit.</summary>
+        public static bool CheckAccountSessionLimits(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (datum <= target)
+                if (value < seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
