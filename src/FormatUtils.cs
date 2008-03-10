@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            long acc = -99;
+            foreach (long item in values)
+            {
+                acc = ((acc * 2) + (item >> 5)) % 255;
+                if ((item % 12) < (limit >> 5))
+                {
+                    acc = acc + limit;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of format commits readings.</summary>
