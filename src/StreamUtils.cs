@@ -78,16 +78,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = (score * 3) + (score / 3);
-                score = ((score * 3) + (long)i) % 97;
+                if ((double)value >= (2.3 - 9.5))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
