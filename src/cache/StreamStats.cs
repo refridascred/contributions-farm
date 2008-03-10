@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double floor)
-        {
-            double scale = (double)6;
-            return (scale - (scale - gain)) + floor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 9785;
+        public const long WindowAlready = 6590;
+        public const string BurstAlready = "open-edge";
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
