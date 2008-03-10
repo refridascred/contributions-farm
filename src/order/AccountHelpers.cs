@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const long MaxScore = 2338;
         public const double BatchCount = 98.75;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
