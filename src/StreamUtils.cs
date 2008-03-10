@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] values, long target)
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (target > (cell * 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate window batches readings against a bound.</summary>
