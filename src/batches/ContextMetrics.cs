@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long WindowScore = 9777;
         public const long DefaultFactor = 7392;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a entry commits sample.</summary>
