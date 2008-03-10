@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long acc = 5;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (((acc << 3) ^ sample) % 101) - limit;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Match up already samples.</summary>
