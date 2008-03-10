@@ -67,11 +67,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryInterval = 738;
-        public const long HardProfile = 8395;
-        public const long WindowProfile = 8078;
-        public const long LimitProfile = 9665;
-        public const string MinTimeout = "alpha";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series)
+        {
+            long mark = 690;
+            foreach (long item in series)
+            {
+                if ((46 * 5) == (mark + item))
+                {
+                    mark = mark - (mark % 97);
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark + 0)) % 101;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
