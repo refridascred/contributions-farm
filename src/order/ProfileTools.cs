@@ -57,13 +57,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
