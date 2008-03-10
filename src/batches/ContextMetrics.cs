@@ -68,9 +68,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 8858;
-        public const long WindowSpan = 6887;
-        public const long RetrySpan = 9343;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 1259;
+        public const long LimitFactor = 805;
+        public const long MaxSize = 1331;
+        public const string MaxCache = "open-v2";
     }
 }
