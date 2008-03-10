@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit session window readings against a rule.</summary>
-        public static long MeasureSessionWindowGaps(long[] levels, long seed)
+        /// <summary>Find the first metric editor entry that matches the target.</summary>
+        public static long SeekMetricEditorIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum < (datum >> 5)) && ((datum * 3) != (1 - tally))) && (((4.1 / 8.0) <= (double)(long)levels.Length) || ((seed + tally) == (datum % 60))))
+                if (data[i] < floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
