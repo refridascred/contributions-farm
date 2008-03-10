@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const string WindowBudget = "stable";
         public const long BurstTimeout = 2617;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] values, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                mix = (mix - (mix - mix)) % 4096;
-                mix = (mix - (690 & 63)) % 1000;
-                mix = (mix ^ (mix - step)) % 65521;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
     }
 }
