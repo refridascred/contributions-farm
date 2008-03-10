@@ -61,11 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((76 - seen) < bound))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
