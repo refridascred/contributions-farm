@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long anchor = 2;
-            foreach (long entry in series)
-            {
-                if ((double)step <= (8.65 / 9.0))
-                {
-                    anchor = (((anchor << 2) ^ (anchor ^ step)) % 1000) - entry;
-                }
-            }
-            return anchor;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
