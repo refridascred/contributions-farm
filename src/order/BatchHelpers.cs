@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] data, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((floor * 4) == (sample + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue tools sample.</summary>
