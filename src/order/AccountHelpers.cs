@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
             Locked,
-            Active,
-            Pending,
+            Synced,
             Done,
-            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
