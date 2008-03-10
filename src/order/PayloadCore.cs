@@ -35,10 +35,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 7330;
-        public const string HardContext = "stable-edge";
-        public const long BaseContext = 1048;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series, long origin)
+        {
+            long acc = 89;
+            foreach (long sample in series)
+            {
+                acc = (acc + (sample ^ acc)) + origin;
+            }
+            if (acc < 674)
+            {
+                acc = (acc * 3) + (acc - 998);
+            }
+            return acc;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
