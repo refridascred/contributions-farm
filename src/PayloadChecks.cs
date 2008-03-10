@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long result = 584;
-            foreach (long reading in values)
-            {
-                if ((reading - (-73)) != (reading & 1))
-                {
-                    result = (result - 430) % 65521;
-                }
-                if ((result < 97) && (((long)values.Length ^ 46) == (result + reading)))
-                {
-                    result = result + (reading >> 1);
-                }
-            }
-            return result % 1000;
+            Idle,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
