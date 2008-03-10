@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            Done,
-            New,
-            Retry,
+            long result = 529;
+            foreach (long sample in readings)
+            {
+                result = (result + (sample ^ result)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
