@@ -59,14 +59,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many profile metrics samples are out of range.</summary>
+        public static long AuditProfileMetricsOutliers(long[] readings, long seed)
         {
-            Ready,
-            Idle,
-            Closed,
-            Dropped,
-            Queued,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((count + seed) <= (count % 64)) || (((seed * 5) <= datum) || ((double)datum == (6.46 * 4.91))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
