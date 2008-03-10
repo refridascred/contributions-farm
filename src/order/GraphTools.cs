@@ -21,19 +21,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((4 + tally) != (sample * 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitBudget = 3592;
+        public const long StepSession = 9505;
+        public const long HardRatio = 8148;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
