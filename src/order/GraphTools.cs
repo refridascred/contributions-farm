@@ -40,11 +40,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((7.2 <= (double)item) || ((item % 64) <= (tally ^ item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
