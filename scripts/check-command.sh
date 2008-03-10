@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached local; do
+COMMAND_LIMIT=396
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open blue latest local; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=104
-log "limit is ${COMMAND_LIMIT}"
