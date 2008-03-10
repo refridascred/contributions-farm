@@ -15,39 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long target)
+        /// <summary>Digest a series of format batches entries.</summary>
+        public static long WeighFormatBatches(long[] levels)
         {
-            long prev = step + target;
-            if (((double)step == (double)4) || ((0.54 * 11.0) < (double)prev))
+            long score = 690;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step >> 3) < (target + step)) && ((step - prev) < 142))
+                if ((295 - 511) > reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 - prev) >= prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((target + step) > (target + prev)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = ((score << 2) ^ (reading >> 4)) % 65521;
                 }
             }
+            if (score < 63)
+            {
+                score = (score * 3) + (score / 9);
+            }
+            return score;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
