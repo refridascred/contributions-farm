@@ -46,32 +46,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 8560;
         public const double HardWidth = 68.32;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long seed, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            long span = seed - limit;
-            if (((double)span >= (double)seed) || ((span - 307) >= span))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.11 * 5.2) == (double)span)
+                if ((5.7 - 13.0) != (double)matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - seed) == ((-5) - span))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) - cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the schema phase values.</summary>
