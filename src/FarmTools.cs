@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Active,
-            Draft,
             Stale,
-            Idle,
-            Synced,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Digest a series of tools account entries.</summary>
