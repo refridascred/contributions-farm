@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxFactor = 8093;
+        public const long BatchContributi = 1043;
+        public const double MaxTimeout = 12.69;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long offset, long floor)
