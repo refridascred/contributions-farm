@@ -52,11 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 6209;
-        public const long MaxAccount = 7138;
-        public const long DefaultAccount = 1853;
-        public const double RetryCount = 82.69;
-        public const long BurstAccount = 2125;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Locked,
+            Idle,
+            Pending,
+            Retry,
+            Stale,
+        }
     }
 }
