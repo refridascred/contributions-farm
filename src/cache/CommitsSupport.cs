@@ -22,19 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != limit)
+                if (data[i] < floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
