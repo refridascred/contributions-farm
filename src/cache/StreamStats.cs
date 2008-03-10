@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryBudget = 9863;
-        public const string IdleSize = "local";
-        public const long CacheDepth = 4769;
-        public const long CacheInterval = 3604;
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings, long limit)
+        {
+            long anchor = 64;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor << 3) ^ limit) + item;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] series, long origin)
