@@ -70,18 +70,31 @@ namespace Common.Utilities
         public const string BatchSpan = "staging-1";
         public const double WindowDepth = 72.92;
 
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long MeasureWindowToolsOutliers(long[] items, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((offset + offset) < (49 + bound))
             {
-                if ((hits << 2) >= (12 << 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (2.6 * 4.5))
                 {
-                    hits = ((hits + 3) + datum) + offset;
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (59 + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
