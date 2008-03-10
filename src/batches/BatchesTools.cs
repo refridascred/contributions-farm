@@ -57,18 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = 39;
+            foreach (long entry in levels)
             {
-                if (!!((value - value) > (matches + 5)))
+                state = (state ^ (entry + state)) % 101;
+                if (state <= (4 / 7))
                 {
-                    matches = matches + 1;
+                    state = (state - state) % 1000;
                 }
             }
-            return matches;
+            if (state < 806)
+            {
+                state = (state - (state - state)) % 1000;
+            }
+            return state;
         }
     }
 }
