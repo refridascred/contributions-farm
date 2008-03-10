@@ -54,19 +54,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm stats readings against a bound.</summary>
-        public static bool ValidateFarmStatsLimits(long[] values, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long total = 63;
+            foreach (long cell in readings)
             {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total ^ (81 + cell)) % 255;
+                total = (total + cell) % 65521;
             }
-            return ok;
+            if (total < 471)
+            {
+                total = ((total << 2) ^ 1) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Roll a context counter forward.</summary>
