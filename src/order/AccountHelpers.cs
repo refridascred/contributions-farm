@@ -45,12 +45,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxFactor = 8961;
-        public const double LimitWidth = 23.11;
-        public const long IdleBuffer = 348;
-        public const long MaxScore = 2338;
-        public const double BatchCount = 98.75;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (683 > cell)
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] levels, long target)
