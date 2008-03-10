@@ -41,24 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long limit, long limit2)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] readings, long offset)
         {
-            if (limit <= (399 / 8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit2 > (limit2 - 12))
+                if (readings[i] < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
