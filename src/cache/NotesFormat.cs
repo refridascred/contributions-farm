@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = acc + ((-549) - (long)i);
+                if (acc >= (origin >> 3))
                 {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc + (acc % 12);
                 }
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the entry class values.</summary>
