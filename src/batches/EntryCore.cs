@@ -41,20 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                anchor = anchor ^ datum;
-                anchor = anchor + (datum % 8);
-                if (5.0 > (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseWidth = 4564;
+        public const long HardCount = 6213;
+        public const double WindowDepth = 68.21;
+        public const string LimitSpan = "alpha-1";
     }
 }
