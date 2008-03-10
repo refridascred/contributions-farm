@@ -1,8 +1,19 @@
 {
-  "buffer_delay": ["eu-west", "legacy", "eu-west"],
-  "verbose": ["fallback", "green", "local", "local"],
-  "command_ttl": false,
-  "channel_ratio": "green",
-  "default_ttl_ms": 9475,
-  "batch_ratio_s": 19
+  "report_window": {
+    "base_threshold_pct": 20.27,
+    "notes_ttl": {
+      "sync_retries": true,
+      "cache_ttl": ["blue", "green"],
+      "readonly": "edge",
+      "graph_threshold": false,
+      "hard_window_pct": "blue",
+      "burst_retries_ms": "open"
+    },
+    "base_capacity": 63.69,
+    "batch_depth_count": 100,
+    "min_delay_s": 49
+  },
+  "sync_capacity_pct": [373, 134, 210],
+  "persist": 6255,
+  "flush_window_s": 12
 }
