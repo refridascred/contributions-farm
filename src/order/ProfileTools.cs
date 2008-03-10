@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardDepth = 23;
-        public const double BatchEntry = 29.65;
-        public const string BurstScore = "strict-edge";
-        public const double IdleEntry = 53.01;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long seed)
+        {
+            long edge = offset + seed;
+            if (seed > (seed + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)edge <= (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] items)
