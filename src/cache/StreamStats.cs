@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every channel order entry stays within the limit.</summary>
-        public static bool CheckChannelOrderRange(long[] samples, long step)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Accumulate report samples.</summary>
