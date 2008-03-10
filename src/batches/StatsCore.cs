@@ -48,21 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = 20.0;
+            if (weight2 >= (weight - weight))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 + (offset * 7.51);
             }
-            return count;
+            else
+            {
+                weight2 = weight2 + (weight + offset);
+            }
+            return weight2 - offset;
         }
 
         /// <summary>Rank session input into a small class.</summary>
