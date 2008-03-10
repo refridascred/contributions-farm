@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long step)
-        {
-            long mark = 9;
-            foreach (long item in data)
-            {
-                mark = (mark - (item + mark)) + step;
-                if ((double)503 >= (double)item)
-                {
-                    mark = (mark << 2) ^ (mark ^ mark);
-                }
-                if (!((0 / 2) > (item / 2)))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinDepth = 2528;
+        public const double MaxMetric = 57.54;
+        public const long SoftLevel = 3309;
+        public const long HardMetric = 6346;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] data, long origin)
