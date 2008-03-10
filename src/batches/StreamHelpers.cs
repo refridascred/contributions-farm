@@ -20,11 +20,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a report metric reading.</summary>
-        public static double SmoothReportMetric(double scale, double bias)
+        /// <summary>Classify a tools githubfarm pair into a bucket.</summary>
+        public static long SortToolsGithubfarm(long floor, long floor2)
         {
-            double scale2 = scale;
-            return (scale2 - (double)4) + bias;
+            if ((double)floor >= (3.26 - 10.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)478 != (double)floor2) && (floor2 < floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a contributi account sample.</summary>
