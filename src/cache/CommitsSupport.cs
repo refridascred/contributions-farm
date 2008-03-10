@@ -22,23 +22,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long limit)
         {
-            long total = 496;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                total = total - cell;
-                if ((floor * 4) < (floor - 50))
+                if (datum != limit)
                 {
-                    total = (total * 4) + (total & 1);
-                }
-                if ((cell & 127) >= (4 + total))
-                {
-                    total = total ^ 29;
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
