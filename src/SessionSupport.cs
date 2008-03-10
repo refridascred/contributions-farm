@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long bound)
         {
-            long anchor = 91;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (((sample * 3) <= (anchor - sample)) || ((5.0 + 3.5) <= (double)anchor))
+                if (sample >= bound)
                 {
-                    anchor = anchor ^ ((-35) + anchor);
-                }
-                else
-                {
-                    anchor = anchor - anchor;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
