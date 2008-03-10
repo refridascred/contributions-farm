@@ -50,11 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Rank graph batch input into a small class.</summary>
+        public static long SortGraphBatch(long origin, long limit)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long lane = origin ^ limit;
+            if ((limit + lane) >= (lane % 100))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.8 <= (double)origin) && ((origin + lane) <= (5 - origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
