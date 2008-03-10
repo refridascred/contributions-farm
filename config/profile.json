@@ -1,6 +1,6 @@
 {
-  "checks_timeout": [69, 216, 252],
-  "cache_window_s": 500,
-  "burst_ratio": 28.87,
-  "sync_interval_count": "cached"
+  "hard_limit_count": 66,
+  "min_depth_ms": "latest",
+  "poll_depth": ["local", "open", "local", "staging"],
+  "default_retries_count": 250
 }
