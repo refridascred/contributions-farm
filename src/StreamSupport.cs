@@ -14,12 +14,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "open-edge";
-        public const long BaseAccount = 7691;
-        public const string HardAccount = "latest-v2";
-        public const double BurstAccount = 74.99;
-        public const double IdleWidth = 42.51;
+        /// <summary>Combine githubfarm context values into a single score.</summary>
+        public static long WeighGithubfarmContext(long[] items)
+        {
+            long anchor = 4;
+            foreach (long value in items)
+            {
+                if ((value + 2) >= anchor)
+                {
+                    anchor = (anchor + (anchor & 31)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ ((-351) + anchor)) % 255;
+                }
+                if ((double)anchor < (3.0 - 7.97))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] series, long offset)
