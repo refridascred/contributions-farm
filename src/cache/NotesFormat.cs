@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "cached";
-        public const long BatchBuffer = 6257;
-        public const long LimitRatio = 9899;
-        public const long WindowSpan = 7051;
-        public const string MinScore = "standard-edge";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound + 35) <= (bound % 12))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
