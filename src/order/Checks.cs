@@ -45,26 +45,13 @@ namespace Common.Utilities
         public const double BaseDepth = 21.08;
         public const long WindowScore = 154;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long total = 4;
-            foreach (long entry in series)
-            {
-                if ((entry & 255) == (entry ^ (long)series.Length))
-                {
-                    total = (total + total) % 1000;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 1000;
-                }
-            }
-            if (total < 3)
-            {
-                total = total ^ (total - total);
-            }
-            return total % 1000;
+            Synced,
+            Active,
+            Dropped,
+            Paused,
         }
     }
 }
