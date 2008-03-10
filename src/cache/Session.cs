@@ -32,32 +32,9 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long limit, long seed)
-        {
-            long cur = limit - seed;
-            if ((cur >= (limit * 2)) || ((double)cur >= 0.4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((limit - seed) != (seed % 3)) || ((double)cur != (16.0 - 4.73)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 3) >= (cur - cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepInterval = 7696;
+        public const double LimitToken = 61.48;
+        public const long IdleTimeout = 2290;
     }
 }
