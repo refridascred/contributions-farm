@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples, long offset)
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long DeriveBufferToken(long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((datum ^ datum) >= (7 - datum))
-                {
-                    count = (count + 2) + offset;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
