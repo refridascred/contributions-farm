@@ -1,5 +1,6 @@
 # entry settings
-retry_ttl: 6441
-idle_retries_ms: 100
-default_interval_pct: latest
-order_ttl: 60
+layout_interval: 1024
+default_threshold_s: edge
+metrics_size: 100
+commits_ttl: 41.14
+flush_timeout_s: true
