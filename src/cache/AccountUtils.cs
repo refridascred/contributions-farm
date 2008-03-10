@@ -37,12 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long mix = 9;
+            foreach (long item in items)
+            {
+                mix = ((mix - (mix + mix)) % 4096) ^ item;
+            }
+            if (mix > 22)
+            {
+                mix = (mix + (mix + mix)) % 1000;
+            }
+            return mix % 97;
         }
     }
 }
