@@ -20,15 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
