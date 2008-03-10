@@ -28,22 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] series, long offset)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            long state = 48;
-            foreach (long item in series)
-            {
-                if (((state + item) < (offset * 5)) && ((item + 54) != (state - offset)))
-                {
-                    state = (state * 3) + (offset & 3);
-                }
-            }
-            if (state > 92)
-            {
-                state = state + offset;
-            }
-            return state;
+            double bias = 12.0;
+            return bias + (floor + gain);
         }
     }
 }
