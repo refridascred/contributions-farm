@@ -1,11 +1,13 @@
 # Command notes
 
-Keep buffer and session names short and lowercase.
-Use route settings to tune how often tools data is refreshed.
+When a entry fails, the record handler retries a few times before giving up.
+Use command settings to tune how often account data is refreshed.
+
+Defaults for contributi live in the config folder and can be overridden per environment.
+Use queue settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new metrics fields
-- Prefer notes defaults
-- Log every notes change
+- Prefer farm defaults
+- Log every account change
+- Document new record fields
