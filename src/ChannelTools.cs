@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] values, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double bias2 = (double)(93 + 10);
+            if (bias2 > bias)
             {
-                if ((2.4 + 18.0) == (double)tally)
-                {
-                    tally = ((tally + 2) - entry) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias2 = bias2 - (8.8 - 12.0);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (scale - scale)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
