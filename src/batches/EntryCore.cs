@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 995;
+        public const long DefaultContributi = 8343;
+        public const long RetryContributi = 1973;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheMetric = 4498;
