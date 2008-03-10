@@ -24,25 +24,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] samples, long origin)
         {
-            long lane = offset - floor;
-            if ((lane * 4) > lane)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane >> 5) < (-9))
+                if (((13.0 * 8.9) >= (double)matches) || (matches <= ((-4) + (long)samples.Length)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    matches = ((matches + 2) + value) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the notes kind values.</summary>
