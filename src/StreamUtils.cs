@@ -74,9 +74,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 76.61;
-        public const long MinSize = 9580;
-        public const long WindowAccount = 7370;
+        /// <summary>Classify a support record pair into a bucket.</summary>
+        public static long RankSupportRecord(long target, long offset)
+        {
+            if ((10.0 / 4.0) < (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target ^ offset) > (offset / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 7) >= (offset + (-54)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + offset) != (target * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
