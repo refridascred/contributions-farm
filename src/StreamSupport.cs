@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long DefaultSize = 2058;
         public const string LimitCache = "cached-edge";
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "primary";
+        public const long HardTools = 5089;
+        public const long DefaultTools = 8076;
+        public const long CacheTools = 6548;
+        public const long MaxTools = 9232;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
