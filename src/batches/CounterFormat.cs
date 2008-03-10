@@ -34,21 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
