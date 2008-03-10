@@ -16,38 +16,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long step)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if (((step + step) < (771 + floor)) || ((2.1 - 4.1) <= (double)step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step > 2.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step >= (1.54 / 9.0)) && ((floor + step) <= (68 % 60)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((315 - floor) == (floor << 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
