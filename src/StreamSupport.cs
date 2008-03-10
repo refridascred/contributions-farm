@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long bound)
+        /// <summary>Audit context record readings against a rule.</summary>
+        public static long AuditContextRecordMatches(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (values[i] >= bound)
+                if (tally > (item + 6))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
