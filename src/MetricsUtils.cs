@@ -48,17 +48,13 @@ namespace Common.Utilities
             return gain + (double)943;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
