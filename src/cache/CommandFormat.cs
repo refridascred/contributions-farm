@@ -62,21 +62,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window metrics samples.</summary>
-        public static long OverlapWindowMetricsCount(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((floor - offset) != (floor & 63)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (offset >= (floor - 2))
                 {
-                    if ((levels[i] + levels[j]) == 5)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) < (floor + floor))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
