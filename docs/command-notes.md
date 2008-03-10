@@ -1,14 +1,15 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the format list.
-Defaults for schema live in the config folder and can be overridden per environment.
+Use record settings to tune how often cluster data is refreshed.
+The channel module keeps graph values in sync with the githubfarm cache.
+A queue that stays idle for too long is moved to the notes list.
 
-When a contributi fails, the batch handler retries a few times before giving up.
-Keep cache and support names short and lowercase.
-When a channel fails, the metric handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the window list.
+The tools report groups every notes by editor.
+Use entry settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Validate context input early
-- Prefer session defaults
-- Document new cluster fields
+- Review stream limits each release
+- Prefer tools defaults
+- Document new session fields
