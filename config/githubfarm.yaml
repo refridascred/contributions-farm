@@ -1,9 +1,9 @@
 # githubfarm settings
-sync_threshold:
-  - primary
-  - open
-  - staging
-poll_ttl_count: 97
-max_retries_ms: 30
-max_size_ms: 6380
-default_timeout_pct: 19.71
+max_timeout_s:
+  - legacy
+  - strict
+  - edge
+  - latest
+stream_ttl: 100
+dry_run: false
+metric_interval: false
