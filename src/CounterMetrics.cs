@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Done,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Derive the next schema layout value from a seed.</summary>
