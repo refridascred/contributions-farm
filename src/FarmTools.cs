@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string IdleMetric = "staging";
         public const long CacheTimeout = 6315;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
