@@ -1,7 +1,5 @@
 # githubfarm settings
-checks_window: 65.19
-poll_window:
-  - open
-  - strict
-  - local
-default_depth: 35
+persist: fallback
+dry_run: 4100
+default_timeout_ms: 15.74
+warm_timeout_count: 1024
