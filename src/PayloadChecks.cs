@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] series, long floor)
         {
-            long mix = 1;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((value > (mix << 2)) && ((value / 9) < value))
+                if ((double)value != (4.09 + 2.0))
                 {
-                    mix = (mix << 3) ^ (mix % 7);
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
