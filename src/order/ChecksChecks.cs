@@ -41,13 +41,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
