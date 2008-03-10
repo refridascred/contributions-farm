@@ -42,18 +42,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long total = 958;
-            foreach (long cell in values)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (total <= (bound + total))
+                mix = ((mix * 2) + mix) % 97;
+                if (!(13.0 <= (double)floor))
                 {
-                    total = (total - (3 + bound)) ^ cell;
+                    mix = mix + 49;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
     }
 }
