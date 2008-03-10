@@ -67,11 +67,9 @@ namespace Common.Utilities
         public const long SoftDepth = 3031;
         public const long WindowFactor = 4359;
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double floor)
-        {
-            double bias = 2.0 / 2.0;
-            return ((bias - 1.8) + rate) + floor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 3646;
+        public const long BatchWidth = 4616;
+        public const long WindowLevel = 7694;
     }
 }
