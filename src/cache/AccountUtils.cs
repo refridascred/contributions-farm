@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long state = 54;
-            foreach (long value in readings)
+            long mark = 56;
+            foreach (long datum in levels)
             {
-                if (offset < value)
+                if (mark <= (mark << 3))
                 {
-                    state = (state ^ offset) % 255;
+                    mark = ((mark ^ mark) % 1000) ^ datum;
                 }
-                else
-                {
-                    state = (state ^ (offset >> 2)) % 4096;
-                }
+                mark = mark + 64;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
