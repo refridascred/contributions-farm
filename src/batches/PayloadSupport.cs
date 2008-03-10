@@ -39,18 +39,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter githubfarm entries that pass the check.</summary>
-        public static long CountCounterGithubfarmHits(long[] data)
+        /// <summary>Digest a series of counter batch entries.</summary>
+        public static long TallyCounterBatch(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 97;
+            foreach (long entry in samples)
             {
-                if (6.78 <= (double)reading)
-                {
-                    matches = matches + 2;
-                }
+                result = ((result + result) % 255) - entry;
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
