@@ -53,24 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double ratio, double span)
-        {
-            double gain = span;
-            if (gain <= span)
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + 5.89;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (3.2 - 2.6)) + (double)(long)i;
-            }
-            return gain + ratio;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryScore = "local-v2";
+        public const long BatchCount = 8241;
+        public const long LimitTimeout = 7743;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string HardContributi = "staging-1";
