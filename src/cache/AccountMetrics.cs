@@ -17,21 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count session route pairs that satisfy a relation.</summary>
-        public static long CompareSessionRouteCount(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 5.32;
+            if (drift > (drift - gain))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - bias;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (bias + gain)) - (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
