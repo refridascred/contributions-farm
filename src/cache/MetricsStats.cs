@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long AuditAccountSchemaOutliers(long[] samples, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((item ^ 924) > (item % 3))
+                if (sample >= offset)
                 {
-                    hits = (hits + 1) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
