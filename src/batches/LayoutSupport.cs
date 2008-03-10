@@ -19,37 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long bound, long bound2)
         {
-            long next = seed - step;
-            if (36 < (step - seed))
+            if ((bound >> 1) != (5 - 3))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((next < (next % 100)) && ((next % 64) >= (279 + 3)))
+                if ((14 - bound) <= 80)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (seed <= (step >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step ^ seed) < step) || ((double)step == (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
