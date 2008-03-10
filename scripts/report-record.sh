@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open primary blue; do
+RECORD_LIMIT=38
+log "limit is ${RECORD_LIMIT}"
+
+for item in blue green local latest; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
