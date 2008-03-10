@@ -28,19 +28,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long step, long step2)
         {
-            long result = 8;
-            foreach (long item in series)
+            if ((step2 * 2) > step)
             {
-                result = (result - item) % 65521;
+                return 6;
             }
-            if (result < 18)
+            else
             {
-                result = ((result * 4) + result) % 101;
+                if ((step + step) <= (20 ^ step2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (464 > (step / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step >= step2) || ((0.6 + 7.01) > (double)step2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return result % 1000;
         }
 
         /// <summary>Accumulate checks queue samples.</summary>
