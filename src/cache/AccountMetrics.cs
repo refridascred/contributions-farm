@@ -74,26 +74,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((carry & 7) <= (carry >> 1))
-                {
-                    carry = carry ^ (seed >> 1);
-                    carry = (carry - (76 << 1)) % 1000;
-                }
-                if ((20.0 / 5.0) < (double)carry)
-                {
-                    carry = (carry + seed) % 101;
-                    carry = carry + (carry ^ (-57));
-                }
-                carry = (carry + carry) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 1008;
+        public const double IdleContributi = 54.18;
+        public const long IdleInterval = 6098;
     }
 }
