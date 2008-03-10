@@ -29,22 +29,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 327;
+            foreach (long reading in series)
             {
-                if (((double)cell > (17.0 / 4.0)) || (cell <= seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = anchor + (reading + anchor);
             }
-            return seen;
+            if (anchor < 834)
+            {
+                anchor = ((anchor * 3) + (anchor & 127)) % 101;
+            }
+            return anchor;
         }
     }
 }
