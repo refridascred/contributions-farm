@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 44.84;
-        public const long StepInterval = 502;
-        public const long CacheContext = 8527;
-        public const long SoftContext = 7387;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] items, long floor)
