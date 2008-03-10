@@ -14,20 +14,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 7.56;
+        public const string WindowAccount = "fallback-edge";
+        public const long CacheInterval = 8853;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double bias, double bias2)
