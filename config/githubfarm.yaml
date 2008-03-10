@@ -1,6 +1,5 @@
 # githubfarm settings
-min_window: 250
-compress: 72.93
-base_timeout:
-  - 353
-  - 175
+persist: cached
+filter_ratio: latest
+channel_delay: fallback
+verbose: edge
