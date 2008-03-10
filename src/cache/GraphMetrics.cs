@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            double weight = (double)(880 - 444);
+            if (weight < ratio)
+            {
+                weight = (weight - (5.6 / 2.0)) - span;
+            }
+            return weight + (9.7 - weight);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
