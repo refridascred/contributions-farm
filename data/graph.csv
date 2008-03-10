@@ -1,8 +1,9 @@
-id,state,token,rank,weight
-1,782,15.27,487,34.61
-2,690,919,standard,589
-3,standard,52.68,72.33,306
-4,46.92,strict,5.01,286
-5,143,standard,cached,204
-6,open,58.92,476,2.11
-7,34.88,77.2,44.04,66
+id,rank,label,region,count
+1,346,latest,fallback,cached
+2,78.48,13.46,556,78.38
+3,57.6,75.74,312,432
+4,open,27.41,72.12,479
+5,190,547,420,strict
+6,latest,65.69,435,676
+7,11.03,531,local,526
+8,78.1,58.01,926,blue
