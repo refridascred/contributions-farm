@@ -29,13 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Paused,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCount = "cached-v2";
+        public const string CacheCommand = "standard-edge";
+        public const string DefaultCount = "staging-1";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
