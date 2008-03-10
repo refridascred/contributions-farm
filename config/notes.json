@@ -1,7 +1,8 @@
 {
-  "hard_interval": true,
-  "persist": 71.14,
-  "buffer_window": true,
-  "window_threshold": "green",
-  "dry_run": [442, 393, 166]
+  "buffer_delay": ["eu-west", "legacy", "eu-west"],
+  "verbose": ["fallback", "green", "local", "local"],
+  "command_ttl": false,
+  "channel_ratio": "green",
+  "default_ttl_ms": 9475,
+  "batch_ratio_s": 19
 }
