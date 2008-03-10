@@ -1,6 +1,24 @@
 {
-  "max_limit": 6,
-  "warm_ratio_count": 944,
-  "default_depth_s": 47,
-  "channel_ttl": true
+  "graph_retries": ["strict", "blue"],
+  "farm_interval": false,
+  "min_ratio_count": {
+    "verbose": 77.28,
+    "batch_ttl": "open",
+    "flush_timeout": [302, 130]
+  },
+  "route_ttl": false,
+  "farm_threshold": {
+    "enabled": "cached",
+    "warm_retries_pct": "edge",
+    "batch_timeout_ms": {
+      "farm_size": "edge",
+      "burst_depth_count": "cached",
+      "max_interval_pct": 50.93,
+      "verbose": true
+    },
+    "flush_retries_s": false,
+    "persist": "staging",
+    "soft_ratio": 2931
+  },
+  "schema_ttl": 5751
 }
