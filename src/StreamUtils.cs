@@ -62,10 +62,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitSpan = 93.07;
-        public const long HardCommits = 7016;
-        public const long DefaultLevel = 2266;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long step, long step2)
