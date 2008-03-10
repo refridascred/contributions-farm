@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally - tally) > (tally & 31))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
