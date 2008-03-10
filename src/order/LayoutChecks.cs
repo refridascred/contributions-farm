@@ -23,19 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings, long target)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] samples, long seed)
         {
-            long score = 91;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score << 3) ^ sample) % 65521) + target;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 3)
-            {
-                score = ((score * 5) + 8) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a metric summary.</summary>
