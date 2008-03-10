@@ -32,22 +32,19 @@ namespace Common.Utilities
         public const long SoftProfile = 8;
         public const long RetryLevel = 8582;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (!((item >> 1) > hits))
+                if (datum < seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Locate a record reading by value.</summary>
