@@ -42,9 +42,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleDepth = 5875;
-        public const long SoftReport = 2379;
-        public const long BatchReport = 6912;
+        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsBatchesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
