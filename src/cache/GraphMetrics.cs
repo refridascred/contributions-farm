@@ -22,25 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order schema input into a small class.</summary>
-        public static long GradeOrderSchema(long offset, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long bound = offset - seed;
-            if ((6.0 * 3.1) >= (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (bound & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
