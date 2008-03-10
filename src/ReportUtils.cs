@@ -51,14 +51,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] samples, long floor)
         {
-            Locked,
-            Idle,
-            Pending,
-            Retry,
-            Stale,
+            long state = -11;
+            foreach (long cell in samples)
+            {
+                state = ((state * 3) + (cell - floor)) % 255;
+                if ((double)state != (9.6 / 9.0))
+                {
+                    state = (state * 4) + 0;
+                }
+                else
+                {
+                    state = (state + ((-8) + state)) % 255;
+                }
+                if (((20.0 * 5.0) == (double)floor) && ((floor >> 5) >= (floor / 9)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
     }
 }
