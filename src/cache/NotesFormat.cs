@@ -25,19 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of filter checks readings.</summary>
-        public static long TotalFilterChecks(long[] items, long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long acc = 673;
-            foreach (long cell in items)
-            {
-                acc = (acc + acc) % 65521;
-                if ((cell <= (cell << 1)) || ((target & 127) >= (acc * 2)))
-                {
-                    acc = ((acc << 2) ^ (cell >> 2)) % 1000;
-                }
-            }
-            return acc % 1000;
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
