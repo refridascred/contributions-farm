@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Closed,
-            Active,
-            Idle,
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the queue buffer entries that pass the check.</summary>
