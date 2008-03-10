@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long seed)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long offset = target ^ seed;
+            if (seed <= (target + seed))
             {
-                if (reading >= target)
+                return 1;
+            }
+            else
+            {
+                if (366 < (offset << 3))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset << 3) != (target / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (117 <= (target % 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
