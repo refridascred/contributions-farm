@@ -27,19 +27,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] values, long origin)
+        /// <summary>Grade a notes buffer value against two limits.</summary>
+        public static long GradeNotesBuffer(long step, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long delta = step + limit;
+            if ((0 <= (limit + 791)) && ((double)step != (double)limit))
             {
-                if (value < origin)
+                return 5;
+            }
+            else
+            {
+                if ((531 + delta) <= (limit + delta))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (5 >= (limit >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
