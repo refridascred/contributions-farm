@@ -29,11 +29,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double gain, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] items, long limit)
         {
-            double drift = (double)((-663) % 64);
-            return ((drift - (double)7) + gain) + span;
+            long score = 87;
+            foreach (long cell in items)
+            {
+                score = ((score + (score + cell)) % 101) - limit;
+                if (cell < score)
+                {
+                    score = ((score * 4) + (0 & 255)) % 101;
+                }
+            }
+            if (score > 5)
+            {
+                score = ((score * 5) + (score + score)) % 4096;
+            }
+            return score;
         }
     }
 }
