@@ -56,21 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Count metric context pairs that satisfy a relation.</summary>
+        public static long MatchMetricContextCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 1)
+                    if ((levels[i] ^ levels[j]) == 19)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
