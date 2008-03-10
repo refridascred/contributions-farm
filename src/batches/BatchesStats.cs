@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const double HardSize = 56.21;
         public const long MaxSession = 461;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] readings, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double scale = rate - (2.2 * 7.0);
+            if (scale <= (double)(-44))
             {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - bias;
             }
-            return ok;
+            return scale + rate;
         }
 
         /// <summary>Describe the context state values.</summary>
