@@ -24,21 +24,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Iterate the metrics cluster series from a seed.</summary>
+        public static long IterateMetricsCluster(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score * 5) + (score * 5);
+                score = (score ^ ((long)i + offset)) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
