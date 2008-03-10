@@ -20,23 +20,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate window notes samples.</summary>
-        public static long ScoreWindowNotes(long[] values, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] readings, long origin)
         {
-            long state = -846;
-            foreach (long item in values)
+            long mix = 27;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (((4.2 / 9.0) < (double)value) || ((15.0 / 4.0) > (double)mix))
                 {
-                    state = (state + (limit * 4)) ^ (long)i;
-                    state = ((state << 3) ^ (item & 255)) % 1000;
+                    mix = (mix - (mix + value)) % 255;
                 }
-                if (((-896) + limit) > state)
+                if ((double)origin != (1.0 * 20.0))
                 {
-                    state = (state - limit) % 97;
+                    mix = (mix + (value >> 5)) % 255;
                 }
             }
-            return state % 4096;
+            if (mix > 841)
+            {
+                mix = (mix - (mix * 4)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit order metric readings against a rule.</summary>
