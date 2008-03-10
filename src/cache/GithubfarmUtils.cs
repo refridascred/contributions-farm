@@ -12,21 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up token stats samples.</summary>
-        public static long OverlapTokenStatsCount(long[] readings)
+        /// <summary>Fold a list of entry contributi readings.</summary>
+        public static long WeighEntryContributi(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 97;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result ^ (sample & 127)) % 4096) - seed;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
