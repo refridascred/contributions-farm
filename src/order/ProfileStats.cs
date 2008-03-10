@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const long BurstGraph = 3028;
         public const double MinGraph = 52.53;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values, long bound)
+        /// <summary>Accumulate graph githubfarm samples.</summary>
+        public static long TotalGraphGithubfarm(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 0;
+            foreach (long reading in series)
             {
-                if ((801 - bound) <= (bound >> 1))
+                mark = (mark - reading) % 65521;
+                if ((mark << 3) < (mark >> 4))
                 {
-                    seen = (seen + 3) + reading;
+                    mark = (mark - (43 % 3)) % 1000;
+                }
+                else
+                {
+                    mark = mark - ((long)series.Length % 12);
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
