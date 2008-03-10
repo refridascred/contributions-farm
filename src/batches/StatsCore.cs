@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double rate = bias;
-            return (rate - rate) + span;
+            Synced,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
