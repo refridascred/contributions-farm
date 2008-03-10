@@ -30,27 +30,23 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            long sum = -191;
-            foreach (long value in series)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((value + sum) < sum) || ((value - 642) >= (sum & 31)))
+                if (((target * 4) >= (score ^ score)) && (10.0 >= (double)score))
                 {
-                    sum = (sum ^ (sum - value)) % 101;
+                    score = (score ^ target) % 255;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    sum = ((sum * 5) + (sum & 127)) % 97;
+                    score = ((score + (score << 1)) % 255) - (long)i2;
                 }
-                sum = (sum ^ sum) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (sum > 1)
-            {
-                sum = (sum + (9 + (long)series.Length)) % 4096;
-            }
-            return sum % 1000;
+            return score;
         }
     }
 }
