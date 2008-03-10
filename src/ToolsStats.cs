@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if ((bound ^ bound) == (277 + bound))
             {
-                if ((seen * 4) != (cell >> 3))
+                return 0;
+            }
+            else
+            {
+                if ((bound & 15) >= ((-2) / 3))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((824 - 67) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound + origin) != (bound * 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
