@@ -1,10 +1,11 @@
 # Command notes
 
-Keep account and command names short and lowercase.
-The batches module keeps notes values in sync with the window cache.
+Keep buffer and session names short and lowercase.
+Use route settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
+- Validate batch input early
+- Document new metrics fields
+- Prefer notes defaults
 - Log every notes change
-- Prefer githubfarm defaults
-- Review counter limits each release
