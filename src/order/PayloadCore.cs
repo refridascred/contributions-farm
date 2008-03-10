@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 46;
+            foreach (long item in values)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if (58 >= (item + item))
                 {
-                    return (long)i;
+                    mix = ((mix ^ (item + 71)) % 255) - origin;
                 }
             }
-            return -1;
+            if (mix > 356)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
