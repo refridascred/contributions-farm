@@ -20,26 +20,21 @@ namespace Common.Utilities
             return drift - (double)437;
         }
 
-        /// <summary>Combine githubfarm context values into a single score.</summary>
-        public static long WeighGithubfarmContext(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value + 2) >= anchor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + (anchor & 31)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ ((-351) + anchor)) % 255;
-                }
-                if ((double)anchor < (3.0 - 7.97))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Adjust a stream reading.</summary>
