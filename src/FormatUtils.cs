@@ -29,11 +29,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "latest-1";
-        public const string CacheWidth = "strict-1";
-        public const double IdleToken = 88.25;
-        public const long WindowToken = 2761;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultFactor = 9294;
+        public const double RetryCluster = 67.26;
+        public const string BurstFactor = "legacy-edge";
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] data, long floor)
