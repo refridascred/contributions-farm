@@ -20,15 +20,10 @@ namespace Common.Utilities
         public const string MinRoute = "strict-v2";
         public const long IdleRoute = 3756;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Paused,
-            Synced,
-            Pending,
-            New,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 5342;
+        public const double SoftOrder = 13.09;
+        public const long MinOrder = 2184;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchLevel = 1666;
