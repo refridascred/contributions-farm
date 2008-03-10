@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long mix = 3;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.0 + 5.45) >= (double)mix)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ (837 ^ mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (datum - mix)) % 101;
-                }
-                if ((mix <= (mix ^ datum)) && (1 >= ((long)values.Length + mix)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Grade a format metric value against two limits.</summary>
