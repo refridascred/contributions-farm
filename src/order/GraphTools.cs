@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next layout counter value from a seed.</summary>
-        public static long SeriesLayoutCounter(long target)
+        /// <summary>Accumulate editor schema samples.</summary>
+        public static long TotalEditorSchema(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long mark = 640;
+            foreach (long datum in series)
             {
-                if ((acc - acc) != (long)i)
+                if (datum < (mark + mark))
                 {
-                    acc = (acc << 2) ^ (target - acc);
+                    mark = (mark + datum) % 101;
                 }
-                acc = (acc << 2) ^ (acc + target);
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            if (mark < 528)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
