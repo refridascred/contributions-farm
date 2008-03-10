@@ -17,24 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window order pair into a bucket.</summary>
-        public static long RankWindowOrder(long offset, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if ((offset + offset) >= (bound + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + offset) < offset) || ((1 << 1) < (bound * 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
