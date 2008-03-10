@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the notes command entries that pass the check.</summary>
-        public static long MeasureNotesCommandHits(long[] data, long seed)
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long TallyProfileBatchesOutliers(long[] series, long bound)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long entry in series)
             {
-                if ((seed - seen) >= seed)
+                if ((entry / 8) < (bound >> 2))
                 {
-                    seen = (seen + 3) ^ sample;
+                    seen = seen + 3;
                 }
             }
             return seen;
