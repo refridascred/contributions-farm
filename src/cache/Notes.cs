@@ -43,9 +43,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 55.12;
-        public const string CacheChannel = "fallback-edge";
-        public const string BurstScore = "staging-1";
+        /// <summary>Rank support notes input into a small class.</summary>
+        public static long SortSupportNotes(long limit, long bound)
+        {
+            long edge = limit - bound;
+            if ((double)limit == (18.0 / 3.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + 479) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (limit & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(167 <= (edge * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
