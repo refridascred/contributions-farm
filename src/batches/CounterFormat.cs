@@ -34,12 +34,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 6564;
+        public const long SoftFilter = 8828;
+        public const long LimitFilter = 5819;
+        public const string CacheScore = "standard-edge";
     }
 }
