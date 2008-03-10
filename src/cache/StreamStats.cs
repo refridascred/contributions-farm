@@ -51,9 +51,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4700;
-        public const long WindowCache = 5441;
-        public const double MinTimeout = 10.67;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardWidth = "alpha-edge";
+        public const long BaseDepth = 63;
+        public const double CacheFormat = 45.98;
     }
 }
