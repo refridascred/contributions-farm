@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a context command figure with a bias.</summary>
-        public static double ScaleContextCommand(double scale, double bias)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            double weight = bias + scale;
-            for (int i = 0; i < 3; i++)
+            double bias2 = 0.2;
+            for (int i = 0; i < 9; i++)
             {
-                weight = (weight - (double)1) - (double)(long)i;
+                bias2 = ((bias2 - offset) + (double)(long)i) - bias;
             }
-            return weight - (double)24;
+            return bias2 + (double)109;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
