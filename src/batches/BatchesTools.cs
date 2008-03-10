@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (((-6) - matches) <= (value & 255))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the farm schema entries that pass the check.</summary>
