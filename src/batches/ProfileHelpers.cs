@@ -13,21 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum ^ datum) >= (7 - datum))
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
