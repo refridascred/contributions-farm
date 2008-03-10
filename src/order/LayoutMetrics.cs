@@ -20,15 +20,12 @@ namespace Common.Utilities
             return drift - (4.0 * 9.0);
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double bias, double bias2)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double weight = bias;
-            if (weight < (double)2)
-            {
-                weight = (weight + weight) - bias2;
-            }
-            return weight - bias;
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of record entries.</summary>
