@@ -1,7 +1,9 @@
-id,active
-1,76.53
-2,standard
-3,staging
-4,staging
-5,eu-west
-6,21.44
+id,owner,weight,level
+1,staging,200,local
+2,21.58,24,eu-west
+3,blue,49.03,30.28
+4,open,179,41.68
+5,green,327,81.45
+6,706,245,blue
+7,58.67,70.36,69.18
+8,71.6,edge,fallback
