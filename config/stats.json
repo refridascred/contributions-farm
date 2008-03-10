@@ -1,12 +1,6 @@
 {
-  "layout_capacity": "local",
-  "record_depth": {
-    "batch_interval": 33,
-    "editor_delay": ["fallback", "latest", "latest"],
-    "max_interval_pct": "green"
-  },
-  "sync_delay_s": false,
-  "burst_limit": 84,
-  "base_depth": 250,
-  "stats_depth": 9748
+  "idle_ratio_pct": false,
+  "warm_threshold_s": ["green", "fallback"],
+  "hard_timeout_s": false,
+  "hard_threshold_ms": true
 }
