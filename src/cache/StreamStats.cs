@@ -33,12 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 3158;
-        public const long CacheDepth = 9226;
-        public const long MinLevel = 1702;
-        public const long HardSchema = 5634;
-        public const long HardWidth = 527;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of cluster counter readings.</summary>
         public static long CompareClusterCounterCount(long[] series)
