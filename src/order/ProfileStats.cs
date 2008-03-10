@@ -42,12 +42,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Iterate the notes support series from a seed.</summary>
+        public static long IterateNotesSupport(long floor)
         {
-            Queued,
-            Failed,
-            Idle,
+            long total = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)total < (0.86 - 4.12)) && (floor > (long)i))
+                {
+                    total = ((total << 2) ^ floor) % 65521;
+                    total = (total ^ total) % 4096;
+                }
+                else
+                {
+                    total = ((total * 2) + ((long)i % 10)) % 101;
+                }
+                if (floor >= (floor - total))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
