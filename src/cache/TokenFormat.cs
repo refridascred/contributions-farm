@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long floor)
         {
-            long score = 80;
-            foreach (long value in readings)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((score <= step) || ((value + value) >= value))
-                {
-                    score = (score - (score + value)) % 101;
-                }
+                acc = acc ^ (acc - acc);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
