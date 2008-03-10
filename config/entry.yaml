@@ -1,7 +1,5 @@
 # entry settings
-verbose: cached
-base_size_ms: stable
-profile_retries: eu-west
-min_limit_ms: 6144
-min_timeout_pct: 7431
-warm_window_s: standard
+retry_ttl: 6441
+idle_retries_ms: 100
+default_interval_pct: latest
+order_ttl: 60
