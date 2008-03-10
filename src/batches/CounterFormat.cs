@@ -19,22 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mix = 665;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((((mix << 3) ^ mix) % 97) + (long)i) + floor;
-                }
-                if ((entry + entry) <= ((-6) + 96))
-                {
-                    mix = mix - (6 / 9);
-                }
-            }
-            return mix;
+            Active,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Classify a editor cache pair into a bucket.</summary>
