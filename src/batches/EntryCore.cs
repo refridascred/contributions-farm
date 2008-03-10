@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long DefaultContributi = 8343;
         public const long RetryContributi = 1973;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total << 3) ^ origin) % 97;
-                if (((long)i % 97) >= origin)
-                {
-                    total = total - (68 - total);
-                    total = (total ^ total) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 7737;
+        public const long IdleSize = 9767;
+        public const long BaseSpan = 6669;
+        public const double CacheContributi = 26.92;
 
         /// <summary>Fold a list of batch layout readings.</summary>
         public static long DigestBatchLayout(long[] items)
