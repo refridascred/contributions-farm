@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every route record entry stays within the limit.</summary>
-        public static bool VerifyRouteRecordRange(long[] series, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
