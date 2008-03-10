@@ -1,8 +1,6 @@
 {
-  "flush_timeout": [72, 350, 180],
-  "min_threshold": 49.51,
-  "warm_window_ms": 60,
-  "hard_ttl": "primary",
-  "batch_retries": ["stable", "latest", "local"],
-  "hard_limit": "eu-west"
+  "min_window": 1024,
+  "persist": 3.55,
+  "flush_delay_s": false,
+  "warm_timeout_pct": true
 }
