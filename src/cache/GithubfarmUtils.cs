@@ -55,11 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 37.56;
-        public const string HardCluster = "primary";
-        public const string DefaultCount = "latest-v2";
-        public const double LimitTimeout = 6.33;
-        public const double LimitFactor = 53.23;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
