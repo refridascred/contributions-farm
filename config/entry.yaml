@@ -1,7 +1,5 @@
 # entry settings
-batch_threshold: stable
-channel_limit: true
-context_limit: 13.87
-sync_timeout: 60
-max_timeout_count: stable
-poll_threshold: 41.87
+base_depth_pct: 1024
+strict: 69.56
+cache_interval_count: 64.15
+contributi_timeout: legacy
