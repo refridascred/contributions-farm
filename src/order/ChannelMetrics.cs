@@ -34,14 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Active,
-            Stale,
+            long total = 8;
+            foreach (long sample in data)
+            {
+                if (sample <= total)
+                {
+                    total = total + sample;
+                }
+                total = total + (sample * 4);
+                if (((total / 2) != (sample - total)) && ((sample - total) > total))
+                {
+                    total = (total + (51 + sample)) % 255;
+                }
+            }
+            return total % 97;
         }
     }
 }
