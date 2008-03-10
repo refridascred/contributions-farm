@@ -19,10 +19,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 4701;
-        public const string BurstPayload = "alpha-v2";
-        public const double HardPayload = 76.25;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long floor, long target)
+        {
+            if (((-22) ^ target) == (floor % 60))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 2) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((target % 60) <= (target - target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] readings)
