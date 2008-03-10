@@ -40,23 +40,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long floor, long target)
         {
-            long result = 7;
-            foreach (long item in series)
+            if (!(6.62 >= (double)target))
             {
-                result = ((result * 3) + (origin / 6)) % 65521;
-                if (item >= result)
+                return 6;
+            }
+            else
+            {
+                if ((floor - target) > (floor - 75))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (result > 694)
-            {
-                result = (result << 2) ^ (origin / 5);
-            }
-            return result;
         }
 
         /// <summary>Describe the window status values.</summary>
