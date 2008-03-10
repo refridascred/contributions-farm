@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the order support series from a seed.</summary>
-        public static long IterateOrderSupport(long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long acc = 8;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 3) + (8 + bound)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((limit > (limit & 31)) && ((acc + limit) < ((-4) / 3)))
+                {
+                    acc = (acc ^ (acc >> 3)) + reading;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a payload info.</summary>
