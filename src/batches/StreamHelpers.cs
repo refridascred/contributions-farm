@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 5097;
-        public const double HardTools = 6.09;
-        public const string MinRatio = "strict";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
