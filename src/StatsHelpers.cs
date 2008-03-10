@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 3500;
-        public const long BatchSupport = 6608;
-        public const long CacheWidth = 8694;
-        public const long SoftSupport = 8031;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry / 6) > seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
