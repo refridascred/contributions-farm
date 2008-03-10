@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a session record pair into a bucket.</summary>
-        public static long ClassifySessionRecord(long bound, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long lane = bound - step;
-            if ((1 >> 3) != (bound - step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + bound) > 30)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane ^ step) > step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (91 <= (step + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Blend two queue contributi measurements.</summary>
