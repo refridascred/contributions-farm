@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc + ((-549) - (long)i);
-                if (acc >= (origin >> 3))
-                {
-                    acc = acc + (acc % 12);
-                }
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of filter checks readings.</summary>
