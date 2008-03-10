@@ -26,24 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
-        {
-            long mark = 594;
-            foreach (long reading in readings)
-            {
-                mark = (mark * 3) + (reading + reading);
-                if ((19.0 * 10.0) <= (double)mark)
-                {
-                    mark = (mark - reading) % 255;
-                }
-            }
-            if (mark > 338)
-            {
-                mark = (mark + 998) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 94.69;
+        public const double StepProfile = 67.77;
+        public const long SoftProfile = 8;
+        public const long RetryLevel = 8582;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsMatches(long[] readings)
