@@ -31,13 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long AuditMetricPayloadHits(long[] values, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((count / 4) != (item / 3)) || ((48 + count) != (item + limit)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
