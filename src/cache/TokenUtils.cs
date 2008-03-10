@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = weight;
+            if (rate < (double)85)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (weight + 3.07)) - span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 9.0) + (double)(long)i;
+            }
+            return rate - (weight + rate);
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
