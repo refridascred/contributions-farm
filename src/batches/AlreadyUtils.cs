@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a window graph value against two limits.</summary>
-        public static long ClassifyWindowGraph(long step, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long diff = step - seed;
-            if ((step - 75) == (step + step))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed <= (diff ^ 471))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 2) != (seed - 697))
+                    if ((levels[i] ^ levels[j]) != 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cluster options.</summary>
