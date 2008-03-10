@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series, long limit)
+        /// <summary>Derive the next editor channel value from a seed.</summary>
+        public static long IterateEditorChannel(long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((datum * 3) <= (limit - limit)) && (limit >= (datum - limit))))
-                {
-                    hits = hits + 3;
-                }
+                state = (state + (long)i) % 255;
+                state = state ^ (step % 7);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
