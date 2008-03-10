@@ -51,25 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            long bound2 = offset + bound;
-            if (9 > (bound + bound2))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(3.77 < (6.7 / 9.0)))
+                if ((double)entry >= (double)seen)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
