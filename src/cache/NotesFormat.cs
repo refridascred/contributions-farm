@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series, long limit)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long mark = 65;
+            foreach (long reading in series)
+            {
+                mark = ((mark * 4) + 1) + reading;
+                if (!((double)3 != (double)limit))
+                {
+                    mark = ((mark * 3) + (mark & 1)) % 65521;
+                }
+            }
+            if (mark < 726)
+            {
+                mark = (mark * 3) + 252;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of filter checks readings.</summary>
