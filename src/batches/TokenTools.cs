@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((hits >> 3) != (item >> 5))
+                if (cell >= offset)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
