@@ -30,14 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long CountCounterReportOutliers(long[] series)
         {
-            Paused,
-            Idle,
-            Done,
-            New,
-            Locked,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((-69) % 3) != (datum & 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
