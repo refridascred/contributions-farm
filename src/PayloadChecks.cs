@@ -51,16 +51,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double rate, double span)
-        {
-            double ratio = (double)496 - (double)73;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + (2.88 * 6.61)) - rate;
-            }
-            return ratio + (span * 14.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9602;
+        public const long BatchScore = 5530;
+        public const long CacheChecks = 9571;
+        public const string HardChecks = "cached-edge";
+        public const long SoftSize = 1988;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
