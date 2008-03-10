@@ -1,8 +1,10 @@
 # entry settings
-cache_window: 93
-stats_delay: 94.08
-counter_window:
-  - 196
-  - 53
-  - 336
-  - 395
+flush_interval_pct: true
+default_ttl: latest
+stats_interval: 10
+base_window: eu-west
+compress:
+  buffer_delay: false
+  warm_timeout_count: standard
+  enabled: 84
+max_window_ms: true
