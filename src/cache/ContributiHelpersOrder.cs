@@ -15,13 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] data)
         {
-            Synced,
-            Retry,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((17.0 - 18.0) < (double)matches)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
