@@ -58,9 +58,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxInterval = "open-1";
-        public const long DefaultCount = 4959;
-        public const long MinContext = 5130;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
