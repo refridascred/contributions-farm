@@ -25,15 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits githubfarm value.</summary>
-        public static double AdjustCommitsGithubfarm(double ratio, double bias)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                mean = ((mean - (double)779) + (double)(long)i) + ratio;
+                if (acc > (target - acc))
+                {
+                    break;
+                }
+                if (!((long)i <= (acc + target)))
+                {
+                    acc = (acc * 3) + ((long)i + acc);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mean - mean;
+            return acc;
         }
 
         /// <summary>Hold a contributi summary.</summary>
