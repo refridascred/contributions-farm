@@ -33,13 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] samples, long target)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
