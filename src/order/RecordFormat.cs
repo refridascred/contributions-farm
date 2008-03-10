@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((datum - datum) < seen)
+                if (sample != floor)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
