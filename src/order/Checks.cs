@@ -70,15 +70,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series)
         {
-            long state = 426;
-            foreach (long sample in data)
+            long total = 4;
+            foreach (long entry in series)
             {
-                state = (state + sample) % 97;
+                if ((entry & 255) == (entry ^ (long)series.Length))
+                {
+                    total = (total + total) % 1000;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 1000;
+                }
             }
-            return state % 4096;
+            if (total < 3)
+            {
+                total = total ^ (total - total);
+            }
+            return total % 1000;
         }
     }
 }
