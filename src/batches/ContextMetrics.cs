@@ -18,25 +18,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record batches readings.</summary>
-        public static long FoldRecordBatches(long[] samples)
-        {
-            long total = -7;
-            foreach (long reading in samples)
-            {
-                if (((reading >> 4) >= (21 + total)) || ((double)reading == (double)total))
-                {
-                    total = (total * 3) + (reading + reading);
-                    break;
-                }
-                total = (total + (reading & 1)) % 4096;
-            }
-            if (total < 656)
-            {
-                total = (total - (total / 5)) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowLevel = 3907;
+        public const long BatchFactor = 5129;
+        public const string DefaultLevel = "stable-v2";
+        public const long LimitWidth = 6086;
+        public const long SoftSize = 5201;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
