@@ -1,8 +1,18 @@
 # githubfarm settings
-enabled: true
-record_limit:
-  - staging
-  - primary
-audit:
-  - 370
-  - 278
+channel_delay: latest
+soft_size_pct: 9651
+contributi_ratio:
+  - 486
+  - 434
+  - 210
+burst_retries: 7947
+default_size_count:
+  max_window_s: 250
+  soft_ttl:
+    - 50
+    - 457
+    - 464
+    - 385
+  sync_limit_s: 60
+  max_delay: edge
+enabled: false
