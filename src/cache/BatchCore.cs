@@ -47,18 +47,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] levels, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            long sum = 369;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((562 + target) < target)
+                if ((((count >> 5) < (count - item)) || ((item >> 3) == ((-7) - item))) || (count > (item + item)))
                 {
-                    sum = ((sum * 3) + (370 << 1)) ^ datum;
+                    count = count + 3;
                 }
             }
-            return sum % 1000;
+            return count;
         }
     }
 }
