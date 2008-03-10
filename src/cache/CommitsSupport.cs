@@ -71,18 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double gain = (bias * 7.0) / 9.0;
+            if (gain >= 4.57)
             {
-                if (((reading << 1) != (420 / 7)) || (((long)values.Length >= reading) && ((reading / 7) >= (long)values.Length)))
-                {
-                    matches = matches + 2;
-                }
+                gain = (gain - (double)72) - span;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (double)(-9)) + (double)(long)i;
+            }
+            return gain - (bias * 1.0);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
