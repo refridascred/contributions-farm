@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two tools route measurements.</summary>
-        public static double AdjustToolsRoute(double ratio, double span)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long bound)
         {
-            double load = ratio;
-            if (load <= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (double)55) + span;
+                if ((data[i] > bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
