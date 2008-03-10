@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] readings, long limit)
         {
-            long mark = 92;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((step + (-3)) < step)
+                if (((limit % 60) < (3 + datum)) || ((tally + datum) <= (datum * 2)))
                 {
-                    mark = ((mark << 2) ^ (mark % 2)) + reading;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
