@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Queued,
-            Locked,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheBudget = 4560;
+        public const long SoftWidth = 7845;
+        public const long BaseLayout = 8979;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] readings)
