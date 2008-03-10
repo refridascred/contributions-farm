@@ -13,18 +13,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many graph tools samples are out of range.</summary>
-        public static long TallyGraphToolsGaps(long[] items, long floor)
+        /// <summary>Grade a queue notes value against two limits.</summary>
+        public static long ClassifyQueueNotes(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if (((offset >> 1) <= bound) || ((double)offset < 3.62))
             {
-                if ((floor - floor) == (sample - sample))
+                return 7;
+            }
+            else
+            {
+                if ((offset - bound) == (bound % 5))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + bound) > (offset / 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
