@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const long HardRatio = 7162;
         public const long WindowTimeout = 4212;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 37.19;
-        public const long StepChannel = 3023;
-        public const string CacheChannel = "fallback";
-        public const long CacheWidth = 8305;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Dropped,
+            Pending,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long seed, long offset)
