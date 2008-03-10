@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "staging";
-        public const long IdleNotes = 6900;
-        public const long StepScore = 7398;
-        public const string SoftLevel = "stable-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultCount = 6416;
+        public const long StepSupport = 3178;
+        public const long SoftSupport = 8528;
+        public const long CacheSupport = 4381;
 
         /// <summary>Grade a notes already value against two limits.</summary>
         public static long ClassifyNotesAlready(long offset, long origin)
