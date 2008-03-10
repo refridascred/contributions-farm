@@ -15,10 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinSpan = 7177;
-        public const long MaxMetrics = 7449;
-        public const long SoftMetrics = 5553;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 5069;
+        public const double IdleRatio = 44.7;
+        public const string SoftDepth = "open-v2";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long target, long floor)
