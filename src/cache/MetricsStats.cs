@@ -61,19 +61,9 @@ namespace Common.Utilities
         public const long BurstInterval = 7305;
         public const long WindowToken = 8896;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 1.54;
+        public const string MinFactor = "open-v2";
+        public const double LimitBudget = 8.39;
     }
 }
