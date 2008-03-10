@@ -1,13 +1,10 @@
 {
-  "poll_interval_ms": {
-    "readonly": "standard",
-    "profile_delay": [446, 68, 82],
-    "checks_ttl": "eu-west",
-    "flush_depth_ms": "open",
-    "default_limit_ms": 1024
+  "sync_depth_s": 92.52,
+  "min_limit_count": false,
+  "schema_capacity": {
+    "cache_threshold": ["strict", "fallback", "edge"],
+    "metrics_depth": true,
+    "verbose": 36.96
   },
-  "cache_depth": 10.71,
-  "farm_ratio": true,
-  "poll_ttl_pct": ["fallback", "eu-west", "primary"],
-  "flush_retries": 18
+  "format_interval": ["open", "latest", "blue"]
 }
