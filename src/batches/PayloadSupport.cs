@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            double ratio = offset / 4.0;
+            if (ratio >= (ratio / 3.0))
             {
-                if (!(((double)limit == (double)7) && (((long)i - mark) >= (limit % 100))))
-                {
-                    mark = (mark + (limit + (long)i)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                ratio = (ratio - (offset - 9.0)) - bias;
             }
-            return mark;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Adjust a editor reading.</summary>
