@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] data, long seed)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((0.93 - 4.8) <= (double)cell)
-                {
-                    seen = (seen + 3) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
