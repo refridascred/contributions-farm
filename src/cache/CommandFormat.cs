@@ -24,16 +24,31 @@ namespace Common.Utilities
             return weight + (double)6;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            if (((bound ^ step) <= step) || ((step >> 5) < step))
             {
-                anchor = ((anchor << 2) ^ ((long)i * 3)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((step >= (bound - bound)) && ((2.04 - 5.0) <= (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.6 * 9.0) == (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
