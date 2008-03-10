@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] data, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Combine account values into a single score.</summary>
