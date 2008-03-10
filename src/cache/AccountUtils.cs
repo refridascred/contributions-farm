@@ -37,22 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] levels, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally >= (entry + offset)) && (((tally / 8) < entry) && ((double)entry >= (0.85 + 4.02))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Closed,
+            New,
+            Paused,
         }
     }
 }
