@@ -13,21 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmBufferCount(long[] levels)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 14)
+                    if ((data[i] ^ data[j]) != 5)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
