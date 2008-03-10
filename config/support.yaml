@@ -1,30 +1,21 @@
 # support settings
-format_delay:
-  dry_run: latest
+burst_window:
+  - 246
+  - 238
+farm_size: 8248
+warm_timeout_count:
+  soft_size_count: edge
+  record_depth: 100
   persist:
-    compress: 9532
-    cache_delay:
-      - open
-      - standard
-      - open
-    warm_interval_ms:
-      - 380
-      - 290
-      - 130
-      - 324
-    default_timeout_ms:
-      - strict
-      - primary
-    schema_interval: latest
-    max_depth: local
-  soft_capacity_ms: cached
-  max_threshold_pct:
-    - 153
-    - 495
-  poll_capacity_count: 59.56
-  min_delay_ms: cached
-command_interval: 47.45
-persist: 92.91
-burst_delay_s: 99
-sync_retries_count: latest
-cache_ttl_ms: true
+    - cached
+    - fallback
+    - standard
+    - latest
+  burst_retries_count: 32
+  base_threshold:
+    - edge
+    - eu-west
+  cache_size: primary
+metrics_ratio: open
+window_size: stable
+filter_window: 8
