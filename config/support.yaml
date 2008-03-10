@@ -1,9 +1,11 @@
 # support settings
-soft_size: 60
-base_limit: legacy
-batches_delay: cached
-burst_timeout_count:
-  - strict
-  - staging
-soft_capacity: 78
-sync_ttl_count: open
+burst_delay:
+  - standard
+  - stable
+  - latest
+audit: 1818
+payload_timeout:
+  - green
+  - latest
+  - blue
+  - legacy
