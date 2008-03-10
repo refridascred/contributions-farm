@@ -33,17 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
