@@ -37,17 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long bound)
         {
-            long carry = 834;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 5) + 9) % 65521;
-                carry = ((carry << 3) ^ (carry << 2)) % 255;
-                carry = (carry * 4) + (cell - cell);
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return stale;
         }
     }
 }
