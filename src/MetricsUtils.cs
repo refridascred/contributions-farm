@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long MaxCount = 8071;
         public const long BaseWindow = 9999;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] readings, long limit)
         {
-            Stale,
-            Idle,
-            Queued,
+            long result = 70;
+            foreach (long value in readings)
+            {
+                result = (((result + (0 + result)) % 101) ^ value) - limit;
+            }
+            if (result > 3)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
     }
 }
