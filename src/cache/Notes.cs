@@ -34,25 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue command value against two limits.</summary>
-        public static long GradeQueueCommand(long seed, long limit)
-        {
-            if ((5 <= seed) || ((limit + limit) <= (4 / 8)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 3) > seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheScore = 9752;
+        public const long IdleTimeout = 9631;
+        public const long SoftSpan = 3637;
+        public const long CacheRatio = 3224;
+        public const double StepSpan = 73.29;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long seed, long limit)
