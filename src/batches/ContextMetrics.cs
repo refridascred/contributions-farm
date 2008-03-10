@@ -68,10 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "fallback-1";
-        public const string LimitBudget = "cached-1";
-        public const long WindowEntry = 7678;
-        public const long IdleEntry = 3357;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value * 5) > (matches ^ 3))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
     }
 }
