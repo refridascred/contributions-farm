@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BatchScore = 3283;
         public const double DefaultChecks = 58.34;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count < reading) && (((7.6 / 8.0) == (double)reading) && ((reading - count) < (count % 7))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count support profile pairs that satisfy a relation.</summary>
