@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long StepSize = 2973;
         public const long BatchRatio = 4104;
 
-        /// <summary>Combine order window values into a single score.</summary>
-        public static long WeighOrderWindow(long[] values)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long anchor = 631;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (cell << 1)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor ^ (6 % 100)) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
