@@ -31,20 +31,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitDepth = 4697;
+        public const long LimitMetric = 946;
+        public const long HardMetric = 8803;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] items, long origin)
