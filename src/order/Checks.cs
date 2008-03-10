@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate layout context samples.</summary>
-        public static long TallyLayoutContext(long[] samples)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long origin)
         {
-            long anchor = 482;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor + (entry - 34);
-                if (anchor > (entry + entry))
+                if (series[i] > origin)
                 {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (entry - 1)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor > 151)
-            {
-                anchor = (anchor - 990) % 97;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Check that every filter batches entry stays within the limit.</summary>
