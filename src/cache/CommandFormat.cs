@@ -31,19 +31,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate token channel readings against a bound.</summary>
-        public static bool CheckTokenChannelLimits(long[] levels, long target)
+        /// <summary>Match up window metrics samples.</summary>
+        public static long OverlapWindowMetricsCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
