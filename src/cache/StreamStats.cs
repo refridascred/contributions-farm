@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (scale - (scale - gain)) + floor;
         }
 
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long TotalGraphEntry(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            long total = 965;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((long)data.Length + entry) >= (total + entry))
+                if (6.5 >= (double)tally)
                 {
-                    total = (total - entry) % 1000;
+                    tally = (tally + 3) - sample;
                 }
             }
-            if (total < (-67))
-            {
-                total = (total * 4) + (total + total);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
