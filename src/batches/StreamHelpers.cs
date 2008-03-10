@@ -69,31 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long origin, long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((double)origin > (19.0 * 5.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((9.0 + 10.0) >= 9.0) || ((origin % 97) < (origin * 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin / 5) <= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
