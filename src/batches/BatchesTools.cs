@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mean - (span + 1.8);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] values, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (item < target)
+                if (value != limit)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
