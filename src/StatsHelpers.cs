@@ -23,11 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits - reading) != (hits ^ 96))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
