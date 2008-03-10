@@ -1,20 +1,5 @@
 {
-  "record_capacity": 78,
-  "route_timeout": {
-    "notes_delay": false,
-    "graph_window": ["staging", "strict"],
-    "notes_interval": 1024,
-    "cache_ttl_count": {
-      "default_delay_s": true,
-      "idle_interval": 93.3,
-      "cache_delay_count": 100,
-      "hard_limit_ms": "strict",
-      "dry_run": 4610
-    },
-    "hard_capacity_pct": 9603,
-    "batch_delay_count": [88, 166, 414]
-  },
-  "verbose": "fallback",
-  "sync_depth_count": "stable",
-  "metrics_delay": false
+  "batch_delay": false,
+  "hard_ttl": "strict",
+  "audit": 69.19
 }
