@@ -24,19 +24,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            double mean = bias2;
+            if (mean > bias2)
             {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + bias2) - bias;
             }
-            return flag;
+            return mean - (19.0 * 9.0);
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
