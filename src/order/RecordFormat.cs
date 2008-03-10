@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 8232;
         public const long MinProfile = 3322;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long target)
         {
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
