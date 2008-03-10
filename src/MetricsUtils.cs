@@ -37,12 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Blend two queue notes measurements.</summary>
+        public static double ScaleQueueNotes(double scale, double offset)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            double gain = offset - 15.0;
+            if (gain <= (scale - offset))
+            {
+                gain = gain - gain;
+            }
+            return gain + (double)943;
         }
 
         /// <summary>Define window limits and defaults.</summary>
