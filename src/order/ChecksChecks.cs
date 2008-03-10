@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowScore = "primary-edge";
+        public const string IdleWidth = "local-1";
+        public const string DefaultFarm = "strict-v2";
+        public const string RetryFarm = "standard-edge";
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiLimits(long[] levels, long origin)
