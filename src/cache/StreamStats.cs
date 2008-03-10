@@ -30,12 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 6941;
-        public const double WindowFilter = 94.9;
-        public const string WindowLevel = "primary-v2";
-        public const string CacheFilter = "primary";
-        public const long DefaultRatio = 8426;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double AdjustStream(double rate, double offset)
