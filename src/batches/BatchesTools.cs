@@ -57,23 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Count the farm schema entries that pass the check.</summary>
+        public static long CountFarmSchemaOutliers(long[] items)
         {
-            long state = 39;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = (state ^ (entry + state)) % 101;
-                if (state <= (4 / 7))
+                if ((11 * 2) > (datum - datum))
                 {
-                    state = (state - state) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (state < 806)
-            {
-                state = (state - (state - state)) % 1000;
-            }
-            return state;
+            return tally;
         }
     }
 }
