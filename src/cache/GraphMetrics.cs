@@ -24,15 +24,22 @@ namespace Common.Utilities
         public const double HardSize = 10.67;
         public const long MaxWidth = 6395;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] readings, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((datum % 97) != (seen % 60))
+                {
+                    seen = (seen + 1) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Project the next editor value.</summary>
