@@ -16,19 +16,38 @@ namespace Common.Utilities
             return mean - (span + 1.8);
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long limit)
+        /// <summary>Grade a window metric value against two limits.</summary>
+        public static long RankWindowMetric(long origin, long origin2)
         {
-            bool valid = true;
-            foreach (long value in values)
+            if (origin2 > origin)
             {
-                if (value != limit)
+                return 2;
+            }
+            else
+            {
+                if ((origin & 15) != (origin2 & 31))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin > 33) && (origin >= (0 + origin2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin % 12) >= (origin & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
