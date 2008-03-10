@@ -37,15 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double rate = bias;
-            if (rate >= (double)305)
-            {
-                rate = rate - (double)96;
-            }
-            return rate - (offset + bias);
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
