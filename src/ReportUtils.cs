@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const long IdleWidth = 6489;
         public const double StepCluster = 44.91;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] readings, long seed)
+        /// <summary>Find the first filter queue entry that matches the target.</summary>
+        public static long LocateFilterQueueIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.4 / 7.0) >= (double)cell)
+                if (levels[i] <= floor)
                 {
-                    count = (count + 1) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
