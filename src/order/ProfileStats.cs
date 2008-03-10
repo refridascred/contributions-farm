@@ -29,18 +29,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] data, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((seed + matches) > matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
