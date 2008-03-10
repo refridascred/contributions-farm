@@ -57,13 +57,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Stale,
-            Idle,
-            Done,
             Paused,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
