@@ -78,19 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double bias, double offset)
         {
-            double bias = (double)58 * 7.0;
-            if (bias <= bias)
+            double load = bias;
+            if (load > load)
             {
-                bias = (bias + bias) - scale;
+                load = (load + (0.1 * 5.9)) + offset;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias + floor;
+                load = (load - bias) + (double)(long)i;
             }
-            return bias - 11.0;
+            return load - bias;
         }
     }
 }
