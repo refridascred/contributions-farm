@@ -43,16 +43,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next contributi filter value from a seed.</summary>
-        public static long SeriesContributiFilter(long origin)
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long AuditFilterCacheGaps(long[] series, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry * 3) + (carry << 1)) % 255;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (((long)series.Length + seed) != (seed & 3))
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
