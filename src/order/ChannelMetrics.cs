@@ -29,9 +29,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3048;
-        public const double StepSchema = 60.59;
-        public const string DefaultFactor = "strict-edge";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Retry,
+            Locked,
+            Dropped,
+            Active,
+            Stale,
+        }
     }
 }
