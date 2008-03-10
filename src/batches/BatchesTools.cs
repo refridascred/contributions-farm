@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (!((sample < (count & 31)) || ((7 << 2) == (count % 8))))
                 {
-                    result = ((result + (945 >> 1)) % 4096) ^ (long)i2;
+                    count = count + 3;
                 }
-                if ((double)limit != (double)(-20))
+                else
                 {
-                    result = ((result << 2) ^ (limit * 5)) % 255;
+                    count = count - 1;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Grade a window metric value against two limits.</summary>
