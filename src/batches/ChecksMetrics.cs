@@ -32,17 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score * 5) + (score + (long)i);
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 8135;
+        public const double StepMetrics = 80.83;
+        public const long CacheMetrics = 6445;
+        public const string BurstMetrics = "open";
+        public const string RetryMetrics = "staging-v2";
 
         /// <summary>Combine metrics route values into a single score.</summary>
         public static long DigestMetricsRoute(long[] values)
