@@ -27,12 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheScore = 9752;
-        public const long IdleTimeout = 9631;
-        public const long SoftSpan = 3637;
-        public const long CacheRatio = 3224;
-        public const double StepSpan = 73.29;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 3131;
+        public const long BatchBudget = 471;
+        public const long DefaultRatio = 8560;
+        public const double HardWidth = 68.32;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long RankBatches(long seed, long limit)
