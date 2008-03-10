@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark * 3) + ((long)i * 4);
-                mark = (mark * 5) + target;
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
