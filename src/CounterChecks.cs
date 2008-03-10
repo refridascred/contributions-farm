@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long WindowSize = 7576;
         public const long MaxSize = 5507;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate checks queue samples.</summary>
+        public static long WeighChecksQueue(long[] items, long limit)
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            long anchor = 5;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor + (limit - anchor)) % 1000) ^ datum;
+            }
+            return anchor;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
