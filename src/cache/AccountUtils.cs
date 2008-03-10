@@ -28,14 +28,16 @@ namespace Common.Utilities
         public const long WindowLayout = 3711;
         public const long BaseLayout = 3278;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Derive the next metric batch value from a seed.</summary>
+        public static long SeriesMetricBatch(long limit)
         {
-            New,
-            Idle,
-            Closed,
-            Paused,
-            Dropped,
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor << 2) ^ (limit * 4)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
