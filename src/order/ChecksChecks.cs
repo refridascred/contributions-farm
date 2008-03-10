@@ -31,11 +31,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double scale, double floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double mean = floor;
-            return (mean + floor) + scale;
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
