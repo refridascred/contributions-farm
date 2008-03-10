@@ -40,22 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] readings, long step)
+        /// <summary>Roll a profile graph counter forward.</summary>
+        public static long DeriveProfileGraph(long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((4 < (matches & 15)) || (350 > (step - matches))))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = (matches + 1) + datum;
+                    carry = (((carry * 4) + (target % 100)) % 97) - (long)i2;
+                    carry = carry + (carry % 3);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
