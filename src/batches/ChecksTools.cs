@@ -14,21 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of support session readings.</summary>
-        public static long MatchSupportSessionCount(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a cache options.</summary>
