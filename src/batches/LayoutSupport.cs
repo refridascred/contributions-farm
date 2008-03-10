@@ -28,24 +28,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long seed, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            if ((seed / 7) == (seed + seed))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) <= (41 + 6)) && ((double)origin >= (11.0 / 6.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine batches account values into a single score.</summary>
