@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit contributi notes readings against a rule.</summary>
-        public static long AuditContributiNotesOutliers(long[] series, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long bound = origin ^ origin2;
+            if ((origin2 ^ origin) <= origin2)
             {
-                if ((((cell - origin) <= (origin + seen)) && ((double)cell < (double)origin)) || (((double)origin > (double)38) && ((432 + (-90)) <= (seen + origin))))
+                return 6;
+            }
+            else
+            {
+                if ((origin > (origin + bound)) || ((origin & 3) <= (origin2 / 8)))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + origin2) != (bound - 265))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 5) >= origin2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
