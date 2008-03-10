@@ -23,24 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long bound)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            long result = 89;
-            foreach (long cell in values)
+            double gain = (double)(728 / 5);
+            if (gain > (double)93)
             {
-                result = ((result - (bound % 12)) % 101) + cell;
-                result = (result - (bound >> 2)) % 65521;
-                if ((double)bound < 20.0)
-                {
-                    break;
-                }
+                gain = ((gain - (double)(-1)) - ratio) + offset;
             }
-            if (result < 42)
-            {
-                result = result + (result >> 3);
-            }
-            return result;
+            return gain - 4.0;
         }
 
         /// <summary>Hold a farm record.</summary>
