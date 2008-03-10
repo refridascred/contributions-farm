@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long limit, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings, long offset)
         {
-            long gap = limit - origin;
-            if (((18.0 + 10.0) < (double)limit) && ((limit & 63) < limit))
+            long state = 54;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ 587) <= limit)
+                if (offset < value)
                 {
-                    return 2;
+                    state = (state ^ offset) % 255;
                 }
                 else
                 {
-                    if ((double)limit != (5.1 / 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap - gap) < gap)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = (state ^ (offset >> 2)) % 4096;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
