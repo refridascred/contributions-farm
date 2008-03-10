@@ -40,19 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double weight2 = 20.0;
-            if (weight2 >= (weight - weight))
-            {
-                weight2 = weight2 + (offset * 7.51);
-            }
-            else
-            {
-                weight2 = weight2 + (weight + offset);
-            }
-            return weight2 - offset;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
