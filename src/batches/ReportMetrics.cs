@@ -27,15 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] items, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] series, long target)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long cell in series)
             {
-                if ((double)tally > (7.08 / 6.0))
+                if (!(((0.13 - 8.55) < (double)target) || ((5.8 * 9.76) < (double)target)))
                 {
-                    tally = ((tally + 1) + cell) + offset;
+                    tally = (tally + 2) + cell;
                 }
             }
             return tally;
