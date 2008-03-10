@@ -1,6 +1,7 @@
 {
-  "sync_window": 5346,
-  "burst_depth_pct": "stable",
-  "base_timeout": "local",
-  "idle_retries_ms": "fallback"
+  "editor_timeout": 6048,
+  "cache_threshold": 11,
+  "persist": 2190,
+  "burst_ttl_ms": true,
+  "audit": false
 }
