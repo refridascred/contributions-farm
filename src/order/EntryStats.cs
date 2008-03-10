@@ -47,16 +47,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseScore = 337;
+        public const long BurstDepth = 4669;
+        public const long DefaultTimeout = 2520;
+        public const string BaseLevel = "alpha-edge";
+        public const long BurstFilter = 9568;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] levels, long seed)
