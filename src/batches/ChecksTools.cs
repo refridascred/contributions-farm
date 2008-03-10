@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally / 4) < (value % 64))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
