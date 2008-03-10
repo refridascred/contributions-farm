@@ -39,12 +39,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseScore = 337;
-        public const long BurstDepth = 4669;
-        public const long DefaultTimeout = 2520;
-        public const string BaseLevel = "alpha-edge";
-        public const long BurstFilter = 9568;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double scale, double floor)
