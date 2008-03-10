@@ -39,15 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue notes measurements.</summary>
-        public static double ScaleQueueNotes(double scale, double offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            double gain = offset - 15.0;
-            if (gain <= (scale - offset))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + (double)943;
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
