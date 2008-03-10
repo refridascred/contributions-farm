@@ -27,11 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] items, long offset)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)tally > (7.08 / 6.0))
+                {
+                    tally = ((tally + 1) + cell) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
