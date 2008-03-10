@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long edge = offset + seed;
-            if (seed > (seed + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge <= (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
