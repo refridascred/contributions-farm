@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const string BaseCount = "latest-edge";
         public const string DefaultBatch = "standard-1";
 
-        /// <summary>Look up the position of a contributi account sample.</summary>
-        public static long LocateContributiAccountIndex(long[] samples, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) == 0))
+                if (sample != offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
