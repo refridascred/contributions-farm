@@ -36,18 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter queue samples are out of range.</summary>
-        public static long AuditCounterQueueMatches(long[] readings, long origin)
+        /// <summary>Validate channel entry readings against a bound.</summary>
+        public static bool CheckChannelEntryRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (((origin - origin) <= hits) || ((hits - hits) <= (origin & 3)))
+                if (reading < origin)
                 {
-                    hits = (hits + 3) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
