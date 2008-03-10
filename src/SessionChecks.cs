@@ -41,38 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long seed)
         {
-            if ((seed - seed) < (origin << 3))
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin > (seed << 3))
+                if ((1.5 / 9.0) == (double)acc)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)39 == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (((acc ^ acc) % 101) + sample) + seed;
                 }
             }
+            return acc % 65521;
         }
     }
 }
