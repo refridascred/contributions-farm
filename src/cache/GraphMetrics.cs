@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up payload cluster samples.</summary>
-        public static long ComparePayloadClusterCount(long[] data)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
