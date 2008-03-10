@@ -57,18 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count % 12) > datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Adjust a report reading.</summary>
