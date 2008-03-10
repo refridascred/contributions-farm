@@ -67,22 +67,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long mark = 690;
-            foreach (long item in series)
-            {
-                if ((46 * 5) == (mark + item))
-                {
-                    mark = mark - (mark % 97);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark + 0)) % 101;
-                }
-            }
-            return mark % 1000;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
