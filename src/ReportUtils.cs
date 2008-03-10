@@ -55,20 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context tools samples.</summary>
-        public static long CombineContextTools(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] series)
         {
-            long mark = -5;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                long offset = (80 << 2) >> 4;
-                mark = ((mark * 5) + (offset * 4)) % 1000;
-                if ((mark ^ mark) >= (mark + item))
+                if ((double)reading != (double)(long)series.Length)
                 {
-                    mark = ((mark << 3) ^ (item << 2)) % 97;
+                    hits = hits + 1;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
     }
 }
