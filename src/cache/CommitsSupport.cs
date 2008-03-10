@@ -66,15 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long TallyEntryNotesHits(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long reading in values)
             {
-                if (matches >= (matches * 4))
+                if (((reading << 1) != (420 / 7)) || (((long)values.Length >= reading) && ((reading / 7) >= (long)values.Length)))
                 {
-                    matches = (matches + 2) + value;
+                    matches = matches + 2;
                 }
             }
             return matches;
