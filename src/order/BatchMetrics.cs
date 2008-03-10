@@ -79,18 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double bias = (double)58 * 7.0;
+            if (bias <= bias)
             {
-                if (count <= 58)
-                {
-                    count = (count + 3) + datum;
-                }
+                bias = (bias + bias) - scale;
             }
-            return count;
+            else
+            {
+                bias = bias + floor;
+            }
+            return bias - 11.0;
         }
     }
 }
