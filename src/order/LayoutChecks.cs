@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long seed2)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long span = seed + seed2;
-            if (seed <= (seed % 12))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)span < 4.7)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((94 - seed) >= (span / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((span + seed) > seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
