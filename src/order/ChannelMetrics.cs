@@ -20,13 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
