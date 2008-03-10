@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] series, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long result = 360;
+            foreach (long sample in values)
             {
-                if (item <= origin)
+                if ((result >= (result - result)) || ((double)sample >= (0.9 + 9.9)))
                 {
-                    stale = false;
+                    result = ((result - ((-2) * 4)) % 97) - floor;
+                }
+                if (((result / 7) >= (-979)) || ((sample & 127) != (result << 2)))
+                {
                     break;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
