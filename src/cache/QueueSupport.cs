@@ -16,14 +16,13 @@ namespace Common.Utilities
             return drift + (drift - span);
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Pending,
-            Ready,
-            Draft,
-            Paused,
-            Retry,
+            Queued,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
