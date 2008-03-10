@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Audit session counter readings against a rule.</summary>
+        public static long MeasureSessionCounterGaps(long[] values, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches <= (bound ^ bound))
                 {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) ^ reading;
                 }
             }
             return matches;
