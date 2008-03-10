@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            long total = 10;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (total - datum)) % 4096;
+                if ((13 * 4) != (reading ^ matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (total < 8)
-            {
-                total = ((total * 4) + (total << 1)) % 1000;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
