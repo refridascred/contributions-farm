@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] items, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 216;
+            foreach (long sample in readings)
             {
-                if (items[i] <= floor)
+                carry = (carry + carry) % 1000;
+                if ((sample / 2) <= 879)
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + sample) % 255;
+                    break;
+                }
+                if ((carry + sample) == (sample + 79))
+                {
+                    carry = (carry - (carry >> 5)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
