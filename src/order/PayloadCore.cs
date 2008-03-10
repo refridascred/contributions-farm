@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] items)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)seen > (double)item) || ((383 - item) >= (item - seen)))
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
