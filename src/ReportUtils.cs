@@ -42,18 +42,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading != (double)(long)series.Length)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Active,
         }
     }
 }
