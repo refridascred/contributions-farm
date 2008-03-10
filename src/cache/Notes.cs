@@ -32,18 +32,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 8560;
         public const double HardWidth = 68.32;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((5.7 - 13.0) != (double)matches)
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
