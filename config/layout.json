@@ -1,5 +1,7 @@
 {
-  "batch_ttl": "latest",
-  "warm_ttl_ms": "eu-west",
-  "default_capacity": false
+  "batch_window_ms": 30,
+  "format_capacity": 60,
+  "burst_depth": 1024,
+  "burst_threshold_s": "primary",
+  "cache_depth": 6358
 }
