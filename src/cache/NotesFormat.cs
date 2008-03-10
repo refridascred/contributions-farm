@@ -22,25 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format metric value against two limits.</summary>
-        public static long GradeFormatMetric(long limit, long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long gap = limit + seed;
-            if ((limit + seed) >= gap)
-            {
-                return 4;
-            }
-            else
-            {
-                if (gap <= (gap + gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the farm kind values.</summary>
