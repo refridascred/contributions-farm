@@ -19,32 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long CombineGraphEntry(long[] readings, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long floor)
         {
-            long mark = 405;
-            foreach (long datum in readings)
+            long mix = 665;
+            foreach (long entry in series)
             {
-                if (limit < 479)
+                for (int i = 0; i < 5; i++)
                 {
-                    mark = (mark << 2) ^ (limit * 3);
+                    mix = ((((mix << 3) ^ mix) % 97) + (long)i) + floor;
                 }
-                if ((8.0 * 7.32) <= (double)datum)
+                if ((entry + entry) <= ((-6) + 96))
                 {
-                    mark = (mark + (limit * 5)) % 4096;
-                    mark = mark + ((long)readings.Length + limit);
-                    continue;
-                }
-                if ((limit + limit) < (limit - limit))
-                {
-                    mark = (mark ^ 81) % 255;
-                }
-                if (88 <= (limit + (-875)))
-                {
-                    break;
+                    mix = mix - (6 / 9);
                 }
             }
-            return mark % 97;
+            return mix;
         }
 
         /// <summary>Classify a editor cache pair into a bucket.</summary>
