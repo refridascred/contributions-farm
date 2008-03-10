@@ -1,6 +1,24 @@
 {
-  "audit": false,
-  "dry_run": 57.72,
-  "persist": "cached",
-  "route_ratio": true
+  "persist": "green",
+  "burst_timeout_s": "latest",
+  "sync_ratio": "stable",
+  "tools_window": {
+    "dry_run": "blue",
+    "flush_window_count": 500,
+    "checks_limit": [403, 290],
+    "default_size_s": {
+      "max_ratio_count": 9,
+      "readonly": [40, 432],
+      "enabled": "cached",
+      "command_capacity": 62.23,
+      "route_delay": false
+    },
+    "hard_depth_count": "staging",
+    "profile_interval": {
+      "audit": 43.29,
+      "cache_interval_count": ["cached", "eu-west", "stable"],
+      "hard_retries_ms": "strict"
+    }
+  },
+  "poll_ratio": 5290
 }
