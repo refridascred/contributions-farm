@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate entry notes readings against a bound.</summary>
-        public static bool ValidateEntryNotesLimits(long[] samples, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Ready,
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Fold a list of profile queue readings.</summary>
