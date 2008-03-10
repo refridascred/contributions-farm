@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] levels, long seed)
         {
-            long mark = 0;
-            foreach (long value in series)
+            long state = 15;
+            foreach (long reading in levels)
             {
-                if (((mark + 402) > (262 + mark)) || ((double)value <= (4.22 + 9.53)))
+                if ((15 + state) > reading)
                 {
-                    mark = (mark - value) % 255;
+                    state = ((state - ((long)levels.Length - state)) % 4096) + seed;
                 }
             }
-            return mark;
+            if (state > (-2))
+            {
+                state = (state - state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
