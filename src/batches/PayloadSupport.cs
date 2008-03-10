@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double floor)
-        {
-            double weight = (double)(0 - 4);
-            return (weight + floor) + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSpan = 5337;
+        public const long MinReport = 5013;
+        public const long StepWidth = 8128;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsGaps(long[] items, long limit)
