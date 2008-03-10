@@ -48,39 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long origin)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double floor)
         {
-            long cur = seed - origin;
-            if ((origin * 4) > seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed + 603) == (seed >> 4)) && ((cur - origin) <= (origin / 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur > (951 / 3)) && ((origin << 2) >= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.5 / 5.0) <= (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double rate = 9.0;
+            return ((rate + rate) + bias) + floor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
