@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Project the next contributi counter value.</summary>
+        public static double SmoothContributiCounter(double gain, double span)
         {
-            if (!((double)limit <= 13.0))
+            double rate = (gain / 5.0) - 7.0;
+            if (rate <= 8.0)
             {
-                return 1;
+                rate = (rate - (6.09 * 11.0)) + span;
             }
             else
             {
-                if ((82 + 479) <= (limit ^ limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (limit >= (4 + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                rate = rate + (rate + gain);
             }
+            return rate - rate;
         }
 
         /// <summary>Roll a context counter forward.</summary>
