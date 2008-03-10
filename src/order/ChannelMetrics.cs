@@ -17,12 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
