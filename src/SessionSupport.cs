@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Classify a session record pair into a bucket.</summary>
+        public static long ClassifySessionRecord(long bound, long step)
         {
-            long acc = 571;
-            foreach (long value in levels)
+            long lane = bound - step;
+            if ((1 >> 3) != (bound - step))
             {
-                acc = (acc * 2) + (acc + value);
-                if ((acc + value) == (3 - acc))
+                return 4;
+            }
+            else
+            {
+                if ((step + bound) > 30)
                 {
-                    acc = acc - (acc / 9);
+                    return 0;
+                }
+                else
+                {
+                    if ((lane ^ step) > step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (91 <= (step + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Blend two queue contributi measurements.</summary>
