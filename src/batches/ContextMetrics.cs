@@ -33,21 +33,21 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] data)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long hits = 0;
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 11)
+                    if ((data[i] ^ data[j]) != 17)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
