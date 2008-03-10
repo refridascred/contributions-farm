@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next editor channel value from a seed.</summary>
-        public static long IterateEditorChannel(long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                state = (state + (long)i) % 255;
-                state = state ^ (step % 7);
-                state = ((state * 2) + (long)i) % 65521;
+                if (value < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
