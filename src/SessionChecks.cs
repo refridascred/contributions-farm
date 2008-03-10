@@ -13,19 +13,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] readings, long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Queued,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
