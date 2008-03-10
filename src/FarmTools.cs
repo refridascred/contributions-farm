@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((limit % 60) < (3 + datum)) || ((tally + datum) <= (datum * 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 2437;
+        public const double HardChannel = 75.66;
+        public const string SoftWidth = "legacy-v2";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] data, long offset)
