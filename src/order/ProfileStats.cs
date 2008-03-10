@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload record samples.</summary>
-        public static long DigestPayloadRecord(long[] samples, long target)
-        {
-            long sum = 7;
-            foreach (long sample in samples)
-            {
-                if (((159 + sum) >= (long)samples.Length) && (target < (593 / 3)))
-                {
-                    sum = (sum << 2) ^ (sample % 10);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 92.3;
+        public const long StepToken = 3119;
+        public const double DefaultSize = 37.63;
+        public const string LimitToken = "staging-1";
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] data, long seed)
