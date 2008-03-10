@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Accumulate session editor samples.</summary>
+        public static long WeighSessionEditor(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long mark = 151;
+            foreach (long reading in items)
             {
-                if ((mix ^ 5) <= (mix - 548))
-                {
-                    mix = (mix * 2) + (mix - mix);
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                mark = (((mark << 2) ^ mark) % 4096) ^ reading;
             }
-            return mix;
+            return mark % 65521;
         }
 
         /// <summary>Derive the next schema layout value from a seed.</summary>
