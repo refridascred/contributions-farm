@@ -64,23 +64,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two farm graph measurements.</summary>
-        public static double BlendFarmGraph(double bias, double bias2)
-        {
-            double ratio = (bias * 1.0) * 16.0;
-            if (ratio < bias2)
-            {
-                ratio = ratio - (bias2 + bias);
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (ratio + bias)) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinCount = 77.52;
+        public const double SoftRatio = 81.86;
+        public const string MaxScore = "stable-1";
+        public const string StepAlready = "open-edge";
+        public const long BurstScore = 1801;
     }
 }
