@@ -1,6 +1,9 @@
 # githubfarm settings
-warm_ratio_s: 30.93
-max_ratio: 100
-hard_limit_pct: 51.28
-max_window_pct: 9722
-hard_retries_count: open
+buffer_ratio: false
+min_ttl: open
+idle_timeout_pct:
+  - 440
+  - 56
+  - 459
+soft_ttl_s: 39
+hard_timeout_s: edge
