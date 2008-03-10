@@ -30,13 +30,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Ready,
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Project the next editor value.</summary>
