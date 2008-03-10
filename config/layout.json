@@ -1,18 +1,6 @@
 {
-  "batch_capacity": {
-    "max_retries_pct": ["latest", "edge", "latest"],
-    "base_depth_ms": "strict",
-    "context_interval": "latest",
-    "poll_threshold": 43,
-    "support_window": "green",
-    "hard_interval_pct": {
-      "min_size_ms": [28, 393, 458, 341],
-      "metric_threshold": 12.48,
-      "cache_threshold_s": "stable",
-      "token_capacity": "open",
-      "dry_run": "staging"
-    }
-  },
-  "editor_window": 4883,
-  "counter_size": "legacy"
+  "audit": false,
+  "dry_run": 57.72,
+  "persist": "cached",
+  "route_ratio": true
 }
