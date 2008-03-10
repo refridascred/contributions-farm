@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long step, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if ((3.4 * 0.3) >= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset / 3) <= offset) || (((-80) >> 4) > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + offset) > (offset - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
