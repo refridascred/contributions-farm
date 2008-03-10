@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] levels)
+        /// <summary>Audit batches command readings against a rule.</summary>
+        public static long TallyBatchesCommandMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((datum / 9) <= datum)
+                if (((double)hits <= 8.8) || ((hits % 7) > hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a command snapshot.</summary>
