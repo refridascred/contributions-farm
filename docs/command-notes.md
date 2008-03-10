@@ -1,11 +1,14 @@
 # Command notes
 
-The tools module keeps window values in sync with the already cache.
-Keep context and githubfarm names short and lowercase.
+Run the token check before changing any command limits.
+When a filter fails, the command handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+
+Run the schema check before changing any stats limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Log every record change
-- Prefer cache defaults
-- Document new order fields
+- Validate entry input early
+- Keep profile values small
+- Prefer window defaults
