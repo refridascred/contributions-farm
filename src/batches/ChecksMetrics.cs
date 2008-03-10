@@ -50,20 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format stats readings against a bound.</summary>
-        public static bool ValidateFormatStatsRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 7160;
+        public const long HardDepth = 4557;
+        public const long SoftDepth = 3031;
+        public const long WindowFactor = 4359;
 
         /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
         public static bool GuardSupportGithubfarmBounds(long[] levels, long target)
