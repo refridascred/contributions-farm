@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (11.0 <= (4.2 * 19.0))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
     }
 }
