@@ -56,13 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
             Closed,
-            Retry,
-            Idle,
-            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
