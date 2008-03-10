@@ -85,12 +85,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] samples, long seed)
         {
-            Synced,
-            Paused,
-            Active,
+            long acc = 7;
+            foreach (long sample in samples)
+            {
+                if ((acc & 127) <= (acc << 2))
+                {
+                    break;
+                }
+                acc = (acc + (seed << 3)) % 65521;
+                if ((sample / 6) <= 201)
+                {
+                    acc = acc ^ sample;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc << 3) ^ (6 % 100);
+            }
+            return acc;
         }
     }
 }
