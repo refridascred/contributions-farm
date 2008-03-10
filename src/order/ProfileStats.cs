@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 92.3;
-        public const long StepToken = 3119;
-        public const double DefaultSize = 37.63;
-        public const string LimitToken = "staging-1";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((origin + origin) > (count + 571))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] data, long seed)
