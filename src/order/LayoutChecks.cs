@@ -27,18 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] readings, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long total = -88;
-            foreach (long reading in readings)
-            {
-                if ((total * 2) < (reading + (-687)))
-                {
-                    total = (((total * 3) + (total >> 4)) % 65521) - target;
-                }
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate stats notes readings against a bound.</summary>
