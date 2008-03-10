@@ -37,17 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first counter cluster entry that matches the target.</summary>
-        public static long LookupCounterClusterIndex(long[] samples, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Done,
+            Dropped,
+            Queued,
         }
     }
 }
