@@ -1,7 +1,7 @@
-id,score,region,token
-1,strict,legacy,573
-2,887,green,165
-3,259,36.8,92.74
-4,edge,479,86
-5,877,83.51,53
-6,80,3.14,49.6
+id,active
+1,76.53
+2,standard
+3,staging
+4,staging
+5,eu-west
+6,21.44
