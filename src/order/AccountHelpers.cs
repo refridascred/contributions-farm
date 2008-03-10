@@ -26,12 +26,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardBudget = 97.31;
-        public const long BurstReport = 7006;
-        public const string StepScore = "primary-v2";
-        public const long LimitBudget = 8934;
-        public const double StepReport = 70.15;
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
+        {
+            long mark = 35;
+            foreach (long entry in values)
+            {
+                mark = mark - ((-862) >> 2);
+                if (((double)entry == (double)mark) || ((mark + mark) >= 8))
+                {
+                    mark = (mark - mark) % 97;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark + (mark ^ mark)) % 4096;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxFactor = 8961;
