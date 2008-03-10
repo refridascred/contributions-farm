@@ -58,13 +58,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Paused,
-            Pending,
-            Queued,
             Synced,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Look up the position of a cluster githubfarm sample.</summary>
