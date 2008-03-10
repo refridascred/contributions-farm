@@ -22,12 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (58 <= seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
     }
 }
