@@ -51,24 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long origin)
         {
-            long anchor = 6;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((26 + (-1)) <= (anchor << 1))
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
                 {
-                    long tally = anchor;
-                    anchor = (anchor + tally) % 97;
+                    return (long)i;
                 }
-                anchor = (anchor * 5) + (entry - entry);
             }
-            if (anchor > 0)
-            {
-                anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
