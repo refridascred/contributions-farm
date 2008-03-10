@@ -40,15 +40,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
     }
 }
