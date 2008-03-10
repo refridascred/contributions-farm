@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 56.73;
-        public const double DefaultSession = 4.91;
-        public const long MinBudget = 9608;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double floor)
+        {
+            double weight2 = 1.76;
+            if (weight2 < (weight2 * 8.02))
+            {
+                weight2 = weight2 + floor;
+            }
+            else
+            {
+                weight2 = weight2 + (weight2 + weight);
+            }
+            return weight2 + weight2;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
