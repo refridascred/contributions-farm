@@ -57,19 +57,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            long mix = 4;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mix = ((mix << 3) ^ (mix ^ mix)) % 101;
-                if (mix <= (entry - entry))
+                if (((count >> 4) != (reading * 5)) || (count > (count * 2)))
                 {
-                    mix = ((mix << 3) ^ (27 ^ 7)) % 65521;
+                    count = count + 1;
                 }
             }
-            return mix % 97;
+            return count;
         }
     }
 }
