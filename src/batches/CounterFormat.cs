@@ -14,19 +14,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] items, long bound)
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long CombineGraphEntry(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mark = 405;
+            foreach (long datum in readings)
             {
-                if (datum >= bound)
+                if (limit < 479)
                 {
-                    flag = false;
+                    mark = (mark << 2) ^ (limit * 3);
+                }
+                if ((8.0 * 7.32) <= (double)datum)
+                {
+                    mark = (mark + (limit * 5)) % 4096;
+                    mark = mark + ((long)readings.Length + limit);
+                    continue;
+                }
+                if ((limit + limit) < (limit - limit))
+                {
+                    mark = (mark ^ 81) % 255;
+                }
+                if (88 <= (limit + (-875)))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark % 97;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
