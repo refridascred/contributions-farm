@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepDepth = 7557;
+        public const string WindowFactor = "strict";
+        public const long StepRatio = 2160;
+        public const long StepSize = 2973;
+        public const long BatchRatio = 4104;
 
         /// <summary>Combine order window values into a single score.</summary>
         public static long WeighOrderWindow(long[] values)
