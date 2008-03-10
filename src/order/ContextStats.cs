@@ -51,13 +51,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Dropped,
+            Idle,
+            New,
+            Queued,
+            Ready,
         }
     }
 }
