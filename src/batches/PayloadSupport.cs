@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (weight + floor) + rate;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] items, long limit)
         {
-            Locked,
-            Idle,
-            Paused,
-            Stale,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)reading > (double)838))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
