@@ -1,15 +1,11 @@
 # Command notes
 
-Run the profile check before changing any profile limits.
-Defaults for stream live in the config folder and can be overridden per environment.
-The layout module keeps stats values in sync with the context cache.
-
-Use queue settings to tune how often entry data is refreshed.
-When a route fails, the graph handler retries a few times before giving up.
-Use payload settings to tune how often batches data is refreshed.
+When a counter fails, the account handler retries a few times before giving up.
+Run the stream check before changing any filter limits.
+Run the report check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Document new report fields
-- Log every token change
-- Prefer order defaults
+- Review queue limits each release
+- Keep graph values small
+- Prefer entry defaults
