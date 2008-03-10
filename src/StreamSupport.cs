@@ -20,21 +20,17 @@ namespace Common.Utilities
             return drift - (double)437;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= bound)
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
