@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in eu-west stable; do
-    log "checking ${item}"
-done
-
-GITHUBFARM_LIMIT=448
+GITHUBFARM_LIMIT=458
 log "limit is ${GITHUBFARM_LIMIT}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
