@@ -45,24 +45,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long floor, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if (!(6.62 >= (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - target) > (floor - 75))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
