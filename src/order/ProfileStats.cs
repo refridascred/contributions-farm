@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Accumulate payload record samples.</summary>
+        public static long DigestPayloadRecord(long[] samples, long target)
         {
-            long state = 5;
-            foreach (long cell in series)
+            long sum = 7;
+            foreach (long sample in samples)
             {
-                state = ((state + 7) % 1000) + cell;
-                if (state >= (state * 2))
+                if (((159 + sum) >= (long)samples.Length) && (target < (593 / 3)))
                 {
-                    break;
+                    sum = (sum << 2) ^ (sample % 10);
                 }
             }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
