@@ -1,9 +1,8 @@
 # githubfarm settings
-enabled: false
-batch_threshold_s: legacy
-context_depth: 8605
-poll_interval_s: fallback
-strict: 48
-min_ttl_count:
-  - open
-  - staging
+min_depth_pct: 94.71
+sync_threshold_pct: false
+order_depth: 30
+audit:
+  - 132
+  - 101
+cache_retries_ms: stable
