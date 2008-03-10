@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long origin)
         {
-            New,
-            Closed,
-            Pending,
-            Dropped,
-            Stale,
+            if ((step >> 2) < (origin ^ origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((step << 3) >= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next commits githubfarm value.</summary>
