@@ -46,18 +46,30 @@ namespace Common.Utilities
         public const long CacheLevel = 3788;
         public const long HardAccount = 6852;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = -40;
+            foreach (long reading in readings)
             {
-                if ((seen + 10) <= (value + value))
+                if ((156 % 7) > (result + 895))
                 {
-                    seen = seen + 3;
+                    result = (result + result) % 255;
+                }
+                else
+                {
+                    result = (result ^ (reading + 30)) % 65521;
+                }
+                if ((reading * 2) != (result & 255))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > (-47))
+            {
+                result = result + ((long)readings.Length + result);
+            }
+            return result % 1000;
         }
     }
 }
