@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] items, long origin)
         {
-            long mark = 65;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + 1) + reading;
-                if (!((double)3 != (double)limit))
+                if ((items[i] >= origin) && ((items[i] % 3) != 0))
                 {
-                    mark = ((mark * 3) + (mark & 1)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark < 726)
-            {
-                mark = (mark * 3) + 252;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of filter checks readings.</summary>
