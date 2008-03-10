@@ -16,11 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitCount = "legacy-edge";
-        public const long WindowStream = 8719;
-        public const long MaxLevel = 9174;
-        public const long LimitSize = 6327;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long offset)
+        {
+            if (((offset ^ floor) < 222) && ((13 + floor) >= floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor / 5) != (74 << 2)) || ((8 >> 4) > (floor + 180)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamMatches(long[] items, long seed)
