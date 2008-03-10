@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] levels, long limit)
+        /// <summary>Adjust a channel notes reading.</summary>
+        public static double ProjectChannelNotes(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double drift = bias;
+            if (drift >= 1.9)
             {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + drift;
             }
-            return ok;
+            else
+            {
+                drift = drift - (scale * 3.0);
+            }
+            return drift - (double)26;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
