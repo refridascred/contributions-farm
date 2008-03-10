@@ -33,11 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next counter tools value.</summary>
-        public static double ProjectCounterTools(double gain, double span)
+        /// <summary>Validate stats notes readings against a bound.</summary>
+        public static bool ValidateStatsNotesLimits(long[] levels, long seed)
         {
-            double load = span;
-            return (load + (double)592) + gain;
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metrics class values.</summary>
