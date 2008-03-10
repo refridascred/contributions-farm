@@ -15,22 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of format batches entries.</summary>
-        public static long WeighFormatBatches(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings)
         {
-            long score = 690;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((295 - 511) > reading)
+                if (((datum + (long)readings.Length) <= datum) || ((-2) >= (count - datum)))
                 {
-                    score = ((score << 2) ^ (reading >> 4)) % 65521;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score < 63)
-            {
-                score = (score * 3) + (score / 9);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
