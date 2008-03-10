@@ -20,15 +20,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long floor, long bound)
         {
-            double gain = (double)(728 / 5);
-            if (gain > (double)93)
+            if ((982 - floor) >= (floor * 2))
             {
-                gain = ((gain - (double)(-1)) - ratio) + offset;
+                return 3;
             }
-            return gain - 4.0;
+            else
+            {
+                if ((floor > (bound % 3)) && (floor <= (bound - floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor + 287) >= floor) || (floor > (0 * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((521 * 2) > (floor % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm record.</summary>
