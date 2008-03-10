@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-open}"
 case "${mode}" in
-    edge)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable primary standard eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
-
-CHANNEL_LIMIT=127
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
