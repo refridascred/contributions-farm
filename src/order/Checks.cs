@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepCount = 9374;
-        public const long CacheCount = 6932;
-        public const double IdleWidth = 67.51;
-        public const long HardWidth = 6560;
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long LocateWindowLayoutIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ScaleStream(double rate, double span)
