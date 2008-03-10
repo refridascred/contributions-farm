@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double scale = (double)(871 % 7);
-            if (scale <= (double)6)
-            {
-                scale = (scale - offset) - rate;
-            }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale + (offset * 9.77);
+            Closed,
+            Failed,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define session limits and defaults.</summary>
