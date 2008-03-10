@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinSpan = 6265;
-        public const long IdleCounter = 6891;
-        public const double SoftCounter = 44.46;
-        public const long CacheCounter = 5661;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
