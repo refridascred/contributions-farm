@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc - step) <= (step / 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a window stats.</summary>
