@@ -1,5 +1,5 @@
 {
-  "min_retries_count": "legacy",
-  "context_size": "edge",
-  "idle_delay": "cached"
+  "session_timeout": "standard",
+  "enabled": 60,
+  "poll_interval_count": true
 }
