@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next account graph value from a seed.</summary>
-        public static long RollAccountGraph(long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
