@@ -1,18 +1,12 @@
 {
-  "enabled": 35.31,
-  "tools_ratio": false,
-  "retry_delay_count": "green",
-  "channel_retries": false,
-  "cache_capacity": "latest",
-  "min_window_count": {
-    "enabled": {
-      "command_size": ["open", "primary"],
-      "stream_threshold": 13,
-      "warm_delay_pct": 44.68
-    },
-    "min_delay": ["primary", "fallback", "stable"],
-    "poll_capacity_pct": 85,
-    "verbose": 500,
-    "soft_retries_ms": ["edge", "eu-west", "green"]
-  }
+  "sync_timeout_s": 81.02,
+  "enabled": {
+    "support_delay": 56.99,
+    "base_timeout": "fallback",
+    "hard_threshold_count": 30.53
+  },
+  "audit": "stable",
+  "poll_size": "eu-west",
+  "retry_size_ms": 7,
+  "min_window_pct": "stable"
 }
