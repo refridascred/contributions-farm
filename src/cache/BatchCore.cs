@@ -38,12 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinTimeout = "open-edge";
-        public const string WindowStream = "stable-1";
-        public const long MinScore = 3950;
-        public const long SoftStream = 9133;
-        public const long DefaultInterval = 2876;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Locked,
+            Synced,
+            Dropped,
+            Active,
+            Queued,
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long WeighStats(long[] levels, long target)
