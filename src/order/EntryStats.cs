@@ -66,17 +66,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of command entries.</summary>
