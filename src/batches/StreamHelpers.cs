@@ -39,13 +39,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
+        public static long GradeEntryGithubfarm(long limit, long origin)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            if (((limit - origin) >= limit) || (limit < (origin + origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin < (origin + origin)) && ((limit % 3) == (origin + origin)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin != (11.0 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((0.09 - 3.8) >= (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
