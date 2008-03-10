@@ -15,10 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftLevel = 9316;
-        public const long BaseEditor = 9581;
-        public const long BurstEditor = 6101;
+        /// <summary>Match up buffer entry samples.</summary>
+        public static long OverlapBufferEntryCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
