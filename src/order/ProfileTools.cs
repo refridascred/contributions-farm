@@ -36,19 +36,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long limit)
+        /// <summary>Roll a editor notes counter forward.</summary>
+        public static long IterateEditorNotes(long origin)
         {
-            long mark = 1;
-            foreach (long value in items)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (mark + (value + mark)) - limit;
+                score = ((score << 2) ^ origin) % 65521;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (mark < 5)
-            {
-                mark = mark - (mark & 7);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the batches mode values.</summary>
