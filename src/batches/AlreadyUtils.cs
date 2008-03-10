@@ -55,15 +55,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long step)
         {
-            double scale = (double)((-96) % 100);
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                scale = ((scale + floor) + (double)(long)i) - ratio;
+                if (((seen & 1) == (item + seen)) && ((item << 1) < step))
+                {
+                    seen = seen + 2;
+                }
             }
-            return scale + floor;
+            return seen;
         }
     }
 }
