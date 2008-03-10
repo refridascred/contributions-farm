@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings)
-        {
-            long carry = 216;
-            foreach (long sample in readings)
-            {
-                carry = (carry + carry) % 1000;
-                if ((sample / 2) <= 879)
-                {
-                    carry = ((carry * 3) + sample) % 255;
-                    break;
-                }
-                if ((carry + sample) == (sample + 79))
-                {
-                    carry = (carry - (carry >> 5)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 6568;
+        public const string WindowSession = "open-1";
+        public const double RetrySession = 16.91;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowHits(long[] data)
