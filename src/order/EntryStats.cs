@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next contributi counter value.</summary>
-        public static double SmoothContributiCounter(double gain, double span)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] samples, long seed)
         {
-            double rate = (gain / 5.0) - 7.0;
-            if (rate <= 8.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (6.09 * 11.0)) + span;
+                if ((samples[i] == seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (rate + gain);
-            }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
