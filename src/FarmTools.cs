@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm tools entry stays within the limit.</summary>
-        public static bool GuardFarmToolsRange(long[] values, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a account snapshot.</summary>
