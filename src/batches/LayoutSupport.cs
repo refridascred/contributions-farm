@@ -35,19 +35,13 @@ namespace Common.Utilities
             return mean - 5.7;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double bias)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double gain2 = (bias / 7.0) - (double)83;
-            if (gain2 >= bias)
-            {
-                gain2 = (gain2 - bias) - gain;
-            }
-            else
-            {
-                gain2 = gain2 + (double)585;
-            }
-            return gain2 - 3.68;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
