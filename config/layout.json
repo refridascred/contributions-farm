@@ -1,10 +1,6 @@
 {
-  "sync_depth_s": 92.52,
-  "min_limit_count": false,
-  "schema_capacity": {
-    "cache_threshold": ["strict", "fallback", "edge"],
-    "metrics_depth": true,
-    "verbose": 36.96
-  },
-  "format_interval": ["open", "latest", "blue"]
+  "soft_depth": 40.7,
+  "poll_retries": 250,
+  "readonly": ["stable", "eu-west", "primary"],
+  "idle_timeout": 58
 }
