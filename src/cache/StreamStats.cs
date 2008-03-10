@@ -12,18 +12,11 @@ namespace Common.Utilities
             return (scale - (scale - gain)) + floor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (6.5 >= (double)tally)
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the stream kind values.</summary>
