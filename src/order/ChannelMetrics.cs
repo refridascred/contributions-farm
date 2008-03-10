@@ -19,13 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series, long step)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            long total = 446;
+            foreach (long cell in series)
+            {
+                total = total + (step - cell);
+            }
+            if (total < 1)
+            {
+                total = (total << 2) ^ (step + step);
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
