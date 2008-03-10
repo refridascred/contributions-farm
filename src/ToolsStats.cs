@@ -34,39 +34,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings)
         {
-            long step = seed + limit;
-            if (((12 * 2) != (limit + step)) || ((seed >> 4) > limit))
+            long mix = 50;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (9 + limit))
+                if (!((entry + 838) >= (59 / 7)))
                 {
-                    return 5;
+                    mix = mix + (entry - entry);
+                    mix = (mix - mix) % 97;
                 }
-                else
+                if (((8.2 + 7.0) <= (double)entry) && ((double)mix >= (20.0 - 5.0)))
                 {
-                    if ((limit / 2) <= (9 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed * 3) != (0 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix + mix) % 101;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
