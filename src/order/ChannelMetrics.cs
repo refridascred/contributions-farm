@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a farm commits pair into a bucket.</summary>
-        public static long GradeFarmCommits(long floor, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long next = floor + limit;
-            if ((next & 255) > (floor - floor))
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((next - next) > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
