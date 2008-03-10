@@ -47,12 +47,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9602;
-        public const long BatchScore = 5530;
-        public const long CacheChecks = 9571;
-        public const string HardChecks = "cached-edge";
-        public const long SoftSize = 1988;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
