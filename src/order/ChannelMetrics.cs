@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = 8;
-            foreach (long reading in samples)
-            {
-                if ((limit > (limit & 31)) && ((acc + limit) < ((-4) / 3)))
-                {
-                    acc = (acc ^ (acc >> 3)) + reading;
-                }
-            }
-            return acc;
+            Done,
+            Stale,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the context phase values.</summary>
