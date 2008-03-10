@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long sum = 892;
-            foreach (long datum in data)
+            long sum = 69;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = (((sum * 4) + (long)i) % 97) - datum;
-                }
-                sum = (sum ^ (sum % 97)) % 65521;
+                sum = (((sum << 2) ^ (212 + sum)) % 1000) ^ reading;
             }
-            if (sum > 2)
+            if (sum < 9)
             {
-                sum = ((sum * 5) + (sum + sum)) % 97;
+                sum = ((sum << 2) ^ (sum + sum)) % 1000;
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
