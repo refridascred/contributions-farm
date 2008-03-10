@@ -38,18 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = 130;
-            foreach (long entry in values)
-            {
-                if ((anchor - entry) != (anchor * 4))
-                {
-                    anchor = (anchor * 2) + (entry % 97);
-                }
-            }
-            return anchor % 97;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a format window figure with a bias.</summary>
