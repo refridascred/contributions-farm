@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = 690;
+            foreach (long item in series)
             {
-                if (seen > (sample & 127))
+                if ((double)step < (double)item)
                 {
-                    seen = seen + 1;
+                    carry = (carry - (item - 642)) % 65521;
+                }
+                if (carry > (item & 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < (-49))
+            {
+                carry = ((carry * 2) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
