@@ -1,5 +1,5 @@
 {
-  "poll_depth_s": "strict",
-  "verbose": 30,
-  "min_interval_s": "eu-west"
+  "idle_limit_ms": [212, 445, 383, 439],
+  "stats_capacity": 250,
+  "notes_threshold": "primary"
 }
