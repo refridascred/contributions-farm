@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double span)
+        /// <summary>Audit session window readings against a rule.</summary>
+        public static long MeasureSessionWindowGaps(long[] levels, long seed)
         {
-            double rate = weight;
-            if (rate < (double)85)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                rate = (rate - (weight + 3.07)) - span;
+                if (((datum < (datum >> 5)) && ((datum * 3) != (1 - tally))) && (((4.1 / 8.0) <= (double)(long)levels.Length) || ((seed + tally) == (datum % 60))))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 9.0) + (double)(long)i;
-            }
-            return rate - (weight + rate);
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
