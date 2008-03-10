@@ -15,22 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftLevel = 9316;
+        public const long BaseEditor = 9581;
+        public const long BurstEditor = 6101;
 
         /// <summary>Accumulate record farm samples.</summary>
         public static long TallyRecordFarm(long[] series, long floor)
