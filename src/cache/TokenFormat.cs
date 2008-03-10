@@ -28,11 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinFactor = 76.57;
-        public const long BatchRatio = 105;
-        public const long StepCount = 122;
-        public const double DefaultBatch = 67.97;
-        public const long IdleLevel = 1591;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
