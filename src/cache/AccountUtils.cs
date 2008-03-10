@@ -37,13 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] levels, long offset)
         {
-            Stale,
-            Done,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally >= (entry + offset)) && (((tally / 8) < entry) && ((double)entry >= (0.85 + 4.02))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
