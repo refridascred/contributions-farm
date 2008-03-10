@@ -18,30 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels, long origin)
+        /// <summary>Measure how many graph tools samples are out of range.</summary>
+        public static long TallyGraphToolsGaps(long[] items, long floor)
         {
-            long acc = 153;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((4 << 3) != (datum - acc)) && ((9.6 - 7.01) >= (double)origin))
+                if ((floor - floor) == (sample - sample))
                 {
-                    acc = ((acc << 2) ^ (datum + origin)) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (8 >> 4)) % 101;
-                }
-                if (((16.0 + 3.6) < (double)datum) && ((datum - datum) <= acc))
-                {
-                    acc = (acc ^ (39 << 2)) % 65521;
-                }
-                if ((3.6 + 9.4) >= (double)acc)
-                {
-                    acc = (acc << 2) ^ (origin >> 1);
+                    matches = matches + 2;
                 }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Grade a queue command value against two limits.</summary>
