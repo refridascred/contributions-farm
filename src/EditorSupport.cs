@@ -55,19 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next schema queue value from a seed.</summary>
-        public static long RollSchemaQueue(long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] samples, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((-465) >> 3) < (long)i)
+                if (cell > bound)
                 {
-                    acc = ((acc << 3) ^ limit) % 97;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
