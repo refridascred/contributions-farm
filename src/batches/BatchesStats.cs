@@ -38,11 +38,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the context state values.</summary>
