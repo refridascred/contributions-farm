@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const string CacheToken = "strict-1";
         public const long LimitTimeout = 2154;
 
-        /// <summary>Check that every batches schema entry stays within the limit.</summary>
-        public static bool CheckBatchesSchemaLimits(long[] samples, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (sample < target)
+                if (((double)item == (8.6 * 11.0)) || ((matches >= (seed & 7)) || ((double)710 <= (double)seed)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
