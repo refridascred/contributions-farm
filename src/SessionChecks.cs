@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "stable-edge";
         public const string LimitGithubfarm = "legacy-1";
 
-        /// <summary>Combine report buffer values into a single score.</summary>
-        public static long DigestReportBuffer(long[] values, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] items, long step)
         {
-            long acc = 1;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                acc = (acc ^ (sample - acc)) % 1000;
+                if ((double)count <= 8.88)
+                {
+                    count = ((count + 3) ^ entry) + step;
+                }
             }
-            if (acc < 3)
-            {
-                acc = acc + offset;
-            }
-            return acc % 97;
+            return count;
         }
     }
 }
