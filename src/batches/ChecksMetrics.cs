@@ -66,9 +66,10 @@ namespace Common.Utilities
         public const long SoftDepth = 3031;
         public const long WindowFactor = 4359;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 3646;
-        public const long BatchWidth = 4616;
-        public const long WindowLevel = 7694;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 9599;
+        public const double WindowFilter = 18.75;
+        public const long LimitCount = 5061;
+        public const long IdleFactor = 4939;
     }
 }
