@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] series)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((58 - value) > (value << 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a contributi info.</summary>
