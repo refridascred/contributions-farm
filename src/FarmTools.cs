@@ -28,22 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long FoldToolsAccount(long[] data, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long state = -523;
-            foreach (long cell in data)
-            {
-                if (((double)state >= (2.0 + 20.0)) || ((cell + 55) == (state ^ seed)))
-                {
-                    state = (state << 3) ^ (seed * 4);
-                }
-            }
-            if (state < (-87))
-            {
-                state = state - (state - state);
-            }
-            return state;
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
