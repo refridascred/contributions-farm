@@ -42,24 +42,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long origin, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            if ((bound - bound) >= origin)
+            long score = 150;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (origin - bound))
+                if ((score + 42) < (value >> 5))
                 {
-                    return 7;
+                    score = score ^ (value * 4);
                 }
-                else
+                if ((5.1 + 1.95) < (double)value)
                 {
-                    return 4;
+                    break;
                 }
             }
+            if (score > 8)
+            {
+                score = score ^ (7 >> 2);
+            }
+            return score;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
