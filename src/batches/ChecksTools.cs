@@ -14,32 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long offset)
+        /// <summary>Compare every pair of support session readings.</summary>
+        public static long MatchSupportSessionCount(long[] values)
         {
-            long cur = limit - offset;
-            if (((9.21 * 14.0) < (double)offset) && (cur < (cur * 2)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (offset + limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((695 + limit) < (cur << 3))
+                    if ((values[i] - values[j]) != 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
