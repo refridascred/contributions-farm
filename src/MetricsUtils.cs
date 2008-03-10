@@ -21,15 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            double rate = gain / 4.0;
-            if (rate < (double)7)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (9.0 * 19.0)) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - 8.27;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
