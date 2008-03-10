@@ -29,19 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits command readings.</summary>
-        public static long DigestCommitsCommand(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long acc = 219;
-            foreach (long datum in data)
-            {
-                acc = (acc * 2) + acc;
-                if (((datum & 127) <= 821) && ((datum % 97) > datum))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of support entries.</summary>
