@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] series, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] > floor)
+                if (levels[i] >= seed)
                 {
                     return (long)i;
                 }
