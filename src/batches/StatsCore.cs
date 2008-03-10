@@ -42,19 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double rate, double bias)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long step)
         {
-            double drift = rate;
-            if (drift >= (4.14 + bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + bias;
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)610;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
