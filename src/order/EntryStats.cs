@@ -5,28 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            if (!((double)limit <= 13.0))
             {
-                if ((double)target == (7.2 - 2.5))
+                return 1;
+            }
+            else
+            {
+                if ((82 + 479) <= (limit ^ limit))
                 {
-                    break;
-                }
-                if ((target > (state * 4)) && ((356 - (long)i) <= (target + state)))
-                {
-                    state = ((state * 2) + (target >> 2)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    state = ((state << 3) ^ (long)i) % 65521;
-                    state = (state * 3) + (target + (long)i);
+                    if ((double)limit == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (limit >= (4 + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
         }
 
         /// <summary>Accumulate filter samples.</summary>
