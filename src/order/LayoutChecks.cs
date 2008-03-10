@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((6.5 / 7.0) != (double)step)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 8024;
+        public const long WindowGraph = 5877;
+        public const string CacheGraph = "fallback-1";
+        public const double IdleSpan = 29.32;
+        public const string BatchDepth = "legacy-v2";
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
