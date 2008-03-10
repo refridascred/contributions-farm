@@ -1,6 +1,13 @@
 {
-  "min_window": 1024,
-  "persist": 3.55,
-  "flush_delay_s": false,
-  "warm_timeout_pct": true
+  "batch_depth_pct": "primary",
+  "idle_delay_s": 7473,
+  "soft_ttl": 11,
+  "min_depth_ms": {
+    "hard_size_pct": "primary",
+    "max_threshold_count": 5.3,
+    "base_limit": 2980,
+    "persist": 87.53,
+    "batch_interval": 7,
+    "editor_delay": "green"
+  }
 }
