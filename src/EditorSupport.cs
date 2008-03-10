@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Digest a series of cluster commits entries.</summary>
+        public static long WeighClusterCommits(long[] data)
         {
-            double bias2 = 0.2;
-            for (int i = 0; i < 9; i++)
+            long state = 450;
+            foreach (long cell in data)
             {
-                bias2 = ((bias2 - offset) + (double)(long)i) - bias;
+                if ((double)(-37) > (double)state)
+                {
+                    state = state ^ (726 + cell);
+                }
             }
-            return bias2 + (double)109;
+            if (state < 6)
+            {
+                state = ((state << 2) ^ (state ^ 57)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
