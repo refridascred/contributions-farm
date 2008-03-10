@@ -38,13 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings, long limit)
         {
-            New,
-            Stale,
-            Idle,
-            Done,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((0.14 * 2.2) <= (double)limit)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the context state values.</summary>
