@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            long mark = 7;
-            foreach (long value in values)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark * 2) + (2 + mark)) % 255;
-                if ((mark + 54) >= (value % 64))
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Describe the batches level values.</summary>
