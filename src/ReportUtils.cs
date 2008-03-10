@@ -27,14 +27,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Ready,
-            Queued,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "primary-edge";
+        public const long RetryTimeout = 293;
+        public const long WindowStats = 2538;
+        public const long WindowSpan = 206;
+        public const string RetryWidth = "fallback-edge";
 
         /// <summary>Iterate the farm already series from a seed.</summary>
         public static long StepFarmAlready(long target)
