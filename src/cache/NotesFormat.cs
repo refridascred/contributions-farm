@@ -48,22 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((double)matches < 14.0) || ((double)cell >= (1.0 * 17.0)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Idle,
+            Done,
+            New,
+            Locked,
         }
     }
 }
