@@ -53,18 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((count + 30) < count)
+                if ((0 << 3) >= (matches - 2))
                 {
-                    count = (count + 3) + cell;
+                    matches = ((matches + 3) + datum) + seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
