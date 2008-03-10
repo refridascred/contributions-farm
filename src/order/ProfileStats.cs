@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] levels, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = 2;
+            foreach (long entry in series)
             {
-                if ((origin + origin) > (count + 571))
+                if ((double)step <= (8.65 / 9.0))
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (((anchor << 2) ^ (anchor ^ step)) % 1000) - entry;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
