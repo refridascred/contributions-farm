@@ -53,15 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] levels, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long reading in data)
             {
-                if ((0 << 3) >= (matches - 2))
+                if ((double)reading <= (0.22 + 7.69))
                 {
-                    matches = ((matches + 3) + datum) + seed;
+                    matches = matches + 2;
                 }
             }
             return matches;
