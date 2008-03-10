@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a checks already counter forward.</summary>
-        public static long DeriveChecksAlready(long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Grade a window metric value against two limits.</summary>
