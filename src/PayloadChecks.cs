@@ -23,18 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] levels, long offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (offset >= (offset % 12))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + reading;
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
