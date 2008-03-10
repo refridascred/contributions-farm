@@ -47,19 +47,38 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Classify a editor cache pair into a bucket.</summary>
+        public static long GradeEditorCache(long seed, long seed2)
         {
-            long acc = 8;
-            foreach (long value in values)
+            if ((seed >> 3) != (seed % 12))
             {
-                acc = (acc - (acc * 3)) % 65521;
-                if (((double)value != (double)acc) || ((double)value > 7.86))
+                return 8;
+            }
+            else
+            {
+                if (!((8.3 - 2.19) <= (double)seed))
                 {
-                    acc = (acc * 3) + (1 - acc);
+                    return 5;
+                }
+                else
+                {
+                    if ((seed2 << 3) == (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed2 + seed) < (seed2 >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
     }
 }
