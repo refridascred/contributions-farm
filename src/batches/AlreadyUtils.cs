@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a cluster options.</summary>
