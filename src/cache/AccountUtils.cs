@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Match up checks cache samples.</summary>
+        public static long MatchChecksCacheCount(long[] items)
         {
-            long mix = 6;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((837 << 2) <= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix * 5) + (mix / 3);
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 28)
-            {
-                mix = (mix * 4) + 26;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
