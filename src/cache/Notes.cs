@@ -14,31 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a queue notes value against two limits.</summary>
-        public static long ClassifyQueueNotes(long offset, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if (((offset >> 1) <= bound) || ((double)offset < 3.62))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - bound) == (bound % 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + bound) > (offset / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
