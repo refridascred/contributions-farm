@@ -47,15 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double rate, double offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double weight = (double)(59 & 127);
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight + (offset / 9.0)) + (double)(long)i) - rate;
-            }
-            return weight - 2.0;
+            Ready,
+            Locked,
+            Paused,
+            Closed,
         }
     }
 }
