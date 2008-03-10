@@ -39,11 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleLevel = 42.11;
-        public const string BatchLevel = "staging-1";
-        public const long BatchFactor = 186;
-        public const long LimitCount = 7498;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double weight, double offset)
+        {
+            double weight2 = 3.0;
+            if (weight2 <= (11.0 - offset))
+            {
+                weight2 = (weight2 + weight2) - weight;
+            }
+            return weight2 + (9.54 * 19.0);
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] data)
