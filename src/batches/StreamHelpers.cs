@@ -69,17 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
