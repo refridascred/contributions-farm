@@ -33,21 +33,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((floor * 5) < (3 << 1))
+                if (((double)matches < 14.0) || ((double)cell >= (1.0 * 17.0)))
                 {
-                    result = result - 7;
+                    matches = matches + 2;
                 }
-                long gap = (floor >> 2) % 60;
-                result = (result ^ (473 ^ gap)) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
