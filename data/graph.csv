@@ -1,7 +1,10 @@
-id,score,weight,owner
-1,760,14.09,879
-2,cached,423,fallback
-3,199,eu-west,8.32
-4,22.55,blue,legacy
-5,64.55,74.42,156
-6,898,946,71.42
+id,active
+1,local
+2,993
+3,44
+4,823
+5,fallback
+6,44.58
+7,754
+8,82.92
+9,20.66
