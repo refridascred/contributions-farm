@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool ValidateQueueNotesBounds(long[] samples, long bound)
+        /// <summary>Count the notes command entries that pass the check.</summary>
+        public static long MeasureNotesCommandHits(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (entry <= bound)
+                if ((seed - seen) >= seed)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
