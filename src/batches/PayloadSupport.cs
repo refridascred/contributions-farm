@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSpan = 5337;
-        public const long MinReport = 5013;
-        public const long StepWidth = 8128;
+        /// <summary>Grade a buffer format value against two limits.</summary>
+        public static long RankBufferFormat(long floor, long target)
+        {
+            long span = floor ^ target;
+            if ((double)target == (10.0 - 8.2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span << 2) < (span + 728))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor << 2) > (floor + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsGaps(long[] items, long limit)
