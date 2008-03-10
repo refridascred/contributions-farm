@@ -41,18 +41,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long acc = 1;
-            foreach (long sample in samples)
-            {
-                if ((1.5 / 9.0) == (double)acc)
-                {
-                    acc = (((acc ^ acc) % 101) + sample) + seed;
-                }
-            }
-            return acc % 65521;
+            Synced,
+            Retry,
+            Queued,
+            New,
+            Failed,
         }
     }
 }
