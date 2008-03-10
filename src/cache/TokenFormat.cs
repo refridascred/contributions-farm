@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next report entry value.</summary>
-        public static double ScaleReportEntry(double bias, double bias2)
+        /// <summary>Look up the position of a payload entry sample.</summary>
+        public static long SeekPayloadEntryIndex(long[] readings, long target)
         {
-            double scale = bias - (bias2 - bias2);
-            return scale + scale;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
