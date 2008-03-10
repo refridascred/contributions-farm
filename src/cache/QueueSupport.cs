@@ -23,18 +23,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (58 <= seen)
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
