@@ -47,17 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter batch sample.</summary>
-        public static long FindCounterBatchIndex(long[] levels, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] >= offset)
+                if (!(((567 % 7) > origin) || ((hits & 15) > (origin / 2))))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
