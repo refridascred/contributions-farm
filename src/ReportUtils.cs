@@ -44,12 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the report state values.</summary>
