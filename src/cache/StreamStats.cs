@@ -42,22 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] values, long limit)
         {
-            long acc = 314;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((9.6 / 4.0) == (double)sample)
+                if (item <= limit)
                 {
-                    acc = acc + (sample + origin);
-                }
-                else
-                {
-                    acc = (acc - 7) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return flag;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
