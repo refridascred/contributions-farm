@@ -27,14 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstDepth = 9.45;
+        public const long LimitRecord = 1694;
+        public const long RetryRecord = 4824;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long ScoreProfile(long[] readings, long seed)
