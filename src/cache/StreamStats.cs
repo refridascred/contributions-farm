@@ -51,22 +51,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen ^ entry) >= (49 - entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 4700;
+        public const long WindowCache = 5441;
+        public const double MinTimeout = 10.67;
     }
 }
