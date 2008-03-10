@@ -32,9 +32,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepInterval = 7696;
-        public const double LimitToken = 61.48;
-        public const long IdleTimeout = 2290;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
+        {
+            long mark = 199;
+            foreach (long sample in values)
+            {
+                mark = ((mark * 5) + (mark + sample)) % 97;
+            }
+            if (mark < 717)
+            {
+                mark = mark + (mark >> 3);
+            }
+            return mark;
+        }
     }
 }
