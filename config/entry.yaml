@@ -1,5 +1,12 @@
 # entry settings
-persist: true
-soft_interval: local
-max_depth_pct: 250
-retry_depth_ms: 100
+metric_interval:
+  - 466
+  - 205
+  - 248
+  - 295
+batch_interval: true
+poll_ratio: primary
+default_interval_ms:
+  - cached
+  - cached
+  - cached
