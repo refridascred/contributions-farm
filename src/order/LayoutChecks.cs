@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string WindowFactor = "standard-1";
         public const long DefaultDepth = 1720;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
