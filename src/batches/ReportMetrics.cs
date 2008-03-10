@@ -39,22 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] series, long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((((value << 2) < (value - value)) || ((double)value == (double)origin)) && ((double)origin >= (double)value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Draft,
         }
     }
 }
