@@ -26,21 +26,17 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Look up the position of a entry commits sample.</summary>
+        public static long FindEntryCommitsIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
