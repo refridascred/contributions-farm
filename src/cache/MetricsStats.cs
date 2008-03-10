@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate route command samples.</summary>
-        public static long TallyRouteCommand(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] series, long origin)
         {
-            long acc = 823;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                acc = ((acc ^ (acc >> 2)) % 97) - item;
+                if ((entry + seen) != (0 + entry))
+                {
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc > 6)
-            {
-                acc = (acc << 3) ^ (29 % 100);
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
