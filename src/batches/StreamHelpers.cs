@@ -69,13 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
