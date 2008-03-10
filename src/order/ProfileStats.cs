@@ -19,15 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm filter series from a seed.</summary>
-        public static long StepFarmFilter(long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long target, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            if ((offset * 2) >= (7 % 10))
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((target + offset) != (213 << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
