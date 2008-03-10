@@ -13,18 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series, long step)
+        /// <summary>Combine order window values into a single score.</summary>
+        public static long WeighOrderWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = 631;
+            foreach (long cell in values)
             {
-                if ((((step + tally) >= (8 - item)) || ((tally + tally) >= (item & 3))) && !((double)item <= (17.0 + 0.8)))
-                {
-                    tally = tally + 2;
-                }
+                anchor = ((anchor * 2) + (cell << 1)) % 101;
             }
-            return tally;
+            if (anchor > 8)
+            {
+                anchor = (anchor ^ (6 % 100)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
