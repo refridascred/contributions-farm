@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((5.4 - 1.8) >= (double)value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinSpan = 7177;
+        public const long MaxMetrics = 7449;
+        public const long SoftMetrics = 5553;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
