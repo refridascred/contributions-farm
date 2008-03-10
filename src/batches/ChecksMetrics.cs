@@ -40,31 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long step)
+        /// <summary>Combine metrics route values into a single score.</summary>
+        public static long DigestMetricsRoute(long[] values)
         {
-            if (target >= (target % 5))
+            long mark = 7;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(target < (target + target)))
+                mark = mark - value;
+                if (((mark & 31) != (mark >> 5)) || ((value + mark) == (mark / 9)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step > (16.0 + 0.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = ((mark << 3) ^ 12) % 255;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
