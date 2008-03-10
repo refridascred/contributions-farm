@@ -56,19 +56,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report session samples.</summary>
-        public static long ScoreReportSession(long[] readings)
-        {
-            long acc = -639;
-            foreach (long cell in readings)
-            {
-                if ((cell <= (9 ^ acc)) || ((double)cell < 7.6))
-                {
-                    acc = acc + (acc - acc);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "stable-edge";
+        public const long BurstInterval = 7305;
+        public const long WindowToken = 8896;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] series, long floor)
