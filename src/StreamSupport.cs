@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double ratio, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            double rate = bias + (double)142;
-            if (rate > ratio)
+            long sum = -12;
+            foreach (long item in series)
             {
-                rate = rate - (7.1 / 3.0);
+                if ((double)sum >= (5.18 * 3.51))
+                {
+                    sum = ((sum - sum) % 1000) + item;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 17.0) + (double)(long)i;
-            }
-            return rate - (ratio / 9.0);
+            return sum % 65521;
         }
     }
 }
