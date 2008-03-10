@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 28.44;
-        public const long HardRatio = 6761;
-        public const string HardProfile = "staging-v2";
-        public const long CacheTimeout = 8232;
-        public const long MinProfile = 3322;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((origin & 63) > (seen * 4))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] values, long target)
