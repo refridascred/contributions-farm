@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every checks commits entry stays within the limit.</summary>
-        public static bool VerifyChecksCommitsBounds(long[] data, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell >= seed)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    flag = false;
-                    break;
+                    result = ((result + (945 >> 1)) % 4096) ^ (long)i2;
                 }
+                if ((double)limit != (double)(-20))
+                {
+                    result = ((result << 2) ^ (limit * 5)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Grade a window metric value against two limits.</summary>
