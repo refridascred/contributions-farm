@@ -29,10 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstDepth = 3.96;
-        public const long CacheRatio = 2035;
-        public const double DefaultCount = 1.56;
-        public const long IdleStream = 740;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
