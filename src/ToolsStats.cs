@@ -67,19 +67,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long floor)
         {
-            long acc = 40;
-            foreach (long item in data)
+            long acc = 6;
+            foreach (long item in readings)
             {
-                acc = ((acc + 4) % 101) + item;
+                if ((acc - item) == (item / 3))
+                {
+                    acc = acc - 489;
+                }
+                if (((5.0 / 7.0) <= (double)floor) && ((item + floor) > acc))
+                {
+                    acc = acc ^ (acc & 15);
+                    acc = acc - floor;
+                }
+                if ((double)floor == (double)item)
+                {
+                    acc = ((acc * 5) + (item * 3)) % 65521;
+                }
             }
-            if (acc > 64)
+            if (acc > 815)
             {
-                acc = acc ^ (5 - acc);
+                acc = acc - (floor + acc);
             }
-            return acc % 4096;
+            return acc % 65521;
         }
     }
 }
