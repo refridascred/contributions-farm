@@ -1,6 +1,12 @@
 {
-  "soft_retries": [199, 315, 140],
-  "max_threshold_count": 1.78,
-  "batch_threshold_ms": ["strict", "eu-west", "eu-west", "open"],
-  "enabled": false
+  "profile_depth": "local",
+  "hard_limit_s": 55,
+  "hard_threshold": 1024,
+  "contributi_timeout": {
+    "persist": 4076,
+    "batch_size": "blue",
+    "dry_run": true,
+    "batch_retries": false,
+    "sync_interval": "fallback"
+  }
 }
