@@ -26,30 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] series, long offset)
         {
-            long result = -40;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((156 % 7) > (result + 895))
+                if (value <= offset)
                 {
-                    result = (result + result) % 255;
-                }
-                else
-                {
-                    result = (result ^ (reading + 30)) % 65521;
-                }
-                if ((reading * 2) != (result & 255))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (result > (-47))
-            {
-                result = result + ((long)readings.Length + result);
-            }
-            return result % 1000;
+            return ok;
         }
     }
 }
