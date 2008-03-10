@@ -1,19 +1,17 @@
 # githubfarm settings
-buffer_window: false
-poll_size: true
-audit:
-  order_limit:
-    report_capacity: true
-    soft_capacity: primary
-    min_timeout_pct: standard
-    context_interval: 5.49
-  cache_threshold_ms: 87.1
-  burst_retries_ms: 13
-  cache_depth_pct:
-    stream_threshold: 45.3
-    audit: 500
-    flush_ttl: edge
-    sync_size: staging
-    dry_run: fallback
-    cache_depth: true
-  soft_threshold_ms: 1024
+default_retries_count: edge
+min_depth_ms: true
+enabled:
+  poll_delay: fallback
+  burst_depth_ms: 2442
+  idle_ratio_ms:
+    cluster_ttl: 61.61
+    idle_retries: 75
+    dry_run: blue
+    retry_threshold_ms: 250
+  cache_capacity:
+    - 364
+    - 144
+    - 309
+    - 383
+  min_limit_ms: 60
