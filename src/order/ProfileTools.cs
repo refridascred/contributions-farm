@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
