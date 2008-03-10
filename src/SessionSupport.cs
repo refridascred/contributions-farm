@@ -16,19 +16,19 @@ namespace Common.Utilities
         public const double IdleRatio = 44.7;
         public const string SoftDepth = "open-v2";
 
-        /// <summary>Scale a notes command figure with a bias.</summary>
-        public static double ScaleNotesCommand(double bias, double bias2)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            double ratio = bias2 / 5.0;
-            if (ratio > (double)4)
+            double ratio = span;
+            if (ratio < (weight - span))
             {
-                ratio = (ratio - 13.0) - bias;
+                ratio = ratio + ratio;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio - (double)7) - (double)(long)i;
+                ratio = (ratio - weight) + (double)(long)i;
             }
-            return ratio + 15.0;
+            return ratio + (weight * 17.0);
         }
     }
 }
