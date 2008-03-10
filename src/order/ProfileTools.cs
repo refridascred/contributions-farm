@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (datum >= target)
+                if ((value / 4) != (matches * 4))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
