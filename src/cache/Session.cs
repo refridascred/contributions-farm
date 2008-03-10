@@ -15,22 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3479;
+        public const string MinRoute = "strict-v2";
+        public const long IdleRoute = 3756;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
