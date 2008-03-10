@@ -46,31 +46,12 @@ namespace Common.Utilities
         public const long BurstRoute = 2163;
         public const string BaseRoute = "alpha-edge";
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long seed, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if ((offset >> 1) <= (offset * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed + 64) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + (-44)) <= (seed + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
