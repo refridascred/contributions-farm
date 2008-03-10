@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every cache token entry stays within the limit.</summary>
-        public static bool ValidateCacheTokenLimits(long[] items, long target)
+        /// <summary>Fold a list of route editor readings.</summary>
+        public static long TotalRouteEditor(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long result = 6;
+            foreach (long entry in levels)
             {
-                if (cell >= target)
+                if ((double)entry >= (19.0 + 19.0))
                 {
-                    ok = false;
+                    result = (result - (bound - result)) % 65521;
                     break;
                 }
+                if ((double)706 <= (double)entry)
+                {
+                    result = (result << 2) ^ (entry + bound);
+                }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
