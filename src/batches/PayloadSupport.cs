@@ -26,18 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] samples, long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((tally << 1) >= cell) || (((double)(-67) != (double)cell) && ((double)cell > 9.5)))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Draft,
+            Pending,
+            Done,
         }
     }
 }
