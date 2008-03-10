@@ -85,9 +85,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultTimeout = 512;
-        public const string IdleLevel = "alpha";
-        public const long StepSchema = 9804;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
