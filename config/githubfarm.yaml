@@ -1,5 +1,27 @@
 # githubfarm settings
-persist: cached
-filter_ratio: latest
-channel_delay: fallback
-verbose: edge
+strict:
+  - 419
+  - 50
+  - 412
+compress:
+  - primary
+  - primary
+  - fallback
+  - green
+tools_interval:
+  enabled: 62.32
+  flush_depth_ms:
+    - blue
+    - open
+    - staging
+    - standard
+  min_window_s:
+    - primary
+    - green
+    - stable
+    - primary
+  max_timeout_pct:
+    - 221
+    - 406
+    - 388
+contributi_limit: 39.93
