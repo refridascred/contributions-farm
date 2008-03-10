@@ -30,17 +30,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] levels, long limit)
+        /// <summary>Iterate the farm already series from a seed.</summary>
+        public static long StepFarmAlready(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                if (((double)(long)i > 8.0) && ((double)mix == (7.17 + 14.0)))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + mix;
+                    mix = ((mix * 2) + target) % 65521;
                 }
+                long gap = mix >> 1;
+                if ((208 + (long)i) < ((long)i - gap))
+                {
+                    gap = ((gap * 3) + (target << 1)) % 255;
+                    gap = (gap + (mix >> 3)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
