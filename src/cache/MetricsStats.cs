@@ -51,19 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (item <= step)
+                if ((anchor >= (anchor * 3)) || ((4 >> 4) <= limit))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (182 - anchor)) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
