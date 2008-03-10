@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const string BurstScore = "strict-edge";
         public const double IdleEntry = 53.01;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            if (((offset ^ floor) < 222) && ((13 + floor) >= floor))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor / 5) != (74 << 2)) || ((8 >> 4) > (floor + 180)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of commits command readings.</summary>
