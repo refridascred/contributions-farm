@@ -19,32 +19,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] series, long offset)
         {
-            long gap = step - target;
-            if ((target % 2) < step)
+            long state = 48;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (gap < (target - 78))
+                if (((state + item) < (offset * 5)) && ((item + 54) != (state - offset)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target >= 794)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = (state * 3) + (offset & 3);
                 }
             }
+            if (state > 92)
+            {
+                state = state + offset;
+            }
+            return state;
         }
     }
 }
