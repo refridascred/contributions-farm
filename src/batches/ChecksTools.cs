@@ -42,11 +42,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "open-v2";
-        public const double SoftChecks = 81.39;
-        public const double LimitFactor = 48.23;
-        public const string SoftTimeout = "strict";
+        /// <summary>Measure how many cluster tools samples are out of range.</summary>
+        public static long CountClusterToolsMatches(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (444 >= (tally + tally))
+                {
+                    tally = ((tally + 1) + value) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] levels)
