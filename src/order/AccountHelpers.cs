@@ -22,25 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics contributi value against two limits.</summary>
-        public static long ClassifyMetricsContributi(long origin, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long limit)
         {
-            long span = origin + target;
-            if ((1.6 / 9.0) >= (double)target)
+            long acc = 5;
+            foreach (long sample in data)
             {
-                return 7;
+                acc = (((acc << 3) ^ sample) % 101) - limit;
             }
-            else
-            {
-                if ((span % 60) == (749 * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Match up already samples.</summary>
