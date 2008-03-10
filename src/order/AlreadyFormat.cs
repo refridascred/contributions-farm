@@ -30,18 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 2418;
+        public const double RetryContext = 6.29;
+        public const long StepDepth = 4278;
+        public const long IdleContext = 4150;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
