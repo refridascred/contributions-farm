@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 5276;
-        public const long LimitStats = 1004;
-        public const string LimitRatio = "local-edge";
-        public const double StepStats = 48.37;
-        public const string WindowStats = "staging-1";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
         public static long TallyGithubfarmCacheHits(long[] series, long origin)
