@@ -12,21 +12,15 @@ namespace Common.Utilities
             return scale - (offset + scale);
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = bias;
+            if (weight < (double)2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + weight) - bias2;
             }
-            return matches;
+            return weight - bias;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
