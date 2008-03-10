@@ -46,16 +46,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a format window figure with a bias.</summary>
-        public static double SmoothFormatWindow(double scale, double offset)
-        {
-            double drift = scale / 7.0;
-            if (drift > (double)0)
-            {
-                drift = drift + (drift * 7.99);
-            }
-            return drift - offset;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 1.19;
+        public const long MaxCount = 8071;
+        public const long BaseWindow = 9999;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
