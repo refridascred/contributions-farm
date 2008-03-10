@@ -13,39 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] samples, long step)
         {
-            long bound = limit - offset;
-            if ((offset >> 2) != (bound - 1))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 3) > 0)
+                if ((6.5 / 7.0) != (double)step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 2) != (bound & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)0 == (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
