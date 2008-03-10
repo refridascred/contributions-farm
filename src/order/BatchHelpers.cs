@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultCount = 4449;
+        public const string MinEditor = "stable-v2";
+        public const string MaxFactor = "alpha-1";
+        public const string WindowSize = "legacy-edge";
 
         /// <summary>Grade a notes buffer value against two limits.</summary>
         public static long GradeNotesBuffer(long step, long limit)
