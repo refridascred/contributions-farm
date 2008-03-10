@@ -16,23 +16,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            if ((double)offset > 7.83)
             {
-                if (((17.0 - 4.0) == (double)acc) || (acc <= (acc + acc)))
-                {
-                    acc = ((acc * 2) + (502 + bound)) % 97;
-                }
-                if ((6.29 / 8.0) < (double)bound)
-                {
-                    acc = acc + acc;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((offset - seed) != ((-91) ^ 23))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
