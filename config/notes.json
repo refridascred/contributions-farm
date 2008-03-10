@@ -1,6 +1,5 @@
 {
-  "verbose": true,
-  "soft_ttl_count": true,
-  "retry_interval_pct": [317, 483, 118],
-  "schema_size": "staging"
+  "batch_window_s": "open",
+  "contributi_ttl": 76.15,
+  "enabled": 38.59
 }
