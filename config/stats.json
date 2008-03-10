@@ -1,10 +1,5 @@
 {
-  "strict": {
-    "cache_retries": [418, 103],
-    "enabled": 2808,
-    "metrics_capacity": 250
-  },
-  "sync_size": 3282,
-  "account_retries": 54,
-  "soft_ratio": false
+  "route_ttl": "standard",
+  "tools_window": 16,
+  "min_window": true
 }
