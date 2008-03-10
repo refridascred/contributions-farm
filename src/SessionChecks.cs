@@ -32,12 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 6293;
-        public const string HardSize = "local-edge";
-        public const string HardBuffer = "cached";
-        public const string DefaultRatio = "latest";
-        public const long RetryScore = 8682;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Paused,
+            Active,
+            New,
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long seed, long origin)
