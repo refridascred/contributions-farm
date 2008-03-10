@@ -1,5 +1,6 @@
 {
-  "max_ttl": 45.63,
-  "max_depth": false,
-  "graph_interval": 5.15
+  "idle_window": [325, 184, 262],
+  "base_threshold": [17, 380, 366],
+  "context_ratio": 78,
+  "dry_run": "latest"
 }
