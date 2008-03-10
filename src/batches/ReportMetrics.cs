@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const string HardTimeout = "primary-edge";
         public const double CacheSpan = 79.32;
 
-        /// <summary>Measure how many stream checks samples are out of range.</summary>
-        public static long CountStreamChecksHits(long[] data, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long state = 89;
+            foreach (long sample in data)
             {
-                if (((reading + 82) != (reading + floor)) && (((floor / 9) > floor) && (0 > (matches ^ reading))))
-                {
-                    matches = matches + 1;
-                }
+                state = ((state << 3) ^ (state / 7)) - offset;
+                state = ((state * 5) + (sample * 3)) % 101;
+                state = (state + sample) % 255;
             }
-            return matches;
+            if (state > 638)
+            {
+                state = (state - (state / 7)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a stream stats.</summary>
