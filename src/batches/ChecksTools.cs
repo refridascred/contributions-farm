@@ -53,13 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long limit, long step)
         {
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long cur = limit - step;
+            if (((limit - limit) != (limit - cur)) && ((step + step) < (61 << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= 5.49)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (5.65 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue buffer entries that pass the check.</summary>
