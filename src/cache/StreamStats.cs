@@ -33,17 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of cluster counter readings.</summary>
