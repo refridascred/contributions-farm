@@ -1,6 +1,19 @@
 {
-  "idle_retries_pct": true,
-  "burst_limit_pct": 2.7,
-  "audit": 15.98,
-  "layout_ratio": ["cached", "cached", "green"]
+  "hard_ratio": 80.13,
+  "farm_retries": {
+    "readonly": {
+      "support_ttl": "edge",
+      "cache_depth_ms": ["green", "local"],
+      "contributi_delay": false
+    },
+    "warm_threshold_count": 250,
+    "base_ratio_ms": true,
+    "schema_capacity": 58,
+    "idle_window": 6351,
+    "persist": "local"
+  },
+  "default_size_ms": [71, 237],
+  "strict": 7435,
+  "burst_ratio_ms": 47.85,
+  "channel_size": "edge"
 }
