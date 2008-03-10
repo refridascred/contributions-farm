@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            Pending,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a contributi options.</summary>
