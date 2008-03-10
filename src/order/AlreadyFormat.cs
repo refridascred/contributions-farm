@@ -55,22 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchDepth = 5579;
+        public const double RetryToken = 79.23;
+        public const long RetryDepth = 6551;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long seed, long origin)
