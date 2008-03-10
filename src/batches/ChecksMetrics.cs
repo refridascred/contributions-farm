@@ -28,10 +28,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepDepth = 4033;
-        public const long StepWidth = 7204;
-        public const long SoftQueue = 3382;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "fallback-edge";
+        public const double BaseScore = 69.47;
+        public const long DefaultLevel = 4601;
+        public const long LimitCommits = 5012;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TotalCache(long[] readings)
