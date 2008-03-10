@@ -1,20 +1,6 @@
 {
-  "warm_ratio_ms": "primary",
-  "compress": 100,
-  "soft_depth_ms": {
-    "readonly": {
-      "default_ratio_count": "eu-west",
-      "poll_size_count": 52,
-      "cache_threshold_ms": [267, 251, 392, 394],
-      "idle_window_count": 60,
-      "min_depth_count": "edge",
-      "poll_size": "edge"
-    },
-    "order_window": 17,
-    "hard_ttl_ms": 83,
-    "warm_limit_ms": [141, 306, 329],
-    "support_interval": true,
-    "buffer_interval": "eu-west"
-  },
-  "flush_limit_s": true
+  "schema_timeout": true,
+  "flush_ratio": "blue",
+  "token_window": 1223,
+  "audit": 21.85
 }
