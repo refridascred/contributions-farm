@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stats cluster value against two limits.</summary>
-        public static long RankStatsCluster(long offset, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] series, long seed)
         {
-            if (limit > ((-867) << 1))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset + limit) >= (offset & 127)) && ((3.3 - 5.09) >= (double)offset))
+                if ((matches / 6) <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit % 8) == (offset + 25))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.8 / 4.0) < (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a session info.</summary>
