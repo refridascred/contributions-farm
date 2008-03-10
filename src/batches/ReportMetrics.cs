@@ -22,16 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm layout counter forward.</summary>
-        public static long SeriesGithubfarmLayout(long limit)
+        /// <summary>Count account format pairs that satisfy a relation.</summary>
+        public static long PairAccountFormatCount(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ mix) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
