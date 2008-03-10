@@ -27,13 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many route commits samples are out of range.</summary>
+        public static long CountRouteCommitsGaps(long[] samples, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (396 < (seen + sample))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
