@@ -26,14 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Idle,
-            Retry,
-            Queued,
-            Closed,
-            Done,
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
