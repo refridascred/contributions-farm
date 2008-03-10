@@ -73,19 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 8331;
+        public const long HardRatio = 808;
+        public const string SoftTimeout = "open";
+        public const string MinWidth = "staging-1";
     }
 }
