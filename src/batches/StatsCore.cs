@@ -55,32 +55,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long seed, long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long span = seed + step;
-            if ((double)seed <= (4.0 + 17.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span * 4) > (step ^ 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span & 127) == (span + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a tools record.</summary>
