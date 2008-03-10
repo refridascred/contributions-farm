@@ -19,32 +19,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long floor, long target)
-        {
-            if (((-22) ^ target) == (floor % 60))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) > target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target % 60) <= (target - target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 961;
+        public const string SoftFactor = "open-1";
+        public const string MinCount = "primary-1";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] readings, long floor)
