@@ -31,24 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] readings, long offset)
         {
-            long mix = 6;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!(limit >= (mix * 2)))
+                if ((tally - tally) < (tally << 3))
                 {
-                    mix = (mix + (452 + mix)) % 97;
+                    tally = ((tally + 3) ^ value) - offset;
                 }
-                if (mix <= (0 + mix))
-                {
-                    mix = mix ^ (limit * 2);
-                    continue;
-                }
-                mix = ((mix * 2) + datum) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
