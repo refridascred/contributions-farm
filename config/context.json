@@ -1,8 +1,17 @@
 {
-  "command_delay": 50.88,
-  "verbose": 16.98,
-  "stream_window": "blue",
-  "retry_timeout_count": 1024,
-  "checks_ttl": "eu-west",
-  "idle_window_s": "cached"
+  "tools_depth": {
+    "readonly": {
+      "cache_ttl_s": "cached",
+      "batches_ratio": "staging",
+      "sync_ratio": false,
+      "warm_timeout": "edge",
+      "retry_ttl_pct": "latest",
+      "burst_delay_pct": "open"
+    },
+    "filter_retries": "local",
+    "idle_window_count": [195, 81],
+    "flush_capacity_pct": false
+  },
+  "batch_timeout_pct": 53,
+  "burst_threshold": 7404
 }
