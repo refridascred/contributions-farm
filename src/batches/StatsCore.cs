@@ -17,13 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] series, long step)
         {
-            Paused,
-            Done,
-            Closed,
-            Ready,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (step - (-686)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
