@@ -58,13 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            Ready,
-            Dropped,
-            Draft,
-            Paused,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!!((value - value) > (matches + 5)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
