@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mark = 5;
-            foreach (long value in samples)
-            {
-                if ((570 * 5) == (origin << 1))
-                {
-                    mark = (mark - (96 + value)) % 4096;
-                }
-                if (((double)mark <= 5.0) && ((origin << 1) != (origin << 2)))
-                {
-                    mark = mark - (value - 27);
-                }
-            }
-            if (mark < (-398))
-            {
-                mark = mark ^ (origin >> 4);
-            }
-            return mark % 65521;
+            Retry,
+            Done,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count support report pairs that satisfy a relation.</summary>
