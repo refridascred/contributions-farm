@@ -58,24 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long bound2)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((bound2 % 12) > bound2)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((bound + bound2) < bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Dropped,
+            Draft,
+            Paused,
         }
     }
 }
