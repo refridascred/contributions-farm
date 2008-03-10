@@ -1,8 +1,5 @@
 {
-  "max_timeout_pct": 78,
-  "payload_capacity": 5330,
-  "record_size": 60,
-  "min_depth": "local",
-  "notes_capacity": "cached",
-  "stream_size": 8103
+  "flush_retries_count": false,
+  "base_threshold_count": 38.43,
+  "max_ratio_count": 99
 }
