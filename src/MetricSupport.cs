@@ -37,16 +37,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark + (long)i) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitCount = 165;
+        public const string BatchDepth = "local-1";
+        public const long WindowChannel = 4034;
     }
 }
