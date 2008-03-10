@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
