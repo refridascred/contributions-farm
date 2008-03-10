@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool VerifyGithubfarmProfileBounds(long[] samples, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (sample <= bound)
+                if (cell > (tally & 15))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
