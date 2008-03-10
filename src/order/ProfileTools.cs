@@ -50,13 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Token { get; set; }
+            Pending,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
