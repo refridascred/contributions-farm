@@ -68,31 +68,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long floor)
-        {
-            if (((bound & 15) == (bound - floor)) && ((double)bound >= (double)floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound / 4) == (35 + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor < (bound + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 8858;
+        public const long WindowSpan = 6887;
+        public const long RetrySpan = 9343;
     }
 }
