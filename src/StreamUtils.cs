@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long origin)
         {
-            long mix = 2;
-            foreach (long sample in values)
+            long lane = limit + origin;
+            if ((lane > (origin + limit)) && ((lane - lane) >= origin))
             {
-                if ((sample <= mix) && ((sample + (long)values.Length) != (85 / 9)))
+                return 3;
+            }
+            else
+            {
+                if ((942 >= (lane - origin)) || ((lane - lane) > (origin >> 3)))
                 {
-                    mix = (mix ^ (seed + sample)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    mix = mix - (seed % 2);
-                }
-                if ((sample + sample) >= (seed % 3))
-                {
-                    break;
+                    return 6;
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
