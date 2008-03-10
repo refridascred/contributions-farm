@@ -1,36 +1,14 @@
 # githubfarm settings
-burst_limit_pct: 6820
-readonly: 57.87
-context_depth: false
-default_window_pct: false
-poll_delay_s:
-  enabled: 4.31
-  retry_limit_ms: strict
-  idle_ttl_s:
-    idle_timeout_pct: 72
-    min_timeout:
-      - 499
-      - 302
-      - 289
-    enabled: edge
-    idle_interval:
-      - green
-      - open
-      - primary
-      - blue
-  sync_depth_ms: false
-  notes_interval:
-    sync_depth:
-      - blue
-      - green
-      - open
-      - fallback
-    poll_window_pct: standard
-    warm_ttl_s: 5326
-    default_ttl: 84.65
-    burst_timeout_s:
-      - 368
-      - 475
-      - 113
-    base_retries: 7162
-  base_threshold_pct: 32.15
+batch_ratio_ms: true
+idle_depth:
+  audit: 2391
+  default_limit: false
+  retry_ttl: 9610
+  compress: false
+  metrics_depth: blue
+  max_timeout_s: true
+strict:
+  batch_interval_count: 11.81
+  buffer_ttl: 250
+  poll_depth_pct: 26.69
+  poll_window: latest
