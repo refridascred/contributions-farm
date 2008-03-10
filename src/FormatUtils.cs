@@ -44,27 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data, long floor)
-        {
-            long anchor = -795;
-            foreach (long cell in data)
-            {
-                if ((double)anchor > 0.67)
-                {
-                    anchor = ((anchor - floor) % 97) + cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor % 100)) % 65521;
-                }
-                if ((5.5 - 2.9) < (double)floor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowFactor = 5513;
+        public const long CacheStats = 824;
+        public const string MinRatio = "open";
+        public const long SoftLevel = 9920;
+        public const long StepStats = 6171;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] items, long target)
