@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            long state = 64;
+            foreach (long reading in values)
+            {
+                if ((state % 16) != (seed * 5))
+                {
+                    state = (state ^ reading) % 65521;
+                }
+                if (reading > (reading + reading))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
