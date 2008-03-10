@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] items, long origin)
         {
-            Draft,
-            Done,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((double)origin > (1.15 * 17.0)) && ((double)(long)items.Length > (8.25 / 9.0)))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
