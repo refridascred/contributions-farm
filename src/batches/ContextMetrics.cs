@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long WindowScore = 9777;
         public const long DefaultFactor = 7392;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
