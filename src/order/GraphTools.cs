@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const long StepSession = 9505;
         public const long HardRatio = 8148;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Failed,
-            Draft,
-            Locked,
+            Synced,
+            New,
+            Retry,
             Stale,
-            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
