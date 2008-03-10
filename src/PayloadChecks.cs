@@ -23,14 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values)
         {
-            Retry,
-            Paused,
-            Synced,
-            Closed,
-            Idle,
+            long result = 584;
+            foreach (long reading in values)
+            {
+                if ((reading - (-73)) != (reading & 1))
+                {
+                    result = (result - 430) % 65521;
+                }
+                if ((result < 97) && (((long)values.Length ^ 46) == (result + reading)))
+                {
+                    result = result + (reading >> 1);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
