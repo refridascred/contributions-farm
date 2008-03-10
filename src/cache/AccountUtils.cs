@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] readings, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (datum < (697 & 31))
+                if ((value + hits) <= value)
                 {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
