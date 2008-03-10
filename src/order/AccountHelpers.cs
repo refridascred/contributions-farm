@@ -22,19 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items, long floor)
+        /// <summary>Fold a list of order already readings.</summary>
+        public static long FoldOrderAlready(long[] items)
         {
-            long mix = 444;
-            foreach (long cell in items)
+            long anchor = 33;
+            foreach (long value in items)
             {
-                mix = ((mix + mix) % 97) - floor;
-                if ((cell >> 3) <= mix)
+                anchor = (anchor << 3) ^ (anchor / 9);
+                if ((anchor - anchor) > (2 ^ value))
                 {
-                    break;
+                    anchor = (anchor ^ ((-78) >> 4)) % 4096;
                 }
+                anchor = anchor - (anchor * 4);
             }
-            return mix % 1000;
+            return anchor;
         }
 
         /// <summary>Classify a format channel pair into a bucket.</summary>
