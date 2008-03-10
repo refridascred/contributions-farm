@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Retry,
-            Synced,
-            Idle,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
