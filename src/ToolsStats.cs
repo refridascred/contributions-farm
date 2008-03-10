@@ -26,25 +26,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long diff = offset + limit;
-            if ((diff + diff) >= (limit * 2))
+            long mark = 594;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 1) < offset)
+                mark = (mark * 3) + (reading + reading);
+                if ((19.0 * 10.0) <= (double)mark)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    mark = (mark - reading) % 255;
                 }
             }
+            if (mark > 338)
+            {
+                mark = (mark + 998) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
