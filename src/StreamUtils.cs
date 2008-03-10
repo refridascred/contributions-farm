@@ -98,31 +98,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long origin, long origin2)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            if ((origin / 6) > origin)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                score = (score * 3) + (score / 3);
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin >= (origin % 7)) || ((798 - origin2) > origin2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin < 384) || ((origin + origin) >= (origin2 - 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
