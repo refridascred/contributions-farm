@@ -29,20 +29,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
+        public static long BucketGithubfarmContributi(long target, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long bound = target - floor;
+            if (!((5.0 / 3.0) > (double)bound))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state * 4) + (state - (long)i2)) % 101;
-                    state = state + origin;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (8.38 < (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
