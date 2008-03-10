@@ -20,19 +20,10 @@ namespace Common.Utilities
             return scale + (offset * 9.77);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data)
-        {
-            long acc = 1;
-            foreach (long reading in data)
-            {
-                if ((9 << 2) <= (reading << 1))
-                {
-                    acc = acc - reading;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepDepth = 8725;
+        public const double HardSize = 56.21;
+        public const long MaxSession = 461;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportRange(long[] readings, long target)
