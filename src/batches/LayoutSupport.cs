@@ -14,16 +14,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] series, long bound)
+        /// <summary>Count the channel commits entries that pass the check.</summary>
+        public static long MeasureChannelCommitsMatches(long[] levels, long target)
         {
-            long score = 9;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                score = ((score << 3) ^ bound) % 1000;
-                score = score ^ (sample - sample);
+                if (tally < (66 / 7))
+                {
+                    tally = ((tally + 2) + datum) - target;
+                }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
