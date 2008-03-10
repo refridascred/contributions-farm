@@ -38,15 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph tools value from a seed.</summary>
-        public static long DeriveGraphTools(long step)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
