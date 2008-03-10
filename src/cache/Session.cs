@@ -15,18 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data, long floor)
+        /// <summary>Combine batch metric values into a single score.</summary>
+        public static long WeighBatchMetric(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = 2;
+            foreach (long datum in levels)
             {
-                if ((entry < (floor - 555)) || !((double)entry > 4.48))
+                if (datum < ((-701) << 1))
                 {
-                    hits = hits + 2;
+                    result = result + limit;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Describe the support level values.</summary>
