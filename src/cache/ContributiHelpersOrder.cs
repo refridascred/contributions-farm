@@ -20,23 +20,13 @@ namespace Common.Utilities
         public const long BaseEditor = 9581;
         public const long BurstEditor = 6101;
 
-        /// <summary>Accumulate record farm samples.</summary>
-        public static long TallyRecordFarm(long[] series, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long acc = 36;
-            foreach (long cell in series)
-            {
-                if (((0 ^ acc) < (acc >> 5)) || ((floor + cell) < floor))
-                {
-                    acc = ((acc * 3) + (floor + 34)) % 1000;
-                }
-                acc = (acc + (floor ^ floor)) % 1000;
-            }
-            if (acc < 37)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 97;
+            Pending,
+            Locked,
+            Synced,
+            Idle,
         }
     }
 }
