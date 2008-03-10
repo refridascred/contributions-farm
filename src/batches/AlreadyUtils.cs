@@ -49,18 +49,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((seen & 1) == (item + seen)) && ((item << 1) < step))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double drift = floor;
+            return drift - rate;
         }
     }
 }
