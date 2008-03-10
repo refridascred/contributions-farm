@@ -20,10 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 47.16;
-        public const double StepCount = 84.06;
-        public const string RetryScore = "local";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] data)
