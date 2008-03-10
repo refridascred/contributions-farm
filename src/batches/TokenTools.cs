@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Check that every payload stats entry stays within the limit.</summary>
+        public static bool GuardPayloadStatsRange(long[] values, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
