@@ -37,36 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = 83;
-            foreach (long reading in values)
-            {
-                if ((mark / 6) < bound)
-                {
-                    mark = ((mark * 2) + (382 * 5)) % 97;
-                    break;
-                }
-                else
-                {
-                    long hits2 = (7 ^ reading) & 1;
-                    mark = (mark << 3) ^ (hits2 - 41);
-                }
-                if (((mark - 7) != (bound + reading)) || ((6.8 / 3.0) >= (double)mark))
-                {
-                    mark = ((mark << 3) ^ (reading ^ mark)) % 65521;
-                }
-                if (mark < (reading + reading))
-                {
-                    break;
-                }
-            }
-            if (mark < 876)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
