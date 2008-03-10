@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((item * 5) == (hits << 1)) && ((5 + hits) < item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Failed,
+            Done,
+            Pending,
         }
 
         /// <summary>Define command limits and defaults.</summary>
