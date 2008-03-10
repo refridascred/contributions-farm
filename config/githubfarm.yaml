@@ -1,9 +1,8 @@
 # githubfarm settings
-hard_depth:
-  - 417
-  - 178
-verbose:
-  - 63
-  - 435
-  - 324
-persist: true
+base_ttl:
+  - fallback
+  - local
+base_ttl_ms: 58
+batches_ttl: 44.52
+flush_limit_s: 92
+sync_depth: strict
