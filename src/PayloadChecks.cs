@@ -33,15 +33,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Pending,
-            Queued,
-            Locked,
-            Ready,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinDepth = 615;
+        public const long MinGraph = 8249;
+        public const string BatchFactor = "staging-1";
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
