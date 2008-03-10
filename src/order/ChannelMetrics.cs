@@ -14,21 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((mark + 402) > (262 + mark)) || ((double)value <= (4.22 + 9.53)))
                 {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - value) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine command values into a single score.</summary>
