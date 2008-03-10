@@ -20,10 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 5485;
-        public const string CacheGraph = "staging-edge";
-        public const double BaseFactor = 31.3;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item << 2) < (item % 97))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowOutliers(long[] values, long bound)
