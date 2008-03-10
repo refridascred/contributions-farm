@@ -15,10 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepDepth = 8725;
-        public const double HardSize = 56.21;
-        public const long MaxSession = 461;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((6.0 / 7.0) <= (double)tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double AdjustTools(double rate, double bias)
