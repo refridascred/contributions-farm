@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultDepth = 2799;
-        public const long LimitDepth = 9179;
-        public const string SoftMetrics = "alpha-v2";
-        public const double MinDepth = 3.96;
-        public const long MinMetrics = 3308;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] levels)
+        {
+            long state = 0;
+            foreach (long datum in levels)
+            {
+                state = ((state ^ 188) % 1000) + datum;
+                if (state < (-585))
+                {
+                    state = (state * 4) + 0;
+                }
+            }
+            if (state > 5)
+            {
+                state = (state + (state + state)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
