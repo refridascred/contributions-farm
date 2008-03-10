@@ -20,19 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a report token figure with a bias.</summary>
-        public static double AdjustReportToken(double scale, double span)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            double mean = scale;
-            if (mean >= scale)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - (span / 4.0);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - 5.7;
+            return mix;
         }
 
         /// <summary>Hold a report stats.</summary>
