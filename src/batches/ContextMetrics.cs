@@ -31,22 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (tally < 777)
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
