@@ -23,10 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 6651;
-        public const double HardCount = 33.91;
-        public const long RetrySchema = 8400;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double MinRecord = 56.92;
