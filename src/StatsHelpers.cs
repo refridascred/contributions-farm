@@ -19,18 +19,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double weight2 = (weight + weight) * 0.19;
+            if (weight2 > offset)
             {
-                if ((5 - entry) <= hits)
-                {
-                    hits = hits + 1;
-                }
+                weight2 = weight2 - (double)79;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (offset - offset)) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Count the graph queue entries that pass the check.</summary>
