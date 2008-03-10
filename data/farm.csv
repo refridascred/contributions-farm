@@ -1,7 +1,6 @@
-id,label,score,state,level
-1,27.27,41.32,81.34,open
-2,633,43.1,190,fallback
-3,green,462,76.62,primary
-4,609,open,cached,335
-5,25.83,52.3,154,cached
-6,80,542,323,primary
+id,state,region,count
+1,blue,15.7,49.59
+2,edge,611,fallback
+3,591,71.42,72.69
+4,568,44.87,258
+5,23.41,green,18.19
