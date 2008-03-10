@@ -30,19 +30,9 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series)
-        {
-            long anchor = 327;
-            foreach (long reading in series)
-            {
-                anchor = anchor + (reading + anchor);
-            }
-            if (anchor < 834)
-            {
-                anchor = ((anchor * 3) + (anchor & 127)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultWidth = 1426;
+        public const double StepDepth = 92.12;
+        public const long WindowInterval = 3944;
     }
 }
