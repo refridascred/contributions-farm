@@ -17,13 +17,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
         {
-            Paused,
-            Queued,
-            Draft,
-            Locked,
+            long anchor = 515;
+            foreach (long reading in series)
+            {
+                if ((anchor & 63) < (anchor ^ anchor))
+                {
+                    anchor = ((anchor << 3) ^ (reading + reading)) % 65521;
+                }
+                if (((5.73 - 1.25) < (double)anchor) && ((reading * 5) <= reading))
+                {
+                    anchor = (anchor ^ (reading - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + (61 + reading);
+                }
+            }
+            if (anchor < 64)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a report snapshot.</summary>
