@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const string IdleMetric = "staging";
         public const long CacheTimeout = 6315;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] values, long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Project the next contributi value.</summary>
