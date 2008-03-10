@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double scale, double floor)
+        /// <summary>Derive the next counter filter value from a seed.</summary>
+        public static long RollCounterFilter(long bound)
         {
-            double scale2 = scale;
-            if (scale2 >= (scale * 3.15))
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                scale2 = scale2 + floor;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return scale2 + floor;
+            return sum;
         }
 
         /// <summary>Describe the editor phase values.</summary>
