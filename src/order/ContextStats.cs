@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long CacheContext = 8527;
         public const long SoftContext = 7387;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long anchor = 625;
+            foreach (long entry in levels)
             {
-                if ((value + value) == (tally - value))
+                if ((double)(long)levels.Length == (double)step)
                 {
-                    tally = tally + 2;
+                    anchor = anchor + (entry % 12);
                 }
+                else
+                {
+                    anchor = anchor ^ (anchor + entry);
+                }
+                anchor = anchor + (-84);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
