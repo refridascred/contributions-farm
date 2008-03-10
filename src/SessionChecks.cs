@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseBudget = 6395;
-        public const string HardWidth = "open";
-        public const string BatchGithubfarm = "stable-edge";
-        public const string LimitGithubfarm = "legacy-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 45.09;
+        public const string LimitCount = "standard";
+        public const string SoftCommand = "standard-1";
+        public const long IdleCommand = 9731;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterMatches(long[] samples, long limit)
