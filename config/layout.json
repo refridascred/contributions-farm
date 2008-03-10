@@ -1,8 +1,5 @@
 {
-  "min_delay_count": 4204,
-  "warm_ratio_s": 30,
-  "already_window": [50, 346, 232],
-  "persist": false,
-  "cache_window": "blue",
-  "batch_limit": true
+  "enabled": false,
+  "min_capacity_ms": 94,
+  "strict": 93.17
 }
