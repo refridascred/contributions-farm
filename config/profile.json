@@ -1,6 +1,5 @@
 {
-  "hard_limit_count": 66,
-  "min_depth_ms": "latest",
-  "poll_depth": ["local", "open", "local", "staging"],
-  "default_retries_count": 250
+  "min_retries_count": "legacy",
+  "context_size": "edge",
+  "idle_delay": "cached"
 }
