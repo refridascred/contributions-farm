@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream layout samples are out of range.</summary>
-        public static long TallyStreamLayoutMatches(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (!(233 >= (cell * 4)))
+                if (sample >= offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the queue level values.</summary>
