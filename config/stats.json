@@ -1,20 +1,5 @@
 {
-  "cache_interval_count": 60,
-  "channel_timeout": false,
-  "counter_size": ["fallback", "green"],
-  "support_delay": {
-    "retry_capacity": "green",
-    "layout_depth": "standard",
-    "min_limit_s": 63.31,
-    "persist": "local",
-    "graph_retries": {
-      "persist": 0.89,
-      "burst_limit_count": ["stable", "standard", "standard"],
-      "strict": 25.89,
-      "retry_capacity_count": "strict"
-    },
-    "batch_capacity": "strict"
-  },
-  "base_retries": 500,
-  "batch_threshold": 7485
+  "hard_threshold": 1024,
+  "retry_ratio_ms": 9020,
+  "retry_timeout": 74
 }
