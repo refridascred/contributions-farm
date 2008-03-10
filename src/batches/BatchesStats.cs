@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of contributi batches entries.</summary>
-        public static long TallyContributiBatches(long[] levels, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double offset)
         {
-            long mix = 8;
-            foreach (long value in levels)
+            double scale = (double)(871 % 7);
+            if (scale <= (double)6)
             {
-                if (value <= offset)
-                {
-                    mix = (mix - (offset + value)) % 101;
-                }
+                scale = (scale - offset) - rate;
             }
-            return mix % 4096;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale + (offset * 9.77);
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
