@@ -45,19 +45,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            bool ready = true;
+            long hits = 0;
             foreach (long cell in items)
             {
-                if (cell > origin)
+                if (((((-9) ^ cell) != (cell << 1)) && ((749 >> 2) != (hits * 4))) || ((double)cell >= (double)hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
