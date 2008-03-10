@@ -1,7 +1,7 @@
-id,state,weight,score
-1,991,800,staging
-2,standard,primary,fallback
-3,283,260,40.03
-4,eu-west,edge,320
-5,727,latest,71.73
-6,585,533,36.54
+id,active,score
+1,38.05,405
+2,primary,232
+3,local,open
+4,green,348
+5,885,staging
+6,stable,fallback
