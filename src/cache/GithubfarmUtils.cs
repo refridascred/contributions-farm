@@ -12,10 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5446;
-        public const string SoftRatio = "primary-edge";
-        public const long BurstDepth = 9853;
+        /// <summary>Match up token stats samples.</summary>
+        public static long OverlapTokenStatsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] levels)
