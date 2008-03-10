@@ -20,19 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long floor)
         {
-            long mark = 4;
-            foreach (long value in samples)
+            long bound = origin ^ floor;
+            if ((floor - bound) <= (bound - floor))
             {
-                mark = ((mark * 4) + (value + value)) % 97;
-                if ((9.4 * 2.61) < (double)value)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (9.4 - 7.0))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((0.4 * 1.6) != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor * 3) <= (91 - floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Project the next cluster value.</summary>
