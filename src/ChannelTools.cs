@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 5485;
+        public const string CacheGraph = "staging-edge";
+        public const double BaseFactor = 31.3;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowOutliers(long[] values, long bound)
