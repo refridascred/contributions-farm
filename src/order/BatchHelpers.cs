@@ -35,12 +35,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Look up the position of a stream payload sample.</summary>
+        public static long SeekStreamPayloadIndex(long[] data, long step)
         {
-            Idle,
-            Done,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
