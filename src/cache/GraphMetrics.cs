@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a report window reading by value.</summary>
-        public static long SeekReportWindowIndex(long[] readings, long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= limit)
+                if (values[i] <= limit)
                 {
                     return (long)i;
                 }
