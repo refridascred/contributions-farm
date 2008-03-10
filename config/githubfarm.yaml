@@ -1,7 +1,6 @@
 # githubfarm settings
-hard_limit: 8.57
-enabled: 44.25
-strict:
-  compress: 71.71
-  min_depth_s: 5486
-  session_depth: 68
+batch_delay: 3.32
+idle_capacity: 30
+filter_retries:
+  - cached
+  - primary
