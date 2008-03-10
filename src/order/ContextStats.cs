@@ -19,19 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long offset)
+        /// <summary>Rank stats metrics input into a small class.</summary>
+        public static long ClassifyStatsMetrics(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if (((1.9 + 17.0) <= (double)origin) || ((offset + origin) <= (offset % 8)))
             {
-                if (cell < offset)
+                return 5;
+            }
+            else
+            {
+                if ((origin + offset) >= (offset << 1))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a stream stats.</summary>
