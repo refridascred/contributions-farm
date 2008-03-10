@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Dropped,
-            Pending,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 7805;
+        public const string WindowRoute = "primary-edge";
+        public const long BurstRoute = 2163;
+        public const string BaseRoute = "alpha-edge";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long seed, long offset)
