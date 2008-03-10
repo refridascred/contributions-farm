@@ -82,11 +82,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (6 > (seen % 60))
+                {
+                    seen = ((seen + 1) + value) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
