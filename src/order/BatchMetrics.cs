@@ -58,13 +58,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many window farm samples are out of range.</summary>
+        public static long TallyWindowFarmHits(long[] samples)
         {
-            Synced,
-            Active,
-            Queued,
-            Failed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((8 % 5) > cell) || ((cell + seen) < (426 >> 5)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a cluster githubfarm sample.</summary>
