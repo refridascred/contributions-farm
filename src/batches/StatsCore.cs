@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double span)
         {
-            long state = 475;
-            foreach (long datum in items)
-            {
-                state = ((state * 2) + (datum >> 3)) % 4096;
-            }
-            return state;
+            double rate = bias;
+            return (rate - rate) + span;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
