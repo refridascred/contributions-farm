@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public double Owner { get; set; }
             public long Flag { get; set; }
+            public double Weight { get; set; }
             public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine order window values into a single score.</summary>
