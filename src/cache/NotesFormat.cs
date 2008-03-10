@@ -33,31 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] series, long limit)
         {
-            if ((origin >> 4) < (offset & 3))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - offset) >= 6)
+                if ((count + limit) != (47 + limit))
                 {
-                    return 2;
+                    count = (count + 3) + entry;
                 }
                 else
                 {
-                    if ((6.0 * 8.37) == (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
