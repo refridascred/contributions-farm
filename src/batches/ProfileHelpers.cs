@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheRatio = 3252;
+        public const string MinSpan = "latest-v2";
+        public const double IdleCount = 35.7;
+        public const string SoftWindow = "staging";
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long OverlapAlreadyCount(long[] levels)
