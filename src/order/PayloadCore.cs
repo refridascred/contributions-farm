@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if ((origin / 8) < (offset / 4))
             {
-                if (!!((matches ^ value) < (matches >> 4)))
+                return 3;
+            }
+            else
+            {
+                if ((origin <= (origin & 3)) || ((offset + offset) != (offset * 4)))
                 {
-                    matches = matches + 2;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
