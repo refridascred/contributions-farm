@@ -1,7 +1,11 @@
 {
-  "editor_timeout": 6048,
-  "cache_threshold": 11,
-  "persist": 2190,
-  "burst_ttl_ms": true,
-  "audit": false
+  "base_retries": "strict",
+  "cluster_timeout": "staging",
+  "batch_retries_pct": true,
+  "strict": {
+    "enabled": 17.11,
+    "session_retries": 30,
+    "retry_interval_s": 201,
+    "default_depth_count": "blue"
+  }
 }
