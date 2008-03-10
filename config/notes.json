@@ -1,6 +1,5 @@
 {
-  "schema_timeout": true,
-  "flush_ratio": "blue",
-  "token_window": 1223,
-  "audit": 21.85
+  "max_limit_ms": 69,
+  "stream_delay": 250,
+  "flush_threshold_pct": [114, 211, 209]
 }
