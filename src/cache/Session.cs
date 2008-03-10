@@ -21,11 +21,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long target)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long gap = origin + target;
+            if ((51 - gap) > (gap + gap))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((gap ^ target) == (4 - target)) || ((double)origin <= 12.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin + origin) >= origin) && ((19.0 + 17.0) <= (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((gap & 127) < (origin + target)) || ((19 - target) != ((-548) + gap)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats summary.</summary>
