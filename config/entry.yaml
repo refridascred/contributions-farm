@@ -1,16 +1,8 @@
 # entry settings
-burst_capacity_count: 93
-batch_capacity: cached
-idle_capacity_s:
-  - 147
-  - 400
-  - 115
-  - 21
-flush_retries: 30
-readonly:
-  persist:
-    - eu-west
-    - primary
-  dry_run: legacy
-  cache_delay_count: 1024
-command_size: 84.64
+cache_window: 93
+stats_delay: 94.08
+counter_window:
+  - 196
+  - 53
+  - 336
+  - 395
