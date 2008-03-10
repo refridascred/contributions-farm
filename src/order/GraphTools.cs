@@ -23,38 +23,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a contributi batch pair into a bucket.</summary>
-        public static long RankContributiBatch(long offset, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((limit >> 5) == (offset >> 2)) && ((limit ^ offset) > (limit & 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((71 - offset) < (61 & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit < (519 - offset)) && ((limit * 5) != (offset + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (14.0 <= (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Ready,
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the payload status values.</summary>
