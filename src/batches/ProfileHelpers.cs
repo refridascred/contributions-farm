@@ -82,18 +82,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long anchor = 560;
-            foreach (long entry in items)
-            {
-                if ((double)anchor <= (double)entry)
-                {
-                    anchor = anchor ^ 0;
-                }
-            }
-            return anchor % 1000;
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of report entries.</summary>
