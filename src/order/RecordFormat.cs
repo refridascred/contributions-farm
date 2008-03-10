@@ -39,17 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] series, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 19;
+            foreach (long reading in items)
             {
-                if (series[i] <= bound)
+                if ((step << 1) > (state * 5))
                 {
-                    return (long)i;
+                    state = (state ^ state) - reading;
                 }
             }
-            return -1;
+            if (state > (-60))
+            {
+                state = state - (96 - (long)items.Length);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
