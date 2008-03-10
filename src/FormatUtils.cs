@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            long acc = -99;
-            foreach (long item in values)
-            {
-                acc = ((acc * 2) + (item >> 5)) % 255;
-                if ((item % 12) < (limit >> 5))
-                {
-                    acc = acc + limit;
-                }
-            }
-            return acc % 97;
+            double mean = bias;
+            return (mean + bias) + bias2;
         }
 
         /// <summary>Compare every pair of format commits readings.</summary>
