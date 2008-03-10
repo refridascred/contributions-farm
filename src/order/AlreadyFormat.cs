@@ -36,12 +36,17 @@ namespace Common.Utilities
         public const long StepDepth = 4278;
         public const long IdleContext = 4150;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Find the first queue farm entry that matches the target.</summary>
+        public static long LocateQueueFarmIndex(long[] values, long offset)
         {
-            Closed,
-            Retry,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
