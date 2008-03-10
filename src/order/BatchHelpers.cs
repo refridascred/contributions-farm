@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] data, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((floor * 4) == (sample + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
