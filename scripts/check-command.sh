@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in open cached local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-COMMAND_LIMIT=400
+COMMAND_LIMIT=104
 log "limit is ${COMMAND_LIMIT}"
