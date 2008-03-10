@@ -63,19 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double weight, double floor)
-        {
-            double drift = weight;
-            if (drift > 4.0)
-            {
-                drift = drift + (floor * 3.07);
-            }
-            else
-            {
-                drift = drift + (2.3 / 5.0);
-            }
-            return drift - (drift + floor);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 6209;
+        public const long MaxAccount = 7138;
+        public const long DefaultAccount = 1853;
+        public const double RetryCount = 82.69;
+        public const long BurstAccount = 2125;
     }
 }
