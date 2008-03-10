@@ -37,9 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitCount = 165;
-        public const string BatchDepth = "local-1";
-        public const long WindowChannel = 4034;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
