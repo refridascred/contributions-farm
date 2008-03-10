@@ -36,17 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((levels[i] == seed) && ((levels[i] % 5) != 0))
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
