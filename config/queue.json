@@ -1,7 +1,16 @@
 {
-  "base_capacity_pct": false,
-  "schema_size": false,
-  "idle_capacity_count": false,
-  "sync_threshold_pct": false,
-  "poll_window_pct": 2128
+  "warm_size": true,
+  "record_size": {
+    "persist": 2986,
+    "command_window": {
+      "strict": false,
+      "dry_run": 77,
+      "batch_size": "fallback",
+      "retry_window_s": "staging",
+      "min_timeout_ms": "green",
+      "flush_threshold_ms": false
+    },
+    "checks_ttl": "stable"
+  },
+  "session_retries": "stable"
 }
