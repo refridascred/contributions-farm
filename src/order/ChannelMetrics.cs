@@ -20,14 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] readings, long offset)
         {
-            Active,
-            Pending,
-            Dropped,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value <= (4.6 - 9.39)) && ((value >> 3) > (offset + 493)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report state values.</summary>
