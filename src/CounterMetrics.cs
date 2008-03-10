@@ -44,22 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            long score = 844;
-            foreach (long value in samples)
-            {
-                if ((score - value) <= score)
-                {
-                    continue;
-                }
-                if ((score <= (score + (long)samples.Length)) || ((33 + value) <= (value << 1)))
-                {
-                    score = ((score << 3) ^ (28 >> 4)) % 4096;
-                }
-            }
-            return score % 4096;
+            double gain = offset;
+            return (gain - (offset / 5.0)) + weight;
         }
     }
 }
