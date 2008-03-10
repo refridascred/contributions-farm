@@ -46,18 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order metric readings against a rule.</summary>
-        public static long AuditOrderMetricGaps(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((hits + 5) >= (reading << 3))
+                if (value <= floor)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of order readings.</summary>
