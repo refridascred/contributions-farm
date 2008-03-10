@@ -1,15 +1,29 @@
 # entry settings
-cluster_limit:
+verbose:
+  audit: latest
+  enabled: false
+  hard_ttl:
+    max_depth_pct: green
+    enabled: 53.11
+    sync_window_s:
+      - 181
+      - 377
+  cluster_threshold: 30
+cluster_size:
+  checks_size: stable
+  enabled:
+    poll_depth_ms: 7540
+    poll_timeout_count: false
+    max_threshold_count:
+      - eu-west
+      - staging
+      - strict
+      - fallback
+    base_ratio_pct: 91.15
+  min_size_count: standard
+default_window: 77.87
+format_window: latest
+buffer_window:
   - legacy
-  - standard
-  - primary
-  - primary
-sync_timeout: 91.76
-audit: 60.64
-retry_retries: green
-warm_delay_s:
-  record_retries: standard
-  burst_window: 500
-  persist:
-    - 140
-    - 309
+  - stable
+  - stable
