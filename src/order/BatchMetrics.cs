@@ -16,21 +16,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((17.0 - 4.0) == (double)acc) || (acc <= (acc + acc)))
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc * 2) + (502 + bound)) % 97;
                 }
+                if ((6.29 / 8.0) < (double)bound)
+                {
+                    acc = acc + acc;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Match up session payload samples.</summary>
