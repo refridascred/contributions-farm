@@ -61,15 +61,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long limit)
         {
-            long anchor = 73;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (97 * 5)) + datum;
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
