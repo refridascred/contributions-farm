@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Score { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchDepth = 84.25;
+        public const long LimitScore = 3483;
+        public const long LimitFactor = 9667;
+        public const double SoftTimeout = 8.04;
 
         /// <summary>Validate window batches readings against a bound.</summary>
         public static bool CheckWindowBatchesRange(long[] items, long origin)
