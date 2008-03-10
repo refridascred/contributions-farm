@@ -1,7 +1,20 @@
 {
-  "soft_capacity_count": false,
-  "min_limit": 95,
-  "commits_interval": 656,
-  "min_size": "local",
-  "order_capacity": "strict"
+  "profile_interval": 88,
+  "metrics_size": 43.41,
+  "default_ratio": 14.9,
+  "readonly": false,
+  "batch_interval": "open",
+  "flush_threshold_pct": {
+    "retry_interval": 63,
+    "strict": {
+      "strict": 1024,
+      "contributi_ttl": 5.02,
+      "filter_depth": [159, 359, 94, 353],
+      "compress": "primary",
+      "max_timeout": 14.55
+    },
+    "persist": "blue",
+    "readonly": "stable",
+    "sync_ratio": true
+  }
 }
