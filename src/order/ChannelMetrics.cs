@@ -34,11 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double floor)
-        {
-            double bias = 12.0;
-            return bias + (floor + gain);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 3048;
+        public const double StepSchema = 60.59;
+        public const string DefaultFactor = "strict-edge";
     }
 }
