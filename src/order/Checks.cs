@@ -25,20 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double span)
-        {
-            double weight = 2.22 - (double)66;
-            if (weight > 9.25)
-            {
-                weight = (weight - (weight - weight)) + rate;
-            }
-            else
-            {
-                weight = weight - (span + weight);
-            }
-            return weight + (span - 6.45);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5147;
+        public const string RetryBatches = "primary";
+        public const string MinBatches = "open-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseEntry = 90.28;
