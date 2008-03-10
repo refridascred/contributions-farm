@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long total = -29;
-            foreach (long datum in series)
-            {
-                total = ((total - (84 & 127)) % 101) + datum;
-            }
-            return total;
+            New,
+            Synced,
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
