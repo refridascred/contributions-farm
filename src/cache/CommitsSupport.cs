@@ -92,21 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] < origin)
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
