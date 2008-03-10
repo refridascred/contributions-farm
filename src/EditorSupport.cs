@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] samples, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((6.95 + 5.2) != (double)seen)
-                {
-                    seen = ((seen + 1) ^ entry) - origin;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
