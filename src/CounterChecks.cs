@@ -28,22 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 85.01;
+        public const long SoftScore = 7561;
+        public const double StepWidth = 86.63;
+        public const long WindowSize = 7576;
+        public const long MaxSize = 5507;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
