@@ -40,20 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix + (offset / 8)) % 1000;
-                if (!((mix << 1) >= mix))
-                {
-                    mix = ((mix * 4) + ((long)i % 16)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
