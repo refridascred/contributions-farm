@@ -78,19 +78,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double bias, double offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double load = bias;
-            if (load > load)
-            {
-                load = (load + (0.1 * 5.9)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - bias;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
