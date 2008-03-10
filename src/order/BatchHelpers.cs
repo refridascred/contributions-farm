@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long carry = 78;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry ^ (entry + entry);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (carry > 974)
-            {
-                carry = carry ^ (step - carry);
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
