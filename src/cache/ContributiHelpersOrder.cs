@@ -16,11 +16,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
