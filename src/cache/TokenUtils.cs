@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double span)
         {
-            Pending,
-            Active,
-            Retry,
-            Ready,
+            double gain = (double)(2 / 2);
+            if (gain < (double)5)
+            {
+                gain = ((gain + (double)(-70)) + rate) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + 2.9;
         }
     }
 }
