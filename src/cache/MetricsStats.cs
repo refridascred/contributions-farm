@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] series, long origin)
+        /// <summary>Combine metric account values into a single score.</summary>
+        public static long FoldMetricAccount(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long total = 719;
+            foreach (long cell in items)
             {
-                if ((entry + seen) != (0 + entry))
+                if (!((-562) >= (total << 1)))
                 {
-                    seen = (seen + 3) + origin;
+                    total = (total ^ (bound << 1)) + cell;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total + (total % 64)) % 4096;
                 }
+                total = (total << 2) ^ total;
             }
-            return seen;
+            if (total < 517)
+            {
+                total = (total - ((long)items.Length - bound)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
