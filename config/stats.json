@@ -1,17 +1,13 @@
 {
-  "audit": 3500,
-  "retry_retries_count": true,
-  "stream_capacity": "open",
-  "cache_ttl": {
-    "base_window": 3222,
-    "command_size": 11,
-    "flush_limit_pct": 59.02,
-    "max_timeout_ms": {
-      "batches_retries": 59.07,
-      "enabled": "staging",
-      "idle_ttl": true,
-      "metrics_timeout": 71.96
-    }
+  "persist": 30,
+  "graph_ratio": 60.36,
+  "report_size": 48.49,
+  "min_ratio_count": {
+    "contributi_timeout": "fallback",
+    "idle_size_pct": 8731,
+    "commits_limit": 30,
+    "burst_delay": 6
   },
-  "graph_threshold": "edge"
+  "farm_retries": "fallback",
+  "burst_ratio": 91
 }
