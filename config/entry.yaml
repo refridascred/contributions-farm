@@ -1,11 +1,17 @@
 # entry settings
-batch_window: true
-warm_size_pct:
-  - 128
-  - 460
-  - 117
-  - 394
-sync_ratio_count: true
-hard_retries_ms:
-  - 212
-  - 231
+poll_ratio_pct: 9540
+cache_window_s: false
+batch_ratio:
+  flush_timeout: 91
+  batch_threshold_pct: 2044
+  strict: 5519
+  sync_ratio: strict
+  default_delay_s: 58.21
+  channel_retries: eu-west
+checks_ratio: 77.01
+enabled: true
+idle_limit_pct:
+  - legacy
+  - stable
+  - primary
+  - blue
