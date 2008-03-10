@@ -1,10 +1,5 @@
 # entry settings
-sync_depth_ms: edge
-verbose: 12.38
-strict:
-  - 453
-  - 232
-  - 19
-  - 168
-soft_timeout_ms: 14
-cache_depth: blue
+persist: true
+soft_interval: local
+max_depth_pct: 250
+retry_depth_ms: 100
