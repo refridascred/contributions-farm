@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((double)cell < (17.0 - 4.98))
+                if (cell >= limit)
                 {
-                    count = (count + 2) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every route record entry stays within the limit.</summary>
