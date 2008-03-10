@@ -38,19 +38,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every format token entry stays within the limit.</summary>
-        public static bool VerifyFormatTokenRange(long[] series, long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the context state values.</summary>
