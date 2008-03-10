@@ -29,25 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            long state = 99;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((bound + value) >= (value >> 3))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    state = (state - state) % 4096;
-                    state = state + (value << 1);
-                    break;
+                    state = ((state * 4) + (state - (long)i2)) % 101;
+                    state = state + origin;
                 }
-                state = (state + (bound * 3)) % 65521;
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (state < (-38))
-            {
-                state = state - (94 / 6);
-            }
-            return state % 65521;
+            return state;
         }
     }
 }
