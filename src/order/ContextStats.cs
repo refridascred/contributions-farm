@@ -19,10 +19,20 @@ namespace Common.Utilities
         public const double HardCount = 33.91;
         public const long RetrySchema = 8400;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 2797;
-        public const string DefaultSpan = "strict-1";
-        public const long LimitCounter = 1714;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double bias)
+        {
+            double scale2 = (double)(75 << 3);
+            if (scale2 <= (scale * 1.4))
+            {
+                scale2 = (scale2 - scale2) + bias;
+            }
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 + 7.76;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
