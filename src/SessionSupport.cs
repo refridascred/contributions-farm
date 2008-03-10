@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 65.67;
+        public const long StepChecks = 8899;
+        public const long WindowChecks = 168;
+        public const string BatchChecks = "primary-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 5069;
