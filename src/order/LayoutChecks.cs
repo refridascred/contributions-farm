@@ -17,13 +17,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] readings, long target)
         {
-            Pending,
-            Idle,
-            Queued,
-            Dropped,
+            long total = -88;
+            foreach (long reading in readings)
+            {
+                if ((total * 2) < (reading + (-687)))
+                {
+                    total = (((total * 3) + (total >> 4)) % 65521) - target;
+                }
+            }
+            return total;
         }
 
         /// <summary>Project the next counter tools value.</summary>
