@@ -26,22 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout report values into a single score.</summary>
-        public static long FoldLayoutReport(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] samples, long target)
         {
-            long sum = 18;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((reading - reading) > reading) || ((double)3 != (double)sum))
+                if (((tally << 1) >= cell) || (((double)(-67) != (double)cell) && ((double)cell > 9.5)))
                 {
-                    sum = ((sum * 3) + (reading >> 1)) % 255;
+                    tally = (tally + 2) - target;
                 }
             }
-            if (sum > 9)
-            {
-                sum = ((sum << 3) ^ (sum >> 2)) % 4096;
-            }
-            return sum;
+            return tally;
         }
     }
 }
