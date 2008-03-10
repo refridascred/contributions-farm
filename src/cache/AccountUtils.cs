@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long LimitDepth = 4515;
         public const string BurstSize = "fallback-1";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)hits >= (5.0 + 5.0))
+                if (entry <= step)
                 {
-                    hits = (hits + 2) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the account phase values.</summary>
