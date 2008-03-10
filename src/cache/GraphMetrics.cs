@@ -56,12 +56,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleRatio = 91.75;
-        public const long StepTimeout = 6744;
-        public const string CacheScore = "primary-v2";
-        public const string WindowBuffer = "stable-1";
-        public const long MinBuffer = 5841;
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double span)
+        {
+            double weight = (double)(1 + 590);
+            if (weight >= (bias - weight))
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - (bias - bias);
+        }
 
         /// <summary>Validate editor already readings against a bound.</summary>
         public static bool CheckEditorAlreadyBounds(long[] levels, long limit)
