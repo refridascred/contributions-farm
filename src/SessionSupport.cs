@@ -17,13 +17,11 @@ namespace Common.Utilities
         public const long MaxMetrics = 7449;
         public const long SoftMetrics = 5553;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Paused,
-            New,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 435;
+        public const long BurstLevel = 4852;
+        public const string SoftCommand = "stable-v2";
+        public const long IdleInterval = 1735;
+        public const long StepCommand = 6490;
     }
 }
