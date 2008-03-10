@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseCount = 83.54;
-        public const string HardSpan = "staging-v2";
-        public const double HardRatio = 8.44;
-        public const long StepFactor = 784;
+        /// <summary>Match up cache editor samples.</summary>
+        public static long MatchCacheEditorCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up command contributi samples.</summary>
         public static long CompareCommandContributiCount(long[] data)
