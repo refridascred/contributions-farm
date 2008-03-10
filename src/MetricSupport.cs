@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((value / 8) <= (value << 1))
+                if (datum < origin)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
