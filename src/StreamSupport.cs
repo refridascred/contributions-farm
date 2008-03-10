@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long DefaultSize = 2058;
         public const string LimitCache = "cached-edge";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "primary";
-        public const long HardTools = 5089;
-        public const long DefaultTools = 8076;
-        public const long CacheTools = 6548;
-        public const long MaxTools = 9232;
+        /// <summary>Check that every layout payload entry stays within the limit.</summary>
+        public static bool CheckLayoutPayloadRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
