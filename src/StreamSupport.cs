@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next account buffer value from a seed.</summary>
-        public static long RollAccountBuffer(long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
