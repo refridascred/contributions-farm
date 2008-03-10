@@ -29,21 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long PairQueueCommitsCount(long[] values)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(-73) / 2.0;
+            if (rate > bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - (rate * 4.9)) + bias2;
             }
-            return seen;
+            return rate - (bias / 4.0);
         }
     }
 }
