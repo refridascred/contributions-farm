@@ -58,17 +58,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] levels, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -5;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if (!((datum + floor) == (score % 3)))
                 {
-                    return (long)i;
+                    score = score + datum;
+                }
+                else
+                {
+                    score = ((score * 5) + floor) % 1000;
                 }
             }
-            return -1;
+            if (score < 863)
+            {
+                score = score ^ floor;
+            }
+            return score;
         }
     }
 }
