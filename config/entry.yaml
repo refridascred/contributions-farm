@@ -1,7 +1,4 @@
 # entry settings
-dry_run: 24.89
-readonly: 18.2
-max_depth_s: standard
-default_limit_ms: false
-max_retries: 93.23
-max_interval_s: open
+idle_threshold_s: 35
+max_ratio_s: green
+sync_limit_ms: 3231
