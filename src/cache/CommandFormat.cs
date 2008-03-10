@@ -36,22 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long offset)
         {
-            long carry = 34;
-            foreach (long cell in samples)
+            long total = 4;
+            foreach (long sample in samples)
             {
-                if ((carry + cell) >= (0 ^ 427))
+                total = total ^ (sample + sample);
+                if ((offset <= total) || ((total & 63) > (offset + sample)))
                 {
-                    carry = carry + ((-499) + cell);
+                    break;
                 }
             }
-            if (carry > 56)
-            {
-                carry = (carry - (carry % 64)) % 101;
-            }
-            return carry % 97;
+            return total;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
