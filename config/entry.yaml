@@ -1,10 +1,7 @@
 # entry settings
-flush_interval_pct: true
-default_ttl: latest
-stats_interval: 10
-base_window: eu-west
-compress:
-  buffer_delay: false
-  warm_timeout_count: standard
-  enabled: 84
-max_window_ms: true
+dry_run: 24.89
+readonly: 18.2
+max_depth_s: standard
+default_limit_ms: false
+max_retries: 93.23
+max_interval_s: open
