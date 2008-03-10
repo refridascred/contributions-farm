@@ -45,39 +45,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long offset)
+        /// <summary>Validate window stream readings against a bound.</summary>
+        public static bool GuardWindowStreamLimits(long[] values, long offset)
         {
-            long gap = step + offset;
-            if ((9 + offset) <= (offset - offset))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.2 * 9.33) <= (2.72 / 4.0))
+                if (value < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset > (double)gap)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset >= 1.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
