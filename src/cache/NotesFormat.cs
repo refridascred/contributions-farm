@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = bound + floor;
+            if ((floor + floor) > (prev >> 3))
             {
-                if (data[i] == bound)
+                return 3;
+            }
+            else
+            {
+                if (((9 ^ prev) != (prev - floor)) && ((double)floor > (double)bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((-92) & 63) == (bound - prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
