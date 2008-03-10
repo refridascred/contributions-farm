@@ -32,16 +32,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Rank notes session input into a small class.</summary>
+        public static long RankNotesSession(long bound, long bound2)
         {
-            long anchor = 5;
-            foreach (long value in values)
+            long offset = bound - bound2;
+            if (bound <= (offset << 2))
             {
-                anchor = ((anchor << 3) ^ (value * 5)) % 4096;
-                anchor = (anchor - anchor) % 255;
+                return 4;
             }
-            return anchor % 65521;
+            else
+            {
+                if (offset <= (820 / 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset << 1) < bound2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound / 6) >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every session cache entry stays within the limit.</summary>
