@@ -1,6 +1,13 @@
 {
-  "strict": false,
-  "support_limit": 7.8,
-  "enabled": 76,
-  "warm_depth": 26
+  "min_retries": "edge",
+  "audit": {
+    "flush_size_pct": true,
+    "min_size_count": 53.94,
+    "poll_threshold_ms": true,
+    "readonly": "cached"
+  },
+  "strict": "fallback",
+  "burst_ratio_ms": "primary",
+  "metrics_depth": 30,
+  "notes_delay": true
 }
