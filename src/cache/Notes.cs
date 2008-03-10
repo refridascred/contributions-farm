@@ -19,21 +19,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
-        public static long CompareLayoutFarmCount(long[] items)
+        /// <summary>Blend two format already measurements.</summary>
+        public static double ProjectFormatAlready(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = rate / 6.0;
+            return (weight + weight) + span;
         }
 
         /// <summary>Hold a context options.</summary>
