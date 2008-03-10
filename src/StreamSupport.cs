@@ -41,19 +41,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] series, long offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double rate = bias + (double)142;
+            if (rate > ratio)
             {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - (7.1 / 3.0);
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 17.0) + (double)(long)i;
+            }
+            return rate - (ratio / 9.0);
         }
     }
 }
