@@ -37,17 +37,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a order farm reading by value.</summary>
-        public static long FindOrderFarmIndex(long[] values, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                load = ((load - (load + load)) + (double)(long)i) + rate;
             }
-            return -1;
+            return load + floor;
         }
 
         /// <summary>Describe the entry state values.</summary>
