@@ -30,18 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long acc = 869;
+            foreach (long cell in values)
             {
-                if ((double)item < (6.0 - 17.0))
+                if (acc < (4 & 1))
                 {
-                    tally = tally + 2;
+                    acc = ((acc ^ (acc - floor)) % 1000) - cell;
                 }
             }
-            return tally;
+            if (acc < 248)
+            {
+                acc = (acc - (floor << 1)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
