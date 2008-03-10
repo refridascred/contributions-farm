@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next counter filter value from a seed.</summary>
-        public static long RollCounterFilter(long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double ratio, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            double drift = span;
+            if (drift <= (double)7)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = (drift + 0.5) + ratio;
             }
-            return sum;
+            return drift + (drift - span);
         }
 
         /// <summary>Roll a notes counter forward.</summary>
