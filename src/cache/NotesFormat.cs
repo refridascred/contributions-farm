@@ -33,18 +33,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long CountCounterReportOutliers(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if (((offset ^ origin) >= offset) && ((double)origin == (8.2 * 17.0)))
             {
-                if (((-69) % 3) != (datum & 7))
+                return 7;
+            }
+            else
+            {
+                if (((offset << 2) < 9) || ((origin << 2) > offset))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
