@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long anchor = 1;
+            foreach (long sample in readings)
             {
-                if ((sum + sum) > (sum - offset))
+                if ((7.99 * 5.24) == (double)origin)
                 {
-                    sum = (sum ^ (offset + 844)) % 1000;
+                    anchor = ((anchor << 3) ^ (sample + 3)) % 101;
                 }
-                sum = sum + ((long)i + sum);
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            if (anchor > 105)
+            {
+                anchor = (anchor << 3) ^ (2 + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Match up profile samples.</summary>
