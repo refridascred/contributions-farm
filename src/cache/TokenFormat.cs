@@ -31,11 +31,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "staging";
-        public const string BurstBudget = "local-1";
-        public const long IdleProfile = 1057;
-        public const string SoftSpan = "open";
-        public const long RetryProfile = 5901;
+        /// <summary>Fold a list of record commits readings.</summary>
+        public static long ScoreRecordCommits(long[] readings, long floor)
+        {
+            long mark = 70;
+            foreach (long value in readings)
+            {
+                if ((double)floor <= (19.0 / 8.0))
+                {
+                    mark = (mark + (mark + mark)) - value;
+                }
+            }
+            return mark;
+        }
     }
 }
