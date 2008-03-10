@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long offset)
         {
-            Active,
-            Locked,
-            Closed,
+            if ((origin >> 4) < (offset & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) >= 6)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 * 8.37) == (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
