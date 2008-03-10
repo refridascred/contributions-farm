@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Retry,
-            Paused,
+            New,
+            Closed,
             Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
