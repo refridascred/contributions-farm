@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Dropped,
-            Done,
-            Synced,
-            Active,
-            Idle,
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((mix ^ 5) <= (mix - 548))
+                {
+                    mix = (mix * 2) + (mix - mix);
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next schema layout value from a seed.</summary>
