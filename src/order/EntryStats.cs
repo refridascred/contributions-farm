@@ -66,19 +66,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double span)
         {
-            double gain = floor;
-            if (gain >= (double)9)
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain + gain;
+            double rate2 = (span / 5.0) * 0.01;
+            return (rate2 - (double)344) + rate;
         }
     }
 }
