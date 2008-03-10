@@ -39,15 +39,19 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "stable-edge";
         public const string LimitGithubfarm = "legacy-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] items, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples, long limit)
         {
             long count = 0;
-            foreach (long entry in items)
+            foreach (long reading in samples)
             {
-                if ((double)count <= 8.88)
+                if ((577 & 7) <= limit)
                 {
-                    count = ((count + 3) ^ entry) + step;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
