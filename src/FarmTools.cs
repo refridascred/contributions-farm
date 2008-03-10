@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many channel stats samples are out of range.</summary>
-        public static long MeasureChannelStatsMatches(long[] readings, long bound)
+        /// <summary>Check that every farm tools entry stays within the limit.</summary>
+        public static bool GuardFarmToolsRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((value / 3) != (tally & 255))
+                if (item <= limit)
                 {
-                    tally = (tally + 1) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the tools kind values.</summary>
