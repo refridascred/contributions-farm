@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Paused,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultCount = "stable";
+        public const long BurstDepth = 8969;
+        public const long IdleSpan = 4115;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] readings, long limit)
