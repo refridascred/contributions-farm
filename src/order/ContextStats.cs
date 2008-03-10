@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long CacheContext = 8527;
         public const long SoftContext = 7387;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] items, long floor)
         {
-            long anchor = 625;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)(long)levels.Length == (double)step)
+                if ((floor - floor) < (tally & 127))
                 {
-                    anchor = anchor + (entry % 12);
+                    tally = (tally + 1) + item;
                 }
-                else
-                {
-                    anchor = anchor ^ (anchor + entry);
-                }
-                anchor = anchor + (-84);
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
