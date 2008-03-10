@@ -51,9 +51,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardWidth = "alpha-edge";
-        public const long BaseDepth = 63;
-        public const double CacheFormat = 45.98;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
