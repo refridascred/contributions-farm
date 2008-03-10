@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a order profile figure with a bias.</summary>
-        public static double BlendOrderProfile(double gain, double bias)
+        /// <summary>Project the next cluster stream value.</summary>
+        public static double ProjectClusterStream(double rate, double floor)
         {
-            double bias2 = 6.55;
-            if (bias2 >= (double)26)
+            double weight = floor - (double)7;
+            if (weight >= weight)
             {
-                bias2 = bias2 + bias2;
+                weight = (weight + (double)853) - rate;
             }
             else
             {
-                bias2 = bias2 - gain;
+                weight = weight + (double)712;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                bias2 = (bias2 - (double)15) - (double)(long)i;
+                weight = (weight - 5.0) + (double)(long)i;
             }
-            return bias2 - bias;
+            return weight + (double)6;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
