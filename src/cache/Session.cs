@@ -15,10 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 3479;
-        public const string MinRoute = "strict-v2";
-        public const long IdleRoute = 3756;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!(8.4 < (double)seed))
+                {
+                    result = (result ^ (result & 31)) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchOrder = 5342;
