@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] samples, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = 1;
+            foreach (long cell in levels)
             {
-                if ((834 + value) < (hits << 2))
+                carry = ((carry - ((long)levels.Length + carry)) % 4096) ^ cell;
+                if ((double)carry > (1.74 - 1.7))
                 {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (carry < 9)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
