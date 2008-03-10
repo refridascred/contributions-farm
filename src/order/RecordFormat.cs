@@ -41,10 +41,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepWidth = 21.25;
-        public const long WindowWidth = 2063;
-        public const string LimitLevel = "latest-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchTimeout = 6590;
+        public const long HardWidth = 4037;
+        public const double DefaultGraph = 48.35;
+        public const string RetryGraph = "open-edge";
+        public const long StepGraph = 7546;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelRange(long[] values, long seed)
