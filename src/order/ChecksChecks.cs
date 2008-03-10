@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((1 > (floor * 4)) || ((tally << 3) < (floor << 3)))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 6432;
+        public const long RetryCommits = 7920;
+        public const string MaxCommits = "staging";
+        public const long SoftCommits = 7872;
+        public const double StepLevel = 92.8;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double IdleLevel = 42.11;
