@@ -1,27 +1,18 @@
 # githubfarm settings
-strict:
-  - 419
-  - 50
-  - 412
+batches_limit: true
+dry_run: latest
 compress:
-  - primary
-  - primary
-  - fallback
-  - green
-tools_interval:
-  enabled: 62.32
-  flush_depth_ms:
-    - blue
-    - open
-    - staging
-    - standard
-  min_window_s:
-    - primary
-    - green
-    - stable
-    - primary
-  max_timeout_pct:
-    - 221
-    - 406
-    - 388
-contributi_limit: 39.93
+  batch_depth_ms: edge
+  cache_threshold:
+    - 110
+    - 15
+    - 98
+    - 32
+  strict: legacy
+  cache_timeout_s: green
+  base_ratio_pct: 1181
+  verbose:
+    - 373
+    - 442
+max_window_ms: latest
+burst_timeout_ms: 60
