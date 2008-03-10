@@ -28,11 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two format already measurements.</summary>
-        public static double ProjectFormatAlready(double rate, double span)
+        /// <summary>Validate checks session readings against a bound.</summary>
+        public static bool VerifyChecksSessionRange(long[] readings, long step)
         {
-            double weight = rate / 6.0;
-            return (weight + weight) + span;
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a context options.</summary>
