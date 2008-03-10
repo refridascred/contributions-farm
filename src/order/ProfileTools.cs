@@ -16,18 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token buffer samples are out of range.</summary>
-        public static long AuditTokenBufferOutliers(long[] values)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value < matches) || ((4.0 - 4.5) < (double)value)))
+                if (levels[i] >= target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
