@@ -16,24 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long offset, long origin)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] items, long target)
         {
-            if ((origin / 8) < (offset / 4))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin <= (origin & 3)) || ((offset + offset) != (offset * 4)))
+                if ((items[i] >= target) && ((items[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
