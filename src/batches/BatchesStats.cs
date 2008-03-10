@@ -40,13 +40,13 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Failed,
-            Pending,
-            Locked,
-            Ready,
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
