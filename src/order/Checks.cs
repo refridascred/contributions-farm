@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5242;
+        public const string RetryTimeout = "latest-edge";
+        public const long RetryEntry = 2271;
 
         /// <summary>Locate a window layout reading by value.</summary>
         public static long LocateWindowLayoutIndex(long[] levels, long floor)
