@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster commits entries.</summary>
-        public static long WeighClusterCommits(long[] data)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long state = 450;
-            foreach (long cell in data)
-            {
-                if ((double)(-37) > (double)state)
-                {
-                    state = state ^ (726 + cell);
-                }
-            }
-            if (state < 6)
-            {
-                state = ((state << 2) ^ (state ^ 57)) % 1000;
-            }
-            return state % 97;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
