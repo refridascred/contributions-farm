@@ -1,21 +1,6 @@
 {
-  "readonly": false,
-  "persist": false,
-  "flush_size_s": "legacy",
-  "stats_window": "standard",
-  "order_interval": {
-    "hard_timeout": "green",
-    "farm_limit": "strict",
-    "burst_capacity": false,
-    "poll_capacity_pct": 19,
-    "batch_interval_ms": 28,
-    "warm_ttl": {
-      "burst_depth_count": 98,
-      "compress": "primary",
-      "hard_delay": false,
-      "min_ttl_pct": "fallback",
-      "filter_interval": 8695,
-      "strict": true
-    }
-  }
+  "idle_ratio": "standard",
+  "profile_depth": 0.68,
+  "hard_capacity_count": 73,
+  "readonly": false
 }
