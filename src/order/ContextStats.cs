@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Closed,
-            Draft,
-            Done,
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
