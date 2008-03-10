@@ -1,13 +1,7 @@
 {
-  "batch_depth_pct": "primary",
-  "idle_delay_s": 7473,
-  "soft_ttl": 11,
-  "min_depth_ms": {
-    "hard_size_pct": "primary",
-    "max_threshold_count": 5.3,
-    "base_limit": 2980,
-    "persist": 87.53,
-    "batch_interval": 7,
-    "editor_delay": "green"
-  }
+  "sync_window_ms": [164, 135, 419],
+  "hard_size_count": ["latest", "green", "blue", "local"],
+  "default_retries_count": "strict",
+  "account_threshold": "open",
+  "max_interval_pct": ["local", "standard", "strict", "blue"]
 }
