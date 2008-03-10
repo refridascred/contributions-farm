@@ -24,14 +24,25 @@ namespace Common.Utilities
         public const double DefaultChannel = 46.79;
         public const string MinChannel = "fallback-1";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long limit)
         {
-            Synced,
-            Draft,
-            Locked,
-            New,
-            Closed,
+            long diff = offset + limit;
+            if ((diff + diff) >= (limit * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 1) < offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
