@@ -1,7 +1,6 @@
 {
-  "batches_size": true,
-  "idle_retries_s": "edge",
-  "cache_size": 35.31,
-  "persist": 54.32,
-  "hard_delay": 30
+  "poll_timeout_count": 100,
+  "persist": 589,
+  "hard_limit_pct": true,
+  "warm_interval": true
 }
