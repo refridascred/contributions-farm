@@ -35,21 +35,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsBatchesCount(long[] data)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = target - floor;
+            if (20.0 >= (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (9.33 < (double)target)
                 {
-                    if ((data[i] ^ data[j]) == 7)
+                    return 4;
+                }
+                else
+                {
+                    if (target > (bound & 3))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
     }
 }
