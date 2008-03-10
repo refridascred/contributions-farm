@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next commits contributi value from a seed.</summary>
-        public static long SeriesCommitsContributi(long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long step, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            if ((seed ^ seed) == (step * 5))
             {
-                total = (total - (total << 1)) % 1000;
-                if (((seed + (-707)) <= seed) || (((long)i + total) < (seed ^ 479)))
-                {
-                    total = (total * 4) + (70 << 2);
-                }
-                if (((total & 127) > (56 - seed)) && ((double)seed > 0.67))
-                {
-                    total = (total ^ total) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((step + seed) >= (3 % 97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed ^ seed) >= seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed << 1) <= (step - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cache measurements.</summary>
