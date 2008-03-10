@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const double RetryBuffer = 91.91;
         public const long BaseBuffer = 6503;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 6241;
-        public const string BaseContributi = "fallback-edge";
-        public const long MinContributi = 9117;
-        public const long BaseSpan = 3396;
-        public const string BurstContributi = "stable-1";
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double offset)
+        {
+            double rate = bias;
+            if (rate >= (double)305)
+            {
+                rate = rate - (double)96;
+            }
+            return rate - (offset + bias);
+        }
     }
 }
