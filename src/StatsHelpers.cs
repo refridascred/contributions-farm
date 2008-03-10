@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items, long target)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((-7) >> 5) >= target)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
