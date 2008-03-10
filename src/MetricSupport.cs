@@ -26,10 +26,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftDepth = 8276;
-        public const long MinInterval = 4362;
-        public const long DefaultLevel = 1132;
-        public const long IdleToken = 175;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long limit2)
+        {
+            if (limit2 >= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.0 + 9.26) > (double)limit2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
