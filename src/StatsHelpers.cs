@@ -27,16 +27,18 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Measure how many command tools samples are out of range.</summary>
+        public static long AuditCommandToolsHits(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry - (floor & 127)) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((seen - seen) != ((-6) >> 5))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
