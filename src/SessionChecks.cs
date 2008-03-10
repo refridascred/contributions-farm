@@ -33,25 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long seed, long bound)
-        {
-            if ((5.0 - 8.3) > (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(seed <= (bound / 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseBudget = 6395;
+        public const string HardWidth = "open";
+        public const string BatchGithubfarm = "stable-edge";
+        public const string LimitGithubfarm = "legacy-1";
 
         /// <summary>Grade a order schema value against two limits.</summary>
         public static long GradeOrderSchema(long target, long floor)
