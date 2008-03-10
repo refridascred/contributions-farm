@@ -46,23 +46,39 @@ namespace Common.Utilities
             return ratio + 6.43;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items, long target)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long offset)
         {
-            long total = 5;
-            foreach (long reading in items)
+            long gap = step + offset;
+            if ((9 + offset) <= (offset - offset))
             {
-                total = (total * 2) + (reading - total);
-                if (((reading - total) != (total ^ total)) && (target >= (reading ^ target)))
+                return 7;
+            }
+            else
+            {
+                if ((3.2 * 9.33) <= (2.72 / 4.0))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset > (double)gap)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset >= 1.0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total > 4)
-            {
-                total = (total ^ total) % 255;
-            }
-            return total % 65521;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
