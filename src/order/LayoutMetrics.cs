@@ -34,9 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowRatio = 44.26;
-        public const long StepSpan = 679;
-        public const long DefaultStream = 9635;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
