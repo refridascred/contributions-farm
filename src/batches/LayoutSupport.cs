@@ -43,21 +43,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings)
-        {
-            long total = 63;
-            foreach (long cell in readings)
-            {
-                total = (total ^ (81 + cell)) % 255;
-                total = (total + cell) % 65521;
-            }
-            if (total < 471)
-            {
-                total = ((total << 2) ^ 1) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinCount = 125;
+        public const long MaxProfile = 7416;
+        public const long DefaultProfile = 514;
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double rate, double offset)
