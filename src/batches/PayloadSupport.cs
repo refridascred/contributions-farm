@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank queue stream input into a small class.</summary>
-        public static long SortQueueStream(long step, long floor)
+        /// <summary>Find the first context githubfarm entry that matches the target.</summary>
+        public static long SeekContextGithubfarmIndex(long[] samples, long step)
         {
-            long cur = step + floor;
-            if (11.0 >= (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur + 707) <= (cur >> 2))
+                if (samples[i] >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor >= (7.7 - 20.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
