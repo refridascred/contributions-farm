@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Classify a farm commits pair into a bucket.</summary>
+        public static long GradeFarmCommits(long floor, long limit)
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            long next = floor + limit;
+            if ((next & 255) > (floor - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next - next) > limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the counter kind values.</summary>
