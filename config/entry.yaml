@@ -1,11 +1,12 @@
 # entry settings
-sync_depth: 77.86
-retry_window_ms:
-  sync_timeout:
-    - blue
-    - standard
-  sync_threshold_count: strict
-  default_threshold_ms: false
-max_ttl_ms: 30
-cluster_ttl: true
-batch_size: true
+sync_retries_count: 72.01
+burst_limit_pct: strict
+base_threshold: 30
+burst_retries_s: cached
+audit:
+  readonly: 500
+  burst_retries_count:
+    - 96
+    - 315
+  report_interval: 16.09
+checks_ratio: 250
