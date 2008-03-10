@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long StepDepth = 4278;
         public const long IdleContext = 4150;
 
-        /// <summary>Find the first queue farm entry that matches the target.</summary>
-        public static long LocateQueueFarmIndex(long[] values, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                if (series[i] < step)
                 {
                     return (long)i;
                 }
