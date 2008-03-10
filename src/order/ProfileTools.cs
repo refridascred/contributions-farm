@@ -36,18 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] items, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mark = 1;
+            foreach (long value in items)
             {
-                if (datum < (datum - seen))
-                {
-                    seen = (seen + 2) - seed;
-                }
+                mark = (mark + (value + mark)) - limit;
             }
-            return seen;
+            if (mark < 5)
+            {
+                mark = mark - (mark & 7);
+            }
+            return mark;
         }
 
         /// <summary>Describe the batches mode values.</summary>
