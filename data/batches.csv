@@ -1,6 +1,11 @@
-id,weight,active,label
-1,54.0,21.7,61.72
-2,471,993,142
-3,primary,strict,280
-4,primary,560,stable
-5,11.57,866,645
+id,rank,region
+1,75.01,blue
+2,893,619
+3,33.86,339
+4,green,128
+5,stable,cached
+6,primary,549
+7,375,green
+8,561,827
+9,828,staging
+10,75.8,80.26
