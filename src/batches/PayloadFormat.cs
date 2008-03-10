@@ -47,32 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record schema pair into a bucket.</summary>
-        public static long RankRecordSchema(long target, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long lane = target - step;
-            if (4.1 >= (double)lane)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= 7.72)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step % 5) > lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Draft,
+            Failed,
         }
     }
 }
