@@ -30,15 +30,17 @@ namespace Common.Utilities
             return weight - (double)24;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((data[i] == bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
