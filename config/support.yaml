@@ -1,10 +1,22 @@
 # support settings
-route_timeout:
-  - 320
-  - 341
-  - 79
-idle_depth_pct: 27
-cache_interval_ms: 34
-warm_size: false
-persist: strict
-dry_run: false
+audit:
+  - 18
+  - 287
+  - 417
+  - 110
+retry_capacity:
+  readonly: 60
+  retry_capacity:
+    persist: 5.5
+    retry_window_count: 3556
+    idle_window_ms: 52.15
+  entry_delay: true
+  default_delay_pct: cached
+  burst_delay_s: true
+base_depth:
+  - local
+  - eu-west
+  - staging
+  - fallback
+hard_delay_count: 30
+payload_delay: cached
