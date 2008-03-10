@@ -19,22 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long next = seed - step;
+            if (36 < (step - seed))
             {
-                if ((tally - tally) > (tally & 31))
+                return 2;
+            }
+            else
+            {
+                if ((next < (next % 100)) && ((next % 64) >= (279 + 3)))
                 {
-                    tally = (tally + 1) + value;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (seed <= (step >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step ^ seed) < step) || ((double)step == (double)step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
