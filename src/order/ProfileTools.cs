@@ -31,20 +31,20 @@ namespace Common.Utilities
         public const long LimitRecord = 1694;
         public const long RetryRecord = 4824;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings, long seed)
+        /// <summary>Fold a list of metrics contributi readings.</summary>
+        public static long WeighMetricsContributi(long[] data)
         {
-            long result = 295;
-            foreach (long cell in readings)
+            long mark = 83;
+            foreach (long datum in data)
             {
-                double mean = (double)seed / 8.0;
-                if ((20.0 - mean) < mean)
+                if (((datum << 2) >= (mark - datum)) || (0.8 > (double)datum))
                 {
-                    mean = (mean + (mean - mean)) - (double)cell;
+                    mark = mark ^ 56;
                 }
-                result = result ^ (seed + seed);
+                mark = mark - (datum / 5);
+                mark = (mark * 5) + datum;
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
