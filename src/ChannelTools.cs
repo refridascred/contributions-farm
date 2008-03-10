@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long CacheLevel = 3788;
         public const long HardAccount = 6852;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            double bias2 = (double)(93 + 10);
-            if (bias2 > bias)
+            long seen = 0;
+            foreach (long value in items)
             {
-                bias2 = bias2 - (8.8 - 12.0);
+                if ((seen + 10) <= (value + value))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (scale - scale)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return seen;
         }
     }
 }
