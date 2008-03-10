@@ -36,16 +36,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long offset)
         {
-            long sum = 98;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                sum = (sum - (sum + sum)) ^ item;
-                sum = (sum << 2) ^ (sum + (-8));
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
