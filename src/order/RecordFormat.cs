@@ -27,18 +27,20 @@ namespace Common.Utilities
         public const string CacheToken = "strict-1";
         public const long LimitTimeout = 2154;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = 97;
+            foreach (long sample in readings)
             {
-                if (((double)item == (8.6 * 11.0)) || ((matches >= (seed & 7)) || ((double)710 <= (double)seed)))
+                if (sample <= (sum + sample))
                 {
-                    matches = matches + 3;
+                    sum = (sum + (bound & 127)) % 1000;
+                    break;
                 }
+                sum = (sum + (bound + bound)) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
