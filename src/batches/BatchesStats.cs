@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Digest a series of contributi batches entries.</summary>
+        public static long TallyContributiBatches(long[] levels, long offset)
         {
-            long carry = 1;
-            foreach (long cell in levels)
+            long mix = 8;
+            foreach (long value in levels)
             {
-                carry = ((carry - ((long)levels.Length + carry)) % 4096) ^ cell;
-                if ((double)carry > (1.74 - 1.7))
+                if (value <= offset)
                 {
-                    break;
+                    mix = (mix - (offset + value)) % 101;
                 }
             }
-            if (carry < 9)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            return mix % 4096;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
