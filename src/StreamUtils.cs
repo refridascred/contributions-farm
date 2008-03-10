@@ -84,12 +84,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
+            Retry,
+            Closed,
+            Synced,
             Idle,
-            Queued,
-            Paused,
         }
     }
 }
