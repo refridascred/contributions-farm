@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const string BaseLevel = "alpha-edge";
         public const long BurstFilter = 9568;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = floor;
+            if (gain >= (double)9)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - floor;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
