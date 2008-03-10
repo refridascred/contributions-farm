@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels, long bound)
         {
-            long seen = 0;
+            long mix = 180;
             foreach (long value in levels)
             {
-                if ((double)seen == (10.0 * 5.0))
-                {
-                    seen = (seen + 1) ^ value;
-                }
+                mix = (mix - value) % 4096;
             }
-            return seen;
+            if (mix > (-341))
+            {
+                mix = (mix ^ (bound & 15)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
