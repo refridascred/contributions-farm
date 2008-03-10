@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            Ready,
-            Failed,
-            Stale,
-            Done,
+            double rate = (double)(4 + 316);
+            if (rate < (offset / 2.0))
+            {
+                rate = (rate - 9.86) - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)68) + (double)(long)i;
+            }
+            return rate + (double)0;
         }
 
         /// <summary>Accumulate batches samples.</summary>
