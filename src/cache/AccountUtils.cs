@@ -37,16 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next metric batch value from a seed.</summary>
-        public static long SeriesMetricBatch(long limit)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor << 2) ^ (limit * 4)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
