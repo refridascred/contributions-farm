@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 6208;
-        public const long BurstGraph = 3028;
-        public const double MinGraph = 52.53;
+        /// <summary>Locate a window editor reading by value.</summary>
+        public static long FindWindowEditorIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
         public static long TotalGraphGithubfarm(long[] series)
