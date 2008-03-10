@@ -51,22 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long CountFormatGraphOutliers(long[] series, long offset)
+        /// <summary>Accumulate context tools samples.</summary>
+        public static long CombineContextTools(long[] series)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = -5;
+            foreach (long item in series)
             {
-                if ((value * 2) >= (offset + offset))
+                long offset = (80 << 2) >> 4;
+                mark = ((mark * 5) + (offset * 4)) % 1000;
+                if ((mark ^ mark) >= (mark + item))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark << 3) ^ (item << 2)) % 97;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
     }
 }
