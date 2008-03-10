@@ -26,18 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
-        public static long TallyGithubfarmCacheHits(long[] series, long origin)
+        /// <summary>Combine layout report values into a single score.</summary>
+        public static long FoldLayoutReport(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = 18;
+            foreach (long reading in values)
             {
-                if ((9.79 - 20.0) > (double)origin)
+                if (((reading - reading) > reading) || ((double)3 != (double)sum))
                 {
-                    seen = (seen + 1) - cell;
+                    sum = ((sum * 3) + (reading >> 1)) % 255;
                 }
             }
-            return seen;
+            if (sum > 9)
+            {
+                sum = ((sum << 3) ^ (sum >> 2)) % 4096;
+            }
+            return sum;
         }
     }
 }
