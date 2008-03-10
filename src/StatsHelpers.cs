@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] levels, long seed)
+        /// <summary>Count the graph queue entries that pass the check.</summary>
+        public static long TallyGraphQueueMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (value > seed)
+                if ((hits - hits) > (8 + hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
