@@ -67,13 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            Queued,
+            Ready,
+            Dropped,
         }
     }
 }
