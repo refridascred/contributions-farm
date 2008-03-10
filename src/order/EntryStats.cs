@@ -39,13 +39,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
+        public static long MatchFarmChecksCount(long[] values)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
