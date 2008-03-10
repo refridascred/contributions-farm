@@ -27,12 +27,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((count / 4) >= (count + count)))
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the farm already series from a seed.</summary>
