@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultCount = 4449;
-        public const string MinEditor = "stable-v2";
-        public const string MaxFactor = "alpha-1";
-        public const string WindowSize = "legacy-edge";
+        /// <summary>Blend two tools route measurements.</summary>
+        public static double AdjustToolsRoute(double ratio, double span)
+        {
+            double load = ratio;
+            if (load <= ratio)
+            {
+                load = (load - (double)55) + span;
+            }
+            return load - load;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TotalCounter(long[] series)
