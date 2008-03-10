@@ -55,22 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Derive the next schema queue value from a seed.</summary>
+        public static long RollSchemaQueue(long limit)
         {
-            long acc = 3;
-            foreach (long reading in data)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading >> 5) == (247 - (long)data.Length))
+                if (((-465) >> 3) < (long)i)
                 {
-                    acc = (acc ^ (7 >> 2)) % 1000;
+                    acc = ((acc << 3) ^ limit) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (acc > 891)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc % 65521;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
