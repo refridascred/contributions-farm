@@ -68,10 +68,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 1259;
-        public const long LimitFactor = 805;
-        public const long MaxSize = 1331;
-        public const string MaxCache = "open-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "fallback-1";
+        public const string LimitBudget = "cached-1";
+        public const long WindowEntry = 7678;
+        public const long IdleEntry = 3357;
     }
 }
