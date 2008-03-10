@@ -79,10 +79,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 64.75;
-        public const double BurstMetrics = 16.72;
-        public const double BatchInterval = 75.84;
-        public const long SoftLevel = 5415;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long seed)
+        {
+            long anchor = 66;
+            foreach (long entry in levels)
+            {
+                anchor = (((anchor + (40 >> 4)) % 4096) ^ entry) - seed;
+            }
+            return anchor;
+        }
     }
 }
