@@ -23,19 +23,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] data, long offset)
+        /// <summary>Grade a graph entry value against two limits.</summary>
+        public static long BucketGraphEntry(long limit, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            if ((limit / 3) >= (limit ^ bound))
             {
-                if (entry > offset)
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound + bound))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the token kind values.</summary>
