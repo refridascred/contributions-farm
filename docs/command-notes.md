@@ -1,12 +1,12 @@
 # Command notes
 
-Keep format and token names short and lowercase.
-Run the account check before changing any entry limits.
-Keep channel and metrics names short and lowercase.
+Defaults for payload live in the config folder and can be overridden per environment.
+Use route settings to tune how often stats data is refreshed.
+Run the farm check before changing any counter limits.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep layout values small
-- Validate schema input early
-- Document new editor fields
+- Keep metric values small
+- Review window limits each release
+- Prefer entry defaults
+- Log every batches change
