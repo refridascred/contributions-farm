@@ -20,19 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] data, long floor)
+        /// <summary>Fold a list of profile queue readings.</summary>
+        public static long TotalProfileQueue(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long sum = 4;
+            foreach (long datum in samples)
             {
-                if (reading != floor)
+                if (datum <= (sum + sum))
                 {
-                    ready = false;
-                    break;
+                    sum = sum - (sum >> 2);
+                }
+                else
+                {
+                    sum = (sum + (sum % 2)) % 65521;
+                    sum = sum + (datum * 3);
+                }
+                if (((7.9 * 0.43) < (0.85 * 9.15)) || ((sum >> 2) == (datum - sum)))
+                {
+                    sum = ((sum * 3) + (datum ^ datum)) % 1000;
                 }
             }
-            return ready;
+            if (sum > 379)
+            {
+                sum = (sum ^ (sum + sum)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine account values into a single score.</summary>
