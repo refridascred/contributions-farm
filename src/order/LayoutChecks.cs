@@ -36,23 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor githubfarm value.</summary>
-        public static double BlendEditorGithubfarm(double bias, double span)
+        /// <summary>Measure how many counter queue samples are out of range.</summary>
+        public static long AuditCounterQueueMatches(long[] readings, long origin)
         {
-            double ratio = (double)507 * 7.5;
-            if (ratio >= (bias + ratio))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                ratio = (ratio + (double)26) - span;
+                if (((origin - origin) <= hits) || ((hits - hits) <= (origin & 3)))
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio - 6.9;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (bias / 8.0)) - (double)(long)i;
-            }
-            return ratio - 7.6;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
