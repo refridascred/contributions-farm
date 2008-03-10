@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
             public long Total { get; set; }
-            public long Weight { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
