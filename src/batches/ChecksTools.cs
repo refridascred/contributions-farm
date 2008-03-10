@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
