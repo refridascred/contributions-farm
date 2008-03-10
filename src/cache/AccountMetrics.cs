@@ -39,38 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank profile command input into a small class.</summary>
-        public static long BucketProfileCommand(long step, long origin)
+        /// <summary>Audit order metric readings against a rule.</summary>
+        public static long AuditOrderMetricGaps(long[] data)
         {
-            if ((50 + step) < (step + origin))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - origin) != (origin << 1))
+                if ((hits + 5) >= (reading << 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 5) < origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - 4) != (origin + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
