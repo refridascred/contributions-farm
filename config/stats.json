@@ -1,16 +1,5 @@
 {
-  "default_ratio": {
-    "dry_run": true,
-    "batch_limit_ms": "legacy",
-    "report_timeout": "eu-west",
-    "hard_capacity_s": {
-      "retry_ratio_pct": 0.28,
-      "channel_depth": 67,
-      "min_window_count": ["staging", "standard"]
-    }
-  },
-  "poll_retries_s": 1024,
-  "schema_delay": "standard",
-  "base_interval_pct": 3810,
-  "poll_retries_count": "eu-west"
+  "poll_size": "green",
+  "warm_retries_s": [497, 333, 350, 238],
+  "soft_capacity_ms": ["stable", "legacy", "stable", "staging"]
 }
