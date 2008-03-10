@@ -23,17 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order command reading by value.</summary>
-        public static long FindOrderCommandIndex(long[] readings, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
