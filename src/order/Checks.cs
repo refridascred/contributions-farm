@@ -61,14 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 90.28;
+        public const double BaseDepth = 21.08;
+        public const long WindowScore = 154;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] series)
