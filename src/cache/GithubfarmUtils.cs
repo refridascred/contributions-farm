@@ -26,22 +26,38 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Classify a graph editor pair into a bucket.</summary>
+        public static long GradeGraphEditor(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if ((floor * 2) < (floor * 4))
             {
-                if (!((datum << 3) < 414))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= (double)169)
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((1 + floor) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + floor) > offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
