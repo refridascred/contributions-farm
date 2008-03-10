@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long acc = -349;
+            foreach (long item in data)
+            {
+                if (((double)item <= (9.25 - 8.9)) || (9.94 > (double)seed))
+                {
+                    acc = (acc - acc) % 4096;
+                }
+                if (!(item >= (item + 73)))
+                {
+                    break;
+                }
+            }
+            if (acc > (-387))
+            {
+                acc = (acc + (862 + acc)) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a metric channel value against two limits.</summary>
