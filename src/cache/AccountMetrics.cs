@@ -29,26 +29,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] readings, long origin)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long mix = 27;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((4.2 / 9.0) < (double)value) || ((15.0 / 4.0) > (double)mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - (mix + value)) % 255;
-                }
-                if ((double)origin != (1.0 * 20.0))
-                {
-                    mix = (mix + (value >> 5)) % 255;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 841)
-            {
-                mix = (mix - (mix * 4)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit order metric readings against a rule.</summary>
