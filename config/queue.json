@@ -1,10 +1,19 @@
 {
-  "batch_window": 68.9,
-  "batches_size": 27,
-  "report_retries": "fallback",
-  "hard_ratio": {
-    "stream_capacity": 41.31,
-    "max_depth_ms": "local",
-    "audit": "strict"
-  }
+  "base_ratio_pct": 12,
+  "sync_timeout_ms": "strict",
+  "session_depth": 500,
+  "batch_threshold_ms": "open",
+  "default_retries_pct": {
+    "min_retries_pct": 38.53,
+    "account_ttl": 47.67,
+    "filter_size": "legacy",
+    "base_window": "strict",
+    "burst_window_ms": 68,
+    "farm_ratio": {
+      "idle_limit_count": "standard",
+      "soft_timeout": ["cached", "primary"],
+      "min_limit_count": [393, 317, 436]
+    }
+  },
+  "route_ttl": "stable"
 }
