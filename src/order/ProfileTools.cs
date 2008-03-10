@@ -16,17 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] levels, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] >= target)
+                if ((double)origin <= (15.0 + 3.8))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
