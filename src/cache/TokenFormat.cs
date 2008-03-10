@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Dropped,
-            Synced,
             Retry,
-            Done,
+            Idle,
+            Failed,
         }
     }
 }
