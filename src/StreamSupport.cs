@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] items)
         {
-            long sum = -12;
-            foreach (long item in series)
+            long carry = 834;
+            foreach (long cell in items)
             {
-                if ((double)sum >= (5.18 * 3.51))
-                {
-                    sum = ((sum - sum) % 1000) + item;
-                }
+                carry = ((carry * 5) + 9) % 65521;
+                carry = ((carry << 3) ^ (carry << 2)) % 255;
+                carry = (carry * 4) + (cell - cell);
             }
-            return sum % 65521;
+            return carry % 97;
         }
     }
 }
