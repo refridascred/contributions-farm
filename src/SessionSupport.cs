@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long SoftRatio = 1456;
         public const string BatchQueue = "primary";
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] data, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
