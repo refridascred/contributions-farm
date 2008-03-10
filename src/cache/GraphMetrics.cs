@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 71.27;
-        public const long MinReport = 5448;
-        public const double HardSize = 10.67;
-        public const long MaxWidth = 6395;
+        /// <summary>Locate a report window reading by value.</summary>
+        public static long SeekReportWindowIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] readings, long limit)
