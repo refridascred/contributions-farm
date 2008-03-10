@@ -24,20 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftLevel = 1452;
+        public const string StepGraph = "legacy";
+        public const string MaxRatio = "latest";
+        public const long DefaultGraph = 536;
+        public const long BatchGraph = 1025;
 
         /// <summary>Match up context samples.</summary>
         public static long OverlapContextCount(long[] items)
