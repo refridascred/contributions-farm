@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
