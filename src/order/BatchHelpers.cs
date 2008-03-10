@@ -27,15 +27,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (!((long)i < (7 * 2)))
+                {
+                    mark = (mark - (mark - (long)i)) % 4096;
+                    mark = (mark << 3) ^ (mark & 255);
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
     }
 }
