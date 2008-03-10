@@ -29,21 +29,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 28;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = result - (sample + 88);
+                result = (result << 2) ^ (75 - result);
+                if (sample >= result)
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (result + result)) % 4096;
+                }
+                if (((sample ^ result) <= sample) && ((result + result) >= (1 % 2)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
