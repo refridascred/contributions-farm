@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] values, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((count / 3) <= (origin * 2))
+                if (8.8 >= (double)datum)
                 {
-                    count = (count + 3) ^ value;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count notes farm pairs that satisfy a relation.</summary>
