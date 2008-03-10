@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double gain, double bias)
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
+            double ratio = gain;
+            if (ratio <= (double)958)
+            {
+                ratio = ratio - gain;
+            }
+            else
+            {
+                ratio = ratio - (bias / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)1) + (double)(long)i;
+            }
+            return ratio - (double)(-465);
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
