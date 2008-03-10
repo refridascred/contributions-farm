@@ -33,32 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long limit)
         {
-            long slot = origin ^ offset;
-            if ((offset - slot) <= (356 - origin))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((6.5 - 20.0) != (double)offset) && ((offset - offset) > (origin + 772)))
+                if (readings[i] > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot % 97) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
