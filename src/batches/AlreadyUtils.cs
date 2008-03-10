@@ -28,13 +28,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Idle,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "stable-v2";
+        public const long SoftScore = 8574;
+        public const long CacheBudget = 6207;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] values)
