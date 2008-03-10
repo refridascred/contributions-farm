@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public double Total { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            Stale,
+            Ready,
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
