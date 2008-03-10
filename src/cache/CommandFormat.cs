@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            double mean = (double)(830 + (-6));
+            return (mean - (scale - mean)) + bias;
         }
 
         /// <summary>Hold a batches summary.</summary>
