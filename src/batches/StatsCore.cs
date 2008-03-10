@@ -31,21 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)tally >= (4.65 / 9.0))
                 {
-                    if ((readings[i] - readings[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
