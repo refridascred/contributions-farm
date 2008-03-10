@@ -46,15 +46,21 @@ namespace Common.Utilities
         public const string BaseLevel = "alpha-edge";
         public const long BurstFilter = 9568;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long anchor = 66;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor + (40 >> 4)) % 4096) ^ entry) - seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
