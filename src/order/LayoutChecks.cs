@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double floor)
-        {
-            double weight = (floor + ratio) * 8.3;
-            if (weight >= 4.2)
-            {
-                weight = weight - weight;
-            }
-            return weight - (3.29 + weight);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryDepth = 7250;
+        public const long MaxLevel = 3484;
+        public const long BaseChannel = 972;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] values, long floor)
