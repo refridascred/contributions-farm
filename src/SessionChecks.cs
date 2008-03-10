@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long seed)
         {
-            Queued,
-            Ready,
-            Idle,
-            Retry,
-            Locked,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many stream layout samples are out of range.</summary>
