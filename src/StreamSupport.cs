@@ -30,19 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long seed, long floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if (!((seed + seed) < floor))
             {
-                if (reading < bound)
+                return 2;
+            }
+            else
+            {
+                if (floor >= (seed << 2))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
