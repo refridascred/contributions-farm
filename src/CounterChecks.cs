@@ -66,23 +66,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples)
         {
-            double ratio = 4.0;
-            if (ratio >= (3.3 / 2.0))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + weight) - floor;
+                if (532 > (hits + 9))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 14.0) + (double)(long)i;
-            }
-            return ratio + weight;
+            return hits;
         }
     }
 }
