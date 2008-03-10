@@ -1,5 +1,16 @@
 # support settings
-retry_retries_ms: 4773
-max_retries: 8203
-verbose: true
-burst_limit: primary
+flush_retries: 1024
+strict:
+  - primary
+  - standard
+farm_threshold:
+  idle_ratio_count:
+    idle_capacity_count: 3.43
+    flush_window_ms: open
+    command_retries: 30
+  hard_window_ms: false
+  hard_threshold_pct: false
+  readonly: 72
+warm_delay_count:
+  - standard
+  - latest
