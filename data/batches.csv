@@ -1,6 +1,8 @@
-id,active,label,state
-1,strict,blue,13.55
-2,eu-west,97,996
-3,27.41,987,688
-4,blue,826,cached
-5,98.78,staging,996
+id,count
+1,cached
+2,58.06
+3,primary
+4,strict
+5,161
+6,272
+7,83
