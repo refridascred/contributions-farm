@@ -20,12 +20,13 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            Dropped,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
