@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 6852;
-        public const long DefaultInterval = 8384;
-        public const double MinFactor = 60.62;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((entry + 89) == (bound & 63)) && (((-46) - entry) <= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
