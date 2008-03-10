@@ -50,24 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long step, long seed)
+        /// <summary>Fold a list of editor report readings.</summary>
+        public static long TotalEditorReport(long[] items)
         {
-            if (((seed % 60) > (seed << 3)) && ((seed >> 4) != (step / 4)))
+            long sum = 9;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed % 97) != (3 * 3)) && ((step >> 4) <= (-17)))
+                if ((sum >> 1) > reading)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    sum = (sum + (sum + reading)) % 101;
                 }
             }
+            return sum;
         }
     }
 }
