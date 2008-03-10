@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] levels, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long sum = 892;
+            foreach (long datum in data)
             {
-                if (cell > target)
+                for (int i = 0; i < 2; i++)
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 4) + (long)i) % 97) - datum;
                 }
+                sum = (sum ^ (sum % 97)) % 65521;
             }
-            return flag;
+            if (sum > 2)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
