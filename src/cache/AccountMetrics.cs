@@ -38,19 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long result = -9;
+            foreach (long entry in levels)
             {
-                if (value <= floor)
+                if (entry >= (entry + 958))
                 {
-                    valid = false;
-                    break;
+                    result = (result + (entry + 78)) % 1000;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Describe the metrics state values.</summary>
