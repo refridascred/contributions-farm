@@ -1,5 +1,7 @@
 {
-  "persist": "standard",
-  "filter_limit": [484, 322, 72],
-  "soft_depth_s": 27.74
+  "route_ttl": "standard",
+  "persist": 14.7,
+  "burst_delay_ms": 250,
+  "retry_retries_s": 64.15,
+  "soft_ratio": "legacy"
 }
