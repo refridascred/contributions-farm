@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleBudget = "primary-v2";
+        public const long HardScore = 5820;
+        public const long WindowScore = 9777;
+        public const long DefaultFactor = 7392;
 
         /// <summary>Adjust a metrics commits reading.</summary>
         public static double AdjustMetricsCommits(double scale, double span)
