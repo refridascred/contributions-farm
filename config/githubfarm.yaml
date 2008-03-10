@@ -1,7 +1,8 @@
 # githubfarm settings
-min_limit_pct: 95.04
-payload_size: 25
-dry_run:
-  - open
-  - latest
-  - green
+enabled: true
+record_limit:
+  - staging
+  - primary
+audit:
+  - 370
+  - 278
