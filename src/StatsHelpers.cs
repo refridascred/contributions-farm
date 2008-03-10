@@ -48,19 +48,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] values, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long target)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if ((bound + target) >= target)
             {
-                if (reading < floor)
+                return 7;
+            }
+            else
+            {
+                if (!((target + bound) <= bound))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((target * 5) != (target + bound)) || ((target * 2) == (target ^ bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
