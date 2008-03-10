@@ -28,14 +28,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            Queued,
-            Locked,
-            Paused,
-            Stale,
-            Pending,
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score * 5) + (score + (long)i);
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
