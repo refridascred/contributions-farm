@@ -14,18 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long floor)
-        {
-            long state = 1;
-            foreach (long sample in samples)
-            {
-                state = ((state ^ state) % 255) - floor;
-                state = (state + (state - sample)) % 65521;
-                state = (state ^ (state >> 4)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 78.63;
+        public const double MinTimeout = 5.36;
+        public const long BaseCommand = 2909;
+        public const long BatchSize = 1223;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
