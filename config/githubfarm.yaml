@@ -1,9 +1,21 @@
 # githubfarm settings
-buffer_ratio: false
-min_ttl: open
-idle_timeout_pct:
-  - 440
-  - 56
-  - 459
-soft_ttl_s: 39
-hard_timeout_s: edge
+retry_retries_s: 86.7
+retry_threshold_pct:
+  enabled: 100
+  compress: false
+  record_threshold: 24.34
+  flush_depth_s:
+    filter_limit: 81.63
+    cache_retries_pct: 500
+    profile_capacity:
+      - stable
+      - open
+      - latest
+  hard_limit: fallback
+  idle_interval_pct:
+    stream_limit: stable
+    farm_limit: true
+    min_size_s: false
+    flush_capacity_count: 46.74
+    base_timeout: 21
+dry_run: true
