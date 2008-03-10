@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Count notes farm pairs that satisfy a relation.</summary>
+        public static long OverlapNotesFarmCount(long[] items)
         {
-            long score = 66;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((3.0 * 8.5) >= (3.0 * 3.74)) || ((score >> 2) >= score)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + value) % 4096;
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = (score * 3) + value;
             }
-            if (score > 71)
-            {
-                score = ((score * 2) + score) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Validate session context readings against a bound.</summary>
