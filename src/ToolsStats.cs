@@ -52,11 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 94.69;
-        public const double StepProfile = 67.77;
-        public const long SoftProfile = 8;
-        public const long RetryLevel = 8582;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] data)
+        {
+            long score = 525;
+            foreach (long sample in data)
+            {
+                score = ((score ^ (long)data.Length) % 1000) + sample;
+            }
+            return score;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] values, long seed)
