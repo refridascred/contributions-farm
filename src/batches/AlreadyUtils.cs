@@ -55,25 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph batch input into a small class.</summary>
-        public static long SortGraphBatch(long origin, long limit)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double floor)
         {
-            long lane = origin ^ limit;
-            if ((limit + lane) >= (lane % 100))
+            double scale = (double)((-96) % 100);
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                scale = ((scale + floor) + (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((1.8 <= (double)origin) && ((origin + lane) <= (5 - origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return scale + floor;
         }
     }
 }
