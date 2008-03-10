@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const string RetryTimeout = "latest-edge";
         public const long RetryEntry = 2271;
 
-        /// <summary>Locate a window layout reading by value.</summary>
-        public static long LocateWindowLayoutIndex(long[] levels, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target - 658) != (floor % 7))
             {
-                if (levels[i] == floor)
+                return 0;
+            }
+            else
+            {
+                if ((target + floor) != (target / 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((7.71 * 6.56) >= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor <= (floor / 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
