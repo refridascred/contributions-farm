@@ -1,12 +1,11 @@
 # Command notes
 
-Keep already and order names short and lowercase.
-Use session settings to tune how often editor data is refreshed.
-The profile module keeps stream values in sync with the window cache.
+Run the cache check before changing any record limits.
+Use schema settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every farm change
-- Prefer buffer defaults
-- Review window limits each release
+- Prefer metrics defaults
+- Document new channel fields
+- Log every window change
+- Keep record values small
