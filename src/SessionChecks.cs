@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many channel contributi samples are out of range.</summary>
-        public static long CountChannelContributiMatches(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((double)seen != (0.4 + 9.06))
+                if (entry <= offset)
                 {
-                    seen = (seen + 3) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
