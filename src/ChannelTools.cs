@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] values, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum < step)
+                if (!(((datum * 3) <= (limit - limit)) && (limit >= (datum - limit))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
