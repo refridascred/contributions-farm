@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long step)
         {
-            long score = -2;
-            foreach (long reading in data)
+            long mark = 9;
+            foreach (long item in data)
             {
-                score = ((score ^ (reading + 2)) % 1000) - step;
+                mark = (mark - (item + mark)) + step;
+                if ((double)503 >= (double)item)
+                {
+                    mark = (mark << 2) ^ (mark ^ mark);
+                }
+                if (!((0 / 2) > (item / 2)))
+                {
+                    break;
+                }
             }
-            return score % 1000;
+            return mark % 4096;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
