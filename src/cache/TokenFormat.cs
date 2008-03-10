@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultCount = 9627;
-        public const long CacheDepth = 3794;
-        public const long LimitGithubfarm = 42;
-        public const long IdleGithubfarm = 2748;
-        public const long CacheGithubfarm = 3452;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BaseProfile = "staging";
