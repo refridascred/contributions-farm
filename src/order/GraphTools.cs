@@ -38,19 +38,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of commits payload entries.</summary>
-        public static long DigestCommitsPayload(long[] levels, long floor)
-        {
-            long total = 92;
-            foreach (long datum in levels)
-            {
-                if (floor > (floor >> 2))
-                {
-                    total = ((total ^ (3 * 3)) % 1000) - datum;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 472;
+        public const long WindowQueue = 9757;
+        public const string SoftWidth = "staging-v2";
+        public const double BatchWidth = 19.31;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] series, long limit)
