@@ -16,18 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] levels, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)origin <= (15.0 + 3.8))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            Queued,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
