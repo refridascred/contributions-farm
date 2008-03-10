@@ -1,6 +1,8 @@
 {
-  "soft_depth": 40.7,
-  "poll_retries": 250,
-  "readonly": ["stable", "eu-west", "primary"],
-  "idle_timeout": 58
+  "persist": 84.25,
+  "verbose": true,
+  "account_delay": true,
+  "soft_depth_count": false,
+  "default_size_count": 97.76,
+  "readonly": 8.32
 }
