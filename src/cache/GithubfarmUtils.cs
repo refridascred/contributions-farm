@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a batches options.</summary>
