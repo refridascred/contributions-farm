@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long CombineAlreadySupport(long[] series)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long step, long bound)
         {
-            long acc = 42;
-            foreach (long value in series)
+            if ((59 + bound) >= (step + bound))
             {
-                if ((acc ^ acc) < (long)series.Length)
+                return 8;
+            }
+            else
+            {
+                if (bound >= (bound >> 2))
                 {
-                    acc = ((acc * 2) + (value - acc)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    acc = (acc - (value ^ value)) % 65521;
+                    if ((bound ^ bound) != (step + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.87 * 15.0) > (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
