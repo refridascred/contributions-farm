@@ -1,5 +1,15 @@
 {
-  "enabled": 82.63,
-  "route_threshold": [159, 449, 22],
-  "soft_timeout": true
+  "context_ratio": true,
+  "idle_retries": 60,
+  "entry_timeout": {
+    "hard_threshold_s": "legacy",
+    "verbose": 69.69,
+    "hard_timeout_ms": "legacy",
+    "account_ttl": "local",
+    "retry_window": false,
+    "default_ttl_ms": 1024
+  },
+  "compress": 33.02,
+  "batch_window": 54.61,
+  "command_retries": "staging"
 }
