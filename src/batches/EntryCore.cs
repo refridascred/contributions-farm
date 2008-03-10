@@ -28,21 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)entry != (double)offset)
                 {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
