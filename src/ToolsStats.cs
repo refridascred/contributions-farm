@@ -35,19 +35,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] series, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double offset)
         {
-            long mix = 4;
-            foreach (long item in series)
+            double ratio = offset;
+            if (ratio <= ratio)
             {
-                mix = ((mix << 3) ^ (item << 3)) + bound;
+                ratio = ratio + (ratio * 8.4);
             }
-            if (mix > 3)
+            else
             {
-                mix = (mix * 4) + mix;
+                ratio = ratio + (offset * 1.11);
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (offset - offset);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
