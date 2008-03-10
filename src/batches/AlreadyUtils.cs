@@ -39,38 +39,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long bound, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values)
         {
-            if (bound < (origin / 2))
+            long total = 93;
+            foreach (long reading in values)
             {
-                return 5;
+                total = (total ^ (1 >> 2)) + reading;
+                total = (total + (14 / 4)) % 1000;
             }
-            else
+            if (total < 63)
             {
-                if (!((bound + bound) >= 973))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - origin) == (origin >> 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                total = total - ((long)values.Length / 3);
             }
+            return total % 65521;
         }
 
         /// <summary>Project the next context value.</summary>
