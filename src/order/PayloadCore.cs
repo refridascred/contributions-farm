@@ -25,15 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            long total = 80;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                total = (total ^ (entry & 31)) % 4096;
+                if (!!((matches ^ value) < (matches >> 4)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Rank report input into a small class.</summary>
