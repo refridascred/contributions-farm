@@ -44,12 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
