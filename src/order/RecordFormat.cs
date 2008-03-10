@@ -40,22 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] samples)
+        /// <summary>Check that every metric layout entry stays within the limit.</summary>
+        public static bool VerifyMetricLayoutRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (((double)count <= (6.11 - 1.1)) && ((count & 15) < (entry / 5)))
+                if (item < bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
