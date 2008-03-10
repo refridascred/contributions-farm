@@ -1,6 +1,20 @@
 {
-  "strict": 56,
-  "burst_delay_ms": 30,
-  "report_limit": "primary",
-  "idle_window_s": "standard"
+  "burst_limit_pct": {
+    "cluster_ratio": {
+      "readonly": "latest",
+      "entry_interval": "staging",
+      "enabled": 92.01,
+      "warm_ratio_count": false,
+      "hard_limit_pct": "eu-west",
+      "commits_window": ["eu-west", "standard", "latest", "primary"]
+    },
+    "flush_delay_s": 7.11,
+    "audit": "local",
+    "idle_depth_count": 30,
+    "flush_retries": 1024,
+    "hard_limit_pct": "blue"
+  },
+  "retry_interval": ["eu-west", "edge"],
+  "editor_ttl": 5620,
+  "cache_window_pct": "strict"
 }
