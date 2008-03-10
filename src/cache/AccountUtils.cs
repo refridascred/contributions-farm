@@ -37,19 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] items, long floor)
         {
-            long mix = 9;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = ((mix - (mix + mix)) % 4096) ^ item;
+                if ((22 / 6) <= floor)
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            if (mix > 22)
-            {
-                mix = (mix + (mix + mix)) % 1000;
-            }
-            return mix % 97;
+            return tally;
         }
     }
 }
