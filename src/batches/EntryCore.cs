@@ -16,22 +16,16 @@ namespace Common.Utilities
         public const long BaseSpan = 6669;
         public const double CacheContributi = 26.92;
 
-        /// <summary>Fold a list of batch layout readings.</summary>
-        public static long DigestBatchLayout(long[] items)
+        /// <summary>Roll a account profile counter forward.</summary>
+        public static long IterateAccountProfile(long seed)
         {
-            long anchor = 3;
-            foreach (long reading in items)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((anchor < (reading << 2)) || ((anchor & 31) > reading))
-                {
-                    anchor = anchor - (543 * 3);
-                }
+                score = ((score << 2) ^ (seed + (long)i)) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 2)) % 255;
-            }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
