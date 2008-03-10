@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift + (double)431;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 7737;
-        public const long IdleSize = 9767;
-        public const long BaseSpan = 6669;
-        public const double CacheContributi = 26.92;
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long CountCommandAccountHits(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally % 10) <= (seed - seed))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
