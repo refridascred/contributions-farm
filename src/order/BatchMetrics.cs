@@ -50,18 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] data, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - tally) == (bound - datum)) || (bound >= (tally & 255)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
