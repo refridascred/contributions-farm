@@ -13,15 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long target)
         {
-            long anchor = 64;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor << 3) ^ limit) + item;
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
