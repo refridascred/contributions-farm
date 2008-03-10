@@ -80,18 +80,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] series, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] data)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!(((count << 2) != (limit << 3)) && ((7.3 * 3.0) != (double)count)))
+                if (!((hits ^ hits) == (value - hits)))
                 {
-                    count = (count + 2) + value;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
