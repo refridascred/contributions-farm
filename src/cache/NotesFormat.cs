@@ -22,12 +22,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Combine entry command values into a single score.</summary>
+        public static long TallyEntryCommand(long[] data, long step)
         {
-            Queued,
-            Idle,
-            Locked,
+            long acc = 29;
+            foreach (long datum in data)
+            {
+                if ((9.0 + 12.0) < (double)datum)
+                {
+                    acc = ((acc << 3) ^ (acc + step)) % 1000;
+                }
+                if ((7.77 / 6.0) <= (double)datum)
+                {
+                    acc = (acc ^ (717 & 1)) % 1000;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = (acc - (3 ^ acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the counter report entries that pass the check.</summary>
