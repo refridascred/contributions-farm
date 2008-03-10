@@ -30,19 +30,30 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values, long origin)
         {
-            double weight2 = (weight + weight) * 0.19;
-            if (weight2 > offset)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                weight2 = weight2 - (double)79;
+                if ((10.0 / 8.0) < (double)reading)
+                {
+                    mark = ((mark << 2) ^ (mark >> 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (reading - 227)) % 97;
+                }
+                if (((origin << 1) <= (mark + 358)) || ((mark >> 2) >= (origin - mark)))
+                {
+                    mark = (mark * 3) + (reading >> 2);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mark > 8)
             {
-                weight2 = (weight2 - (offset - offset)) + (double)(long)i;
+                mark = mark + (origin + mark);
             }
-            return weight2 - weight;
+            return mark;
         }
 
         /// <summary>Count the graph queue entries that pass the check.</summary>
