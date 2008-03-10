@@ -1,6 +1,11 @@
 # entry settings
-default_ratio_pct: open
-flush_interval_ms:
-  - stable
-  - standard
-min_capacity_ms: strict
+batch_window: true
+warm_size_pct:
+  - 128
+  - 460
+  - 117
+  - 394
+sync_ratio_count: true
+hard_retries_ms:
+  - 212
+  - 231
