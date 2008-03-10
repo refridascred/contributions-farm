@@ -43,18 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long DigestEntryBatch(long[] series)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long acc = -7;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc >= (acc % 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc ^ (acc % 3)) % 1000) - entry;
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
