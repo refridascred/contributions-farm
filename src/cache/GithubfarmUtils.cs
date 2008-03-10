@@ -48,14 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            New,
-            Ready,
-            Synced,
-            Closed,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 37.56;
+        public const string HardCluster = "primary";
+        public const string DefaultCount = "latest-v2";
+        public const double LimitTimeout = 6.33;
+        public const double LimitFactor = 53.23;
     }
 }
