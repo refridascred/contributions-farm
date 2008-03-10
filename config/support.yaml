@@ -1,4 +1,28 @@
 # support settings
-githubfarm_threshold: false
-default_retries_count: 79.67
-max_delay: 76
+soft_window:
+  hard_size_count:
+    default_ratio_count: 73.94
+    hard_retries_s: 18
+    batch_limit: strict
+    retry_timeout_ms: false
+    poll_window_pct:
+      - 67
+      - 28
+      - 347
+      - 476
+    dry_run: 92.08
+  farm_interval: false
+  metrics_depth: stable
+  burst_threshold_s: false
+  verbose:
+    - local
+    - blue
+    - fallback
+    - staging
+  min_retries_pct: true
+entry_threshold: fallback
+enabled: 44
+batch_retries_s:
+  - 282
+  - 171
+  - 148
