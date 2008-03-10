@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long step, long offset)
         {
-            double mean = (double)(830 + (-6));
-            return (mean - (scale - mean)) + bias;
+            if ((3.4 * 0.3) >= (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset / 3) <= offset) || (((-80) >> 4) > step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + offset) > (offset - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
