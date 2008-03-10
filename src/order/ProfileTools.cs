@@ -36,17 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm schema sample.</summary>
-        public static long SeekGithubfarmSchemaIndex(long[] values, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
