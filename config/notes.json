@@ -1,5 +1,7 @@
 {
-  "batch_window_s": "open",
-  "contributi_ttl": 76.15,
-  "enabled": 38.59
+  "persist": 31,
+  "entry_timeout": true,
+  "warm_depth": 78.02,
+  "batch_size_s": "blue",
+  "command_capacity": 40.22
 }
