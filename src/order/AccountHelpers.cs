@@ -37,21 +37,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!((double)matches == (13.0 - 6.07)))
                 {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 2) + item) - origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the order status values.</summary>
