@@ -16,16 +16,12 @@ namespace Common.Utilities
         public const long BaseSpan = 6669;
         public const double CacheContributi = 26.92;
 
-        /// <summary>Roll a account profile counter forward.</summary>
-        public static long IterateAccountProfile(long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score << 2) ^ (seed + (long)i)) % 255;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Match up window samples.</summary>
