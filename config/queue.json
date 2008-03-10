@@ -1,6 +1,10 @@
 {
-  "flush_depth_pct": 57.34,
-  "default_retries_count": false,
-  "editor_window": ["standard", "stable", "fallback"],
-  "route_retries": 500
+  "batch_window": 68.9,
+  "batches_size": 27,
+  "report_retries": "fallback",
+  "hard_ratio": {
+    "stream_capacity": 41.31,
+    "max_depth_ms": "local",
+    "audit": "strict"
+  }
 }
