@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate metric already readings against a bound.</summary>
-        public static bool ValidateMetricAlreadyBounds(long[] items, long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long bound)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total << 3) ^ total;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
