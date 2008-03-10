@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of route editor readings.</summary>
-        public static long TotalRouteEditor(long[] levels, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long result = 6;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (19.0 + 19.0))
-                {
-                    result = (result - (bound - result)) % 65521;
-                    break;
-                }
-                if ((double)706 <= (double)entry)
-                {
-                    result = (result << 2) ^ (entry + bound);
-                }
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
