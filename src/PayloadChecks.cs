@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 1;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value > (mix << 2)) && ((value / 9) < value))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 3) ^ (mix % 7);
                 }
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
