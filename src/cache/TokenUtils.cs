@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long score = 4;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score * 2) + floor) % 1000) + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score > 763)
-            {
-                score = (score + (floor ^ score)) % 1000;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
