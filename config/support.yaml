@@ -1,5 +1,10 @@
 # support settings
-verbose: 39
-poll_timeout_count: 85.49
-sync_interval_ms: 74.44
-route_size: latest
+route_timeout:
+  - 320
+  - 341
+  - 79
+idle_depth_pct: 27
+cache_interval_ms: 34
+warm_size: false
+persist: strict
+dry_run: false
