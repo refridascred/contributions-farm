@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "legacy-edge";
-        public const long SoftChannel = 1444;
-        public const double DefaultChannel = 46.79;
-        public const string MinChannel = "fallback-1";
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Pending,
+            Active,
+            Failed,
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long offset, long limit)
