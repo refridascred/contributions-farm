@@ -53,20 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile graph counter forward.</summary>
-        public static long DeriveProfileGraph(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long origin, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            if ((double)origin > (19.0 * 5.0))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (((carry * 4) + (target % 100)) % 97) - (long)i2;
-                    carry = carry + (carry % 3);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((9.0 + 10.0) >= 9.0) || ((origin % 97) < (origin * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin / 5) <= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit record route readings against a rule.</summary>
