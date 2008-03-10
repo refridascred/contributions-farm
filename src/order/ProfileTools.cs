@@ -29,16 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] items, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                sum = (sum << 3) ^ (bound + sum);
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (datum < (datum - seen))
+                {
+                    seen = (seen + 2) - seed;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
