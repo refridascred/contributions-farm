@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 9785;
-        public const long WindowAlready = 6590;
-        public const string BurstAlready = "open-edge";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Done,
+            Queued,
+            Ready,
+            Stale,
+            Active,
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
