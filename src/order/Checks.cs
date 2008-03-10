@@ -34,15 +34,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Ready,
-            Active,
-            Retry,
-            New,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowTimeout = 8898;
+        public const double RetryContributi = 27.67;
+        public const long StepRatio = 9984;
 
         /// <summary>Fold a list of stream batches readings.</summary>
         public static long DigestStreamBatches(long[] levels)
