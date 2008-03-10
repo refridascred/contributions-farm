@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepBudget = 2101;
-        public const double CacheContext = 62.9;
-        public const string BurstWidth = "stable-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 28.44;
+        public const long HardRatio = 6761;
+        public const string HardProfile = "staging-v2";
+        public const long CacheTimeout = 8232;
+        public const long MinProfile = 3322;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
