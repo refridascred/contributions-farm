@@ -52,20 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            double drift = weight;
+            if (drift > 4.0)
             {
-                mix = ((mix * 2) + mix) % 97;
-                if (!(13.0 <= (double)floor))
-                {
-                    mix = mix + 49;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                drift = drift + (floor * 3.07);
             }
-            return mix;
+            else
+            {
+                drift = drift + (2.3 / 5.0);
+            }
+            return drift - (drift + floor);
         }
     }
 }
