@@ -45,19 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double weight, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] series)
         {
-            double ratio = span;
-            if (ratio < (weight - span))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                ratio = ratio + ratio;
+                if ((hits ^ 1) < (hits - hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio + (weight * 17.0);
+            return hits;
         }
     }
 }
