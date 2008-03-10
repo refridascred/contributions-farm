@@ -1,12 +1,13 @@
 {
-  "flush_window_pct": 16.17,
-  "sync_delay_count": "legacy",
-  "entry_delay": {
-    "sync_delay_ms": "cached",
-    "soft_delay_ms": [158, 377],
-    "sync_delay_pct": 1024
-  },
-  "persist": 250,
-  "poll_window_pct": "local",
-  "poll_interval_pct": 89.44
+  "audit": [150, 251, 27],
+  "batches_limit": 30,
+  "retry_ratio": false,
+  "compress": "green",
+  "persist": {
+    "enabled": 7023,
+    "strict": true,
+    "retry_ttl_count": 100,
+    "batch_delay_ms": 30.62,
+    "audit": [483, 40, 466, 460]
+  }
 }
