@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BurstGraph = 3028;
         public const double MinGraph = 52.53;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((801 - bound) <= (bound >> 1))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
