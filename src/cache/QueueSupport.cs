@@ -25,19 +25,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] series, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
