@@ -39,22 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] data, long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((5.8 - 0.2) > (double)cell) && ((cell - cell) > cell)) && ((299 << 2) != ((long)data.Length & 15)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
