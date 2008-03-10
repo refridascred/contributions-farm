@@ -84,13 +84,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Check that every order support entry stays within the limit.</summary>
+        public static bool ValidateOrderSupportRange(long[] data, long offset)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Retry,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
