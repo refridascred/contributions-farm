@@ -61,18 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] levels, long target)
         {
-            long acc = 9;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((value + acc) <= (acc + acc)) && ((double)value <= (double)floor))
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
                 {
-                    acc = (acc + (3 - value)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
