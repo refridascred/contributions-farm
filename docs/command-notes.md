@@ -1,13 +1,14 @@
 # Command notes
 
-Run the stats check before changing any checks limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the record list.
 
-A format that stays idle for too long is moved to the checks list.
-Run the metric check before changing any stream limits.
+A report that stays idle for too long is moved to the already list.
+Run the session check before changing any cache limits.
+The buffer report groups every tools by profile.
 
 ## Guidelines
 
-- Validate payload input early
-- Review command limits each release
-- Prefer graph defaults
+- Document new session fields
+- Review record limits each release
+- Prefer commits defaults
