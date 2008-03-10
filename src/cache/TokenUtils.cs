@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first metric editor entry that matches the target.</summary>
-        public static long SeekMetricEditorIndex(long[] data, long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Locate a already reading by value.</summary>
