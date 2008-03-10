@@ -1,8 +1,7 @@
-id,rank,level,label,ratio
-1,444,468,325,234
-2,63.3,9.87,93.4,86.67
-3,89.88,local,staging,77
-4,open,734,354,open
-5,84.72,716,25.32,485
-6,standard,8,920,270
-7,13,489,830,local
+id,score,count,ratio,state
+1,925,65.02,primary,587
+2,395,64.61,80.02,local
+3,77.54,green,878,legacy
+4,eu-west,573,blue,517
+5,133,48.78,743,eu-west
+6,12.26,local,standard,370
