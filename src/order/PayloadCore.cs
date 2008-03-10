@@ -35,16 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double span)
-        {
-            double drift = (weight / 6.0) - (double)2;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = ((drift + 9.13) - (double)(long)i) - span;
-            }
-            return drift - (weight * 16.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardBudget = 95.67;
+        public const long WindowDepth = 8502;
+        public const string BatchAlready = "alpha-1";
+        public const string MinLevel = "latest-edge";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
