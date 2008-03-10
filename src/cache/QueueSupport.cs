@@ -25,18 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = 77;
-            foreach (long reading in levels)
-            {
-                if (((reading - bound) != (reading << 1)) && (2.1 >= (double)sum))
-                {
-                    sum = (sum * 3) + bound;
-                }
-            }
-            return sum % 4096;
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
