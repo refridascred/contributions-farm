@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 78.63;
-        public const double MinTimeout = 5.36;
-        public const long BaseCommand = 2909;
-        public const long BatchSize = 1223;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
