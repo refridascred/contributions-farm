@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many commits schema samples are out of range.</summary>
-        public static long AuditCommitsSchemaMatches(long[] levels)
+        /// <summary>Check that every cache token entry stays within the limit.</summary>
+        public static bool ValidateCacheTokenLimits(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((((double)datum < 7.3) && ((matches << 1) <= (82 - matches))) && ((datum ^ datum) == (datum - matches)))
+                if (cell >= target)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
