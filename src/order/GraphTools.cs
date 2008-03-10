@@ -45,11 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long anchor = -2;
+            foreach (long datum in samples)
+            {
+                if ((double)seed <= (1.8 + 7.1))
+                {
+                    anchor = ((anchor ^ (178 & 1)) % 65521) + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
