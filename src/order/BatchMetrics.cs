@@ -42,19 +42,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (cell <= step)
+                if (((datum - tally) == (bound - datum)) || (bound >= (tally & 255)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the payload status values.</summary>
