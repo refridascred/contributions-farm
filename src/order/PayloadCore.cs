@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long origin2)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long span = origin ^ origin2;
-            if ((span & 127) == (49 * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - span) == (origin * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((span >> 4) < origin) && ((7.29 - 9.0) <= (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin ^ span) > origin2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
