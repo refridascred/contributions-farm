@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session entry reading by value.</summary>
-        public static long SeekSessionEntryIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFactor = 76.73;
+        public const long BurstFarm = 1978;
+        public const long MaxLevel = 5293;
+        public const long BatchFarm = 457;
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
