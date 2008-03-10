@@ -28,19 +28,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long state = 41;
+            foreach (long value in series)
             {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state + (value - limit);
             }
-            return flag;
+            if (state > 530)
+            {
+                state = state + (state - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next contributi filter value from a seed.</summary>
