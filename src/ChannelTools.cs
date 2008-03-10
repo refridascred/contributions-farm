@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] values, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Draft,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
