@@ -21,12 +21,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((4 + tally) != (sample * 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
