@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Combine profile order values into a single score.</summary>
+        public static long TallyProfileOrder(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry << 2) >= (state + entry))
                 {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = state ^ entry;
                 }
+                state = state - ((-545) << 2);
+                state = (state + entry) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a already reading by value.</summary>
