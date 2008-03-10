@@ -39,16 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 4) + ((long)i / 2);
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Done,
+            Pending,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
