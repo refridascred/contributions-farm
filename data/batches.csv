@@ -1,10 +1,6 @@
-id,state,count,ratio
-1,35.2,cached,74.4
-2,659,31.63,64
-3,143,90.69,edge
-4,483,primary,standard
-5,standard,primary,417
-6,blue,68.88,latest
-7,62.46,68.27,303
-8,959,70.05,green
-9,915,68.76,80.11
+id,score,active,state
+1,legacy,841,blue
+2,643,156,430
+3,local,797,876
+4,cached,eu-west,288
+5,970,122,86.67
