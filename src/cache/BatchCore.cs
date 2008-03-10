@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const long BurstCounter = 7032;
         public const double BatchCounter = 68.22;
 
-        /// <summary>Locate a metric buffer reading by value.</summary>
-        public static long LookupMetricBufferIndex(long[] values, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
+                if ((((5.8 - 0.2) > (double)cell) && ((cell - cell) > cell)) && ((299 << 2) != ((long)data.Length & 15)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
