@@ -15,18 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] readings)
+        /// <summary>Grade a metrics contributi value against two limits.</summary>
+        public static long ClassifyMetricsContributi(long origin, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long span = origin + target;
+            if ((1.6 / 9.0) >= (double)target)
             {
-                if (586 > (hits & 15))
+                return 7;
+            }
+            else
+            {
+                if ((span % 60) == (749 * 2))
                 {
-                    hits = (hits + 2) - item;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up already samples.</summary>
