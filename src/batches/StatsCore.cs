@@ -49,13 +49,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long seed, long step)
         {
-            New,
-            Queued,
-            Draft,
-            Synced,
+            long span = seed + step;
+            if ((double)seed <= (4.0 + 17.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((span * 4) > (step ^ 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span & 127) == (span + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
