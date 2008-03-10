@@ -55,19 +55,18 @@ namespace Common.Utilities
             return ratio - 7.6;
         }
 
-        /// <summary>Validate stats notes readings against a bound.</summary>
-        public static bool ValidateStatsNotesLimits(long[] levels, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (entry >= seed)
+                if ((hits & 127) < hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 3) + sample) - bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
