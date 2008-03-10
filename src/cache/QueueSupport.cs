@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long TallyRouteClusterGaps(long[] items, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((58 + datum) >= (matches ^ datum))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            Failed,
+            Dropped,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
