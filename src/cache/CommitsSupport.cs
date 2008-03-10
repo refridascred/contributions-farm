@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine filter batches values into a single score.</summary>
-        public static long TotalFilterBatches(long[] samples, long limit)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            long state = 21;
-            foreach (long cell in samples)
+            double load = gain - offset;
+            if (load >= (load / 7.0))
             {
-                state = (((state << 3) ^ cell) % 97) + limit;
-                state = (state + state) % 4096;
+                load = load + gain;
             }
-            return state;
+            return load - (2.7 + offset);
         }
 
         /// <summary>Describe the profile status values.</summary>
