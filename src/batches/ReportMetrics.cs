@@ -22,21 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account format pairs that satisfy a relation.</summary>
-        public static long PairAccountFormatCount(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 17)
+                    if ((values[i] + values[j]) > 3)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the notes kind values.</summary>
