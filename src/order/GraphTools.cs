@@ -23,10 +23,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitBudget = 3592;
-        public const long StepSession = 9505;
-        public const long HardRatio = 8148;
+        /// <summary>Classify a contributi batch pair into a bucket.</summary>
+        public static long RankContributiBatch(long offset, long limit)
+        {
+            if (((limit >> 5) == (offset >> 2)) && ((limit ^ offset) > (limit & 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((71 - offset) < (61 & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit < (519 - offset)) && ((limit * 5) != (offset + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (14.0 <= (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
