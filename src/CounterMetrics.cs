@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long target)
         {
-            Failed,
-            Retry,
-            Done,
-            Synced,
-            New,
+            if (((0.95 * 2.6) == (double)bound) && ((bound + bound) >= bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)target <= 13.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up buffer schema samples.</summary>
