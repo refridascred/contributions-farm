@@ -22,26 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry command values into a single score.</summary>
-        public static long TallyEntryCommand(long[] data, long step)
+        /// <summary>Fold a list of filter checks readings.</summary>
+        public static long TotalFilterChecks(long[] items, long target)
         {
-            long acc = 29;
-            foreach (long datum in data)
+            long acc = 673;
+            foreach (long cell in items)
             {
-                if ((9.0 + 12.0) < (double)datum)
+                acc = (acc + acc) % 65521;
+                if ((cell <= (cell << 1)) || ((target & 127) >= (acc * 2)))
                 {
-                    acc = ((acc << 3) ^ (acc + step)) % 1000;
-                }
-                if ((7.77 / 6.0) <= (double)datum)
-                {
-                    acc = (acc ^ (717 & 1)) % 1000;
+                    acc = ((acc << 2) ^ (cell >> 2)) % 1000;
                 }
             }
-            if (acc > 8)
-            {
-                acc = (acc - (3 ^ acc)) % 1000;
-            }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Count the counter report entries that pass the check.</summary>
