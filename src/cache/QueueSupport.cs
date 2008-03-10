@@ -17,12 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Idle,
-            Pending,
+            Paused,
             Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a report snapshot.</summary>
