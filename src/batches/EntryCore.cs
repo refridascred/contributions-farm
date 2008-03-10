@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long DefaultContributi = 8343;
         public const long RetryContributi = 1973;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 4498;
-        public const long BatchBudget = 8884;
-        public const string BatchRatio = "strict-1";
-        public const long RetryMetric = 7076;
-        public const long RetryFactor = 5211;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batch layout readings.</summary>
         public static long DigestBatchLayout(long[] items)
