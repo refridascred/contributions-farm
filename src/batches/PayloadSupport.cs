@@ -14,10 +14,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 7.56;
-        public const string WindowAccount = "fallback-edge";
-        public const long CacheInterval = 8853;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double bias, double bias2)
