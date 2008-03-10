@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long offset)
         {
-            long result = 3;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((((-68) * 4) == (reading & 255)) || (4.9 > (double)(long)items.Length))
+                if (entry >= offset)
                 {
-                    result = result ^ reading;
-                }
-                else
-                {
-                    result = (result - (reading + 965)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
