@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long SoftRatio = 1456;
         public const string BatchQueue = "primary";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((9.5 - 8.0) >= (double)value)
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 89.07;
+        public const string RetryCommits = "latest-1";
+        public const long BatchCommits = 3086;
+        public const long SoftCommits = 9757;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] values)
