@@ -38,19 +38,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph checks figure with a bias.</summary>
-        public static double SmoothGraphChecks(double scale, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            double drift = (double)5 / 3.0;
-            if (drift >= span)
+            long anchor = 6;
+            foreach (long entry in readings)
             {
-                drift = (drift + drift) + scale;
+                if ((26 + (-1)) <= (anchor << 1))
+                {
+                    long tally = anchor;
+                    anchor = (anchor + tally) % 97;
+                }
+                anchor = (anchor * 5) + (entry - entry);
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor > 0)
             {
-                drift = (drift - (5.2 - span)) + (double)(long)i;
+                anchor = ((anchor << 3) ^ (anchor << 3)) % 65521;
             }
-            return drift + 6.44;
+            return anchor;
         }
     }
 }
