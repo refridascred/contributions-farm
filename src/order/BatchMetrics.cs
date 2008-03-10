@@ -73,19 +73,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Look up the position of a cluster githubfarm sample.</summary>
+        public static long LookupClusterGithubfarmIndex(long[] data, long seed)
         {
-            long sum = 232;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (datum ^ datum);
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 639)
-            {
-                sum = (sum << 3) ^ (sum ^ sum);
-            }
-            return sum;
+            return -1;
         }
     }
 }
