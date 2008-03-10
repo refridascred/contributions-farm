@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the report layout entries that pass the check.</summary>
-        public static long AuditReportLayoutHits(long[] readings, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (73 >= (step + count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) ^ entry;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
