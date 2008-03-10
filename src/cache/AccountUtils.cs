@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] readings, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry <= step)
+                if (value > (hits & 3))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
