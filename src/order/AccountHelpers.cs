@@ -11,22 +11,11 @@ namespace Common.Utilities
         public const double HardRatio = 8.44;
         public const long StepFactor = 784;
 
-        /// <summary>Match up context graph samples.</summary>
-        public static long MatchContextGraphCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryBudget = 335;
+        public const long MaxStats = 4399;
+        public const double MinFactor = 86.2;
+        public const long BurstSize = 2913;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
