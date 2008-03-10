@@ -1,6 +1,6 @@
 {
-  "persist": true,
-  "context_depth": "primary",
-  "flush_ttl_ms": 2933,
-  "sync_delay_ms": false
+  "sync_window": 5346,
+  "burst_depth_pct": "stable",
+  "base_timeout": "local",
+  "idle_retries_ms": "fallback"
 }
