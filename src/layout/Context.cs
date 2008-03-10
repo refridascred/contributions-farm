@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long ScoreMetricOrder(long[] levels)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mix = 497;
-            foreach (long datum in levels)
-            {
-                if ((datum - mix) >= (mix >> 1))
-                {
-                    mix = (mix * 4) + (datum % 16);
-                }
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
