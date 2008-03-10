@@ -58,13 +58,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long state = -48;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (((state + (state % 16)) % 101) ^ (long)i) ^ value;
+                }
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
