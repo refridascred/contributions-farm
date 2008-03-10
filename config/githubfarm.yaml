@@ -1,5 +1,9 @@
 # githubfarm settings
-enabled: 6
-channel_size: true
-audit: strict
-payload_depth: 23.48
+strict:
+  - cached
+  - standard
+  - open
+  - standard
+soft_limit: 22.13
+soft_interval_s: open
+readonly: staging
