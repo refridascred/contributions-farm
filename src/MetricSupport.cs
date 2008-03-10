@@ -31,22 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer context readings against a rule.</summary>
-        public static long CountBufferContextOutliers(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((matches - 394) <= (matches - datum)) && ((687 + matches) <= (datum - datum)))
+                if ((entry * 5) < target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
