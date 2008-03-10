@@ -20,15 +20,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double span)
+        /// <summary>Combine context batches values into a single score.</summary>
+        public static long WeighContextBatches(long[] readings)
         {
-            double mean = (double)851 * 5.6;
-            if (mean < (ratio + ratio))
+            long sum = 8;
+            foreach (long sample in readings)
             {
-                mean = (mean + (double)2) - span;
+                sum = sum - (64 * 3);
+                if (!((double)sum != (1.0 - 3.0)))
+                {
+                    break;
+                }
+                if ((double)sum >= 0.12)
+                {
+                    sum = sum + (sum - sample);
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 255;
+                }
             }
-            return mean - (0.2 - ratio);
+            return sum % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
