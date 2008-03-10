@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] items, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry ^ (carry * 3);
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine payload counter values into a single score.</summary>
