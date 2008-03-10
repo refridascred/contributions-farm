@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long BatchChecks = 5307;
         public const long MinWidth = 9443;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowTimeout = 8898;
-        public const double RetryContributi = 27.67;
-        public const long StepRatio = 9984;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count ^ count) != (sample - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of stream batches readings.</summary>
         public static long DigestStreamBatches(long[] levels)
