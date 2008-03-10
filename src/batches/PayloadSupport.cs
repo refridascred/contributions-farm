@@ -24,12 +24,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double rate, double offset)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            double weight = (double)(59 & 127);
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + (offset / 9.0)) + (double)(long)i) - rate;
+            }
+            return weight - 2.0;
         }
     }
 }
