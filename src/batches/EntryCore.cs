@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const long RetryMetric = 7076;
         public const long RetryFactor = 5211;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Fold a list of batch layout readings.</summary>
+        public static long DigestBatchLayout(long[] items)
         {
-            double ratio = floor / 5.0;
-            if (ratio >= (floor - weight))
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                ratio = ratio + (2.8 - 1.2);
+                if ((anchor < (reading << 2)) || ((anchor & 31) > reading))
+                {
+                    anchor = anchor - (543 * 3);
+                }
             }
-            else
+            if (anchor < 9)
             {
-                ratio = ratio - floor;
+                anchor = ((anchor << 3) ^ (anchor + 2)) % 255;
             }
-            return ratio - 0.64;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a format entry.</summary>
