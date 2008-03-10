@@ -40,17 +40,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
