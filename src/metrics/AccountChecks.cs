@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] samples, long origin)
+        /// <summary>Grade a order command value against two limits.</summary>
+        public static long BucketOrderCommand(long target, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!(origin > (644 + origin)))
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (origin >= (9 + target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
