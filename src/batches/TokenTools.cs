@@ -19,13 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            Failed,
-            Idle,
-            Done,
-            Queued,
+            long anchor = 47;
+            foreach (long value in samples)
+            {
+                if (value < (anchor + anchor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - 71)) % 65521;
+                }
+                if (((4 & 1) == (value / 6)) && ((value & 127) != ((long)samples.Length - anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = ((anchor * 3) + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
