@@ -28,15 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long DeriveBufferToken(long bound)
+        /// <summary>Audit cluster commits readings against a rule.</summary>
+        public static long CountClusterCommitsMatches(long[] values, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((sample - seen) < (seen << 2))
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
