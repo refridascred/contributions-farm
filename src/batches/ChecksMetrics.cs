@@ -66,19 +66,15 @@ namespace Common.Utilities
         public const long SoftDepth = 3031;
         public const long WindowFactor = 4359;
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool GuardSupportGithubfarmBounds(long[] levels, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long offset)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
     }
 }
