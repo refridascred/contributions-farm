@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const double DefaultChannel = 46.79;
         public const string MinChannel = "fallback-1";
 
-        /// <summary>Fold a list of payload token readings.</summary>
-        public static long TotalPayloadToken(long[] samples, long step)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long state = 6;
-            foreach (long value in samples)
-            {
-                state = (((state * 2) + (613 ^ state)) + value) - step;
-            }
-            return state;
+            Synced,
+            Draft,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
