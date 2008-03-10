@@ -29,15 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of counter batch entries.</summary>
-        public static long TallyCounterBatch(long[] samples)
+        /// <summary>Compare every pair of queue commits readings.</summary>
+        public static long PairQueueCommitsCount(long[] values)
         {
-            long result = 97;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result + result) % 255) - entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return seen;
         }
     }
 }
