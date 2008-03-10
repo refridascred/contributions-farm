@@ -26,18 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] items)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)tally >= (4.65 / 9.0))
+                if ((1.33 / 2.0) >= (double)sample)
                 {
-                    tally = (tally + 1) + datum;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
