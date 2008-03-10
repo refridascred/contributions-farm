@@ -72,21 +72,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
