@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double BurstRatio = 67.96;
         public const long BurstRecord = 7708;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] samples, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (count <= limit)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
