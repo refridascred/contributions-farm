@@ -20,15 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series, long seed)
+        /// <summary>Project the next checks token value.</summary>
+        public static double AdjustChecksToken(double gain, double bias)
         {
-            long score = 287;
-            foreach (long item in series)
+            double bias2 = gain;
+            if (bias2 >= (double)9)
             {
-                score = (((score * 5) + (item - item)) % 4096) - seed;
+                bias2 = (bias2 - (bias2 - 2.14)) + bias;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias2 / 6.0)) + (double)(long)i;
+            }
+            return bias2 + 5.1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
