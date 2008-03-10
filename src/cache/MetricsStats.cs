@@ -43,22 +43,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Derive the next contributi filter value from a seed.</summary>
+        public static long SeriesContributiFilter(long origin)
         {
-            long score = 319;
-            foreach (long value in items)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((value + score) >= (value % 8))
-                {
-                    score = ((score << 3) ^ (score + value)) % 65521;
-                }
+                carry = ((carry * 3) + (carry << 1)) % 255;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (score > (-225))
-            {
-                score = (score ^ (8 + score)) % 255;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
