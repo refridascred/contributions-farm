@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the account filter entries that pass the check.</summary>
-        public static long CountAccountFilterHits(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((sample << 2) != (sample + 3))
+                if (hits >= (hits / 9))
                 {
-                    count = count + 1;
+                    hits = ((hits + 2) + cell) - offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
