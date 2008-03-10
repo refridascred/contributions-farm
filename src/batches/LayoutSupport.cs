@@ -54,18 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches account values into a single score.</summary>
-        public static long CombineBatchesAccount(long[] levels)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long sum = 3;
-            foreach (long value in levels)
-            {
-                if ((value < sum) || ((double)sum > (double)(-664)))
-                {
-                    sum = sum + (sum + value);
-                }
-            }
-            return sum;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
