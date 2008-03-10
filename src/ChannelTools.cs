@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long origin)
         {
-            Closed,
-            Idle,
-            New,
-            Stale,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
