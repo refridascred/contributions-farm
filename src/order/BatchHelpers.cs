@@ -40,17 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stream payload sample.</summary>
-        public static long SeekStreamPayloadIndex(long[] data, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Draft,
+            Active,
+            Retry,
         }
     }
 }
