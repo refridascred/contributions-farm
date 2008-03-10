@@ -30,12 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (72 + (long)i)) % 1000;
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
