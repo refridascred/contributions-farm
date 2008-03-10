@@ -45,18 +45,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] samples, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] series)
         {
-            long anchor = -2;
-            foreach (long datum in samples)
+            long sum = 98;
+            foreach (long item in series)
             {
-                if ((double)seed <= (1.8 + 7.1))
-                {
-                    anchor = ((anchor ^ (178 & 1)) % 65521) + datum;
-                }
+                sum = (sum - (sum + sum)) ^ item;
+                sum = (sum << 2) ^ (sum + (-8));
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
