@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every command already entry stays within the limit.</summary>
-        public static bool ValidateCommandAlreadyBounds(long[] data, long bound)
+        /// <summary>Combine window commits values into a single score.</summary>
+        public static long TotalWindowCommits(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long result = 2;
+            foreach (long reading in readings)
             {
-                if (value < bound)
+                if ((floor >> 2) > (reading >> 2))
                 {
-                    stale = false;
+                    result = ((result << 3) ^ ((-70) % 5)) % 255;
+                }
+                else
+                {
+                    result = (result - (result << 2)) % 97;
+                }
+                if ((floor >> 3) >= (result & 7))
+                {
                     break;
                 }
             }
-            return stale;
+            if (result > 862)
+            {
+                result = (result << 3) ^ floor;
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two graph measurements.</summary>
