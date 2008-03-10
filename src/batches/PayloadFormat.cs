@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowSpan = 713;
-        public const long DefaultCommand = 1822;
-        public const long HardRatio = 7162;
-        public const long WindowTimeout = 4212;
+        /// <summary>Audit contributi notes readings against a rule.</summary>
+        public static long AuditContributiNotesOutliers(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((((cell - origin) <= (origin + seen)) && ((double)cell < (double)origin)) || (((double)origin > (double)38) && ((432 + (-90)) <= (seen + origin))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
