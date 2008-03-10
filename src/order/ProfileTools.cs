@@ -16,14 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Queued,
-            Active,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitCount = "legacy-edge";
+        public const long WindowStream = 8719;
+        public const long MaxLevel = 9174;
+        public const long LimitSize = 6327;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamMatches(long[] items, long seed)
