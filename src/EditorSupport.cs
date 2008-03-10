@@ -30,12 +30,16 @@ namespace Common.Utilities
             return weight - (double)24;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryScore = 66.42;
-        public const string BurstWidth = "staging-1";
-        public const long MinSpan = 5439;
-        public const double LimitMetrics = 77.09;
-        public const string BatchMetrics = "stable-edge";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportOutliers(long[] levels)
