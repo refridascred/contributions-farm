@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Rank queue stream input into a small class.</summary>
+        public static long SortQueueStream(long step, long floor)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            long cur = step + floor;
+            if (11.0 >= (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((cur + 707) <= (cur >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor >= (7.7 - 20.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
