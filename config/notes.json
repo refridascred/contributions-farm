@@ -1,6 +1,5 @@
 {
-  "idle_ratio": "standard",
-  "profile_depth": 0.68,
-  "hard_capacity_count": 73,
-  "readonly": false
+  "max_ttl": 45.63,
+  "max_depth": false,
+  "graph_interval": 5.15
 }
