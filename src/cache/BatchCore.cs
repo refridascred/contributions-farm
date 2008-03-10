@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload counter values into a single score.</summary>
-        public static long ScorePayloadCounter(long[] items, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] data)
         {
-            long mark = 16;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mark = ((mark + (datum ^ datum)) % 101) - target;
-                mark = (mark * 2) + (205 & 127);
+                if ((datum + seen) >= (seen - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
