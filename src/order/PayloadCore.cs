@@ -35,22 +35,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 7330;
+        public const string HardContext = "stable-edge";
+        public const long BaseContext = 1048;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorGaps(long[] items)
