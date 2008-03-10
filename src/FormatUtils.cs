@@ -32,19 +32,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate window stream readings against a bound.</summary>
-        public static bool GuardWindowStreamLimits(long[] values, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] data)
         {
-            bool found = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (value < offset)
+                if (((double)(long)data.Length >= (double)item) || (((matches % 60) <= (item ^ 242)) || (45 >= matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
