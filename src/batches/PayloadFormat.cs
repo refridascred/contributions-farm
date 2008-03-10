@@ -47,29 +47,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long floor)
+        /// <summary>Classify a record schema pair into a bucket.</summary>
+        public static long RankRecordSchema(long target, long step)
         {
-            long bound = target - floor;
-            if (20.0 >= (double)target)
+            long lane = target - step;
+            if (4.1 >= (double)lane)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (9.33 < (double)target)
+                if ((double)target <= 7.72)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (target > (bound & 3))
+                    if ((step % 5) > lane)
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 2;
                     }
                 }
             }
