@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order payload samples are out of range.</summary>
-        public static long CountOrderPayloadOutliers(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (hits <= sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
