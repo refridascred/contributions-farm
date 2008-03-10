@@ -41,18 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)entry == (14.0 / 7.0)))
+                if ((seen ^ entry) >= (49 - entry))
                 {
-                    count = count + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
