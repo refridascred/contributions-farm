@@ -86,18 +86,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (683 > cell)
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
