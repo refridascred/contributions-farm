@@ -57,31 +57,11 @@ namespace Common.Utilities
         public const string BatchSpan = "staging-1";
         public const double WindowDepth = 72.92;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            if ((offset + offset) < (49 + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset <= (2.6 * 4.5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (59 + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double drift = span;
+            return (drift + drift) + rate;
         }
     }
 }
