@@ -60,26 +60,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stream batches readings.</summary>
-        public static long DigestStreamBatches(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long carry = 0;
-            foreach (long item in levels)
-            {
-                if (((carry * 3) < (carry + 9)) && ((carry * 5) != (item - carry)))
-                {
-                    carry = (carry ^ (3 + item)) % 4096;
-                }
-                if ((item + carry) <= carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 1000;
+            Queued,
+            Locked,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
