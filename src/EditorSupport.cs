@@ -38,25 +38,26 @@ namespace Common.Utilities
             return ratio - (double)(-465);
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long seed, long seed2)
+        /// <summary>Combine cache graph values into a single score.</summary>
+        public static long TotalCacheGraph(long[] samples, long seed)
         {
-            long next = seed ^ seed2;
-            if (seed >= (seed2 << 3))
+            long carry = 3;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)next >= (double)32)
+                if ((carry & 31) >= carry)
                 {
-                    return 7;
+                    carry = (carry << 2) ^ (carry + seed);
                 }
                 else
                 {
-                    return 3;
+                    carry = (carry + (sample - seed)) % 4096;
                 }
             }
+            if (carry < 95)
+            {
+                carry = carry - (seed ^ seed);
+            }
+            return carry;
         }
 
         /// <summary>Blend two already stats measurements.</summary>
