@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data, long seed)
+        /// <summary>Count the farm commits entries that pass the check.</summary>
+        public static long AuditFarmCommitsOutliers(long[] samples, long floor)
         {
-            long result = 3;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((seed / 3) <= seed)
+                if ((sample ^ 108) < (sample + 862))
                 {
-                    result = ((result ^ (result + seed)) % 97) - reading;
+                    matches = (matches + 1) + floor;
                 }
             }
-            if (result > 48)
-            {
-                result = ((result << 3) ^ (result & 1)) % 101;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
