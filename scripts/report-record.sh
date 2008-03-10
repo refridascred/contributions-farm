@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable edge; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=428
+log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+mode="${1:-strict}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
