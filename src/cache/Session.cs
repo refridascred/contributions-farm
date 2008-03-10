@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stream buffer readings against a rule.</summary>
-        public static long CountStreamBufferGaps(long[] values, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((double)count >= 8.9) && ((double)40 >= (double)(long)values.Length))
-                {
-                    count = ((count + 1) ^ cell) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
