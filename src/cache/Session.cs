@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long CacheFilter = 3981;
         public const string IdleFilter = "stable";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "latest-edge";
-        public const string WindowChannel = "standard-v2";
-        public const string MaxChannel = "strict-1";
-        public const long BatchWidth = 491;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ScaleBatches(double gain, double span)
