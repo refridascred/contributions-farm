@@ -85,18 +85,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = 3;
-            foreach (long entry in items)
-            {
-                if ((7.7 + 2.13) < (double)total)
-                {
-                    total = (total + origin) + entry;
-                }
-            }
-            return total % 65521;
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
