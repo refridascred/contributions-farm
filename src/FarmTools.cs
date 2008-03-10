@@ -25,13 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            double weight = (double)(1 + 38);
+            if (weight > weight)
+            {
+                weight = (weight - weight) + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (3.3 / 6.0)) + (double)(long)i;
+            }
+            return weight - rate;
         }
     }
 }
