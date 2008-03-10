@@ -1,33 +1,7 @@
 # entry settings
-compress: 30
-checks_retries: 52
-verbose: 1489
-flush_size:
-  hard_ttl:
-    - green
-    - standard
-    - primary
-  soft_ratio_pct: stable
-  batch_size: true
-  poll_ratio_count: false
-  soft_window_ms:
-    burst_timeout_count: 4697
-    max_depth_ms: staging
-    cluster_threshold: 78.97
-    base_interval_s: true
-    enabled: 40.05
-    soft_timeout_count: blue
-  max_ttl_s: 64.96
-buffer_depth: local
-soft_threshold_s:
-  batch_size_s:
-    - local
-    - primary
-  max_window_s: false
-  idle_depth_s:
-    batch_capacity: 100
-    idle_delay_pct: false
-    schema_depth: 50.23
-    idle_size: 75.09
-    warm_size_count: 11
-    max_limit_pct: 38
+batch_threshold: stable
+channel_limit: true
+context_limit: 13.87
+sync_timeout: 60
+max_timeout_count: stable
+poll_threshold: 41.87
