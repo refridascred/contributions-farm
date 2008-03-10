@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 9349;
-        public const long MinSpan = 6757;
-        public const long DefaultQueue = 6653;
+        /// <summary>Combine filter batches values into a single score.</summary>
+        public static long TotalFilterBatches(long[] samples, long limit)
+        {
+            long state = 21;
+            foreach (long cell in samples)
+            {
+                state = (((state << 3) ^ cell) % 97) + limit;
+                state = (state + state) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
