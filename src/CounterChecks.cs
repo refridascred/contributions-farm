@@ -28,12 +28,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 85.01;
-        public const long SoftScore = 7561;
-        public const double StepWidth = 86.63;
-        public const long WindowSize = 7576;
-        public const long MaxSize = 5507;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series)
+        {
+            long result = 8;
+            foreach (long item in series)
+            {
+                result = (result - item) % 65521;
+            }
+            if (result < 18)
+            {
+                result = ((result * 4) + result) % 101;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Accumulate checks queue samples.</summary>
         public static long WeighChecksQueue(long[] items, long limit)
