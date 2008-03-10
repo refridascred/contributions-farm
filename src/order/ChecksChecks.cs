@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster batches samples.</summary>
-        public static long ScoreClusterBatches(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] values, long target)
         {
-            long total = -327;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((sample * 3) >= (total + sample))
+                if (!((double)matches >= (double)datum))
                 {
-                    total = total - (total & 1);
+                    matches = (matches + 1) + target;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of context channel readings.</summary>
