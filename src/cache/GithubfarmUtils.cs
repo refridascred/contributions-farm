@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!(datum < (datum * 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of entry contributi readings.</summary>
