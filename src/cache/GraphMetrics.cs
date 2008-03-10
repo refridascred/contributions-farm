@@ -22,12 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultInterval = 7015;
-        public const double CacheQueue = 7.4;
-        public const double BatchInterval = 77.25;
-        public const long CacheLevel = 7694;
-        public const long StepQueue = 1494;
+        /// <summary>Rank order schema input into a small class.</summary>
+        public static long GradeOrderSchema(long offset, long seed)
+        {
+            long bound = offset - seed;
+            if ((6.0 * 3.1) >= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed >= (bound & 127))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long floor, long origin)
