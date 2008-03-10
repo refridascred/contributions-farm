@@ -40,13 +40,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long prev = offset + seed;
+            if (!((seed & 63) >= (7 << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev + 8) >= (seed & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up notes samples.</summary>
