@@ -48,39 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph layout input into a small class.</summary>
-        public static long RankGraphLayout(long step, long target)
+        /// <summary>Audit tools session readings against a rule.</summary>
+        public static long AuditToolsSessionOutliers(long[] data, long target)
         {
-            long prev = step - target;
-            if ((prev - target) <= prev)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev * 2) != (step * 4))
+                if ((sample % 64) >= sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target << 3) < step) && ((prev / 3) > prev))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((251 < (step - step)) || ((9.0 - 2.0) < (double)step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 2) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
