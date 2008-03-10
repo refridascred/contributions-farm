@@ -28,23 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the notes counter series from a seed.</summary>
-        public static long RollNotesCounter(long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double ratio, double span)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (limit < (score ^ score))
-                {
-                    score = ((score * 2) + (34 ^ 33)) % 1000;
-                }
-                if (!((score ^ score) >= ((long)i ^ limit)))
-                {
-                    score = (score + (limit % 3)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            double rate = 2.42;
+            return ((rate - 4.4) + ratio) + span;
         }
     }
 }
