@@ -52,18 +52,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph queue entries that pass the check.</summary>
-        public static long TallyGraphQueueMatches(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((seed + bound) > seed)
             {
-                if ((hits - hits) > (8 + hits))
+                return 5;
+            }
+            else
+            {
+                if ((bound << 3) != (bound - seed))
                 {
-                    hits = (hits + 2) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) > 4)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
