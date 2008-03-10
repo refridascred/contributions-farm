@@ -13,11 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFactor = 76.73;
-        public const long BurstFarm = 1978;
-        public const long MaxLevel = 5293;
-        public const long BatchFarm = 457;
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmBufferCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
