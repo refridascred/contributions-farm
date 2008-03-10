@@ -26,10 +26,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinDepth = 615;
-        public const long MinGraph = 8249;
-        public const string BatchFactor = "staging-1";
+        /// <summary>Accumulate checks entry samples.</summary>
+        public static long TallyChecksEntry(long[] series)
+        {
+            long anchor = -64;
+            foreach (long value in series)
+            {
+                anchor = ((anchor - 9) % 255) ^ value;
+                if ((double)anchor >= (11.0 - 1.44))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
