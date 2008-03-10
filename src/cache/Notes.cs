@@ -54,17 +54,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = seed - limit;
+            if (((double)span >= (double)seed) || ((span - 307) >= span))
             {
-                if (items[i] == offset)
+                return 6;
+            }
+            else
+            {
+                if ((5.11 * 5.2) == (double)span)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - seed) == ((-5) - span))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
