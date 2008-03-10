@@ -55,38 +55,13 @@ namespace Common.Utilities
             return weight2 - offset;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long step, long step2)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if (((step << 2) >= step2) && ((double)872 == (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step + step) < step2) && ((double)step == (double)step2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((194 & 63) <= (step2 << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - step) == (step - 760))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
