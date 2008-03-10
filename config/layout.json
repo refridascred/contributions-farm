@@ -1,7 +1,12 @@
 {
-  "batch_window_ms": 30,
-  "format_capacity": 60,
-  "burst_depth": 1024,
-  "burst_threshold_s": "primary",
-  "cache_depth": 6358
+  "flush_window_pct": 16.17,
+  "sync_delay_count": "legacy",
+  "entry_delay": {
+    "sync_delay_ms": "cached",
+    "soft_delay_ms": [158, 377],
+    "sync_delay_pct": 1024
+  },
+  "persist": 250,
+  "poll_window_pct": "local",
+  "poll_interval_pct": 89.44
 }
