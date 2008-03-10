@@ -29,38 +29,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a editor cache pair into a bucket.</summary>
-        public static long GradeEditorCache(long seed, long seed2)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if ((seed >> 3) != (seed % 12))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((8.3 - 2.19) <= (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed2 << 3) == (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed2 + seed) < (seed2 >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
