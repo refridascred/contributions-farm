@@ -68,19 +68,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] samples, long bound)
+        /// <summary>Locate a profile queue reading by value.</summary>
+        public static long SeekProfileQueueIndex(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > bound)
+                if (samples[i] == target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
