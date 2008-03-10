@@ -26,13 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
+            Idle,
+            Retry,
             Queued,
-            Paused,
-            Draft,
-            Pending,
+            Closed,
             Done,
         }
     }
