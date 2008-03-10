@@ -48,18 +48,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes queue entries that pass the check.</summary>
-        public static long AuditNotesQueueGaps(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = 7;
+            foreach (long reading in values)
             {
-                if (!((3.5 / 4.0) <= (double)datum))
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = seen + 1;
+                    state = ((state << 2) ^ (state + reading)) - (long)i;
+                    state = (state * 5) + (reading << 2);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = (state ^ ((-578) + state)) ^ (long)i2;
+                    state = state - (reading + 0);
+                }
+                if ((state + bound) != (state - bound))
+                {
+                    state = (state + (state + bound)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state & 255)) % 101;
                 }
             }
-            return seen;
+            if (state < 351)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
