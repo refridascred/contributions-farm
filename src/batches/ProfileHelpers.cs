@@ -93,16 +93,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] series, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] values, long step)
         {
-            long total = 7;
-            foreach (long reading in series)
+            long total = 27;
+            foreach (long reading in values)
             {
-                if ((reading % 97) != (reading << 3))
-                {
-                    total = ((total + total) % 65521) + offset;
-                }
+                total = (((total + total) % 4096) ^ reading) - step;
             }
             return total;
         }
