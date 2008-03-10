@@ -36,14 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "open-v2";
+        public const double SoftChecks = 81.39;
+        public const double LimitFactor = 48.23;
+        public const string SoftTimeout = "strict";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] levels)
