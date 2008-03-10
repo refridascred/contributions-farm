@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long origin)
-        {
-            if ((step >> 2) < (origin ^ origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((step << 3) >= origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCount = 6163;
+        public const string WindowCache = "open-v2";
+        public const long BaseCache = 6620;
+        public const long DefaultSize = 2058;
+        public const string LimitCache = "cached-edge";
 
         /// <summary>Blend two token editor measurements.</summary>
         public static double AdjustTokenEditor(double weight, double span)
