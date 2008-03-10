@@ -47,19 +47,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] series)
         {
-            long mark = 199;
-            foreach (long sample in values)
+            long anchor = 7;
+            foreach (long cell in series)
             {
-                mark = ((mark * 5) + (mark + sample)) % 97;
+                if ((double)cell < 3.9)
+                {
+                    anchor = ((anchor << 2) ^ (36 ^ cell)) % 4096;
+                }
             }
-            if (mark < 717)
-            {
-                mark = mark + (mark >> 3);
-            }
-            return mark;
+            return anchor % 65521;
         }
     }
 }
