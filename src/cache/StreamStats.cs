@@ -42,13 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data, long origin)
         {
-            Paused,
-            Closed,
-            Queued,
-            New,
+            long acc = 314;
+            foreach (long sample in data)
+            {
+                if ((9.6 / 4.0) == (double)sample)
+                {
+                    acc = acc + (sample + origin);
+                }
+                else
+                {
+                    acc = (acc - 7) % 4096;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
