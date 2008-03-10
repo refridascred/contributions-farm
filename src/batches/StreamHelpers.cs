@@ -96,17 +96,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks already samples.</summary>
-        public static long ScoreChecksAlready(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long mix = 8;
-            foreach (long datum in readings)
+            long mix = 911;
+            foreach (long reading in readings)
             {
-                if ((71 << 3) > ((long)readings.Length << 2))
+                if ((double)mix == (3.9 * 9.3))
                 {
-                    break;
+                    mix = (mix + (reading + (-788))) % 101;
                 }
-                mix = (mix << 2) ^ (datum >> 4);
+            }
+            if (mix < 50)
+            {
+                mix = mix ^ (mix ^ mix);
             }
             return mix;
         }
