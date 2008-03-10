@@ -1,12 +1,6 @@
 # entry settings
-sync_retries_count: 72.01
-burst_limit_pct: strict
-base_threshold: 30
-burst_retries_s: cached
-audit:
-  readonly: 500
-  burst_retries_count:
-    - 96
-    - 315
-  report_interval: 16.09
-checks_ratio: 250
+soft_timeout_count: 19.55
+retry_timeout_count: 799
+audit: standard
+dry_run: latest
+compress: 66.24
