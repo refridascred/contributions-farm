@@ -46,23 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mark = 35;
-            foreach (long entry in values)
-            {
-                mark = mark - ((-862) >> 2);
-                if (((double)entry == (double)mark) || ((mark + mark) >= 8))
-                {
-                    mark = (mark - mark) % 97;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark + (mark ^ mark)) % 4096;
-            }
-            return mark % 4096;
+            Active,
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
