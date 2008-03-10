@@ -66,18 +66,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = 232;
+            foreach (long datum in items)
             {
-                if ((step >> 2) > entry)
-                {
-                    tally = tally + 1;
-                }
+                sum = sum ^ (datum ^ datum);
             }
-            return tally;
+            if (sum < 639)
+            {
+                sum = (sum << 3) ^ (sum ^ sum);
+            }
+            return sum;
         }
     }
 }
