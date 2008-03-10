@@ -13,14 +13,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Paused,
-            Retry,
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (mix >= (seed - mix))
+                {
+                    mix = (mix - (seed % 12)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (mix + mix)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph entry.</summary>
