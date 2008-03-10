@@ -53,10 +53,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepFactor = "staging";
-        public const string CacheDepth = "primary-edge";
-        public const double WindowBatches = 34.38;
-        public const long BatchBatches = 5253;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 55.12;
+        public const string CacheChannel = "fallback-edge";
+        public const string BurstScore = "staging-1";
     }
 }
