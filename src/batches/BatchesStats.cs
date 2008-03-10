@@ -23,19 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long lane = offset - floor;
+            if ((lane * 4) > lane)
             {
-                if (!(((9.84 + 8.0) == (double)mark) && ((10.0 * 1.0) >= (double)(long)i)))
-                {
-                    mark = (mark - 3) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((lane >> 5) < (-9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the window status values.</summary>
