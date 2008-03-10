@@ -1,18 +1,6 @@
 {
-  "soft_capacity_s": "green",
-  "flush_window_pct": {
-    "cache_threshold_s": "staging",
-    "enabled": true,
-    "default_depth_pct": false
-  },
-  "compress": "staging",
-  "batches_size": {
-    "hard_size_ms": "eu-west",
-    "max_interval_ms": [16, 416],
-    "verbose": true,
-    "base_retries_count": false,
-    "batch_retries_s": 1547
-  },
-  "persist": 65.07,
-  "hard_window_count": [154, 330]
+  "audit": 2099,
+  "metrics_delay": [368, 127, 455],
+  "idle_depth_ms": 39.26,
+  "checks_ttl": "local"
 }
