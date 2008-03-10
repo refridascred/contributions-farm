@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "staging";
+        public const long IdleNotes = 6900;
+        public const long StepScore = 7398;
+        public const string SoftLevel = "stable-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstDepth = 6103;
