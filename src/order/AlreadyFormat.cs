@@ -55,18 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((13 * 4) != (reading ^ matches))
+                if ((offset + total) != (offset ^ total))
                 {
-                    matches = matches + 1;
+                    total = (total - (offset ^ offset)) % 97;
+                    total = (total - ((long)i * 3)) % 97;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
