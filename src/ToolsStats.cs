@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the contributi payload entries that pass the check.</summary>
-        public static long MeasureContributiPayloadMatches(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((matches * 2) == (cell + matches))
+                if ((tally - tally) > (tally / 8))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
