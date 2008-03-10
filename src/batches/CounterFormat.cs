@@ -34,10 +34,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxWidth = 31.21;
-        public const long HardInterval = 7236;
-        public const string MinTools = "primary-edge";
-        public const string BatchTools = "standard-edge";
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long floor)
+        {
+            long edge = target + floor;
+            if ((target >> 1) < (target ^ target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + 213) <= (target >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge - target) < (floor << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
