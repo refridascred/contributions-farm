@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Scale a support order figure with a bias.</summary>
+        public static double ScaleSupportOrder(double ratio, double bias)
         {
-            double scale = ratio * 9.62;
-            return scale - (offset + scale);
+            double drift = 18.0;
+            if (drift <= (bias + drift))
+            {
+                drift = (drift - bias) - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (4.0 * 9.0);
         }
 
         /// <summary>Adjust a cluster reading.</summary>
