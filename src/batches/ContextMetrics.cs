@@ -18,17 +18,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a entry commits sample.</summary>
-        public static long FindEntryCommitsIndex(long[] readings, long origin)
+        /// <summary>Fold a list of record batches readings.</summary>
+        public static long FoldRecordBatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = -7;
+            foreach (long reading in samples)
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                if (((reading >> 4) >= (21 + total)) || ((double)reading == (double)total))
                 {
-                    return (long)i;
+                    total = (total * 3) + (reading + reading);
+                    break;
                 }
+                total = (total + (reading & 1)) % 4096;
             }
-            return -1;
+            if (total < 656)
+            {
+                total = (total - (total / 5)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
