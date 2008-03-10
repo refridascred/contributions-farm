@@ -1,8 +1,7 @@
 {
-  "hard_retries_pct": true,
-  "flush_retries_count": "green",
-  "verbose": "green",
-  "compress": false,
-  "warm_capacity": 500,
-  "readonly": 97.81
+  "hard_interval": true,
+  "persist": 71.14,
+  "buffer_window": true,
+  "window_threshold": "green",
+  "dry_run": [442, 393, 166]
 }
