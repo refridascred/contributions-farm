@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout payload entry stays within the limit.</summary>
-        public static bool CheckLayoutPayloadRange(long[] series, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] data)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (value < origin)
+                if ((double)matches <= (double)sample)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a contributi summary.</summary>
