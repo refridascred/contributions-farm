@@ -1,18 +1,6 @@
 # githubfarm settings
-batch_retries_s:
-  - 350
-  - 258
-  - 107
-poll_threshold_count: legacy
-support_ttl: 81.45
-cache_window_count:
-  strict: 6786
-  tools_depth: open
-  graph_depth: true
-  base_timeout_s:
-    poll_window_count: false
-    audit: 74
-    channel_timeout: 47.84
-    contributi_window: 38.45
-    already_retries: 12.52
-    tools_window: green
+min_window: 250
+compress: 72.93
+base_timeout:
+  - 353
+  - 175
