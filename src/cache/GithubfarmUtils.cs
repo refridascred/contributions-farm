@@ -30,22 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] values, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            long acc = 869;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (acc < (4 & 1))
+                if (!((datum << 3) < 414))
                 {
-                    acc = ((acc ^ (acc - floor)) % 1000) - cell;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc < 248)
-            {
-                acc = (acc - (floor << 1)) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
