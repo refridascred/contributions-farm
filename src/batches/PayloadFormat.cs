@@ -73,10 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 8331;
-        public const long HardRatio = 808;
-        public const string SoftTimeout = "open";
-        public const string MinWidth = "staging-1";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (671 > sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
