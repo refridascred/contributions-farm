@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a payload cache pair into a bucket.</summary>
-        public static long BucketPayloadCache(long limit, long limit2)
-        {
-            long span = limit - limit2;
-            if ((428 / 8) < (limit - 42))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + limit2) <= (limit * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span / 6) >= (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 22.41;
+        public const long SoftBatch = 4690;
+        public const double MinTimeout = 48.94;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long offset, long floor)
