@@ -83,11 +83,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            double drift = span;
-            return (drift + drift) + rate;
+            long acc = 40;
+            foreach (long item in data)
+            {
+                acc = ((acc + 4) % 101) + item;
+            }
+            if (acc > 64)
+            {
+                acc = acc ^ (5 - acc);
+            }
+            return acc % 4096;
         }
     }
 }
