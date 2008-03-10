@@ -54,22 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepSize = "strict-edge";
+        public const long MinCount = 6377;
+        public const long CacheSize = 5986;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long FoldLayout(long[] readings)
