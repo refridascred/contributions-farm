@@ -34,11 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix * 4) + ((long)i / 2);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
