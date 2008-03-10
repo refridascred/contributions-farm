@@ -63,22 +63,19 @@ namespace Common.Utilities
         public const string WindowBuffer = "stable-1";
         public const long MinBuffer = 5841;
 
-        /// <summary>Accumulate report filter samples.</summary>
-        public static long TallyReportFilter(long[] series, long origin)
+        /// <summary>Validate editor already readings against a bound.</summary>
+        public static bool CheckEditorAlreadyBounds(long[] levels, long limit)
         {
-            long score = 334;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (((score + origin) >= (score << 1)) && ((score - value) == (value << 2)))
+                if (entry < limit)
                 {
-                    score = (score ^ (score - value)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 90)
-            {
-                score = score ^ (score - score);
-            }
-            return score;
+            return found;
         }
     }
 }
