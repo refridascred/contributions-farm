@@ -34,10 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 56.92;
-        public const double StepRatio = 17.5;
-        public const long WindowLevel = 3595;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
