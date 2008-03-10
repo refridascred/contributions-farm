@@ -1,5 +1,19 @@
 # githubfarm settings
-idle_ttl_count: false
-warm_size_count: true
-poll_depth_s: edge
-idle_limit_s: stable
+compress: true
+farm_ttl: 71.5
+persist: 100
+warm_limit_ms: 47.28
+cache_threshold:
+  - 75
+  - 366
+  - 166
+  - 67
+profile_interval:
+  dry_run: 29
+  default_ttl_ms:
+    - 136
+    - 226
+    - 354
+    - 120
+  cache_retries_s: 6194
+  soft_interval: 1175
