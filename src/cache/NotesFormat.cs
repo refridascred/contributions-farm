@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] levels, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mix = 3;
+            foreach (long datum in values)
             {
-                if ((bound + 35) <= (bound % 12))
+                if ((7.0 + 5.45) >= (double)mix)
                 {
-                    matches = (matches + 3) + entry;
+                    mix = (mix ^ (837 ^ mix)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = (mix - (datum - mix)) % 101;
+                }
+                if ((mix <= (mix ^ datum)) && (1 >= ((long)values.Length + mix)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Describe the token state values.</summary>
