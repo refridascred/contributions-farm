@@ -93,18 +93,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] series)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((count >> 4) != (reading * 5)) || (count > (count * 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Queued,
+            Draft,
+            Stale,
         }
     }
 }
