@@ -78,18 +78,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] levels)
+        /// <summary>Match up window schema samples.</summary>
+        public static long CompareWindowSchemaCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value >= (2.3 - 9.5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
