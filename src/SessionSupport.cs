@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long SoftRatio = 1456;
         public const string BatchQueue = "primary";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 5069;
-        public const double IdleRatio = 44.7;
-        public const string SoftDepth = "open-v2";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ProjectLayout(double weight, double span)
