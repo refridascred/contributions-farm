@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 3500;
+        public const long BatchSupport = 6608;
+        public const long CacheWidth = 8694;
+        public const long SoftSupport = 8031;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
