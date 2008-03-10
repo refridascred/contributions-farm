@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchDepth = 84.25;
-        public const long LimitScore = 3483;
-        public const long LimitFactor = 9667;
-        public const double SoftTimeout = 8.04;
+        /// <summary>Audit report graph readings against a rule.</summary>
+        public static long TallyReportGraphMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((3.0 + 7.78) != (double)reading)
+                {
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate window batches readings against a bound.</summary>
         public static bool CheckWindowBatchesRange(long[] items, long origin)
