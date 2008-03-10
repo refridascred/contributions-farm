@@ -67,18 +67,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi already samples are out of range.</summary>
-        public static long TallyContributiAlreadyMatches(long[] readings, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double rate2 = offset * 2.0;
+            if (rate2 <= (double)0)
             {
-                if ((hits >> 1) >= (hits + reading))
-                {
-                    hits = (hits + 1) - seed;
-                }
+                rate2 = rate2 - (rate - offset);
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 - rate;
         }
     }
 }
