@@ -32,25 +32,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
-        public static long BucketGithubfarmContributi(long target, long floor)
+        /// <summary>Accumulate record farm samples.</summary>
+        public static long TallyRecordFarm(long[] series, long floor)
         {
-            long bound = target - floor;
-            if (!((5.0 / 3.0) > (double)bound))
+            long acc = 36;
+            foreach (long cell in series)
             {
-                return 3;
+                if (((0 ^ acc) < (acc >> 5)) || ((floor + cell) < floor))
+                {
+                    acc = ((acc * 3) + (floor + 34)) % 1000;
+                }
+                acc = (acc + (floor ^ floor)) % 1000;
             }
-            else
+            if (acc < 37)
             {
-                if (8.38 < (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                acc = (acc - acc) % 65521;
             }
+            return acc % 97;
         }
     }
 }
