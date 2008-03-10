@@ -46,18 +46,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            long carry = 313;
-            foreach (long reading in samples)
+            long state = 79;
+            foreach (long entry in levels)
             {
-                if (reading > (97 % 12))
+                if ((double)entry > (2.0 * 5.0))
                 {
-                    carry = ((carry - (reading & 31)) % 4096) - bound;
+                    state = ((state * 3) + (entry - (long)levels.Length)) % 97;
                 }
             }
-            return carry % 4096;
+            if (state > 49)
+            {
+                state = ((state << 3) ^ (state % 97)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
