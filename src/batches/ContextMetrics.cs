@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long WindowScore = 9777;
         public const long DefaultFactor = 7392;
 
-        /// <summary>Adjust a metrics commits reading.</summary>
-        public static double AdjustMetricsCommits(double scale, double span)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double ratio = scale;
-            if (ratio <= span)
-            {
-                ratio = ratio + (span + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (1.78 * 9.0)) - (double)(long)i;
-            }
-            return ratio + (double)0;
+            Draft,
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a entry commits sample.</summary>
