@@ -1,13 +1,6 @@
 {
-  "batch_ttl_pct": 7351,
-  "channel_ttl": 5528,
-  "retry_capacity_count": ["edge", "legacy", "open", "legacy"],
-  "idle_ttl": {
-    "enabled": 536,
-    "hard_window_count": false,
-    "poll_interval_pct": 60,
-    "burst_interval_s": "green",
-    "report_threshold": "stable"
-  },
-  "readonly": 30
+  "profile_window": "local",
+  "order_delay": true,
+  "retry_timeout": 45.05,
+  "filter_delay": ["green", "latest"]
 }
