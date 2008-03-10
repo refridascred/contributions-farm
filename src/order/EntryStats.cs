@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] values, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long anchor = 2;
-            foreach (long sample in values)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (((anchor * 5) + anchor) + sample) + step;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Hold a commits record.</summary>
