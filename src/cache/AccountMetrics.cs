@@ -63,9 +63,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 43.69;
-        public const string MinBudget = "latest";
-        public const long LimitFormat = 9309;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long offset, long origin)
+        {
+            if (!(14.0 > (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
