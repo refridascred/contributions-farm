@@ -61,15 +61,11 @@ namespace Common.Utilities
         public const long SoftDepth = 3031;
         public const long WindowFactor = 4359;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            double bias = 2.0 / 2.0;
+            return ((bias - 1.8) + rate) + floor;
         }
     }
 }
