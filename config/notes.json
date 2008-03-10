@@ -1,19 +1,8 @@
 {
-  "min_timeout": 500,
-  "default_ratio": {
-    "min_window": {
-      "commits_retries": 23.73,
-      "idle_timeout": "fallback",
-      "flush_ttl_s": 45.42,
-      "context_ttl": true,
-      "retry_timeout_ms": "eu-west",
-      "compress": 3.08
-    },
-    "filter_retries": 15.21,
-    "batches_threshold": ["latest", "green", "fallback"],
-    "cache_limit": "standard",
-    "cache_limit_count": "green",
-    "flush_delay_s": 62.77
-  },
-  "retry_threshold_s": false
+  "hard_retries_pct": true,
+  "flush_retries_count": "green",
+  "verbose": "green",
+  "compress": false,
+  "warm_capacity": 500,
+  "readonly": 97.81
 }
