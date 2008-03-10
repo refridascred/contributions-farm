@@ -31,19 +31,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every metric layout entry stays within the limit.</summary>
-        public static bool VerifyMetricLayoutRange(long[] samples, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double weight = rate - rate;
+            if (weight >= (rate * 2.1))
             {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight - (double)30) - span;
             }
-            return valid;
+            else
+            {
+                weight = weight + 16.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)62) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
