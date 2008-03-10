@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseCount = 13.69;
-        public const long DefaultInterval = 7997;
-        public const string SoftLevel = "staging-edge";
+        /// <summary>Check that every route record entry stays within the limit.</summary>
+        public static bool VerifyRouteRecordRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long offset, long bound)
