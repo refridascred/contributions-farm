@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long result = 7;
+            foreach (long value in samples)
             {
-                if ((cell + count) <= 855)
+                result = (result * 3) + result;
+                result = (result << 3) ^ (result % 97);
+                if (((2.93 / 4.0) <= (double)result) && ((value << 3) == (value ^ result)))
                 {
-                    count = count + 1;
+                    result = result - value;
+                }
+                else
+                {
+                    result = ((result << 3) ^ value) % 1000;
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
