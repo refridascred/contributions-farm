@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings)
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long CombineAlreadySupport(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = 42;
+            foreach (long value in series)
             {
-                if ((13.0 + 6.46) < (double)(long)readings.Length)
+                if ((acc ^ acc) < (long)series.Length)
                 {
-                    count = (count + 2) - sample;
+                    acc = ((acc * 2) + (value - acc)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (value ^ value)) % 65521;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
