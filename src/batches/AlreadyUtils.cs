@@ -19,13 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total - ((long)i - total)) % 1000;
+                if ((total * 5) < step)
+                {
+                    total = total ^ total;
+                    break;
+                }
+                else
+                {
+                    total = (total * 3) + total;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
