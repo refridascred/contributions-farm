@@ -48,13 +48,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long origin, long floor)
         {
-            New,
-            Draft,
-            Paused,
-            Locked,
+            long bound = origin ^ floor;
+            if ((535 % 24) > (bound ^ bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound & 63) != (bound >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound & 31) < bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.8 + 11.0) <= (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
