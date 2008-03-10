@@ -53,19 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session cache entry stays within the limit.</summary>
-        public static bool GuardSessionCacheLimits(long[] items, long limit)
+        /// <summary>Grade a order schema value against two limits.</summary>
+        public static long GradeOrderSchema(long target, long floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long lane = target + floor;
+            if ((11.0 >= (double)floor) || (lane < (target - floor)))
             {
-                if (cell <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor <= (6.5 * 15.0))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((8 % 97) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target < (lane >> 3)) || (lane <= floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
