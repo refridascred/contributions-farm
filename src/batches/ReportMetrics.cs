@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels, long origin)
+        /// <summary>Roll a githubfarm layout counter forward.</summary>
+        public static long SeriesGithubfarmLayout(long limit)
         {
-            long sum = 50;
-            foreach (long datum in levels)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (sum < (origin * 5))
-                {
-                    sum = (sum - ((long)levels.Length & 1)) ^ datum;
-                }
+                mix = (mix ^ mix) % 4096;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Hold a batches header.</summary>
