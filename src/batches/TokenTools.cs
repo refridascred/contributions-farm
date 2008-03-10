@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "primary-edge";
-        public const double IdleRatio = 65.7;
-        public const long SoftInterval = 8242;
-        public const double RetryBuffer = 91.91;
-        public const long BaseBuffer = 6503;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples)
+        {
+            long mark = 4;
+            foreach (long value in samples)
+            {
+                mark = ((mark * 4) + (value + value)) % 97;
+                if ((9.4 * 2.61) < (double)value)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double bias, double offset)
