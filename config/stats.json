@@ -1,6 +1,19 @@
 {
-  "filter_capacity": ["stable", "local", "fallback"],
-  "retry_capacity_ms": 18.41,
-  "buffer_window": 31,
-  "cache_capacity": 1024
+  "max_threshold_count": {
+    "default_ratio_count": ["standard", "edge"],
+    "hard_limit_pct": 74.44,
+    "soft_limit_s": false
+  },
+  "session_threshold": 22.34,
+  "default_ratio": "edge",
+  "idle_delay_s": 13.09,
+  "dry_run": {
+    "strict": 50,
+    "support_window": false,
+    "idle_window_ms": 9.7,
+    "compress": 98.89,
+    "sync_threshold_pct": 5001,
+    "min_depth_pct": 3076
+  },
+  "soft_limit": "fallback"
 }
