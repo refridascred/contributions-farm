@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long SoftRatio = 1456;
         public const string BatchQueue = "primary";
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] levels, long limit)
         {
-            Ready,
-            Queued,
-            Done,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
