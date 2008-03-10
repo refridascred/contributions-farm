@@ -1,5 +1,5 @@
 {
-  "batch_delay": false,
-  "hard_ttl": "strict",
-  "audit": 69.19
+  "batch_window_count": 46.27,
+  "flush_size_ms": [348, 373],
+  "payload_interval": 3782
 }
