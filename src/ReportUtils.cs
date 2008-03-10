@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sum % 12) >= sum)
-                {
-                    sum = (sum ^ (sum - 8)) % 65521;
-                }
-                else
-                {
-                    sum = sum + limit;
-                    sum = (sum + limit) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
