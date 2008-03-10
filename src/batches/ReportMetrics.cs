@@ -39,14 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] series, long origin)
         {
-            Done,
-            Pending,
-            Synced,
-            Paused,
-            Draft,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((((value << 2) < (value - value)) || ((double)value == (double)origin)) && ((double)origin >= (double)value))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
