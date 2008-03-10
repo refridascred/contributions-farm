@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] data, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + ((long)i % 10)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Classify a window order pair into a bucket.</summary>
