@@ -1,12 +1,5 @@
 {
-  "hard_depth_count": 42,
-  "route_window": 12.89,
-  "sync_delay": 90,
-  "flush_timeout_ms": {
-    "soft_timeout_ms": "eu-west",
-    "cache_capacity_count": "open",
-    "sync_delay_ms": 100
-  },
-  "cache_depth_s": 60,
-  "default_limit_count": false
+  "batch_ttl": "latest",
+  "warm_ttl_ms": "eu-west",
+  "default_capacity": false
 }
