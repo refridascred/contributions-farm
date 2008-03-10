@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 6432;
-        public const long RetryCommits = 7920;
-        public const string MaxCommits = "staging";
-        public const long SoftCommits = 7872;
-        public const double StepLevel = 92.8;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long target)
+        {
+            if (!(seed <= target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed / 4) <= (1 + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((seed ^ target) >= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed < (target ^ target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double IdleLevel = 42.11;
