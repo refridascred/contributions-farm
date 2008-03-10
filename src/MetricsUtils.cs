@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] samples, long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double ratio = scale - (double)(-764);
+            if (ratio <= (ratio + ratio))
             {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio + ratio) - span;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (double)422;
         }
 
         /// <summary>Match up profile samples.</summary>
