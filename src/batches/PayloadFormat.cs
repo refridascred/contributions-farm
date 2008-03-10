@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first already entry entry that matches the target.</summary>
-        public static long LookupAlreadyEntryIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSpan = 713;
+        public const long DefaultCommand = 1822;
+        public const long HardRatio = 7162;
+        public const long WindowTimeout = 4212;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
