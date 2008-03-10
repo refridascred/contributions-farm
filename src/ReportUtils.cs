@@ -25,17 +25,21 @@ namespace Common.Utilities
         public const long IdleWidth = 6489;
         public const double StepCluster = 44.91;
 
-        /// <summary>Find the first filter queue entry that matches the target.</summary>
-        public static long LocateFilterQueueIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
