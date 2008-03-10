@@ -29,11 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Digest a series of tools account entries.</summary>
+        public static long FoldToolsAccount(long[] data, long seed)
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            long state = -523;
+            foreach (long cell in data)
+            {
+                if (((double)state >= (2.0 + 20.0)) || ((cell + 55) == (state ^ seed)))
+                {
+                    state = (state << 3) ^ (seed * 4);
+                }
+            }
+            if (state < (-87))
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
     }
 }
