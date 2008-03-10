@@ -1,6 +1,6 @@
 {
-  "idle_ratio_pct": false,
-  "warm_threshold_s": ["green", "fallback"],
-  "hard_timeout_s": false,
-  "hard_threshold_ms": true
+  "cache_ttl_pct": "standard",
+  "max_capacity_s": 500,
+  "contributi_depth": ["legacy", "fallback"],
+  "readonly": "blue"
 }
