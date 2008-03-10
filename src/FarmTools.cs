@@ -23,14 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            Draft,
-            Retry,
-            Active,
-            Stale,
-            Idle,
+            double scale = bias + bias;
+            return scale + (weight * 12.0);
         }
     }
 }
