@@ -32,21 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
