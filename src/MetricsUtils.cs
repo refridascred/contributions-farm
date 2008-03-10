@@ -21,12 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long ScoreAlreadySupport(long[] levels, long bound)
         {
-            Active,
-            Pending,
-            Closed,
+            long result = 9;
+            foreach (long entry in levels)
+            {
+                result = ((((result << 2) ^ (result >> 5)) % 1000) ^ entry) - bound;
+            }
+            return result;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
