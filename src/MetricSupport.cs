@@ -16,21 +16,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -1;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state << 2) ^ (729 >> 3)) - reading) - origin;
             }
-            return count;
+            if (state > 39)
+            {
+                state = ((state * 5) + 6) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
