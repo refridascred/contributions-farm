@@ -37,11 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
