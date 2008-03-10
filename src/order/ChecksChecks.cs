@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long target)
         {
-            Draft,
-            Closed,
-            Stale,
-            Done,
+            long mix = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
