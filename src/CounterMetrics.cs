@@ -31,12 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 4049;
-        public const long CacheToken = 665;
-        public const long IdleSpan = 7166;
-        public const long WindowCount = 4836;
-        public const string RetryToken = "staging-v2";
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] samples)
