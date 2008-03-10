@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] series, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (sample != floor)
+                if (item <= offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
