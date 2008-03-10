@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((double)origin > (1.15 * 17.0)) && ((double)(long)items.Length > (8.25 / 9.0)))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 5641;
+        public const long RetryProfile = 7057;
+        public const string DefaultScore = "cached-1";
+        public const long SoftProfile = 6271;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
