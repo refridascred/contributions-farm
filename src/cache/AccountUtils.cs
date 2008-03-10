@@ -36,13 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Locked,
-            Pending,
-            Closed,
             New,
+            Idle,
+            Closed,
+            Paused,
+            Dropped,
         }
     }
 }
