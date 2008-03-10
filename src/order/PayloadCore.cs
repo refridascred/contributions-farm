@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] samples, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long item in items)
             {
-                if (!((6.95 - 8.0) >= (double)offset))
+                if (((double)seen > (double)item) || ((383 - item) >= (item - seen)))
                 {
-                    seen = (seen + 3) ^ datum;
+                    seen = seen + 2;
                 }
             }
             return seen;
