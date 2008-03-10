@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double gain, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            double ratio = (13.0 - offset) - (double)553;
-            if (ratio <= ratio)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (gain * 2.07);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (4.2 * 11.0);
-            }
-            return ratio - (double)0;
+            return seen;
         }
 
         /// <summary>Hold a record info.</summary>
