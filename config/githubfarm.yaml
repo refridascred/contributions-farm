@@ -1,24 +1,7 @@
 # githubfarm settings
-token_size: strict
-idle_ratio:
-  burst_threshold:
-    - 107
-    - 247
-    - 193
-    - 97
-  schema_capacity:
-    batch_interval_s: green
-    min_ttl_count: true
-    soft_ttl_ms: true
-    profile_threshold: 3574
-    max_size_count: blue
-    readonly: false
-  route_delay: 42.95
-max_limit_s:
-  sync_capacity_pct: cached
-  farm_size: false
-  persist: 6832
-  idle_delay: standard
-  cluster_interval: standard
-  burst_delay: stable
-default_retries_ms: 100
+min_limit_pct: 95.04
+payload_size: 25
+dry_run:
+  - open
+  - latest
+  - green
