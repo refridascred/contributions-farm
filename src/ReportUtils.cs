@@ -44,13 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Failed,
-            Locked,
-            Done,
-            Active,
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
