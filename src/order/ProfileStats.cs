@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long target, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series)
         {
-            if ((offset * 2) >= (7 % 10))
+            long state = 5;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + offset) != (213 << 1))
+                state = ((state + 7) % 1000) + cell;
+                if (state >= (state * 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
