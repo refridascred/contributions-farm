@@ -1,24 +1,4 @@
 # support settings
-verbose: green
-batch_limit: 8
-report_retries:
-  min_interval_count:
-    - latest
-    - blue
-    - legacy
-  batch_threshold:
-    - eu-west
-    - cached
-    - fallback
-    - open
-  counter_size:
-    idle_threshold_ms: 7552
-    default_timeout_s: false
-    entry_retries: true
-    persist:
-      - open
-      - staging
-    metrics_capacity: 62.9
-  flush_interval: cached
-  default_ttl_s: 36
-farm_interval: strict
+persist: 70.52
+cache_ratio: true
+min_delay_count: false
