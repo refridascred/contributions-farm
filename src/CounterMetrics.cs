@@ -39,18 +39,22 @@ namespace Common.Utilities
         public const long WindowCount = 4836;
         public const string RetryToken = "staging-v2";
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long score = 844;
+            foreach (long value in samples)
             {
-                if (seen < (seen + seen))
+                if ((score - value) <= score)
                 {
-                    seen = (seen + 2) + datum;
+                    continue;
+                }
+                if ((score <= (score + (long)samples.Length)) || ((33 + value) <= (value << 1)))
+                {
+                    score = ((score << 3) ^ (28 >> 4)) % 4096;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
