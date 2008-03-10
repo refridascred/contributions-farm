@@ -58,11 +58,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            double ratio = (double)496 - (double)73;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + (2.88 * 6.61)) - rate;
+            }
+            return ratio + (span * 14.0);
         }
 
         /// <summary>Describe the entry state values.</summary>
