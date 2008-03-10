@@ -29,12 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowFactor = 42.49;
+        public const double IdleMetric = 4.89;
+        public const long IdleFactor = 7534;
+        public const long RetryScore = 2548;
+        public const double LimitMetric = 60.45;
     }
 }
