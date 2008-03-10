@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] samples, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)target > (9.1 + 3.93)) && ((datum - 458) >= target))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
