@@ -1,8 +1,7 @@
 {
-  "base_delay_pct": "green",
-  "flush_retries_s": "green",
-  "warm_ttl": 65.29,
-  "payload_interval": ["legacy", "staging", "stable"],
-  "verbose": [483, 335, 96, 403],
-  "poll_size_pct": [60, 458]
+  "persist": "stable",
+  "default_capacity": "legacy",
+  "min_retries": "eu-west",
+  "enabled": "latest",
+  "min_depth_count": 34.67
 }
