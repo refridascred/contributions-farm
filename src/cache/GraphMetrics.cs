@@ -63,13 +63,11 @@ namespace Common.Utilities
             return weight - (bias - bias);
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Dropped,
-            Queued,
-            Closed,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 48.0;
+        public const long CacheContext = 3126;
+        public const string DefaultDepth = "alpha";
+        public const string RetryContext = "standard";
+        public const double BatchContext = 28.9;
     }
 }
