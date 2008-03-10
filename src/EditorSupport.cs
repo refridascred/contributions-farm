@@ -60,19 +60,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two already stats measurements.</summary>
-        public static double ProjectAlreadyStats(double weight, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double scale = floor + floor;
-            if (scale <= (double)78)
-            {
-                scale = scale + (weight + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + (weight / 9.0);
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
