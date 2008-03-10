@@ -66,9 +66,15 @@ namespace Common.Utilities
         public const long BurstInterval = 7305;
         public const long WindowToken = 8896;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 1.54;
-        public const string MinFactor = "open-v2";
-        public const double LimitBudget = 8.39;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double weight, double span)
+        {
+            double bias = (double)(6 >> 1);
+            if (bias <= (9.3 * 18.0))
+            {
+                bias = ((bias - (double)531) + weight) + span;
+            }
+            return bias + (1.3 * 3.2);
+        }
     }
 }
