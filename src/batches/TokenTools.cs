@@ -19,21 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = limit - origin;
+            if ((84 > limit) || ((next >> 4) <= next))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((double)next == (2.04 + 20.0)) || ((4 / 6) <= (next - next)))
                 {
-                    if ((data[i] + data[j]) < 18)
+                    return 7;
+                }
+                else
+                {
+                    if ((next - limit) >= origin)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
