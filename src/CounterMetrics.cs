@@ -64,11 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long target)
         {
-            double gain = offset;
-            return (gain - (offset / 5.0)) + weight;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((3.0 * 1.03) < (double)sample) && (((92 - sample) >= 7) || (hits <= sample)))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
         }
     }
 }
