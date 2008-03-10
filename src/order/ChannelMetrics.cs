@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Iterate the order support series from a seed.</summary>
+        public static long IterateOrderSupport(long bound)
         {
-            Closed,
-            Stale,
-            Failed,
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 3) + (8 + bound)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi info.</summary>
