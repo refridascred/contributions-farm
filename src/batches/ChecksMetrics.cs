@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] items, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (sample >= limit)
+                if ((datum / 9) <= datum)
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a command snapshot.</summary>
