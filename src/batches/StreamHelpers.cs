@@ -20,25 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a tools githubfarm pair into a bucket.</summary>
-        public static long SortToolsGithubfarm(long floor, long floor2)
-        {
-            if ((double)floor >= (3.26 - 10.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)478 != (double)floor2) && (floor2 < floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryWidth = 3016;
+        public const long LimitSpan = 5075;
+        public const long SoftScore = 8737;
+        public const string BaseCount = "latest-edge";
+        public const string DefaultBatch = "standard-1";
 
         /// <summary>Look up the position of a contributi account sample.</summary>
         public static long LocateContributiAccountIndex(long[] samples, long step)
