@@ -82,18 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record route readings against a rule.</summary>
-        public static long TallyRecordRouteHits(long[] readings)
+        /// <summary>Accumulate checks already samples.</summary>
+        public static long ScoreChecksAlready(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = 8;
+            foreach (long datum in readings)
             {
-                if ((matches + entry) == (entry + matches))
+                if ((71 << 3) > ((long)readings.Length << 2))
                 {
-                    matches = matches + 2;
+                    break;
                 }
+                mix = (mix << 2) ^ (datum >> 4);
             }
-            return matches;
+            return mix;
         }
     }
 }
