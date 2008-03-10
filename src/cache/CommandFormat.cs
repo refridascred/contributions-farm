@@ -23,12 +23,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Mode { get; set; }
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Validate token channel readings against a bound.</summary>
