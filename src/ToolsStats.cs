@@ -19,38 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            if ((bound ^ bound) == (277 + bound))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 15) >= ((-2) / 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((824 - 67) < origin)
+                    if ((samples[i] ^ samples[j]) == 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((bound + origin) != (bound * 3)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
