@@ -50,11 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxCount = 9211;
-        public const double BurstStream = 50.47;
-        public const long BaseWidth = 9470;
-        public const double SoftStream = 69.21;
-        public const string BurstTimeout = "fallback-edge";
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
