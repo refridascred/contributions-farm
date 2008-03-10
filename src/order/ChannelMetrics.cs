@@ -28,18 +28,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] data)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (11.0 <= (4.2 * 19.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
