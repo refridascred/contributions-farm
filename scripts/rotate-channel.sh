@@ -6,14 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green blue legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 12); do
     total=$((total + i * 3))
 done
 log "total ${total}"
