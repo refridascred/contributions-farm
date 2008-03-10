@@ -58,18 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools session readings against a rule.</summary>
-        public static long AuditToolsSessionOutliers(long[] data, long target)
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long TallyEntryNotesHits(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((sample % 64) >= sample)
+                if (matches >= (matches * 4))
                 {
-                    seen = (seen + 2) - target;
+                    matches = (matches + 2) + value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
