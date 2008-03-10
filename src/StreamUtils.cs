@@ -59,19 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] readings, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != offset)
+                if ((items[i] == target) && ((items[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Classify a support record pair into a bucket.</summary>
