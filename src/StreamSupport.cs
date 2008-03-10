@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCount = 6163;
-        public const string WindowCache = "open-v2";
-        public const long BaseCache = 6620;
-        public const long DefaultSize = 2058;
-        public const string LimitCache = "cached-edge";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((59 % 3) == (cell + 7)) || (((floor >> 3) <= (count & 255)) || (4.43 < (double)count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every layout payload entry stays within the limit.</summary>
         public static bool CheckLayoutPayloadRange(long[] series, long origin)
