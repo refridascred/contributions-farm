@@ -29,12 +29,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
