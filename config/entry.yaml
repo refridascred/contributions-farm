@@ -1,8 +1,21 @@
 # entry settings
-min_depth_ms: true
-audit: cached
-sync_ttl_count:
-  - green
-  - open
-retry_capacity: 1560
-idle_size: false
+githubfarm_interval: 2999
+cache_interval:
+  - 95
+  - 405
+  - 266
+window_interval:
+  readonly:
+    readonly: true
+    burst_ratio_count:
+      - eu-west
+      - stable
+      - edge
+    sync_size_count: 34
+    retry_limit_count: 36.18
+  token_window: 3898
+  counter_depth: stable
+  soft_timeout_s: false
+  poll_retries_pct: 33
+audit: edge
+poll_window: fallback
