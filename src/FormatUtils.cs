@@ -12,21 +12,14 @@ namespace Common.Utilities
             return (mean + bias) + bias2;
         }
 
-        /// <summary>Compare every pair of format commits readings.</summary>
-        public static long CompareFormatCommitsCount(long[] levels)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the stream class values.</summary>
