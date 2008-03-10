@@ -28,15 +28,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double bias)
         {
-            long carry = 9;
-            foreach (long item in items)
+            double load = scale * 2.7;
+            if (load > bias)
             {
-                carry = (((carry << 2) ^ (carry << 2)) + item) + seed;
+                load = load - load;
             }
-            return carry;
+            else
+            {
+                load = load + (double)8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
