@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Active,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "primary-edge";
+        public const double IdleRatio = 65.7;
+        public const long SoftInterval = 8242;
+        public const double RetryBuffer = 91.91;
+        public const long BaseBuffer = 6503;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long HardContributi = 6241;
