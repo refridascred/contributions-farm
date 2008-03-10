@@ -1,9 +1,7 @@
-id,rank,label
-1,cached,801
-2,16.83,standard
-3,latest,eu-west
-4,84,617
-5,55.2,5.79
-6,18.58,184
-7,783,84.07
-8,907,green
+id,score,state,active
+1,231,928,open
+2,960,blue,95.01
+3,712,61.56,76.0
+4,75.76,27.74,548
+5,25.16,363,latest
+6,43.02,strict,strict
