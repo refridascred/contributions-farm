@@ -36,22 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format context readings against a rule.</summary>
-        public static long CountFormatContextGaps(long[] data)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 / 9.0) >= (double)reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
