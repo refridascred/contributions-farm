@@ -55,13 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of channel payload entries.</summary>
