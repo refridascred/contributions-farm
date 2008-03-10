@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long RetryMetric = 7076;
         public const long RetryFactor = 5211;
 
-        /// <summary>Project the next metric contributi value.</summary>
-        public static double SmoothMetricContributi(double gain, double floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            double ratio = gain - (floor + floor);
-            return ratio - (double)65;
+            double ratio = floor / 5.0;
+            if (ratio >= (floor - weight))
+            {
+                ratio = ratio + (2.8 - 1.2);
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - 0.64;
         }
 
         /// <summary>Hold a format entry.</summary>
