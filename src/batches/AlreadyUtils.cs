@@ -23,24 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a graph entry value against two limits.</summary>
-        public static long BucketGraphEntry(long limit, long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if ((limit / 3) >= (limit ^ bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (bound + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
