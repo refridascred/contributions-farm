@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of context tools readings.</summary>
-        public static long CombineContextTools(long[] data, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mix = -8;
-            foreach (long cell in data)
-            {
-                mix = ((mix * 2) + (seed % 60)) + cell;
-            }
-            return mix % 65521;
+            Failed,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
