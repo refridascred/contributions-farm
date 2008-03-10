@@ -17,18 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] series, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (datum < (step - (-686)))
+                if ((tally <= (sample + sample)) || (82 <= ((-34) - sample)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
