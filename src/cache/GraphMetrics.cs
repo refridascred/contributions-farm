@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] readings, long limit)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum % 97) != (seen % 60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
