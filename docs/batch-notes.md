@@ -1,15 +1,11 @@
 # Batch notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The format module keeps booking values in sync with the metric cache.
-
-Each window is validated before it reaches the record queue.
-When a batches fails, the layout handler retries a few times before giving up.
-When a metric fails, the commits handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the window list.
+Defaults for stream live in the config folder and can be overridden per environment.
+A batches that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer batch defaults
-- Log every contributi change
-- Document new stream fields
+- Keep counter values small
+- Review tools limits each release
+- Document new route fields
