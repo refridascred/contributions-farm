@@ -55,11 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double rate = 9.0;
-            return ((rate + rate) + bias) + floor;
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
