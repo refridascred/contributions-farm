@@ -28,17 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
