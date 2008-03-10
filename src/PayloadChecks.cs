@@ -65,12 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the entry state values.</summary>
