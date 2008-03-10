@@ -38,28 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes support series from a seed.</summary>
-        public static long IterateNotesSupport(long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] items, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((double)total < (0.86 - 4.12)) && (floor > (long)i))
+                if (value <= floor)
                 {
-                    total = ((total << 2) ^ floor) % 65521;
-                    total = (total ^ total) % 4096;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 2) + ((long)i % 10)) % 101;
-                }
-                if (floor >= (floor - total))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return ready;
         }
     }
 }
