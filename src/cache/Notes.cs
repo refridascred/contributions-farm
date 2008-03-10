@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long target)
         {
-            Retry,
-            Draft,
-            Idle,
-            New,
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 4) + ((long)i ^ anchor)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches level values.</summary>
