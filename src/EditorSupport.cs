@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long step, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] values)
         {
-            if ((seed ^ seed) == (step * 5))
+            long state = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + seed) >= (3 % 97))
+                if (((double)entry != (7.98 * 16.0)) && ((double)entry != (0.08 - 2.41)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed ^ seed) >= seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed << 1) <= (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state - (state ^ entry)) % 97;
                 }
             }
+            return state;
         }
 
         /// <summary>Blend two cache measurements.</summary>
