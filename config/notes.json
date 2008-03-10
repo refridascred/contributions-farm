@@ -1,19 +1,19 @@
 {
-  "report_window": {
-    "base_threshold_pct": 20.27,
-    "notes_ttl": {
-      "sync_retries": true,
-      "cache_ttl": ["blue", "green"],
-      "readonly": "edge",
-      "graph_threshold": false,
-      "hard_window_pct": "blue",
-      "burst_retries_ms": "open"
+  "cache_timeout": "green",
+  "record_ttl": {
+    "sync_delay_count": true,
+    "dry_run": "strict",
+    "token_retries": 77,
+    "readonly": {
+      "warm_size": "standard",
+      "batch_timeout_s": 38.82,
+      "verbose": [436, 113, 172],
+      "cache_depth": 6345
     },
-    "base_capacity": 63.69,
-    "batch_depth_count": 100,
-    "min_delay_s": 49
+    "payload_limit": 14
   },
-  "sync_capacity_pct": [373, 134, 210],
-  "persist": 6255,
-  "flush_window_s": 12
+  "audit": "fallback",
+  "commits_retries": true,
+  "batch_window": false,
+  "layout_retries": 250
 }
