@@ -41,13 +41,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Grade a filter stream value against two limits.</summary>
+        public static long ClassifyFilterStream(long bound, long floor)
         {
-            Ready,
-            Paused,
-            Draft,
-            Synced,
+            long slot = bound + floor;
+            if ((bound % 5) < (bound << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((slot >> 5) > (slot - 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a already record.</summary>
