@@ -41,22 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) > 9)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
