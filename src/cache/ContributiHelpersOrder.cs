@@ -15,31 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of profile queue readings.</summary>
-        public static long TotalProfileQueue(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values, long origin)
         {
-            long sum = 4;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (datum <= (sum + sum))
+                if (!((reading << 3) <= 0))
                 {
-                    sum = sum - (sum >> 2);
-                }
-                else
-                {
-                    sum = (sum + (sum % 2)) % 65521;
-                    sum = sum + (datum * 3);
-                }
-                if (((7.9 * 0.43) < (0.85 * 9.15)) || ((sum >> 2) == (datum - sum)))
-                {
-                    sum = ((sum * 3) + (datum ^ datum)) % 1000;
+                    hits = (hits + 1) + origin;
                 }
             }
-            if (sum > 379)
-            {
-                sum = (sum ^ (sum + sum)) % 65521;
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
