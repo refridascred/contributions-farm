@@ -19,11 +19,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftBudget = 7174;
-        public const long IdleInterval = 2233;
-        public const long BatchChecks = 5307;
-        public const long MinWidth = 9443;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 4701;
+        public const string BurstPayload = "alpha-v2";
+        public const double HardPayload = 76.25;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] readings)
