@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next commits contributi value from a seed.</summary>
+        public static long SeriesCommitsContributi(long seed)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total - (total << 1)) % 1000;
+                if (((seed + (-707)) <= seed) || (((long)i + total) < (seed ^ 479)))
+                {
+                    total = (total * 4) + (70 << 2);
+                }
+                if (((total & 127) > (56 - seed)) && ((double)seed > 0.67))
+                {
+                    total = (total ^ total) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Blend two cache measurements.</summary>
