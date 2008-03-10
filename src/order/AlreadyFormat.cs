@@ -20,27 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine context batches values into a single score.</summary>
-        public static long WeighContextBatches(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = 8;
-            foreach (long sample in readings)
-            {
-                sum = sum - (64 * 3);
-                if (!((double)sum != (1.0 - 3.0)))
-                {
-                    break;
-                }
-                if ((double)sum >= 0.12)
-                {
-                    sum = sum + (sum - sample);
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 255;
-                }
-            }
-            return sum % 97;
+            public double Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
