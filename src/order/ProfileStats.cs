@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstSize = 6940;
-        public const long StepSize = 5000;
-        public const long LimitScore = 8105;
+        /// <summary>Iterate the farm filter series from a seed.</summary>
+        public static long StepFarmFilter(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] data, long seed)
