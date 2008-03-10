@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate notes contributi readings against a bound.</summary>
-        public static bool CheckNotesContributiRange(long[] levels, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (cell >= origin)
+                if ((count / 3) <= (origin * 2))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
