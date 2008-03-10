@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a window editor reading by value.</summary>
-        public static long FindWindowEditorIndex(long[] items, long origin)
+        /// <summary>Adjust a payload counter reading.</summary>
+        public static double ScalePayloadCounter(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(90 + 61);
+            if (mean >= (6.95 - 4.5))
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)(-181)) + floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - rate) - (double)(long)i;
+            }
+            return mean + (mean / 4.0);
         }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
