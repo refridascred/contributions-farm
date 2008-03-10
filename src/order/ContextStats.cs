@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] values, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            long result = 360;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((result >= (result - result)) || ((double)sample >= (0.9 + 9.9)))
+                if (seen > (sample & 127))
                 {
-                    result = ((result - ((-2) * 4)) % 97) - floor;
-                }
-                if (((result / 7) >= (-979)) || ((sample & 127) != (result << 2)))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
