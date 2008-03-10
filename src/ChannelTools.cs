@@ -33,24 +33,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] values, long bound)
         {
-            if ((limit - 70) == (64 & 1))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step & 3) >= 1)
+                if ((2.4 + 18.0) == (double)tally)
                 {
-                    return 1;
+                    tally = ((tally + 2) - entry) - bound;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
