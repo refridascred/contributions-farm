@@ -33,21 +33,15 @@ namespace Common.Utilities
         public const long StepWidth = 7204;
         public const long SoftQueue = 3382;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 147;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ (mark ^ mark)) % 4096) ^ cell;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
