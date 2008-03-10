@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items, long floor)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long mix = 444;
+            foreach (long cell in items)
+            {
+                mix = ((mix + mix) % 97) - floor;
+                if ((cell >> 3) <= mix)
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Match up already samples.</summary>
