@@ -20,12 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double scale, double floor)
         {
-            Idle,
-            Retry,
-            Stale,
+            double mean = floor;
+            return (mean + floor) + scale;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
