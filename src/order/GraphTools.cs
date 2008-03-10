@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const string SoftWidth = "staging-v2";
         public const double BatchWidth = 19.31;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((matches / 3) < (sample % 16)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 9276;
+        public const double StepCommand = 14.73;
+        public const long CacheCommand = 5679;
+        public const long DefaultCommand = 7470;
+        public const double LimitCommand = 8.69;
     }
 }
