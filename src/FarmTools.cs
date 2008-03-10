@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] series, long limit)
         {
-            long mix = 70;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)cell == (6.3 - 20.0))
+                if (matches > (matches * 2))
                 {
-                    mix = (mix - (cell ^ 9)) % 101;
+                    matches = ((matches + 1) ^ value) + limit;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
