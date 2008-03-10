@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double drift = rate;
+            if (drift >= (4.14 + bias))
             {
-                if ((1.33 / 2.0) >= (double)sample)
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + bias;
             }
-            return hits;
+            else
+            {
+                drift = drift + (double)610;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a token header.</summary>
