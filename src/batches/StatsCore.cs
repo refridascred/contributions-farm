@@ -64,19 +64,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] samples, long target)
+        /// <summary>Digest a series of channel payload entries.</summary>
+        public static long DigestChannelPayload(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long anchor = 2;
+            foreach (long entry in data)
             {
-                if (datum != target)
+                if (((double)170 != (double)anchor) || ((94 - anchor) < entry))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor ^ (entry + entry)) % 65521;
                 }
             }
-            return valid;
+            if (anchor < 30)
+            {
+                anchor = (anchor - (anchor - anchor)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a tools record.</summary>
