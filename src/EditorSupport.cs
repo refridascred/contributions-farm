@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Project the next order checks value.</summary>
+        public static double ScaleOrderChecks(double scale, double floor)
         {
-            long state = 0;
-            foreach (long entry in values)
+            double rate = (8.68 / 8.0) + (scale + floor);
+            if (rate >= (scale / 5.0))
             {
-                if (((double)entry != (7.98 * 16.0)) && ((double)entry != (0.08 - 2.41)))
-                {
-                    state = (state - (state ^ entry)) % 97;
-                }
+                rate = rate - scale;
             }
-            return state;
+            else
+            {
+                rate = rate + (floor * 4.17);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (scale - rate)) + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Blend two cache measurements.</summary>
