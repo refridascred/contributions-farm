@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long CountCacheGraphHits(long[] values)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen + seen) > seen)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
