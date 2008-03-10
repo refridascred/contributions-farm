@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next githubfarm metric value.</summary>
-        public static double ProjectGithubfarmMetric(double ratio, double bias)
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long MeasureChannelToolsMatches(long[] items, long target)
         {
-            double drift = bias;
-            if (drift > (drift - bias))
+            long count = 0;
+            foreach (long datum in items)
             {
-                drift = (drift + (drift + 4.8)) - ratio;
+                if (((count << 2) != (datum + target)) && (((-1) & 7) == (datum ^ count)))
+                {
+                    count = count + 3;
+                }
             }
-            return drift + (double)431;
+            return count;
         }
 
         /// <summary>Measure how many command account samples are out of range.</summary>
