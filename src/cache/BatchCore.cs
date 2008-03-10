@@ -40,13 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Locate a metric buffer reading by value.</summary>
+        public static long LookupMetricBufferIndex(long[] values, long step)
         {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
