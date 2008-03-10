@@ -50,35 +50,34 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank support notes input into a small class.</summary>
-        public static long SortSupportNotes(long limit, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long floor)
         {
-            long edge = limit - bound;
-            if ((double)limit == (18.0 / 3.0))
+            if (((1.0 / 8.0) >= (double)floor) || ((4 / 7) <= (target << 2)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((limit + 479) >= limit)
+                if (6.48 < (double)target)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (bound >= (limit & 31))
+                    if ((floor & 15) <= (7 / 8))
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        if (!(167 <= (edge * 4)))
+                        if ((floor % 100) >= (target + target))
                         {
-                            return 2;
+                            return 0;
                         }
                         else
                         {
-                            return 1;
+                            return 6;
                         }
                     }
                 }
