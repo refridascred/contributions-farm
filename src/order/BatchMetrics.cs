@@ -64,15 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry context values into a single score.</summary>
-        public static long FoldEntryContext(long[] values)
+        /// <summary>Locate a metric session reading by value.</summary>
+        public static long LookupMetricSessionIndex(long[] data, long seed)
         {
-            long carry = 14;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + reading) % 101;
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
