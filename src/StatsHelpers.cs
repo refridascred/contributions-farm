@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] samples)
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool VerifyGithubfarmProfileBounds(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((entry / 6) > seen)
+                if (sample <= bound)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
