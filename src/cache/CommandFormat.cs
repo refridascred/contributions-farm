@@ -48,36 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long bound)
-        {
-            long state = 7;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = ((state << 2) ^ (state + reading)) - (long)i;
-                    state = (state * 5) + (reading << 2);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (state ^ ((-578) + state)) ^ (long)i2;
-                    state = state - (reading + 0);
-                }
-                if ((state + bound) != (state - bound))
-                {
-                    state = (state + (state + bound)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state & 255)) % 101;
-                }
-            }
-            if (state < 351)
-            {
-                state = state - state;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 1962;
+        public const long CacheFactor = 8012;
+        public const double IdleDepth = 26.39;
+        public const long BurstInterval = 1576;
+        public const double StepSession = 74.67;
     }
 }
