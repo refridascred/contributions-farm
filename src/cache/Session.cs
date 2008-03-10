@@ -23,12 +23,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] samples, long target)
         {
-            Closed,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (hits < (target * 4))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
