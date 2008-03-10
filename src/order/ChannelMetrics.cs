@@ -20,11 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
