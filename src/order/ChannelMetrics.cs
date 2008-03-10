@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double floor)
         {
-            Failed,
-            Draft,
-            Locked,
-            Pending,
+            double load = (double)(257 * 2);
+            if (load >= (weight - load))
+            {
+                load = (load + (double)241) + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)0) + (double)(long)i;
+            }
+            return load - (double)(-481);
         }
 
         /// <summary>Digest a series of filter entries.</summary>
