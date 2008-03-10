@@ -97,13 +97,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
