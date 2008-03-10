@@ -36,20 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSpan = 7151;
+        public const long LimitDepth = 5996;
+        public const long HardInterval = 8465;
+        public const long CacheRatio = 6515;
+        public const double IdleRatio = 87.57;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LocateTokenIndex(long[] series, long limit)
