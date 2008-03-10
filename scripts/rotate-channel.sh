@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict primary; do
+for item in cached local stable open; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=93
+log "limit is ${CHANNEL_LIMIT}"
