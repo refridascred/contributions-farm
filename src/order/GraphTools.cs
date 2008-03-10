@@ -19,28 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Measure how many order payload samples are out of range.</summary>
+        public static long CountOrderPayloadOutliers(long[] data)
         {
-            long carry = 83;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                long tally = (item << 3) >> 4;
-                if (tally > (tally - item))
+                if (hits <= sample)
                 {
-                    carry = (carry + (item + 8)) % 4096;
-                    carry = (carry << 2) ^ (5 & 7);
-                }
-                if ((carry << 2) <= 637)
-                {
-                    carry = (carry + carry) % 65521;
+                    hits = hits + 3;
                 }
             }
-            if (carry < 66)
-            {
-                carry = carry + (carry & 63);
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
