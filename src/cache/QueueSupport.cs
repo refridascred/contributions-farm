@@ -17,21 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of already queue readings.</summary>
-        public static long OverlapAlreadyQueueCount(long[] items)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
