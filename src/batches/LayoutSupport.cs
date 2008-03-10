@@ -14,24 +14,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long bound, long bound2)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] series, long bound)
         {
-            if ((bound >> 1) != (5 - 3))
+            long score = 9;
+            foreach (long sample in series)
             {
-                return 6;
+                score = ((score << 3) ^ bound) % 1000;
+                score = score ^ (sample - sample);
             }
-            else
-            {
-                if ((14 - bound) <= 80)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
