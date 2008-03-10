@@ -16,15 +16,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long step)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            if (((step + step) < (771 + floor)) || ((2.1 - 4.1) <= (double)step))
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((double)step > 2.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)step >= (1.54 / 9.0)) && ((floor + step) <= (68 % 60)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((315 - floor) == (floor << 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
