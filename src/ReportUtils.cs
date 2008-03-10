@@ -41,26 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm already series from a seed.</summary>
-        public static long StepFarmAlready(long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] levels, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)(long)i > 8.0) && ((double)mix == (7.17 + 14.0)))
+                if (levels[i] < floor)
                 {
-                    mix = (mix * 4) + mix;
-                    mix = ((mix * 2) + target) % 65521;
+                    return (long)i;
                 }
-                long gap = mix >> 1;
-                if ((208 + (long)i) < ((long)i - gap))
-                {
-                    gap = ((gap * 3) + (target << 1)) % 255;
-                    gap = (gap + (mix >> 3)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
