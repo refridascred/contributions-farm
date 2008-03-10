@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
