@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] levels, long target)
+        /// <summary>Compare every pair of stats order readings.</summary>
+        public static long MatchStatsOrderCount(long[] items)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
