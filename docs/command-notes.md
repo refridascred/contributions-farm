@@ -1,13 +1,14 @@
 # Command notes
 
-When a entry fails, the record handler retries a few times before giving up.
-Use command settings to tune how often account data is refreshed.
+A contributi that stays idle for too long is moved to the format list.
+Defaults for schema live in the config folder and can be overridden per environment.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Use queue settings to tune how often token data is refreshed.
+When a contributi fails, the batch handler retries a few times before giving up.
+Keep cache and support names short and lowercase.
+When a channel fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Log every account change
-- Document new record fields
+- Validate context input early
+- Prefer session defaults
+- Document new cluster fields
