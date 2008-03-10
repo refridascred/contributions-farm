@@ -28,11 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "fallback-edge";
-        public const double BaseScore = 69.47;
-        public const long DefaultLevel = 4601;
-        public const long LimitCommits = 5012;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinDepth = 65.79;
+        public const long HardReport = 2553;
+        public const long RetryReport = 9395;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long target, long step)
