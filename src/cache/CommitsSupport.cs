@@ -52,17 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] samples, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                if ((count % 12) > datum)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many entry notes samples are out of range.</summary>
