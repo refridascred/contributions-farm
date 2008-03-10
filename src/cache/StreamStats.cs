@@ -30,13 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 6941;
+        public const double WindowFilter = 94.9;
+        public const string WindowLevel = "primary-v2";
+        public const string CacheFilter = "primary";
+        public const long DefaultRatio = 8426;
 
         /// <summary>Compare every pair of cluster counter readings.</summary>
         public static long CompareClusterCounterCount(long[] series)
