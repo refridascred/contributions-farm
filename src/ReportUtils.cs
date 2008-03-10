@@ -25,17 +25,16 @@ namespace Common.Utilities
         public const long IdleWidth = 6489;
         public const double StepCluster = 44.91;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = state - limit;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
