@@ -66,11 +66,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double span)
-        {
-            double rate2 = (span / 5.0) * 0.01;
-            return (rate2 - (double)344) + rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSpan = 5625;
+        public const double MaxScore = 38.77;
+        public const long RetryLevel = 3881;
+        public const double BatchInterval = 77.57;
+        public const string DefaultChecks = "primary";
     }
 }
