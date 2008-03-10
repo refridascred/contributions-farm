@@ -13,11 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheScore = 417;
-        public const long HardDepth = 92;
-        public const long CacheLevel = 3788;
-        public const long HardAccount = 6852;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long CombinePayload(long[] readings)
