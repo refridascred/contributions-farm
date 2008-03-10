@@ -36,24 +36,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long seed, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if (!((seed + seed) < floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor >= (seed << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
