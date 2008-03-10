@@ -45,18 +45,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((((-9) ^ cell) != (cell << 1)) && ((749 >> 2) != (hits * 4))) || ((double)cell >= (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
