@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] samples, long bound)
+        /// <summary>Locate a session entry reading by value.</summary>
+        public static long SeekSessionEntryIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= bound)
+                if ((data[i] > seed) && ((data[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
