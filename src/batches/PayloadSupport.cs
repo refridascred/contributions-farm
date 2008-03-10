@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first context githubfarm entry that matches the target.</summary>
-        public static long SeekContextGithubfarmIndex(long[] samples, long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(0 - 4);
+            return (weight + floor) + rate;
         }
 
         /// <summary>Describe the entry mode values.</summary>
