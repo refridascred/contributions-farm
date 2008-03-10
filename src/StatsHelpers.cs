@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleRatio = 3109;
-        public const long MinAlready = 180;
-        public const long BaseWidth = 9272;
-        public const double BaseInterval = 21.26;
-        public const long DefaultWidth = 4203;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
