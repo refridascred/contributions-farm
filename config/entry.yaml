@@ -1,12 +1,7 @@
 # entry settings
-metric_interval:
-  - 466
-  - 205
-  - 248
-  - 295
-batch_interval: true
-poll_ratio: primary
-default_interval_ms:
-  - cached
-  - cached
-  - cached
+persist: 60
+verbose:
+  - 439
+  - 155
+dry_run: strict
+notes_capacity: staging
