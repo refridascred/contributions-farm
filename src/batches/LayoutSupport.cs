@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long TallySchemaQueueHits(long[] levels, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + matches) < cell) && ((cell / 4) >= limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
