@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = -94;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor ^ anchor) % 1000) - limit;
-                if (((datum ^ datum) == (anchor & 255)) && ((double)anchor <= 6.2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Queued,
+            Failed,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
