@@ -22,15 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] series, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long acc = 93;
+            foreach (long entry in series)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (seed < (acc + seed))
+                {
+                    acc = (acc * 5) + 2;
+                }
+                else
+                {
+                    acc = (acc ^ (seed >> 2)) % 1000;
+                }
+                if (((16.0 * 7.84) < (double)acc) && ((entry ^ seed) != (95 << 1)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
