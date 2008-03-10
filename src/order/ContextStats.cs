@@ -25,26 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series)
         {
-            long state = 56;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((long)samples.Length ^ 65) != (state + 8))
+                if (82 >= (tally % 97))
                 {
-                    state = (state - (item << 2)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 4) + item) % 4096;
+                    tally = (tally + 1) + sample;
                 }
             }
-            if (state > 359)
-            {
-                state = state + (state << 3);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
