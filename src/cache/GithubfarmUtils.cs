@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry contributi readings.</summary>
-        public static long WeighEntryContributi(long[] samples, long seed)
+        /// <summary>Classify a window order pair into a bucket.</summary>
+        public static long RankWindowOrder(long offset, long bound)
         {
-            long result = 97;
-            foreach (long sample in samples)
+            if ((offset + offset) >= (bound + offset))
             {
-                result = ((result ^ (sample & 127)) % 4096) - seed;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((bound + offset) < offset) || ((1 << 1) < (bound * 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
