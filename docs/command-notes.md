@@ -1,11 +1,11 @@
 # Command notes
 
-When a counter fails, the account handler retries a few times before giving up.
-Run the stream check before changing any filter limits.
-Run the report check before changing any githubfarm limits.
+The profile report groups every schema by batch.
+Defaults for command live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review queue limits each release
-- Keep graph values small
-- Prefer entry defaults
+- Prefer cache defaults
+- Document new token fields
+- Validate counter input early
