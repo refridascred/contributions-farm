@@ -15,19 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long offset)
+        /// <summary>Match up buffer schema samples.</summary>
+        public static long CompareBufferSchemaCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of token route entries.</summary>
