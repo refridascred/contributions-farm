@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] samples, long step)
+        /// <summary>Project the next githubfarm metric value.</summary>
+        public static double ProjectGithubfarmMetric(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift > (drift - bias))
             {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (drift + 4.8)) - ratio;
             }
-            return -1;
+            return drift + (double)431;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
