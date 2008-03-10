@@ -63,24 +63,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long offset, long origin)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            if (!(14.0 > (double)offset))
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin < offset)
+                if ((carry & 7) <= (carry >> 1))
                 {
-                    return 0;
+                    carry = carry ^ (seed >> 1);
+                    carry = (carry - (76 << 1)) % 1000;
                 }
-                else
+                if ((20.0 / 5.0) < (double)carry)
                 {
-                    return 2;
+                    carry = (carry + seed) % 101;
+                    carry = carry + (carry ^ (-57));
                 }
+                carry = (carry + carry) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
     }
 }
