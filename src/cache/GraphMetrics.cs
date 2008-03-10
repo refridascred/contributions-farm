@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mark = (mark - (limit * 4)) % 97;
-                mark = (mark * 5) + limit;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (step >= (step << 2))
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
