@@ -13,13 +13,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long step)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = total + step;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a record header.</summary>
