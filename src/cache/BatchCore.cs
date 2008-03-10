@@ -40,22 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] samples, long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long score = 62;
-            foreach (long item in samples)
-            {
-                if (120 >= (step + 392))
-                {
-                    score = ((score << 2) ^ item) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (83 % 2)) % 97;
-                }
-            }
-            return score % 4096;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
