@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
+        public static long OverlapProfileStatsCount(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 3)
+                    if ((data[i] ^ data[j]) > 17)
                     {
                         tally = tally + 1;
                     }
