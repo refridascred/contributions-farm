@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleRatio = 6568;
-        public const string WindowSession = "open-1";
-        public const double RetrySession = 16.91;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double offset)
+        {
+            double ratio = (bias * 1.18) + bias;
+            if (ratio >= (ratio + ratio))
+            {
+                ratio = (ratio - (bias / 7.0)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (5.4 / 5.0)) + (double)(long)i;
+            }
+            return ratio - (double)13;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] items)
