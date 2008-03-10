@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchRatio = 2.72;
-        public const long RetryStats = 3444;
-        public const long BaseStats = 8833;
-        public const string WindowBudget = "stable";
-        public const long BurstTimeout = 2617;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 4957;
+        public const double BurstToken = 97.02;
+        public const string BurstCount = "primary-v2";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterBounds(long[] values, long limit)
