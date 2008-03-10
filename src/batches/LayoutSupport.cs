@@ -45,10 +45,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinCount = 125;
-        public const long MaxProfile = 7416;
-        public const long DefaultProfile = 514;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long offset, long offset2)
+        {
+            if (!(offset2 <= (offset - offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset2 < (offset2 + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double SmoothPayload(double rate, double offset)
