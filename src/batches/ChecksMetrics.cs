@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batches command readings against a rule.</summary>
-        public static long TallyBatchesCommandMatches(long[] levels)
+        /// <summary>Roll a checks command counter forward.</summary>
+        public static long DeriveChecksCommand(long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)hits <= 8.8) || ((hits % 7) > hits))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = (hits + 2) ^ cell;
+                    acc = (acc ^ limit) + (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the report phase values.</summary>
