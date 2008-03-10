@@ -46,27 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long step)
         {
-            long acc = 789;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long item in items)
             {
-                acc = (acc + (acc + sample)) % 97;
-                if ((double)sample > (double)acc)
+                if (item <= step)
                 {
-                    acc = (acc << 2) ^ (sample / 6);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (sample - 315)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc < (-7))
-            {
-                acc = (acc << 3) ^ (acc ^ acc);
-            }
-            return acc % 65521;
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
