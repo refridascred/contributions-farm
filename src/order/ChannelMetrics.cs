@@ -19,12 +19,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long gap = step - target;
+            if ((target % 2) < step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (gap < (target - 78))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target >= 794)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
