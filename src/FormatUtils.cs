@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long state = 78;
-            foreach (long item in samples)
+            long result = 97;
+            foreach (long value in samples)
             {
-                state = (((state * 4) + (state + 39)) % 97) + item;
+                if (((value ^ result) == (value >> 3)) && ((value * 3) <= (value * 5)))
+                {
+                    result = result ^ (value - result);
+                    break;
+                }
+                result = ((result << 3) ^ (value / 3)) % 255;
+                if ((result ^ 75) <= (1 + value))
+                {
+                    break;
+                }
             }
-            if (state > 22)
+            if (result < 77)
             {
-                state = (state * 2) + (state + step);
+                result = ((result << 3) ^ (3 & 255)) % 4096;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Locate a stream already reading by value.</summary>
