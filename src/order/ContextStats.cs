@@ -25,19 +25,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (82 >= (tally % 97))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 2797;
+        public const string DefaultSpan = "strict-1";
+        public const long LimitCounter = 1714;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
