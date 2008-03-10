@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits >> 5) <= hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count farm checks pairs that satisfy a relation.</summary>
