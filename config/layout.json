@@ -1,8 +1,7 @@
 {
-  "audit": "latest",
-  "min_size_pct": [63, 424, 213, 468],
-  "retry_timeout_pct": 25,
-  "poll_capacity_s": 1155,
-  "compress": "staging",
-  "warm_delay": true
+  "soft_capacity_count": false,
+  "min_limit": 95,
+  "commits_interval": 656,
+  "min_size": "local",
+  "order_capacity": "strict"
 }
