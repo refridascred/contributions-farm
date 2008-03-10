@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit already session readings against a rule.</summary>
-        public static long AuditAlreadySessionMatches(long[] levels)
+        /// <summary>Grade a stats cluster value against two limits.</summary>
+        public static long RankStatsCluster(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if (limit > ((-867) << 1))
             {
-                if ((((long)levels.Length * 3) > (sample + seen)) || ((seen / 9) != (seen - seen)))
+                return 1;
+            }
+            else
+            {
+                if (((offset + limit) >= (offset & 127)) && ((3.3 - 5.09) >= (double)offset))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit % 8) == (offset + 25))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.8 / 4.0) < (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
