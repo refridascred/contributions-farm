@@ -34,15 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] values, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (tally < (523 ^ tally))
+                {
+                    tally = ((tally + 3) ^ datum) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
