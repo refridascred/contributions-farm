@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a checks command counter forward.</summary>
-        public static long DeriveChecksCommand(long limit)
+        /// <summary>Validate notes contributi readings against a bound.</summary>
+        public static bool CheckNotesContributiRange(long[] levels, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (cell >= origin)
                 {
-                    acc = (acc ^ limit) + (long)i2;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the report phase values.</summary>
