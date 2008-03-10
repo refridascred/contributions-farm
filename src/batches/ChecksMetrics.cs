@@ -34,21 +34,31 @@ namespace Common.Utilities
         public const long DefaultLevel = 4601;
         public const long LimitCommits = 5012;
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (target >= (target % 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!(target < (target + target)))
                 {
-                    if ((levels[i] - levels[j]) < 13)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step > (16.0 + 0.5))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
