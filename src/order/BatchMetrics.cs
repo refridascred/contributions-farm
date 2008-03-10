@@ -79,17 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cluster githubfarm sample.</summary>
-        public static long LookupClusterGithubfarmIndex(long[] data, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] < seed)
+                if (count <= 58)
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
