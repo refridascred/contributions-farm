@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long origin2)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long bound = origin ^ origin2;
-            if ((origin2 ^ origin) <= origin2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin > (origin + bound)) || ((origin & 3) <= (origin2 / 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + origin2) != (bound - 265))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 5) >= origin2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
