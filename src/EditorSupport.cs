@@ -19,31 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long floor, long target)
+        /// <summary>Scale a context command figure with a bias.</summary>
+        public static double ScaleContextCommand(double scale, double bias)
         {
-            if ((double)target == (double)518)
+            double weight = bias + scale;
+            for (int i = 0; i < 3; i++)
             {
-                return 8;
+                weight = (weight - (double)1) - (double)(long)i;
             }
-            else
-            {
-                if (((6.0 - 3.36) >= (double)floor) && ((target * 3) != (floor % 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > (double)8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return weight - (double)24;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
