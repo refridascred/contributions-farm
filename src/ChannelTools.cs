@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] data, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (datum >= offset)
+                if (datum <= target)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
