@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long WindowScore = 9777;
         public const long DefaultFactor = 7392;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
             public string Score { get; set; } = "";
-            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a entry commits sample.</summary>
