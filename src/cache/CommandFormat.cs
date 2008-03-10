@@ -52,10 +52,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 39.35;
-        public const long CacheContext = 2208;
-        public const long WindowSize = 6865;
-        public const long HardContext = 138;
+        /// <summary>Combine support channel values into a single score.</summary>
+        public static long CombineSupportChannel(long[] levels)
+        {
+            long mix = 4;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (((mix << 2) ^ 34) % 65521) ^ (long)i;
+                }
+                mix = ((mix * 2) + reading) % 65521;
+            }
+            return mix % 4096;
+        }
     }
 }
