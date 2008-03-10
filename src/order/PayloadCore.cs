@@ -40,22 +40,12 @@ namespace Common.Utilities
         public const string HardContext = "stable-edge";
         public const long BaseContext = 1048;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (tally < (datum + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Paused,
         }
     }
 }
