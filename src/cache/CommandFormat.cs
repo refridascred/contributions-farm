@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (mean - (scale - mean)) + bias;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
