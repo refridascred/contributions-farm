@@ -54,19 +54,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long state = -48;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (((state + (state % 16)) % 101) ^ (long)i) ^ value;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = state ^ (state + state);
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
