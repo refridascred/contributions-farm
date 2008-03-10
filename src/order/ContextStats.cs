@@ -23,20 +23,10 @@ namespace Common.Utilities
         public const double HardCount = 33.91;
         public const long RetrySchema = 8400;
 
-        /// <summary>Derive the next account graph value from a seed.</summary>
-        public static long IterateAccountGraph(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((result - result) != (result + result)))
-                {
-                    result = (result ^ 6) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 56.92;
+        public const double StepRatio = 17.5;
+        public const long WindowLevel = 3595;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
