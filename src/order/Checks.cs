@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 66;
+            foreach (long entry in values)
             {
-                if (series[i] > origin)
+                if ((234 >> 4) != (sum << 3))
                 {
-                    return (long)i;
+                    sum = (((sum ^ 29) % 255) + entry) - origin;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Check that every filter batches entry stays within the limit.</summary>
