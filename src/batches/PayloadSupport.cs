@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] == origin) && ((data[i] % 5) != 0))
+                if (!(((double)limit == (double)7) && (((long)i - mark) >= (limit % 100))))
                 {
-                    return (long)i;
+                    mark = (mark + (limit + (long)i)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a editor reading.</summary>
