@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseRatio = 155;
+        public const string CacheToken = "strict-1";
+        public const long LimitTimeout = 2154;
 
         /// <summary>Check that every batches schema entry stays within the limit.</summary>
         public static bool CheckBatchesSchemaLimits(long[] samples, long target)
