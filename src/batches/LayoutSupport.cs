@@ -65,19 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double rate2 = offset * 2.0;
-            if (rate2 <= (double)0)
-            {
-                rate2 = rate2 - (rate - offset);
-            }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            return rate2 - rate;
+            Active,
+            Retry,
+            Ready,
+            Failed,
+            Dropped,
         }
     }
 }
