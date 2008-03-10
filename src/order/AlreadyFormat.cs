@@ -35,20 +35,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset + total) != (offset ^ total))
+                if (values[i] >= floor)
                 {
-                    total = (total - (offset ^ offset)) % 97;
-                    total = (total - ((long)i * 3)) % 97;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
