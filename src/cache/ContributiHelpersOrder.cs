@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long CombineFormatQueue(long[] series)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = 899;
-            foreach (long datum in series)
-            {
-                anchor = ((anchor + (anchor / 9)) % 65521) - datum;
-            }
-            return anchor % 1000;
+            Locked,
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
