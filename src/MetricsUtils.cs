@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double span)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double ratio = scale - (double)(-764);
-            if (ratio <= (ratio + ratio))
-            {
-                ratio = (ratio + ratio) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (double)422;
+            Idle,
+            New,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
