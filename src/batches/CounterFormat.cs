@@ -34,10 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitBudget = 6564;
-        public const long SoftFilter = 8828;
-        public const long LimitFilter = 5819;
-        public const string CacheScore = "standard-edge";
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
