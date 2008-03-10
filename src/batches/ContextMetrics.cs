@@ -24,12 +24,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowLevel = 3907;
-        public const long BatchFactor = 5129;
-        public const string DefaultLevel = "stable-v2";
-        public const long LimitWidth = 6086;
-        public const long SoftSize = 5201;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double ratio, double span)
+        {
+            double bias = ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - ratio;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
