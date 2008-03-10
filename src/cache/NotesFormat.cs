@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (item < (item + hits))
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "cached";
+        public const long BatchBuffer = 6257;
+        public const long LimitRatio = 9899;
+        public const long WindowSpan = 7051;
+        public const string MinScore = "standard-edge";
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
