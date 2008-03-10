@@ -63,10 +63,13 @@ namespace Common.Utilities
             return weight - (bias - bias);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchFactor = "strict-v2";
-        public const double BaseGithubfarm = 68.75;
-        public const double HardBudget = 95.99;
-        public const double MinFactor = 96.74;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Dropped,
+            Queued,
+            Closed,
+            New,
+        }
     }
 }
