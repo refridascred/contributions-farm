@@ -41,18 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((value * 3) < value)
+                if ((6.4 - 8.04) >= (double)seed)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next schema queue value from a seed.</summary>
