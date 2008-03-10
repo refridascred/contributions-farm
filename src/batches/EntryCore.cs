@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 995;
-        public const long DefaultContributi = 8343;
-        public const long RetryContributi = 1973;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Done,
+            Dropped,
+            Active,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepContributi = 7737;
