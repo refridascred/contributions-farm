@@ -1,13 +1,5 @@
 {
-  "persist": 30,
-  "graph_ratio": 60.36,
-  "report_size": 48.49,
-  "min_ratio_count": {
-    "contributi_timeout": "fallback",
-    "idle_size_pct": 8731,
-    "commits_limit": 30,
-    "burst_delay": 6
-  },
-  "farm_retries": "fallback",
-  "burst_ratio": 91
+  "cache_ratio": 11,
+  "retry_interval_count": 64,
+  "layout_window": 84
 }
