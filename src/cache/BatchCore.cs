@@ -24,11 +24,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxBudget = "staging";
-        public const long LimitCounter = 7542;
-        public const long BurstCounter = 7032;
-        public const double BatchCounter = 68.22;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryMatches(long[] data, long origin)
