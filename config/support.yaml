@@ -1,16 +1,4 @@
 # support settings
-flush_retries: 1024
-strict:
-  - primary
-  - standard
-farm_threshold:
-  idle_ratio_count:
-    idle_capacity_count: 3.43
-    flush_window_ms: open
-    command_retries: 30
-  hard_window_ms: false
-  hard_threshold_pct: false
-  readonly: 72
-warm_delay_count:
-  - standard
-  - latest
+githubfarm_threshold: false
+default_retries_count: 79.67
+max_delay: 76
