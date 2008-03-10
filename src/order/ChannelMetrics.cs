@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Fold a list of context tools readings.</summary>
+        public static long CombineContextTools(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
+            long mix = -8;
+            foreach (long cell in data)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                mix = ((mix * 2) + (seed % 60)) + cell;
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
