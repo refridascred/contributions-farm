@@ -47,18 +47,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data, long origin)
+        /// <summary>Compare every pair of window batches readings.</summary>
+        public static long CompareWindowBatchesCount(long[] samples)
         {
-            long acc = 899;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((acc + 547) >= (datum << 2)) && ((acc << 1) < (acc >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (((acc << 3) ^ (long)data.Length) % 101) - origin;
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
