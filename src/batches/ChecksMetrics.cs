@@ -20,16 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 66;
+            foreach (long value in levels)
             {
-                mark = (mark ^ ((long)i & 31)) % 97;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!(((3.0 * 8.5) >= (3.0 * 3.74)) || ((score >> 2) >= score)))
+                {
+                    score = (score + value) % 4096;
+                }
+                score = (score * 3) + value;
             }
-            return mark;
+            if (score > 71)
+            {
+                score = ((score * 2) + score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
