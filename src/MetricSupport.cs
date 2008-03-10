@@ -30,17 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a payload format sample.</summary>
-        public static long LocatePayloadFormatIndex(long[] samples, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (samples[i] > origin)
+                if ((value / 8) <= (value << 1))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
