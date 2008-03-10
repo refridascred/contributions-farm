@@ -26,38 +26,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a graph editor pair into a bucket.</summary>
-        public static long GradeGraphEditor(long floor, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((floor * 2) < (floor * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= (double)169)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 + floor) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + floor) > offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
