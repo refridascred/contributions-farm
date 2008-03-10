@@ -44,10 +44,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 6569;
-        public const string StepBudget = "local-v2";
-        public const string BurstCount = "fallback-v2";
+        /// <summary>Grade a queue command value against two limits.</summary>
+        public static long GradeQueueCommand(long seed, long limit)
+        {
+            if ((5 <= seed) || ((limit + limit) <= (4 / 8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 3) > seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] items, long offset)
