@@ -38,12 +38,13 @@ namespace Common.Utilities
         public const long MinGraph = 8249;
         public const string BatchFactor = "staging-1";
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            Ready,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
