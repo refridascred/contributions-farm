@@ -64,19 +64,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches + 481) <= (matches + 0))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 9623;
+        public const double MinCache = 26.68;
+        public const long RetrySpan = 9392;
+        public const long BurstSize = 462;
+        public const long BatchCache = 2311;
 
         /// <summary>Audit stream metric readings against a rule.</summary>
         public static long AuditStreamMetricOutliers(long[] readings)
