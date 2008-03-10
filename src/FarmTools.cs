@@ -29,11 +29,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double scale = bias + bias;
-            return scale + (weight * 12.0);
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
