@@ -1,8 +1,9 @@
-id,label,state,weight,score
-1,local,47.45,legacy,59.81
-2,863,edge,eu-west,68.94
-3,primary,7.53,98.16,911
-4,eu-west,698,774,85.62
-5,429,780,57.94,96.26
-6,edge,fallback,426,439
-7,996,cached,47.99,fallback
+id,region,label
+1,36.55,92.47
+2,35,197
+3,green,44
+4,green,latest
+5,55.29,372
+6,stable,latest
+7,legacy,edge
+8,83.21,blue
