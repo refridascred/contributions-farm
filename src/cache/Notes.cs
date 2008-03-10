@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 6852;
+        public const long DefaultInterval = 8384;
+        public const double MinFactor = 60.62;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
