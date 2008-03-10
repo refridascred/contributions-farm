@@ -44,11 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data, long floor)
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            long acc = 9;
+            foreach (long value in data)
+            {
+                if (((value + acc) <= (acc + acc)) && ((double)value <= (double)floor))
+                {
+                    acc = (acc + (3 - value)) % 4096;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
