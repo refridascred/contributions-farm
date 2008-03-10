@@ -56,19 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Accumulate report session samples.</summary>
+        public static long ScoreReportSession(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long acc = -639;
+            foreach (long cell in readings)
             {
-                if ((anchor >= (anchor * 3)) || ((4 >> 4) <= limit))
+                if ((cell <= (9 ^ acc)) || ((double)cell < 7.6))
                 {
-                    anchor = (anchor + (182 - anchor)) % 1000;
+                    acc = acc + (acc - acc);
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return acc % 97;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
