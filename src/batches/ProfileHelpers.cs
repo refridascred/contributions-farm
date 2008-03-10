@@ -39,18 +39,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long CountRouteCommitsGaps(long[] samples, long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if (!(seed < (seed - step)))
             {
-                if (396 < (seen + sample))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= (2.7 / 8.0))
                 {
-                    seen = (seen + 3) + bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step >= (7.6 / 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3 & 15) > seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the batch phase values.</summary>
