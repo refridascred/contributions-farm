@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long mark = 7;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 4) + ((long)i ^ anchor)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                mark = ((mark * 2) + (2 + mark)) % 255;
+                if ((mark + 54) >= (value % 64))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark % 1000;
         }
 
         /// <summary>Describe the batches level values.</summary>
