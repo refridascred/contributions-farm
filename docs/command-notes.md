@@ -1,10 +1,10 @@
 # Command notes
 
-A command that stays idle for too long is moved to the tools list.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Keep counter and batches names short and lowercase.
+Run the stream check before changing any farm limits.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every context change
-- Validate checks input early
+- Document new cluster fields
+- Validate cache input early
+- Keep cluster values small
