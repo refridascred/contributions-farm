@@ -31,21 +31,13 @@ namespace Common.Utilities
         public const long DefaultGraph = 536;
         public const long BatchGraph = 1025;
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
