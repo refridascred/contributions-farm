@@ -22,10 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "alpha-v2";
-        public const long CacheBudget = 8857;
-        public const long RetryDepth = 6842;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueGaps(long[] samples)
