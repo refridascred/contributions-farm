@@ -1,12 +1,8 @@
 {
-  "profile_depth": "local",
-  "hard_limit_s": 55,
-  "hard_threshold": 1024,
-  "contributi_timeout": {
-    "persist": 4076,
-    "batch_size": "blue",
-    "dry_run": true,
-    "batch_retries": false,
-    "sync_interval": "fallback"
-  }
+  "flush_capacity_pct": "primary",
+  "enabled": [81, 246, 222],
+  "payload_ttl": "strict",
+  "max_size_pct": [175, 479],
+  "batch_interval_s": 16,
+  "hard_ttl_count": "green"
 }
