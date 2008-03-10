@@ -20,23 +20,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the cluster commits series from a seed.</summary>
-        public static long DeriveClusterCommits(long offset)
+        /// <summary>Accumulate window notes samples.</summary>
+        public static long ScoreWindowNotes(long[] values, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long state = -846;
+            foreach (long item in values)
             {
-                if (((27 + offset) < score) || (((long)i ^ score) > offset))
+                for (int i = 0; i < 7; i++)
                 {
-                    score = score + offset;
+                    state = (state + (limit * 4)) ^ (long)i;
+                    state = ((state << 3) ^ (item & 255)) % 1000;
                 }
-                else
+                if (((-896) + limit) > state)
                 {
-                    score = (score - (score + (long)i)) % 255;
+                    state = (state - limit) % 97;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Audit order metric readings against a rule.</summary>
