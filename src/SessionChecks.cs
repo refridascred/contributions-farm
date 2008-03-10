@@ -41,24 +41,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a profile tools value against two limits.</summary>
-        public static long RankProfileTools(long offset, long offset2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            if ((offset2 - 431) != (offset + offset2))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 & 127) < (offset2 * 2))
+                if ((datum - datum) > 9)
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 6;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
