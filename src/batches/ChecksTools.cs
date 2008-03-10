@@ -31,32 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long limit, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long cur = limit - step;
-            if (((limit - limit) != (limit - cur)) && ((step + step) < (61 << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= 5.49)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (5.65 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
