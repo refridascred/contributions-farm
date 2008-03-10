@@ -1,21 +1,7 @@
 # githubfarm settings
-batches_size: 30
-cache_threshold: open
-cache_capacity_s:
-  batch_size_count:
-    route_depth: 88.31
-    cache_window_s: 250
-    hard_ttl: true
-    soft_capacity_count: 490
-  flush_capacity: true
-  warm_delay: latest
-order_timeout:
-  flush_depth_ms: 22.29
-  base_capacity_ms: staging
-  verbose: 100
-  hard_limit_count: 8242
-  dry_run: primary
-compress: false
-strict:
-  - 345
-  - 42
+checks_window: 65.19
+poll_window:
+  - open
+  - strict
+  - local
+default_depth: 35
