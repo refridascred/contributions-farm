@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Dropped,
-            Locked,
-            Pending,
-            Retry,
-            Paused,
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
