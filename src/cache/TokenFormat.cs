@@ -39,11 +39,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "staging";
+        public const string BurstBudget = "local-1";
+        public const long IdleProfile = 1057;
+        public const string SoftSpan = "open";
+        public const long RetryProfile = 5901;
     }
 }
