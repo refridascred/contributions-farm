@@ -69,19 +69,19 @@ namespace Common.Utilities
             return weight - (bias - bias);
         }
 
-        /// <summary>Validate editor already readings against a bound.</summary>
-        public static bool CheckEditorAlreadyBounds(long[] levels, long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double weight, double bias)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double bias2 = bias;
+            if (bias2 < (bias2 / 9.0))
             {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = (bias2 - (bias / 2.0)) - weight;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias);
         }
     }
 }
