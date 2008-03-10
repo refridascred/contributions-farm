@@ -34,39 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long seed, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long lane = seed ^ bound;
-            if (5.0 < (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (3.49 > (double)lane)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)lane >= (7.0 * 7.58))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3 * 2) > seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Retry,
+            Ready,
         }
     }
 }
