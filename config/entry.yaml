@@ -1,6 +1,15 @@
 # entry settings
-layout_interval: 1024
-default_threshold_s: edge
-metrics_size: 100
-commits_ttl: 41.14
-flush_timeout_s: true
+cluster_limit:
+  - legacy
+  - standard
+  - primary
+  - primary
+sync_timeout: 91.76
+audit: 60.64
+retry_retries: green
+warm_delay_s:
+  record_retries: standard
+  burst_window: 500
+  persist:
+    - 140
+    - 309
