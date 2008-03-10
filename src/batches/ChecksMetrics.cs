@@ -34,15 +34,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 4601;
         public const long LimitCommits = 5012;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mark = 147;
-            foreach (long cell in readings)
-            {
-                mark = (((mark << 2) ^ (mark ^ mark)) % 4096) ^ cell;
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
