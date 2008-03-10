@@ -14,12 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            public string Score { get; set; } = "";
             public string Total { get; set; } = "";
         }
 
