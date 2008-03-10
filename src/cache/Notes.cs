@@ -60,12 +60,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Queued,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepFactor = "staging";
+        public const string CacheDepth = "primary-edge";
+        public const double WindowBatches = 34.38;
+        public const long BatchBatches = 5253;
     }
 }
