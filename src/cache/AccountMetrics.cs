@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] data, long target)
+        /// <summary>Find the first farm filter entry that matches the target.</summary>
+        public static long LocateFarmFilterIndex(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < target)
+                if (samples[i] <= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
