@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((count ^ count) != (sample - sample))
+                if (!((matches + matches) >= ((-7) % 12)) && (((6.7 - 5.0) == (double)value) && ((matches - 46) < (floor + matches))))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of stream batches readings.</summary>
