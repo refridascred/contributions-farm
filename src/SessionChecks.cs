@@ -15,10 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 7925;
-        public const long BaseInterval = 9331;
-        public const long StepSupport = 7272;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count < (count - count)) && ((item + count) <= ((-42) + item)))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
         public static long BucketProfileBuffer(long target, long target2)
