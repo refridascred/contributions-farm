@@ -23,17 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] samples, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -823;
+            foreach (long entry in readings)
             {
-                if (samples[i] < seed)
+                if ((double)origin == (double)(long)readings.Length)
                 {
-                    return (long)i;
+                    state = (state - (entry % 16)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (entry ^ state)) % 1000;
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = (state - (state & 31)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate channel entry readings against a bound.</summary>
