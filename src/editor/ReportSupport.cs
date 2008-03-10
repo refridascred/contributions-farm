@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 5919;
-        public const long MinFilter = 1404;
-        public const string WindowFilter = "latest-1";
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double offset)
+        {
+            double bias = offset;
+            if (bias >= offset)
+            {
+                bias = bias - bias;
+            }
+            return bias + (bias + rate);
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadGaps(long[] values)
