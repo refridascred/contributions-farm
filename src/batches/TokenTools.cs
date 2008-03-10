@@ -19,32 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] data, long seed)
         {
-            long next = limit - origin;
-            if ((84 > limit) || ((next >> 4) <= next))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)next == (2.04 + 20.0)) || ((4 / 6) <= (next - next)))
+                if ((0.93 - 4.8) <= (double)cell)
                 {
-                    return 7;
+                    seen = (seen + 3) + seed;
                 }
                 else
                 {
-                    if ((next - limit) >= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
