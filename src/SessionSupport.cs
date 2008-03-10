@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 65.67;
-        public const long StepChecks = 8899;
-        public const long WindowChecks = 168;
-        public const string BatchChecks = "primary-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardBudget = 1.62;
+        public const long BurstInterval = 8329;
+        public const string BurstLayout = "cached-v2";
+        public const long RetryWidth = 9612;
+        public const long RetryLayout = 4130;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 5069;
