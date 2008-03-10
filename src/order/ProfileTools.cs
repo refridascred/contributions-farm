@@ -46,21 +46,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 24;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score - (target - target)) ^ entry;
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
