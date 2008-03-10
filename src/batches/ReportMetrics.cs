@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of profile queue entries.</summary>
-        public static long TotalProfileQueue(long[] readings, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            long result = 1;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step >> 4) != (result % 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 4) + 757) % 1000;
-                }
-                if ((reading & 63) <= (reading + step))
-                {
-                    result = (result ^ result) % 255;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
