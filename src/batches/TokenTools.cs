@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long offset)
+        /// <summary>Check that every route already entry stays within the limit.</summary>
+        public static bool ValidateRouteAlreadyRange(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (cell >= offset)
+                if (sample != bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
