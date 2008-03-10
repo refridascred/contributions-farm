@@ -33,13 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Match up session payload samples.</summary>
+        public static long CompareSessionPayloadCount(long[] readings)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
