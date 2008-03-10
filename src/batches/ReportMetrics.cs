@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit session counter readings against a rule.</summary>
-        public static long MeasureSessionCounterGaps(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches <= (bound ^ bound))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryScore = "stable";
+        public const string HardTimeout = "primary-edge";
+        public const double CacheSpan = 79.32;
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
         public static long CountStreamChecksHits(long[] data, long floor)
