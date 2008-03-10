@@ -1,5 +1,10 @@
 # entry settings
-base_depth_pct: 1024
-strict: 69.56
-cache_interval_count: 64.15
-contributi_timeout: legacy
+sync_depth_ms: edge
+verbose: 12.38
+strict:
+  - 453
+  - 232
+  - 19
+  - 168
+soft_timeout_ms: 14
+cache_depth: blue
