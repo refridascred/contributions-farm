@@ -20,26 +20,19 @@ namespace Common.Utilities
             return rate + (double)0;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] items, long step)
         {
-            long mix = 3;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((mix ^ origin) != (item - mix))
+                if (reading > step)
                 {
-                    mix = ((mix << 3) ^ (origin / 6)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ origin;
+                    found = false;
+                    break;
                 }
             }
-            if (mix < 77)
-            {
-                mix = (mix << 2) ^ 922;
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Measure how many cluster tools samples are out of range.</summary>
