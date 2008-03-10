@@ -29,23 +29,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            long total = 8;
-            foreach (long sample in data)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample <= total)
-                {
-                    total = total + sample;
-                }
-                total = total + (sample * 4);
-                if (((total / 2) != (sample - total)) && ((sample - total) > total))
-                {
-                    total = (total + (51 + sample)) % 255;
-                }
+                state = (state - (offset & 63)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return total % 97;
+            return state;
         }
     }
 }
