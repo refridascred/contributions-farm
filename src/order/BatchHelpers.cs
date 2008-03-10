@@ -53,22 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long mix = -30;
-            foreach (long reading in items)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)mix > (3.3 + 6.31))
-                {
-                    mix = ((mix * 2) + (mix * 2)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (reading & 255)) % 101;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mix % 4096;
+            return state;
         }
     }
 }
