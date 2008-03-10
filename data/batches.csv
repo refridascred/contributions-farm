@@ -1,9 +1,8 @@
-id,count,token,rank,active
-1,999,45.76,11.59,blue
-2,15.13,243,721,latest
-3,primary,legacy,65.25,988
-4,333,162,legacy,cached
-5,cached,45,925,38
-6,928,24.74,90.46,328
-7,staging,green,728,edge
-8,45.29,22.16,standard,391
+id,label,state,weight,score
+1,local,47.45,legacy,59.81
+2,863,edge,eu-west,68.94
+3,primary,7.53,98.16,911
+4,eu-west,698,774,85.62
+5,429,780,57.94,96.26
+6,edge,fallback,426,439
+7,996,cached,47.99,fallback
