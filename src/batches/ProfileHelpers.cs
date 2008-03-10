@@ -41,21 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine already values into a single score.</summary>
