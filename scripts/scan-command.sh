@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary strict; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=12
+log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+mode="${1:-local}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
