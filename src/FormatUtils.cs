@@ -29,10 +29,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultFactor = 9294;
-        public const double RetryCluster = 67.26;
-        public const string BurstFactor = "legacy-edge";
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool GuardGithubfarmPayloadLimits(long[] samples, long step)
+        {
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] data, long floor)
