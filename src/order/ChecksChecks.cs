@@ -31,17 +31,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long bound)
+        /// <summary>Accumulate cluster batches samples.</summary>
+        public static long ScoreClusterBatches(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -327;
+            foreach (long sample in values)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                if ((sample * 3) >= (total + sample))
                 {
-                    return (long)i;
+                    total = total - (total & 1);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of context channel readings.</summary>
