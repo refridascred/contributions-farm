@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools payload counter forward.</summary>
-        public static long IterateToolsPayload(long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((sum + (long)i) > (offset - (long)i))
+                if ((seen * 4) != (cell >> 3))
                 {
-                    sum = (sum - sum) % 101;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    sum = (sum - (99 * 5)) % 97;
-                }
-                sum = ((sum << 2) ^ (sum ^ (long)i)) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
