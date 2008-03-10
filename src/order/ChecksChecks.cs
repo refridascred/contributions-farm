@@ -22,32 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long bound2 = bound ^ limit;
-            if (!((bound << 2) == (bound << 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (bound2 + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 - limit) >= bound2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
