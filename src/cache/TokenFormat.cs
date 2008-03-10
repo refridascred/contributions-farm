@@ -23,21 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 89;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = ((result - (bound % 12)) % 101) + cell;
+                result = (result - (bound >> 2)) % 65521;
+                if ((double)bound < 20.0)
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (result < 42)
+            {
+                result = result + (result >> 3);
+            }
+            return result;
         }
 
         /// <summary>Classify a record notes pair into a bucket.</summary>
