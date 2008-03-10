@@ -1,5 +1,6 @@
 {
-  "session_timeout": "standard",
-  "enabled": 60,
-  "poll_interval_count": true
+  "persist": true,
+  "context_depth": "primary",
+  "flush_ttl_ms": 2933,
+  "sync_delay_ms": false
 }
