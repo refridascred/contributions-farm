@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two channel window measurements.</summary>
-        public static double BlendChannelWindow(double ratio, double bias)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series)
         {
-            double mean = (double)(56 / 3);
-            if (mean > ratio)
+            long total = -29;
+            foreach (long datum in series)
             {
-                mean = mean - (bias - mean);
+                total = ((total - (84 & 127)) % 101) + datum;
             }
-            return mean + mean;
+            return total;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
