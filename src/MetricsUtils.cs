@@ -21,15 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long ScoreAlreadySupport(long[] levels, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double floor)
         {
-            long result = 9;
-            foreach (long entry in levels)
+            double rate = gain / 4.0;
+            if (rate < (double)7)
             {
-                result = ((((result << 2) ^ (result >> 5)) % 1000) ^ entry) - bound;
+                rate = (rate - (9.0 * 19.0)) - floor;
             }
-            return result;
+            return rate - 8.27;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
