@@ -51,9 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "latest-v2";
-        public const double StepBatches = 32.64;
-        public const long RetryBatches = 7530;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 64.65;
+        public const double RetrySize = 21.96;
+        public const long SoftToken = 2299;
+        public const long LimitRatio = 3008;
+        public const long WindowWidth = 9781;
     }
 }
