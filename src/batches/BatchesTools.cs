@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] items)
+        /// <summary>Roll a checks already counter forward.</summary>
+        public static long DeriveChecksAlready(long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((sample < (count & 31)) || ((7 << 2) == (count % 8))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a window metric value against two limits.</summary>
