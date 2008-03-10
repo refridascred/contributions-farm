@@ -1,23 +1,10 @@
 # githubfarm settings
-verbose:
-  layout_ratio: green
-  idle_timeout_pct: true
-  warm_delay_count: 1024
-  verbose: standard
-format_delay: 88.74
-cache_window_pct:
-  - legacy
-  - open
-  - green
-retry_size:
-  default_limit_count: legacy
-  compress:
-    - stable
-    - stable
-    - fallback
-    - strict
-  audit: fallback
-  verbose: latest
-  dry_run: 6479
-  min_ratio: edge
-batch_interval_count: local
+poll_capacity: 73.6
+poll_ttl_count: 47.7
+cache_capacity: 16.49
+sync_depth_count: open
+notes_ttl: fallback
+stats_interval:
+  - 51
+  - 212
+  - 315
