@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of stats order readings.</summary>
-        public static long MatchStatsOrderCount(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < target)
                 {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
