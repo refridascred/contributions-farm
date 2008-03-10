@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowInterval = 6389;
+        public const string StepRecord = "fallback-edge";
+        public const string StepLevel = "staging";
+        public const long BaseRecord = 4530;
+        public const long MinRecord = 9055;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long floor)
