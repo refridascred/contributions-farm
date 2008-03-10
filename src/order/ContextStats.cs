@@ -46,14 +46,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate buffer counter readings against a bound.</summary>
+        public static bool CheckBufferCounterLimits(long[] items, long origin)
         {
-            Dropped,
-            Idle,
-            New,
-            Queued,
-            Ready,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
