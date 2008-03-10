@@ -38,21 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Scale a graph checks figure with a bias.</summary>
+        public static double SmoothGraphChecks(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)5 / 3.0;
+            if (drift >= span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + drift) + scale;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (5.2 - span)) + (double)(long)i;
+            }
+            return drift + 6.44;
         }
     }
 }
