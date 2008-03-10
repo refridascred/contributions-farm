@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
-        public static long OverlapProfileStatsCount(long[] data)
+        /// <summary>Measure how many stream checks samples are out of range.</summary>
+        public static long CountStreamChecksHits(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((reading + 82) != (reading + floor)) && (((floor / 9) > floor) && (0 > (matches ^ reading))))
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
