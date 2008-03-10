@@ -51,17 +51,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] samples, long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
