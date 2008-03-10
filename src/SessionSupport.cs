@@ -20,24 +20,19 @@ namespace Common.Utilities
         public const double IdleRatio = 44.7;
         public const string SoftDepth = "open-v2";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long target, long floor)
+        /// <summary>Scale a notes command figure with a bias.</summary>
+        public static double ScaleNotesCommand(double bias, double bias2)
         {
-            if ((0.3 - 20.0) != (double)floor)
+            double ratio = bias2 / 5.0;
+            if (ratio > (double)4)
             {
-                return 0;
+                ratio = (ratio - 13.0) - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (floor <= (floor + 11))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
+                ratio = (ratio - (double)7) - (double)(long)i;
             }
+            return ratio + 15.0;
         }
     }
 }
