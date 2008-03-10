@@ -35,23 +35,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long limit)
         {
-            double ratio = offset;
-            if (ratio <= ratio)
+            long step = seed + limit;
+            if (((12 * 2) != (limit + step)) || ((seed >> 4) > limit))
             {
-                ratio = ratio + (ratio * 8.4);
+                return 0;
             }
             else
             {
-                ratio = ratio + (offset * 1.11);
+                if (seed <= (9 + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit / 2) <= (9 << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed * 3) != (0 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (offset - offset);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
