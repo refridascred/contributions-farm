@@ -1,5 +1,7 @@
 {
-  "base_ttl_count": ["green", "local"],
-  "flush_retries": false,
-  "dry_run": true
+  "base_threshold": 2.98,
+  "batch_capacity_ms": 4.13,
+  "audit": "cached",
+  "soft_limit_count": false,
+  "persist": [411, 400, 115, 184]
 }
