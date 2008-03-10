@@ -44,20 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 3158;
+        public const long CacheDepth = 9226;
+        public const long MinLevel = 1702;
+        public const long HardSchema = 5634;
+        public const long HardWidth = 527;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] readings, long bound)
