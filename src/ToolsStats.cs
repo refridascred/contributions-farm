@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command order readings.</summary>
-        public static long DigestCommandOrder(long[] samples, long floor)
-        {
-            long state = 728;
-            foreach (long entry in samples)
-            {
-                state = state ^ floor;
-                if ((double)floor != (double)state)
-                {
-                    state = ((state * 4) + (floor & 127)) % 1000;
-                }
-                if ((double)entry > (double)(long)samples.Length)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "legacy-edge";
+        public const long SoftChannel = 1444;
+        public const double DefaultChannel = 46.79;
+        public const string MinChannel = "fallback-1";
 
         /// <summary>Fold a list of payload token readings.</summary>
         public static long TotalPayloadToken(long[] samples, long step)
