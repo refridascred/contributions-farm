@@ -16,24 +16,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings, long limit)
         {
-            if ((double)offset > 7.83)
+            long acc = 7;
+            foreach (long entry in readings)
             {
-                return 1;
+                acc = ((acc + (limit + limit)) % 97) ^ entry;
             }
-            else
+            if (acc < 57)
             {
-                if ((offset - seed) != ((-91) ^ 23))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                acc = (acc + (acc + acc)) % 101;
             }
+            return acc % 65521;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
