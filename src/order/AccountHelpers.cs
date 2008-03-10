@@ -71,13 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] levels, long limit)
         {
-            Active,
-            Retry,
-            Locked,
-            Queued,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
