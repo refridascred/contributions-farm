@@ -65,26 +65,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long floor)
-        {
-            long score = -5;
-            foreach (long datum in levels)
-            {
-                if (!((datum + floor) == (score % 3)))
-                {
-                    score = score + datum;
-                }
-                else
-                {
-                    score = ((score * 5) + floor) % 1000;
-                }
-            }
-            if (score < 863)
-            {
-                score = score ^ floor;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxRoute = "strict-edge";
+        public const double HardSize = 27.95;
+        public const long IdleRoute = 329;
+        public const long SoftRoute = 1409;
+        public const long DefaultBudget = 5667;
     }
 }
