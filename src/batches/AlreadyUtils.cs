@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Pending,
-            Ready,
-            Stale,
-            Retry,
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the token kind values.</summary>
