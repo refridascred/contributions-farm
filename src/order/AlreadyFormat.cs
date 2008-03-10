@@ -20,39 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] samples, long limit)
         {
-            long prev = origin - step;
-            if (prev >= ((-554) & 7))
+            long score = -988;
+            foreach (long reading in samples)
             {
-                return 3;
+                score = (((score * 2) + (score & 7)) % 97) + reading;
             }
-            else
+            if (score > 597)
             {
-                if (origin <= (0 - (-91)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)prev > (7.8 - 15.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)prev < 2.56) || ((double)origin < (double)105))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = (score * 4) + (884 ^ limit);
             }
+            return score % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
