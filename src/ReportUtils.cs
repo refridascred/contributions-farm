@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long IdleWidth = 6489;
         public const double StepCluster = 44.91;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] readings, long seed)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long cell in readings)
             {
-                if (!((count / 4) >= (count + count)))
+                if ((6.4 / 7.0) >= (double)cell)
                 {
-                    count = (count + 1) ^ item;
+                    count = (count + 1) + seed;
                 }
             }
             return count;
