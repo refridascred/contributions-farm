@@ -27,20 +27,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (!((long)i < (7 * 2)))
+                if (value < origin)
                 {
-                    mark = (mark - (mark - (long)i)) % 4096;
-                    mark = (mark << 3) ^ (mark & 255);
+                    ready = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return ready;
         }
     }
 }
