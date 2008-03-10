@@ -42,11 +42,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 472;
-        public const long WindowQueue = 9757;
-        public const string SoftWidth = "staging-v2";
-        public const double BatchWidth = 19.31;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstScore = 6270;
+        public const long SoftSize = 5194;
+        public const string StepBudget = "alpha";
+        public const long BatchSession = 6583;
+        public const long StepSession = 5506;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 9276;
