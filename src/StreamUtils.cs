@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit report graph readings against a rule.</summary>
-        public static long TallyReportGraphMatches(long[] data, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((3.0 + 7.78) != (double)reading)
-                {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate window batches readings against a bound.</summary>
