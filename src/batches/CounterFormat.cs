@@ -29,13 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many order cache samples are out of range.</summary>
+        public static long CountOrderCacheOutliers(long[] data)
         {
-            Queued,
-            Locked,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!(((value - seen) <= (value ^ value)) || ((7.0 + 8.27) != (double)value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
