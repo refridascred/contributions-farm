@@ -65,23 +65,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double scale = (double)(1 >> 5);
-            if (scale < (rate / 6.0))
-            {
-                scale = scale - (bias - bias);
-            }
-            else
-            {
-                scale = scale - (double)554;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (rate * 7.7)) - (double)(long)i;
-            }
-            return scale + (4.9 + rate);
+            New,
+            Synced,
+            Idle,
+            Failed,
+            Pending,
         }
     }
 }
