@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double BaseInterval = 21.26;
         public const long DefaultWidth = 4203;
 
-        /// <summary>Blend two layout batch measurements.</summary>
-        public static double ScaleLayoutBatch(double bias, double floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double load = 12.0;
-            if (load >= (bias / 2.0))
-            {
-                load = load + (7.08 - load);
-            }
-            else
-            {
-                load = load + floor;
-            }
-            return load + (load - load);
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
