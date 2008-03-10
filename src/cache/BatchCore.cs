@@ -37,14 +37,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
+            Stale,
+            Draft,
+            New,
+            Retry,
             Locked,
-            Synced,
-            Dropped,
-            Active,
-            Queued,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
