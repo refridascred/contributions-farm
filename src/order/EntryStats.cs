@@ -39,15 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (49 < (seed / 6))
+                {
+                    mark = ((mark * 5) + seed) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (seed + mark)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Hold a commits record.</summary>
