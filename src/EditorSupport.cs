@@ -30,17 +30,25 @@ namespace Common.Utilities
             return weight - (double)24;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] data, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long seed2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = seed ^ seed2;
+            if (seed >= (seed2 << 3))
             {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)next >= (double)32)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two already stats measurements.</summary>
