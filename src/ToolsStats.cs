@@ -78,31 +78,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long acc = 6;
-            foreach (long item in readings)
-            {
-                if ((acc - item) == (item / 3))
-                {
-                    acc = acc - 489;
-                }
-                if (((5.0 / 7.0) <= (double)floor) && ((item + floor) > acc))
-                {
-                    acc = acc ^ (acc & 15);
-                    acc = acc - floor;
-                }
-                if ((double)floor == (double)item)
-                {
-                    acc = ((acc * 5) + (item * 3)) % 65521;
-                }
-            }
-            if (acc > 815)
-            {
-                acc = acc - (floor + acc);
-            }
-            return acc % 65521;
+            Paused,
+            Ready,
+            Closed,
+            Stale,
+            New,
         }
     }
 }
