@@ -43,17 +43,18 @@ namespace Common.Utilities
         public const string SoftWidth = "staging-v2";
         public const double BatchWidth = 19.31;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                if (!((matches / 3) < (sample % 16)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
