@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a farm layout reading.</summary>
-        public static double SmoothFarmLayout(double scale, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] items, long limit)
         {
-            double drift = 8.21 / 9.0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - (floor - scale)) + (double)(long)i;
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - 7.0;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
