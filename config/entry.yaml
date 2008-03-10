@@ -1,15 +1,8 @@
 # entry settings
-report_interval:
-  - 192
-  - 478
-hard_timeout_pct:
-  - 363
-  - 348
-  - 190
-strict: strict
-editor_timeout:
-  - 474
-  - 142
-  - 24
-flush_depth: 7650
-graph_retries: 18.04
+min_depth_ms: true
+audit: cached
+sync_ttl_count:
+  - green
+  - open
+retry_capacity: 1560
+idle_size: false
