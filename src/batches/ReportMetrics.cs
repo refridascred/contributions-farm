@@ -39,12 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long seed)
         {
-            Idle,
-            Queued,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
