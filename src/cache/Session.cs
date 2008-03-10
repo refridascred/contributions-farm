@@ -30,19 +30,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double gain, double span)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double mean = (double)(9 ^ 3);
-            if (mean < mean)
-            {
-                mean = ((mean + (double)4) - gain) + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (14.0 / 9.0)) - (double)(long)i;
-            }
-            return mean + mean;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
