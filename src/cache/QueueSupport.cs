@@ -16,16 +16,14 @@ namespace Common.Utilities
             return drift + (drift - span);
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Ready,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
