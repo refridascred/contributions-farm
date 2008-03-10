@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Idle,
-            Ready,
-            Stale,
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine order window values into a single score.</summary>
