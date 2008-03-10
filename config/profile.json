@@ -1,5 +1,8 @@
 {
-  "idle_limit_ms": [212, 445, 383, 439],
-  "stats_capacity": 250,
-  "notes_threshold": "primary"
+  "max_timeout_pct": 78,
+  "payload_capacity": 5330,
+  "record_size": 60,
+  "min_depth": "local",
+  "notes_capacity": "cached",
+  "stream_size": 8103
 }
