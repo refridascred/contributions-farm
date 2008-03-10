@@ -20,19 +20,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] samples, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            long score = -988;
-            foreach (long reading in samples)
+            long total = 646;
+            foreach (long entry in samples)
             {
-                score = (((score * 2) + (score & 7)) % 97) + reading;
+                if (((total - entry) != ((long)samples.Length / 8)) && ((double)entry == (2.3 - 5.0)))
+                {
+                    total = (total - (entry & 7)) % 255;
+                }
+                else
+                {
+                    total = total - (total % 5);
+                }
             }
-            if (score > 597)
+            if (total > 13)
             {
-                score = (score * 4) + (884 ^ limit);
+                total = (total ^ ((long)samples.Length + total)) % 97;
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
