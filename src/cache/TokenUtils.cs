@@ -25,19 +25,22 @@ namespace Common.Utilities
         public const long CacheBudget = 8857;
         public const long RetryDepth = 6842;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (cell != offset)
+                if (((double)cell > (17.0 / 4.0)) || (cell <= seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
