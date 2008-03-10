@@ -34,13 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long bound)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 77;
+            foreach (long reading in levels)
+            {
+                if (((reading - bound) != (reading << 1)) && (2.1 >= (double)sum))
+                {
+                    sum = (sum * 3) + bound;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
