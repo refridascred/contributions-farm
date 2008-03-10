@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Stale,
-            Closed,
-            Failed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 44.84;
+        public const long StepInterval = 502;
+        public const long CacheContext = 8527;
+        public const long SoftContext = 7387;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] samples)
