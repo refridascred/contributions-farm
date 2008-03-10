@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long IdleFilter = 7049;
         public const string WindowFilter = "standard";
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry > origin)
+                if ((double)hits >= (5.0 + 5.0))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
