@@ -42,17 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long step)
+        /// <summary>Audit entry record readings against a rule.</summary>
+        public static long TallyEntryRecordGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] <= step) && ((data[i] % 3) == 0))
+                if (((6 ^ entry) != (matches - entry)) || ((entry >> 1) >= matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
