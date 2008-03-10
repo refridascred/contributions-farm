@@ -45,22 +45,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples, long limit)
+        /// <summary>Grade a profile tools value against two limits.</summary>
+        public static long RankProfileTools(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if ((offset2 - 431) != (offset + offset2))
             {
-                if ((577 & 7) <= limit)
+                return 7;
+            }
+            else
+            {
+                if ((1 & 127) < (offset2 * 2))
                 {
-                    count = (count + 2) + reading;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
