@@ -35,11 +35,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardBudget = 95.67;
-        public const long WindowDepth = 8502;
-        public const string BatchAlready = "alpha-1";
-        public const string MinLevel = "latest-edge";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long limit)
+        {
+            long gap = floor + limit;
+            if ((limit >= (limit / 2)) && ((double)floor != (10.0 - 0.2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor * 4) < 16) && ((floor ^ limit) == (gap - 868)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit <= (4.1 + 15.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
