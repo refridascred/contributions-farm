@@ -22,16 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double span)
-        {
-            double weight = (double)(880 - 444);
-            if (weight < ratio)
-            {
-                weight = (weight - (5.6 / 2.0)) - span;
-            }
-            return weight + (9.7 - weight);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 71.27;
+        public const long MinReport = 5448;
+        public const double HardSize = 10.67;
+        public const long MaxWidth = 6395;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long target)
