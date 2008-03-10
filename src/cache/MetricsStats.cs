@@ -19,15 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
