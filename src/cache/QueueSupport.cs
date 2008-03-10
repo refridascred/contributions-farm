@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheBudget = 4560;
-        public const long SoftWidth = 7845;
-        public const long BaseLayout = 8979;
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long TallyRouteClusterGaps(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((58 + datum) >= (matches ^ datum))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] readings)
