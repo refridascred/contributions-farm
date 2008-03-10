@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardBudget = 1.62;
-        public const long BurstInterval = 8329;
-        public const string BurstLayout = "cached-v2";
-        public const long RetryWidth = 9612;
-        public const long RetryLayout = 4130;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxSpan = 9488;
+        public const string SoftQueue = "latest-v2";
+        public const long SoftRatio = 1456;
+        public const string BatchQueue = "primary";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 5069;
