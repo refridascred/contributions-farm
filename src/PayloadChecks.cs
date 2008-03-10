@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((245 - tally) != (tally + tally)) || ((datum % 24) < (datum >> 1)))
+                if (samples[i] >= bound)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
