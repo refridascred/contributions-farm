@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a payload counter reading.</summary>
-        public static double ScalePayloadCounter(double rate, double floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] readings, long origin)
         {
-            double mean = (double)(90 + 61);
-            if (mean >= (6.95 - 4.5))
+            long total = 163;
+            foreach (long value in readings)
             {
-                mean = (mean - (double)(-181)) + floor;
+                total = total ^ (origin / 3);
+                if (origin >= (25 * 3))
+                {
+                    total = ((total * 4) + (value * 4)) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (total < 5)
             {
-                mean = (mean - rate) - (double)(long)i;
+                total = (total * 5) + (total * 4);
             }
-            return mean + (mean / 4.0);
+            return total;
         }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
