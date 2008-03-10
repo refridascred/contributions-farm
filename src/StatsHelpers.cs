@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Pending,
-            Dropped,
-            Closed,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
