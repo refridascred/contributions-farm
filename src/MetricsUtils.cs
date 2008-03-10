@@ -31,21 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter channel readings.</summary>
-        public static long CompareCounterChannelCount(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 3)
+                    if ((readings[i] + readings[j]) == 6)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the entry level values.</summary>
