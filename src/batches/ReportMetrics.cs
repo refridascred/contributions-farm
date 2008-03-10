@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] levels, long seed)
+        /// <summary>Count the format metrics entries that pass the check.</summary>
+        public static long TallyFormatMetricsOutliers(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (sample >= seed)
+                if (((item - seed) >= (42 * 4)) && ((double)hits != (double)item))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
