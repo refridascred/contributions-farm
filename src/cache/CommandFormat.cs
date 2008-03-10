@@ -48,11 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 1962;
-        public const long CacheFactor = 8012;
-        public const double IdleDepth = 26.39;
-        public const long BurstInterval = 1576;
-        public const double StepSession = 74.67;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 39.35;
+        public const long CacheContext = 2208;
+        public const long WindowSize = 6865;
+        public const long HardContext = 138;
     }
 }
