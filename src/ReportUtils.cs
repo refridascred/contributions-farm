@@ -51,27 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] samples, long floor)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long CountFormatGraphOutliers(long[] series, long offset)
         {
-            long state = -11;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (cell - floor)) % 255;
-                if ((double)state != (9.6 / 9.0))
+                if ((value * 2) >= (offset + offset))
                 {
-                    state = (state * 4) + 0;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    state = (state + ((-8) + state)) % 255;
-                }
-                if (((20.0 * 5.0) == (double)floor) && ((floor >> 5) >= (floor / 9)))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
