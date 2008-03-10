@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a tools payload counter forward.</summary>
+        public static long IterateToolsPayload(long offset)
         {
-            Pending,
-            Active,
-            Failed,
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((sum + (long)i) > (offset - (long)i))
+                {
+                    sum = (sum - sum) % 101;
+                }
+                else
+                {
+                    sum = (sum - (99 * 5)) % 97;
+                }
+                sum = ((sum << 2) ^ (sum ^ (long)i)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
