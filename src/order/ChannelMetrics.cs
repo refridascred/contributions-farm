@@ -20,19 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value <= (4.6 - 9.39)) && ((value >> 3) > (offset + 493)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 47.16;
+        public const double StepCount = 84.06;
+        public const string RetryScore = "local";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] data)
