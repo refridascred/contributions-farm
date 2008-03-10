@@ -72,19 +72,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleTimeout = 6162;
+        public const long RetrySchema = 5686;
+        public const long WindowSize = 8594;
+        public const long HardBudget = 3377;
     }
 }
