@@ -1,12 +1,7 @@
 {
-  "sync_timeout_s": 81.02,
-  "enabled": {
-    "support_delay": 56.99,
-    "base_timeout": "fallback",
-    "hard_threshold_count": 30.53
-  },
-  "audit": "stable",
-  "poll_size": "eu-west",
-  "retry_size_ms": 7,
-  "min_window_pct": "stable"
+  "record_window": [397, 135, 338, 248],
+  "readonly": 32.56,
+  "min_delay_s": 30,
+  "poll_ttl": 30,
+  "soft_depth": [399, 200, 237]
 }
