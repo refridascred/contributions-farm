@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 23.59;
-        public const long StepSpan = 7812;
-        public const string CacheProfile = "stable";
-        public const double StepProfile = 61.9;
+        /// <summary>Audit already session readings against a rule.</summary>
+        public static long AuditAlreadySessionMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((((long)levels.Length * 3) > (sample + seen)) || ((seen / 9) != (seen - seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] readings)
