@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] readings, long origin)
-        {
-            long total = 163;
-            foreach (long value in readings)
-            {
-                total = total ^ (origin / 3);
-                if (origin >= (25 * 3))
-                {
-                    total = ((total * 4) + (value * 4)) % 255;
-                }
-            }
-            if (total < 5)
-            {
-                total = (total * 5) + (total * 4);
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "standard";
+        public const long CacheFilter = 6120;
+        public const double IdleFilter = 85.32;
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
         public static long TotalGraphGithubfarm(long[] series)
