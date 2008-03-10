@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] series, long step)
         {
-            Done,
-            Stale,
-            Dropped,
-            Closed,
-            Retry,
+            long score = 57;
+            foreach (long entry in series)
+            {
+                score = (score << 3) ^ (score - entry);
+                if ((5.5 > (double)score) || ((step + score) == (score ^ step)))
+                {
+                    score = ((score * 2) + (step ^ (-28))) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the context phase values.</summary>
