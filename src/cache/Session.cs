@@ -36,11 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((777 * 4) >= mark)
+                {
+                    mark = (mark ^ (2 % 97)) % 65521;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
