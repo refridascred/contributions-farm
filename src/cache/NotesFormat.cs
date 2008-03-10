@@ -33,22 +33,36 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long origin)
         {
-            if (((offset ^ origin) >= offset) && ((double)origin == (8.2 * 17.0)))
+            if ((bound / 9) == (origin << 2))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((offset << 2) < 9) || ((origin << 2) > offset))
+                if ((2.38 / 2.0) == (double)origin)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if ((origin / 6) == (86 + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
