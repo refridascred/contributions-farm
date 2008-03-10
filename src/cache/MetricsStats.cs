@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            long mix = 180;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mix = (mix - value) % 4096;
+                if ((matches / 2) <= (matches & 63))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            if (mix > (-341))
-            {
-                mix = (mix ^ (bound & 15)) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
