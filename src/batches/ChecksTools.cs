@@ -14,12 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Match up githubfarm stream samples.</summary>
+        public static long OverlapGithubfarmStreamCount(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache options.</summary>
