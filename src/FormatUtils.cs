@@ -95,10 +95,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleTimeout = 6162;
-        public const long RetrySchema = 5686;
-        public const long WindowSize = 8594;
-        public const long HardBudget = 3377;
+        /// <summary>Validate commits channel readings against a bound.</summary>
+        public static bool GuardCommitsChannelRange(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
