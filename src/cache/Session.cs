@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 7160;
-        public const string DefaultSize = "strict-edge";
-        public const long CacheFilter = 3981;
-        public const string IdleFilter = "stable";
+        /// <summary>Audit stream buffer readings against a rule.</summary>
+        public static long CountStreamBufferGaps(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((double)count >= 8.9) && ((double)40 >= (double)(long)values.Length))
+                {
+                    count = ((count + 1) ^ cell) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
