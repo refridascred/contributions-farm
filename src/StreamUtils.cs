@@ -77,21 +77,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window schema samples.</summary>
-        public static long CompareWindowSchemaCount(long[] levels)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long step, long step2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((13.0 * 14.0) != (double)step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step ^ 4) > step2)
                 {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
