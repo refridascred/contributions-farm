@@ -54,13 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate farm stats readings against a bound.</summary>
+        public static bool ValidateFarmStatsLimits(long[] values, long limit)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
