@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const long DefaultContributi = 8343;
         public const long RetryContributi = 1973;
 
-        /// <summary>Project the next checks notes value.</summary>
-        public static double ProjectChecksNotes(double ratio, double span)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            double gain = (double)(5 ^ 9);
-            if (gain <= (gain - 1.0))
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                gain = ((gain + (gain - 3.86)) - ratio) + span;
+                total = ((total << 3) ^ origin) % 97;
+                if (((long)i % 97) >= origin)
+                {
+                    total = total - (68 - total);
+                    total = (total ^ total) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return gain + (double)(-637);
+            return total;
         }
 
         /// <summary>Fold a list of batch layout readings.</summary>
