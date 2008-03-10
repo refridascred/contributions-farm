@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a account filter pair into a bucket.</summary>
-        public static long ClassifyAccountFilter(long limit, long bound)
+        /// <summary>Grade a window graph value against two limits.</summary>
+        public static long ClassifyWindowGraph(long step, long seed)
         {
-            if ((7 / 3) >= limit)
+            long diff = step - seed;
+            if ((step - 75) == (step + step))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((limit ^ limit) >= (9 - limit))
+                if (seed <= (diff ^ 471))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 7;
+                    if ((step << 2) != (seed - 697))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
