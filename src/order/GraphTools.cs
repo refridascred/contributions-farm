@@ -33,22 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long total = 22;
-            foreach (long value in samples)
-            {
-                if ((value * 2) > (317 + total))
-                {
-                    total = (total + (total / 5)) % 65521;
-                }
-                if ((4.2 * 9.96) > (double)total)
-                {
-                    total = total + (total << 2);
-                }
-            }
-            return total % 4096;
+            Failed,
+            Draft,
+            Locked,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
