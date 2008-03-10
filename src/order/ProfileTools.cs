@@ -36,16 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor notes counter forward.</summary>
-        public static long IterateEditorNotes(long origin)
+        /// <summary>Look up the position of a githubfarm schema sample.</summary>
+        public static long SeekGithubfarmSchemaIndex(long[] values, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 2) ^ origin) % 65521;
-                score = ((score * 3) + (long)i) % 1000;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
