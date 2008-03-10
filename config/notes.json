@@ -1,7 +1,7 @@
 {
-  "counter_size": 11.75,
-  "tools_ratio": 100,
-  "retry_threshold": 7670,
-  "checks_threshold": ["blue", "fallback"],
-  "flush_limit_ms": 55.85
+  "readonly": false,
+  "githubfarm_window": 30,
+  "metrics_timeout": 1.24,
+  "audit": true,
+  "strict": "eu-west"
 }
