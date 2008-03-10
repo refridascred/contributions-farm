@@ -20,22 +20,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Iterate the cluster commits series from a seed.</summary>
+        public static long DeriveClusterCommits(long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((tally & 1) < tally)
+                if (((27 + offset) < score) || (((long)i ^ score) > offset))
                 {
-                    tally = (tally + 1) + entry;
+                    score = score + offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score - (score + (long)i)) % 255;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Rank profile command input into a small class.</summary>
