@@ -24,14 +24,16 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            New,
-            Idle,
-            Queued,
-            Stale,
-            Draft,
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor << 2) ^ ((long)i * 3)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
