@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next contributi cache value from a seed.</summary>
-        public static long SeriesContributiCache(long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] data, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((mix / 9) != (bound + mix)) || ((1.0 + 4.8) == (double)(long)i))
+                if (data[i] == bound)
                 {
-                    mix = (mix - ((long)i / 8)) % 255;
+                    return (long)i;
                 }
-                if ((double)bound < (double)mix)
-                {
-                    mix = (mix + (mix + 47)) % 101;
-                }
-                mix = (mix ^ bound) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the token class values.</summary>
