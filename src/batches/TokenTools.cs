@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every payload stats entry stays within the limit.</summary>
-        public static bool GuardPayloadStatsRange(long[] values, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (reading > target)
+                if ((double)cell < (17.0 - 4.98))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + origin;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
