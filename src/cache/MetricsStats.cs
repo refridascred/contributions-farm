@@ -33,17 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 319;
+            foreach (long value in items)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                if ((value + score) >= (value % 8))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (score + value)) % 65521;
                 }
             }
-            return -1;
+            if (score > (-225))
+            {
+                score = (score ^ (8 + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
