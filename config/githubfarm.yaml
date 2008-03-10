@@ -1,10 +1,6 @@
 # githubfarm settings
-poll_capacity: 73.6
-poll_ttl_count: 47.7
-cache_capacity: 16.49
-sync_depth_count: open
-notes_ttl: fallback
-stats_interval:
-  - 51
-  - 212
-  - 315
+context_size: latest
+min_depth_pct: 5349
+hard_ratio: strict
+flush_ttl: 73.87
+checks_retries: green
