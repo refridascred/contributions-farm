@@ -48,9 +48,35 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 2040;
-        public const string BatchInterval = "open-edge";
-        public const string LimitCache = "fallback-v2";
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((1 + (long)i) == (3 - 300)) || ((floor + mark) >= 40))
+                {
+                    mark = (mark + (71 + mark)) % 65521;
+                    mark = mark ^ (mark + mark);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (long)i;
+                    mark = (mark - (mark + mark)) % 65521;
+                }
+                if (mark < floor)
+                {
+                    mark = ((mark * 5) + ((long)i + floor)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark / 6)) % 4096;
+                    mark = (mark ^ floor) % 255;
+                }
+                mark = ((mark * 2) + floor) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
