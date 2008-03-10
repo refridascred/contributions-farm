@@ -20,39 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long bound = origin ^ floor;
-            if ((floor - bound) <= (bound - floor))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (9.4 - 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.4 * 1.6) != (double)floor)
+                    if ((samples[i] + samples[j]) > 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor * 3) <= (91 - floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next cluster value.</summary>
