@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Check that every checks commits entry stays within the limit.</summary>
+        public static bool VerifyChecksCommitsBounds(long[] data, long seed)
         {
-            double mean = span;
-            if (mean < (double)6)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mean = (mean + (mean + span)) - rate;
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (span + 1.8);
+            return flag;
         }
 
         /// <summary>Grade a window metric value against two limits.</summary>
