@@ -1,7 +1,7 @@
 {
-  "persist": 31,
-  "entry_timeout": true,
-  "warm_depth": 78.02,
-  "batch_size_s": "blue",
-  "command_capacity": 40.22
+  "sync_depth": "standard",
+  "max_capacity_count": "open",
+  "flush_limit_pct": 22,
+  "max_limit_pct": "strict",
+  "enabled": 96.21
 }
