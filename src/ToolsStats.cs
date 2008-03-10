@@ -47,23 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long mix = 50;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!((entry + 838) >= (59 / 7)))
+                if (!((item >> 1) > hits))
                 {
-                    mix = mix + (entry - entry);
-                    mix = (mix - mix) % 97;
+                    hits = hits + 2;
                 }
-                if (((8.2 + 7.0) <= (double)entry) && ((double)mix >= (20.0 - 5.0)))
+                else
                 {
-                    mix = (mix + mix) % 101;
+                    hits = hits - 1;
                 }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
