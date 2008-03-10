@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= offset)
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
