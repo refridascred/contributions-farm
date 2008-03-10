@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long offset)
-        {
-            long offset2 = origin + offset;
-            if ((offset >> 3) == (origin - offset2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset > 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultDepth = 2799;
+        public const long LimitDepth = 9179;
+        public const string SoftMetrics = "alpha-v2";
+        public const double MinDepth = 3.96;
+        public const long MinMetrics = 3308;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
