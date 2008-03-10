@@ -44,19 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long offset)
+        /// <summary>Fold a list of context channel readings.</summary>
+        public static long DigestContextChannel(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mark = 19;
+            foreach (long datum in items)
             {
-                if (datum > offset)
+                if ((mark & 1) > datum)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 5) + (91 + mark)) % 97;
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
