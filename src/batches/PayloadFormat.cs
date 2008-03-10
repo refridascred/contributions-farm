@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepTimeout = "primary-v2";
-        public const long SoftBudget = 1895;
-        public const long RetryWidth = 8442;
-        public const double BurstRatio = 67.96;
-        public const long BurstRecord = 7708;
+        /// <summary>Find the first already entry entry that matches the target.</summary>
+        public static long LookupAlreadyEntryIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
