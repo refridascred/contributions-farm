@@ -49,17 +49,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long origin, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound - bound) >= origin)
             {
-                if (items[i] <= target)
+                return 5;
+            }
+            else
+            {
+                if (bound >= (origin - bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up window metrics samples.</summary>
