@@ -74,13 +74,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Retry,
-            Closed,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 76.61;
+        public const long MinSize = 9580;
+        public const long WindowAccount = 7370;
     }
 }
