@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double floor)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            double load = weight;
+            if (load >= (8.48 - 5.0))
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - (double)477;
+            }
+            return load + weight;
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
