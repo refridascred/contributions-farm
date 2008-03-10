@@ -20,26 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long total = 646;
-            foreach (long entry in samples)
-            {
-                if (((total - entry) != ((long)samples.Length / 8)) && ((double)entry == (2.3 - 5.0)))
-                {
-                    total = (total - (entry & 7)) % 255;
-                }
-                else
-                {
-                    total = total - (total % 5);
-                }
-            }
-            if (total > 13)
-            {
-                total = (total ^ ((long)samples.Length + total)) % 97;
-            }
-            return total;
+            Locked,
+            Idle,
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
