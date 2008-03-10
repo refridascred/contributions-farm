@@ -1,9 +1,7 @@
-id,score,rank
-1,standard,latest
-2,389,blue
-3,125,44.94
-4,529,standard
-5,73.45,17.87
-6,39.19,95.91
-7,fallback,eu-west
-8,646,cached
+id,label,score,state,level
+1,27.27,41.32,81.34,open
+2,633,43.1,190,fallback
+3,green,462,76.62,primary
+4,609,open,cached,335
+5,25.83,52.3,154,cached
+6,80,542,323,primary
