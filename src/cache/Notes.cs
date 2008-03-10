@@ -29,11 +29,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 3131;
-        public const long BatchBudget = 471;
-        public const long DefaultRatio = 8560;
-        public const double HardWidth = 68.32;
+        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
+        public static long CompareLayoutFarmCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
