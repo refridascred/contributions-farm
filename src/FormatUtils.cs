@@ -94,13 +94,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] values, long target)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
