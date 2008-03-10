@@ -59,11 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 1005;
-        public const double StepChannel = 2.52;
-        public const long DefaultRatio = 2616;
-        public const double LimitChannel = 14.89;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
