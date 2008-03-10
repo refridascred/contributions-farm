@@ -31,12 +31,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
+            Active,
+            Closed,
+            Ready,
+            Done,
             Locked,
-            Stale,
-            Paused,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
