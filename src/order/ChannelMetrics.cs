@@ -19,19 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long total = 446;
-            foreach (long cell in series)
-            {
-                total = total + (step - cell);
-            }
-            if (total < 1)
-            {
-                total = (total << 2) ^ (step + step);
-            }
-            return total;
+            Active,
+            Pending,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
