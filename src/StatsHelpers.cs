@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 1546;
-        public const string MaxQueue = "open-1";
-        public const double IdleSize = 73.87;
-        public const string RetryQueue = "open";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((-7) >> 5) >= target)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] values, long origin)
