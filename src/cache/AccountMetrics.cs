@@ -24,13 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Dropped,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
