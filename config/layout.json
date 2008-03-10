@@ -1,5 +1,5 @@
 {
-  "buffer_delay": [349, 370, 279],
-  "base_depth_ms": true,
-  "poll_retries_count": "green"
+  "persist": "standard",
+  "filter_limit": [484, 322, 72],
+  "soft_depth_s": 27.74
 }
