@@ -52,12 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next counter tools value.</summary>
+        public static double ProjectCounterTools(double gain, double span)
         {
-            Stale,
-            Done,
-            Ready,
+            double load = span;
+            return (load + (double)592) + gain;
         }
 
         /// <summary>Compare every pair of tools order readings.</summary>
