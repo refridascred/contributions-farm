@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string WindowFactor = "standard-1";
         public const long DefaultDepth = 1720;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] values, long floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((183 + datum) > (tally - floor)) && (((9.0 * 1.0) == (double)floor) || ((double)datum <= (3.0 + 2.0))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
