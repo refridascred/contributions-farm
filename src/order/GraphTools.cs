@@ -52,14 +52,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            Active,
-            Locked,
-            Ready,
-            Stale,
-            Idle,
+            long bound2 = offset + bound;
+            if (9 > (bound + bound2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(3.77 < (6.7 / 9.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
