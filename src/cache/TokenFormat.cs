@@ -43,31 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a record notes pair into a bucket.</summary>
-        public static long BucketRecordNotes(long limit, long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            if ((double)offset < (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit < (3.0 + 0.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset <= (3.0 - 11.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
