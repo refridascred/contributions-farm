@@ -31,18 +31,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric payload entries that pass the check.</summary>
-        public static long AuditMetricPayloadHits(long[] values, long limit)
+        /// <summary>Fold a list of commits command readings.</summary>
+        public static long DigestCommitsCommand(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 219;
+            foreach (long datum in data)
             {
-                if (((count / 4) != (item / 3)) || ((48 + count) != (item + limit)))
+                acc = (acc * 2) + acc;
+                if (((datum & 127) <= 821) && ((datum % 97) > datum))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Match up report samples.</summary>
