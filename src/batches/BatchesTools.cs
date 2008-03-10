@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of filter window readings.</summary>
-        public static long CompareFilterWindowCount(long[] items)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = span;
+            if (mean < (double)6)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + (mean + span)) - rate;
             }
-            return hits;
+            return mean - (span + 1.8);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
