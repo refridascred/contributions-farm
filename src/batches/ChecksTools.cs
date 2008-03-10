@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long target)
         {
-            double rate = (double)(4 + 316);
-            if (rate < (offset / 2.0))
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate - 9.86) - scale;
+                total = ((total * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)68) + (double)(long)i;
-            }
-            return rate + (double)0;
+            return total;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
