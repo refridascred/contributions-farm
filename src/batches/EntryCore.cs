@@ -29,20 +29,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items)
-        {
-            long mix = 947;
-            foreach (long reading in items)
-            {
-                mix = (mix ^ ((long)items.Length / 3)) % 4096;
-                if ((8.03 * 2.8) < (double)reading)
-                {
-                    mix = ((mix << 3) ^ (reading - mix)) % 1000;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 18.35;
+        public const long StepProfile = 8120;
+        public const long LimitProfile = 1775;
+        public const long BatchRatio = 9995;
+        public const long MinBudget = 3669;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseWidth = 4564;
