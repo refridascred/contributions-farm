@@ -72,13 +72,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] samples, long origin)
         {
-            Paused,
-            Closed,
-            Failed,
-            Synced,
+            long state = 8;
+            foreach (long entry in samples)
+            {
+                state = (state + (origin + entry)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
