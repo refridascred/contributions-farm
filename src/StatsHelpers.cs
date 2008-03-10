@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBudget = 445;
+        public const long IdleBatches = 4413;
+        public const long WindowBatches = 7978;
+        public const string IdleDepth = "alpha-v2";
+        public const long RetryDepth = 7196;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
