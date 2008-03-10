@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryDepth = 7250;
-        public const long MaxLevel = 3484;
-        public const long BaseChannel = 972;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8454;
+        public const string WindowFactor = "standard-1";
+        public const long DefaultDepth = 1720;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] values, long floor)
