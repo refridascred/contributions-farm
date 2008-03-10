@@ -43,18 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] levels, long seed)
+        /// <summary>Blend two already stats measurements.</summary>
+        public static double ProjectAlreadyStats(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double scale = floor + floor;
+            if (scale <= (double)78)
             {
-                if ((6.4 - 8.04) >= (double)seed)
-                {
-                    seen = (seen + 3) + sample;
-                }
+                scale = scale + (weight + scale);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + (weight / 9.0);
         }
 
         /// <summary>Validate record readings against a bound.</summary>
