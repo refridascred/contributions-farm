@@ -15,18 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] data)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((17.0 - 18.0) < (double)matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + value;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
