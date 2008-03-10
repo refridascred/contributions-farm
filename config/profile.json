@@ -1,11 +1,20 @@
 {
-  "base_retries": "strict",
-  "cluster_timeout": "staging",
-  "batch_retries_pct": true,
-  "strict": {
-    "enabled": 17.11,
-    "session_retries": 30,
-    "retry_interval_s": 201,
-    "default_depth_count": "blue"
-  }
+  "metric_threshold": 85,
+  "cache_size_pct": 100,
+  "flush_size_count": {
+    "queue_ttl": {
+      "max_threshold_count": "edge",
+      "token_depth": 10.07,
+      "hard_window_ms": 69,
+      "schema_limit": ["open", "latest", "blue"],
+      "window_interval": 9,
+      "enabled": 46
+    },
+    "cache_delay_ms": false,
+    "soft_ttl_count": "standard",
+    "persist": "staging"
+  },
+  "max_interval": false,
+  "min_window": 60,
+  "flush_retries_count": [374, 454, 273]
 }
