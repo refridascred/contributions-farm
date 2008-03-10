@@ -31,13 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
             public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
