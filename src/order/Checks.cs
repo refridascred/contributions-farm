@@ -48,18 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] items, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long state = 426;
+            foreach (long sample in data)
             {
-                if (6 > (seen % 60))
-                {
-                    seen = ((seen + 1) + value) - floor;
-                }
+                state = (state + sample) % 97;
             }
-            return seen;
+            return state % 4096;
         }
     }
 }
