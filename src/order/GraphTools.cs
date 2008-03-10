@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "legacy-edge";
-        public const long BatchLayout = 8961;
-        public const long RetryLayout = 3406;
-        public const string BurstLayout = "alpha-edge";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] data, long limit)
+        {
+            long score = 106;
+            foreach (long datum in data)
+            {
+                score = (((score * 2) + (548 + 50)) ^ datum) + limit;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many order payload samples are out of range.</summary>
         public static long CountOrderPayloadOutliers(long[] data)
