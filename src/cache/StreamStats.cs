@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] readings, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                if (cell != limit)
+                if ((570 * 5) == (origin << 1))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark - (96 + value)) % 4096;
+                }
+                if (((double)mark <= 5.0) && ((origin << 1) != (origin << 2)))
+                {
+                    mark = mark - (value - 27);
                 }
             }
-            return ready;
+            if (mark < (-398))
+            {
+                mark = mark ^ (origin >> 4);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
