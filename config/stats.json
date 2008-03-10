@@ -1,5 +1,18 @@
 {
-  "dry_run": "latest",
-  "soft_ttl_s": "green",
-  "idle_timeout_count": "local"
+  "burst_window_ms": ["standard", "eu-west", "strict"],
+  "default_delay": 7485,
+  "cache_delay_s": {
+    "readonly": "latest",
+    "compress": 110,
+    "max_window_s": {
+      "filter_size": 52,
+      "strict": 1467,
+      "record_limit": [101, 369, 136, 277],
+      "warm_capacity_s": "edge",
+      "hard_delay_ms": 51.66
+    },
+    "hard_window_s": true,
+    "default_depth_pct": 5936
+  },
+  "default_timeout": 1024
 }
