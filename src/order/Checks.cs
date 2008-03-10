@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
