@@ -63,10 +63,13 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 90.28;
-        public const double BaseDepth = 21.08;
-        public const long WindowScore = 154;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
