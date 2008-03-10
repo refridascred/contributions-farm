@@ -86,19 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long step)
+        /// <summary>Iterate the batch contributi series from a seed.</summary>
+        public static long RollBatchContributi(long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (item < step)
+                if ((step >> 3) > sum)
                 {
-                    found = false;
-                    break;
+                    sum = (sum * 3) + ((long)i & 255);
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
