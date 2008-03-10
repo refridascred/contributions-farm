@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (49 < (seed / 6))
-                {
-                    mark = ((mark * 5) + seed) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (seed + mark)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a commits record.</summary>
