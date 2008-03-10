@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            long total = 4;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                total = total ^ (sample + sample);
-                if ((offset <= total) || ((total & 63) > (offset + sample)))
+                if ((((7.0 - 1.3) >= (double)sample) && ((double)sample < 3.9)) && (((double)seen >= (6.79 * 5.0)) && ((seen >> 3) > (seen + sample))))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
