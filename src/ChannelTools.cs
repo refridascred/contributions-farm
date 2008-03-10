@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] values, long floor)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
