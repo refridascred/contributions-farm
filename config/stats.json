@@ -1,6 +1,10 @@
 {
-  "cache_ttl_pct": "standard",
-  "max_capacity_s": 500,
-  "contributi_depth": ["legacy", "fallback"],
-  "readonly": "blue"
+  "strict": {
+    "cache_retries": [418, 103],
+    "enabled": 2808,
+    "metrics_capacity": 250
+  },
+  "sync_size": 3282,
+  "account_retries": 54,
+  "soft_ratio": false
 }
