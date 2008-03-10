@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate metric already readings against a bound.</summary>
+        public static bool ValidateMetricAlreadyBounds(long[] items, long limit)
         {
-            Paused,
-            Active,
-            Stale,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
