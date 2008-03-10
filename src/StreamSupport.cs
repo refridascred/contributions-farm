@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] levels, long offset)
         {
-            double drift = (double)(145 + 1);
-            if (drift >= floor)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                drift = drift - scale;
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift - (double)437;
+            return flag;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
