@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + ((long)i % 10)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
