@@ -43,31 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            if ((floor % 100) < (floor >> 1))
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor >> 2) < (origin + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + floor) > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Project the next editor value.</summary>
