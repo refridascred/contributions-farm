@@ -69,13 +69,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit record route readings against a rule.</summary>
+        public static long TallyRecordRouteHits(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches + entry) == (entry + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
