@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowInterval = 6389;
-        public const string StepRecord = "fallback-edge";
-        public const string StepLevel = "staging";
-        public const long BaseRecord = 4530;
-        public const long MinRecord = 9055;
+        /// <summary>Blend two channel window measurements.</summary>
+        public static double BlendChannelWindow(double ratio, double bias)
+        {
+            double mean = (double)(56 / 3);
+            if (mean > ratio)
+            {
+                mean = mean - (bias - mean);
+            }
+            return mean + mean;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long floor)
