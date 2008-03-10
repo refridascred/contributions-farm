@@ -1,10 +1,5 @@
 # support settings
-enabled: 7
-persist:
-  - 241
-  - 140
-buffer_interval: 74
-report_retries:
-  - strict
-  - latest
-poll_limit_pct: standard
+verbose: 39
+poll_timeout_count: 85.49
+sync_interval_ms: 74.44
+route_size: latest
