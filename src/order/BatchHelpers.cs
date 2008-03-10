@@ -20,24 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a farm report value against two limits.</summary>
-        public static long BucketFarmReport(long limit, long limit2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] values)
         {
-            if (limit > (limit << 2))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((1.82 * 6.0) >= (double)limit2) && ((8 >> 1) > limit))
+                if ((tally << 2) >= (cell >> 5))
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a stream payload sample.</summary>
