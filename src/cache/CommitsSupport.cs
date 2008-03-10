@@ -37,22 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue record readings against a rule.</summary>
-        public static long MeasureQueueRecordMatches(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item >= (double)9)
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank graph layout input into a small class.</summary>
