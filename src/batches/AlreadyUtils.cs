@@ -23,21 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of stream buffer readings.</summary>
-        public static long CompareStreamBufferCount(long[] levels)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > offset)
                 {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the token kind values.</summary>
