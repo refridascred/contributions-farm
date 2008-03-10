@@ -31,24 +31,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double span)
-        {
-            double weight = rate - rate;
-            if (weight >= (rate * 2.1))
-            {
-                weight = (weight - (double)30) - span;
-            }
-            else
-            {
-                weight = weight + 16.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)62) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 7356;
+        public const long DefaultRatio = 6810;
+        public const long StepFactor = 1352;
+        public const string DefaultChecks = "strict-1";
+        public const long SoftLevel = 8112;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelRange(long[] values, long seed)
