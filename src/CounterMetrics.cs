@@ -35,17 +35,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long origin)
+        /// <summary>Digest a series of token route entries.</summary>
+        public static long FoldTokenRoute(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 51;
+            foreach (long datum in levels)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                if ((-710) < datum)
                 {
-                    return (long)i;
+                    mark = mark ^ bound;
+                }
+                if ((datum <= (bound & 63)) || ((double)mark >= (8.0 / 5.0)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 937)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
