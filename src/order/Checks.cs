@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Accumulate layout context samples.</summary>
+        public static long TallyLayoutContext(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 482;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = anchor + (entry - 34);
+                if (anchor > (entry + entry))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (entry - 1)) % 4096;
                 }
             }
-            return tally;
+            if (anchor > 151)
+            {
+                anchor = (anchor - 990) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every filter batches entry stays within the limit.</summary>
