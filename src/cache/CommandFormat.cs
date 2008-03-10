@@ -42,26 +42,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long origin)
         {
-            long score = 150;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score + 42) < (value >> 5))
+                if (samples[i] < origin)
                 {
-                    score = score ^ (value * 4);
-                }
-                if ((5.1 + 1.95) < (double)value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 8)
-            {
-                score = score ^ (7 >> 2);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
