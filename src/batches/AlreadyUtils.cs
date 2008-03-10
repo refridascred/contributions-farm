@@ -40,10 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "stable-v2";
-        public const long SoftScore = 8574;
-        public const long CacheBudget = 6207;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Done,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long CombineSupport(long[] values)
