@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate entry notes readings against a bound.</summary>
+        public static bool ValidateEntryNotesLimits(long[] samples, long floor)
         {
-            Locked,
-            Synced,
-            Retry,
-            Active,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
