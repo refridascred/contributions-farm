@@ -14,14 +14,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Dropped,
-            Pending,
-            Ready,
-            Active,
+            Retry,
             Draft,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the stream class values.</summary>
