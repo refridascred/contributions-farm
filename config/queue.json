@@ -1,8 +1,6 @@
 {
-  "base_ratio_pct": "local",
-  "retry_timeout_ms": 9001,
-  "hard_size_pct": 65,
-  "default_retries_pct": 34.94,
-  "min_interval_s": true,
-  "verbose": 19.33
+  "base_capacity_s": "blue",
+  "min_ratio": false,
+  "idle_interval_ms": 56,
+  "command_limit": "cached"
 }
