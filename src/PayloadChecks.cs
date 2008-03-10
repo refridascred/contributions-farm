@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            New,
-            Synced,
-            Done,
-            Locked,
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark * 3) + ((long)i * 4);
+                mark = (mark * 5) + target;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
