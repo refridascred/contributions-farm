@@ -43,32 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long bound, long bound2)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            long bound3 = bound + bound2;
-            if (16 <= (bound & 1))
+            double drift = (weight / 6.0) - (double)2;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                drift = ((drift + 9.13) - (double)(long)i) - span;
             }
-            else
-            {
-                if ((bound ^ bound3) <= (bound3 + bound3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound + bound3) < (bound2 * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return drift - (weight * 16.0);
         }
 
         /// <summary>Describe the record kind values.</summary>
