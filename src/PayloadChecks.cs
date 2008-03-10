@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] series, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)value != (4.09 + 2.0))
+                if (((245 - tally) != (tally + tally)) || ((datum % 24) < (datum >> 1)))
                 {
-                    matches = (matches + 2) + floor;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a order command reading by value.</summary>
