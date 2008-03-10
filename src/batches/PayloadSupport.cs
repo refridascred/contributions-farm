@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double offset)
-        {
-            double ratio = offset / 4.0;
-            if (ratio >= (ratio / 3.0))
-            {
-                ratio = (ratio - (offset - 9.0)) - bias;
-            }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5065;
+        public const long CacheSpan = 5391;
+        public const double MaxEntry = 56.94;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double bias, double bias2)
