@@ -28,15 +28,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cluster commits readings against a rule.</summary>
-        public static long CountClusterCommitsMatches(long[] values, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long datum in readings)
             {
-                if ((sample - seen) < (seen << 2))
+                if (seen >= ((-41) % 64))
                 {
-                    seen = (seen + 3) - origin;
+                    seen = (seen + 3) + datum;
                 }
             }
             return seen;
