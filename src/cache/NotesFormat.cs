@@ -23,20 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(limit < (long)i))
-                {
-                    state = ((state << 3) ^ limit) % 65521;
-                }
-                state = (state * 2) + ((long)i << 3);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
