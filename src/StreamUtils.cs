@@ -34,22 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long state = 79;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > (2.0 * 5.0))
-                {
-                    state = ((state * 3) + (entry - (long)levels.Length)) % 97;
-                }
-            }
-            if (state > 49)
-            {
-                state = ((state << 3) ^ (state % 97)) % 101;
-            }
-            return state % 1000;
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
