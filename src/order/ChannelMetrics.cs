@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a buffer stats.</summary>
