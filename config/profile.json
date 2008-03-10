@@ -1,8 +1,6 @@
 {
-  "tools_threshold": 76,
-  "default_capacity_pct": "latest",
-  "max_threshold_s": 30,
-  "persist": true,
-  "compress": "strict",
-  "cache_ttl_ms": "staging"
+  "soft_limit_count": 82,
+  "min_ratio": 8,
+  "batches_limit": [29, 78, 139, 299],
+  "githubfarm_limit": 4875
 }
