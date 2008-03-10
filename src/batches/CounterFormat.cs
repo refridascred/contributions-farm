@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long TallyProfileBatchesOutliers(long[] series, long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry / 8) < (bound >> 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
