@@ -55,13 +55,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a tools record.</summary>
