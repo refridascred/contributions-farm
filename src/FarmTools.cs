@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mark = 6;
-            foreach (long item in samples)
-            {
-                if ((item >> 2) <= mark)
-                {
-                    mark = (mark + (item % 16)) % 1000;
-                }
-            }
-            return mark % 65521;
+            Draft,
+            Retry,
+            Active,
+            Stale,
+            Idle,
         }
     }
 }
