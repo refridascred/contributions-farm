@@ -23,14 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            Stale,
-            Synced,
-            Idle,
-            Queued,
-            Done,
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(limit < (long)i))
+                {
+                    state = ((state << 3) ^ limit) % 65521;
+                }
+                state = (state * 2) + ((long)i << 3);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
