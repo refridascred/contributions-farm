@@ -26,12 +26,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a graph header.</summary>
