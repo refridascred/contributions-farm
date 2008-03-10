@@ -23,21 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((0.53 * 0.28) == (double)sample) && ((count >= (sample >> 3)) || ((double)3 <= (1.89 - 0.4))))
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
