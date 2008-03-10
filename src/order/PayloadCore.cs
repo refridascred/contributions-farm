@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (!((6.95 - 8.0) >= (double)offset))
+                {
+                    seen = (seen + 3) ^ datum;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
