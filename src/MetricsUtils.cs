@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            long anchor = 1;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((7.99 * 5.24) == (double)origin)
+                if (((long)items.Length % 24) >= (-48))
                 {
-                    anchor = ((anchor << 3) ^ (sample + 3)) % 101;
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor > 105)
-            {
-                anchor = (anchor << 3) ^ (2 + anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
