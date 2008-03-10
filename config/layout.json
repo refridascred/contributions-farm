@@ -1,7 +1,7 @@
 {
-  "route_ttl": "standard",
-  "persist": 14.7,
-  "burst_delay_ms": 250,
-  "retry_retries_s": 64.15,
-  "soft_ratio": "legacy"
+  "metric_limit": 30,
+  "githubfarm_interval": false,
+  "readonly": false,
+  "channel_limit": [180, 71],
+  "audit": ["staging", "strict", "eu-west"]
 }
