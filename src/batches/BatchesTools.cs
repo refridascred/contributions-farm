@@ -30,14 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long bound2)
         {
-            Idle,
-            Pending,
-            Locked,
-            Ready,
-            Dropped,
+            if ((bound2 % 12) > bound2)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound + bound2) < bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
