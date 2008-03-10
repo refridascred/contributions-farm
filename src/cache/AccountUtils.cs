@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (value > (hits & 3))
+                if (datum < (697 & 31))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
