@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] items, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 4.8;
+            if (mean > floor)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (mean * 8.0)) - scale;
             }
-            return -1;
+            return mean - floor;
         }
 
         /// <summary>Hold a contributi options.</summary>
