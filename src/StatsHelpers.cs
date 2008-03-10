@@ -56,18 +56,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long TallyProfileOrderOutliers(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((8 + value) <= matches) && (8 >= value))
+                if (reading < floor)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
