@@ -35,19 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster tools samples are out of range.</summary>
-        public static long CountClusterToolsMatches(long[] series, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long value in items)
             {
-                if (444 >= (tally + tally))
+                if ((tally / 4) < (value % 64))
                 {
-                    tally = ((tally + 1) + value) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
