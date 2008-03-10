@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 3) + ((long)i + limit)) % 4096;
-                acc = acc ^ limit;
-                if ((limit - limit) <= (8 + acc))
-                {
-                    acc = ((acc << 2) ^ (acc + limit)) % 101;
-                    acc = acc ^ (limit + limit);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a checks header.</summary>
