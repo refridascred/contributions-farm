@@ -20,11 +20,32 @@ namespace Common.Utilities
             return drift - (double)26;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 5641;
-        public const long RetryProfile = 7057;
-        public const string DefaultScore = "cached-1";
-        public const long SoftProfile = 6271;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long target, long target2)
+        {
+            if ((target2 - target2) >= target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((target << 2) == (6 - target2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((6.8 / 4.0) == (double)target2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
