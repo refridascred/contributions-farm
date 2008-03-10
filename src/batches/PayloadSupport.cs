@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 5065;
-        public const long CacheSpan = 5391;
-        public const double MaxEntry = 56.94;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Active,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double bias, double bias2)
