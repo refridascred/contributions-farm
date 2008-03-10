@@ -24,15 +24,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double bias, double bias2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long seed)
         {
-            double mean = bias2;
-            if (mean > bias2)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mean = (mean + bias2) - bias;
+                if ((((seed & 7) <= ((-9) ^ (-1))) || ((seed << 2) <= (sample / 3))) && ((double)seed != (14.0 - 9.54)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - (19.0 * 9.0);
+            return hits;
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
