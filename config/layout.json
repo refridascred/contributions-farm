@@ -1,20 +1,13 @@
 {
-  "profile_interval": 88,
-  "metrics_size": 43.41,
-  "default_ratio": 14.9,
-  "readonly": false,
-  "batch_interval": "open",
-  "flush_threshold_pct": {
-    "retry_interval": 63,
-    "strict": {
-      "strict": 1024,
-      "contributi_ttl": 5.02,
-      "filter_depth": [159, 359, 94, 353],
-      "compress": "primary",
-      "max_timeout": 14.55
-    },
-    "persist": "blue",
-    "readonly": "stable",
-    "sync_ratio": true
-  }
+  "poll_interval_ms": {
+    "readonly": "standard",
+    "profile_delay": [446, 68, 82],
+    "checks_ttl": "eu-west",
+    "flush_depth_ms": "open",
+    "default_limit_ms": 1024
+  },
+  "cache_depth": 10.71,
+  "farm_ratio": true,
+  "poll_ttl_pct": ["fallback", "eu-west", "primary"],
+  "flush_retries": 18
 }
