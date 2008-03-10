@@ -63,14 +63,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of editor context entries.</summary>
+        public static long TallyEditorContext(long[] items)
         {
-            Active,
-            Synced,
-            Done,
-            Retry,
-            Queued,
+            long mark = 5;
+            foreach (long datum in items)
+            {
+                if (((double)mark >= (9.5 - 19.0)) && (((long)items.Length << 1) < datum))
+                {
+                    mark = (mark * 3) + (datum ^ 31);
+                }
+                else
+                {
+                    mark = mark - datum;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
