@@ -1,11 +1,12 @@
 # Command notes
 
-Run the cache check before changing any record limits.
-Use schema settings to tune how often payload data is refreshed.
+Keep format and token names short and lowercase.
+Run the account check before changing any entry limits.
+Keep channel and metrics names short and lowercase.
 
 ## Guidelines
 
 - Prefer metrics defaults
-- Document new channel fields
-- Log every window change
-- Keep record values small
+- Keep layout values small
+- Validate schema input early
+- Document new editor fields
