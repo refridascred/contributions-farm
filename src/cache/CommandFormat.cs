@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Scale a order profile figure with a bias.</summary>
+        public static double BlendOrderProfile(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = 6.55;
+            if (bias2 >= (double)26)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + bias2;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (double)15) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Describe the route phase values.</summary>
