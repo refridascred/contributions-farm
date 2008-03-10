@@ -1,5 +1,8 @@
 {
-  "hard_threshold": 1024,
-  "retry_ratio_ms": 9020,
-  "retry_timeout": 74
+  "warm_capacity": ["blue", "standard"],
+  "githubfarm_threshold": true,
+  "soft_depth": false,
+  "retry_threshold_ms": "strict",
+  "default_retries_count": 5,
+  "poll_interval_ms": false
 }
