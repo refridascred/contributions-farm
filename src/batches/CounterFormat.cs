@@ -29,24 +29,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long result = 28;
-            foreach (long sample in data)
-            {
-                result = result - (sample + 88);
-                result = (result << 2) ^ (75 - result);
-                if (sample >= result)
-                {
-                    result = ((result << 3) ^ (result + result)) % 4096;
-                }
-                if (((sample ^ result) <= sample) && ((result + result) >= (1 % 2)))
-                {
-                    break;
-                }
-            }
-            return result;
+            Queued,
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
