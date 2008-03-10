@@ -38,15 +38,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double mean = rate + (double)7;
-            if (mean < (double)8)
-            {
-                mean = mean - (offset / 6.0);
-            }
-            return mean + (mean + offset);
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
