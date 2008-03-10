@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Pending,
-            Stale,
-            New,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 7160;
+        public const string DefaultSize = "strict-edge";
+        public const long CacheFilter = 3981;
+        public const string IdleFilter = "stable";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
