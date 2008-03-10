@@ -40,12 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Classify a record notes pair into a bucket.</summary>
+        public static long BucketRecordNotes(long limit, long offset)
         {
-            Retry,
-            Idle,
-            Failed,
+            if ((double)offset < (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit < (3.0 + 0.5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset <= (3.0 - 11.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
