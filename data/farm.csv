@@ -1,9 +1,6 @@
-id,region,rank,token,score
-1,499,48.95,23.04,cached
-2,open,824,236,823
-3,12.78,394,77.98,edge
-4,11.48,433,19,309
-5,strict,695,cached,833
-6,strict,381,latest,5.16
-7,852,862,legacy,927
-8,cached,397,stable,20.18
+id,count,score,rank
+1,93.29,green,271
+2,staging,99,606
+3,edge,556,cached
+4,186,primary,primary
+5,strict,0.48,711
