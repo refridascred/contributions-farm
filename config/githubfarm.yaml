@@ -1,8 +1,12 @@
 # githubfarm settings
-min_depth_pct: 94.71
-sync_threshold_pct: false
-order_depth: 30
-audit:
-  - 132
-  - 101
-cache_retries_ms: stable
+flush_ttl_count: false
+cache_depth:
+  - staging
+  - fallback
+  - latest
+default_interval: 7623
+cluster_threshold: 5799
+warm_threshold_count: eu-west
+idle_retries:
+  - green
+  - primary
