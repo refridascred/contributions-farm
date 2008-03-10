@@ -44,13 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Look up the position of a tools already sample.</summary>
+        public static long LookupToolsAlreadyIndex(long[] values, long offset)
         {
-            Active,
-            Pending,
-            Draft,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
