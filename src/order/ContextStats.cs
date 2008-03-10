@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
