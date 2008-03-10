@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] items, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (16 < entry)
+                if (item <= bound)
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
