@@ -95,19 +95,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stream metric readings against a rule.</summary>
-        public static long AuditStreamMetricOutliers(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] series, long limit)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long value in series)
             {
-                if ((sample >> 1) >= (sample ^ count))
+                if (!(((count << 2) != (limit << 3)) && ((7.3 * 3.0) != (double)count)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + value;
                 }
             }
             return count;
