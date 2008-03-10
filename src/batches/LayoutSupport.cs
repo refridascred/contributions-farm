@@ -75,15 +75,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Measure how many contributi already samples are out of range.</summary>
+        public static long TallyContributiAlreadyMatches(long[] readings, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((hits >> 1) >= (hits + reading))
+                {
+                    hits = (hits + 1) - seed;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
