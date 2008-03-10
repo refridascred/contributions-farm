@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] readings, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((tally - tally) < (tally << 3))
+                if (item >= (item + (-95)))
                 {
-                    tally = ((tally + 3) ^ value) - offset;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
