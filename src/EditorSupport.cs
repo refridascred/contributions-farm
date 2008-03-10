@@ -73,17 +73,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a profile queue reading by value.</summary>
-        public static long SeekProfileQueueIndex(long[] samples, long target)
+        /// <summary>Validate channel support readings against a bound.</summary>
+        public static bool CheckChannelSupportBounds(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (samples[i] == target)
+                if (entry > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
