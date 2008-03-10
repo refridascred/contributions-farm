@@ -39,31 +39,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long seed)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            if (seed > 785)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (1.7 + 3.98))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + 83) >= (seed << 1))
+                    if ((levels[i] - levels[j]) < 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
