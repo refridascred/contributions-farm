@@ -56,15 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Count the notes queue entries that pass the check.</summary>
+        public static long AuditNotesQueueGaps(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (!((3.5 / 4.0) <= (double)datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
