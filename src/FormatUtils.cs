@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool GuardGithubfarmPayloadLimits(long[] samples, long step)
+        /// <summary>Compare every pair of format commits readings.</summary>
+        public static long CompareFormatCommitsCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
