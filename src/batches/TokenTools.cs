@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
