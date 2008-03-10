@@ -62,22 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitSpan = 93.07;
+        public const long HardCommits = 7016;
+        public const long DefaultLevel = 2266;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long step, long step2)
