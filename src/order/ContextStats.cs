@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((floor - floor) < (tally & 127))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 6651;
+        public const double HardCount = 33.91;
+        public const long RetrySchema = 8400;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 2797;
