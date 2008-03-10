@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Classify a account filter pair into a bucket.</summary>
+        public static long ClassifyAccountFilter(long limit, long bound)
         {
-            double scale = (double)(98 * 5);
-            for (int i = 0; i < 4; i++)
+            if ((7 / 3) >= limit)
             {
-                scale = (((scale + (double)47) - (double)(long)i) + bias) - span;
+                return 2;
             }
-            return scale + scale;
+            else
+            {
+                if ((limit ^ limit) >= (9 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the counter class values.</summary>
