@@ -29,17 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the metrics cluster series from a seed.</summary>
-        public static long IterateMetricsCluster(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long mix = 947;
+            foreach (long reading in items)
             {
-                score = (score * 5) + (score * 5);
-                score = (score ^ ((long)i + offset)) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                mix = (mix ^ ((long)items.Length / 3)) % 4096;
+                if ((8.03 * 2.8) < (double)reading)
+                {
+                    mix = ((mix << 3) ^ (reading - mix)) % 1000;
+                }
             }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
