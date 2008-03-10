@@ -47,18 +47,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double weight, double offset)
         {
-            long total = 5;
-            foreach (long reading in values)
+            double weight2 = weight;
+            if (weight2 < (weight - weight))
             {
-                if ((reading + bound) <= (bound + bound))
-                {
-                    total = total ^ (bound / 6);
-                }
+                weight2 = (weight2 + weight2) - offset;
             }
-            return total;
+            else
+            {
+                weight2 = weight2 + (8.7 * 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (double)(-3)) + (double)(long)i;
+            }
+            return weight2 + 15.0;
         }
     }
 }
