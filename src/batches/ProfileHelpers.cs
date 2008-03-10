@@ -50,19 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] data, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the metric kind values.</summary>
