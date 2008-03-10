@@ -48,15 +48,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double bias2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples)
         {
-            double rate = (double)(-73) / 2.0;
-            if (rate > bias)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate - (rate * 4.9)) + bias2;
+                if ((((678 / 6) == (count - sample)) || (sample < (count / 6))) && (((long)samples.Length >> 5) > (sample + 5)))
+                {
+                    count = count + 3;
+                }
             }
-            return rate - (bias / 4.0);
+            return count;
         }
     }
 }
