@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftLevel = 1452;
-        public const string StepGraph = "legacy";
-        public const string MaxRatio = "latest";
-        public const long DefaultGraph = 536;
-        public const long BatchGraph = 1025;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinTimeout = "open-edge";
+        public const string WindowStream = "stable-1";
+        public const long MinScore = 3950;
+        public const long SoftStream = 9133;
+        public const long DefaultInterval = 2876;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
