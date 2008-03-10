@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next order metric value from a seed.</summary>
-        public static long RollOrderMetric(long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (limit >= mix)
-                {
-                    mix = (mix ^ mix) % 4096;
-                    mix = (mix ^ limit) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Locate a already reading by value.</summary>
