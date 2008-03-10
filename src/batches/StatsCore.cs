@@ -56,11 +56,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long step, long step2)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            if (((step << 2) >= step2) && ((double)872 == (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step + step) < step2) && ((double)step == (double)step2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((194 & 63) <= (step2 << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - step) == (step - 760))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order header.</summary>
