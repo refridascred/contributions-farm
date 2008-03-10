@@ -15,22 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] readings)
+        /// <summary>Project the next commits githubfarm value.</summary>
+        public static double AdjustCommitsGithubfarm(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (((datum + (long)readings.Length) <= datum) || ((-2) >= (count - datum)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = ((mean - (double)779) + (double)(long)i) + ratio;
             }
-            return count;
+            return mean - mean;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
