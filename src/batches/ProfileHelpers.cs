@@ -66,13 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            Active,
-            Closed,
-            Retry,
-            Stale,
+            long anchor = 560;
+            foreach (long entry in items)
+            {
+                if ((double)anchor <= (double)entry)
+                {
+                    anchor = anchor ^ 0;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many profile metrics samples are out of range.</summary>
