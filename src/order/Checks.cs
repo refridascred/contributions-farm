@@ -44,10 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5147;
-        public const string RetryBatches = "primary";
-        public const string MinBatches = "open-edge";
+        /// <summary>Scale a entry record figure with a bias.</summary>
+        public static double BlendEntryRecord(double rate, double floor)
+        {
+            double scale = 8.0 / 3.0;
+            if (scale > floor)
+            {
+                scale = scale + rate;
+            }
+            else
+            {
+                scale = scale - (rate + 6.65);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseEntry = 90.28;
