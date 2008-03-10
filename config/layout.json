@@ -1,8 +1,6 @@
 {
-  "persist": 84.25,
-  "verbose": true,
-  "account_delay": true,
-  "soft_depth_count": false,
-  "default_size_count": 97.76,
-  "readonly": 8.32
+  "strict": false,
+  "support_limit": 7.8,
+  "enabled": 76,
+  "warm_depth": 26
 }
