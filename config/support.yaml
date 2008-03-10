@@ -1,17 +1,16 @@
 # support settings
-warm_depth_s: 4771
-verbose:
-  - 394
-  - 451
-  - 148
-  - 42
-base_timeout_count:
-  checks_limit: true
-  retry_depth_pct: 250
-  tools_delay: green
-  soft_limit_count: 1024
-payload_depth: 47.63
-default_delay_count:
-  - 134
-  - 285
-strict: true
+buffer_retries: legacy
+batch_limit_count: 100
+idle_size:
+  enabled: 500
+  default_ratio_pct:
+    - 42
+    - 157
+    - 139
+  batch_window_count: 88.9
+  metric_ttl: 1024
+  batch_window: strict
+  hard_ttl_s: 6241
+burst_limit_s: 250
+default_delay: 21.31
+min_capacity: latest
