@@ -57,21 +57,12 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Queued,
         }
     }
 }
