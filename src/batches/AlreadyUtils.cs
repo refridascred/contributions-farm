@@ -16,13 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Ready,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the token kind values.</summary>
