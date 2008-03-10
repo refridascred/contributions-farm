@@ -64,25 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes batch input into a small class.</summary>
-        public static long RankNotesBatch(long limit, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] series, long origin)
         {
-            long next = limit - origin;
-            if ((limit >> 2) > next)
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.2 / 6.0) > (double)next)
+                if ((origin >> 2) == (count / 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 3) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
