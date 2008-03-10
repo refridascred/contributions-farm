@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            double mean = scale * 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total << 3) ^ total;
-                total = ((total * 2) + (long)i) % 97;
+                mean = (mean - (double)87) - (double)(long)i;
             }
-            return total;
+            return mean - (bias * 8.0);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
