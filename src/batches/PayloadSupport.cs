@@ -39,13 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the counter githubfarm entries that pass the check.</summary>
+        public static long CountCounterGithubfarmHits(long[] data)
         {
-            Draft,
-            Stale,
-            Retry,
-            Pending,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (6.78 <= (double)reading)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
