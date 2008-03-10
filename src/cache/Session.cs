@@ -29,11 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            Paused,
+            Synced,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
