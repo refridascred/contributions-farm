@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            Pending,
-            Queued,
-            Stale,
-            Ready,
-            Retry,
+            long anchor = 91;
+            foreach (long sample in data)
+            {
+                if (((sample * 3) <= (anchor - sample)) || ((5.0 + 3.5) <= (double)anchor))
+                {
+                    anchor = anchor ^ ((-35) + anchor);
+                }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
