@@ -36,11 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Project the next editor githubfarm value.</summary>
+        public static double BlendEditorGithubfarm(double bias, double span)
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            double ratio = (double)507 * 7.5;
+            if (ratio >= (bias + ratio))
+            {
+                ratio = (ratio + (double)26) - span;
+            }
+            else
+            {
+                ratio = ratio - 6.9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (bias / 8.0)) - (double)(long)i;
+            }
+            return ratio - 7.6;
         }
 
         /// <summary>Validate stats notes readings against a bound.</summary>
