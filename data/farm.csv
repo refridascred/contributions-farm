@@ -1,7 +1,9 @@
-id,ratio,state,count
-1,676,green,fallback
-2,799,95.9,standard
-3,47,96.62,staging
-4,86.85,62.33,434
-5,strict,98.22,strict
-6,61.23,32.75,879
+id,region,rank,token,score
+1,499,48.95,23.04,cached
+2,open,824,236,823
+3,12.78,394,77.98,edge
+4,11.48,433,19,309
+5,strict,695,cached,833
+6,strict,381,latest,5.16
+7,852,862,legacy,927
+8,cached,397,stable,20.18
