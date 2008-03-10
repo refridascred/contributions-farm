@@ -1,5 +1,5 @@
 # githubfarm settings
-persist: fallback
-dry_run: 4100
-default_timeout_ms: 15.74
-warm_timeout_count: 1024
+idle_ttl_count: false
+warm_size_count: true
+poll_depth_s: edge
+idle_limit_s: stable
