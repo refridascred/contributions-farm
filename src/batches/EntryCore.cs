@@ -44,18 +44,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((17.0 * 7.0) == (double)sample)
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
