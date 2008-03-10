@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a window layout reading by value.</summary>
