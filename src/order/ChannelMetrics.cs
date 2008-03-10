@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every command record entry stays within the limit.</summary>
-        public static bool ValidateCommandRecordLimits(long[] data, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a context value against two limits.</summary>
