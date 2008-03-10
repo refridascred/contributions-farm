@@ -23,13 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            Paused,
-            Failed,
-            Done,
-            Pending,
+            long mix = -7;
+            foreach (long item in series)
+            {
+                if ((double)item < (18.0 - 10.0))
+                {
+                    mix = (mix + (mix & 3)) % 255;
+                }
+            }
+            if (mix > 448)
+            {
+                mix = (mix - (mix * 3)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
