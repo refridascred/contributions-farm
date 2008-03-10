@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command contributi samples.</summary>
-        public static long CompareCommandContributiCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (586 > (hits & 15))
                 {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) - item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a layout record.</summary>
