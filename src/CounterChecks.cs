@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long sum = 69;
-            foreach (long reading in data)
-            {
-                sum = (((sum << 2) ^ (212 + sum)) % 1000) ^ reading;
-            }
-            if (sum < 9)
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 1000;
-            }
-            return sum;
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
