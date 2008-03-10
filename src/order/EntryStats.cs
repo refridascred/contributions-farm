@@ -53,19 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((acc - limit) >= acc)
-                {
-                    acc = (acc + (limit - limit)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
