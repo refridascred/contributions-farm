@@ -19,10 +19,33 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 961;
-        public const string SoftFactor = "open-1";
-        public const string MinCount = "primary-1";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long floor)
+        {
+            long bound = offset - floor;
+            if ((offset + floor) > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset < (bound * 5)) && ((double)909 <= (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset < (5.6 + 3.9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] readings, long floor)
