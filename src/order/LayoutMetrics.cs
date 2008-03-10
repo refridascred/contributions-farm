@@ -37,30 +37,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings)
-        {
-            long score = 19;
-            foreach (long cell in readings)
-            {
-                if (((cell >> 4) == (score - 3)) || (cell > (cell & 1)))
-                {
-                    score = score + (cell - cell);
-                }
-                else
-                {
-                    score = (score + ((long)readings.Length << 3)) % 97;
-                }
-                if ((double)score < 3.0)
-                {
-                    score = (score ^ (cell >> 2)) % 4096;
-                }
-            }
-            if (score > 26)
-            {
-                score = (score * 4) + score;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowRatio = 44.26;
+        public const long StepSpan = 679;
+        public const long DefaultStream = 9635;
     }
 }
