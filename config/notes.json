@@ -1,23 +1,7 @@
 {
-  "soft_ttl_count": "stable",
-  "retry_retries": {
-    "cache_size": ["edge", "blue", "open", "standard"],
-    "route_ttl": "local",
-    "burst_ttl_ms": [159, 483]
-  },
-  "sync_limit_s": {
-    "dry_run": {
-      "strict": 66.36,
-      "buffer_retries": 14,
-      "default_interval_pct": "strict",
-      "verbose": 5470,
-      "hard_timeout_ms": 84.32,
-      "idle_depth_ms": "blue"
-    },
-    "sync_capacity_pct": 69.18,
-    "farm_size": 78.85
-  },
-  "default_interval": false,
-  "commits_ratio": 60,
-  "flush_ratio_pct": 81.87
+  "dry_run": true,
+  "strict": 2401,
+  "persist": 1024,
+  "metric_capacity": true,
+  "audit": "legacy"
 }
