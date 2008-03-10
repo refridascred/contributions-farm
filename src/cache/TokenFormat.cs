@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples)
-        {
-            long anchor = 3;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor * 5) + anchor) + cell;
-            }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 8815;
+        public const long MaxPayload = 5106;
+        public const long RetryPayload = 1756;
+        public const long LimitPayload = 2036;
+        public const string CacheCount = "strict";
 
         /// <summary>Match up cluster samples.</summary>
         public static long CompareClusterCount(long[] data)
