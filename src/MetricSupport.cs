@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -2;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score ^ (reading + 2)) % 1000) - step;
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
