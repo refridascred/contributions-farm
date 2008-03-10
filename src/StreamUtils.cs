@@ -77,24 +77,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long step, long step2)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((13.0 * 14.0) != (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ 4) > step2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
