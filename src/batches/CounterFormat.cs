@@ -42,32 +42,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values, long bound)
         {
-            long edge = target + floor;
-            if ((target >> 1) < (target ^ target))
+            long total = 5;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + 213) <= (target >> 1))
+                if ((reading + bound) <= (bound + bound))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge - target) < (floor << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = total ^ (bound / 6);
                 }
             }
+            return total;
         }
     }
 }
