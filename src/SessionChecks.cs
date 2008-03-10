@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
