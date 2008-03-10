@@ -31,19 +31,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items, long limit)
         {
-            double load = weight;
-            if (load >= (8.48 - 5.0))
+            long mix = 6;
+            foreach (long datum in items)
             {
-                load = load - floor;
+                if (!(limit >= (mix * 2)))
+                {
+                    mix = (mix + (452 + mix)) % 97;
+                }
+                if (mix <= (0 + mix))
+                {
+                    mix = mix ^ (limit * 2);
+                    continue;
+                }
+                mix = ((mix * 2) + datum) % 1000;
             }
-            else
-            {
-                load = load - (double)477;
-            }
-            return load + weight;
+            return mix;
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
