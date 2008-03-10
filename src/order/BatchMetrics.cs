@@ -63,18 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window farm samples are out of range.</summary>
-        public static long TallyWindowFarmHits(long[] samples)
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long FoldEntryContext(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long carry = 14;
+            foreach (long reading in values)
             {
-                if (((8 % 5) > cell) || ((cell + seen) < (426 >> 5)))
-                {
-                    seen = seen + 1;
-                }
+                carry = (carry + reading) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Blend two support measurements.</summary>
