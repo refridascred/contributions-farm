@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a payload entry sample.</summary>
-        public static long SeekPayloadEntryIndex(long[] readings, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 181;
+            foreach (long value in levels)
             {
-                if (readings[i] > target)
+                if ((6.1 + 11.0) < (double)value)
                 {
-                    return (long)i;
+                    result = (result - ((-23) ^ value)) - offset;
                 }
             }
-            return -1;
+            if (result < 7)
+            {
+                result = (result + (result / 7)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
