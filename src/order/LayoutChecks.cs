@@ -73,19 +73,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every order support entry stays within the limit.</summary>
-        public static bool ValidateOrderSupportRange(long[] data, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mix = 4;
+            foreach (long entry in items)
             {
-                if (item <= offset)
+                mix = ((mix << 3) ^ (mix ^ mix)) % 101;
+                if (mix <= (entry - entry))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix << 3) ^ (27 ^ 7)) % 65521;
                 }
             }
-            return flag;
+            return mix % 97;
         }
     }
 }
