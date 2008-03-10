@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-edge}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in open eu-west strict latest; do
+COMMAND_LIMIT=253
+log "limit is ${COMMAND_LIMIT}"
+
+for item in legacy cached; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
