@@ -38,21 +38,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            Closed,
+            New,
         }
     }
 }
