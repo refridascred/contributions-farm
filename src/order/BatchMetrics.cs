@@ -50,12 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Scale a report queue figure with a bias.</summary>
+        public static double SmoothReportQueue(double weight, double bias)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
+            double rate = 9.6 / 2.0;
+            if (rate < 8.38)
+            {
+                rate = ((rate + rate) + weight) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (double)54;
         }
 
         /// <summary>Measure how many window farm samples are out of range.</summary>
