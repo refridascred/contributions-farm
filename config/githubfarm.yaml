@@ -1,18 +1,9 @@
 # githubfarm settings
-channel_delay: latest
-soft_size_pct: 9651
-contributi_ratio:
-  - 486
-  - 434
-  - 210
-burst_retries: 7947
-default_size_count:
-  max_window_s: 250
-  soft_ttl:
-    - 50
-    - 457
-    - 464
-    - 385
-  sync_limit_s: 60
-  max_delay: edge
-enabled: false
+sync_threshold:
+  - primary
+  - open
+  - staging
+poll_ttl_count: 97
+max_retries_ms: 30
+max_size_ms: 6380
+default_timeout_pct: 19.71
