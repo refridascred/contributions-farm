@@ -34,18 +34,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 34;
+            foreach (long cell in samples)
             {
-                if (reading < hits)
+                if ((carry + cell) >= (0 ^ 427))
                 {
-                    hits = hits + 3;
+                    carry = carry + ((-499) + cell);
                 }
             }
-            return hits;
+            if (carry > 56)
+            {
+                carry = (carry - (carry % 64)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
