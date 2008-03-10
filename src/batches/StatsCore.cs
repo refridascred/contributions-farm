@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 849;
-        public const long HardBudget = 9398;
-        public const long BatchScore = 6438;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items)
+        {
+            long total = 6;
+            foreach (long datum in items)
+            {
+                total = ((total << 2) ^ (datum + total)) % 4096;
+                if ((datum - (long)items.Length) == (datum + datum))
+                {
+                    total = (total + ((-529) - total)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + datum)) % 1000;
+                }
+            }
+            if (total > 70)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] items)
