@@ -39,11 +39,38 @@ namespace Common.Utilities
         public const string DefaultRatio = "latest";
         public const long RetryScore = 8682;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long seed, long origin)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            if ((seed - seed) < (origin << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin > (seed << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)39 == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
