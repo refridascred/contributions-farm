@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const double CacheContext = 62.9;
         public const string BurstWidth = "stable-1";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long sum = 97;
-            foreach (long sample in readings)
-            {
-                if (sample <= (sum + sample))
-                {
-                    sum = (sum + (bound & 127)) % 1000;
-                    break;
-                }
-                sum = (sum + (bound + bound)) % 101;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every metric layout entry stays within the limit.</summary>
