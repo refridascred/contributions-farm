@@ -62,22 +62,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits ^ hits) == (value - hits)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
