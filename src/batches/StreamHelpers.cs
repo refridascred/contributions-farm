@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Locked,
-            Synced,
-            Draft,
-            Ready,
-            Retry,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
