@@ -23,12 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] series)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of record commits readings.</summary>
