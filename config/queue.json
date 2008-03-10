@@ -1,6 +1,8 @@
 {
-  "base_capacity_s": "blue",
-  "min_ratio": false,
-  "idle_interval_ms": 56,
-  "command_limit": "cached"
+  "hard_timeout_s": 52.15,
+  "verbose": "stable",
+  "hard_threshold": 58,
+  "idle_ratio": "edge",
+  "sync_window_s": ["local", "open"],
+  "idle_interval": "staging"
 }
