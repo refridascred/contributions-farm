@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=382
+mode="${1:-staging}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=132
 log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in primary green stable cached; do
-    log "checking ${item}"
-done
