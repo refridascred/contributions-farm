@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
