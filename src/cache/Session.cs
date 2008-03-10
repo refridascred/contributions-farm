@@ -18,22 +18,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] samples, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double mean = (double)(9 ^ 3);
+            if (mean < mean)
             {
-                if (hits < (target * 4))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = ((mean + (double)4) - gain) + span;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (14.0 / 9.0)) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
