@@ -65,18 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] readings)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > 727)
+                if (data[i] == target)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
