@@ -1,9 +1,21 @@
 # githubfarm settings
-strict:
-  - cached
-  - standard
-  - open
-  - standard
-soft_limit: 22.13
-soft_interval_s: open
-readonly: staging
+entry_interval: 37.42
+min_delay: open
+batch_limit_ms:
+  - 176
+  - 195
+  - 131
+  - 82
+window_threshold:
+  retry_size: true
+  burst_retries: 22.11
+  burst_retries_count:
+    persist: 250
+    verbose: staging
+    base_limit_s: cached
+    base_ttl_count: 16.88
+    entry_delay: 57.79
+already_interval:
+  min_size_count: 52
+  audit: 2982
+  readonly: stable
