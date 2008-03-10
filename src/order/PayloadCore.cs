@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            Closed,
-            Active,
-            Pending,
-            Done,
-            Ready,
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
