@@ -32,20 +32,32 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            long cur = limit - seed;
+            if ((cur >= (limit * 2)) || ((double)cur >= 0.4))
             {
-                if ((777 * 4) >= mark)
-                {
-                    mark = (mark ^ (2 % 97)) % 65521;
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (((limit - seed) != (seed % 3)) || ((double)cur != (16.0 - 4.73)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 3) >= (cur - cur))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
