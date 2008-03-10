@@ -55,10 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchDepth = 5579;
-        public const double RetryToken = 79.23;
-        public const long RetryDepth = 6551;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
+        {
+            long total = 10;
+            foreach (long datum in readings)
+            {
+                total = ((total * 3) + (total - datum)) % 4096;
+            }
+            if (total < 8)
+            {
+                total = ((total * 4) + (total << 1)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long RankGraph(long seed, long origin)
