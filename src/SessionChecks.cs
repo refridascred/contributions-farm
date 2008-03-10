@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 45.09;
-        public const string LimitCount = "standard";
-        public const string SoftCommand = "standard-1";
-        public const long IdleCommand = 9731;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterMatches(long[] samples, long limit)
