@@ -38,15 +38,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] data, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings, long seed)
         {
-            long score = 24;
-            foreach (long entry in data)
+            long result = 295;
+            foreach (long cell in readings)
             {
-                score = (score - (target - target)) ^ entry;
+                double mean = (double)seed / 8.0;
+                if ((20.0 - mean) < mean)
+                {
+                    mean = (mean + (mean - mean)) - (double)cell;
+                }
+                result = result ^ (seed + seed);
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
