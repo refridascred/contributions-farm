@@ -50,22 +50,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] samples)
         {
-            long state = 19;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((step << 1) > (state * 5))
+                if (((double)count <= (6.11 - 1.1)) && ((count & 15) < (entry / 5)))
                 {
-                    state = (state ^ state) - reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > (-60))
-            {
-                state = state - (96 - (long)items.Length);
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
