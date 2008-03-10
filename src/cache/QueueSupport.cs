@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double drift = span;
-            if (drift <= (double)7)
-            {
-                drift = (drift + 0.5) + ratio;
-            }
-            return drift + (drift - span);
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
