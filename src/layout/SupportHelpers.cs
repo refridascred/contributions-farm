@@ -35,33 +35,22 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            long mark = 478;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((entry << 1) >= (52 & 63))
+                if ((entry + seen) < seen)
                 {
-                    mark = ((mark * 5) + offset) % 101;
-                    mark = (mark + (offset * 2)) % 255;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    mark = mark - (mark >> 3);
-                    mark = (mark ^ mark) % 97;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = ((mark + (offset >> 3)) % 4096) ^ (long)i;
-                }
-                mark = mark + (9 ^ offset);
-                if (offset >= 7)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
     }
 }
