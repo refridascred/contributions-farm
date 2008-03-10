@@ -36,13 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
