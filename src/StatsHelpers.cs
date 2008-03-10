@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - reading) != (hits ^ 96))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 1546;
+        public const string MaxQueue = "open-1";
+        public const double IdleSize = 73.87;
+        public const string RetryQueue = "open";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] values, long origin)
