@@ -27,12 +27,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a format metric value against two limits.</summary>
+        public static long GradeFormatMetric(long limit, long seed)
         {
-            Queued,
-            Locked,
-            Ready,
+            long gap = limit + seed;
+            if ((limit + seed) >= gap)
+            {
+                return 4;
+            }
+            else
+            {
+                if (gap <= (gap + gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
