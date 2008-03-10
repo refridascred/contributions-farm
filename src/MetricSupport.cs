@@ -31,19 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long origin)
+        /// <summary>Audit buffer context readings against a rule.</summary>
+        public static long CountBufferContextOutliers(long[] series)
         {
-            bool valid = true;
+            long matches = 0;
             foreach (long datum in series)
             {
-                if (datum < origin)
+                if (((matches - 394) <= (matches - datum)) && ((687 + matches) <= (datum - datum)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
