@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((long)items.Length % 24) >= (-48))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Match up profile samples.</summary>
