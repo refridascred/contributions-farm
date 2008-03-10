@@ -1,16 +1,6 @@
 {
-  "verbose": 30,
-  "retry_ttl_count": {
-    "soft_ratio": "stable",
-    "default_ttl_count": {
-      "audit": 9551,
-      "idle_window_pct": "primary",
-      "persist": ["standard", "latest"]
-    },
-    "hard_depth_ms": [44, 345, 153, 369]
-  },
-  "default_timeout_s": 3022,
-  "command_interval": 46.28,
-  "batch_depth_s": 67,
-  "warm_ratio_ms": "legacy"
+  "max_limit": 6,
+  "warm_ratio_count": 944,
+  "default_depth_s": 47,
+  "channel_ttl": true
 }
