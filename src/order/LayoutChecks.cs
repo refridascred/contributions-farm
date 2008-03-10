@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string WindowFactor = "standard-1";
         public const long DefaultDepth = 1720;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
