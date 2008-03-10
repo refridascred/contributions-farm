@@ -31,12 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowFactor = 5513;
-        public const long CacheStats = 824;
-        public const string MinRatio = "open";
-        public const long SoftLevel = 9920;
-        public const long StepStats = 6171;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseTimeout = "legacy-edge";
+        public const string MaxTimeout = "local-1";
+        public const long BatchRoute = 9131;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] items, long target)
