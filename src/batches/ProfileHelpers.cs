@@ -39,15 +39,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long seed)
         {
-            double load = floor;
-            for (int i = 0; i < 6; i++)
+            if (seed > 785)
             {
-                load = ((load - (load + load)) + (double)(long)i) + rate;
+                return 8;
             }
-            return load + floor;
+            else
+            {
+                if ((double)offset >= (1.7 + 3.98))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + 83) >= (seed << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry state values.</summary>
