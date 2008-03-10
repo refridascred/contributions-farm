@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long step)
         {
-            Closed,
-            Failed,
-            Synced,
-            Locked,
-            Ready,
+            if ((step % 24) <= (offset + 562))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step ^ offset) <= (693 - step)) || (step <= offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 3) >= (step % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
