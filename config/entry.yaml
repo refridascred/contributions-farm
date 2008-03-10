@@ -1,25 +1,18 @@
 # entry settings
-warm_capacity_pct: legacy
-payload_threshold: 73
-burst_threshold_ms:
-  - stable
-  - eu-west
-stats_ratio: 79
-poll_retries_pct:
-  max_timeout_pct: 1024
-  audit:
-    cache_threshold_ms: staging
-    batch_window_count: 6572
-    soft_depth_ms: 45
-    max_delay: true
-  profile_timeout: 7.19
-  max_timeout:
-    poll_depth_s: 7.12
-    cache_ttl_ms: false
-    burst_limit_ms: true
-    burst_limit_count: 6580
-    hard_capacity_count: 61.98
-    queue_ttl: 8389
-  layout_window: blue
-  buffer_size: 79.17
-window_delay: fallback
+retry_retries: true
+cache_threshold_count: 4474
+metric_retries:
+  burst_size_s: 33
+  sync_delay: primary
+  retry_capacity:
+    - local
+    - staging
+    - cached
+    - fallback
+  retry_window_ms: false
+base_interval:
+  - 185
+  - 44
+  - 5
+strict: fallback
+max_capacity_count: 58.2
