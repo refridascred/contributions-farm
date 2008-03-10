@@ -1,7 +1,10 @@
-id,token,score
-1,710,10.14
-2,68,open
-3,fallback,30.54
-4,631,163
-5,staging,859
-6,legacy,staging
+id,state,count
+1,256,local
+2,primary,98.62
+3,19.17,299
+4,298,62.13
+5,legacy,30.58
+6,31.07,707
+7,173,79.24
+8,cached,stable
+9,open,189
