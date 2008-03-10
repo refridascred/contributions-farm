@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy standard cached; do
+COMMAND_LIMIT=462
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict blue stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=447
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
