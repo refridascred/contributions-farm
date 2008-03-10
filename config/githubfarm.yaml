@@ -1,14 +1,7 @@
 # githubfarm settings
-batch_ratio_ms: true
-idle_depth:
-  audit: 2391
-  default_limit: false
-  retry_ttl: 9610
-  compress: false
-  metrics_depth: blue
-  max_timeout_s: true
+hard_limit: 8.57
+enabled: 44.25
 strict:
-  batch_interval_count: 11.81
-  buffer_ttl: 250
-  poll_depth_pct: 26.69
-  poll_window: latest
+  compress: 71.71
+  min_depth_s: 5486
+  session_depth: 68
