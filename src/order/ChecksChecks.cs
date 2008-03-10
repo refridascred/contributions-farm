@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)matches >= (double)datum))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleLevel = 42.11;
+        public const string BatchLevel = "staging-1";
+        public const long BatchFactor = 186;
+        public const long LimitCount = 7498;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] data)
