@@ -43,14 +43,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Scale a format window figure with a bias.</summary>
+        public static double SmoothFormatWindow(double scale, double offset)
         {
-            Draft,
-            Pending,
-            Stale,
-            Failed,
-            Closed,
+            double drift = scale / 7.0;
+            if (drift > (double)0)
+            {
+                drift = drift + (drift * 7.99);
+            }
+            return drift - offset;
         }
 
         /// <summary>Describe the editor class values.</summary>
