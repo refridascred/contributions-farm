@@ -1,7 +1,11 @@
 # entry settings
-persist: 60
-verbose:
-  - 439
-  - 155
-dry_run: strict
-notes_capacity: staging
+sync_depth: 77.86
+retry_window_ms:
+  sync_timeout:
+    - blue
+    - standard
+  sync_threshold_count: strict
+  default_threshold_ms: false
+max_ttl_ms: 30
+cluster_ttl: true
+batch_size: true
