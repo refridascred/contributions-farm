@@ -13,13 +13,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long offset)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            long bound = limit - offset;
+            if ((offset >> 2) != (bound - 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound / 3) > 0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 2) != (bound & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)0 == (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already entries.</summary>
