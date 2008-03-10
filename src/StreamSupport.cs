@@ -19,19 +19,13 @@ namespace Common.Utilities
         public const double BurstToken = 97.02;
         public const string BurstCount = "primary-v2";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] values, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Ready,
+            Paused,
+            Closed,
         }
     }
 }
