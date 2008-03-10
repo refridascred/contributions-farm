@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count counter report pairs that satisfy a relation.</summary>
-        public static long CompareCounterReportCount(long[] values)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long TallyClusterSupport(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 21;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample < score)
                 {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + target) % 97;
+                }
+                else
+                {
+                    score = score ^ score;
                 }
             }
-            return matches;
+            if (score > 650)
+            {
+                score = ((score * 3) + (8 - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
