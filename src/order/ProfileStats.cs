@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits >= (hits / 9))
-                {
-                    hits = ((hits + 2) + cell) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 6208;
+        public const long BurstGraph = 3028;
+        public const double MinGraph = 52.53;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
