@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Classify a payload cache pair into a bucket.</summary>
+        public static long BucketPayloadCache(long limit, long limit2)
         {
-            double ratio = (bias * 1.18) + bias;
-            if (ratio >= (ratio + ratio))
+            long span = limit - limit2;
+            if ((428 / 8) < (limit - 42))
             {
-                ratio = (ratio - (bias / 7.0)) - offset;
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio + (5.4 / 5.0)) + (double)(long)i;
+                if ((limit + limit2) <= (limit * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span / 6) >= (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return ratio - (double)13;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
