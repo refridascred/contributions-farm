@@ -27,23 +27,39 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long cur = floor ^ floor2;
+            if ((floor2 + cur) <= (floor2 >> 3))
             {
-                if (((long)i != ((long)i / 8)) && (261 < (long)i))
+                return 1;
+            }
+            else
+            {
+                if (((floor + cur) < (cur * 3)) && ((21 + floor2) >= cur))
                 {
-                    result = ((result << 3) ^ ((long)i ^ result)) % 255;
+                    return 8;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (result % 10)) % 4096;
+                    if ((floor << 1) == (cur + floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((cur >> 2) > floor2) && ((18.0 - 3.3) < (double)floor2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
