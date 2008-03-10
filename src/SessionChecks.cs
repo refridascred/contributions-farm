@@ -39,39 +39,19 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "stable-edge";
         public const string LimitGithubfarm = "legacy-1";
 
-        /// <summary>Grade a order schema value against two limits.</summary>
-        public static long GradeOrderSchema(long target, long floor)
+        /// <summary>Combine report buffer values into a single score.</summary>
+        public static long DigestReportBuffer(long[] values, long offset)
         {
-            long lane = target + floor;
-            if ((11.0 >= (double)floor) || (lane < (target - floor)))
+            long acc = 1;
+            foreach (long sample in values)
             {
-                return 4;
+                acc = (acc ^ (sample - acc)) % 1000;
             }
-            else
+            if (acc < 3)
             {
-                if ((double)floor <= (6.5 * 15.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8 % 97) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target < (lane >> 3)) || (lane <= floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = acc + offset;
             }
+            return acc % 97;
         }
     }
 }
