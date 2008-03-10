@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long DefaultContributi = 8343;
         public const long RetryContributi = 1973;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] levels, long seed)
+        /// <summary>Project the next checks notes value.</summary>
+        public static double ProjectChecksNotes(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(5 ^ 9);
+            if (gain <= (gain - 1.0))
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (gain - 3.86)) - ratio) + span;
             }
-            return -1;
+            return gain + (double)(-637);
         }
 
         /// <summary>Fold a list of batch layout readings.</summary>
