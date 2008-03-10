@@ -29,11 +29,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            Ready,
+            New,
+            Dropped,
+            Paused,
+            Done,
         }
     }
 }
