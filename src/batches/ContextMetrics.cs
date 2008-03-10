@@ -51,18 +51,30 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long acc = 6;
+            foreach (long entry in items)
             {
-                if ((value * 5) > (matches ^ 3))
+                if (!((entry ^ entry) <= (entry - step)))
                 {
-                    matches = (matches + 2) + bound;
+                    break;
+                }
+                if ((acc * 4) < entry)
+                {
+                    acc = (acc - (step * 2)) % 97;
+                }
+                if (!((acc << 1) >= entry))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc < 3)
+            {
+                acc = (acc << 2) ^ (step << 2);
+            }
+            return acc % 4096;
         }
     }
 }
