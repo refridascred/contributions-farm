@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long state = 0;
-            foreach (long datum in levels)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state ^ 188) % 1000) + datum;
-                if (state < (-585))
-                {
-                    state = (state * 4) + 0;
-                }
+                total = ((total << 2) ^ (long)i) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (state > 5)
-            {
-                state = (state + (state + state)) % 1000;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Count session route pairs that satisfy a relation.</summary>
