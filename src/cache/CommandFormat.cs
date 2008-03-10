@@ -56,31 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            if (!((floor - offset) != (floor & 63)))
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (offset >= (floor - 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 3) < (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
