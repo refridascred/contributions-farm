@@ -52,19 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Compare every pair of tools order readings.</summary>
