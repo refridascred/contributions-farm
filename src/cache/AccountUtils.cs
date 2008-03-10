@@ -37,12 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Find the first counter cluster entry that matches the target.</summary>
+        public static long LookupCounterClusterIndex(long[] samples, long bound)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
