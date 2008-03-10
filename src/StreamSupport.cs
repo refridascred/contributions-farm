@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Queued,
-            Failed,
-            Paused,
             Retry,
-            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
