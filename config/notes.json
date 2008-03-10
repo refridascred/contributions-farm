@@ -1,7 +1,6 @@
 {
-  "base_threshold": 2.98,
-  "batch_capacity_ms": 4.13,
-  "audit": "cached",
-  "soft_limit_count": false,
-  "persist": [411, 400, 115, 184]
+  "strict": 56,
+  "burst_delay_ms": 30,
+  "report_limit": "primary",
+  "idle_window_s": "standard"
 }
