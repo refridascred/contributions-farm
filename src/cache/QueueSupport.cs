@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mark = ((mark * 5) + target) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((2.0 + 4.2) >= (double)value)
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
