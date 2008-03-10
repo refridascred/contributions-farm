@@ -16,16 +16,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next schema layout value from a seed.</summary>
-        public static long SeriesSchemaLayout(long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long result = 3;
+            foreach (long reading in items)
             {
-                mark = mark + ((long)i * 4);
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((((-68) * 4) == (reading & 255)) || (4.9 > (double)(long)items.Length))
+                {
+                    result = result ^ reading;
+                }
+                else
+                {
+                    result = (result - (reading + 965)) % 97;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
