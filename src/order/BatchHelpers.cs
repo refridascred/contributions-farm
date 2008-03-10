@@ -20,11 +20,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Grade a farm report value against two limits.</summary>
+        public static long BucketFarmReport(long limit, long limit2)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            if (limit > (limit << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((1.82 * 6.0) >= (double)limit2) && ((8 >> 1) > limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stream payload sample.</summary>
