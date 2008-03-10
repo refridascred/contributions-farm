@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Active,
-            New,
-            Queued,
-            Done,
+            Failed,
+            Pending,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Classify a editor cache pair into a bucket.</summary>
