@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            double scale = (double)(98 * 5);
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                scale = (((scale + (double)47) - (double)(long)i) + bias) - span;
             }
-            return score;
+            return scale + scale;
         }
 
         /// <summary>Describe the counter class values.</summary>
