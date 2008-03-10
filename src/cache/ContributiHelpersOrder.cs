@@ -31,9 +31,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 59.05;
-        public const long CacheBatch = 9733;
-        public const string IdleBatch = "strict-v2";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data, long bound)
+        {
+            long state = 99;
+            foreach (long value in data)
+            {
+                if ((bound + value) >= (value >> 3))
+                {
+                    state = (state - state) % 4096;
+                    state = state + (value << 1);
+                    break;
+                }
+                state = (state + (bound * 3)) % 65521;
+            }
+            if (state < (-38))
+            {
+                state = state - (94 / 6);
+            }
+            return state % 65521;
+        }
     }
 }
