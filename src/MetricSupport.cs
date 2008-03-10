@@ -31,18 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 5) < target)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftDepth = 8276;
+        public const long MinInterval = 4362;
+        public const long DefaultLevel = 1132;
+        public const long IdleToken = 175;
     }
 }
