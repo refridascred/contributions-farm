@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] readings, long limit)
+        /// <summary>Measure how many stream layout samples are out of range.</summary>
+        public static long TallyStreamLayoutMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (readings[i] >= limit)
+                if (!(233 >= (cell * 4)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
