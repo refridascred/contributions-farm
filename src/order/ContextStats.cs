@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long TallySessionClusterHits(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + hits) > 7)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
