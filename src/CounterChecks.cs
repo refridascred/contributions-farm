@@ -38,10 +38,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 5205;
-        public const long CacheRatio = 1384;
-        public const double WindowGithubfarm = 12.95;
+        /// <summary>Derive the next graph tools value from a seed.</summary>
+        public static long DeriveGraphTools(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
