@@ -52,19 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a report queue figure with a bias.</summary>
-        public static double SmoothReportQueue(double weight, double bias)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long origin)
         {
-            double rate = 9.6 / 2.0;
-            if (rate < 8.38)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = ((rate + rate) + weight) - bias;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (double)54;
+            return -1;
         }
 
         /// <summary>Measure how many window farm samples are out of range.</summary>
