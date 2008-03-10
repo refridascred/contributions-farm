@@ -69,11 +69,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "strict-edge";
-        public const double HardSize = 27.95;
-        public const long IdleRoute = 329;
-        public const long SoftRoute = 1409;
-        public const long DefaultBudget = 5667;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
