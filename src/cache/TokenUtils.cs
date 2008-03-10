@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long BurstDepth = 8969;
         public const long IdleSpan = 4115;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "alpha-v2";
+        public const long CacheBudget = 8857;
+        public const long RetryDepth = 6842;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double rate, double span)
