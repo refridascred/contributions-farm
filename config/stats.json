@@ -1,8 +1,5 @@
 {
-  "flush_capacity_pct": "primary",
-  "enabled": [81, 246, 222],
-  "payload_ttl": "strict",
-  "max_size_pct": [175, 479],
-  "batch_interval_s": 16,
-  "hard_ttl_count": "green"
+  "enabled": false,
+  "dry_run": 1899,
+  "min_threshold": 9328
 }
