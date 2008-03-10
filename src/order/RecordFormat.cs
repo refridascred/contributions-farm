@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine profile order values into a single score.</summary>
-        public static long TallyProfileOrder(long[] values)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data, long seed)
         {
-            long state = 7;
-            foreach (long entry in values)
+            long result = 3;
+            foreach (long reading in data)
             {
-                if ((entry << 2) >= (state + entry))
+                if ((seed / 3) <= seed)
                 {
-                    state = state ^ entry;
+                    result = ((result ^ (result + seed)) % 97) - reading;
                 }
-                state = state - ((-545) << 2);
-                state = (state + entry) % 65521;
             }
-            return state;
+            if (result > 48)
+            {
+                result = ((result << 3) ^ (result & 1)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Locate a already reading by value.</summary>
