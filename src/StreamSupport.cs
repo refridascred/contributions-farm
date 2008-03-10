@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit context record readings against a rule.</summary>
-        public static long AuditContextRecordMatches(long[] data, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
             long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > (item + 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + seed;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
