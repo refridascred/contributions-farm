@@ -1,6 +1,12 @@
 {
-  "max_window_s": false,
-  "poll_window_count": 61,
-  "default_size_ms": "edge",
-  "soft_depth_s": "edge"
+  "warm_timeout_s": {
+    "commits_interval": "legacy",
+    "max_timeout_s": ["edge", "eu-west", "legacy", "open"],
+    "retry_threshold": 500,
+    "poll_depth_s": ["strict", "local", "stable"],
+    "already_size": 2154
+  },
+  "profile_limit": "latest",
+  "readonly": 60,
+  "session_capacity": 250
 }
