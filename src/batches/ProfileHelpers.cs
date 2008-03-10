@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values, long target)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            long mark = 630;
+            foreach (long cell in values)
+            {
+                if (((cell + cell) < (7 / 9)) || ((double)cell > (5.1 / 4.0)))
+                {
+                    mark = ((mark + mark) % 4096) + target;
+                    continue;
+                }
+                if (cell < mark)
+                {
+                    mark = ((mark * 5) + (mark + mark)) % 1000;
+                }
+            }
+            if (mark > 1)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
