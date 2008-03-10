@@ -62,18 +62,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 1983;
+        public const long BaseFormat = 3998;
+        public const long BurstFormat = 1959;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
