@@ -23,18 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepBudget = 2101;
+        public const double CacheContext = 62.9;
+        public const string BurstWidth = "stable-1";
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] readings, long bound)
