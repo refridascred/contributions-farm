@@ -20,19 +20,31 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if ((offset >> 1) <= (offset * 3))
             {
-                if (item < step)
+                return 2;
+            }
+            else
+            {
+                if ((seed + 64) < offset)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + (-44)) <= (seed + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
