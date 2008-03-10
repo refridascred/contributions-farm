@@ -54,19 +54,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine support channel values into a single score.</summary>
-        public static long CombineSupportChannel(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = 4;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (((mix << 2) ^ 34) % 65521) ^ (long)i;
-                }
-                mix = ((mix * 2) + reading) % 65521;
-            }
-            return mix % 4096;
+            Dropped,
+            New,
+            Locked,
         }
     }
 }
