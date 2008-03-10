@@ -70,13 +70,18 @@ namespace Common.Utilities
         public const string BatchSpan = "staging-1";
         public const double WindowDepth = 72.92;
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long MeasureWindowToolsOutliers(long[] items, long offset)
         {
-            New,
-            Pending,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits << 2) >= (12 << 3))
+                {
+                    hits = ((hits + 3) + datum) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
