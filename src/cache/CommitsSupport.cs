@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double load = gain - offset;
-            if (load >= (load / 7.0))
-            {
-                load = load + gain;
-            }
-            return load - (2.7 + offset);
+            Pending,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the profile status values.</summary>
