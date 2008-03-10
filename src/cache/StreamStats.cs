@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            Retry,
-            Done,
-            New,
-            Stale,
-            Pending,
+            double scale = (double)6;
+            return (scale - (scale - gain)) + floor;
         }
 
         /// <summary>Digest a series of graph entry entries.</summary>
