@@ -29,16 +29,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series, long origin)
-        {
-            long score = -5;
-            foreach (long sample in series)
-            {
-                score = (((score ^ (score << 3)) % 1000) - sample) - origin;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxBudget = "staging";
+        public const long LimitCounter = 7542;
+        public const long BurstCounter = 7032;
+        public const double BatchCounter = 68.22;
 
         /// <summary>Locate a metric buffer reading by value.</summary>
         public static long LookupMetricBufferIndex(long[] values, long step)
