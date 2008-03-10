@@ -35,12 +35,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] values, long target)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a account counter forward.</summary>
