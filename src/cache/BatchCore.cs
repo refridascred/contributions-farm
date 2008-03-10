@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const string WindowSession = "open-1";
         public const double RetrySession = 16.91;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data)
+        /// <summary>Roll a farm support counter forward.</summary>
+        public static long StepFarmSupport(long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum + seen) >= (seen - seen))
-                {
-                    seen = seen + 1;
-                }
+                result = ((result << 2) ^ target) % 101;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
