@@ -67,18 +67,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many profile metrics samples are out of range.</summary>
-        public static long AuditProfileMetricsOutliers(long[] readings, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = 7;
+            foreach (long reading in series)
             {
-                if (((count + seed) <= (count % 64)) || (((seed * 5) <= datum) || ((double)datum == (6.46 * 4.91))))
+                if ((reading % 97) != (reading << 3))
                 {
-                    count = count + 1;
+                    total = ((total + total) % 65521) + offset;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
