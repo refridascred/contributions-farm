@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double HardCount = 33.91;
         public const long RetrySchema = 8400;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double bias)
+        /// <summary>Derive the next account graph value from a seed.</summary>
+        public static long IterateAccountGraph(long floor)
         {
-            double scale2 = (double)(75 << 3);
-            if (scale2 <= (scale * 1.4))
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                scale2 = (scale2 - scale2) + bias;
+                if (!((result - result) != (result + result)))
+                {
+                    result = (result ^ 6) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            return scale2 + 7.76;
+            return result;
         }
 
         /// <summary>Describe the counter level values.</summary>
