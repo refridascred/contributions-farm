@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] data, long origin)
         {
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((178 * 3) != (reading + origin))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the channel commits entries that pass the check.</summary>
