@@ -24,14 +24,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Count session route pairs that satisfy a relation.</summary>
+        public static long CompareSessionRouteCount(long[] readings)
         {
-            Done,
-            Dropped,
-            Draft,
-            Stale,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
