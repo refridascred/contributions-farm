@@ -70,18 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue buffer entries that pass the check.</summary>
-        public static long AuditQueueBufferMatches(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (!(9.1 > (double)tally))
+                if ((count + 30) < count)
                 {
-                    tally = (tally + 3) - datum;
+                    count = (count + 3) + cell;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
