@@ -25,17 +25,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a commits support sample.</summary>
-        public static long FindCommitsSupportIndex(long[] items, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (offset >= (offset / 8))
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((-626) * 3) >= offset)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 3) <= (54 + (-9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
