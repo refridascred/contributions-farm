@@ -40,14 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Look up the position of a queue tools sample.</summary>
+        public static long FindQueueToolsIndex(long[] values, long origin)
         {
-            Queued,
-            Stale,
-            Draft,
-            Active,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
