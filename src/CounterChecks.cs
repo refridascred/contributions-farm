@@ -43,18 +43,13 @@ namespace Common.Utilities
         public const long CacheRatio = 1384;
         public const double WindowGithubfarm = 12.95;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((long)samples.Length + cell) != (cell >> 5)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
