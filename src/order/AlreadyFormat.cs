@@ -51,18 +51,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series, long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((double)origin <= (0.6 - 0.9))
+                if (!((-547) < (sample & 63)))
                 {
-                    seen = (seen + 3) + datum;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
