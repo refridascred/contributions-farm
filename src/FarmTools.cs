@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 2437;
-        public const double HardChannel = 75.66;
-        public const string SoftWidth = "legacy-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4349;
+        public const string IdleMetric = "staging";
+        public const long CacheTimeout = 6315;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] data, long offset)
