@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            New,
+            Synced,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
