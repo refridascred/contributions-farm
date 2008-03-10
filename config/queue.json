@@ -1,8 +1,15 @@
 {
-  "hard_timeout_s": 52.15,
-  "verbose": "stable",
-  "hard_threshold": 58,
-  "idle_ratio": "edge",
-  "sync_window_s": ["local", "open"],
-  "idle_interval": "staging"
+  "base_retries": "eu-west",
+  "base_size_count": 9876,
+  "payload_threshold": 60,
+  "format_threshold": 185,
+  "flush_retries_s": {
+    "hard_interval_ms": true,
+    "strict": true,
+    "persist": 50,
+    "flush_threshold": 24.45,
+    "counter_ttl": 4497,
+    "farm_window": 33
+  },
+  "base_window_pct": true
 }
