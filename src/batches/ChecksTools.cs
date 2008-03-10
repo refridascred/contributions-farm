@@ -25,21 +25,32 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = limit - offset;
+            if (((9.21 * 14.0) < (double)offset) && (cur < (cur * 2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (offset <= (offset + limit))
                 {
-                    if ((series[i] ^ series[j]) < 13)
+                    return 4;
+                }
+                else
+                {
+                    if ((695 + limit) < (cur << 3))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
