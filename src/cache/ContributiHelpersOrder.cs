@@ -50,13 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
