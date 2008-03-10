@@ -61,18 +61,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of editor report readings.</summary>
-        public static long TotalEditorReport(long[] items)
+        /// <summary>Count the queue buffer entries that pass the check.</summary>
+        public static long AuditQueueBufferMatches(long[] readings)
         {
-            long sum = 9;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((sum >> 1) > reading)
+                if (!(9.1 > (double)tally))
                 {
-                    sum = (sum + (sum + reading)) % 101;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
