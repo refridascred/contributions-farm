@@ -30,15 +30,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepDepth = 6115;
+        public const long BatchFactor = 9378;
+        public const long CacheRatio = 8493;
+        public const double BaseSpan = 58.88;
     }
 }
