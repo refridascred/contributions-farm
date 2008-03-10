@@ -41,25 +41,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long step2 = target ^ step;
-            if (5 > (step2 >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step < (step2 - step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
