@@ -36,19 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = 89;
-            foreach (long sample in series)
-            {
-                acc = (acc + (sample ^ acc)) + origin;
-            }
-            if (acc < 674)
-            {
-                acc = (acc * 3) + (acc - 998);
-            }
-            return acc;
+            Queued,
+            Done,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Describe the notes kind values.</summary>
