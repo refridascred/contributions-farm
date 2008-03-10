@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 7543;
-        public const long CacheSize = 2884;
-        public const long LimitDepth = 4363;
-        public const long RetryLevel = 5834;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels, long origin)
+        {
+            long sum = 50;
+            foreach (long datum in levels)
+            {
+                if (sum < (origin * 5))
+                {
+                    sum = (sum - ((long)levels.Length & 1)) ^ datum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
