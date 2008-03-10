@@ -33,12 +33,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 88.71;
-        public const long SoftRoute = 4361;
-        public const string DefaultLevel = "alpha-1";
-        public const long CacheRoute = 9640;
-        public const long MinRoute = 4281;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Retry,
+            Ready,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] data, long floor)
