@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] series)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item << 2) < (item % 97))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
