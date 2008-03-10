@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context channel readings.</summary>
-        public static long DigestContextChannel(long[] items)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            long mark = 19;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark & 1) > datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 5) + (91 + mark)) % 97;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
