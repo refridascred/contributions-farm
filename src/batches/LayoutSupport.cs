@@ -29,19 +29,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long seed, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            if ((seed / 7) == (seed + seed))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = (((carry << 3) ^ offset) % 101) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((origin + origin) <= (41 + 6)) && ((double)origin >= (11.0 / 6.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
