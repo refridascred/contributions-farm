@@ -21,12 +21,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long target)
         {
-            Paused,
-            Synced,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up window metrics samples.</summary>
