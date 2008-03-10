@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const string WindowSession = "open-1";
         public const double RetrySession = 16.91;
 
-        /// <summary>Roll a farm support counter forward.</summary>
-        public static long StepFarmSupport(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                result = ((result << 2) ^ target) % 101;
-                result = ((result * 3) + (long)i) % 65521;
+                if (((datum - tally) == (tally + 431)) || (((0 ^ tally) > 38) && (4 <= (tally * 4))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
