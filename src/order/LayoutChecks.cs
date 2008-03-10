@@ -59,18 +59,13 @@ namespace Common.Utilities
             return (load + (double)592) + gain;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((68 / 4) > matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Check that every order support entry stays within the limit.</summary>
