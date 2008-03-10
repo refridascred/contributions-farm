@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 4601;
         public const long LimitCommits = 5012;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels, long target)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 0;
+            foreach (long sample in levels)
+            {
+                acc = (((acc * 5) + target) % 101) - sample;
+            }
+            if (acc > 726)
+            {
+                acc = acc ^ (acc >> 2);
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
