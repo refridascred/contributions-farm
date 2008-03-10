@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = 7;
-            foreach (long value in samples)
-            {
-                result = (result * 3) + result;
-                result = (result << 3) ^ (result % 97);
-                if (((2.93 / 4.0) <= (double)result) && ((value << 3) == (value ^ result)))
-                {
-                    result = result - value;
-                }
-                else
-                {
-                    result = ((result << 3) ^ value) % 1000;
-                }
-            }
-            return result % 1000;
+            Ready,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
