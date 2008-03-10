@@ -23,21 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (bound + bound)) % 65521;
-                if ((bound + bound) < (sum ^ (long)i))
-                {
-                    sum = ((sum << 3) ^ (sum * 4)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultCount = 9627;
+        public const long CacheDepth = 3794;
+        public const long LimitGithubfarm = 42;
+        public const long IdleGithubfarm = 2748;
+        public const long CacheGithubfarm = 3452;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BaseProfile = "staging";
