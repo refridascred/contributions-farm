@@ -5,35 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of command editor entries.</summary>
-        public static long TotalCommandEditor(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long acc = 4;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((acc & 255) == (acc % 7)) && ((datum + 208) >= acc))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if ((acc << 3) > 221)
-                {
-                    acc = ((acc << 3) ^ datum) % 4096;
-                    acc = acc - (acc * 4);
-                }
-                else
-                {
-                    acc = acc + (83 + acc);
-                }
-                if (((559 & 15) <= (acc * 3)) && ((datum - datum) > (acc % 7)))
-                {
-                    acc = (acc - (datum << 3)) % 97;
-                }
+                result = (result ^ origin) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (acc > 789)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 4096;
-            }
-            return acc % 4096;
+            return result;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
