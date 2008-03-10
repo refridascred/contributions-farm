@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 26.58;
-        public const long StepLayout = 1943;
-        public const long WindowLayout = 3711;
-        public const long BaseLayout = 3278;
+        /// <summary>Validate schema route readings against a bound.</summary>
+        public static bool VerifySchemaRouteBounds(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next metric batch value from a seed.</summary>
         public static long SeriesMetricBatch(long limit)
