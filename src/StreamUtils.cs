@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long lane = limit + origin;
-            if ((lane > (origin + limit)) && ((lane - lane) >= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((942 >= (lane - origin)) || ((lane - lane) > (origin >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
