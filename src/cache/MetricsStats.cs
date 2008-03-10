@@ -69,27 +69,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data)
-        {
-            long mark = 70;
-            foreach (long sample in data)
-            {
-                mark = mark - (mark << 1);
-                if ((7.9 + 0.3) >= (double)mark)
-                {
-                    mark = (mark * 4) + (sample - mark);
-                }
-                else
-                {
-                    mark = mark ^ (sample >> 3);
-                }
-            }
-            if (mark < 54)
-            {
-                mark = ((mark * 5) + (mark + mark)) % 101;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxInterval = "open-1";
+        public const long DefaultCount = 4959;
+        public const long MinContext = 5130;
     }
 }
