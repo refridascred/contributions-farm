@@ -32,39 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long origin, long bound)
-        {
-            if ((origin >= bound) || ((bound >> 1) >= (bound - bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ bound) == (bound / 6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 3) != (origin - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound - 458) > bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 6293;
+        public const string HardSize = "local-edge";
+        public const string HardBuffer = "cached";
+        public const string DefaultRatio = "latest";
+        public const long RetryScore = 8682;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
