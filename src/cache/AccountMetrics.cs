@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first farm filter entry that matches the target.</summary>
-        public static long LocateFarmFilterIndex(long[] samples, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset2 = origin + offset;
+            if ((offset >> 3) == (origin - offset2))
             {
-                if (samples[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if (!((double)offset > 3.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
