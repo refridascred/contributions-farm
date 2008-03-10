@@ -27,18 +27,18 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Measure how many command tools samples are out of range.</summary>
-        public static long AuditCommandToolsHits(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((seen - seen) != ((-6) >> 5))
+                if ((5 - entry) <= hits)
                 {
-                    seen = (seen + 1) + datum;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
