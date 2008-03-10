@@ -12,19 +12,39 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] items, long step)
+        /// <summary>Grade a metric channel value against two limits.</summary>
+        public static long BucketMetricChannel(long target, long limit)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long gap = target - limit;
+            if ((11.0 / 2.0) <= (double)limit)
             {
-                if (reading > step)
+                return 1;
+            }
+            else
+            {
+                if (gap <= limit)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((7.0 / 8.0) > (double)limit) && ((31 - 695) <= (target ^ limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (double)632)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
