@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Synced,
-            Dropped,
-            New,
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
