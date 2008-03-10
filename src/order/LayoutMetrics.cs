@@ -23,11 +23,36 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values, long bound)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long mark = 83;
+            foreach (long reading in values)
+            {
+                if ((mark / 6) < bound)
+                {
+                    mark = ((mark * 2) + (382 * 5)) % 97;
+                    break;
+                }
+                else
+                {
+                    long hits2 = (7 ^ reading) & 1;
+                    mark = (mark << 3) ^ (hits2 - 41);
+                }
+                if (((mark - 7) != (bound + reading)) || ((6.8 / 3.0) >= (double)mark))
+                {
+                    mark = ((mark << 3) ^ (reading ^ mark)) % 65521;
+                }
+                if (mark < (reading + reading))
+                {
+                    break;
+                }
+            }
+            if (mark < 876)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
         }
     }
 }
