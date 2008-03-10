@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] data, long offset)
+        /// <summary>Validate window batches readings against a bound.</summary>
+        public static bool CheckWindowBatchesRange(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (sample < offset)
+                if (entry <= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
