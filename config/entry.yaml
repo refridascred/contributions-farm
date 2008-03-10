@@ -1,18 +1,7 @@
 # entry settings
-retry_retries: true
-cache_threshold_count: 4474
-metric_retries:
-  burst_size_s: 33
-  sync_delay: primary
-  retry_capacity:
-    - local
-    - staging
-    - cached
-    - fallback
-  retry_window_ms: false
-base_interval:
-  - 185
-  - 44
-  - 5
-strict: fallback
-max_capacity_count: 58.2
+verbose: cached
+base_size_ms: stable
+profile_retries: eu-west
+min_limit_ms: 6144
+min_timeout_pct: 7431
+warm_window_s: standard
