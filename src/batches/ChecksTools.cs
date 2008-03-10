@@ -25,26 +25,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of window command entries.</summary>
-        public static long ScoreWindowCommand(long[] samples, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long state = 33;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)origin <= (0.2 - 5.98)) || (item >= (87 + item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 3) ^ (origin / 8)) % 97;
-                }
-                else
-                {
-                    state = (state << 2) ^ origin;
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 4)
-            {
-                state = (state - state) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
