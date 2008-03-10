@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long DefaultSize = 2058;
         public const string LimitCache = "cached-edge";
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Queued,
-            Pending,
-            Synced,
-            Paused,
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
