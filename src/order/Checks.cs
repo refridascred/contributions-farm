@@ -19,33 +19,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long floor)
-        {
-            long bound = offset - floor;
-            if ((offset + floor) > offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset < (bound * 5)) && ((double)909 <= (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset < (5.6 + 3.9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepCount = 9374;
+        public const long CacheCount = 6932;
+        public const double IdleWidth = 67.51;
+        public const long HardWidth = 6560;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] readings, long floor)
