@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] values)
+        /// <summary>Count the account filter entries that pass the check.</summary>
+        public static long CountAccountFilterHits(long[] values)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long sample in values)
             {
-                if (((-525) * 3) <= (long)values.Length)
+                if ((sample << 2) != (sample + 3))
                 {
-                    tally = (tally + 2) + sample;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate payload record samples.</summary>
