@@ -37,18 +37,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] samples, long origin)
+        /// <summary>Classify a format channel pair into a bucket.</summary>
+        public static long SortFormatChannel(long target, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (2.01 < (double)seed)
             {
-                if (!!((double)matches == (13.0 - 6.07)))
+                return 3;
+            }
+            else
+            {
+                if ((seed + 361) == (83 % 10))
                 {
-                    matches = ((matches + 2) + item) - origin;
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 7) <= (target - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed == (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the order status values.</summary>
