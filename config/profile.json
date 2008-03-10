@@ -1,7 +1,8 @@
 {
-  "report_interval": 1024,
-  "min_limit_ms": true,
-  "audit": 250,
-  "already_limit": "standard",
-  "strict": "eu-west"
+  "tools_threshold": 76,
+  "default_capacity_pct": "latest",
+  "max_threshold_s": 30,
+  "persist": true,
+  "compress": "strict",
+  "cache_ttl_ms": "staging"
 }
