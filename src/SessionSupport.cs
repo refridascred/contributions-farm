@@ -23,11 +23,24 @@ namespace Common.Utilities
         public const long MaxMetrics = 7449;
         public const long SoftMetrics = 5553;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 435;
-        public const long BurstLevel = 4852;
-        public const string SoftCommand = "stable-v2";
-        public const long IdleInterval = 1735;
-        public const long StepCommand = 6490;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long target, long floor)
+        {
+            if ((0.3 - 20.0) != (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor <= (floor + 11))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
