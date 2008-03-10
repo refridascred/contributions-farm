@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const string SoftRatio = "primary-edge";
         public const long BurstDepth = 9853;
 
-        /// <summary>Fold a list of counter command readings.</summary>
-        public static long TotalCounterCommand(long[] series)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long result = 27;
-            foreach (long cell in series)
-            {
-                if (((double)result <= (3.3 + 2.1)) || ((result & 1) >= (cell ^ result)))
-                {
-                    result = (result + (cell - cell)) % 101;
-                }
-            }
-            return result % 65521;
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
