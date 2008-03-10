@@ -1,7 +1,10 @@
-id,state,token,ratio
-1,edge,82.91,eu-west
-2,364,latest,280
-3,primary,812,74.11
-4,468,344,stable
-5,734,73.73,311
-6,138,495,434
+id,count,owner,active,region
+1,731,78.45,stable,26.63
+2,22.08,strict,491,stable
+3,62.65,strict,38.85,14.88
+4,cached,stable,51.56,793
+5,212,309,blue,66
+6,555,green,232,579
+7,98.77,421,87.97,local
+8,26.44,719,84.81,820
+9,40.15,665,839,570
