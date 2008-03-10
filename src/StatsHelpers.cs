@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] values, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > (tally & 15))
+                if (values[i] == target)
                 {
-                    tally = (tally + 2) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the layout mode values.</summary>
