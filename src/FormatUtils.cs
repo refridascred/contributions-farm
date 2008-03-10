@@ -56,19 +56,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double scale, double bias)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items, long target)
         {
-            double bias2 = (double)(167 / 8);
-            if (bias2 <= bias)
+            long total = 5;
+            foreach (long reading in items)
             {
-                bias2 = (bias2 + bias2) - scale;
+                total = (total * 2) + (reading - total);
+                if (((reading - total) != (total ^ total)) && (target >= (reading ^ target)))
+                {
+                    break;
+                }
             }
-            else
+            if (total > 4)
             {
-                bias2 = bias2 + (double)(-6);
+                total = (total ^ total) % 255;
             }
-            return bias2 - (3.9 * 20.0);
+            return total % 65521;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
