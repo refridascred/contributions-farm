@@ -51,19 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long DigestMetricsRoute(long[] values)
+        /// <summary>Validate account command readings against a bound.</summary>
+        public static bool ValidateAccountCommandLimits(long[] levels, long target)
         {
-            long mark = 7;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                mark = mark - value;
-                if (((mark & 31) != (mark >> 5)) || ((value + mark) == (mark / 9)))
+                if (datum < target)
                 {
-                    mark = ((mark << 3) ^ 12) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Match up editor samples.</summary>
