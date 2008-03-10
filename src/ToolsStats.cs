@@ -40,19 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long acc = 899;
+            foreach (long datum in data)
             {
-                if (datum < seed)
+                if (((acc + 547) >= (datum << 2)) && ((acc << 1) < (acc >> 4)))
                 {
-                    stale = false;
-                    break;
+                    acc = (((acc << 3) ^ (long)data.Length) % 101) - origin;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
