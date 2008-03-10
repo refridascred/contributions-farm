@@ -39,18 +39,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long anchor = 7;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell < 3.9)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (36 ^ cell)) % 4096;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
