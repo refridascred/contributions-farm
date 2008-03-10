@@ -1,6 +1,8 @@
-id,score,active,state
-1,legacy,841,blue
-2,643,156,430
-3,local,797,876
-4,cached,eu-west,288
-5,970,122,86.67
+id,rank,level,label,ratio
+1,444,468,325,234
+2,63.3,9.87,93.4,86.67
+3,89.88,local,staging,77
+4,open,734,354,open
+5,84.72,716,25.32,485
+6,standard,8,920,270
+7,13,489,830,local
