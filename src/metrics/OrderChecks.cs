@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double offset)
         {
-            double scale = ratio;
-            if (scale >= 15.0)
-            {
-                scale = (scale - (scale * 2.0)) - offset;
-            }
-            else
-            {
-                scale = scale - (scale + scale);
-            }
-            return scale - 10.0;
+            double gain = offset;
+            return (gain + 4.2) + weight;
         }
 
         /// <summary>Hold a metric record.</summary>
