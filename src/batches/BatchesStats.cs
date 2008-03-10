@@ -37,13 +37,21 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const string DefaultCount = "staging-1";
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
