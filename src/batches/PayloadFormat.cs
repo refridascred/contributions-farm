@@ -20,19 +20,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long step)
         {
-            long sum = 4;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                sum = (((sum * 2) + sum) % 97) ^ value;
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (sum < 83)
-            {
-                sum = ((sum << 2) ^ (sum + 7)) % 255;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
