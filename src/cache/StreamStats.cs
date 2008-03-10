@@ -26,10 +26,18 @@ namespace Common.Utilities
         public const long CacheDepth = 4769;
         public const long CacheInterval = 3604;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitInterval = 7544;
-        public const long CacheCount = 4019;
-        public const long LimitBatch = 4031;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] values)
