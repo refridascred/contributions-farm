@@ -1,10 +1,10 @@
 # Command notes
 
-Run the metrics check before changing any account limits.
-Each command is validated before it reaches the batches queue.
+When a format fails, the command handler retries a few times before giving up.
+Keep window and entry names short and lowercase.
 
 ## Guidelines
 
-- Keep support values small
-- Document new contributi fields
-- Validate schema input early
+- Validate support input early
+- Prefer window defaults
+- Log every channel change
