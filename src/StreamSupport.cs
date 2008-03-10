@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const double BurstToken = 97.02;
         public const string BurstCount = "primary-v2";
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] series, long offset)
         {
-            Locked,
-            Ready,
-            Paused,
-            Closed,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
