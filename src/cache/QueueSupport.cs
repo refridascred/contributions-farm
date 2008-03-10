@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double scale, double floor)
         {
-            double weight2 = 1.76;
-            if (weight2 < (weight2 * 8.02))
+            double scale2 = scale;
+            if (scale2 >= (scale * 3.15))
             {
-                weight2 = weight2 + floor;
+                scale2 = scale2 + floor;
             }
-            else
-            {
-                weight2 = weight2 + (weight2 + weight);
-            }
-            return weight2 + weight2;
+            return scale2 + floor;
         }
 
         /// <summary>Describe the editor phase values.</summary>
