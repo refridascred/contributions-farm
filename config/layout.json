@@ -1,6 +1,8 @@
 {
-  "profile_window": "local",
-  "order_delay": true,
-  "retry_timeout": 45.05,
-  "filter_delay": ["green", "latest"]
+  "base_delay_pct": "green",
+  "flush_retries_s": "green",
+  "warm_ttl": 65.29,
+  "payload_interval": ["legacy", "staging", "stable"],
+  "verbose": [483, 335, 96, 403],
+  "poll_size_pct": [60, 458]
 }
