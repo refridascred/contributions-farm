@@ -20,38 +20,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long floor, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            if ((982 - floor) >= (floor * 2))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor > (bound % 3)) && (floor <= (bound - floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor + 287) >= floor) || (floor > (0 * 3)))
+                    if ((data[i] + data[j]) == 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((521 * 2) > (floor % 10))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a farm record.</summary>
