@@ -56,15 +56,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long anchor = 4;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                anchor = anchor ^ datum;
+                anchor = anchor + (datum % 8);
+                if (5.0 > (double)anchor)
+                {
+                    break;
+                }
             }
-            return sum;
+            return anchor;
         }
     }
 }
