@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const string SoftRatio = "primary-edge";
         public const long BurstDepth = 9853;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (6.0 - 17.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
