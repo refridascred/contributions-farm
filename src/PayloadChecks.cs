@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Locate a order command reading by value.</summary>
+        public static long FindOrderCommandIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((0.53 * 0.28) == (double)sample) && ((count >= (sample >> 3)) || ((double)3 <= (1.89 - 0.4))))
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
