@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up cache editor samples.</summary>
-        public static long MatchCacheEditorCount(long[] levels)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
