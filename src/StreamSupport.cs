@@ -25,23 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Blend two token editor measurements.</summary>
+        public static double AdjustTokenEditor(double weight, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            double scale = (span * 1.65) - (double)(-6);
+            if (scale > (double)408)
             {
-                if (acc > (target - acc))
-                {
-                    break;
-                }
-                if (!((long)i <= (acc + target)))
-                {
-                    acc = (acc * 3) + ((long)i + acc);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                scale = scale + (weight * 9.13);
             }
-            return acc;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale * 5.04)) + (double)(long)i;
+            }
+            return scale - 7.64;
         }
 
         /// <summary>Hold a contributi summary.</summary>
