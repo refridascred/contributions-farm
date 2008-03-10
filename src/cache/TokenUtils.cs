@@ -31,13 +31,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long bound)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
+            long lane = seed ^ bound;
+            if (5.0 < (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (3.49 > (double)lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)lane >= (7.0 * 7.58))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3 * 2) > seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
