@@ -36,12 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long floor)
+        /// <summary>Look up the position of a payload format sample.</summary>
+        public static long LocatePayloadFormatIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                if (samples[i] > origin)
                 {
                     return (long)i;
                 }
