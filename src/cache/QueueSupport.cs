@@ -16,13 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            Dropped,
-            Pending,
-            Locked,
-            New,
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
