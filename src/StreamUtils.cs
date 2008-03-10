@@ -27,22 +27,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the schema session entries that pass the check.</summary>
-        public static long TallySchemaSessionGaps(long[] samples, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((10.0 + 6.79) == (double)entry))
+                if (((long)i != ((long)i / 8)) && (261 < (long)i))
                 {
-                    hits = (hits + 1) - origin;
+                    result = ((result << 3) ^ ((long)i ^ result)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = ((result << 2) ^ (result % 10)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
