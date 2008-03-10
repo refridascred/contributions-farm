@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double bias2)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double gain = bias;
-            if (gain < (double)38)
-            {
-                gain = gain - (bias2 * 10.0);
-            }
-            return gain - gain;
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
