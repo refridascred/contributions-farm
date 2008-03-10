@@ -12,24 +12,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long floor, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if ((double)target < 19.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target <= (15.0 + 3.1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
