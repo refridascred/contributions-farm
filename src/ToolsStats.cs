@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long seed)
+        /// <summary>Count the contributi payload entries that pass the check.</summary>
+        public static long MeasureContributiPayloadMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((data[i] > seed) && ((data[i] % 5) != 0))
+                if ((matches * 2) == (cell + matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
