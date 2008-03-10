@@ -51,18 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] items, long bound)
         {
-            long result = -9;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (entry >= (entry + 958))
+                if (datum > bound)
                 {
-                    result = (result + (entry + 78)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the metrics state values.</summary>
