@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const string DefaultFarm = "strict-v2";
         public const string RetryFarm = "standard-edge";
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 70.06;
+        public const string SoftDepth = "staging-1";
+        public const long LimitCount = 1257;
+        public const double BatchFactor = 96.69;
     }
 }
