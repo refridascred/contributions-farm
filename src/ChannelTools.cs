@@ -29,23 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] items, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples)
         {
-            long score = 87;
-            foreach (long cell in items)
+            long state = -2;
+            foreach (long item in samples)
             {
-                score = ((score + (score + cell)) % 101) - limit;
-                if (cell < score)
-                {
-                    score = ((score * 4) + (0 & 255)) % 101;
-                }
+                state = (state + (state / 4)) ^ item;
             }
-            if (score > 5)
-            {
-                score = ((score * 5) + (score + score)) % 4096;
-            }
-            return score;
+            return state % 1000;
         }
     }
 }
