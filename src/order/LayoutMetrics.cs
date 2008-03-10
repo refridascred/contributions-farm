@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate tools graph readings against a bound.</summary>
-        public static bool GuardToolsGraphRange(long[] data, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (value > bound)
+                if ((13.0 + 6.46) < (double)(long)readings.Length)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - sample;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
