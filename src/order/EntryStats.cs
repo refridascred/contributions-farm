@@ -79,18 +79,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (!((76 - seen) < bound))
-                {
-                    seen = (seen + 2) - datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 64.75;
+        public const double BurstMetrics = 16.72;
+        public const double BatchInterval = 75.84;
+        public const long SoftLevel = 5415;
     }
 }
