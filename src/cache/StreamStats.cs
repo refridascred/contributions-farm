@@ -15,18 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long TotalGraphEntry(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long total = 965;
+            foreach (long entry in data)
             {
-                if ((item > (item >> 2)) && (item <= (item * 2)))
+                if (((long)data.Length + entry) >= (total + entry))
                 {
-                    matches = matches + 3;
+                    total = (total - entry) % 1000;
                 }
             }
-            return matches;
+            if (total < (-67))
+            {
+                total = (total * 4) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
