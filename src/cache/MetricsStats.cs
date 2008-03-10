@@ -28,19 +28,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items, long seed)
         {
-            long state = 41;
-            foreach (long value in series)
+            long carry = 9;
+            foreach (long item in items)
             {
-                state = state + (value - limit);
+                carry = (((carry << 2) ^ (carry << 2)) + item) + seed;
             }
-            if (state > 530)
-            {
-                state = state + (state - state);
-            }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
