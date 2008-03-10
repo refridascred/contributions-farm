@@ -1,12 +1,5 @@
 {
-  "stream_depth": [479, 119, 61],
-  "poll_interval_s": true,
-  "batches_capacity": "latest",
-  "schema_size": {
-    "session_delay": "strict",
-    "strict": 23.38,
-    "min_ratio_pct": ["green", "latest"],
-    "report_interval": 4229,
-    "compress": "cached"
-  }
+  "buffer_delay": 33.5,
+  "cache_delay": "primary",
+  "base_delay_ms": 5394
 }
