@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!(((-594) % 2) > hits))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate buffer counter readings against a bound.</summary>
