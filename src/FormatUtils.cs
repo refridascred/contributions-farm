@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double mean = bias;
-            return (mean + bias) + bias2;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
