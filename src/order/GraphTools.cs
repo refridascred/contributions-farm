@@ -40,18 +40,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = 7;
+            foreach (long item in series)
             {
-                if ((7.2 <= (double)item) || ((item % 64) <= (tally ^ item)))
+                result = ((result * 3) + (origin / 6)) % 65521;
+                if (item >= result)
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (result > 694)
+            {
+                result = (result << 2) ^ (origin / 5);
+            }
+            return result;
         }
 
         /// <summary>Describe the window status values.</summary>
