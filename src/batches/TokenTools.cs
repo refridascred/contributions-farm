@@ -19,26 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long anchor = 47;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < (anchor + anchor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor - 71)) % 65521;
-                }
-                if (((4 & 1) == (value / 6)) && ((value & 127) != ((long)samples.Length - anchor)))
-                {
-                    break;
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = ((anchor * 3) + anchor) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
