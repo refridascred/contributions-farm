@@ -29,15 +29,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double bias)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long origin)
         {
-            double scale = rate - (2.2 * 7.0);
-            if (scale <= (double)(-44))
+            if ((floor << 1) >= floor)
             {
-                scale = scale - bias;
+                return 3;
             }
-            return scale + rate;
+            else
+            {
+                if (((7.37 - 15.0) >= (double)origin) || ((floor % 16) < (88 + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (floor % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)94)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
