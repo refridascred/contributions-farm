@@ -20,17 +20,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long AuditAccountSchemaOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (data[i] < bound)
+                if ((item ^ 924) > (item % 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
