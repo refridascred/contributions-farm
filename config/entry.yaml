@@ -1,6 +1,17 @@
 # entry settings
-soft_timeout_count: 19.55
-retry_timeout_count: 799
-audit: standard
-dry_run: latest
-compress: 66.24
+editor_timeout: fallback
+retry_retries_pct:
+  flush_ttl_s:
+    command_timeout: latest
+    sync_delay_s: standard
+    sync_size_count: 44
+    base_retries: 100
+    stats_timeout: 81.61
+  burst_timeout_s: stable
+  min_interval_count: 500
+  min_window_count: eu-west
+  hard_size_s: 44.76
+filter_retries: 500
+context_ratio: latest
+batch_threshold: standard
+min_threshold_ms: 78.03
