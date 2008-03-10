@@ -34,19 +34,21 @@ namespace Common.Utilities
         public const long DefaultLevel = 4601;
         public const long LimitCommits = 5012;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels, long target)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long acc = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc * 5) + target) % 101) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > 726)
-            {
-                acc = acc ^ (acc >> 2);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
