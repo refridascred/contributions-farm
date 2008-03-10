@@ -12,11 +12,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            Ready,
+            Retry,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Combine command values into a single score.</summary>
