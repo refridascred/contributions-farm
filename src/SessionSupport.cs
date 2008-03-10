@@ -15,11 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two queue contributi measurements.</summary>
-        public static double AdjustQueueContributi(double gain, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] levels)
         {
-            double mean = gain;
-            return (mean + 5.1) + span;
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((5.4 - 1.8) >= (double)value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route options.</summary>
