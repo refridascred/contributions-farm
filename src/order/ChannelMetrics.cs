@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] levels, long seed)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long state = 15;
-            foreach (long reading in levels)
-            {
-                if ((15 + state) > reading)
-                {
-                    state = ((state - ((long)levels.Length - state)) % 4096) + seed;
-                }
-            }
-            if (state > (-2))
-            {
-                state = (state - state) % 1000;
-            }
-            return state % 65521;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
