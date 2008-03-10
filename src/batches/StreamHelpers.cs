@@ -26,18 +26,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((8.6 * 5.3) < (double)cell)
+                if (reading <= origin)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
