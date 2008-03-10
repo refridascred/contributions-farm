@@ -15,18 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((6.0 / 7.0) <= (double)tally)
+                if (((item * 5) == (hits << 1)) && ((5 + hits) < item))
                 {
-                    tally = (tally + 3) + sample;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
