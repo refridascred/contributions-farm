@@ -30,12 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            New,
-            Draft,
-            Stale,
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
