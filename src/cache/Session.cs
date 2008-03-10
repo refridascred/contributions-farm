@@ -39,21 +39,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < seed)
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
