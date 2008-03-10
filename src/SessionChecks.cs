@@ -15,17 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) == 0))
+                if ((reading + tally) <= (8 - 510))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
