@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleInterval = "legacy-1";
-        public const string StepDepth = "staging-edge";
-        public const long MaxCount = 4784;
-        public const long MinSize = 9611;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double floor)
+        {
+            double weight = (floor + ratio) * 8.3;
+            if (weight >= 4.2)
+            {
+                weight = weight - weight;
+            }
+            return weight - (3.29 + weight);
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] values, long floor)
