@@ -62,17 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph stats entry that matches the target.</summary>
-        public static long SeekGraphStatsIndex(long[] items, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
