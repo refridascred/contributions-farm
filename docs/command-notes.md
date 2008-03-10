@@ -1,10 +1,12 @@
 # Command notes
 
-Keep counter and batches names short and lowercase.
-Run the stream check before changing any farm limits.
+Keep already and order names short and lowercase.
+Use session settings to tune how often editor data is refreshed.
+The profile module keeps stream values in sync with the window cache.
 
 ## Guidelines
 
-- Document new cluster fields
-- Validate cache input early
-- Keep cluster values small
+- Validate graph input early
+- Log every farm change
+- Prefer buffer defaults
+- Review window limits each release
