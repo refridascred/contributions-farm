@@ -13,19 +13,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long slot = origin ^ offset;
+            if ((offset - slot) <= (356 - origin))
             {
-                if (value != bound)
+                return 0;
+            }
+            else
+            {
+                if (((6.5 - 20.0) != (double)offset) && ((offset - offset) > (origin + 772)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((slot % 97) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many githubfarm cache samples are out of range.</summary>
