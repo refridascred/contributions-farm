@@ -22,10 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 155;
-        public const string CacheToken = "strict-1";
-        public const long LimitTimeout = 2154;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TallyAccount(long[] readings, long bound)
