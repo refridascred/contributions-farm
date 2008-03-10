@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback latest local; do
-    log "checking ${item}"
+mode="${1:-stable}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-RECORD_LIMIT=370
-log "limit is ${RECORD_LIMIT}"
