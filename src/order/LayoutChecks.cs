@@ -59,21 +59,18 @@ namespace Common.Utilities
             return (load + (double)592) + gain;
         }
 
-        /// <summary>Compare every pair of tools order readings.</summary>
-        public static long CompareToolsOrderCount(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((68 / 4) > matches)
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every order support entry stays within the limit.</summary>
