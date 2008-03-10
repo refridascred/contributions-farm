@@ -29,32 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long limit)
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long CountFormatContextGaps(long[] data)
         {
-            long gap = floor + limit;
-            if ((limit >= (limit / 2)) && ((double)floor != (10.0 - 0.2)))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor * 4) < 16) && ((floor ^ limit) == (gap - 868)))
+                if ((20.0 / 9.0) >= (double)reading)
                 {
-                    return 0;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)limit <= (4.1 + 15.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
