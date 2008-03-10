@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate session editor samples.</summary>
-        public static long WeighSessionEditor(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long offset)
         {
-            long mark = 151;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                mark = (((mark << 2) ^ mark) % 4096) ^ reading;
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return flag;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
