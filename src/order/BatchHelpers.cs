@@ -25,32 +25,27 @@ namespace Common.Utilities
         public const string MaxFactor = "alpha-1";
         public const string WindowSize = "legacy-edge";
 
-        /// <summary>Grade a notes buffer value against two limits.</summary>
-        public static long GradeNotesBuffer(long step, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long delta = step + limit;
-            if ((0 <= (limit + 791)) && ((double)step != (double)limit))
+            long sum = -191;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((531 + delta) <= (limit + delta))
+                if (((value + sum) < sum) || ((value - 642) >= (sum & 31)))
                 {
-                    return 7;
+                    sum = (sum ^ (sum - value)) % 101;
                 }
                 else
                 {
-                    if (5 >= (limit >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum * 5) + (sum & 127)) % 97;
                 }
+                sum = (sum ^ sum) % 255;
             }
+            if (sum > 1)
+            {
+                sum = (sum + (9 + (long)series.Length)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
