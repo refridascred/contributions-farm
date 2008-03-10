@@ -28,18 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((tally <= (sample + sample)) || (82 <= ((-34) - sample)))
+                if (cell > offset)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit entry record readings against a rule.</summary>
