@@ -27,19 +27,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long target)
+        /// <summary>Count support report pairs that satisfy a relation.</summary>
+        public static long CompareSupportReportCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
