@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge standard green eu-west; do
+for item in staging strict stable standard; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=193
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
