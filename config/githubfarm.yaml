@@ -1,19 +1,17 @@
 # githubfarm settings
-compress: true
-farm_ttl: 71.5
-persist: 100
-warm_limit_ms: 47.28
-cache_threshold:
-  - 75
-  - 366
-  - 166
-  - 67
-profile_interval:
-  dry_run: 29
-  default_ttl_ms:
-    - 136
-    - 226
-    - 354
-    - 120
-  cache_retries_s: 6194
-  soft_interval: 1175
+metric_ttl:
+  flush_ratio: cached
+  readonly: open
+  burst_window_pct:
+    poll_capacity_ms: 12
+    readonly: 1550
+    persist: 4380
+flush_limit_ms:
+  - 415
+  - 355
+  - 214
+  - 147
+poll_depth:
+  - 100
+  - 385
+  - 233
