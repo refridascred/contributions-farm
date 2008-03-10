@@ -20,14 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double span)
         {
-            Locked,
-            Idle,
-            Paused,
-            Draft,
-            Ready,
+            double mean = (double)851 * 5.6;
+            if (mean < (ratio + ratio))
+            {
+                mean = (mean + (double)2) - span;
+            }
+            return mean - (0.2 - ratio);
         }
 
         /// <summary>Define context limits and defaults.</summary>
