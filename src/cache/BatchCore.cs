@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 22.41;
-        public const long SoftBatch = 4690;
-        public const double MinTimeout = 48.94;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long offset, long floor)
