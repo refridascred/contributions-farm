@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const long DefaultSize = 2058;
         public const string LimitCache = "cached-edge";
 
-        /// <summary>Blend two token editor measurements.</summary>
-        public static double AdjustTokenEditor(double weight, double span)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double scale = (span * 1.65) - (double)(-6);
-            if (scale > (double)408)
-            {
-                scale = scale + (weight * 9.13);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (scale * 5.04)) + (double)(long)i;
-            }
-            return scale - 7.64;
+            Queued,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a contributi summary.</summary>
