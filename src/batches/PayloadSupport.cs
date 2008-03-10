@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a buffer format value against two limits.</summary>
-        public static long RankBufferFormat(long floor, long target)
+        /// <summary>Measure how many commits schema samples are out of range.</summary>
+        public static long AuditCommitsSchemaMatches(long[] levels)
         {
-            long span = floor ^ target;
-            if ((double)target == (10.0 - 8.2))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span << 2) < (span + 728))
+                if ((((double)datum < 7.3) && ((matches << 1) <= (82 - matches))) && ((datum ^ datum) == (datum - matches)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor << 2) > (floor + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
