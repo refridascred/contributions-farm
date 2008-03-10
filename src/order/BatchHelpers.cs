@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] values)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally << 2) >= (cell >> 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Look up the position of a queue tools sample.</summary>
