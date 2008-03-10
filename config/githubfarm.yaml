@@ -1,17 +1,29 @@
 # githubfarm settings
-metric_ttl:
-  flush_ratio: cached
-  readonly: open
-  burst_window_pct:
-    poll_capacity_ms: 12
-    readonly: 1550
-    persist: 4380
-flush_limit_ms:
-  - 415
-  - 355
-  - 214
-  - 147
-poll_depth:
-  - 100
-  - 385
-  - 233
+burst_depth_s: true
+schema_delay:
+  entry_window: true
+  persist:
+    already_depth: open
+    base_timeout: 60
+    already_limit: 1024
+    batch_retries:
+      - 352
+      - 484
+      - 226
+      - 353
+  max_depth: false
+  enabled:
+    - 422
+    - 425
+  poll_size:
+    verbose:
+      - open
+      - standard
+      - eu-west
+      - latest
+    sync_capacity_s: 9936
+    cache_timeout_ms: 62.52
+    min_delay: false
+    account_timeout: 81.75
+    flush_threshold: 62.46
+route_threshold: 1024
