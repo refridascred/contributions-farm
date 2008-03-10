@@ -20,31 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long target, long target2)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long floor)
         {
-            if ((target2 - target2) >= target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target << 2) == (6 - target2)))
+                if (levels[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((6.8 / 4.0) == (double)target2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
