@@ -1,8 +1,7 @@
-id,level,state,ratio,region
-1,430,749,363,998
-2,87.09,35.34,local,97.12
-3,82.15,17,7.41,green
-4,79.97,247,1.67,47.1
-5,eu-west,cached,70.63,latest
-6,100,edge,local,green
-7,95.94,751,36.63,542
+id,score,weight,owner
+1,760,14.09,879
+2,cached,423,fallback
+3,199,eu-west,8.32
+4,22.55,blue,legacy
+5,64.55,74.42,156
+6,898,946,71.42
