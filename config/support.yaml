@@ -1,11 +1,5 @@
 # support settings
-cache_timeout_s: 1024
-checks_timeout: true
-persist: false
-verbose:
-  base_threshold_ms: 42.23
-  already_timeout: false
-  report_interval:
-    - edge
-    - strict
-strict: legacy
+retry_retries_ms: 4773
+max_retries: 8203
+verbose: true
+burst_limit: primary
