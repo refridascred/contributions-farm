@@ -1,7 +1,12 @@
 {
-  "sync_window_ms": [164, 135, 419],
-  "hard_size_count": ["latest", "green", "blue", "local"],
-  "default_retries_count": "strict",
-  "account_threshold": "open",
-  "max_interval_pct": ["local", "standard", "strict", "blue"]
+  "stream_depth": [479, 119, 61],
+  "poll_interval_s": true,
+  "batches_capacity": "latest",
+  "schema_size": {
+    "session_delay": "strict",
+    "strict": 23.38,
+    "min_ratio_pct": ["green", "latest"],
+    "report_interval": 4229,
+    "compress": "cached"
+  }
 }
