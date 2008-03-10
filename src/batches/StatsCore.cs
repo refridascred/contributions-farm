@@ -89,19 +89,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch contributi series from a seed.</summary>
-        public static long RollBatchContributi(long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step >> 3) > sum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum * 3) + ((long)i & 255);
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
     }
 }
