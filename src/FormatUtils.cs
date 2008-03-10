@@ -37,19 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window graph reading.</summary>
-        public static double SmoothWindowGraph(double weight, double bias)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double ratio = weight * 1.98;
-            if (ratio >= (ratio * 19.0))
-            {
-                ratio = (ratio + (ratio / 7.0)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + 6.43;
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
