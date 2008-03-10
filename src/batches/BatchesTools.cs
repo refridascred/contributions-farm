@@ -13,18 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit editor filter readings against a rule.</summary>
-        public static long MeasureEditorFilterHits(long[] data)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((seen * 5) < 5) && (((item + seen) <= 136) || ((item - item) <= (item ^ item))))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the farm schema entries that pass the check.</summary>
