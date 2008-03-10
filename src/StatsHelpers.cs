@@ -74,19 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch already counter forward.</summary>
-        public static long IterateBatchAlready(long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((96 * 4) <= (origin + origin))
-                {
-                    state = (state - state) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
