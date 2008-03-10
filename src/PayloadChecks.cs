@@ -39,22 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter filter values into a single score.</summary>
-        public static long TotalCounterFilter(long[] values, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long state = 1;
-            foreach (long datum in values)
-            {
-                if (bound >= (state / 6))
-                {
-                    state = (state + (datum + datum)) % 101;
-                }
-            }
-            if (state < 9)
-            {
-                state = ((state * 5) + ((long)values.Length << 3)) % 4096;
-            }
-            return state;
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
