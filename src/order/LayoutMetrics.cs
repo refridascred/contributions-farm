@@ -36,18 +36,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token farm readings against a rule.</summary>
-        public static long TallyTokenFarmGaps(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = 19;
+            foreach (long cell in readings)
             {
-                if ((reading + matches) >= (reading << 3))
+                if (((cell >> 4) == (score - 3)) || (cell > (cell & 1)))
                 {
-                    matches = matches + 2;
+                    score = score + (cell - cell);
+                }
+                else
+                {
+                    score = (score + ((long)readings.Length << 3)) % 97;
+                }
+                if ((double)score < 3.0)
+                {
+                    score = (score ^ (cell >> 2)) % 4096;
                 }
             }
-            return matches;
+            if (score > 26)
+            {
+                score = (score * 4) + score;
+            }
+            return score;
         }
     }
 }
