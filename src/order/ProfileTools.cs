@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardDepth = 23;
+        public const double BatchEntry = 29.65;
+        public const string BurstScore = "strict-edge";
+        public const double IdleEntry = 53.01;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long floor, long offset)
