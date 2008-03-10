@@ -35,21 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up session payload samples.</summary>
-        public static long CompareSessionPayloadCount(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= limit)
                 {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Locate a token reading by value.</summary>
