@@ -50,17 +50,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (bound < (origin / 2))
             {
-                if (samples[i] >= limit)
+                return 5;
+            }
+            else
+            {
+                if (!((bound + bound) >= 973))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - origin) == (origin >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
