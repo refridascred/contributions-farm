@@ -37,14 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Ready,
-            Done,
-            Closed,
-            New,
-            Paused,
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
