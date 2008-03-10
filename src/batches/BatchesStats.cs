@@ -44,17 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools already sample.</summary>
-        public static long LookupToolsAlreadyIndex(long[] values, long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the context state values.</summary>
