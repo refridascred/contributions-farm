@@ -15,21 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count support report pairs that satisfy a relation.</summary>
-        public static long CompareSupportReportCount(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((item > (item >> 2)) && (item <= (item * 2)))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
