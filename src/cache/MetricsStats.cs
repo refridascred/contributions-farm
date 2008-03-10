@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches / 2) <= (matches & 63))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
