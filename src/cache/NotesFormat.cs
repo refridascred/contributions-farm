@@ -60,18 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum ^ seed) <= seed)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "latest-v2";
+        public const double StepBatches = 32.64;
+        public const long RetryBatches = 7530;
     }
 }
