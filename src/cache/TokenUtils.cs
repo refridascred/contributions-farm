@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long CacheBudget = 8857;
         public const long RetryDepth = 6842;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long offset)
         {
-            double gain = (double)(2 / 2);
-            if (gain < (double)5)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                gain = ((gain + (double)(-70)) + rate) - span;
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + 2.9;
+            return stale;
         }
     }
 }
