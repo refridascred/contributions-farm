@@ -48,10 +48,18 @@ namespace Common.Utilities
             return gain + (double)943;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 1.19;
-        public const long MaxCount = 8071;
-        public const long BaseWindow = 9999;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long WeighBatch(long[] readings, long limit)
