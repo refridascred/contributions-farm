@@ -1,19 +1,7 @@
 {
-  "base_ratio_pct": 12,
-  "sync_timeout_ms": "strict",
-  "session_depth": 500,
-  "batch_threshold_ms": "open",
-  "default_retries_pct": {
-    "min_retries_pct": 38.53,
-    "account_ttl": 47.67,
-    "filter_size": "legacy",
-    "base_window": "strict",
-    "burst_window_ms": 68,
-    "farm_ratio": {
-      "idle_limit_count": "standard",
-      "soft_timeout": ["cached", "primary"],
-      "min_limit_count": [393, 317, 436]
-    }
-  },
-  "route_ttl": "stable"
+  "burst_depth": "strict",
+  "flush_capacity_count": [4, 12, 16],
+  "entry_ttl": 4.07,
+  "githubfarm_retries": 78.72,
+  "counter_size": "edge"
 }
