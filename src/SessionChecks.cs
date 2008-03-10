@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the layout counter entries that pass the check.</summary>
-        public static long TallyLayoutCounterGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of stream tools readings.</summary>
+        public static long OverlapStreamToolsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample == (double)matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - floor;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many stream layout samples are out of range.</summary>
