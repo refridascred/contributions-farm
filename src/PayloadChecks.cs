@@ -59,25 +59,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long origin)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long slot = target - origin;
-            if (!((10.0 + 4.0) >= (double)slot))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot / 8) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
