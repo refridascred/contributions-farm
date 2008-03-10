@@ -43,12 +43,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 185;
+            foreach (long value in items)
+            {
+                mix = (mix * 4) + value;
+                if (8.6 >= (double)mix)
+                {
+                    mix = mix + (value - value);
+                }
+            }
+            return mix;
         }
     }
 }
