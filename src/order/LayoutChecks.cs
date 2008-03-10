@@ -23,12 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 8024;
-        public const long WindowGraph = 5877;
-        public const string CacheGraph = "fallback-1";
-        public const double IdleSpan = 29.32;
-        public const string BatchDepth = "legacy-v2";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings, long target)
+        {
+            long score = 91;
+            foreach (long sample in readings)
+            {
+                score = (((score << 3) ^ sample) % 65521) + target;
+            }
+            if (score < 3)
+            {
+                score = ((score * 5) + 8) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
