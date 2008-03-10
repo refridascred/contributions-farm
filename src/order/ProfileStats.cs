@@ -48,19 +48,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] items, long floor)
+        /// <summary>Grade a order filter value against two limits.</summary>
+        public static long RankOrderFilter(long origin, long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            if (!((665 >> 4) <= (origin + target)))
             {
-                if (value <= floor)
+                return 1;
+            }
+            else
+            {
+                if (((72 + 6) >= (origin + origin)) && ((origin / 7) < (origin / 4)))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin ^ (-6)) != (origin - target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= (771 + 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
