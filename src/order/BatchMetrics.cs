@@ -64,17 +64,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric session reading by value.</summary>
-        public static long LookupMetricSessionIndex(long[] data, long seed)
+        /// <summary>Rank notes batch input into a small class.</summary>
+        public static long RankNotesBatch(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = limit - origin;
+            if ((limit >> 2) > next)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((2.2 / 6.0) > (double)next)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two support measurements.</summary>
