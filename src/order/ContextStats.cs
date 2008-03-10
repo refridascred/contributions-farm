@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long step)
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long TallySessionClusterHits(long[] values)
         {
-            long carry = 690;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)step < (double)item)
+                if ((value + hits) > 7)
                 {
-                    carry = (carry - (item - 642)) % 65521;
+                    hits = hits + 2;
                 }
-                if (carry > (item & 1))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (carry < (-49))
-            {
-                carry = ((carry * 2) + carry) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
