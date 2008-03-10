@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items, long bound)
+        /// <summary>Accumulate route command samples.</summary>
+        public static long TallyRouteCommand(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 823;
+            foreach (long item in series)
             {
-                if (((hits & 127) > (bound - value)) || !((hits + value) == (hits >> 3)))
-                {
-                    hits = hits + 1;
-                }
+                acc = ((acc ^ (acc >> 2)) % 97) - item;
             }
-            return hits;
+            if (acc > 6)
+            {
+                acc = (acc << 3) ^ (29 % 100);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
