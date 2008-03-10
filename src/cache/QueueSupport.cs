@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first stats batch entry that matches the target.</summary>
-        public static long SeekStatsBatchIndex(long[] levels, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + target) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of already queue readings.</summary>
