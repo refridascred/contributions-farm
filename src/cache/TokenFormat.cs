@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings, long step)
         {
-            if (((step + seed) < (232 * 5)) && (step <= seed))
+            long score = 80;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - seed) != (seed * 5))
+                if ((score <= step) || ((value + value) >= value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((14.0 + 3.82) > (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    score = (score - (score + value)) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a batches info.</summary>
