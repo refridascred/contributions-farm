@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 36;
+            foreach (long datum in levels)
             {
-                if (samples[i] >= bound)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    result = ((result * 5) + (datum + result)) ^ (long)i;
                 }
+                result = (result * 4) + datum;
+                result = (result ^ (result / 7)) % 97;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
