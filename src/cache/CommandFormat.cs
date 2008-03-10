@@ -51,18 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((((7.0 - 1.3) >= (double)sample) && ((double)sample < 3.9)) && (((double)seen >= (6.79 * 5.0)) && ((seen >> 3) > (seen + sample))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
