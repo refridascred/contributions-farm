@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] levels, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long anchor = -94;
+            foreach (long datum in values)
             {
-                if (datum >= offset)
+                anchor = ((anchor ^ anchor) % 1000) - limit;
+                if (((datum ^ datum) == (anchor & 255)) && ((double)anchor <= 6.2))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
