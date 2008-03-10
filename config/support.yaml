@@ -1,4 +1,9 @@
 # support settings
-min_limit_ms: legacy
-account_ratio: latest
-audit: latest
+soft_size: 60
+base_limit: legacy
+batches_delay: cached
+burst_timeout_count:
+  - strict
+  - staging
+soft_capacity: 78
+sync_ttl_count: open
