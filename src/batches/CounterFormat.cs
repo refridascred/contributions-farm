@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] data)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum * 4) < 502))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph entry entries.</summary>
