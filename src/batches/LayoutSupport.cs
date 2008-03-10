@@ -29,18 +29,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item >= (item + (-95)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches + 2;
+                    carry = (((carry << 3) ^ offset) % 101) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
