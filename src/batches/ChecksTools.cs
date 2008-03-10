@@ -14,21 +14,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up githubfarm stream samples.</summary>
-        public static long OverlapGithubfarmStreamCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 3;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix ^ origin) != (item - mix))
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 3) ^ (origin / 6)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ origin;
                 }
             }
-            return hits;
+            if (mix < 77)
+            {
+                mix = (mix << 2) ^ 922;
+            }
+            return mix;
         }
 
         /// <summary>Hold a tools stats.</summary>
