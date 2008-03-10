@@ -38,12 +38,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 8135;
-        public const double StepMetrics = 80.83;
-        public const long CacheMetrics = 6445;
-        public const string BurstMetrics = "open";
-        public const string RetryMetrics = "staging-v2";
+        /// <summary>Validate session context readings against a bound.</summary>
+        public static bool ValidateSessionContextRange(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine metrics route values into a single score.</summary>
         public static long DigestMetricsRoute(long[] values)
