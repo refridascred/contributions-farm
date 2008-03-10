@@ -1,5 +1,12 @@
 {
-  "enabled": false,
-  "dry_run": 1899,
-  "min_threshold": 9328
+  "layout_capacity": "local",
+  "record_depth": {
+    "batch_interval": 33,
+    "editor_delay": ["fallback", "latest", "latest"],
+    "max_interval_pct": "green"
+  },
+  "sync_delay_s": false,
+  "burst_limit": 84,
+  "base_depth": 250,
+  "stats_depth": 9748
 }
