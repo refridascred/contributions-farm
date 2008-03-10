@@ -20,14 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Done,
-            Idle,
-            New,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseCount = 13.69;
+        public const long DefaultInterval = 7997;
+        public const string SoftLevel = "staging-edge";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] readings, long offset)
