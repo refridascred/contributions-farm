@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const double BaseDepth = 21.08;
         public const long WindowScore = 154;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Synced,
-            Active,
             Dropped,
-            Paused,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
