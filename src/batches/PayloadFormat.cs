@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 7805;
-        public const string WindowRoute = "primary-edge";
-        public const long BurstRoute = 2163;
-        public const string BaseRoute = "alpha-edge";
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
