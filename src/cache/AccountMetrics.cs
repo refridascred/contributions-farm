@@ -64,11 +64,9 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinCount = 77.52;
-        public const double SoftRatio = 81.86;
-        public const string MaxScore = "stable-1";
-        public const string StepAlready = "open-edge";
-        public const long BurstScore = 1801;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 43.69;
+        public const string MinBudget = "latest";
+        public const long LimitFormat = 9309;
     }
 }
