@@ -20,19 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] items, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long anchor = 892;
-            foreach (long value in items)
-            {
-                anchor = (((anchor << 2) ^ 78) % 255) ^ value;
-            }
-            if (anchor > 87)
-            {
-                anchor = (anchor - (floor + anchor)) % 101;
-            }
-            return anchor % 1000;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a stream payload sample.</summary>
