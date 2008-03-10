@@ -20,18 +20,11 @@ namespace Common.Utilities
             return scale + (offset * 9.77);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] samples, long origin)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((13.0 * 8.9) >= (double)matches) || (matches <= ((-4) + (long)samples.Length)))
-                {
-                    matches = ((matches + 2) + value) + origin;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
