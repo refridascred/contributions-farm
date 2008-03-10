@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long LimitBudget = 8934;
         public const double StepReport = 70.15;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxFactor = 8961;
+        public const double LimitWidth = 23.11;
+        public const long IdleBuffer = 348;
+        public const long MaxScore = 2338;
+        public const double BatchCount = 98.75;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
