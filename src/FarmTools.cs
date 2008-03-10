@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] series, long limit)
+        /// <summary>Measure how many channel stats samples are out of range.</summary>
+        public static long MeasureChannelStatsMatches(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (matches > (matches * 2))
+                if ((value / 3) != (tally & 255))
                 {
-                    matches = ((matches + 1) ^ value) + limit;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the tools kind values.</summary>
