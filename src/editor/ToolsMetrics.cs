@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data)
+        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
+        public static bool VerifyChannelMetricsLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((cell - cell) > (561 ^ (-3)))
+                if (value != offset)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a contributi info.</summary>
