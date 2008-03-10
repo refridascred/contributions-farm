@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const long SoftStream = 9133;
         public const long DefaultInterval = 2876;
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long sum = 369;
+            foreach (long datum in levels)
+            {
+                if ((562 + target) < target)
+                {
+                    sum = ((sum * 3) + (370 << 1)) ^ datum;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
