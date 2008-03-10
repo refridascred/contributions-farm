@@ -57,19 +57,10 @@ namespace Common.Utilities
             return weight - (bias - bias);
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double weight, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (bias2 / 9.0))
-            {
-                bias2 = (bias2 - (bias / 2.0)) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (bias2 - bias);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchFactor = "strict-v2";
+        public const double BaseGithubfarm = 68.75;
+        public const double HardBudget = 95.99;
+        public const double MinFactor = 96.74;
     }
 }
