@@ -15,19 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + tally) <= (8 - 510))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 7925;
+        public const long BaseInterval = 9331;
+        public const long StepSupport = 7272;
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
         public static long BucketProfileBuffer(long target, long target2)
