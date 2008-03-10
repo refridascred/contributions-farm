@@ -16,13 +16,12 @@ namespace Common.Utilities
         public const long BaseSpan = 6669;
         public const double CacheContributi = 26.92;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Active,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 1096;
+        public const string BatchSpan = "local";
+        public const long SoftFactor = 7267;
+        public const long MinLevel = 556;
+        public const long CacheFactor = 875;
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] series)
