@@ -1,16 +1,24 @@
 # support settings
-buffer_retries: legacy
-batch_limit_count: 100
-idle_size:
-  enabled: 500
-  default_ratio_pct:
-    - 42
-    - 157
-    - 139
-  batch_window_count: 88.9
-  metric_ttl: 1024
-  batch_window: strict
-  hard_ttl_s: 6241
-burst_limit_s: 250
-default_delay: 21.31
-min_capacity: latest
+verbose: green
+batch_limit: 8
+report_retries:
+  min_interval_count:
+    - latest
+    - blue
+    - legacy
+  batch_threshold:
+    - eu-west
+    - cached
+    - fallback
+    - open
+  counter_size:
+    idle_threshold_ms: 7552
+    default_timeout_s: false
+    entry_retries: true
+    persist:
+      - open
+      - staging
+    metrics_capacity: 62.9
+  flush_interval: cached
+  default_ttl_s: 36
+farm_interval: strict
