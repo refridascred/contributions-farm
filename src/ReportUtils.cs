@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((state % 16) < 7)
+                if ((sum % 12) >= sum)
                 {
-                    state = (state - ((long)i % 2)) % 97;
+                    sum = (sum ^ (sum - 8)) % 65521;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                else
+                {
+                    sum = sum + limit;
+                    sum = (sum + limit) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
