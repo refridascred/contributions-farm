@@ -1,4 +1,9 @@
 # githubfarm settings
-verbose: open
-entry_ratio: 89.36
-support_window: 7
+enabled: false
+batch_threshold_s: legacy
+context_depth: 8605
+poll_interval_s: fallback
+strict: 48
+min_ttl_count:
+  - open
+  - staging
