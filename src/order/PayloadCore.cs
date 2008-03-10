@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next order metric value from a seed.</summary>
-        public static long StepOrderMetric(long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long origin2)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            long span = origin ^ origin2;
+            if ((span & 127) == (49 * 5))
             {
-                if ((long)i != (bound + score))
-                {
-                    continue;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score * 3) + (bound + score)) ^ (long)i2;
-                }
-                score = (score ^ ((long)i ^ (-82))) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((origin - span) == (origin * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((span >> 4) < origin) && ((7.29 - 9.0) <= (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin ^ span) > origin2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
