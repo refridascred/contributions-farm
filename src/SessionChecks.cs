@@ -33,37 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes session input into a small class.</summary>
-        public static long RankNotesSession(long bound, long bound2)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long seed, long bound)
         {
-            long offset = bound - bound2;
-            if (bound <= (offset << 2))
+            if ((5.0 - 8.3) > (double)bound)
             {
                 return 4;
             }
             else
             {
-                if (offset <= (820 / 6))
+                if (!(seed <= (bound / 4)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (!((offset << 1) < bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound / 6) >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
