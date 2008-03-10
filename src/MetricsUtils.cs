@@ -29,21 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 130;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor - entry) != (anchor * 4))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor * 2) + (entry % 97);
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
