@@ -19,20 +19,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every filter batches entry stays within the limit.</summary>
-        public static bool VerifyFilterBatchesLimits(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftBudget = 7174;
+        public const long IdleInterval = 2233;
+        public const long BatchChecks = 5307;
+        public const long MinWidth = 9443;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowTimeout = 8898;
