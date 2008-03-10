@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] values, long offset)
+        /// <summary>Count the layout counter entries that pass the check.</summary>
+        public static long TallyLayoutCounterGaps(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (entry <= offset)
+                if ((double)sample == (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
