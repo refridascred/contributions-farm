@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleBudget = "primary-v2";
-        public const long HardScore = 5820;
-        public const long WindowScore = 9777;
-        public const long DefaultFactor = 7392;
+        /// <summary>Adjust a farm layout reading.</summary>
+        public static double SmoothFarmLayout(double scale, double floor)
+        {
+            double drift = 8.21 / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (floor - scale)) + (double)(long)i;
+            }
+            return drift - 7.0;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
