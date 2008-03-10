@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long WindowScore = 9777;
         public const long DefaultFactor = 7392;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (((acc << 2) ^ ((long)i ^ offset)) % 101) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a entry commits sample.</summary>
