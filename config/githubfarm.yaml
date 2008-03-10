@@ -1,8 +1,23 @@
 # githubfarm settings
-base_ttl:
-  - fallback
-  - local
-base_ttl_ms: 58
-batches_ttl: 44.52
-flush_limit_s: 92
-sync_depth: strict
+verbose:
+  layout_ratio: green
+  idle_timeout_pct: true
+  warm_delay_count: 1024
+  verbose: standard
+format_delay: 88.74
+cache_window_pct:
+  - legacy
+  - open
+  - green
+retry_size:
+  default_limit_count: legacy
+  compress:
+    - stable
+    - stable
+    - fallback
+    - strict
+  audit: fallback
+  verbose: latest
+  dry_run: 6479
+  min_ratio: edge
+batch_interval_count: local
