@@ -68,11 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 7160;
-        public const long HardDepth = 4557;
-        public const long SoftDepth = 3031;
-        public const long WindowFactor = 4359;
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepFilter = 9599;
