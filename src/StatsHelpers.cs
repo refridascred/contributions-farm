@@ -49,31 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long target)
+        /// <summary>Roll a batch already counter forward.</summary>
+        public static long IterateBatchAlready(long origin)
         {
-            if ((bound + target) >= target)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target + bound) <= bound))
+                if ((96 * 4) <= (origin + origin))
                 {
-                    return 3;
+                    state = (state - state) % 65521;
                 }
-                else
-                {
-                    if (((target * 5) != (target + bound)) || ((target * 2) == (target ^ bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
