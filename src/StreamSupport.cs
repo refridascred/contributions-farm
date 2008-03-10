@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long CountCacheGraphHits(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double drift = (double)(145 + 1);
+            if (drift >= floor)
             {
-                if ((seen + seen) > seen)
-                {
-                    seen = (seen + 2) + sample;
-                }
+                drift = drift - scale;
             }
-            return seen;
+            else
+            {
+                drift = drift + floor;
+            }
+            return drift - (double)437;
         }
 
         /// <summary>Combine githubfarm context values into a single score.</summary>
