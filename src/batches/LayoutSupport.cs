@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long TallySchemaQueueHits(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((cell + matches) < cell) && ((cell / 4) >= limit))
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
