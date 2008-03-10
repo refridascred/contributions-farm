@@ -1,8 +1,6 @@
 {
-  "warm_capacity": ["blue", "standard"],
-  "githubfarm_threshold": true,
-  "soft_depth": false,
-  "retry_threshold_ms": "strict",
-  "default_retries_count": 5,
-  "poll_interval_ms": false
+  "filter_capacity": ["stable", "local", "fallback"],
+  "retry_capacity_ms": 18.41,
+  "buffer_window": 31,
+  "cache_capacity": 1024
 }
