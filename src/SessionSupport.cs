@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] levels, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Stale,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
