@@ -64,18 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema metric samples.</summary>
-        public static long TallySchemaMetric(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = 735;
-            foreach (long datum in data)
-            {
-                if (datum > (state << 3))
-                {
-                    state = (state + state) % 255;
-                }
-            }
-            return state % 4096;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
