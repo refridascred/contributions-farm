@@ -28,11 +28,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double ratio, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double rate = 2.42;
-            return ((rate - 4.4) + ratio) + span;
+            Idle,
+            Pending,
+            Locked,
+            Ready,
+            Dropped,
         }
     }
 }
