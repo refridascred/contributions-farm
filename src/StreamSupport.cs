@@ -14,10 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 4957;
-        public const double BurstToken = 97.02;
-        public const string BurstCount = "primary-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "open-edge";
+        public const long BaseAccount = 7691;
+        public const string HardAccount = "latest-v2";
+        public const double BurstAccount = 74.99;
+        public const double IdleWidth = 42.51;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandLimits(long[] series, long offset)
