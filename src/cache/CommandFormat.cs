@@ -42,11 +42,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
