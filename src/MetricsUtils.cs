@@ -57,12 +57,21 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            Locked,
-            Draft,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
