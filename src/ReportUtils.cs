@@ -11,10 +11,26 @@ namespace Common.Utilities
         public const long StepScore = 7398;
         public const string SoftLevel = "stable-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstDepth = 6103;
-        public const long IdleWidth = 6489;
-        public const double StepCluster = 44.91;
+        /// <summary>Grade a notes already value against two limits.</summary>
+        public static long ClassifyNotesAlready(long offset, long origin)
+        {
+            long bound = offset - origin;
+            if (3.07 >= (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (9.92 * 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long limit)
