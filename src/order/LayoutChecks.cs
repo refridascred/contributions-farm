@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long MeasureAccountSchemaOutliers(long[] items)
         {
-            long result = 529;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                result = (result + (sample ^ result)) % 97;
+                if ((cell & 7) == (tally & 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
