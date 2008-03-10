@@ -33,18 +33,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings, long seed)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - seen) >= (seen + seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
