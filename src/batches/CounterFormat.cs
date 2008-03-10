@@ -47,23 +47,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values)
         {
-            double weight2 = weight;
-            if (weight2 < (weight - weight))
+            long acc = 8;
+            foreach (long value in values)
             {
-                weight2 = (weight2 + weight2) - offset;
+                acc = (acc - (acc * 3)) % 65521;
+                if (((double)value != (double)acc) || ((double)value > 7.86))
+                {
+                    acc = (acc * 3) + (1 - acc);
+                }
             }
-            else
-            {
-                weight2 = weight2 + (8.7 * 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + (double)(-3)) + (double)(long)i;
-            }
-            return weight2 + 15.0;
+            return acc % 65521;
         }
     }
 }
