@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Check that every command already entry stays within the limit.</summary>
+        public static bool ValidateCommandAlreadyBounds(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value < bound)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
