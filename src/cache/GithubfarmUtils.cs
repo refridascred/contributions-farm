@@ -12,19 +12,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((7.0 - 9.17) == (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5446;
+        public const string SoftRatio = "primary-edge";
+        public const long BurstDepth = 9853;
 
         /// <summary>Fold a list of counter command readings.</summary>
         public static long TotalCounterCommand(long[] series)
