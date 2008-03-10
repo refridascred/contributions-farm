@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long limit)
         {
-            Pending,
-            Idle,
-            Failed,
-            Ready,
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark - (limit * 4)) % 97;
+                mark = (mark * 5) + limit;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
