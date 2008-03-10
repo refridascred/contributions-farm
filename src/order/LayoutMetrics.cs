@@ -54,13 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
