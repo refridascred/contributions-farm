@@ -53,17 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue tools sample.</summary>
-        public static long FindQueueToolsIndex(long[] values, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -30;
+            foreach (long reading in items)
             {
-                if (values[i] == origin)
+                if ((double)mix > (3.3 + 6.31))
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + (mix * 2)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (reading & 255)) % 101;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
