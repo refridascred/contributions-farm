@@ -40,18 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record commits readings.</summary>
-        public static long ScoreRecordCommits(long[] readings, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = 70;
-            foreach (long value in readings)
-            {
-                if ((double)floor <= (19.0 / 8.0))
-                {
-                    mark = (mark + (mark + mark)) - value;
-                }
-            }
-            return mark;
+            Dropped,
+            Synced,
+            Retry,
+            Done,
         }
     }
 }
