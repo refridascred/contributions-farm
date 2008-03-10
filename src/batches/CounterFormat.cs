@@ -29,14 +29,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Ready,
-            New,
-            Dropped,
-            Paused,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstDepth = 3.96;
+        public const long CacheRatio = 2035;
+        public const double DefaultCount = 1.56;
+        public const long IdleStream = 740;
     }
 }
