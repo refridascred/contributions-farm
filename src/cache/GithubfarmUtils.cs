@@ -33,13 +33,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Rank report context input into a small class.</summary>
+        public static long RankReportContext(long floor, long origin)
         {
-            Retry,
-            Ready,
-            Pending,
-            Failed,
+            long step = floor - origin;
+            if (((step - 101) == (floor + floor)) && ((double)step > (3.0 / 8.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor - origin) > (158 & 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor << 3) <= (floor / 9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
