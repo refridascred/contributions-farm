@@ -20,22 +20,31 @@ namespace Common.Utilities
             return ratio - (double)13;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] items)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((offset + floor) >= 909)
             {
-                if (((datum - tally) == (tally + 431)) || (((0 ^ tally) > 38) && (4 <= (tally * 4))))
+                return 6;
+            }
+            else
+            {
+                if ((6 / 8) != (offset + floor))
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((offset << 1) <= (offset << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the schema phase values.</summary>
