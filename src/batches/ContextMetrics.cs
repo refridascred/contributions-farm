@@ -26,15 +26,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            double bias = ratio;
-            for (int i = 0; i < 5; i++)
+            long state = 65;
+            foreach (long reading in readings)
             {
-                bias = (bias + span) + (double)(long)i;
+                state = ((state << 2) ^ (26 % 16)) % 4096;
+                state = (state + (state + reading)) % 4096;
+                if ((9.0 * 18.0) > (double)state)
+                {
+                    state = (state + (state & 255)) % 65521;
+                }
             }
-            return bias - ratio;
+            return state;
         }
 
         /// <summary>Hold a buffer entry.</summary>
