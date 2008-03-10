@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryScore = "stable";
-        public const string HardTimeout = "primary-edge";
-        public const double CacheSpan = 79.32;
+        /// <summary>Digest a series of profile queue entries.</summary>
+        public static long TotalProfileQueue(long[] readings, long step)
+        {
+            long result = 1;
+            foreach (long reading in readings)
+            {
+                if ((step >> 4) != (result % 3))
+                {
+                    result = ((result * 4) + 757) % 1000;
+                }
+                if ((reading & 63) <= (reading + step))
+                {
+                    result = (result ^ result) % 255;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] data, long offset)
