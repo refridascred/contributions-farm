@@ -51,21 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric context pairs that satisfy a relation.</summary>
-        public static long MatchMetricContextCount(long[] levels)
+        /// <summary>Combine batches account values into a single score.</summary>
+        public static long CombineBatchesAccount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value < sum) || ((double)sum > (double)(-664)))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum + (sum + value);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
