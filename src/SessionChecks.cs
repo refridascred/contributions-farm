@@ -32,13 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long origin, long bound)
         {
-            Draft,
-            Pending,
-            Locked,
-            Active,
+            if ((origin >= bound) || ((bound >> 1) >= (bound - bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin ^ bound) == (bound / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 3) != (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound - 458) > bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record record.</summary>
