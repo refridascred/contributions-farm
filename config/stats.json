@@ -1,10 +1,8 @@
 {
-  "dry_run": 15,
-  "command_ratio": {
-    "batch_size": true,
-    "strict": "standard",
-    "default_size_count": 42.85,
-    "soft_depth_count": "local"
-  },
-  "batch_limit": 68.44
+  "already_delay": "blue",
+  "retry_ratio_ms": 1024,
+  "base_limit_count": "stable",
+  "dry_run": "staging",
+  "max_capacity": 980,
+  "base_interval_s": "local"
 }
