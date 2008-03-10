@@ -1,17 +1,4 @@
 # githubfarm settings
-default_retries_count: edge
-min_depth_ms: true
-enabled:
-  poll_delay: fallback
-  burst_depth_ms: 2442
-  idle_ratio_ms:
-    cluster_ttl: 61.61
-    idle_retries: 75
-    dry_run: blue
-    retry_threshold_ms: 250
-  cache_capacity:
-    - 364
-    - 144
-    - 309
-    - 383
-  min_limit_ms: 60
+verbose: open
+entry_ratio: 89.36
+support_window: 7
