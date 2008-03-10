@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result ^ origin) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 849;
+        public const long HardBudget = 9398;
+        public const long BatchScore = 6438;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] items)
