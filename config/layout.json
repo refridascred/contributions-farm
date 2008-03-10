@@ -1,8 +1,6 @@
 {
-  "enabled": 84.12,
-  "batch_delay_s": "primary",
-  "compress": [275, 75, 471, 101],
-  "poll_interval_count": ["blue", "legacy"],
-  "min_retries_pct": "strict",
-  "format_capacity": "strict"
+  "max_window_s": false,
+  "poll_window_count": 61,
+  "default_size_ms": "edge",
+  "soft_depth_s": "edge"
 }
