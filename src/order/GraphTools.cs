@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate editor schema samples.</summary>
-        public static long TotalEditorSchema(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mark = 640;
-            foreach (long datum in series)
-            {
-                if (datum < (mark + mark))
-                {
-                    mark = (mark + datum) % 101;
-                }
-            }
-            if (mark < 528)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark % 1000;
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
