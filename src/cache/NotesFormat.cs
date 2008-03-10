@@ -40,38 +40,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long seed)
         {
-            if ((bound / 9) == (origin << 2))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.38 / 2.0) == (double)origin)
+                if ((datum ^ seed) <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 6) == (86 + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
