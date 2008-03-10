@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 4982;
+        public const long LimitWidth = 230;
+        public const long StepCount = 3116;
+        public const long DefaultFactor = 2616;
+        public const double RetryContext = 39.08;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportOutliers(long[] values)
