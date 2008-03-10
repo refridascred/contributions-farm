@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a channel notes reading.</summary>
-        public static double ProjectChannelNotes(double scale, double bias)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] samples, long target)
         {
-            double drift = bias;
-            if (drift >= 1.9)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                drift = drift + drift;
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (scale * 3.0);
-            }
-            return drift - (double)26;
+            return ready;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
