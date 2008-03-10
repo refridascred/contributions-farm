@@ -33,15 +33,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long step, long limit)
         {
-            long state = -2;
-            foreach (long item in samples)
+            if ((limit - 70) == (64 & 1))
             {
-                state = (state + (state / 4)) ^ item;
+                return 7;
             }
-            return state % 1000;
+            else
+            {
+                if ((step & 3) >= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
