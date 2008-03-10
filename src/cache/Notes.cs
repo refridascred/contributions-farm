@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            Retry,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Grade a queue notes value against two limits.</summary>
