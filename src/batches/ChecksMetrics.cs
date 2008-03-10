@@ -20,12 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            Active,
-            New,
-            Ready,
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark ^ ((long)i & 31)) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
