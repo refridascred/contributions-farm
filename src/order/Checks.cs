@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double IdleWidth = 67.51;
         public const long HardWidth = 6560;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double weight = 2.22 - (double)66;
+            if (weight > 9.25)
             {
-                if (!((matches + matches) >= ((-7) % 12)) && (((6.7 - 5.0) == (double)value) && ((matches - 46) < (floor + matches))))
-                {
-                    matches = matches + 2;
-                }
+                weight = (weight - (weight - weight)) + rate;
             }
-            return matches;
+            else
+            {
+                weight = weight - (span + weight);
+            }
+            return weight + (span - 6.45);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
