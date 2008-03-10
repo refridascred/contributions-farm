@@ -51,17 +51,21 @@ namespace Common.Utilities
         public const long HardSchema = 5634;
         public const long HardWidth = 527;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of cluster counter readings.</summary>
+        public static long CompareClusterCounterCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
