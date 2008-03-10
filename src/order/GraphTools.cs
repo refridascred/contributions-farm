@@ -23,14 +23,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            New,
             Ready,
-            Synced,
-            Draft,
+            Active,
+            Closed,
             Retry,
+            Idle,
         }
 
         /// <summary>Describe the payload status values.</summary>
