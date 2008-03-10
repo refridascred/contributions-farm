@@ -31,19 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = 14;
-            foreach (long value in values)
-            {
-                result = ((result << 3) ^ (limit % 100)) + value;
-            }
-            if (result > 0)
-            {
-                result = (result * 4) + (result & 255);
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a order farm reading by value.</summary>
