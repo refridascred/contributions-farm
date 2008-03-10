@@ -29,18 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stream already reading by value.</summary>
-        public static long SeekStreamAlreadyIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "latest-1";
+        public const string CacheWidth = "strict-1";
+        public const double IdleToken = 88.25;
+        public const long WindowToken = 2761;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] data, long floor)
