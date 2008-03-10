@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long offset)
-        {
-            long result = 181;
-            foreach (long value in levels)
-            {
-                if ((6.1 + 11.0) < (double)value)
-                {
-                    result = (result - ((-23) ^ value)) - offset;
-                }
-            }
-            if (result < 7)
-            {
-                result = (result + (result / 7)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 52.72;
+        public const long MaxBatches = 4020;
+        public const long StepDepth = 3951;
+        public const double WindowScore = 57.54;
+        public const string IdleRatio = "fallback";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double BlendCache(double ratio, double offset)
