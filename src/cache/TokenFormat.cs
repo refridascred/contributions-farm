@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 52.72;
-        public const long MaxBatches = 4020;
-        public const long StepDepth = 3951;
-        public const double WindowScore = 57.54;
-        public const string IdleRatio = "fallback";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples)
+        {
+            long anchor = 3;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor * 5) + anchor) + cell;
+            }
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double BlendCache(double ratio, double offset)
