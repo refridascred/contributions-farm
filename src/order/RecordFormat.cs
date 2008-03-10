@@ -42,11 +42,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 7356;
-        public const long DefaultRatio = 6810;
-        public const long StepFactor = 1352;
-        public const string DefaultChecks = "strict-1";
-        public const long SoftLevel = 8112;
+        public const double StepWidth = 21.25;
+        public const long WindowWidth = 2063;
+        public const string LimitLevel = "latest-1";
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelRange(long[] values, long seed)
