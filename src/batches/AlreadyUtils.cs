@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long state = 64;
-            foreach (long reading in values)
-            {
-                if ((state % 16) != (seed * 5))
-                {
-                    state = (state ^ reading) % 65521;
-                }
-                if (reading > (reading + reading))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
