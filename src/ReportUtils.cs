@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            New,
-            Draft,
-            Active,
-            Locked,
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
