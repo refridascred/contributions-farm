@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine window commits values into a single score.</summary>
-        public static long TotalWindowCommits(long[] readings, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series, long floor)
         {
-            long result = 2;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((floor >> 2) > (reading >> 2))
+                if ((1 > (floor * 4)) || ((tally << 3) < (floor << 3)))
                 {
-                    result = ((result << 3) ^ ((-70) % 5)) % 255;
-                }
-                else
-                {
-                    result = (result - (result << 2)) % 97;
-                }
-                if ((floor >> 3) >= (result & 7))
-                {
-                    break;
+                    tally = (tally + 1) + sample;
                 }
             }
-            if (result > 862)
-            {
-                result = (result << 3) ^ floor;
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate cluster batches samples.</summary>
