@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double scale, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] items, long bound)
         {
-            double rate = (double)8 + span;
-            if (rate <= scale)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                rate = rate - (double)110;
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate + scale;
+            return flag;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
