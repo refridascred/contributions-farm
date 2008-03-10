@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const string IdleDepth = "alpha-v2";
         public const long RetryDepth = 7196;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items, long origin)
         {
-            Failed,
-            Stale,
-            Active,
+            long mix = 6;
+            foreach (long cell in items)
+            {
+                if ((origin / 5) > mix)
+                {
+                    mix = mix - (cell + mix);
+                }
+                else
+                {
+                    mix = mix ^ (long)items.Length;
+                }
+            }
+            if (mix < 13)
+            {
+                mix = (mix << 2) ^ (origin - origin);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Project the next checks token value.</summary>
