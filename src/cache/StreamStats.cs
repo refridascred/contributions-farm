@@ -37,21 +37,15 @@ namespace Common.Utilities
         public const string CacheFilter = "primary";
         public const long DefaultRatio = 8426;
 
-        /// <summary>Compare every pair of cluster counter readings.</summary>
-        public static long CompareClusterCounterCount(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = rate + (double)7;
+            if (mean < (double)8)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (offset / 6.0);
             }
-            return matches;
+            return mean + (mean + offset);
         }
     }
 }
