@@ -20,12 +20,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryWidth = 3016;
-        public const long LimitSpan = 5075;
-        public const long SoftScore = 8737;
-        public const string BaseCount = "latest-edge";
-        public const string DefaultBatch = "standard-1";
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((8.6 * 5.3) < (double)cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsLimits(long[] data, long offset)
