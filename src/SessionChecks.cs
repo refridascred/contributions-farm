@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
