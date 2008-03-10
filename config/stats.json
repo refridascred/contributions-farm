@@ -1,5 +1,20 @@
 {
-  "cache_ratio": 11,
-  "retry_interval_count": 64,
-  "layout_window": 84
+  "counter_timeout": [325, 44, 181],
+  "cache_depth_s": [388, 75, 356, 343],
+  "dry_run": "legacy",
+  "flush_delay": {
+    "idle_ratio_ms": 250,
+    "warm_capacity_pct": 34.32,
+    "command_limit": [170, 235, 429],
+    "soft_limit_ms": 100
+  },
+  "hard_limit": {
+    "queue_size": [366, 85],
+    "counter_size": 250,
+    "max_ratio_count": "edge",
+    "enabled": 500,
+    "compress": "cached",
+    "idle_size_ms": 7283
+  },
+  "max_ratio_pct": true
 }
