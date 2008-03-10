@@ -15,18 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading << 3) <= 0))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            Synced,
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Classify a githubfarm contributi pair into a bucket.</summary>
