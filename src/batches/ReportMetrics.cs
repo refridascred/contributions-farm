@@ -23,21 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] levels, long seed)
         {
-            long state = 89;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                state = ((state << 3) ^ (state / 7)) - offset;
-                state = ((state * 5) + (sample * 3)) % 101;
-                state = (state + sample) % 255;
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 638)
-            {
-                state = (state - (state / 7)) % 97;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
