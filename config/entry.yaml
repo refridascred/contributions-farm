@@ -1,4 +1,27 @@
 # entry settings
-idle_threshold_s: 35
-max_ratio_s: green
-sync_limit_ms: 3231
+session_delay:
+  enabled:
+    - 147
+    - 191
+  dry_run: 1024
+  burst_interval_ms:
+    default_capacity_pct:
+      - green
+      - open
+    readonly: edge
+    cache_capacity_pct: strict
+    audit: 60
+    cache_window: 3561
+    metric_window: stable
+  commits_size: 16.82
+  base_ratio_pct:
+    - 349
+    - 78
+    - 331
+  readonly: 20.89
+context_threshold:
+  - legacy
+  - latest
+  - edge
+flush_ttl_count: true
+editor_limit: 52.87
