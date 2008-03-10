@@ -28,10 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinDepth = 65.79;
-        public const long HardReport = 2553;
-        public const long RetryReport = 9395;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Queued,
+            Locked,
+            Paused,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long target, long step)
