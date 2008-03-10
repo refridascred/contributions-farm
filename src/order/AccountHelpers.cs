@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Locked,
-            Synced,
-            Done,
-            Retry,
-            Paused,
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a metrics contributi value against two limits.</summary>
