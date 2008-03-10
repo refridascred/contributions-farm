@@ -50,12 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 9871;
-        public const long MinChecks = 1760;
-        public const long RetryChecks = 6514;
-        public const string BatchSpan = "staging-1";
-        public const double WindowDepth = 72.92;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > 727)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double rate, double span)
