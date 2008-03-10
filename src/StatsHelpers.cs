@@ -20,30 +20,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series, long seed)
         {
-            long mark = 0;
-            foreach (long reading in values)
+            long score = 287;
+            foreach (long item in series)
             {
-                if ((10.0 / 8.0) < (double)reading)
-                {
-                    mark = ((mark << 2) ^ (mark >> 2)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (reading - 227)) % 97;
-                }
-                if (((origin << 1) <= (mark + 358)) || ((mark >> 2) >= (origin - mark)))
-                {
-                    mark = (mark * 3) + (reading >> 2);
-                }
+                score = (((score * 5) + (item - item)) % 4096) - seed;
             }
-            if (mark > 8)
-            {
-                mark = mark + (origin + mark);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
