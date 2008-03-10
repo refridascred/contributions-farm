@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every route already entry stays within the limit.</summary>
-        public static bool ValidateRouteAlreadyRange(long[] samples, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
