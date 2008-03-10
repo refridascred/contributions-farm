@@ -49,18 +49,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((-547) < (sample & 63)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheInterval = "alpha-v2";
+        public const long BaseGraph = 4341;
+        public const long WindowGraph = 5717;
     }
 }
