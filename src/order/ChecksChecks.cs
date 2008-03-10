@@ -50,10 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 70.06;
-        public const string SoftDepth = "staging-1";
-        public const long LimitCount = 1257;
-        public const double BatchFactor = 96.69;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long step)
+        {
+            long step2 = target ^ step;
+            if (5 > (step2 >> 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (step2 - step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
