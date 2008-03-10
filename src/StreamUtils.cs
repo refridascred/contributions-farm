@@ -80,12 +80,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 9623;
-        public const double MinCache = 26.68;
-        public const long RetrySpan = 9392;
-        public const long BurstSize = 462;
-        public const long BatchCache = 2311;
+        /// <summary>Validate stream context readings against a bound.</summary>
+        public static bool ValidateStreamContextBounds(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
         public static long AuditStreamMetricOutliers(long[] readings)
