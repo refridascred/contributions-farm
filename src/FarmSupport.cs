@@ -31,18 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] items, long seed)
+        /// <summary>Measure how many profile payload samples are out of range.</summary>
+        public static long CountProfilePayloadHits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((((seed - entry) <= (2 + entry)) && ((double)(long)items.Length >= (12.0 + 20.0))) && ((8 >> 1) < (matches * 2)))
+                if (81 <= (sample << 2))
                 {
-                    matches = matches + 2;
+                    count = (count + 3) + limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the profile phase values.</summary>
