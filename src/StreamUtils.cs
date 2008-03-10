@@ -12,39 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] data, long offset)
         {
-            long cur = floor ^ floor2;
-            if ((floor2 + cur) <= (floor2 >> 3))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor + cur) < (cur * 3)) && ((21 + floor2) >= cur))
+                if (sample < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 1) == (cur + floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((cur >> 2) > floor2) && ((18.0 - 3.3) < (double)floor2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
