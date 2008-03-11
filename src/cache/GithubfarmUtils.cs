@@ -54,13 +54,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long step)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long offset = target + step;
+            if ((offset << 2) <= (offset + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 5) <= target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
