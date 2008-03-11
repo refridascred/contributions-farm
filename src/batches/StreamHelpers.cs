@@ -43,11 +43,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseBudget = 8196;
-        public const double BaseFactor = 15.36;
-        public const double LimitInterval = 19.81;
-        public const long IdleCommand = 7003;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long ScoreSchema(long[] values, long offset)
