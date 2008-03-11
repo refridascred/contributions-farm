@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 30;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix << 3) ^ (mix % 3);
+                if ((double)value == (1.6 * 3.1))
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 5) + 967) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix + value)) % 101;
                 }
             }
-            return hits;
+            if (mix > (-546))
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
