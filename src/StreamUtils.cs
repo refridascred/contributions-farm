@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] levels)
+        /// <summary>Rank metrics window input into a small class.</summary>
+        public static long RankMetricsWindow(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if (((offset << 1) > (offset / 3)) && ((double)7 <= (double)seed))
             {
-                if ((double)tally <= (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((offset - seed) == (offset * 4))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - offset) > (150 - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset % 64) <= (seed + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
