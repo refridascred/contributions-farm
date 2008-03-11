@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
             public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
