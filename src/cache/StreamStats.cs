@@ -35,19 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate contributi farm readings against a bound.</summary>
-        public static bool VerifyContributiFarmRange(long[] readings, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            double load = offset;
+            if (load <= 6.8)
             {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load - offset;
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (double)293) + (double)(long)i;
+            }
+            return load - bias;
         }
     }
 }
