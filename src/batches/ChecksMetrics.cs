@@ -85,10 +85,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 9599;
-        public const double WindowFilter = 18.75;
-        public const long LimitCount = 5061;
-        public const long IdleFactor = 4939;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Locked,
+            Dropped,
+            Pending,
+            Synced,
+        }
     }
 }
