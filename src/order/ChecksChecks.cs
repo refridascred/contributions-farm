@@ -50,21 +50,18 @@ namespace Common.Utilities
             return weight2 + (9.54 * 19.0);
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] items, long limit)
         {
-            long total = 658;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                total = (total - 52) % 97;
-                total = total - (bound >> 3);
-                total = total + (sample >> 5);
+                if (((4.0 < (double)474) || ((281 + matches) > (8 + matches))) && ((limit + datum) <= (datum << 2)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (total > (-24))
-            {
-                total = total ^ (6 * 5);
-            }
-            return total;
+            return matches;
         }
     }
 }
