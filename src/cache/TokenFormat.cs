@@ -35,11 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 5239;
-        public const long MinQueue = 520;
-        public const long LimitWidth = 6948;
-        public const long SoftBudget = 8393;
-        public const long BatchQueue = 6314;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
