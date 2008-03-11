@@ -59,16 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long score = 33;
+            foreach (long datum in data)
             {
-                result = ((result * 3) + (result ^ (long)i)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                score = (((score ^ (score * 2)) % 1000) + datum) + target;
+                score = (score ^ (score >> 5)) % 4096;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
