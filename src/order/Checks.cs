@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const string MinContext = "legacy";
         public const double RetryDepth = 88.78;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleWidth = "fallback-edge";
-        public const string BurstRatio = "staging";
-        public const double HardNotes = 71.74;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((55 - (long)readings.Length) < (tally % 2)) || (((double)tally > 9.6) || (reading > 8)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double bias, double bias2)
