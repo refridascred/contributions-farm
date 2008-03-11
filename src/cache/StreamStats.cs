@@ -50,19 +50,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long floor, long step)
         {
-            double rate = (double)(-296) - (bias + bias);
-            if (rate <= (double)72)
+            if ((double)floor == (0.7 * 6.5))
             {
-                rate = (rate - (double)410) + gain;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate - (rate * 6.48)) + (double)(long)i;
+                if ((step << 2) > (step ^ step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step * 4) == (floor / 2)) || ((26 - step) != ((-174) - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor == (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return rate - rate;
         }
     }
 }
