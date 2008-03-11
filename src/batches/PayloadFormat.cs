@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long floor, long floor2)
         {
-            double mean = (double)(-607) + (floor - 5.0);
-            if (mean >= (double)4)
+            if (floor > (floor2 ^ floor))
             {
-                mean = mean - (floor + scale);
+                return 2;
             }
-            return mean - mean;
+            else
+            {
+                if ((floor >= (floor ^ floor2)) && (floor2 <= (floor + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 < (double)floor2) || (floor >= floor2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
