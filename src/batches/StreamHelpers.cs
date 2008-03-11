@@ -35,22 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile channel readings against a rule.</summary>
-        public static long MeasureProfileChannelMatches(long[] series)
+        /// <summary>Audit profile filter readings against a rule.</summary>
+        public static long CountProfileFilterMatches(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)entry == (0.13 + 6.8))
+                if ((double)sample == (double)count)
                 {
-                    tally = tally + 2;
+                    count = (count + 3) + target;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a schema entry.</summary>
