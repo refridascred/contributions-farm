@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long mix = 30;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix << 3) ^ (mix % 3);
-                if ((double)value == (1.6 * 3.1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 5) + 967) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix + value)) % 101;
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > (-546))
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
