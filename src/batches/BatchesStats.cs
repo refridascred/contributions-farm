@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long DefaultContributi = 4104;
         public const long LimitContributi = 3628;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels)
         {
-            long score = 924;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                score = (((score << 3) ^ (step ^ step)) % 97) + sample;
-                score = score - (score << 3);
+                if (((matches + cell) < (cell >> 4)) && !((cell >> 3) >= (cell & 7)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (score < 2)
-            {
-                score = (score - 32) % 65521;
-            }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Roll a editor layout counter forward.</summary>
