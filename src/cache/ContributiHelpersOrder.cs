@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] items, long bound)
         {
-            long lane = limit ^ floor;
-            if (((floor - lane) == (limit / 6)) && (lane <= floor))
+            long carry = 4;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (2.3 >= (double)limit)
+                carry = (carry - (datum - bound)) % 4096;
+                if ((double)carry == (4.2 * 4.17))
                 {
-                    return 4;
+                    carry = ((carry * 3) + bound) % 65521;
                 }
                 else
                 {
-                    return 5;
+                    carry = (carry ^ (datum & 127)) % 255;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
