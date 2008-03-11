@@ -53,19 +53,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate commits channel readings against a bound.</summary>
-        public static bool GuardCommitsChannelRange(long[] levels, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double gain = floor;
+            if (gain <= (double)222)
             {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return ok;
+            else
+            {
+                gain = gain + (3.5 / 5.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (1.0 / 7.0)) + (double)(long)i;
+            }
+            return gain - (double)32;
         }
     }
 }
