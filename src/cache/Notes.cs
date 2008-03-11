@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSize = "cached-1";
-        public const double IdleLevel = 80.06;
-        public const string MaxCount = "staging-v2";
-        public const string SoftSession = "primary-1";
-        public const string MinSession = "open";
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
