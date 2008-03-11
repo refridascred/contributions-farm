@@ -1,14 +1,13 @@
 # Command notes
 
-The commits module keeps commits values in sync with the order cache.
-Each payload is validated before it reaches the githubfarm queue.
+Run the profile check before changing any githubfarm limits.
+Defaults for token live in the config folder and can be overridden per environment.
 
-Each stats is validated before it reaches the window queue.
-Keep counter and profile names short and lowercase.
-A context that stays idle for too long is moved to the schema list.
+The githubfarm module keeps cache values in sync with the token cache.
+A buffer that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Keep route values small
-- Validate tools input early
+- Prefer context defaults
+- Document new session fields
+- Review command limits each release
