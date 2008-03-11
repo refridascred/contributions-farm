@@ -73,12 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            New,
+            Ready,
+            Retry,
+            Queued,
+            Pending,
             Paused,
-            Stale,
         }
 
         /// <summary>Validate already farm readings against a bound.</summary>
