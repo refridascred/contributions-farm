@@ -25,13 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Retry,
-            Paused,
+            Synced,
+            Pending,
+            Locked,
             Dropped,
-            Failed,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
