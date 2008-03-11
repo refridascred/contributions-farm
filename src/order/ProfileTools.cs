@@ -28,13 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
