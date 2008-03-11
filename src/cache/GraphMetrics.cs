@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 7595;
-        public const long LimitInterval = 8825;
-        public const long WindowContributi = 9948;
-        public const long SoftWidth = 8751;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long bound)
+        {
+            if ((step - 338) <= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((250 + step) >= (54 - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportOutliers(long[] items, long bound)
