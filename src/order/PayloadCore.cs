@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = -91;
-            foreach (long sample in values)
-            {
-                if ((mark ^ sample) > (946 * 5))
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-            }
-            return mark % 97;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
