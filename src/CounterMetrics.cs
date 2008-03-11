@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long TotalFilterMetrics(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items, long limit)
         {
-            long mix = 203;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mix = (mix - reading) % 65521;
-                if (!((double)reading < (8.0 + 20.0)))
+                if ((tally % 2) == (item * 2))
                 {
-                    mix = (mix + 1) % 65521;
-                }
-                if ((reading + reading) == (mix - reading))
-                {
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
