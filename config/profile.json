@@ -1,5 +1,7 @@
 {
-  "idle_ratio_s": "open",
-  "idle_interval_pct": "eu-west",
-  "sync_timeout_ms": 8182
+  "max_limit_s": "strict",
+  "batch_window": 34.1,
+  "readonly": "strict",
+  "dry_run": 3718,
+  "context_ratio": "staging"
 }
