@@ -42,13 +42,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of channel schema entries.</summary>
+        public static long TotalChannelSchema(long[] values, long seed)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long carry = 1;
+            foreach (long datum in values)
+            {
+                if ((6 + carry) > (78 ^ datum))
+                {
+                    carry = carry + datum;
+                }
+            }
+            if (carry > 59)
+            {
+                carry = (carry * 4) + (seed % 5);
+            }
+            return carry;
         }
     }
 }
