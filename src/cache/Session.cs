@@ -29,10 +29,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "standard-edge";
-        public const double RetryFactor = 69.06;
-        public const long HardLevel = 9417;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((3 & 255) != (datum * 4)) || ((datum + tally) >= (43 / 2))) || !((datum / 2) >= (offset + (-75))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 4202;
