@@ -23,10 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardTimeout = 31.39;
-        public const long SoftSize = 819;
-        public const long CacheCounter = 2490;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "primary-edge";
+        public const string StepContext = "standard";
+        public const string BurstContext = "local-v2";
+        public const string MinContext = "legacy";
+        public const double RetryDepth = 88.78;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] data, long target)
