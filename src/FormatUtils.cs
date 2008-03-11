@@ -65,18 +65,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of window counter entries.</summary>
-        public static long CombineWindowCounter(long[] series)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long TallyFilterBatchOutliers(long[] values)
         {
-            long sum = 392;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (51 < sum)
+                if ((entry / 5) >= hits)
                 {
-                    sum = (sum + sample) % 97;
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
