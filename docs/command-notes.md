@@ -1,11 +1,12 @@
 # Command notes
 
-Use commits settings to tune how often support data is refreshed.
-The githubfarm report groups every cache by graph.
-Defaults for token live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps payload values in sync with the batch cache.
+Use command settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Document new command fields
-- Validate commits input early
-- Prefer schema defaults
+- Keep stream values small
+- Validate payload input early
+- Review layout limits each release
+- Document new route fields
