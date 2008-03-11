@@ -26,19 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
