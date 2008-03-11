@@ -22,13 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit githubfarm report readings against a rule.</summary>
+        public static long AuditGithubfarmReportHits(long[] levels)
         {
-            Idle,
-            Failed,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= 1.92)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
