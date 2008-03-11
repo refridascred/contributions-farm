@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((13.0 * 5.2) > (double)tally)
+                {
+                    tally = ((tally + 2) + entry) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
