@@ -33,10 +33,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 7940;
-        public const string IdleCache = "strict-v2";
-        public const long BaseCache = 1995;
-        public const string DefaultCache = "staging-1";
+        /// <summary>Rank queue entry input into a small class.</summary>
+        public static long GradeQueueEntry(long seed, long floor)
+        {
+            long lane = seed ^ floor;
+            if (6 < (lane - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane - 248) <= lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
