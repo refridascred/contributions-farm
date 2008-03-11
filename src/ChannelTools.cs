@@ -29,17 +29,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight < (double)465)
             {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (13.0 * 8.2)) - gain;
             }
-            return -1;
+            return weight - bias;
         }
     }
 }
