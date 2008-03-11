@@ -23,19 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum * 3) == (datum + 166)) && ((tally << 2) >= (500 + 891)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepSpan = "latest-v2";
+        public const long MaxCount = 4436;
+        public const double DefaultLevel = 61.72;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
