@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 6605;
+        public const long WindowCommits = 9094;
+        public const double CacheCount = 24.63;
+        public const long HardCommits = 9123;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesGaps(long[] levels)
