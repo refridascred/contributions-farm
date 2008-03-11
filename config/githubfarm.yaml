@@ -1,17 +1,12 @@
 # githubfarm settings
-checks_depth: standard
-verbose:
-  flush_threshold: 250
-  flush_limit: blue
-  route_interval: true
-  commits_timeout: 93
-poll_window_count: 62
-enabled:
-  default_size_s: cached
-  cache_ttl_s:
-    - legacy
-    - staging
-    - latest
-  cache_size_ms: 250
-  order_delay: primary
-  readonly: true
+compress:
+  - 480
+  - 460
+persist: false
+retry_retries_count:
+  batch_window_count: local
+  persist: 7083
+  warm_interval_s: false
+  enabled: local
+idle_retries_count: primary
+warm_window_s: 100
