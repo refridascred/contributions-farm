@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a editor queue sample.</summary>
-        public static long LookupEditorQueueIndex(long[] readings, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(-607) + (floor - 5.0);
+            if (mean >= (double)4)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean - (floor + scale);
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
