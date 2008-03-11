@@ -1,17 +1,15 @@
 # githubfarm settings
-burst_ttl_count: 1398
-idle_interval: standard
-default_ratio:
-  dry_run: 9787
-  flush_capacity: blue
-  editor_timeout: true
-  default_window: 93.97
-  enabled:
-    enabled: 8757
-    hard_limit: true
-    channel_delay: 72.13
-    burst_ttl_ms: 250
-    queue_threshold: 83.51
-base_ttl: local
-poll_capacity_s: local
-base_window_count: latest
+base_ttl_s:
+  dry_run: true
+  profile_size:
+    - cached
+    - stable
+    - primary
+    - staging
+  soft_retries_count: local
+  batch_retries:
+    - 478
+    - 58
+    - 306
+base_retries: false
+notes_threshold: 100
