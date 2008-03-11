@@ -38,18 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double drift = 0.4 / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (((value - 5) < value) && ((value / 4) <= tally))
-                {
-                    tally = tally + 2;
-                }
+                drift = (drift - bias2) - (double)(long)i;
             }
-            return tally;
+            return drift - bias;
         }
     }
 }
