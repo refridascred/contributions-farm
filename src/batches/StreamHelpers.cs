@@ -35,12 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            Pending,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value + value) >= (5 ^ (-7))) && ((9.0 / 4.0) != (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
