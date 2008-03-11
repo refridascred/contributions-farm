@@ -1,6 +1,12 @@
 # entry settings
-burst_threshold_ms: 30
-report_capacity: true
-contributi_capacity: 30
-enabled: 40.2
-retry_ttl_count: 87
+strict: 54.64
+audit: fallback
+base_delay_ms:
+  retry_timeout_pct: strict
+  hard_delay_ms: 82
+  batch_capacity_pct: 7861
+  cache_capacity_s: fallback
+  filter_size: true
+readonly: 57.46
+report_capacity: standard
+persist: true
