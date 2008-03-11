@@ -36,20 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache stream entry stays within the limit.</summary>
-        public static bool CheckCacheStreamBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5269;
+        public const string DefaultLevel = "standard-v2";
+        public const string BurstFactor = "latest-edge";
+        public const double CacheTimeout = 31.52;
+        public const long WindowWidth = 4241;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] items)
