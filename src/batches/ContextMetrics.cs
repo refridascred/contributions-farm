@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double mean = 4.8;
-            if (mean > floor)
-            {
-                mean = (mean - (mean * 8.0)) - scale;
-            }
-            return mean - floor;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a contributi options.</summary>
