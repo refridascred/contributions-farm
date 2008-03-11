@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mark + (long)i) >= 205) && (((long)i << 1) >= step))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark + (mark * 4);
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Validate schema route readings against a bound.</summary>
