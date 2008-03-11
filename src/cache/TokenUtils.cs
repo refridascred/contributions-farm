@@ -17,17 +17,39 @@ namespace Common.Utilities
         public const long MaxFormat = 6636;
         public const long SoftInterval = 5811;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] data, long limit)
+        /// <summary>Grade a payload route value against two limits.</summary>
+        public static long SortPayloadRoute(long offset, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset ^ target;
+            if ((4.2 / 7.0) == (double)bound)
             {
-                if (data[i] >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((761 << 2) > (target - (-78)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - offset) <= (bound % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((698 & 127) < (bound ^ bound)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
