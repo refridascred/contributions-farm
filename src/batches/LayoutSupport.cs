@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 6621;
-        public const double StepBudget = 13.23;
-        public const double WindowLayout = 52.29;
-        public const string BurstLayout = "alpha-1";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            Active,
+            Queued,
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
