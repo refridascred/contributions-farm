@@ -29,21 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph schema pairs that satisfy a relation.</summary>
-        public static long MatchGraphSchemaCount(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < (step ^ 31))
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
