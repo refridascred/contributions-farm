@@ -27,12 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Check that every cluster support entry stays within the limit.</summary>
+        public static bool VerifyClusterSupportLimits(long[] readings, long offset)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
