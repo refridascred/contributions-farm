@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] data, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a record stats.</summary>
