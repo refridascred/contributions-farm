@@ -26,19 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 64;
-            foreach (long entry in items)
-            {
-                total = ((((total * 5) + (total - 750)) % 101) + entry) + offset;
-            }
-            if (total < 5)
-            {
-                total = ((total * 3) + ((long)items.Length & 1)) % 255;
-            }
-            return total % 4096;
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
