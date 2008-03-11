@@ -36,19 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] readings, long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (value > target)
+                if ((carry + 88) > (long)i)
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ (carry / 2)) % 255;
                 }
+                carry = (carry - (carry >> 3)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Digest a series of command entries.</summary>
