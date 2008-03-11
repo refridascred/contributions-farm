@@ -40,11 +40,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 50.55;
-        public const long MinBatches = 2427;
-        public const double StepInterval = 82.64;
-        public const long SoftBatches = 8969;
-        public const string IdleRatio = "primary";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Retry,
+            Draft,
+            Closed,
+        }
     }
 }
