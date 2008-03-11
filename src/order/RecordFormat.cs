@@ -43,19 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] items, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (item != target)
+                if (datum >= floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
