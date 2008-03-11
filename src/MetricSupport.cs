@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long acc = -33;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc - value) >= value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ 3) % 1000;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
