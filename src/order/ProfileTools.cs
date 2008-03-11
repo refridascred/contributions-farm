@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string IdleBuffer = "stable-1";
         public const long MinBuffer = 3210;
 
-        /// <summary>Find the first buffer stream entry that matches the target.</summary>
-        public static long FindBufferStreamIndex(long[] samples, long target)
+        /// <summary>Measure how many support counter samples are out of range.</summary>
+        public static long TallySupportCounterMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (samples[i] == target)
+                if ((double)reading != (1.1 * 17.0))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit farm buffer readings against a rule.</summary>
