@@ -58,12 +58,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] data, long seed)
         {
-            Stale,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 2) < (seed % 16))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
