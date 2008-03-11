@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine route payload values into a single score.</summary>
-        public static long ScoreRoutePayload(long[] readings, long origin)
-        {
-            long result = 50;
-            foreach (long reading in readings)
-            {
-                result = ((result + (result - reading)) % 1000) - origin;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleScore = 7793;
+        public const string BaseReport = "cached";
+        public const string WindowBudget = "staging-edge";
+        public const string HardSpan = "strict";
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] samples)
