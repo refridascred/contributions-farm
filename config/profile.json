@@ -1,6 +1,15 @@
 {
-  "metrics_capacity": 500,
-  "support_retries": [221, 500, 286],
-  "warm_window_s": 5927,
-  "warm_threshold_pct": 25.88
+  "warm_size": ["latest", "stable", "primary", "stable"],
+  "compress": [417, 152, 279, 291],
+  "max_limit": 65,
+  "strict": 30,
+  "account_retries": {
+    "default_window_count": true,
+    "retry_depth_s": 5193,
+    "flush_ratio_s": false,
+    "sync_window_pct": 37,
+    "min_ttl_pct": 65.08,
+    "sync_ttl": "latest"
+  },
+  "filter_limit": 250
 }
