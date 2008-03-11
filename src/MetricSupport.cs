@@ -13,18 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Derive the next checks session value from a seed.</summary>
+        public static long DeriveChecksSession(long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item - 745) > item)
+                if (((-30) << 3) < score)
                 {
-                    seen = seen + 2;
+                    score = ((score * 3) + score) % 97;
+                    score = (score ^ (origin % 16)) % 255;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
