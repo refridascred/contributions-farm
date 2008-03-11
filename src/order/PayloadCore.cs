@@ -17,12 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            long mark = 4;
+            foreach (long sample in series)
+            {
+                if ((double)sample > 6.0)
+                {
+                    mark = mark + (sample ^ mark);
+                }
+                mark = ((mark * 2) + (sample - mark)) % 255;
+            }
+            if (mark > 23)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
