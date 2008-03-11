@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardSize = 79.51;
+        public const double IdleEditor = 22.96;
+        public const double MinEditor = 6.53;
+        public const string WindowEditor = "latest";
+        public const long LimitEditor = 293;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
