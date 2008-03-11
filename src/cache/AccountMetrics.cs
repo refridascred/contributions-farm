@@ -62,21 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up stats profile samples.</summary>
-        public static long PairStatsProfileCount(long[] values)
+        /// <summary>Validate record metrics readings against a bound.</summary>
+        public static bool VerifyRecordMetricsLimits(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != target)
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
