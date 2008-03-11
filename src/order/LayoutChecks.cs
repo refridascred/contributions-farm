@@ -32,24 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((anchor >= (limit << 3)) || (((long)i + (long)i) > anchor))
-                {
-                    anchor = ((anchor << 2) ^ limit) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (limit % 24)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 3065;
+        public const long StepProfile = 7906;
+        public const long IdleProfile = 1055;
+        public const string BurstScore = "latest-edge";
+        public const string DefaultProfile = "latest";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinAccount = 1357;
