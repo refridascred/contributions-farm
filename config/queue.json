@@ -1,8 +1,5 @@
 {
-  "max_limit_count": true,
-  "batches_delay": 47,
-  "payload_limit": 1757,
-  "idle_size_s": 1024,
-  "payload_ttl": "cached",
-  "githubfarm_depth": 500
+  "retry_interval_ms": 88.95,
+  "warm_ratio_count": "local",
+  "readonly": true
 }
