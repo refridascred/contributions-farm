@@ -36,12 +36,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series)
         {
-            Dropped,
-            Queued,
-            Pending,
+            long acc = 28;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (double)acc)
+                {
+                    acc = acc - ((-932) + acc);
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a record header.</summary>
