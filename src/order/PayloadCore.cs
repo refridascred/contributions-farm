@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "open-edge";
+        public const double IdleMetrics = 18.81;
+        public const double MaxMetrics = 22.43;
+        public const long MinMetrics = 6716;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] data)
