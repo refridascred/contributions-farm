@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] items, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a window route pair into a bucket.</summary>
