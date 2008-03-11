@@ -37,11 +37,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3867;
-        public const double LimitGithubfarm = 79.0;
-        public const double BurstGithubfarm = 94.2;
-        public const double BatchSize = 26.14;
-        public const long BatchGithubfarm = 7023;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Stale,
+            Synced,
+            Dropped,
+            Failed,
+        }
     }
 }
