@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long DefaultCount = 2701;
         public const long BaseNotes = 2530;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
