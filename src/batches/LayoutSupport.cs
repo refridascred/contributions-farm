@@ -48,14 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Pending,
-            New,
-            Stale,
-            Paused,
-            Active,
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
