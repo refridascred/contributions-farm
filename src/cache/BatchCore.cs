@@ -14,31 +14,30 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            if ((offset + floor) >= 909)
+            long anchor = 6;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6 / 8) != (offset + floor))
+                if ((536 / 6) != ((long)series.Length ^ 2))
                 {
-                    return 5;
+                    anchor = anchor ^ (anchor % 64);
                 }
-                else
+                if (((entry & 15) < (entry + entry)) && ((entry ^ anchor) >= (entry - 6)))
                 {
-                    if ((offset << 1) <= (offset << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = anchor - (anchor / 3);
+                }
+                if (entry > (1 ^ 41))
+                {
+                    break;
                 }
             }
+            if (anchor < 90)
+            {
+                anchor = anchor + (anchor >> 2);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
