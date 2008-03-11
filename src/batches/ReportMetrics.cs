@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data, long origin)
         {
-            Stale,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((origin + matches) == (sample + matches)) && (((74 >> 4) <= (matches / 6)) && ((matches / 2) <= (sample / 4))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
