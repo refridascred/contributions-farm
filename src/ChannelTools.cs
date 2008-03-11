@@ -19,11 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
