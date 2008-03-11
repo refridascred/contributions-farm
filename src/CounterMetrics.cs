@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            Failed,
-            New,
-            Retry,
-            Paused,
+            long result = 25;
+            foreach (long reading in levels)
+            {
+                if (!((result % 97) >= reading))
+                {
+                    result = (result * 4) + (result / 3);
+                }
+                else
+                {
+                    result = (result << 2) ^ 88;
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
