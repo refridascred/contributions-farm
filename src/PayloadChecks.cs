@@ -21,12 +21,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            Idle,
-            Stale,
-            Locked,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((4.9 / 7.0) <= 9.8))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools record entry stays within the limit.</summary>
