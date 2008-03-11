@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double ratio = (weight * 6.99) - weight;
+            if (ratio >= offset)
             {
-                if ((value + (long)samples.Length) == (944 + seen))
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio - ratio;
             }
-            return seen;
+            return ratio + (weight - ratio);
         }
     }
 }
