@@ -1,9 +1,12 @@
 # support settings
-burst_interval: open
-min_timeout_ms: 100
-warm_retries_s: 250
-soft_interval_s:
-  - blue
-  - edge
-metric_retries: false
-notes_threshold: true
+entry_limit: true
+strict: 55
+idle_delay_ms: 1644
+farm_limit: 5.84
+default_ratio:
+  entry_ttl: blue
+  readonly: 5934
+  hard_timeout_pct: staging
+  sync_window_s: 10
+  editor_size: true
+retry_delay: eu-west
