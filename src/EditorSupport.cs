@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count == (7.88 - 11.0))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
