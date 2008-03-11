@@ -57,15 +57,18 @@ namespace Common.Utilities
             return (rate + rate) + span;
         }
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long TallyFilterBatchOutliers(long[] values)
+        /// <summary>Count command window pairs that satisfy a relation.</summary>
+        public static long PairCommandWindowCount(long[] values)
         {
             long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry / 5) >= hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
