@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            Active,
-            Idle,
-            Ready,
-            Failed,
-            New,
+            long total = 37;
+            foreach (long value in readings)
+            {
+                if (((-5) + value) >= value)
+                {
+                    total = (total ^ (value ^ total)) % 97;
+                }
+                if ((value / 4) < value)
+                {
+                    total = (total * 2) + (total & 15);
+                }
+            }
+            if (total > 42)
+            {
+                total = (total + (total << 2)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
