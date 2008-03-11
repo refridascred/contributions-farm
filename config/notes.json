@@ -1,7 +1,6 @@
 {
-  "compress": 7610,
-  "base_capacity_ms": "blue",
-  "retry_depth_s": "edge",
-  "idle_depth_pct": "fallback",
-  "idle_depth_count": "eu-west"
+  "enabled": "local",
+  "payload_ratio": 5683,
+  "soft_timeout_s": 1024,
+  "max_interval_count": true
 }
