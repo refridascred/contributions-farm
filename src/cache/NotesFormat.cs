@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((46 >> 5) > (sample / 6)))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 7874;
+        public const double BaseScore = 67.36;
+        public const string HardMetric = "legacy-v2";
+        public const long MinMetric = 6841;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string CacheFactor = "legacy-edge";
