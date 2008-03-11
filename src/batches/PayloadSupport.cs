@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long bound)
         {
-            long mark = 787;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (sample < mark)
+                if (entry != bound)
                 {
-                    mark = (mark ^ (mark + mark)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
