@@ -53,14 +53,15 @@ namespace Common.Utilities
         public const long BurstOrder = 9503;
         public const long MaxBudget = 5193;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long seed)
         {
-            Closed,
-            Failed,
-            Stale,
-            Locked,
-            Dropped,
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
