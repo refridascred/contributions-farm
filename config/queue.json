@@ -1,6 +1,13 @@
 {
-  "strict": 9187,
-  "payload_limit": "edge",
-  "min_capacity": "standard",
-  "min_window": 58.37
+  "counter_interval": {
+    "verbose": 1024,
+    "profile_interval": 94.01,
+    "window_ttl": "strict",
+    "command_capacity": ["legacy", "legacy"]
+  },
+  "audit": "open",
+  "poll_ttl": 30,
+  "enabled": "open",
+  "flush_retries": [302, 337, 271, 160],
+  "report_timeout": "standard"
 }
