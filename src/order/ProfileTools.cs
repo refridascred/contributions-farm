@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseCount = 71.8;
-        public const string IdleBuffer = "stable-1";
-        public const long MinBuffer = 3210;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long limit)
+        {
+            long prev = floor ^ limit;
+            if ((floor + prev) > (floor % 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.16 - 18.0) != (double)prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
         public static long TallySupportCounterMatches(long[] data)
