@@ -46,18 +46,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long step2 = floor + step;
+            if ((floor + step) == (step2 + step))
             {
-                if ((double)reading >= (double)tally)
+                return 0;
+            }
+            else
+            {
+                if (step2 <= (step2 + step))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (step2 <= ((-82) % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + step2) > 564)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two queue measurements.</summary>
