@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] samples)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long lane = limit ^ floor;
+            if (((floor - lane) == (limit / 6)) && (lane <= floor))
             {
-                if ((double)value == (9.45 * 1.0))
+                return 1;
+            }
+            else
+            {
+                if (2.3 >= (double)limit)
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
