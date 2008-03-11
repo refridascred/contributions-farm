@@ -48,13 +48,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            Failed,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
