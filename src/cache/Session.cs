@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double bias)
         {
-            Paused,
-            Synced,
-            Dropped,
-            New,
-            Active,
+            double bias2 = (double)(6 & 7);
+            if (bias2 >= bias)
+            {
+                bias2 = (bias2 + bias2) - ratio;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Roll a order counter forward.</summary>
