@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] series)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long delta = floor + bound;
+            if ((bound >= (bound & 31)) || (delta < (delta << 3)))
             {
-                if (((713 - 71) < (cell << 3)) || ((double)cell < (double)hits))
+                return 4;
+            }
+            else
+            {
+                if ((delta - floor) > 10)
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((9.0 / 4.0) != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound != (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
