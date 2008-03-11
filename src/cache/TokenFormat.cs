@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((double)tally < (2.0 * 5.2))
+                if (sample <= target)
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
