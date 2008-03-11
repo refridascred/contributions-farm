@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5895;
-        public const long BurstCount = 8760;
-        public const long BaseGraph = 8804;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Locked,
+            Queued,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueHits(long[] samples)
