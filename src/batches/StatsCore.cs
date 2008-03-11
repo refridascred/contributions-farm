@@ -48,19 +48,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] readings, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Rank metrics tools input into a small class.</summary>
