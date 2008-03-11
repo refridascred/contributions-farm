@@ -26,19 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] series, long offset)
+        /// <summary>Grade a payload cluster value against two limits.</summary>
+        public static long ClassifyPayloadCluster(long floor, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            if ((double)limit == (11.0 + 2.87))
             {
-                if (value <= offset)
+                return 6;
+            }
+            else
+            {
+                if (((floor % 2) < limit) && (7 <= (limit + limit)))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor + floor) <= (360 ^ 91)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
