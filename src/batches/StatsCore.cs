@@ -39,12 +39,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
