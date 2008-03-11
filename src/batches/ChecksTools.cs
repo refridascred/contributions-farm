@@ -27,40 +27,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a metric channel value against two limits.</summary>
-        public static long BucketMetricChannel(long target, long limit)
-        {
-            long gap = target - limit;
-            if ((11.0 / 2.0) <= (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (gap <= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((7.0 / 8.0) > (double)limit) && ((31 - 695) <= (target ^ limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (double)632)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 8593;
+        public const string DefaultCluster = "legacy-v2";
+        public const long SoftCluster = 5661;
+        public const double WindowFactor = 30.03;
+        public const long LimitCluster = 750;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
