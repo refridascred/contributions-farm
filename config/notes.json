@@ -1,8 +1,5 @@
 {
-  "sync_capacity": 82.04,
-  "strict": "cached",
-  "sync_ttl_count": "staging",
-  "max_depth_count": true,
-  "buffer_depth": ["edge", "edge", "standard", "latest"],
-  "readonly": 1541
+  "buffer_ttl": "staging",
+  "filter_depth": [325, 9],
+  "profile_size": true
 }
