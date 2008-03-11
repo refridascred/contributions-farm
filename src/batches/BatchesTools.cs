@@ -28,18 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((item << 3) == (0 / 7))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
