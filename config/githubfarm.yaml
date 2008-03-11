@@ -1,17 +1,7 @@
 # githubfarm settings
-batches_ratio: legacy
-compress:
-  cache_threshold_count:
-    record_size:
-      - 9
-      - 10
-    cache_capacity_s: 66
-    strict: 14.52
-    format_timeout: 3920
-  cache_timeout_pct: 30.43
-  flush_capacity_ms: false
-  burst_window_count:
-    - staging
-    - standard
-    - local
-default_delay: 250
+idle_capacity: 93.06
+counter_depth: primary
+min_threshold:
+  - 87
+  - 97
+  - 432
