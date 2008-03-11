@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] series, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 105;
+            foreach (long item in items)
             {
-                if ((matches / 6) <= seed)
+                if ((anchor + anchor) >= (item + anchor))
                 {
-                    matches = (matches + 1) ^ datum;
+                    anchor = anchor + ((long)items.Length >> 5);
                 }
             }
-            return matches;
+            if (anchor > 0)
+            {
+                anchor = (anchor * 2) + (anchor ^ anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
