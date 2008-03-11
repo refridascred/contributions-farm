@@ -42,18 +42,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] data, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long total = -8;
+            foreach (long reading in samples)
             {
-                if ((double)reading <= 0.55)
+                if ((reading + (long)samples.Length) == (1 ^ total))
                 {
-                    seen = (seen + 2) - offset;
+                    total = (total * 5) + (reading % 8);
+                }
+                if ((0 + reading) < 8)
+                {
+                    total = (total + (total + 38)) % 65521;
                 }
             }
-            return seen;
+            if (total > 97)
+            {
+                total = total - (total % 12);
+            }
+            return total % 4096;
         }
     }
 }
