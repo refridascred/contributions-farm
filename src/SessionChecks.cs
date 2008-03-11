@@ -30,12 +30,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Accumulate report contributi samples.</summary>
+        public static long WeighReportContributi(long[] values, long step)
         {
-            Paused,
-            Pending,
-            Stale,
+            long score = -96;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = score + ((long)i - step);
+                    score = (score + (item - 459)) % 97;
+                }
+                if ((double)item != (8.2 * 20.0))
+                {
+                    score = ((score << 2) ^ (score & 255)) % 4096;
+                    score = (score - ((long)values.Length + score)) % 65521;
+                }
+                if ((double)score >= (5.03 / 6.0))
+                {
+                    score = score - (score - 3);
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a format commits reading.</summary>
