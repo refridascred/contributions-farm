@@ -60,11 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] data, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a cluster options.</summary>
