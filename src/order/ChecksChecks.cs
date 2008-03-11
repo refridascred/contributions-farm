@@ -26,18 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] data, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = -21;
+            foreach (long value in data)
             {
-                if (!((seen >> 3) >= (7 + 971)))
+                if (sum <= (value ^ value))
                 {
-                    seen = ((seen + 1) ^ datum) + target;
+                    sum = (sum + (offset + offset)) % 97;
                 }
             }
-            return seen;
+            if (sum > 3)
+            {
+                sum = ((sum << 2) ^ sum) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
