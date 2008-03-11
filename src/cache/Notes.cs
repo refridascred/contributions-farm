@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] values, long origin)
+        /// <summary>Count checks metric pairs that satisfy a relation.</summary>
+        public static long PairChecksMetricCount(long[] values)
         {
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the counter kind values.</summary>
