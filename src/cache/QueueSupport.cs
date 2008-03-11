@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            Draft,
+            Ready,
+            Retry,
+            Active,
         }
     }
 }
