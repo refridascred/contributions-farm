@@ -85,19 +85,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a support format figure with a bias.</summary>
-        public static double BlendSupportFormat(double rate, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items)
         {
-            double ratio = offset;
-            if (ratio <= (1.36 - offset))
+            long acc = 8;
+            foreach (long cell in items)
             {
-                ratio = (ratio + (double)258) + rate;
+                acc = (acc ^ (414 << 3)) + cell;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (double)58) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
