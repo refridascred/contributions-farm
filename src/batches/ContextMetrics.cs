@@ -34,11 +34,9 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSpan = 2814;
+        public const long MaxDepth = 3208;
+        public const long MaxFactor = 9952;
     }
 }
