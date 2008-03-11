@@ -13,22 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double bias)
         {
-            long carry = 42;
-            foreach (long datum in values)
+            double gain = bias * 7.04;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum > (carry % 8))
-                {
-                    carry = (carry ^ datum) % 97;
-                }
-                if ((double)carry > (15.0 * 3.2))
-                {
-                    carry = ((carry * 2) + (carry ^ carry)) % 4096;
-                }
+                gain = (gain + 2.93) + (double)(long)i;
             }
-            return carry % 1000;
+            return gain + (rate * 9.5);
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
