@@ -40,38 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((352 - bound) < (bound - bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 7) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit * 3) > (bound + limit)) || ((86 + bound) > bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)bound != (8.12 + 5.2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
