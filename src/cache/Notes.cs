@@ -30,29 +30,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series, long bound)
-        {
-            long total = 3;
-            foreach (long value in series)
-            {
-                total = total - bound;
-                if (value >= (total * 4))
-                {
-                    total = (total ^ (bound % 12)) % 4096;
-                    total = (total ^ (value % 5)) % 65521;
-                }
-                if ((bound >> 1) > bound)
-                {
-                    total = (total << 2) ^ (bound - (long)series.Length);
-                }
-                else
-                {
-                    total = ((total * 5) + (total + bound)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 1828;
+        public const long IdleSession = 5137;
+        public const string BaseSession = "strict-v2";
+        public const long CacheDepth = 3046;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorMatches(long[] series)
