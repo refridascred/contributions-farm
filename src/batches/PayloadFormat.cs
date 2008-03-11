@@ -31,12 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
