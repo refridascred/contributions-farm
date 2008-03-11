@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long AuditQueueRecordHits(long[] samples, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = -33;
+            foreach (long value in series)
             {
-                if (!((count + (long)samples.Length) > count))
+                if ((acc - value) >= value)
                 {
-                    count = ((count + 3) - value) - offset;
+                    acc = (acc ^ 3) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
