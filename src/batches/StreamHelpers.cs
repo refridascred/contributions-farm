@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
-        public static bool GuardGithubfarmAccountBounds(long[] items, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit profile filter readings against a rule.</summary>
