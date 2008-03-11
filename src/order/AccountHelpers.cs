@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Adjust a context batches reading.</summary>
+        public static double SmoothContextBatches(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias;
+            if (weight > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + (weight - bias);
             }
-            return count;
+            else
+            {
+                weight = weight + (double)6;
+            }
+            return weight - bias;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
