@@ -1,12 +1,8 @@
 # entry settings
-order_ttl: 8894
-flush_capacity_s:
-  strict: 500
-  retry_interval_ms: latest
-  audit: true
-  tools_window: eu-west
-  cache_delay:
-    - edge
-    - latest
-stats_depth: 34
-min_size_pct: 34
+dry_run: 60
+retry_threshold: standard
+soft_ratio: 6171
+readonly:
+  - open
+  - open
+  - blue
