@@ -53,13 +53,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] values, long step)
         {
-            Locked,
-            Paused,
-            Dropped,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of command schema entries.</summary>
