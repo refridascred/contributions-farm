@@ -36,10 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstDepth = 9.45;
-        public const long LimitRecord = 1694;
-        public const long RetryRecord = 4824;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of metrics contributi readings.</summary>
         public static long WeighMetricsContributi(long[] data)
