@@ -45,13 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] levels)
         {
-            Paused,
-            Idle,
-            Draft,
-            Active,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches < (matches & 63))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the entry cluster series from a seed.</summary>
