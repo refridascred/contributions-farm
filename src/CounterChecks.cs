@@ -22,16 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already record counter forward.</summary>
-        public static long SeriesAlreadyRecord(long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long slot = bound - offset;
+            if ((double)slot < 5.8)
             {
-                mark = (mark << 2) ^ ((long)i + target);
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (slot <= (slot >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (7.0 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot / 4) == (slot - bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the command status values.</summary>
