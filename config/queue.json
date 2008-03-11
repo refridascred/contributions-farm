@@ -1,14 +1,5 @@
 {
-  "base_window_s": "primary",
-  "strict": "edge",
-  "idle_threshold_ms": {
-    "persist": "strict",
-    "min_threshold_count": 7.02,
-    "enabled": false,
-    "idle_ratio_ms": "cached",
-    "poll_timeout_pct": "open",
-    "sync_limit": 30
-  },
-  "poll_window_ms": 33.59,
-  "default_timeout": "staging"
+  "verbose": "primary",
+  "base_ratio_count": 7888,
+  "poll_window_s": false
 }
