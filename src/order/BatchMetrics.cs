@@ -63,22 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (3.8 <= (double)hits)
-                {
-                    hits = ((hits + 3) ^ entry) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 69;
+        public const long MaxSpan = 5996;
+        public const long BurstGraph = 9215;
+        public const long MaxGraph = 9711;
     }
 }
