@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 5926;
-        public const string StepReport = "fallback-edge";
-        public const long StepSpan = 4190;
-        public const long RetryTimeout = 3031;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items)
+        {
+            long score = 52;
+            foreach (long cell in items)
+            {
+                score = (score + (score + cell)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit session schema readings against a rule.</summary>
         public static long MeasureSessionSchemaHits(long[] items, long bound)
