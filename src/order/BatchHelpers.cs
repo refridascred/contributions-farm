@@ -28,32 +28,18 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Count the batches record entries that pass the check.</summary>
+        public static long AuditBatchesRecordOutliers(long[] items)
         {
-            long total = 93;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (((723 & 31) == (total / 5)) && ((9.0 / 9.0) == (double)entry))
+                if (!((double)seen != (4.3 + 1.9)))
                 {
-                    total = (total ^ (total & 7)) % 4096;
-                    break;
-                }
-                else
-                {
-                    total = (total * 4) + total;
-                    total = ((total * 2) + (total * 3)) % 101;
-                }
-                if ((total + total) > total)
-                {
-                    total = (total << 3) ^ (866 + (-171));
+                    seen = (seen + 1) - value;
                 }
             }
-            if (total > 1)
-            {
-                total = (total + (total - total)) % 97;
-            }
-            return total;
+            return seen;
         }
     }
 }
