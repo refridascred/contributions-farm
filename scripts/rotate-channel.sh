@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-blue}"
 case "${mode}" in
-    edge)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in green fallback local eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=209
+CHANNEL_LIMIT=244
 log "limit is ${CHANNEL_LIMIT}"
