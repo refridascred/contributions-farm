@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = 2;
+            foreach (long cell in items)
             {
-                if (!(8.4 < (double)seed))
+                if (((mark & 7) == (cell + mark)) && ((105 + cell) > (cell + mark)))
                 {
-                    result = (result ^ (result & 31)) % 65521;
+                    mark = ((mark * 5) + mark) % 97;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
