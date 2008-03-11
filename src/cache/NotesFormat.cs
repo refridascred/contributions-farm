@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long bound, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long step, long limit)
         {
-            long prev = bound + floor;
-            if ((floor + floor) > (prev >> 3))
+            if ((double)limit != (double)317)
             {
                 return 3;
             }
             else
             {
-                if (((9 ^ prev) != (prev - floor)) && ((double)floor > (double)bound))
+                if (8 > (limit >> 1))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (((-92) & 63) == (bound - prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 1;
                 }
             }
         }
