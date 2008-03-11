@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a batches counter value against two limits.</summary>
-        public static long ClassifyBatchesCounter(long step, long seed)
+        /// <summary>Compare every pair of schema checks readings.</summary>
+        public static long OverlapSchemaChecksCount(long[] samples)
         {
-            if ((double)step <= (double)seed)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step % 16) < (579 & 1)) && ((double)step >= 2.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed != (18.0 - 5.07)) || ((double)step >= (double)seed))
+                    if ((samples[i] - samples[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
