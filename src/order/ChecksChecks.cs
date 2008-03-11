@@ -34,11 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleTimeout = "strict-edge";
-        public const long IdleRatio = 396;
-        public const double BaseSupport = 8.9;
-        public const long WindowBudget = 6419;
-        public const long BurstTimeout = 236;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
