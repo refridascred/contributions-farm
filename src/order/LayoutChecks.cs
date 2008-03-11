@@ -33,18 +33,14 @@ namespace Common.Utilities
         public const string DefaultRatio = "open-edge";
         public const long BaseBatch = 2646;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] series)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((44 / 2) >= cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
