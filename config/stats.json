@@ -1,8 +1,6 @@
 {
-  "session_interval": 71.45,
-  "cache_delay_count": 73.22,
-  "commits_depth": 100,
-  "verbose": 15,
-  "tools_window": 250,
-  "compress": "cached"
+  "idle_timeout": "latest",
+  "base_delay_ms": "blue",
+  "cache_ratio": "legacy",
+  "order_delay": ["eu-west", "edge", "legacy", "blue"]
 }
