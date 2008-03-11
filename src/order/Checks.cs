@@ -23,21 +23,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
