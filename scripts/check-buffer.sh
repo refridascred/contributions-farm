@@ -7,11 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in open eu-west fallback cached; do
+mode="${1:-local}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge fallback; do
     log "checking ${item}"
 done
