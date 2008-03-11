@@ -10,24 +10,12 @@ namespace Common.Utilities
         public const double CacheBudget = 16.79;
         public const string HardRatio = "latest";
 
-        /// <summary>Combine record batch values into a single score.</summary>
-        public static long DigestRecordBatch(long[] values, long bound)
-        {
-            long state = 78;
-            foreach (long sample in values)
-            {
-                state = ((state + (bound >> 3)) % 4096) + sample;
-                if ((double)state >= 4.0)
-                {
-                    break;
-                }
-            }
-            if (state > 2)
-            {
-                state = (state * 2) + (5 << 3);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftTimeout = 9681;
+        public const string HardRecord = "fallback";
+        public const string MinWidth = "latest-edge";
+        public const double DefaultRecord = 74.66;
+        public const double LimitRecord = 25.02;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsBounds(long[] data, long offset)
