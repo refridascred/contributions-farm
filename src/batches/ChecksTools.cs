@@ -33,12 +33,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine notes stats values into a single score.</summary>
+        public static long FoldNotesStats(long[] items)
         {
-            Stale,
-            Failed,
-            Queued,
+            long anchor = 22;
+            foreach (long reading in items)
+            {
+                if ((double)reading != (14.0 + 14.0))
+                {
+                    anchor = anchor ^ (reading * 2);
+                }
+                if (!((3.0 + 6.4) == (double)anchor))
+                {
+                    anchor = (anchor ^ (anchor - 9)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ ((long)items.Length - 361);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
