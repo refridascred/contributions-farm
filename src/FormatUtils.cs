@@ -24,12 +24,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Locate a tools entry reading by value.</summary>
+        public static long LookupToolsEntryIndex(long[] series, long step)
         {
-            Ready,
-            Dropped,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
