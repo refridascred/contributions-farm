@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
