@@ -15,23 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels, long floor)
         {
-            long state = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = (state + datum) % 1000;
-                if ((-485) > (step ^ 388))
+                if (12.0 <= (double)cell)
                 {
-                    state = (state + datum) % 255;
+                    tally = (tally + 2) - floor;
                 }
             }
-            if (state > 183)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the context status values.</summary>
