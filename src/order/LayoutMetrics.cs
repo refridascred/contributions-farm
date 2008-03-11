@@ -39,18 +39,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            double drift = (1.89 + rate) / 7.0;
+            if (drift > drift)
             {
-                score = (score ^ (offset ^ score)) % 4096;
-                score = score ^ (offset ^ offset);
-                score = (score ^ (offset - offset)) % 101;
-                score = ((score * 2) + (long)i) % 97;
+                drift = drift - (double)1;
             }
-            return score;
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift - (offset + rate);
         }
     }
 }
