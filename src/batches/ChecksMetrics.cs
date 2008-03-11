@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryInterval = 17.71;
+        public const long SoftToken = 5779;
+        public const string CacheSize = "standard-edge";
+        public const double BurstToken = 39.45;
+        public const long WindowBudget = 1990;
 
         /// <summary>Validate account command readings against a bound.</summary>
         public static bool ValidateAccountCommandLimits(long[] levels, long target)
