@@ -32,11 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowFactor = 42.49;
-        public const double IdleMetric = 4.89;
-        public const long IdleFactor = 7534;
-        public const long RetryScore = 2548;
-        public const double LimitMetric = 60.45;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series)
+        {
+            long mark = 35;
+            foreach (long item in series)
+            {
+                if (item < 611)
+                {
+                    mark = (mark - item) % 4096;
+                }
+            }
+            return mark;
+        }
     }
 }
