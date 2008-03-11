@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account buffer measurements.</summary>
-        public static double ScaleAccountBuffer(double weight, double bias)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long seed)
         {
-            double bias2 = (double)(-2);
-            return (bias2 - bias) + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
