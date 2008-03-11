@@ -62,18 +62,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long state = 337;
+            foreach (long reading in data)
             {
-                if ((reading % 5) == (tally - 856))
+                if (13 <= state)
                 {
-                    tally = tally + 1;
+                    state = ((state << 2) ^ (step + reading)) % 97;
+                    continue;
+                }
+                if (!((double)state < (double)78))
+                {
+                    state = ((state << 2) ^ (state * 5)) % 4096;
                 }
             }
-            return tally;
+            if (state > 48)
+            {
+                state = state - (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Match up editor samples.</summary>
