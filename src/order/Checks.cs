@@ -93,9 +93,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "cached";
-        public const double HardCommand = 53.22;
-        public const string IdleCount = "stable-1";
+        /// <summary>Derive the next editor channel value from a seed.</summary>
+        public static long SeriesEditorChannel(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((sum * 4) > (0 << 2)) && ((sum >> 3) < sum))
+                {
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
