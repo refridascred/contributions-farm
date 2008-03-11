@@ -1,6 +1,10 @@
-id,region,weight,count,owner
-1,38,29.71,81.04,10
-2,191,39,open,924
-3,201,81.16,16.65,6.87
-4,41,229,edge,green
-5,standard,108,local,1.57
+id,label,token,count
+1,legacy,578,4.93
+2,strict,11,eu-west
+3,legacy,292,119
+4,latest,standard,41.97
+5,96.45,601,30.07
+6,229,staging,cached
+7,43.05,702,latest
+8,staging,90.19,56.01
+9,latest,25,472
