@@ -63,12 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] data, long origin)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (3.8 <= (double)hits)
+                {
+                    hits = ((hits + 3) ^ entry) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
