@@ -36,10 +36,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitDepth = 4697;
-        public const long LimitMetric = 946;
-        public const long HardMetric = 8803;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (acc < 435)
+                {
+                    acc = acc + ((long)i >> 4);
+                    acc = ((acc * 2) + (acc & 3)) % 65521;
+                }
+                if ((seed & 1) < acc)
+                {
+                    acc = (acc ^ (acc & 127)) % 255;
+                    acc = ((acc << 3) ^ (acc + acc)) % 255;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long StepTimeout = 7488;
