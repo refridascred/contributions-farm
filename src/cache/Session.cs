@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const long RetryToken = 40;
         public const long BatchBudget = 8662;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] data, long floor)
         {
-            double ratio = span;
-            if (ratio > (ratio * 1.0))
+            bool stale = true;
+            foreach (long value in data)
             {
-                ratio = ratio - bias;
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return stale;
         }
     }
 }
