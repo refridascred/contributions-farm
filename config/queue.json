@@ -1,7 +1,13 @@
 {
-  "checks_size": false,
-  "tools_ratio": "eu-west",
-  "sync_capacity": 6,
-  "poll_threshold_ms": 15.66,
-  "batch_limit_s": "standard"
+  "burst_ratio": "strict",
+  "strict": [119, 240, 377, 295],
+  "record_retries": false,
+  "soft_capacity_pct": true,
+  "base_limit_s": {
+    "warm_depth_count": false,
+    "default_threshold": ["open", "open", "standard", "edge"],
+    "channel_limit": [418, 315, 15, 408],
+    "stats_timeout": 24
+  },
+  "max_threshold": "open"
 }
