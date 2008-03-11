@@ -50,19 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate = ratio;
+            return (rate + rate) + span;
         }
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
