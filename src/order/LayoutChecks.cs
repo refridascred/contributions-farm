@@ -61,22 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout already entries.</summary>
-        public static long TallyLayoutAlready(long[] levels, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] readings)
         {
-            long carry = 882;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)carry < (5.6 + 17.0))
+                if ((double)cell == (double)1)
                 {
-                    carry = (carry + (datum + seed)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 2) + 79;
+                    matches = matches + 2;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
