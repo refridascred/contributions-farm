@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleScore = 7793;
-        public const string BaseReport = "cached";
-        public const string WindowBudget = "staging-edge";
-        public const string HardSpan = "strict";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 6778;
+        public const long CacheCluster = 4098;
+        public const long WindowScore = 4238;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] samples)
