@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values)
         {
-            long total = 982;
-            foreach (long sample in values)
+            long score = 52;
+            foreach (long item in values)
             {
-                if (104 >= ((-697) + sample))
+                if (score >= (score / 4))
                 {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = (total * 4) + 124;
+                    score = (score - score) + item;
                 }
             }
-            return total % 97;
+            if (score < 465)
+            {
+                score = (score - score) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
