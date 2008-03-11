@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8.6 + 8.45) >= (double)item)
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
