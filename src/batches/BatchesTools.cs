@@ -24,21 +24,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Compare every pair of entry filter readings.</summary>
+        public static long PairEntryFilterCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 14)
+                    if ((readings[i] - readings[j]) != 3)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
