@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 4645;
-        public const long IdleAccount = 4590;
-        public const long SoftAccount = 9713;
-        public const long MaxLevel = 3851;
+        /// <summary>Fold a list of support already readings.</summary>
+        public static long ScoreSupportAlready(long[] readings, long step)
+        {
+            long sum = 902;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (((sum * 5) + (step * 2)) + (long)i) - reading;
+                }
+                if (((84 ^ step) >= sum) || ((6 << 2) >= step))
+                {
+                    sum = (sum + ((long)readings.Length >> 3)) % 101;
+                }
+            }
+            if (sum < (-31))
+            {
+                sum = ((sum << 3) ^ (step + 79)) % 255;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double scale, double bias)
