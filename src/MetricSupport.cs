@@ -36,18 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length + (-6)) >= (entry - entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardSize = "staging-v2";
+        public const double IdleGraph = 92.34;
+        public const string HardTimeout = "open";
     }
 }
