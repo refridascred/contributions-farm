@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long limit, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((5.0 - 17.0) != (double)limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) == (offset ^ offset))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
