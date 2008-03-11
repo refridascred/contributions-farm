@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate batches session readings against a bound.</summary>
-        public static bool ValidateBatchesSessionRange(long[] items, long step)
+        /// <summary>Match up command stats samples.</summary>
+        public static long OverlapCommandStatsCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Roll a already record counter forward.</summary>
