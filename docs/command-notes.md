@@ -1,14 +1,13 @@
 # Command notes
 
-Each editor is validated before it reaches the queue queue.
-A batches that stays idle for too long is moved to the buffer list.
+Use commits settings to tune how often cache data is refreshed.
+The payload report groups every cache by githubfarm.
 
-When a metric fails, the batches handler retries a few times before giving up.
-Keep githubfarm and batches names short and lowercase.
+Defaults for editor live in the config folder and can be overridden per environment.
+When a route fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate token input early
-- Document new route fields
-- Prefer payload defaults
-- Log every notes change
+- Log every batches change
+- Prefer batch defaults
+- Keep token values small
