@@ -26,21 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Project the next route metrics value.</summary>
+        public static double AdjustRouteMetrics(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight / 8.0;
+            if (gain < bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (double)62;
             }
-            return matches;
+            else
+            {
+                gain = gain - (2.0 * 9.83);
+            }
+            return gain + (weight + gain);
         }
     }
 }
