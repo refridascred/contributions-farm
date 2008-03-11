@@ -58,19 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor record entry stays within the limit.</summary>
-        public static bool CheckEditorRecordLimits(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLevel = 3964;
+        public const long DefaultFactor = 357;
+        public const long HardWidth = 8796;
+        public const long SoftLayout = 1535;
+        public const long CacheLayout = 1207;
     }
 }
