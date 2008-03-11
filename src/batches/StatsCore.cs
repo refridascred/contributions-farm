@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string StepEntry = "latest-v2";
         public const long WindowBudget = 5984;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] series, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > offset)
+                if (readings[i] <= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
