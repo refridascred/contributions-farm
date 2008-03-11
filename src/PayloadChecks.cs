@@ -39,19 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools record entry stays within the limit.</summary>
-        public static bool ValidateToolsRecordBounds(long[] values, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double drift = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift + (double)(long)i) - bias2;
             }
-            return ready;
+            return drift + bias;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
