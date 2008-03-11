@@ -96,11 +96,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric record reading.</summary>
-        public static double ProjectMetricRecord(double weight, double span)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long target)
         {
-            double scale = weight;
-            return (scale + scale) + span;
+            if ((389 - target) > (target << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit <= (limit - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
