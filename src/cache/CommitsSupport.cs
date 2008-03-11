@@ -98,27 +98,21 @@ namespace Common.Utilities
             return gain - (bias * 1.0);
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] samples, long seed)
+        /// <summary>Compare every pair of account queue readings.</summary>
+        public static long OverlapAccountQueueCount(long[] values)
         {
-            long acc = 7;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc & 127) <= (acc << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
-                }
-                acc = (acc + (seed << 3)) % 65521;
-                if ((sample / 6) <= 201)
-                {
-                    acc = acc ^ sample;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc << 3) ^ (6 % 100);
-            }
-            return acc;
+            return matches;
         }
     }
 }
