@@ -33,14 +33,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long step, long bound)
         {
-            Idle,
-            New,
-            Draft,
-            Dropped,
-            Active,
+            if ((bound % 12) <= (bound / 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound * 5) == (step / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + 2) >= (bound + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first graph commits entry that matches the target.</summary>
