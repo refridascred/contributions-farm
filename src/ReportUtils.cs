@@ -59,14 +59,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Locked,
-            Stale,
-            Synced,
-            Ready,
-            Dropped,
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
