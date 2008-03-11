@@ -130,24 +130,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double rate, double bias)
         {
-            if ((389 - target) > (target << 2))
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                gain = (gain + (gain - bias)) + (double)(long)i;
             }
-            else
-            {
-                if (limit <= (limit - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain + (19.0 + rate);
         }
     }
 }
