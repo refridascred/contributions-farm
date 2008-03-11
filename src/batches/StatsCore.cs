@@ -46,21 +46,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 869;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (((state * 3) + step) % 97) + reading;
+                state = (state * 4) + (state % 100);
+                if ((state / 3) <= (state >> 3))
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (state < 286)
+            {
+                state = ((state << 3) ^ state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Rank metrics tools input into a small class.</summary>
