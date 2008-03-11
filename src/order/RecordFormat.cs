@@ -15,13 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Paused,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 7187;
+        public const long IdleReport = 5943;
+        public const long SoftWidth = 5647;
+        public const long BurstSpan = 1800;
+        public const long StepReport = 5935;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
