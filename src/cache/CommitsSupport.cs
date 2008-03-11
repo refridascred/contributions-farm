@@ -74,22 +74,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long result = 59;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result - 5) < (0 + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result + (result + value)) % 97;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 4)
-            {
-                result = (result - (result + result)) % 1000;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
