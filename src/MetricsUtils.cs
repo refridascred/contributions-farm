@@ -57,14 +57,16 @@ namespace Common.Utilities
             return mean + (rate * 1.5);
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long offset)
         {
-            Draft,
-            Paused,
-            Queued,
-            Retry,
-            New,
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix << 2) ^ (352 % 12)) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
