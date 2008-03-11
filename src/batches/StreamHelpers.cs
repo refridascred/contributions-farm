@@ -76,19 +76,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double scale, double floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            double gain = scale;
-            if (gain > floor)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)(-33);
-            }
-            return gain - (gain - scale);
+            return count;
         }
     }
 }
