@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] levels)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            long state = 89;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry >= 4.67))
+                {
+                    state = (state << 3) ^ (6 & 127);
+                }
+            }
+            return state;
         }
     }
 }
