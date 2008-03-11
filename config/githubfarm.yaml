@@ -1,20 +1,13 @@
 # githubfarm settings
-max_ttl_s: 4.38
-hard_threshold_pct:
-  channel_depth: 97
-  compress: stable
-  default_depth: cached
-  checks_threshold: cached
-  retry_size: false
-  idle_window_pct:
-    max_limit: 36.78
-    soft_size: true
-    min_timeout_s: eu-west
-retry_interval_ms: cached
-max_ratio_s: false
-persist: 31
-min_limit_s:
-  default_timeout_pct: 100
-  base_delay: true
-  readonly: 0.31
-  checks_ttl: legacy
+audit: 1024
+retry_threshold_s: 34
+enabled:
+  verbose:
+    - 8
+    - 367
+  stats_ratio: edge
+  min_depth_pct: false
+  max_interval: true
+persist: 61.96
+default_depth: 7772
+retry_interval_s: edge
