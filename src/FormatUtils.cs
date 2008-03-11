@@ -30,11 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
