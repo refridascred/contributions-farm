@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] data, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count >= (sample - sample))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate farm samples.</summary>
