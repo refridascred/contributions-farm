@@ -30,17 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor command reading by value.</summary>
-        public static long LookupEditorCommandIndex(long[] samples, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)113 - offset;
+            if (mean >= offset)
             {
-                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + offset) - scale;
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Hold a filter summary.</summary>
