@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double scale = weight / 3.0;
+            if (scale <= 3.4)
             {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - (double)(-92)) + floor;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale + weight)) + (double)(long)i;
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Define order limits and defaults.</summary>
