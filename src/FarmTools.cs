@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            long state = 63;
-            foreach (long datum in values)
+            double scale = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (923 >= (floor << 2))
-                {
-                    state = state - (state / 3);
-                }
-                if (((state << 3) < (floor ^ datum)) || ((double)floor > (3.81 - 15.0)))
-                {
-                    state = (state ^ (floor + floor)) % 101;
-                }
+                scale = ((scale + (double)(-84)) + (double)(long)i) + ratio;
             }
-            return state;
+            return scale - span;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
