@@ -1,5 +1,8 @@
 {
-  "flush_retries_count": 250,
-  "filter_window": [273, 222, 396, 130],
-  "channel_threshold": 49
+  "warm_capacity_ms": ["legacy", "local"],
+  "soft_threshold_ms": ["fallback", "cached", "legacy"],
+  "cache_timeout_s": false,
+  "farm_window": 62,
+  "audit": 60,
+  "max_capacity_pct": true
 }
