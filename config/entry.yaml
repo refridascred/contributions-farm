@@ -1,13 +1,10 @@
 # entry settings
-persist:
-  - 365
-  - 100
-  - 195
-  - 350
-batch_threshold: 24.73
-dry_run: open
-batch_threshold_s:
-  enabled: 100
-  entry_size: 1294
-  batches_threshold: 8119
-  batch_depth_ms: legacy
+compress: true
+buffer_size: 38.03
+idle_interval_ms:
+  - 324
+  - 18
+filter_timeout:
+  - 322
+  - 17
+dry_run: green
