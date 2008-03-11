@@ -1,15 +1,14 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the stream list.
-Run the metric check before changing any buffer limits.
-Use notes settings to tune how often stats data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the editor list.
+Run the stats check before changing any notes limits.
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The layout report groups every metric by cluster.
+Each tools is validated before it reaches the order queue.
+Run the context check before changing any batches limits.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Log every payload change
-- Review payload limits each release
-- Keep already values small
+- Validate checks input early
+- Keep layout values small
+- Prefer token defaults
