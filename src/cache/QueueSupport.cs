@@ -48,13 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Validate stats layout readings against a bound.</summary>
+        public static bool VerifyStatsLayoutRange(long[] items, long target)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
