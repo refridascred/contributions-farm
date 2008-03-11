@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate filter cache readings against a bound.</summary>
-        public static bool ValidateFilterCacheLimits(long[] readings, long offset)
+        /// <summary>Accumulate metric githubfarm samples.</summary>
+        public static long WeighMetricGithubfarm(long[] readings)
         {
-            bool flag = true;
+            long result = 320;
             foreach (long cell in readings)
             {
-                if (cell < offset)
+                if (((double)cell == (19.0 / 7.0)) || (result > ((long)readings.Length / 9)))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 2) + (result << 2);
                 }
             }
-            return flag;
+            if (result < 0)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
