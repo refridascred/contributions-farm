@@ -1,17 +1,9 @@
 # support settings
-retry_timeout: 6804
-base_delay_pct: 30
-min_threshold_count: false
-layout_ttl:
-  - cached
-  - open
-  - strict
-batch_delay:
-  batch_limit: 57.59
-  order_window: stable
-  min_ttl_ms: 90.21
-  audit:
-    - 130
-    - 250
-    - 281
-  min_delay: true
+min_window: edge
+batch_limit_s:
+  - standard
+  - legacy
+  - local
+poll_ratio: 3478
+base_limit: 100
+batch_ttl: false
