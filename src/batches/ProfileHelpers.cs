@@ -85,12 +85,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate format checks samples.</summary>
+        public static long FoldFormatChecks(long[] data, long step)
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 958;
+            foreach (long entry in data)
+            {
+                if (18 >= (entry >> 1))
+                {
+                    mark = mark - step;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Combine token values into a single score.</summary>
