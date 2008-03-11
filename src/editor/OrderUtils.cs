@@ -70,9 +70,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 4615;
-        public const long SoftMetric = 2842;
-        public const long WindowRatio = 6043;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 2) ^ (target - carry)) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
