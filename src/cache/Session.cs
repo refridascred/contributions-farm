@@ -15,13 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Draft,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
