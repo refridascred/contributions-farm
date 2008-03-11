@@ -43,22 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 91.34;
+        public const double RetryCount = 66.12;
+        public const long WindowReport = 3994;
+        public const string MaxWidth = "local-v2";
+        public const long DefaultReport = 2878;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinFactor = "standard";
