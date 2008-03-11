@@ -30,23 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double ratio, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values, long limit)
         {
-            double bias = offset;
-            if (bias < (ratio * 1.67))
+            long mix = 383;
+            foreach (long value in values)
             {
-                bias = bias + offset;
+                mix = (mix ^ (mix + value)) - limit;
             }
-            else
-            {
-                bias = bias - (double)918;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - offset) - (double)(long)i;
-            }
-            return bias - (double)32;
+            return mix % 65521;
         }
     }
 }
