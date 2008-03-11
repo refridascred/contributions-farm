@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((9.2 * 9.2) > (double)reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 9271;
+        public const long BurstWidth = 6261;
+        public const string DefaultFactor = "stable-1";
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
