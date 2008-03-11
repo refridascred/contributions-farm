@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const string BurstRatio = "staging";
         public const double HardNotes = 71.74;
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            double bias = (double)0 / 6.0;
-            for (int i = 0; i < 3; i++)
+            double mean = bias;
+            if (mean > (mean - mean))
             {
-                bias = ((bias + (floor - bias)) + (double)(long)i) - gain;
+                mean = mean + bias;
             }
-            return bias - floor;
+            else
+            {
+                mean = mean - (bias2 - mean);
+            }
+            return mean - 7.6;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
