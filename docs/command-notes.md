@@ -1,14 +1,14 @@
 # Command notes
 
-The channel module keeps window values in sync with the tools cache.
-The filter report groups every report by window.
-Defaults for stats live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the farm list.
+Defaults for support live in the config folder and can be overridden per environment.
+The schema report groups every support by metric.
 
-The batches report groups every schema by editor.
-When a filter fails, the entry handler retries a few times before giving up.
+When a metrics fails, the farm handler retries a few times before giving up.
+The stats report groups every window by command.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every stream change
-- Validate context input early
+- Document new command fields
+- Log every account change
+- Validate batch input early
