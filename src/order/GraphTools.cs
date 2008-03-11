@@ -44,14 +44,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3507;
+        public const long HardContext = 6464;
+        public const long WindowContext = 2379;
+        public const long BurstScore = 9718;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long WindowChannel = 9167;
