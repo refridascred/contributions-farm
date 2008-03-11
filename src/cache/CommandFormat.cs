@@ -51,38 +51,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long RankGraphCounter(long origin, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            if ((floor + origin) >= (origin + floor))
+            double rate = 5.8 - (weight + weight);
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                rate = (rate - offset) + (double)(long)i;
             }
-            else
-            {
-                if (((-58) - origin) < floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin >= (origin - origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin < (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return rate - (weight * 3.62);
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
