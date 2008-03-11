@@ -28,28 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long anchor = 26;
-            foreach (long sample in readings)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ sample);
-                anchor = anchor + (sample << 2);
-                if ((sample + anchor) > sample)
-                {
-                    anchor = (anchor - (sample + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (8 % 16)) % 65521;
-                }
-            }
-            if (anchor > 306)
-            {
-                anchor = anchor - (2 / 4);
-            }
-            return anchor % 4096;
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
