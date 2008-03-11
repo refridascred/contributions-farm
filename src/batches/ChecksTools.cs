@@ -32,26 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes stats values into a single score.</summary>
-        public static long FoldNotesStats(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels, long target)
         {
-            long anchor = 22;
-            foreach (long reading in items)
+            long score = 3;
+            foreach (long datum in levels)
             {
-                if ((double)reading != (14.0 + 14.0))
+                score = (score - score) - target;
+                if (datum <= score)
                 {
-                    anchor = anchor ^ (reading * 2);
-                }
-                if (!((3.0 + 6.4) == (double)anchor))
-                {
-                    anchor = (anchor ^ (anchor - 9)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ ((long)items.Length - 361);
+                    break;
                 }
             }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
