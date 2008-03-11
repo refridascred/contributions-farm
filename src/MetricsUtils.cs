@@ -44,19 +44,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format record figure with a bias.</summary>
-        public static double AdjustFormatRecord(double bias, double floor)
+        /// <summary>Grade a stream batch value against two limits.</summary>
+        public static long BucketStreamBatch(long bound, long bound2)
         {
-            double mean = (double)458 * 11.0;
-            if (mean >= mean)
+            if (((bound2 >> 2) < bound) || (8.5 < (double)bound))
             {
-                mean = (mean + floor) - bias;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean - (double)3) - (double)(long)i;
+                if ((bound << 2) >= (80 / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound2 > 4.7) || ((13.0 / 4.0) < (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound < (571 << 1)) || ((bound2 << 3) == (bound * 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean + mean;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
