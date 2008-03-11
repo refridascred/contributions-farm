@@ -96,11 +96,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine filter already values into a single score.</summary>
+        public static long WeighFilterAlready(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long mix = 510;
+            foreach (long datum in levels)
+            {
+                if ((datum * 5) <= (bound & 7))
+                {
+                    mix = (mix ^ (631 ^ bound)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (datum % 5)) % 101;
+                }
+            }
+            if (mix < 676)
+            {
+                mix = ((mix << 2) ^ (mix << 3)) % 97;
+            }
+            return mix;
         }
     }
 }
