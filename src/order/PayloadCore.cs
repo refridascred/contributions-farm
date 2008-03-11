@@ -25,14 +25,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long origin)
         {
-            Queued,
-            Done,
-            Pending,
-            Active,
-            New,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the notes kind values.</summary>
