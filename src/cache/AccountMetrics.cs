@@ -17,19 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] data, long bound)
         {
-            double drift = 5.32;
-            if (drift > (drift - gain))
+            long seen = 0;
+            foreach (long value in data)
             {
-                drift = drift - bias;
+                if ((double)value > (double)bound)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (bias + gain)) - (double)(long)i;
-            }
-            return drift + gain;
+            return seen;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
