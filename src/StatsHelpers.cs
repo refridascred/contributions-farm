@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits contributi series from a seed.</summary>
-        public static long RollCommitsContributi(long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state ^ state) % 97;
-                state = (state << 2) ^ (55 + offset);
-                state = ((state * 2) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
