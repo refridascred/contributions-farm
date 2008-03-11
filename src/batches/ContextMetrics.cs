@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long limit, long offset)
-        {
-            if ((5.0 - 17.0) != (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) == (offset ^ offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchCount = 16.42;
+        public const string MinWidth = "standard-edge";
+        public const double HardWidth = 83.69;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
