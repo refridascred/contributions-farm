@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a commits filter counter forward.</summary>
-        public static long StepCommitsFilter(long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] data, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (item > step)
                 {
-                    sum = ((sum << 2) ^ bound) + (long)i2;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a context snapshot.</summary>
