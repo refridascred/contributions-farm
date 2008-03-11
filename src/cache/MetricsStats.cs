@@ -43,10 +43,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "stable-edge";
-        public const long BurstInterval = 7305;
-        public const long WindowToken = 8896;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Iterate the entry tools series from a seed.</summary>
         public static long StepEntryTools(long limit)
