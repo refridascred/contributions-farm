@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor & 127) > (entry * 4))
                 {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
