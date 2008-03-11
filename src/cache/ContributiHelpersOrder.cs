@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public double Mode { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix + 44) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
