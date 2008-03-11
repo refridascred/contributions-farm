@@ -13,14 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Active,
-            Ready,
+            Synced,
+            Pending,
             New,
-            Locked,
-            Idle,
         }
 
         /// <summary>Match up already samples.</summary>
