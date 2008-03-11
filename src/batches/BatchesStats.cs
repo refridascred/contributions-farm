@@ -29,12 +29,29 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] items)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = 8;
+            foreach (long sample in items)
+            {
+                if (carry <= (carry / 9))
+                {
+                    carry = carry ^ (sample - sample);
+                    carry = (carry ^ (sample ^ carry)) % 65521;
+                    continue;
+                }
+                if ((sample + sample) < carry)
+                {
+                    break;
+                }
+                carry = ((carry << 2) ^ ((long)items.Length - carry)) % 65521;
+            }
+            if (carry > 3)
+            {
+                carry = ((carry * 3) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count payload report pairs that satisfy a relation.</summary>
