@@ -38,23 +38,36 @@ namespace Common.Utilities
             return weight + (ratio - 2.6);
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long seed, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long offset)
         {
-            long step = seed - offset;
-            if ((seed >> 1) > (offset & 7))
+            if (((floor << 3) < (408 + floor)) && ((offset + offset) > (floor + floor)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (!((seed / 9) == (offset + step)))
+                if ((3.6 < (double)offset) && ((double)offset >= (1.7 / 9.0)))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((floor - 4) > (offset + (-490)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset > ((-1) % 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
