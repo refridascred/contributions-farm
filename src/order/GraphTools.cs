@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long origin)
         {
-            long carry = 80;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 3) + (entry % 3)) % 97;
-                if (((double)step >= (4.17 - 9.89)) || ((double)(long)data.Length < (9.3 / 4.0)))
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    carry = carry - ((long)data.Length & 3);
-                    break;
-                }
-                if (entry < (carry + step))
-                {
-                    carry = (carry ^ (step ^ 31)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
