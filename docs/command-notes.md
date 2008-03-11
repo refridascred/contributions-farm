@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-The schema module keeps buffer values in sync with the contributi cache.
+The layout module keeps context values in sync with the format cache.
+Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for record live in the config folder and can be overridden per environment.
 
-A graph that stays idle for too long is moved to the token list.
-Use context settings to tune how often report data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
+A metric that stays idle for too long is moved to the counter list.
+The metric report groups every already by metrics.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate schema input early
-- Review payload limits each release
-- Document new checks fields
+- Review command limits each release
+- Validate githubfarm input early
+- Keep batches values small
