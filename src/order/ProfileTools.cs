@@ -35,20 +35,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of metrics contributi readings.</summary>
-        public static long WeighMetricsContributi(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            long mark = 83;
-            foreach (long datum in data)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((datum << 2) >= (mark - datum)) || (0.8 > (double)datum))
-                {
-                    mark = mark ^ 56;
-                }
-                mark = mark - (datum / 5);
-                mark = (mark * 5) + datum;
+                carry = (carry - ((long)i - (long)i)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Hold a notes record.</summary>
