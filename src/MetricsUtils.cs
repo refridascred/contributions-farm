@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] series)
         {
-            Closed,
-            Done,
-            Synced,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!(((tally + tally) != (623 + 63)) || ((tally & 63) >= (826 + sample))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
