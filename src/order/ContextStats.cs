@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheLevel = 7253;
-        public const string SoftFilter = "local-edge";
-        public const long BatchLevel = 2858;
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
         public static long ClassifyStatsMetrics(long origin, long offset)
