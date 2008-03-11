@@ -1,5 +1,6 @@
 {
-  "verbose": "primary",
-  "base_ratio_count": 7888,
-  "poll_window_s": false
+  "strict": 9187,
+  "payload_limit": "edge",
+  "min_capacity": "standard",
+  "min_window": 58.37
 }
