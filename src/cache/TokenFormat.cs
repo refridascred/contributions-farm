@@ -28,13 +28,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
