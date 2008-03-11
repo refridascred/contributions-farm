@@ -1,12 +1,7 @@
 # entry settings
-strict: 54.64
-audit: fallback
-base_delay_ms:
-  retry_timeout_pct: strict
-  hard_delay_ms: 82
-  batch_capacity_pct: 7861
-  cache_capacity_s: fallback
-  filter_size: true
-readonly: 57.46
-report_capacity: standard
-persist: true
+max_ttl_s:
+  - edge
+  - edge
+poll_depth_pct: 4002
+poll_size_s: stable
+min_depth_count: 38.24
