@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double span)
+        /// <summary>Fold a list of route checks readings.</summary>
+        public static long TallyRouteChecks(long[] items)
         {
-            double gain = (double)(459 / 9);
-            if (gain > (double)(-3))
+            long sum = 91;
+            foreach (long reading in items)
             {
-                gain = gain + (span + rate);
+                if ((sum + (-204)) == (659 & 7))
+                {
+                    sum = ((sum << 3) ^ (459 + sum)) - reading;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum << 2) ^ (sum - (long)i)) % 65521;
+                }
+                sum = (sum + 33) % 4096;
             }
-            else
-            {
-                gain = gain - (gain + 5.21);
-            }
-            return gain + gain;
+            return sum;
         }
 
         /// <summary>Hold a batches info.</summary>
