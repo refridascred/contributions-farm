@@ -77,21 +77,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Digest a series of order already entries.</summary>
+        public static long ScoreOrderAlready(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 4;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total - (seed >> 5)) - (long)i) ^ reading;
                 }
+                total = (total ^ (total - seed)) % 4096;
             }
-            return count;
+            if (total > 13)
+            {
+                total = (total - (seed % 24)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Digest a series of support entries.</summary>
