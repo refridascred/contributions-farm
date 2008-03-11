@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long mix = 16;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 3) ^ reading) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 23)
-            {
-                mix = ((mix * 2) + (mix ^ mix)) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
