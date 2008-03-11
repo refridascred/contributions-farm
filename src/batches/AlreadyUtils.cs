@@ -57,21 +57,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Digest a series of filter format entries.</summary>
+        public static long WeighFilterFormat(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1.7 + 2.1) < (double)value)
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (76 + value)) % 65521;
                 }
             }
-            return matches;
+            if (mix < (-5))
+            {
+                mix = ((mix * 4) + (seed + seed)) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
