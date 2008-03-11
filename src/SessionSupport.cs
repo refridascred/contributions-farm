@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSpan = 9488;
-        public const string SoftQueue = "latest-v2";
-        public const long SoftRatio = 1456;
-        public const string BatchQueue = "primary";
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
