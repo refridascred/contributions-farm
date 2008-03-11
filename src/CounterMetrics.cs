@@ -15,19 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((tally & 63) >= step) && ((402 + 8) != (sample + (long)items.Length)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchBudget = 7526;
+        public const string CacheRecord = "cached-v2";
+        public const long StepScore = 1931;
+        public const long HardScore = 9411;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double DefaultContext = 74.9;
