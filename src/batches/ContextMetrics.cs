@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
