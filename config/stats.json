@@ -1,12 +1,7 @@
 {
-  "readonly": {
-    "compress": "stable",
-    "metric_capacity": 1024,
-    "audit": "legacy",
-    "already_ttl": "primary"
-  },
-  "session_depth": 250,
-  "flush_capacity_count": 94.7,
-  "batch_timeout_ms": "fallback",
-  "verbose": true
+  "soft_depth_s": "green",
+  "soft_interval": 250,
+  "hard_ttl_pct": 250,
+  "cache_capacity_count": 36.36,
+  "route_ttl": 8643
 }
