@@ -28,18 +28,15 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] levels, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (limit > 54)
                 {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + sample;
                 }
             }
             return hits;
