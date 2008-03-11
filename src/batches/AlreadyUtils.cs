@@ -39,10 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3194;
-        public const long BaseDepth = 7165;
-        public const string StepSpan = "legacy";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + 413) > (matches - 84))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double BlendSchema(double rate, double floor)
