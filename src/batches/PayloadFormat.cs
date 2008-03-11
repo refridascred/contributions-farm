@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (long)i) - (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a session options.</summary>
