@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools window samples are out of range.</summary>
-        public static long AuditToolsWindowGaps(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((11.0 - 7.8) != (double)hits)
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
