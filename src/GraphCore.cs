@@ -79,19 +79,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double mean = (bias - bias) / 6.0;
-            if (mean < 9.2)
-            {
-                mean = mean + (double)6;
-            }
-            else
-            {
-                mean = mean - 6.0;
-            }
-            return mean + (bias2 / 9.0);
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
