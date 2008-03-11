@@ -16,13 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] readings, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((-632) & 15) < origin)
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
