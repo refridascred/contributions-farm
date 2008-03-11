@@ -31,24 +31,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)(long)i <= 3.12)
-                {
-                    result = result - (result >> 2);
-                }
-                else
-                {
-                    result = (result - (floor + result)) % 4096;
-                    result = ((result * 5) + ((long)i + result)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 7940;
+        public const string IdleCache = "strict-v2";
+        public const long BaseCache = 1995;
+        public const string DefaultCache = "staging-1";
     }
 }
