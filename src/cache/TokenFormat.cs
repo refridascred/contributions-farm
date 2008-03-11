@@ -25,17 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 5239;
+        public const long MinQueue = 520;
+        public const long LimitWidth = 6948;
+        public const long SoftBudget = 8393;
+        public const long BatchQueue = 6314;
     }
 }
