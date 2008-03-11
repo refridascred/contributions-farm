@@ -55,15 +55,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Validate buffer commits readings against a bound.</summary>
+        public static bool ValidateBufferCommitsRange(long[] readings, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
     }
 }
