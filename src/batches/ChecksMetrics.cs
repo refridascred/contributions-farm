@@ -69,19 +69,13 @@ namespace Common.Utilities
         public const long MaxWidth = 2709;
         public const long MaxCommand = 3583;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] levels, long target)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
