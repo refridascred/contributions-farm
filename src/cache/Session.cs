@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long target)
         {
-            Closed,
-            Synced,
-            Stale,
-            Queued,
-            Paused,
+            long slot = step + target;
+            if ((4.4 * 8.9) > (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step * 3) < (895 >> 1)) || ((slot * 5) > (step * 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine account values into a single score.</summary>
