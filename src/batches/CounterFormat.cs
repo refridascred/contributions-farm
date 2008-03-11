@@ -14,19 +14,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate stream command readings against a bound.</summary>
-        public static bool ValidateStreamCommandLimits(long[] readings, long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Queued,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Check that every entry graph entry stays within the limit.</summary>
