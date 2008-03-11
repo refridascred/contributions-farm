@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits & 3) == (hits - 7))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
