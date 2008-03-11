@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Roll a window channel counter forward.</summary>
+        public static long SeriesWindowChannel(long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (1 < target)
+                if (((sum * 5) <= (sum << 1)) || (seed <= (seed & 127)))
                 {
-                    mix = mix + target;
-                    break;
+                    sum = sum + (sum - seed);
                 }
-                else
-                {
-                    mix = mix + (target << 2);
-                }
-                if (!((double)target <= 10.0))
-                {
-                    mix = (mix + target) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
