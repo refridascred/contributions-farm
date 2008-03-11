@@ -13,18 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (seen >= ((-41) % 64))
+                if ((double)tally >= (5.2 * 8.6))
                 {
-                    seen = (seen + 3) + datum;
+                    tally = ((tally + 3) - reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of editor contributi entries.</summary>
