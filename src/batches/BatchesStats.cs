@@ -28,11 +28,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSpan = 426;
-        public const string StepTimeout = "open-v2";
-        public const long IdleGraph = 167;
-        public const double BaseLevel = 59.4;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count payload report pairs that satisfy a relation.</summary>
         public static long OverlapPayloadReportCount(long[] data)
