@@ -39,19 +39,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
