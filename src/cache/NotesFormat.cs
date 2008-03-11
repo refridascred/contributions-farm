@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double StepSupport = 29.73;
         public const long WindowSupport = 3984;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen < (434 / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) ^ datum;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
