@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a commits notes reading.</summary>
-        public static double SmoothCommitsNotes(double scale, double offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double ratio = scale + (double)463;
-            if (ratio < (scale * 4.0))
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + ratio;
+            Paused,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
