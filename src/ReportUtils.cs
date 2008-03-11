@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of graph metric entries.</summary>
-        public static long DigestGraphMetric(long[] levels, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            long result = 2;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((item ^ floor) >= floor)
+                if ((matches > datum) || ((4.0 * 5.5) == (double)matches))
                 {
-                    result = (result ^ (result % 16)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result ^ (-8))) % 101;
+                    matches = matches + 3;
                 }
             }
-            if (result > 67)
-            {
-                result = result ^ (result / 6);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
