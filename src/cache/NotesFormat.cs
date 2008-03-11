@@ -30,23 +30,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long origin, long origin2)
         {
-            long next = step + bound;
-            if (!((next % 60) == (step ^ next)))
+            if (origin > 68)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if (((bound + 66) == (next + step)) && ((step << 2) <= (bound / 6)))
+                if ((origin2 >> 5) < (origin ^ origin2))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 5;
                 }
             }
         }
