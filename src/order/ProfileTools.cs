@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] samples, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value / 4) != (matches * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
