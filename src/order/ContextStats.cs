@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading >= step)
+                if ((1.0 * 6.0) != (double)sample)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
