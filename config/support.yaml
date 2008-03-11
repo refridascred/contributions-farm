@@ -1,21 +1,21 @@
 # support settings
-base_limit_ms: false
-burst_window_count:
-  - 299
-  - 456
-  - 402
-  - 16
-burst_threshold:
-  already_delay: 41.06
-  audit: 80.74
-  entry_size: 30
-channel_threshold: true
-metrics_depth:
-  cache_timeout: standard
-  idle_ttl_ms:
-    - primary
-    - blue
-    - fallback
-    - stable
-  buffer_limit: true
-  warm_ttl_count: 30
+soft_ratio: 40.21
+persist: 21
+cache_ratio_count:
+  default_depth_s: 8347
+  warm_ttl_s: 45.62
+  record_interval: local
+  warm_capacity_count:
+    burst_capacity: local
+    retry_limit_s: 4.21
+    flush_threshold:
+      - eu-west
+      - standard
+    audit: false
+    compress: 53.57
+    poll_threshold: fallback
+  base_ttl_ms: open
+sync_window_s:
+  profile_interval: 250
+  base_ratio_pct: true
+  poll_ratio_count: latest
