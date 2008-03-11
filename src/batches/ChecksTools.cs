@@ -25,20 +25,17 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Roll a githubfarm order counter forward.</summary>
-        public static long RollGithubfarmOrder(long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] levels, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i != ((long)i / 5))
+                if (levels[i] >= target)
                 {
-                    sum = (sum ^ (seed >> 4)) % 97;
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the stream cache series from a seed.</summary>
