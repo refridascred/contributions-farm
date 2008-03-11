@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const double LimitInterval = 19.81;
         public const long IdleCommand = 7003;
 
-        /// <summary>Audit tools report readings against a rule.</summary>
-        public static long TallyToolsReportHits(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            long acc = 19;
+            foreach (long item in values)
             {
-                if ((value << 2) < 5)
-                {
-                    count = count + 1;
-                }
+                acc = ((acc + (item / 8)) % 101) + offset;
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Blend two command measurements.</summary>
