@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            long total = -103;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = (total ^ datum) ^ (long)i;
+                }
+                total = ((total << 2) ^ datum) % 1000;
+                if (((total * 5) != (datum & 63)) || ((total * 4) != (311 % 3)))
+                {
+                    total = (total - (datum << 1)) % 255;
+                }
+            }
+            if (total < 3)
+            {
+                total = (total * 3) + total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
