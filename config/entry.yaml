@@ -1,27 +1,31 @@
 # entry settings
-burst_retries_s: 77
-min_retries_pct:
-  - 125
-  - 353
-  - 9
-warm_timeout_s:
-  githubfarm_capacity:
-    flush_retries:
-      - stable
-      - blue
-      - edge
+cache_delay:
+  audit: 30
+  idle_window: stable
+  queue_size:
+    warm_size_ms: false
+    compress: open
+    poll_window: false
+    base_size_pct: 75.74
+    base_ratio_s:
+      - cached
       - local
-    compress: 1024
-    channel_threshold: 30
-    max_interval_s: 95
-    cache_interval: 60
-  base_capacity_s: true
-  support_capacity: 49.06
-  default_ttl_pct:
-    - 350
-    - 206
-    - 316
-    - 30
-  filter_depth: eu-west
-base_retries_s: 25.21
-warm_interval_pct: 60
+    flush_limit_count: green
+  min_threshold: staging
+  warm_ttl_count:
+    poll_window_count: 6251
+    batch_delay:
+      - 131
+      - 108
+      - 79
+      - 338
+    cluster_limit: local
+hard_ratio_pct:
+  - 361
+  - 8
+  - 284
+  - 41
+persist: cached
+base_capacity: 7102
+cache_size: 3293
+dry_run: staging
