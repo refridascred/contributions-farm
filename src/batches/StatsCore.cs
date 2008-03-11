@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            Locked,
-            Failed,
-            Draft,
-            Closed,
-            New,
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
