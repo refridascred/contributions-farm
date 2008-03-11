@@ -58,13 +58,19 @@ namespace Common.Utilities
         public const long MaxWidth = 2709;
         public const long MaxCommand = 3583;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] levels, long target)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Synced,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
