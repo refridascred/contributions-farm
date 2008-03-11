@@ -36,11 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 1708;
-        public const long StepFactor = 1425;
-        public const long HardPayload = 704;
-        public const double RetryScore = 94.89;
-        public const double MinPayload = 51.15;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Retry,
+            Draft,
+            Locked,
+        }
     }
 }
