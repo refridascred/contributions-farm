@@ -37,13 +37,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long seed)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = 306;
+            foreach (long item in values)
+            {
+                if ((sum - sum) < (seed >> 4))
+                {
+                    sum = sum ^ item;
+                }
+            }
+            if (sum < 11)
+            {
+                sum = (sum + (sum / 6)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
