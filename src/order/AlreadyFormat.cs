@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            public double Stamp { get; set; }
-            public bool Owner { get; set; }
+            long result = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
