@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] readings, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 4) + (93 / 6)) % 4096;
-                if ((double)target >= 2.7)
+                if (reading >= step)
                 {
-                    mix = mix + (target & 1);
+                    found = false;
+                    break;
                 }
-                if (!((target - target) >= (target & 127)))
-                {
-                    mix = ((mix * 4) + (mix << 2)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
