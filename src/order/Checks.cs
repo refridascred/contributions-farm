@@ -23,16 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double rate, double offset)
-        {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - gain) + (double)(long)i) - offset;
-            }
-            return gain + (rate + 0.76);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardTimeout = 31.39;
+        public const long SoftSize = 819;
+        public const long CacheCounter = 2490;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] data, long target)
