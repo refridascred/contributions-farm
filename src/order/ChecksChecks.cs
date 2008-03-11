@@ -34,18 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((((count >> 4) < (cell - 21)) && (9 < (bound % 16))) && (count >= (cell & 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleTimeout = "strict-edge";
+        public const long IdleRatio = 396;
+        public const double BaseSupport = 8.9;
+        public const long WindowBudget = 6419;
+        public const long BurstTimeout = 236;
     }
 }
