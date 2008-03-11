@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step & 31) < (1 & 31))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
