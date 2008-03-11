@@ -16,39 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long seed)
         {
-            long cur = step ^ target;
-            if ((target + 67) >= (cur << 2))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur ^ cur) < (target ^ step))
+                if (((-602) & 127) < (seen * 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((810 / 2) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((888 + 903) != (target >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = ((seen + 2) + cell) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a payload route value against two limits.</summary>
