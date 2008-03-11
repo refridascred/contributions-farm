@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long CountPayloadBufferOutliers(long[] samples)
         {
-            long acc = -7;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)hits > (2.0 / 6.0))
                 {
-                    acc = ((acc + (value + value)) % 101) + (long)i;
-                }
-                if (!(acc < (value * 3)))
-                {
-                    acc = acc - (acc * 4);
-                }
-                if (((value ^ acc) != (value * 2)) && ((0.75 - 4.79) > (double)acc))
-                {
-                    break;
+                    hits = (hits + 3) - item;
                 }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Hold a counter stats.</summary>
