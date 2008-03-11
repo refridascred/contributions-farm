@@ -1,6 +1,5 @@
 {
-  "filter_limit": true,
-  "batch_capacity": false,
-  "min_interval_pct": 4050,
-  "min_size_pct": "staging"
+  "max_interval": "latest",
+  "warm_capacity": false,
+  "warm_depth_pct": 95.91
 }
