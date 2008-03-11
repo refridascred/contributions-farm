@@ -74,14 +74,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            New,
-            Synced,
-            Idle,
-            Failed,
-            Pending,
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
