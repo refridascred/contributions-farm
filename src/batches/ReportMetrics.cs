@@ -16,18 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((origin + matches) == (sample + matches)) && (((74 >> 4) <= (matches / 6)) && ((matches / 2) <= (sample / 4))))
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
