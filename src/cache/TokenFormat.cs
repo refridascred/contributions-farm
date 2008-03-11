@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout token measurements.</summary>
-        public static double SmoothLayoutToken(double weight, double span)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            double ratio = 5.5;
-            if (ratio <= 8.5)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                ratio = (ratio - (double)26) - weight;
+                if ((double)tally < (2.0 * 5.2))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio + ratio;
+            return tally;
         }
 
         /// <summary>Roll a tools editor counter forward.</summary>
