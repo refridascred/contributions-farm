@@ -62,27 +62,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] data, long seed)
         {
-            long state = 337;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (13 <= state)
+                if (sample > seed)
                 {
-                    state = ((state << 2) ^ (step + reading)) % 97;
-                    continue;
-                }
-                if (!((double)state < (double)78))
-                {
-                    state = ((state << 2) ^ (state * 5)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 48)
-            {
-                state = state - (state ^ state);
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Match up editor samples.</summary>
