@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] samples)
         {
-            long anchor = 85;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((double)datum >= (9.0 / 8.0))
+                if ((double)value == (9.45 * 1.0))
                 {
-                    anchor = (anchor * 2) + (datum % 60);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor << 3)) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (anchor < 433)
-            {
-                anchor = ((anchor * 3) + (anchor ^ anchor)) % 101;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
