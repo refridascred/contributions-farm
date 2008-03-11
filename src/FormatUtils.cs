@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 5926;
+        public const string StepReport = "fallback-edge";
+        public const long StepSpan = 4190;
+        public const long RetryTimeout = 3031;
 
         /// <summary>Audit session schema readings against a rule.</summary>
         public static long MeasureSessionSchemaHits(long[] items, long bound)
