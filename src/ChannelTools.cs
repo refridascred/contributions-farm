@@ -27,25 +27,11 @@ namespace Common.Utilities
             return (bias2 - bias) + weight;
         }
 
-        /// <summary>Rank queue entry input into a small class.</summary>
-        public static long GradeQueueEntry(long seed, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long lane = seed ^ floor;
-            if (6 < (lane - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((lane - 248) <= lane)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
