@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a support context reading.</summary>
-        public static double BlendSupportContext(double rate, double span)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            double gain = (double)0 * 0.1;
-            if (gain < (span / 4.0))
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                gain = gain - 9.9;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain - (rate / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + 2.0;
+            return sum;
         }
 
         /// <summary>Hold a notes info.</summary>
