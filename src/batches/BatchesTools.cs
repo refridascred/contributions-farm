@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long origin, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] series, long step)
         {
-            if ((offset / 6) < origin)
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset <= 2.34) || ((double)offset == (double)origin))
+                if (((step & 31) >= step) && (((step / 2) >= (1 / 5)) || ((step ^ tally) < (51 + value))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
