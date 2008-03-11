@@ -61,10 +61,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySpan = 967;
-        public const string MaxSchema = "strict-edge";
-        public const long DefaultSchema = 8525;
-        public const long RetryBudget = 9479;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitDepth = 146;
+        public const double IdleWidth = 78.83;
+        public const long BatchTimeout = 4963;
+        public const long WindowRatio = 3158;
+        public const string BatchCache = "cached-edge";
     }
 }
