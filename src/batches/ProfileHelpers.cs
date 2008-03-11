@@ -47,40 +47,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] data)
-        {
-            long total = 60;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    long bound = (long)i;
-                    total = (total * 3) + ((long)i + bound);
-                }
-                if ((datum / 5) > ((-481) * 3))
-                {
-                    total = total - ((-188) + datum);
-                }
-                else
-                {
-                    total = (total - datum) % 4096;
-                }
-                if (!((14.0 - 5.43) == (double)datum))
-                {
-                    total = ((total * 2) + (total * 3)) % 1000;
-                }
-                else
-                {
-                    total = (total * 4) + (total >> 3);
-                }
-            }
-            if (total > 213)
-            {
-                total = ((total << 2) ^ (total << 1)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleDepth = "cached-edge";
+        public const long BatchSpan = 8280;
+        public const double RetryRatio = 42.45;
 
         /// <summary>Audit command payload readings against a rule.</summary>
         public static long CountCommandPayloadHits(long[] items, long seed)
