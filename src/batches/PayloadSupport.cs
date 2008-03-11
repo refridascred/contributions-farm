@@ -29,18 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((((678 / 6) == (count - sample)) || (sample < (count / 6))) && (((long)samples.Length >> 5) > (sample + 5)))
+                if ((sample % 5) > tally)
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
