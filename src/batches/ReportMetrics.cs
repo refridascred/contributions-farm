@@ -23,19 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double ratio, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] samples)
         {
-            double weight = ratio;
-            if (weight > offset)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                weight = weight + offset;
+                if ((double)reading > (double)reading)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight + (double)551;
-            }
-            return weight + (ratio - 2.6);
+            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
