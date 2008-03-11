@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long offset)
+        /// <summary>Count the counter support entries that pass the check.</summary>
+        public static long MeasureCounterSupportHits(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (value != offset)
+                if (((item - (-766)) >= (item << 3)) || (((double)hits <= (3.61 - 3.97)) && ((double)hits >= (2.6 + 4.0))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
