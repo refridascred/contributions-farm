@@ -71,26 +71,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            long mark = 0;
-            foreach (long value in values)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((mark - mark) > (720 & 3))
+                sum = ((sum * 5) + (floor & 63)) % 255;
+                if (sum >= (3 + sum))
                 {
-                    mark = ((mark + (8 >> 4)) % 4096) - value;
+                    break;
                 }
                 else
                 {
-                    mark = ((mark * 4) + mark) % 255;
+                    sum = ((sum * 3) + (floor + 92)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (mark > 681)
-            {
-                mark = ((mark << 3) ^ 7) % 65521;
-            }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Scale a batch entry figure with a bias.</summary>
