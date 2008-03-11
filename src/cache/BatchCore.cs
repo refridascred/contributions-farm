@@ -23,12 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count graph schema pairs that satisfy a relation.</summary>
