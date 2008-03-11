@@ -1,6 +1,6 @@
 {
-  "idle_timeout": "latest",
-  "base_delay_ms": "blue",
-  "cache_ratio": "legacy",
-  "order_delay": ["eu-west", "edge", "legacy", "blue"]
+  "max_ratio_count": 29.18,
+  "sync_threshold_s": ["staging", "stable", "standard", "cached"],
+  "compress": true,
+  "sync_window_s": ["open", "stable"]
 }
