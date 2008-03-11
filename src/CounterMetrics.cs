@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long bound)
         {
-            long result = 25;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((result % 97) >= reading))
+                if (samples[i] >= bound)
                 {
-                    result = (result * 4) + (result / 3);
-                }
-                else
-                {
-                    result = (result << 2) ^ 88;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
