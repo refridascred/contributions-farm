@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long anchor = 7;
-            foreach (long datum in levels)
-            {
-                if (((18 - 95) > seed) && ((135 >> 4) >= (seed % 10)))
-                {
-                    anchor = ((anchor - anchor) % 1000) ^ datum;
-                }
-            }
-            return anchor % 1000;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
