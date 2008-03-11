@@ -1,10 +1,7 @@
-id,active,count
-1,36.16,401
-2,196,320
-3,68.23,legacy
-4,62.35,stable
-5,341,legacy
-6,616,83.99
-7,local,local
-8,blue,327
-9,26.36,280
+id,active,score,count,token
+1,885,29.69,fallback,30.19
+2,staging,155,94.95,blue
+3,755,51.88,fallback,117
+4,legacy,493,29.42,green
+5,10.01,907,814,standard
+6,staging,fallback,75.72,95
