@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a route filter sample.</summary>
-        public static long FindRouteFilterIndex(long[] series, long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = ratio / 4.0;
+            return (weight - ratio) + bias;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
