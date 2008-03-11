@@ -11,27 +11,19 @@ namespace Common.Utilities
         public const long MinSize = 1557;
         public const string StepDepth = "local-edge";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] values, long limit)
         {
-            long acc = 943;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                acc = (acc - datum) % 97;
-                if ((acc - acc) < (datum & 15))
+                if (item != limit)
                 {
-                    acc = acc + (49 - acc);
-                }
-                if ((double)datum < (3.27 * 13.0))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (acc > 20)
-            {
-                acc = ((acc << 3) ^ (acc * 5)) % 4096;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
