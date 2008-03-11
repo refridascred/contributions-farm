@@ -34,12 +34,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftCount = 7766;
-        public const long BatchBatches = 1000;
-        public const long CacheBatches = 9656;
-        public const double RetryFactor = 51.29;
-        public const long BurstBatches = 7672;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 9276;
