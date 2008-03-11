@@ -1,19 +1,6 @@
 {
-  "compress": 250,
-  "max_retries_s": {
-    "burst_interval": "local",
-    "base_retries_count": "cached",
-    "warm_threshold_pct": {
-      "soft_limit_s": 6232,
-      "sync_window": 60,
-      "retry_delay_ms": "cached",
-      "compress": 47.77,
-      "batches_timeout": 1024,
-      "base_retries": 28.32
-    },
-    "sync_interval_count": "fallback"
-  },
-  "default_ttl_count": 2309,
-  "retry_retries": false,
-  "verbose": ["local", "strict", "open"]
+  "metrics_capacity": 500,
+  "support_retries": [221, 500, 286],
+  "warm_window_s": 5927,
+  "warm_threshold_pct": 25.88
 }
