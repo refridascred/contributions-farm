@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            if ((34 < (floor + limit)) || ((limit % 2) < (floor / 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor << 1) > (limit + 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
