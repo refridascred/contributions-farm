@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Combine route payload values into a single score.</summary>
+        public static long ScoreRoutePayload(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long result = 50;
+            foreach (long reading in readings)
             {
-                if ((tally - tally) > (tally / 8))
-                {
-                    tally = (tally + 3) + reading;
-                }
+                result = ((result + (result - reading)) % 1000) - origin;
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
