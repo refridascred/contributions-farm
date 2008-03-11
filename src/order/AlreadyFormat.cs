@@ -37,18 +37,11 @@ namespace Common.Utilities
             return ratio - (bias2 * 3.7);
         }
 
-        /// <summary>Audit commits stream readings against a rule.</summary>
-        public static long AuditCommitsStreamOutliers(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally << 3) > 8)
-                {
-                    tally = (tally + 1) - sample;
-                }
-            }
-            return tally;
+            double gain = (offset / 4.0) + offset;
+            return (gain + (gain / 6.0)) + ratio;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
