@@ -1,27 +1,25 @@
 # support settings
-metric_depth:
-  - 368
-  - 337
-  - 425
-  - 339
-support_limit: 133
-min_interval_ms:
-  compress:
-    burst_window_ms: edge
-    idle_interval_count: 250
-    sync_size_ms: fallback
-    layout_interval: latest
-  tools_capacity:
-    - 443
-    - 481
-    - 327
-    - 115
-  dry_run:
-    - 476
-    - 413
-    - 279
-report_threshold: 6932
-readonly: 15.62
-flush_ratio:
-  - 94
-  - 253
+sync_timeout_ms: cached
+audit: 60
+hard_timeout_count:
+  warm_depth_pct: 7491
+  base_ratio_pct:
+    hard_ratio: 96.68
+    max_retries_ms:
+      - 47
+      - 272
+      - 58
+      - 397
+    retry_capacity: 25
+    burst_size: 500
+    window_threshold: 56.71
+  burst_delay_count: strict
+  soft_threshold_s: 2107
+sync_threshold_ms: 16
+idle_window_pct: green
+filter_ratio:
+  base_window_s: 45.88
+  default_delay_count: stable
+  dry_run: standard
+  record_size: true
+  retry_retries_count: edge
