@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 8629;
-        public const long CacheWidth = 6925;
-        public const double BurstDepth = 71.71;
-        public const long LimitBudget = 5917;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item > (5 * 2)) || !((count & 63) == (item + item)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long limit, long limit2)
