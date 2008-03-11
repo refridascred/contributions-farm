@@ -31,17 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first payload format entry that matches the target.</summary>
-        public static long SeekPayloadFormatIndex(long[] samples, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
