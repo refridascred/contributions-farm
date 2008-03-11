@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate route window samples.</summary>
-        public static long FoldRouteWindow(long[] series, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long seed)
         {
-            long sum = 324;
-            foreach (long cell in series)
+            long total = 55;
+            foreach (long cell in readings)
             {
-                if (((sum << 2) <= (target + cell)) || ((2.01 / 4.0) != (double)(long)series.Length))
+                if ((double)cell > (5.5 / 8.0))
                 {
-                    sum = sum + (cell & 7);
+                    total = ((total * 3) + (68 >> 4)) % 97;
+                    continue;
+                }
+                if (((double)seed <= (double)total) || ((1.8 / 9.0) == (double)cell))
+                {
+                    total = ((total << 3) ^ (seed << 3)) % 101;
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum * 4) + (target + sum);
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
