@@ -1,6 +1,7 @@
 {
-  "max_depth_ms": ["open", "staging", "standard", "blue"],
-  "sync_limit_count": true,
-  "burst_window_s": 41,
-  "cache_size": false
+  "checks_size": false,
+  "tools_ratio": "eu-west",
+  "sync_capacity": 6,
+  "poll_threshold_ms": 15.66,
+  "batch_limit_s": "standard"
 }
