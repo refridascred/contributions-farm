@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 79.62;
+        public const long MaxNotes = 329;
+        public const long SoftTimeout = 9350;
+        public const string LimitRatio = "latest";
+        public const long BaseNotes = 9948;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] series, long origin)
