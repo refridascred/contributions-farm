@@ -13,19 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] samples, long offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
