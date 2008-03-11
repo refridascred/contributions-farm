@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate metric githubfarm samples.</summary>
-        public static long WeighMetricGithubfarm(long[] readings)
+        /// <summary>Roll a commits filter counter forward.</summary>
+        public static long StepCommitsFilter(long bound)
         {
-            long result = 320;
-            foreach (long cell in readings)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)cell == (19.0 / 7.0)) || (result > ((long)readings.Length / 9)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    result = (result * 2) + (result << 2);
+                    sum = ((sum << 2) ^ bound) + (long)i2;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (result < 0)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a context snapshot.</summary>
