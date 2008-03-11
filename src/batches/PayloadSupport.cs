@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 4551;
-        public const double IdleSize = 93.85;
-        public const long MinBatches = 3049;
-        public const string BatchBatches = "stable";
-        public const double CacheBatches = 12.87;
+        /// <summary>Check that every format metric entry stays within the limit.</summary>
+        public static bool CheckFormatMetricRange(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
         public static long FoldCounterCluster(long[] levels, long seed)
