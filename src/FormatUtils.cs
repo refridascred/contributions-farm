@@ -58,11 +58,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
