@@ -1,14 +1,12 @@
 {
-  "commits_capacity": "legacy",
-  "min_delay": {
-    "idle_ratio_ms": "fallback",
-    "readonly": 34.23,
-    "min_interval_s": 6230,
-    "min_threshold_count": "open",
-    "warm_delay_count": "stable",
-    "warm_depth_ms": true
+  "batch_capacity": 7349,
+  "cache_threshold_ms": 500,
+  "notes_size": 95.05,
+  "graph_size": {
+    "record_threshold": 9921,
+    "strict": 53,
+    "token_limit": "open"
   },
-  "flush_size_s": 100,
-  "format_delay": "open",
-  "default_retries_s": [10, 277]
+  "soft_depth_pct": "fallback",
+  "warm_capacity": "fallback"
 }
