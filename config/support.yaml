@@ -1,15 +1,8 @@
 # support settings
-batch_capacity_count: green
-hard_limit_pct:
-  soft_interval:
-    poll_retries: eu-west
-    soft_threshold_count:
-      - fallback
-      - blue
-    farm_window: 1867
-  persist: cached
-  schema_size: 60.1
-  dry_run: open
-sync_depth: legacy
-min_limit_s: eu-west
-readonly: false
+default_retries_s:
+  soft_limit_ms: 77
+  editor_timeout: eu-west
+  soft_delay_ms: 3487
+persist: primary
+cache_window: edge
+default_depth: latest
