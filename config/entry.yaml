@@ -1,18 +1,8 @@
 # entry settings
-min_interval_count: 98
-persist: 36.18
-cache_ttl:
-  cache_depth: 60
-  retry_retries_count: 77.28
-  sync_timeout_ms: standard
-hard_ttl_count:
-  - local
-  - eu-west
-  - legacy
-  - cached
-warm_limit_ms: 88.89
-default_window:
-  - primary
-  - local
-  - latest
-  - green
+max_ratio_s: 60
+burst_capacity:
+  base_ratio_s: fallback
+  idle_depth_count: 9.1
+  batch_interval_count: eu-west
+farm_threshold: false
+contributi_limit: 88
