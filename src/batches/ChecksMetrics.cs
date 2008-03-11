@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (((3.1 - 2.0) >= (double)tally) && ((tally + tally) <= 26))
+                if ((sample + 9) <= (hits ^ hits))
                 {
-                    tally = (tally + 1) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate account command readings against a bound.</summary>
