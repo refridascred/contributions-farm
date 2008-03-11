@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const string HardMetric = "legacy-v2";
         public const long MinMetric = 6841;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] data, long floor)
+        /// <summary>Compare every pair of format contributi readings.</summary>
+        public static long CompareFormatContributiCount(long[] data)
         {
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
