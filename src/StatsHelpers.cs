@@ -49,12 +49,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 2696;
-        public const long RetrySpan = 7380;
-        public const long MaxSession = 4575;
-        public const long BaseBudget = 9324;
-        public const long BatchScore = 8552;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series)
+        {
+            long state = 67;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) > cell)
+                {
+                    state = (state - (state ^ cell)) % 1000;
+                }
+            }
+            if (state < 417)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleSize = 8318;
