@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "open-edge";
-        public const double IdleMetrics = 18.81;
-        public const double MaxMetrics = 22.43;
-        public const long MinMetrics = 6716;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i << 2) >= state)
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
