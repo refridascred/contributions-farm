@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((target << 2) <= (710 + target)))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseCount = 71.8;
+        public const string IdleBuffer = "stable-1";
+        public const long MinBuffer = 3210;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] readings, long origin)
