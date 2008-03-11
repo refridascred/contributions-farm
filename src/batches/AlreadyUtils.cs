@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const long MinAlready = 6122;
         public const long HardAlready = 7362;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFactor = 3386;
+        public const string BurstFarm = "fallback-1";
+        public const long HardFarm = 8231;
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
