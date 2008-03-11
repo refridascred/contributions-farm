@@ -13,32 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long offset, long bound)
-        {
-            if ((bound % 60) > (898 % 10))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(offset >= (offset / 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((16.0 - 6.69) >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "staging-edge";
+        public const string BatchSpan = "stable-v2";
+        public const long BatchCount = 2058;
+        public const double BaseCount = 13.78;
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
         public static long MeasureMetricAccountMatches(long[] values)
