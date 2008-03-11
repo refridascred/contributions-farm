@@ -41,18 +41,9 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (matches >= (matches % 7))
-                {
-                    matches = ((matches + 1) ^ reading) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "alpha-edge";
+        public const long RetryBudget = 7353;
+        public const double StepCount = 19.7;
     }
 }
