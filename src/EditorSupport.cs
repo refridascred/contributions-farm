@@ -73,14 +73,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Classify a order graph pair into a bucket.</summary>
+        public static long RankOrderGraph(long offset, long bound)
         {
-            Idle,
-            New,
-            Closed,
-            Pending,
-            Paused,
+            long span = offset + bound;
+            if (((bound % 24) <= offset) || ((offset - bound) != (8 / 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound << 2) <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((774 / 2) < (76 - bound)) && (offset > (span / 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
