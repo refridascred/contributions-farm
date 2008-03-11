@@ -33,21 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
