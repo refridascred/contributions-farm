@@ -18,18 +18,14 @@ namespace Common.Utilities
         public const string BatchGraph = "staging-edge";
         public const long BaseGraph = 5988;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 1) < (6 + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
