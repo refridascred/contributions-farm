@@ -27,22 +27,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.51 / 6.0) > (double)datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
