@@ -51,9 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "alpha-edge";
-        public const long RetryBudget = 7353;
-        public const double StepCount = 19.7;
+        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
+        public static long CompareFarmChecksCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
