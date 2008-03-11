@@ -38,11 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "cached-v2";
-        public const long WindowStream = 9478;
-        public const long BurstStream = 1990;
-        public const long IdleWidth = 8823;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Offset { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
