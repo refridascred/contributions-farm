@@ -19,18 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] samples)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 394;
+            foreach (long datum in levels)
             {
-                if ((double)reading > (double)reading)
+                acc = (acc << 2) ^ datum;
+                if (bound >= (bound / 5))
                 {
-                    tally = tally + 2;
+                    acc = (acc + acc) % 1000;
+                }
+                if (bound > datum)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (acc < 945)
+            {
+                acc = (acc ^ (bound ^ 96)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
