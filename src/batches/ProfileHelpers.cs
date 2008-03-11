@@ -83,17 +83,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum ^ offset;
-                sum = sum - 21;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((series[i] >= floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
