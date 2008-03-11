@@ -62,12 +62,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 35.77;
-        public const string CacheScore = "alpha-edge";
-        public const long RetryMetrics = 2756;
-        public const long MaxSpan = 5834;
-        public const double MinSpan = 21.63;
+        /// <summary>Match up stats profile samples.</summary>
+        public static long PairStatsProfileCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 1008;
