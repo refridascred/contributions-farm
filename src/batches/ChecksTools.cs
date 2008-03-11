@@ -25,25 +25,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long step, long origin)
-        {
-            if ((origin ^ origin) == (331 + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ step) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 146;
+        public const double MinPayload = 74.89;
+        public const double BasePayload = 56.81;
+        public const long CachePayload = 9872;
+        public const long IdleLevel = 8424;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
