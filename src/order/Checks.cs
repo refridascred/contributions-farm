@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] values, long seed)
         {
-            long anchor = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in values)
             {
-                anchor = ((anchor << 3) ^ (anchor + reading)) % 97;
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Adjust a editor reading.</summary>
