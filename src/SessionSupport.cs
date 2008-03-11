@@ -13,15 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            double rate = (double)(319 ^ 671);
+            if (rate <= 9.49)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                rate = (rate + span) + ratio;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Match up already samples.</summary>
