@@ -57,17 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] <= floor)
+                long count = (state / 8) ^ limit;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ (count % 100)) % 1000) - (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
