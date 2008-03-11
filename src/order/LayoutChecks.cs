@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long MeasureAccountSchemaOutliers(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((cell & 7) == (tally & 3))
+                if ((3.0 + 0.32) <= (double)item)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
