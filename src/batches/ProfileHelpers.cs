@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long bound, long origin)
         {
-            long mark = 630;
-            foreach (long cell in values)
+            if ((0.77 - 1.5) <= (double)origin)
             {
-                if (((cell + cell) < (7 / 9)) || ((double)cell > (5.1 / 4.0)))
+                return 8;
+            }
+            else
+            {
+                if ((bound * 5) <= (bound >> 1))
                 {
-                    mark = ((mark + mark) % 4096) + target;
-                    continue;
+                    return 4;
                 }
-                if (cell < mark)
+                else
                 {
-                    mark = ((mark * 5) + (mark + mark)) % 1000;
+                    if ((bound % 12) == (bound - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
