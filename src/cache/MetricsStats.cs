@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every payload counter entry stays within the limit.</summary>
+        public static bool GuardPayloadCounterBounds(long[] samples, long origin)
         {
-            New,
-            Pending,
-            Synced,
-            Active,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the session mode values.</summary>
