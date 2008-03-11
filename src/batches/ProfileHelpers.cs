@@ -13,19 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] series, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Retry,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
