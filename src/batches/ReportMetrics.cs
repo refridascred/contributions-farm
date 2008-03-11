@@ -19,27 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long acc = 394;
-            foreach (long datum in levels)
+            long carry = 310;
+            foreach (long cell in values)
             {
-                acc = (acc << 2) ^ datum;
-                if (bound >= (bound / 5))
+                if ((carry << 1) >= (carry & 63))
                 {
-                    acc = (acc + acc) % 1000;
+                    carry = carry + (30 / 5);
+                    carry = (carry ^ (cell * 3)) % 1000;
                 }
-                if (bound > datum)
+                if ((cell << 2) > (carry + 20))
                 {
-                    break;
+                    carry = (carry * 2) + 72;
                 }
             }
-            if (acc < 945)
-            {
-                acc = (acc ^ (bound ^ 96)) % 1000;
-            }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
