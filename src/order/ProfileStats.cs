@@ -51,11 +51,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftWidth = 529;
-        public const double BatchChannel = 85.45;
-        public const string BaseChannel = "staging-edge";
-        public const long MinScore = 651;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 4551;
+        public const string HardFactor = "stable-v2";
+        public const long LimitLevel = 5296;
 
         /// <summary>Fold a list of already window readings.</summary>
         public static long TallyAlreadyWindow(long[] data, long step)
