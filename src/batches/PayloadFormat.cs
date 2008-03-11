@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long MaxAccount = 4163;
         public const string LimitAccount = "latest-1";
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(item < (matches << 1)))
                 {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a cache record.</summary>
