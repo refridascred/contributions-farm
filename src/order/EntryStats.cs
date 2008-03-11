@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a stream counter reading by value.</summary>
-        public static long SeekStreamCounterIndex(long[] levels, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (levels[i] == origin)
+                if ((double)count != (double)entry)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
