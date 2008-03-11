@@ -48,39 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long origin2)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long cur = origin ^ origin2;
-            if (6.68 <= (double)origin2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 - cur) < (96 + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((cur < (cur - cur)) || ((9.0 - 9.8) != (double)origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (cur >= (origin2 * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
