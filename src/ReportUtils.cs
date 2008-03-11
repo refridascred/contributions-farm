@@ -32,11 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public double Mode { get; set; }
+            double drift = floor;
+            if (drift > floor)
+            {
+                drift = (drift - (floor - drift)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (double)442;
         }
 
         /// <summary>Describe the report kind values.</summary>
