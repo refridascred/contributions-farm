@@ -1,26 +1,11 @@
 # entry settings
-metric_ttl:
-  enabled: 35.98
-  strict:
-    - fallback
-    - green
-  hard_interval: green
-  batch_depth: 57
-min_retries_s: false
-compress: green
-graph_retries:
-  idle_timeout_s:
-    farm_capacity: true
-    batch_size: false
-    persist: edge
-  retry_interval_ms:
-    base_ratio_ms: 44.44
-    max_interval:
-      - cached
-      - open
-    retry_retries_ms: 31
-    burst_limit_pct: 88.68
-    session_size: open
-  poll_timeout: standard
-  warm_limit_count: local
-base_limit_ms: true
+already_threshold: 45.81
+flush_interval_s:
+  - 324
+  - 197
+persist:
+  - 119
+  - 129
+route_size:
+  - 240
+  - 106
