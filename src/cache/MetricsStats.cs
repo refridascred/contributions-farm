@@ -30,20 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload counter entry stays within the limit.</summary>
-        public static bool GuardPayloadCounterBounds(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 169;
+        public const long BaseBudget = 6063;
+        public const string SoftTimeout = "fallback-v2";
+        public const long BatchBatches = 2303;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
