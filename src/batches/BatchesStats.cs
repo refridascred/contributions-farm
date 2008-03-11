@@ -38,12 +38,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items, long limit)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 2;
+            foreach (long entry in items)
+            {
+                if (((entry + limit) < entry) && ((double)mark < (2.33 + 7.8)))
+                {
+                    continue;
+                }
+                else
+                {
+                    long cur = (limit / 5) >> 5;
+                    mark = (mark ^ cur) % 101;
+                }
+                if ((double)limit != (6.7 - 7.25))
+                {
+                    mark = (mark - (entry - mark)) % 255;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = (mark << 2) ^ limit;
+            }
+            return mark;
         }
     }
 }
