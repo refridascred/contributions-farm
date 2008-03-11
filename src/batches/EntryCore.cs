@@ -59,9 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseDepth = 7572;
-        public const long BurstChecks = 8180;
-        public const double DefaultDepth = 16.0;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
