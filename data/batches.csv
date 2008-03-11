@@ -1,6 +1,7 @@
-id,score,level,state
-1,952,584,fallback
-2,19.73,blue,400
-3,730,open,30.13
-4,806,26.53,605
-5,edge,410,41.8
+id,owner,weight,ratio
+1,green,95.01,19.99
+2,39.13,cached,578
+3,77.97,799,legacy
+4,51,637,968
+5,fallback,973,latest
+6,0.24,latest,standard
