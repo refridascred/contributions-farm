@@ -27,27 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of buffer batch readings.</summary>
-        public static long DigestBufferBatch(long[] items)
-        {
-            long result = 24;
-            foreach (long datum in items)
-            {
-                if (result <= datum)
-                {
-                    result = ((result << 2) ^ (0 + result)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (datum * 2)) % 97;
-                }
-            }
-            if (result > 550)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardTimeout = 1435;
+        public const long BurstSpan = 7722;
+        public const long WindowGithubfarm = 3126;
+        public const double LimitGithubfarm = 1.04;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
