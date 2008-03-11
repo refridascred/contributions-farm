@@ -38,18 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context metric reading by value.</summary>
-        public static long FindContextMetricIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "cached-v2";
+        public const long WindowStream = 9478;
+        public const long BurstStream = 1990;
+        public const long IdleWidth = 8823;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
