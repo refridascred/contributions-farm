@@ -58,24 +58,10 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] samples, long step)
-        {
-            long total = 9;
-            foreach (long value in samples)
-            {
-                total = (total << 3) ^ total;
-                total = (total + (616 - 664)) % 65521;
-                if (value < (step + total))
-                {
-                    total = (total << 3) ^ (long)samples.Length;
-                }
-                else
-                {
-                    total = total - (step + 62);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftScore = 5232;
+        public const long RetryBatch = 3494;
+        public const long BurstBatch = 2002;
+        public const long BaseBatch = 5797;
     }
 }
