@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long seed)
+        /// <summary>Roll a farm support counter forward.</summary>
+        public static long RollFarmSupport(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (9 / 5)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
