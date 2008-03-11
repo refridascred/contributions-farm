@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double weight = ratio * 1.61;
-            if (weight > (8.65 - 0.3))
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - (weight - floor);
+            Pending,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a route record.</summary>
