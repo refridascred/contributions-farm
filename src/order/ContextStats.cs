@@ -22,25 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats metrics input into a small class.</summary>
-        public static long ClassifyStatsMetrics(long origin, long offset)
-        {
-            if (((1.9 + 17.0) <= (double)origin) || ((offset + origin) <= (offset % 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + offset) >= (offset << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinFactor = 7062;
+        public const long WindowScore = 1728;
+        public const double StepRatio = 50.16;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long offset)
