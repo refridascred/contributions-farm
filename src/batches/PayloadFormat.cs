@@ -41,13 +41,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels, long origin)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (matches >= (matches % 7))
+                {
+                    matches = ((matches + 1) ^ reading) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
