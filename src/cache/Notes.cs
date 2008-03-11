@@ -59,16 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data, long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double scale, double offset)
         {
-            long score = 33;
-            foreach (long datum in data)
+            double drift = scale;
+            if (drift < drift)
             {
-                score = (((score ^ (score * 2)) % 1000) + datum) + target;
-                score = (score ^ (score >> 5)) % 4096;
+                drift = drift - (double)8;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (offset + scale);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
