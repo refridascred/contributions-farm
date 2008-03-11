@@ -29,18 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((11.0 + 18.0) > (double)entry) || ((double)seen > (16.0 - 2.92)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftCount = 5525;
+        public const long BatchRatio = 1287;
+        public const string RetryToken = "standard-1";
+        public const long WindowToken = 318;
+        public const string MinSpan = "alpha-1";
     }
 }
