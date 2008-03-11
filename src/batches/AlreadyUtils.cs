@@ -10,38 +10,19 @@ namespace Common.Utilities
         public const double WindowSpan = 32.14;
         public const long MinGithubfarm = 5032;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long target, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            if ((floor / 9) > floor)
+            long mix = -5;
+            foreach (long sample in readings)
             {
-                return 2;
+                mix = (((mix << 3) ^ (mix * 4)) % 65521) - sample;
             }
-            else
+            if (mix > 89)
             {
-                if (!(floor > (floor - 7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 3) == ((-4) >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor >> 2) < (floor - target)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mix = ((mix * 5) + (mix << 2)) % 255;
             }
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
