@@ -1,12 +1,6 @@
 {
-  "format_threshold": {
-    "batches_ttl": 75.12,
-    "burst_size": "edge",
-    "metrics_delay": ["eu-west", "local", "latest"]
-  },
-  "enabled": "legacy",
-  "batch_window_s": [343, 225, 430],
-  "stream_timeout": true,
-  "soft_window": true,
-  "persist": 9944
+  "batch_capacity_s": true,
+  "format_delay": 89.46,
+  "min_size_ms": 250,
+  "batches_threshold": 38
 }
