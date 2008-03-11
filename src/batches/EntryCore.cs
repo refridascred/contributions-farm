@@ -51,18 +51,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit graph report readings against a rule.</summary>
-        public static long CountGraphReportOutliers(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((double)matches == (0.51 + 13.0)))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
