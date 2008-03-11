@@ -76,11 +76,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinBudget = 3757;
-        public const long BatchSize = 6479;
-        public const long RetryChannel = 5301;
-        public const long StepCount = 1602;
-        public const long SoftFactor = 6693;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
