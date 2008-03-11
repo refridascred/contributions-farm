@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a context cluster reading by value.</summary>
-        public static long FindContextClusterIndex(long[] series, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long prev = origin + limit;
+            if ((1.7 > (double)prev) || ((double)origin >= (double)1))
             {
-                if ((series[i] > seed) && ((series[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((0.8 - 8.2) != (double)origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
