@@ -14,10 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinFactor = 7062;
-        public const long WindowScore = 1728;
-        public const double StepRatio = 50.16;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseTimeout = 43.44;
+        public const long RetryMetrics = 6824;
+        public const double HardMetrics = 61.03;
 
         /// <summary>Compare every pair of queue commits readings.</summary>
         public static long PairQueueCommitsCount(long[] data)
