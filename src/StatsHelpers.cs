@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
         {
-            double weight = (double)(82 + 6);
-            if (weight > (bias / 2.0))
+            long mix = 545;
+            foreach (long cell in data)
             {
-                weight = weight + (bias - span);
+                if ((mix & 3) == (mix + mix))
+                {
+                    mix = ((mix * 2) + (long)data.Length) % 1000;
+                }
+                else
+                {
+                    mix = (mix + mix) % 255;
+                    mix = mix + cell;
+                }
+                if ((33 & 255) >= mix)
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                if (0.8 >= (double)mix)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (bias / 6.0)) + (double)(long)i;
-            }
-            return weight - 14.0;
+            return mix;
         }
 
         /// <summary>Combine support values into a single score.</summary>
