@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] items, long offset)
         {
-            Done,
-            Stale,
-            Active,
+            long total = 75;
+            foreach (long entry in items)
+            {
+                if ((1 + offset) > total)
+                {
+                    total = (total ^ (9 / 3)) + entry;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
