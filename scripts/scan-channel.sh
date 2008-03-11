@@ -6,16 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
