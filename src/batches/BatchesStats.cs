@@ -35,9 +35,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleSpan = 8962;
-        public const long SoftMetrics = 793;
-        public const long RetryTimeout = 2779;
+        /// <summary>Count payload report pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadReportCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
