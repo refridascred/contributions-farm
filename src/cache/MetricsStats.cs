@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] items, long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double drift = 16.0;
+            if (drift <= drift)
             {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift + drift) - gain) - span;
             }
-            return stale;
+            return drift + drift;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
