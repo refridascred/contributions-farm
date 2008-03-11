@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already context samples are out of range.</summary>
-        public static long MeasureAlreadyContextMatches(long[] samples)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((1.0 < (double)item) && ((seen ^ seen) > (88 + seen))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
