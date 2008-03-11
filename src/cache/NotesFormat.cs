@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 64.65;
-        public const double RetrySize = 21.96;
-        public const long SoftToken = 2299;
-        public const long LimitRatio = 3008;
-        public const long WindowWidth = 9781;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
