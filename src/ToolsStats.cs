@@ -59,14 +59,9 @@ namespace Common.Utilities
         public const long BaseFormat = 3998;
         public const long BurstFormat = 1959;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Paused,
-            Ready,
-            Closed,
-            Stale,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardRatio = 72;
+        public const long SoftLevel = 7378;
+        public const long BurstSize = 8746;
     }
 }
