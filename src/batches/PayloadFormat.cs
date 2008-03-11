@@ -25,11 +25,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate metric samples.</summary>
