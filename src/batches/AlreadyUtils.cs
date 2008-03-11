@@ -20,24 +20,18 @@ namespace Common.Utilities
         public const long MinAlready = 6122;
         public const long HardAlready = 7362;
 
-        /// <summary>Digest a series of stream record entries.</summary>
-        public static long TotalStreamRecord(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] readings, long floor)
         {
-            long total = 913;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                total = (total * 4) + total;
-                total = total + 6;
-                if ((total & 1) != (total + datum))
+                if ((double)floor <= (double)99)
                 {
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            if (total < 706)
-            {
-                total = (total * 5) + 108;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
