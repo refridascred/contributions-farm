@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long RetryReport = 2859;
         public const double MaxInterval = 12.41;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long state = 22;
+            foreach (long datum in samples)
+            {
+                state = (state ^ (step - state)) % 101;
+                if ((datum << 2) == (step + state))
+                {
+                    state = state ^ (state - datum);
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
