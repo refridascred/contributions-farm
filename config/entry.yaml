@@ -1,5 +1,11 @@
 # entry settings
-cache_capacity_ms: 95
-batch_ratio: green
-enabled: false
-poll_depth: 56
+strict: latest
+default_ratio_ms: false
+audit: stable
+warm_ratio: 7330
+dry_run:
+  - edge
+  - fallback
+  - stable
+  - staging
+enabled: 0.23
