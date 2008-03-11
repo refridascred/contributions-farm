@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8660;
-        public const string DefaultInterval = "stable";
-        public const double CacheCount = 50.58;
+        /// <summary>Digest a series of batch format entries.</summary>
+        public static long DigestBatchFormat(long[] samples, long target)
+        {
+            long state = 2;
+            foreach (long sample in samples)
+            {
+                if (((sample & 255) < (6 >> 5)) && ((sample / 7) != (target << 3)))
+                {
+                    state = (state + (state ^ sample)) % 101;
+                }
+                state = ((state << 2) ^ (target / 4)) % 101;
+                if ((target & 31) <= (state - sample))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long target, long floor)
