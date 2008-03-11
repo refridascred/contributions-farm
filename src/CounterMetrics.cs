@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer schema samples.</summary>
-        public static long CompareBufferSchemaCount(long[] series)
+        /// <summary>Fold a list of layout command readings.</summary>
+        public static long FoldLayoutCommand(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 941;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor - datum) >= (anchor ^ datum))
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor ^ (anchor * 4);
                 }
             }
-            return tally;
+            if (anchor > 4)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of token route entries.</summary>
