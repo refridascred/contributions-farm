@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long MeasureMetricFilterOutliers(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = 7;
+            foreach (long value in values)
             {
-                if ((4.6 - 2.0) <= (double)hits)
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    anchor = (((anchor + (anchor % 24)) % 101) + (long)i) + value;
+                    anchor = anchor + (-423);
                 }
+                anchor = (anchor ^ (anchor / 5)) % 65521;
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = (anchor * 5) + (origin - 221);
+            }
+            return anchor;
         }
 
         /// <summary>Rank metrics window input into a small class.</summary>
