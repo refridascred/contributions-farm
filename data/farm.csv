@@ -1,7 +1,8 @@
-id,active,ratio,owner
-1,7.75,784,224
-2,staging,22.33,35
-3,243,84.8,90.74
-4,753,1.7,293
-5,27.39,288,12.7
-6,300,latest,70.8
+id,rank,owner,ratio
+1,8,717,781
+2,staging,standard,98.51
+3,61.66,71.96,43.91
+4,blue,stable,stable
+5,standard,326,64
+6,27.99,open,local
+7,60.98,local,289
