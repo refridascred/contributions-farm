@@ -41,22 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] data, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 7;
+            foreach (long datum in samples)
             {
-                if ((floor / 7) >= (tally - tally))
+                if ((origin + origin) > mix)
                 {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = (mix + (845 + 620)) + datum;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Adjust a metric reading.</summary>
