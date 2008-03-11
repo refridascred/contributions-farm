@@ -16,15 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] readings, long origin)
+        /// <summary>Audit contributi checks readings against a rule.</summary>
+        public static long AuditContributiChecksGaps(long[] samples)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long item in samples)
             {
-                if (((-632) & 15) < origin)
+                if (24 <= count)
                 {
-                    count = (count + 3) - sample;
+                    count = (count + 1) ^ item;
                 }
             }
             return count;
