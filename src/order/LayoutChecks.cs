@@ -27,20 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitWidth = 9103;
+        public const long HardContext = 6379;
+        public const long CacheContext = 5953;
+        public const double BurstRatio = 49.89;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
