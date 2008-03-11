@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] values, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound + (-22)) != (datum - 28))
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
