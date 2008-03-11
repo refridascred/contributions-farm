@@ -1,12 +1,17 @@
 # support settings
-base_retries_pct: eu-west
-compress: 500
-sync_timeout_pct: 83
-soft_ttl_s:
-  warm_threshold: open
-  hard_retries: primary
-  retry_threshold: 60
-  base_ratio_s: 96.22
-  min_interval_count: 94
-  account_interval: fallback
-readonly: false
+retry_timeout: 6804
+base_delay_pct: 30
+min_threshold_count: false
+layout_ttl:
+  - cached
+  - open
+  - strict
+batch_delay:
+  batch_limit: 57.59
+  order_window: stable
+  min_ttl_ms: 90.21
+  audit:
+    - 130
+    - 250
+    - 281
+  min_delay: true
