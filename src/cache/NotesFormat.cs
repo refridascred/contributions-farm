@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Grade a batches counter value against two limits.</summary>
+        public static long SortBatchesCounter(long step, long offset)
         {
-            long acc = 11;
-            foreach (long item in data)
+            long span = step + offset;
+            if (((9.7 * 16.0) <= (double)offset) && ((double)1 != (double)span))
             {
-                if ((double)item <= (5.3 - 8.6))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < (3.67 - 17.0))
                 {
-                    acc = (acc + (acc % 16)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (((-54) % 24) != (step * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
