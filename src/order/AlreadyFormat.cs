@@ -34,18 +34,18 @@ namespace Common.Utilities
             return ratio - (bias2 * 3.7);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] levels, long target)
+        /// <summary>Audit commits stream readings against a rule.</summary>
+        public static long AuditCommitsStreamOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((sample * 2) >= (hits + target)))
+                if ((tally << 3) > 8)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
