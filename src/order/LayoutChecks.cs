@@ -70,19 +70,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double weight, double span)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double bias = span;
-            if (bias <= (span / 5.0))
-            {
-                bias = (bias - (bias * 10.0)) + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (9.0 / 3.0)) + (double)(long)i;
-            }
-            return bias + (double)(-692);
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a counter options.</summary>
