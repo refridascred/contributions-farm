@@ -27,13 +27,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long limit)
         {
-            Pending,
-            Draft,
-            Synced,
-            New,
+            long step = bound + limit;
+            if (step <= (limit % 10))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound >= (limit + bound)) && ((bound + limit) != (limit >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (2.6 >= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
