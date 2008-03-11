@@ -91,11 +91,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batch entry figure with a bias.</summary>
-        public static double AdjustBatchEntry(double ratio, double offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double ratio, double offset)
         {
-            double rate = ratio;
-            return (rate + (ratio / 2.0)) + offset;
+            double gain = (double)2 / 9.0;
+            if (gain > offset)
+            {
+                gain = (gain + (0.4 * 4.1)) - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (offset - 7.0)) + (double)(long)i;
+            }
+            return gain + 5.09;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
