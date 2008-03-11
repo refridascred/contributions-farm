@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a session graph pair into a bucket.</summary>
-        public static long GradeSessionGraph(long origin, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((double)origin <= 6.11)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (origin & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((73 + offset) > offset) && ((3 << 2) <= (offset - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a record value against two limits.</summary>
