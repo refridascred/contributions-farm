@@ -1,16 +1,6 @@
 # entry settings
-retry_window_pct:
-  cache_size_ms:
-    checks_size: 55
-    enabled: 21
-    account_delay: edge
-    min_retries_ms: false
-    cache_interval_ms:
-      - 93
-      - 314
-      - 443
-    schema_threshold: green
-  strict: strict
-  readonly: 0.11
-soft_size_ms: fallback
-retry_threshold: eu-west
+min_depth_count: 30
+cache_limit_count: 100
+batches_limit: primary
+readonly: 9093
+audit: 5001
