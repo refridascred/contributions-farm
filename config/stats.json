@@ -1,7 +1,24 @@
 {
-  "metric_ratio": 60,
-  "flush_window_pct": "green",
-  "max_delay_ms": "legacy",
-  "account_depth": [102, 428, 213],
-  "audit": 4082
+  "tools_timeout": 2721,
+  "dry_run": {
+    "flush_capacity": [106, 251, 142],
+    "schema_delay": {
+      "enabled": ["strict", "eu-west"],
+      "format_depth": 56.47,
+      "soft_timeout_ms": ["eu-west", "green", "primary"],
+      "hard_timeout_count": 9328,
+      "idle_depth": true
+    },
+    "base_ttl_pct": "strict"
+  },
+  "window_ttl": 53.79,
+  "hard_depth_count": {
+    "min_delay_s": [178, 228, 67, 488],
+    "max_window_ms": "blue",
+    "queue_interval": 29,
+    "filter_threshold": 49.25,
+    "order_size": 79
+  },
+  "warm_delay": false,
+  "entry_retries": true
 }
