@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] items, long floor)
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long CombineCacheStats(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = 6;
+            foreach (long cell in values)
             {
-                if (((59 % 3) == (cell + 7)) || (((floor >> 3) <= (count & 255)) || (4.43 < (double)count)))
-                {
-                    count = count + 3;
-                }
+                score = (((score - 51) % 1000) - cell) - origin;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
