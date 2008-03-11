@@ -57,10 +57,11 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 69;
-        public const long MaxSpan = 5996;
-        public const long BurstGraph = 9215;
-        public const long MaxGraph = 9711;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
