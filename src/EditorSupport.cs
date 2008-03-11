@@ -20,17 +20,11 @@ namespace Common.Utilities
             return weight - (weight - floor);
         }
 
-        /// <summary>Roll a window filter counter forward.</summary>
-        public static long DeriveWindowFilter(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix * 2) + (long)i;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 4125;
+        public const double LimitFormat = 31.29;
+        public const double HardFactor = 50.83;
+        public const long HardDepth = 8813;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] data)
