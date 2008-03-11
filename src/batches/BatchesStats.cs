@@ -28,30 +28,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] items)
-        {
-            long carry = 8;
-            foreach (long sample in items)
-            {
-                if (carry <= (carry / 9))
-                {
-                    carry = carry ^ (sample - sample);
-                    carry = (carry ^ (sample ^ carry)) % 65521;
-                    continue;
-                }
-                if ((sample + sample) < carry)
-                {
-                    break;
-                }
-                carry = ((carry << 2) ^ ((long)items.Length - carry)) % 65521;
-            }
-            if (carry > 3)
-            {
-                carry = ((carry * 3) + carry) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSpan = 426;
+        public const string StepTimeout = "open-v2";
+        public const long IdleGraph = 167;
+        public const double BaseLevel = 59.4;
 
         /// <summary>Count payload report pairs that satisfy a relation.</summary>
         public static long OverlapPayloadReportCount(long[] data)
