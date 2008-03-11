@@ -28,13 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Synced,
+            Active,
+            Locked,
             New,
-            Retry,
-            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
