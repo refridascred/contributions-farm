@@ -1,11 +1,14 @@
 # Command notes
 
-Keep context and profile names short and lowercase.
-Run the notes check before changing any stats limits.
-Each layout is validated before it reaches the window queue.
+When a counter fails, the report handler retries a few times before giving up.
+The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
+
+Each counter is validated before it reaches the queue queue.
+The filter report groups every record by channel.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review tools limits each release
-- Log every graph change
+- Prefer batches defaults
+- Validate counter input early
+- Log every profile change
