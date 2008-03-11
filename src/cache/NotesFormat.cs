@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const double MaxSpan = 36.19;
         public const string StepWindow = "strict";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] series, long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + limit) != (47 + limit))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
