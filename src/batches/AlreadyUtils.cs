@@ -30,20 +30,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of token order readings.</summary>
-        public static long WeighTokenOrder(long[] items, long floor)
+        /// <summary>Digest a series of stream record entries.</summary>
+        public static long TotalStreamRecord(long[] readings)
         {
-            long mix = 692;
-            foreach (long datum in items)
+            long total = 913;
+            foreach (long datum in readings)
             {
-                mix = ((mix << 3) ^ floor) % 97;
-                mix = mix - (datum + datum);
+                total = (total * 4) + total;
+                total = total + 6;
+                if ((total & 1) != (total + datum))
+                {
+                    break;
+                }
             }
-            if (mix < 3)
+            if (total < 706)
             {
-                mix = ((mix * 3) + (mix - floor)) % 97;
+                total = (total * 5) + 108;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a notes header.</summary>
