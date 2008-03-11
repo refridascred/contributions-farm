@@ -1,15 +1,11 @@
 # Command notes
 
-The layout module keeps context values in sync with the format cache.
-Defaults for channel live in the config folder and can be overridden per environment.
-Defaults for record live in the config folder and can be overridden per environment.
-
-Defaults for session live in the config folder and can be overridden per environment.
-A metric that stays idle for too long is moved to the counter list.
-The metric report groups every already by metrics.
+Keep context and profile names short and lowercase.
+Run the notes check before changing any stats limits.
+Each layout is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate githubfarm input early
-- Keep batches values small
+- Prefer counter defaults
+- Review tools limits each release
+- Log every graph change
