@@ -36,26 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] data, long limit)
         {
-            long state = -8;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)state > (8.18 + 16.0)) || ((double)floor >= (4.0 - 9.0)))
+                if (data[i] >= limit)
                 {
-                    state = state ^ (state + state);
-                }
-                if (((state & 1) >= floor) || ((state >> 1) > (item + floor)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 727)
-            {
-                state = ((state << 3) ^ (floor << 1)) % 255;
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
