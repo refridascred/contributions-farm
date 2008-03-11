@@ -18,14 +18,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultSpan = "stable";
+        public const long SoftDepth = 8019;
+        public const long BurstTimeout = 6128;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] data, long origin)
