@@ -15,31 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long floor2)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((double)floor < (double)floor2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 & 63) != (floor2 + floor2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor2 <= (41 ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Locate a commits command reading by value.</summary>
