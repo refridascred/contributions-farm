@@ -82,10 +82,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 6977;
-        public const long WindowTimeout = 8806;
-        public const double WindowTools = 77.96;
-        public const long HardInterval = 2434;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
