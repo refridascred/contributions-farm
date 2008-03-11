@@ -15,18 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the window checks entries that pass the check.</summary>
-        public static long AuditWindowChecksHits(long[] readings, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen % 100) >= seen)
-                {
-                    seen = ((seen + 2) ^ cell) - offset;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many support notes samples are out of range.</summary>
