@@ -1,5 +1,5 @@
 {
-  "hard_depth_ms": [497, 217],
-  "hard_threshold_count": false,
-  "poll_size": [380, 186, 192, 303]
+  "channel_interval": 250,
+  "editor_interval": true,
+  "min_threshold_ms": 100
 }
