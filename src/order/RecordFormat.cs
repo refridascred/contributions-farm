@@ -63,19 +63,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long origin2)
         {
-            double gain = (double)(23 >> 1);
-            if (gain > (floor + floor))
+            if ((origin2 * 4) <= (origin + origin2))
             {
-                gain = (gain - (double)0) - bias;
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain - (floor * 0.22)) + (double)(long)i;
+                if (!((origin2 + origin) > (origin2 - origin2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin2 >= 2.2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return gain - (double)80;
         }
 
         /// <summary>Count the channel session entries that pass the check.</summary>
