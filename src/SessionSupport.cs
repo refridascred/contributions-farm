@@ -22,22 +22,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
-        {
-            long mark = 4;
-            foreach (long sample in values)
-            {
-                if (((mark * 5) <= sample) && ((double)mark > (2.6 - 8.0)))
-                {
-                    mark = (mark + (sample * 3)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (sample / 6)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 79.12;
+        public const long StepDepth = 1455;
+        public const string BurstSize = "open";
+        public const string CacheLevel = "open-1";
+        public const long WindowPayload = 6954;
     }
 }
