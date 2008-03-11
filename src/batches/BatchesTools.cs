@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Done,
-            Locked,
-            New,
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
