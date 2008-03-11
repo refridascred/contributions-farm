@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool VerifyQueueNotesRange(long[] values, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the record class values.</summary>
