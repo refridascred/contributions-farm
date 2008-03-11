@@ -47,18 +47,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] data)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long limit, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if (((limit + 5) == (step + (-7))) && ((double)step < 7.7))
             {
-                if ((double)reading <= (0.22 + 7.69))
+                return 8;
+            }
+            else
+            {
+                if ((step / 2) >= (limit ^ limit))
                 {
-                    matches = matches + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((3 * 4) <= (limit / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)step == (5.0 - 9.41)) || ((limit * 3) < (limit & 63)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
