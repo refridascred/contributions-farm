@@ -28,9 +28,32 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 593;
-        public const long LimitTools = 3096;
-        public const string SoftCount = "open-1";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings)
+        {
+            long total = 93;
+            foreach (long entry in readings)
+            {
+                if (((723 & 31) == (total / 5)) && ((9.0 / 9.0) == (double)entry))
+                {
+                    total = (total ^ (total & 7)) % 4096;
+                    break;
+                }
+                else
+                {
+                    total = (total * 4) + total;
+                    total = ((total * 2) + (total * 3)) % 101;
+                }
+                if ((total + total) > total)
+                {
+                    total = (total << 3) ^ (866 + (-171));
+                }
+            }
+            if (total > 1)
+            {
+                total = (total + (total - total)) % 97;
+            }
+            return total;
+        }
     }
 }
