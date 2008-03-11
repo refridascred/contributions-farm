@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 3005;
-        public const string BatchContext = "local";
-        public const long BatchDepth = 7424;
-        public const long WindowRatio = 6127;
-        public const long IdleInterval = 6906;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry << 3) ^ (5 >> 5);
+                carry = ((carry << 2) ^ (seed << 2)) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterOutliers(long[] readings)
