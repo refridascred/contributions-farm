@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 1168;
-        public const long StepBudget = 8585;
-        public const string HardToken = "stable-edge";
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double span)
+        {
+            double load = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + (double)37) + (double)(long)i) - span;
+            }
+            return load + (load + 14.0);
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxAlready = 8778;
