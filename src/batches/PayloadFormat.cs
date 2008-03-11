@@ -32,18 +32,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine schema editor values into a single score.</summary>
-        public static long TallySchemaEditor(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long mix = 775;
-            foreach (long sample in items)
+            long carry = 824;
+            foreach (long datum in items)
             {
-                if ((mix & 31) <= (mix + sample))
+                long count = (carry ^ carry) + (datum & 127);
+                if ((count << 1) <= (771 & 255))
                 {
-                    mix = mix + (sample & 127);
+                    carry = ((carry * 3) + (datum * 2)) % 101;
+                    break;
                 }
+                carry = (carry ^ (datum / 5)) % 1000;
             }
-            return mix;
+            return carry;
         }
     }
 }
