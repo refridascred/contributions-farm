@@ -21,17 +21,11 @@ namespace Common.Utilities
         public const long CacheDepth = 3789;
         public const long HardSpan = 1477;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long floor)
+        /// <summary>Adjust a farm stream reading.</summary>
+        public static double AdjustFarmStream(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (8.0 / 5.0) * 2.0;
+            return (mean + offset) + scale;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
