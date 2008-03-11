@@ -10,18 +10,25 @@ namespace Common.Utilities
         public const long DefaultChannel = 9315;
         public const long MinCount = 7618;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] series, long seed)
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long ClassifyMetricSupport(long step, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long bound2 = step + bound;
+            if ((bound - bound2) != (bound2 * 2))
             {
-                if ((cell - 50) > cell)
+                return 6;
+            }
+            else
+            {
+                if (((bound ^ step) <= (step << 1)) && ((bound << 2) >= (bound + 407)))
                 {
-                    tally = (tally + 2) - seed;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a route snapshot.</summary>
