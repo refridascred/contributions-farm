@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long DefaultChannel = 9315;
         public const long MinCount = 7618;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long bound, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] series, long seed)
         {
-            if (95 > bound)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (0.69 * 9.13))
+                if ((cell - 50) > cell)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((0 < (origin + origin)) && (origin < bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound > origin) && ((bound - origin) == (397 * 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 2) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a route snapshot.</summary>
