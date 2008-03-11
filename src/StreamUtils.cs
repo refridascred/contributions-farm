@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double rate = offset;
-            if (rate < (14.0 + weight))
-            {
-                rate = rate + weight;
-            }
-            else
-            {
-                rate = rate + (offset + offset);
-            }
-            return rate + (double)(-826);
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
