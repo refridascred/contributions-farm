@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data)
+        /// <summary>Audit command profile readings against a rule.</summary>
+        public static long CountCommandProfileGaps(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)item != (2.1 - 19.0))
+                if ((double)offset < (9.8 + 1.0))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank metric support input into a small class.</summary>
