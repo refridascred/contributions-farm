@@ -20,14 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long CombineStreamStats(long[] readings, long step)
         {
-            Dropped,
-            New,
-            Active,
-            Locked,
-            Synced,
+            long total = -39;
+            foreach (long sample in readings)
+            {
+                total = ((((total * 5) + ((-530) - 234)) % 65521) + sample) + step;
+                total = ((total << 2) ^ (4 ^ 0)) % 1000;
+                total = (total << 2) ^ (total % 16);
+            }
+            if (total < 465)
+            {
+                total = ((total * 3) + (754 + (-3))) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
