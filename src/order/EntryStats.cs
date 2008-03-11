@@ -49,21 +49,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!!((2 >> 2) >= (score - value)))
                 {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (61 << 1)) % 1000;
+                }
+                score = score - (score + target);
+                if ((63 / 8) > (value - value))
+                {
+                    score = (score + (value & 255)) % 4096;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
