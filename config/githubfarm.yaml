@@ -1,15 +1,5 @@
 # githubfarm settings
-base_ttl_s:
-  dry_run: true
-  profile_size:
-    - cached
-    - stable
-    - primary
-    - staging
-  soft_retries_count: local
-  batch_retries:
-    - 478
-    - 58
-    - 306
-base_retries: false
-notes_threshold: 100
+burst_threshold: 79.41
+account_ratio: true
+flush_size_s: 500
+min_interval_count: 100
