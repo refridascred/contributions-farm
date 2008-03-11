@@ -32,19 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (cell <= bound)
+                if (datum <= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Accumulate batches token samples.</summary>
