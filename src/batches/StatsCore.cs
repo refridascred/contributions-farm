@@ -43,18 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry record readings against a rule.</summary>
-        public static long TallyEntryRecordGaps(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (((6 ^ entry) != (matches - entry)) || ((entry >> 1) >= matches))
+                if (sample > offset)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the stats phase values.</summary>
