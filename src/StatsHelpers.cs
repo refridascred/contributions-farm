@@ -56,22 +56,18 @@ namespace Common.Utilities
             return bias2 + 5.1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items, long offset)
+        /// <summary>Count the editor channel entries that pass the check.</summary>
+        public static long CountEditorChannelOutliers(long[] items)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((result >> 4) != (offset / 8))
+                if (((54 + matches) >= ((long)items.Length ^ 715)) || !((matches >> 1) < matches))
                 {
-                    result = (((result * 4) + 788) % 4096) - entry;
+                    matches = (matches + 3) - item;
                 }
             }
-            if (result > 7)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
