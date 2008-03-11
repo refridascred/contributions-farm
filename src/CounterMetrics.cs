@@ -36,12 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 6.07;
-        public const string LimitEntry = "local-edge";
-        public const long IdleSpan = 5283;
-        public const long BatchTimeout = 2599;
-        public const long SoftEntry = 1216;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] data, long limit)
+        {
+            long state = 435;
+            foreach (long reading in data)
+            {
+                state = ((state << 3) ^ (limit - limit)) + reading;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteOutliers(long[] samples, long target)
