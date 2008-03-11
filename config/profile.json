@@ -1,5 +1,19 @@
 {
-  "commits_timeout": [128, 264],
-  "warm_timeout": "local",
-  "sync_threshold": 78.0
+  "soft_ratio_count": 7733,
+  "persist": 34.64,
+  "compress": 69.4,
+  "queue_ratio": {
+    "batch_ttl": false,
+    "readonly": {
+      "persist": "staging",
+      "min_interval": 30.99,
+      "default_capacity_ms": "eu-west",
+      "min_limit_s": "latest",
+      "verbose": "latest",
+      "counter_interval": "latest"
+    },
+    "batches_delay": 37.21,
+    "strict": 22.49
+  },
+  "base_interval_ms": "legacy"
 }
