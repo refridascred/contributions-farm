@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBudget = 445;
-        public const long IdleBatches = 4413;
-        public const long WindowBatches = 7978;
-        public const string IdleDepth = "alpha-v2";
-        public const long RetryDepth = 7196;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long ScoreSupport(long[] items, long origin)
