@@ -19,21 +19,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 406;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((sum + sum) != (limit + sum)) && (sum >= 92))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum * 3) + (limit ^ limit);
+                    break;
+                }
+                if ((long)samples.Length > sum)
+                {
+                    sum = (sum ^ (value & 7)) % 97;
                 }
             }
-            return tally;
+            if (sum < (-1))
+            {
+                sum = (sum << 3) ^ limit;
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes summary.</summary>
