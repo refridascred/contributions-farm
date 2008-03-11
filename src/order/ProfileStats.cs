@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit contributi checks readings against a rule.</summary>
-        public static long AuditContributiChecksGaps(long[] samples)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (24 <= count)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a counter snapshot.</summary>
