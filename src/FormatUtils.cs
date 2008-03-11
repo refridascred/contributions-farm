@@ -28,24 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long sum = 26;
-            foreach (long sample in readings)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                long delta = sample << 1;
-                sum = sum ^ (delta - sum);
-                if ((sum * 3) < sample)
-                {
-                    sum = ((sum << 2) ^ (sample & 255)) % 97;
-                }
-                if ((double)sample == (8.3 / 9.0))
-                {
-                    break;
-                }
+                carry = (carry ^ limit) % 1000;
+                carry = carry ^ (carry / 7);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
