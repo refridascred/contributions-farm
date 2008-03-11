@@ -56,19 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (item < floor)
+                if ((7.93 + 15.0) <= (double)entry)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
