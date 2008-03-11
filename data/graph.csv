@@ -1,7 +1,10 @@
-id,state,label
-1,staging,57.78
-2,edge,35.39
-3,840,726
-4,cached,298
-5,local,edge
-6,846,63.22
+id,owner,state,token
+1,64.66,272,37.88
+2,40.36,open,legacy
+3,standard,latest,97.7
+4,stable,staging,47.42
+5,46.97,18.77,legacy
+6,247,43.09,local
+7,edge,green,403
+8,817,99,3.34
+9,53,primary,194
