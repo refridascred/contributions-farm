@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((((double)seen >= (double)datum) || ((double)seen > (double)datum)) && !((datum ^ datum) > (seen + datum)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleDepth = 5299;
+        public const long DefaultCounter = 450;
+        public const double MinScore = 72.12;
+        public const long LimitCounter = 9322;
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
