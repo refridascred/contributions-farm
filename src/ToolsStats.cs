@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long CacheCluster = 4098;
         public const long WindowScore = 4238;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample != target)
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the checks kind values.</summary>
