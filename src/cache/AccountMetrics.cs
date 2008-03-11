@@ -17,22 +17,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] data, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 756;
+            foreach (long reading in data)
             {
-                if ((double)value > (double)bound)
+                double drift = (4.9 + 8.9) * 18.0;
+                if ((((-283) + total) > (total ^ reading)) && (drift >= (9.5 / 9.0)))
                 {
-                    seen = seen + 3;
+                    drift = drift + drift;
+                }
+                if ((reading + total) < reading)
+                {
+                    total = total + (total - 645);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total + (-9)) % 101;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
