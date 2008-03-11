@@ -39,19 +39,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Find the first counter checks entry that matches the target.</summary>
+        public static long FindCounterChecksIndex(long[] samples, long limit)
         {
-            double drift = (1.89 + rate) / 7.0;
-            if (drift > drift)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - (double)1;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift - (offset + rate);
+            return -1;
         }
     }
 }
