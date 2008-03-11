@@ -42,21 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a counter summary.</summary>
