@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Queued,
-            Retry,
-            Active,
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
