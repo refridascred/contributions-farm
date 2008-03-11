@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate schema route readings against a bound.</summary>
-        public static bool VerifySchemaRouteBounds(long[] series, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry >= bound)
+                if ((((seen - seen) != (seen & 3)) && ((double)cell < (11.0 - 8.0))) && ((double)seen < (4.47 * 4.5)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
