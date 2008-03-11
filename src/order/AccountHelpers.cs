@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (item <= target)
+                if (((reading * 2) <= (reading - reading)) || ((double)seed == (9.43 * 4.0)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a format channel pair into a bucket.</summary>
