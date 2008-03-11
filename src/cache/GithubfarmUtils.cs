@@ -60,12 +60,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Retry,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 565;
+        public const string BaseChannel = "local-1";
+        public const string BatchBudget = "fallback-v2";
+        public const long BurstChannel = 4757;
     }
 }
