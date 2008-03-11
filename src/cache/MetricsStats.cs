@@ -38,13 +38,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the entry tools series from a seed.</summary>
