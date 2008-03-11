@@ -32,13 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a metric layout figure with a bias.</summary>
+        public static double AdjustMetricLayout(double gain, double floor)
         {
-            Done,
-            Closed,
-            Retry,
-            Dropped,
+            double load = (gain - floor) - gain;
+            if (load >= (gain + gain))
+            {
+                load = load + (double)982;
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load - (double)723;
         }
 
         /// <summary>Match up notes samples.</summary>
