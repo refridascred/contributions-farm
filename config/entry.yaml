@@ -1,8 +1,6 @@
 # entry settings
-dry_run: 60
-retry_threshold: standard
-soft_ratio: 6171
-readonly:
-  - open
-  - open
-  - blue
+soft_capacity_pct: edge
+hard_size_ms: false
+entry_delay: 1024
+sync_timeout_count: false
+order_retries: latest
