@@ -19,17 +19,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)(-4) >= (double)4) && ((double)bound > (4.0 + 3.21)))
             {
-                if (values[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if (seed <= (8 >> 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= 7.9)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
