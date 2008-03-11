@@ -41,18 +41,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((item + item) <= (621 ^ item)) || ((item > (item ^ seed)) && ((double)item > (2.39 + 9.2))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "alpha";
+        public const long StepNotes = 77;
+        public const double RetryLevel = 98.16;
+        public const long WindowNotes = 8170;
+        public const double BaseSize = 98.0;
     }
 }
