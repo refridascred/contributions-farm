@@ -15,12 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 7187;
-        public const long IdleReport = 5943;
-        public const long SoftWidth = 5647;
-        public const long BurstSpan = 1800;
-        public const long StepReport = 5935;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long RankNotes(long floor, long target)
