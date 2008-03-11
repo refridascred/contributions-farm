@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double scale, double bias)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double load = scale * 2.7;
-            if (load > bias)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + (double)8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - load;
+            Pending,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the entry kind values.</summary>
