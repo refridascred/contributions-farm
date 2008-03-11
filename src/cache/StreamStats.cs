@@ -35,17 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long floor)
+        /// <summary>Validate contributi farm readings against a bound.</summary>
+        public static bool VerifyContributiFarmRange(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= floor)
+                if (cell != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
