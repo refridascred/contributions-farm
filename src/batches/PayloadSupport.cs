@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 4551;
+        public const double IdleSize = 93.85;
+        public const long MinBatches = 3049;
+        public const string BatchBatches = "stable";
+        public const double CacheBatches = 12.87;
 
         /// <summary>Digest a series of counter cluster entries.</summary>
         public static long FoldCounterCluster(long[] levels, long seed)
