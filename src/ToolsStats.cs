@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const string MaxSpan = "primary-edge";
         public const long StepTools = 98;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long sum = 6;
-            foreach (long datum in data)
+            long state = 6;
+            foreach (long reading in data)
             {
-                sum = (sum << 2) ^ datum;
+                state = ((state << 2) ^ ((-74) >> 2)) % 97;
+                if (476 <= ((-6) - reading))
+                {
+                    break;
+                }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 4) + sum) % 97;
-            }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Project the next metrics value.</summary>
