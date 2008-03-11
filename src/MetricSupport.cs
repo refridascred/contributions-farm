@@ -42,9 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardSize = "staging-v2";
-        public const double IdleGraph = 92.34;
-        public const string HardTimeout = "open";
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
