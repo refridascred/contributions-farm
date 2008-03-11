@@ -19,22 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long step, long seed)
         {
-            if ((double)step > (1.0 - 5.7))
+            long cur = step - seed;
+            if ((seed - 4) > (step + seed))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (!((80 - step) <= (step + step)))
+                if ((cur + 32) < step)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    if ((16.0 + 7.0) != (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
