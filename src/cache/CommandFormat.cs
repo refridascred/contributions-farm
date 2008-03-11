@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleScore = 9485;
-        public const long MaxStats = 6444;
-        public const string StepTimeout = "legacy-edge";
+        /// <summary>Scale a window entry figure with a bias.</summary>
+        public static double AdjustWindowEntry(double weight, double bias)
+        {
+            double drift = bias;
+            if (drift >= (double)3)
+            {
+                drift = drift + bias;
+            }
+            return drift - (weight / 3.0);
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long limit)
