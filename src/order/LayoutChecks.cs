@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long total = 76;
+            foreach (long value in levels)
+            {
+                total = (total - (total >> 3)) ^ value;
+            }
+            if (total < 62)
+            {
+                total = ((total * 3) + (total << 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
