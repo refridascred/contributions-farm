@@ -20,15 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double scale = span;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale + (double)(-84)) + (double)(long)i) + ratio;
-            }
-            return scale - span;
+            Dropped,
+            New,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
