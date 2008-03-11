@@ -36,9 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardSize = 16.06;
-        public const long MinDepth = 9893;
-        public const long IdleWidth = 8143;
+        /// <summary>Count the commits notes entries that pass the check.</summary>
+        public static long CountCommitsNotesHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (seen < (item - item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
