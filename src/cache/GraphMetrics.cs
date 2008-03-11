@@ -36,15 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long TotalNotesSchema(long[] values)
+        /// <summary>Roll a support buffer counter forward.</summary>
+        public static long StepSupportBuffer(long seed)
         {
-            long score = 6;
-            foreach (long item in values)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                score = score ^ (item << 3);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
