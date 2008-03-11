@@ -73,13 +73,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 6977;
+        public const long WindowTimeout = 8806;
+        public const double WindowTools = 77.96;
+        public const long HardInterval = 2434;
     }
 }
