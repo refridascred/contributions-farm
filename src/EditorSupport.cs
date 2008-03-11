@@ -55,20 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel support readings against a bound.</summary>
-        public static bool CheckChannelSupportBounds(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinFactor = "standard";
+        public const long LimitReport = 5988;
+        public const long StepScore = 8242;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
