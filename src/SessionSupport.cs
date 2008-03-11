@@ -34,24 +34,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            if ((offset >= 8) || ((2.0 * 19.0) < (double)offset))
+            long mark = 4;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset >= (20.0 + 18.0)) || ((178 + 1) >= (bound % 10)))
+                if (((mark * 5) <= sample) && ((double)mark > (2.6 - 8.0)))
                 {
-                    return 3;
+                    mark = (mark + (sample * 3)) % 101;
                 }
                 else
                 {
-                    return 2;
+                    mark = ((mark * 2) + (sample / 6)) % 255;
                 }
             }
+            return mark;
         }
     }
 }
