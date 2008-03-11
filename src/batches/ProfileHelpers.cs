@@ -35,18 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] samples, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = 251;
+            foreach (long value in items)
             {
-                if ((double)4 != (double)floor)
+                total = (total + total) % 4096;
+                if ((value << 3) <= (value >> 5))
                 {
-                    count = (count + 2) ^ cell;
+                    total = (total - (total + value)) % 97;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
