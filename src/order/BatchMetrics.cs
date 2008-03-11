@@ -80,19 +80,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= floor)
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
