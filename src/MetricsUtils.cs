@@ -19,10 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepSpan = "latest-v2";
-        public const long MaxCount = 4436;
-        public const double DefaultLevel = 61.72;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstCount = 4323;
+        public const long BurstScore = 5116;
+        public const long WindowCount = 5319;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
