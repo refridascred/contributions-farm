@@ -1,12 +1,6 @@
 # support settings
-strict: green
-entry_delay: strict
-cache_window_ms: false
-dry_run:
-  - 260
-  - 305
-  - 350
-  - 339
-default_capacity_ms:
-  - 5
-  - 316
+default_limit_ms: 6831
+checks_ttl: blue
+base_depth_pct: green
+tools_interval: true
+poll_window_pct: 90
