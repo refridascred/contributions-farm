@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitScore = 5695;
+        public const double LimitReport = 72.15;
+        public const long MinReport = 4528;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftMetrics = "open-edge";
