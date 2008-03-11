@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels, long target)
+        /// <summary>Fold a list of buffer account readings.</summary>
+        public static long TotalBufferAccount(long[] data)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            long result = 37;
+            foreach (long value in data)
             {
-                score = (score - score) - target;
-                if (datum <= score)
+                if ((6.19 - 0.1) < (double)value)
                 {
-                    break;
+                    result = (result ^ (result & 63)) % 1000;
                 }
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
