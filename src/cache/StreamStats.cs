@@ -28,20 +28,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double gain, double span)
-        {
-            double mean = (gain * 0.6) + gain;
-            if (mean < span)
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 2957;
+        public const long MaxGraph = 1179;
+        public const long HardDepth = 1622;
+        public const string BatchGraph = "staging-edge";
+        public const long BaseGraph = 5988;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long target, long target2)
