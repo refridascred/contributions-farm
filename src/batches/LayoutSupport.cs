@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long edge = target + offset;
-            if ((edge / 8) <= (target + edge))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.08 >= (double)edge) && (6 > offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset <= (target << 2)) && ((edge & 127) <= offset))
+                    if ((items[i] ^ items[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset + edge) < offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next route notes value.</summary>
