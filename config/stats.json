@@ -1,8 +1,8 @@
 {
-  "warm_capacity_ms": ["legacy", "local"],
-  "soft_threshold_ms": ["fallback", "cached", "legacy"],
-  "cache_timeout_s": false,
-  "farm_window": 62,
-  "audit": 60,
-  "max_capacity_pct": true
+  "cache_limit": "primary",
+  "enabled": "green",
+  "strict": 500,
+  "readonly": "legacy",
+  "session_depth": "local",
+  "warm_ttl_count": [175, 423, 364]
 }
