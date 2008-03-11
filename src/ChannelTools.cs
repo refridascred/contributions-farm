@@ -29,15 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double gain, double bias)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] series, long seed)
         {
-            double weight = bias;
-            if (weight < (double)465)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (13.0 * 8.2)) - gain;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight - bias;
+            return -1;
         }
     }
 }
