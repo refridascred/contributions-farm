@@ -15,20 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7214;
+        public const double HardReport = 43.69;
+        public const long CacheDepth = 3789;
+        public const long HardSpan = 1477;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] values, long floor)
