@@ -1,10 +1,23 @@
 # githubfarm settings
-already_ttl: 75.39
-enabled:
-  - open
-  - cached
-  - open
-  - local
-verbose: eu-west
-default_delay: 42.09
-metrics_delay: 100
+persist: 18.43
+readonly:
+  - 384
+  - 480
+cache_capacity: legacy
+burst_depth: false
+layout_depth:
+  dry_run:
+    compress:
+      - 432
+      - 255
+      - 276
+      - 111
+    route_delay: false
+    layout_timeout: legacy
+    already_interval: 30.9
+    idle_timeout: fallback
+    soft_capacity: true
+  payload_window: 80.95
+  account_limit: 60
+  hard_ratio_ms: 16
+  batch_interval_s: local
