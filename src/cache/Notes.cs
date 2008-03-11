@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Closed,
-            Dropped,
-            Active,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxSize = 3473;
+        public const long IdleChecks = 1654;
+        public const double CacheChecks = 4.82;
+        public const double DefaultLevel = 73.98;
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] series)
