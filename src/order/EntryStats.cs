@@ -68,17 +68,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] values, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (bias / 2.0) + (bias / 9.0);
+            if (rate >= bias)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (rate + bias)) - bias2;
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (double)56;
         }
     }
 }
