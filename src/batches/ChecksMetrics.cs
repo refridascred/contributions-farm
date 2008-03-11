@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a tools layout reading.</summary>
-        public static double AdjustToolsLayout(double weight, double span)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] items, long target)
         {
-            double drift = span + (span / 3.0);
-            if (drift <= (weight - span))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                drift = drift - (span * 6.93);
+                if ((entry % 12) > (matches ^ entry))
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift + 20.0;
+            return matches;
         }
 
         /// <summary>Count the window checks entries that pass the check.</summary>
