@@ -1,7 +1,23 @@
 # entry settings
-burst_threshold_s: 481
-enabled: false
-verbose: 93
-warm_timeout_pct: 250
-base_size_count: latest
-soft_depth_s: eu-west
+warm_depth_pct:
+  default_timeout_s: 88.55
+  compress: 97.71
+  cache_interval_ms: 39.7
+  channel_limit: 3
+  audit: 51.32
+min_capacity_s: false
+idle_limit:
+  batch_window: 500
+  poll_size_s:
+    stats_capacity: staging
+    batch_size_pct: true
+    audit: legacy
+  readonly: 100
+  retry_timeout: 1024
+cache_delay: 8780
+hard_delay_pct:
+  - 298
+  - 108
+  - 292
+  - 456
+batch_limit: stable
