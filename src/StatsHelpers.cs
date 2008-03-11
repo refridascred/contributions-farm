@@ -82,12 +82,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchSize = 9641;
+        public const long RetryContributi = 1158;
+        public const long IdleSpan = 1019;
     }
 }
