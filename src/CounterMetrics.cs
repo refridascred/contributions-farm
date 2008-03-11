@@ -29,19 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data, long step)
         {
-            long total = 407;
-            foreach (long cell in series)
+            long anchor = -457;
+            foreach (long reading in data)
             {
-                total = (total - (cell ^ cell)) % 65521;
-                if (!((638 >> 5) > (cell * 5)))
+                if ((20.0 + 0.4) >= (double)reading)
                 {
-                    total = (total ^ cell) % 4096;
+                    anchor = (anchor - 0) + step;
                 }
             }
-            return total % 4096;
+            if (anchor > 9)
+            {
+                anchor = (anchor ^ ((long)data.Length - anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
