@@ -1,16 +1,10 @@
 # githubfarm settings
-poll_capacity:
-  default_threshold_count: 1024
-  default_window_count: blue
-  poll_timeout_count: 19.02
-  audit: 32.64
-  burst_window_s:
-    - 479
-    - 436
-    - 486
-  verbose: false
-batch_window_pct: false
-checks_timeout: 125
-flush_ttl: false
-profile_timeout: false
-min_capacity_s: 68
+tools_ratio: 5
+compress: 18
+retry_ratio_pct: strict
+flush_interval_ms: 3774
+metrics_ratio:
+  - open
+  - legacy
+  - open
+burst_depth_s: true
