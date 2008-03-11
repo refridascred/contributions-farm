@@ -65,18 +65,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] series, long step)
+        /// <summary>Digest a series of window counter entries.</summary>
+        public static long CombineWindowCounter(long[] series)
         {
-            long seen = 0;
+            long sum = 392;
             foreach (long sample in series)
             {
-                if (((7 / 6) <= (sample + sample)) || (((sample + sample) == (sample / 6)) || ((sample >> 4) == (482 - step))))
+                if (51 < sum)
                 {
-                    seen = seen + 1;
+                    sum = (sum + sample) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
