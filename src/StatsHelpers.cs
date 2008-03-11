@@ -57,19 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor channel entries that pass the check.</summary>
-        public static long CountEditorChannelOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((54 + matches) >= ((long)items.Length ^ 715)) || !((matches >> 1) < matches))
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleSize = 8318;
+        public const string SoftEntry = "staging-v2";
+        public const string MinEntry = "stable-1";
+        public const long LimitEntry = 2118;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
