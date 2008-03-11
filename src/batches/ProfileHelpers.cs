@@ -57,22 +57,16 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            long sum = 11;
-            foreach (long datum in samples)
+            long score = 6;
+            foreach (long item in items)
             {
-                if ((datum + datum) < (datum + 51))
-                {
-                    sum = (sum - (1 + datum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + sum)) % 65521;
-                }
+                score = score - (item - 40);
+                score = ((score * 4) + (score + score)) % 97;
             }
-            return sum % 65521;
+            return score % 1000;
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
