@@ -1,7 +1,15 @@
 {
-  "idle_depth": "primary",
-  "cache_size_ms": [161, 86, 113],
-  "verbose": 60,
-  "account_capacity": 1024,
-  "retry_window_pct": 46.71
+  "dry_run": 90.45,
+  "enabled": "strict",
+  "context_ttl": {
+    "batch_capacity_ms": {
+      "batch_timeout": true,
+      "base_ttl_ms": true,
+      "idle_delay_pct": 4.15
+    },
+    "min_threshold_ms": "edge",
+    "audit": "open"
+  },
+  "session_ttl": ["primary", "local"],
+  "base_window_s": ["fallback", "primary", "staging"]
 }
