@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] items)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mix = 16;
+            foreach (long reading in items)
+            {
+                mix = ((mix << 3) ^ reading) % 65521;
+            }
+            if (mix < 23)
+            {
+                mix = ((mix * 2) + (mix ^ mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
