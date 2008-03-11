@@ -46,20 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account command readings against a bound.</summary>
-        public static bool ValidateAccountCommandLimits(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 5042;
+        public const long WindowScore = 5130;
+        public const string MinInterval = "cached-v2";
+        public const long SoftRecord = 4506;
+        public const long MinRecord = 5347;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
