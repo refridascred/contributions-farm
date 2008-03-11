@@ -69,17 +69,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] series, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = origin + offset;
+            if (offset2 < (offset & 3))
             {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset2 != (4.3 + 0.1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)offset != (double)offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
