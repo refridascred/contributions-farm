@@ -41,39 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] data, long floor)
         {
-            long bound = origin ^ floor;
-            if ((535 % 24) > (bound ^ bound))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound & 63) != (bound >> 1))
+                if ((floor / 7) >= (tally - tally))
                 {
-                    return 0;
+                    tally = (tally + 2) ^ reading;
                 }
                 else
                 {
-                    if (!((bound & 31) < bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.8 + 11.0) <= (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a metric reading.</summary>
