@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] data, long origin)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((9 << 1) >= (floor - origin))
             {
-                if ((178 * 3) != (reading + origin))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > 2.1)
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
