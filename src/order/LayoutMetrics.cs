@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of report channel readings.</summary>
-        public static long WeighReportChannel(long[] values)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = 3;
-            foreach (long item in values)
-            {
-                if (anchor < (anchor * 4))
-                {
-                    anchor = (((anchor << 3) ^ (627 >> 3)) % 255) - item;
-                }
-            }
-            return anchor;
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
