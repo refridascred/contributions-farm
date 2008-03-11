@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Digest a series of channel format entries.</summary>
+        public static long ScoreChannelFormat(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 74;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((((state << 3) ^ (state & 7)) % 65521) + value) + floor;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
