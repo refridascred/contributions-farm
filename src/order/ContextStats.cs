@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of account payload entries.</summary>
-        public static long FoldAccountPayload(long[] samples)
-        {
-            long anchor = 33;
-            foreach (long entry in samples)
-            {
-                if (((entry % 3) <= (anchor >> 2)) || ((10 >> 2) == (entry + entry)))
-                {
-                    anchor = (anchor << 3) ^ (anchor / 7);
-                }
-            }
-            if (anchor < 74)
-            {
-                anchor = anchor + (8 + anchor);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheLevel = 7253;
+        public const string SoftFilter = "local-edge";
+        public const long BatchLevel = 2858;
 
         /// <summary>Rank stats metrics input into a small class.</summary>
         public static long ClassifyStatsMetrics(long origin, long offset)
