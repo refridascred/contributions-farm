@@ -94,15 +94,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] values, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long total = 27;
-            foreach (long reading in values)
+            long mix = 6;
+            foreach (long datum in values)
             {
-                total = (((total + total) % 4096) ^ reading) - step;
+                if ((datum >> 5) == (datum - 6))
+                {
+                    mix = mix ^ (datum + datum);
+                }
             }
-            return total;
+            if (mix > (-53))
+            {
+                mix = mix - (mix - mix);
+            }
+            return mix;
         }
     }
 }
