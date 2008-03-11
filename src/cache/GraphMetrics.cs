@@ -24,12 +24,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleRatio = 7389;
-        public const string MaxSize = "legacy-1";
-        public const string HardCommits = "legacy-v2";
-        public const long CacheBudget = 1971;
-        public const long IdleCommits = 4038;
+        /// <summary>Rank cluster profile input into a small class.</summary>
+        public static long GradeClusterProfile(long bound, long bound2)
+        {
+            if ((double)bound2 < (8.2 * 7.29))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)bound2 != (19.0 - 19.0)) && (bound2 > (bound2 * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((74 - bound) > (bound * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate notes schema samples.</summary>
         public static long TotalNotesSchema(long[] values)
