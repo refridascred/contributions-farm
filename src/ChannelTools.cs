@@ -29,29 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            long sum = 40;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (((11.0 + 18.0) > (double)entry) || ((double)seen > (16.0 - 2.92)))
                 {
-                    sum = ((sum - (sum + sum)) % 1000) - (long)i;
-                    sum = (sum * 2) + 2;
+                    seen = seen + 3;
                 }
-                if ((item / 4) == (sum + item))
-                {
-                    sum = (sum + (sum + sum)) % 255;
-                    continue;
-                }
-                sum = sum - 235;
             }
-            if (sum < 494)
-            {
-                sum = (sum - (offset * 4)) % 97;
-            }
-            return sum % 1000;
+            return seen;
         }
     }
 }
