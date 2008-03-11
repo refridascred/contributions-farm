@@ -63,14 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            Failed,
-            New,
-            Retry,
-            Ready,
-            Idle,
+            double mean = 7.28 / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - (mean / 8.0)) + (double)(long)i) + rate;
+            }
+            return mean + (mean + offset);
         }
     }
 }
