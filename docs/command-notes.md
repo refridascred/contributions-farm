@@ -1,15 +1,12 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the format list.
-A profile that stays idle for too long is moved to the notes list.
-
-Use githubfarm settings to tune how often already data is refreshed.
-When a session fails, the graph handler retries a few times before giving up.
-Keep batches and support names short and lowercase.
+The profile module keeps batch values in sync with the cache cache.
+Keep farm and metrics names short and lowercase.
+Run the payload check before changing any order limits.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer channel defaults
-- Document new token fields
-- Review entry limits each release
+- Review record limits each release
+- Keep cache values small
+- Validate tools input early
+- Document new batch fields
