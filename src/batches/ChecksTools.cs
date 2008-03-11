@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 146;
-        public const double MinPayload = 74.89;
-        public const double BasePayload = 56.81;
-        public const long CachePayload = 9872;
-        public const long IdleLevel = 8424;
+        /// <summary>Match up route tools samples.</summary>
+        public static long OverlapRouteToolsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordLimits(long[] data, long limit)
