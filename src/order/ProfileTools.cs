@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long prev = floor ^ limit;
-            if ((floor + prev) > (floor % 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.16 - 18.0) != (double)prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
