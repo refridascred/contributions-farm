@@ -28,40 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long target)
-        {
-            long gap = floor + target;
-            if ((double)floor >= (1.0 * 7.63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (target * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >> 2) == (target ^ gap))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor + gap) != (target - gap)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftTimeout = 74.45;
+        public const long MinInterval = 3342;
+        public const long StepTools = 8844;
 
         /// <summary>Locate a support profile reading by value.</summary>
         public static long LookupSupportProfileIndex(long[] data, long origin)
