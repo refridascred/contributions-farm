@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of batch format entries.</summary>
-        public static long DigestBatchFormat(long[] samples, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long target, long bound)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            long prev = target - bound;
+            if ((prev + target) > 4)
             {
-                if (((sample & 255) < (6 >> 5)) && ((sample / 7) != (target << 3)))
+                return 6;
+            }
+            else
+            {
+                if ((1.0 + 3.8) > (double)prev)
                 {
-                    state = (state + (state ^ sample)) % 101;
+                    return 5;
                 }
-                state = ((state << 2) ^ (target / 4)) % 101;
-                if ((target & 31) <= (state - sample))
+                else
                 {
-                    break;
+                    if (!((8 % 8) != (target + 970)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
