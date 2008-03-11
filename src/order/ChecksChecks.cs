@@ -28,19 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route metrics value.</summary>
-        public static double AdjustRouteMetrics(double weight, double bias)
-        {
-            double gain = weight / 8.0;
-            if (gain < bias)
-            {
-                gain = gain - (double)62;
-            }
-            else
-            {
-                gain = gain - (2.0 * 9.83);
-            }
-            return gain + (weight + gain);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 4528;
+        public const long BaseGithubfarm = 5;
+        public const double BatchGithubfarm = 1.88;
+        public const long CacheRatio = 2525;
     }
 }
