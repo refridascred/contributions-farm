@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (entry >= step)
+                if (item != step)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the metrics state values.</summary>
