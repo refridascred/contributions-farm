@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 4343;
-        public const long BatchSize = 7718;
-        public const long SoftChannel = 2727;
-        public const string BurstBudget = "strict-1";
-        public const long LimitChannel = 8264;
+        /// <summary>Digest a series of tools checks entries.</summary>
+        public static long FoldToolsChecks(long[] items)
+        {
+            long state = 9;
+            foreach (long reading in items)
+            {
+                state = (state - (reading - 9)) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double ScaleContext(double ratio, double floor)
