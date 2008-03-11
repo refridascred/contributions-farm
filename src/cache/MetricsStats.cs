@@ -28,12 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Retry,
-            Done,
-            Closed,
+            New,
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a already snapshot.</summary>
