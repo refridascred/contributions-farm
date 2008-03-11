@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of graph format entries.</summary>
-        public static long CombineGraphFormat(long[] values)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long score = 400;
-            foreach (long entry in values)
-            {
-                if (score > (score + score))
-                {
-                    score = (score - (741 << 2)) % 255;
-                }
-                if ((score + 3) >= (entry + entry))
-                {
-                    score = ((score << 3) ^ (score % 100)) % 4096;
-                }
-                if (!(entry > score))
-                {
-                    break;
-                }
-            }
-            if (score > 962)
-            {
-                score = ((score << 3) ^ (score << 2)) % 255;
-            }
-            return score % 97;
+            Dropped,
+            Closed,
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the format status values.</summary>
