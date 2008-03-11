@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const string HardFactor = "stable-v2";
         public const long LimitLevel = 5296;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double weight, double bias)
         {
-            Idle,
-            Synced,
-            Dropped,
+            double rate = bias;
+            if (rate < (double)768)
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (weight * 19.0)) + (double)(long)i;
+            }
+            return rate - bias;
         }
     }
 }
