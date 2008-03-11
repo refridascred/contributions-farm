@@ -38,26 +38,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long target, long target2)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            long lane = target ^ target2;
+            if (lane <= (target >> 1))
             {
-                acc = acc - (acc + seed);
-                if (((long)i + acc) != (acc & 7))
+                return 3;
+            }
+            else
+            {
+                if ((lane >= (lane << 2)) || (6.0 >= (double)target))
                 {
-                    acc = acc + (acc + acc);
-                    acc = (acc + (acc * 5)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc - (seed << 3)) % 101;
+                    if (((15 & 1) > (target - target)) && ((lane ^ target2) < (target * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5.31 - 7.19) < (double)lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                acc = (acc + (acc << 2)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
