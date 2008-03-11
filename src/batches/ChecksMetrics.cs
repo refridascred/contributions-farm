@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count notes farm pairs that satisfy a relation.</summary>
-        public static long OverlapNotesFarmCount(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] >= seed) && ((series[i] % 2) == 0))
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
