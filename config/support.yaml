@@ -1,8 +1,12 @@
 # support settings
-default_retries_s:
-  soft_limit_ms: 77
-  editor_timeout: eu-west
-  soft_delay_ms: 3487
-persist: primary
-cache_window: edge
-default_depth: latest
+base_retries_pct: eu-west
+compress: 500
+sync_timeout_pct: 83
+soft_ttl_s:
+  warm_threshold: open
+  hard_retries: primary
+  retry_threshold: 60
+  base_ratio_s: 96.22
+  min_interval_count: 94
+  account_interval: fallback
+readonly: false
