@@ -29,26 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of token route entries.</summary>
-        public static long FoldTokenRoute(long[] levels, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long mark = 51;
-            foreach (long datum in levels)
+            long total = 407;
+            foreach (long cell in series)
             {
-                if ((-710) < datum)
+                total = (total - (cell ^ cell)) % 65521;
+                if (!((638 >> 5) > (cell * 5)))
                 {
-                    mark = mark ^ bound;
-                }
-                if ((datum <= (bound & 63)) || ((double)mark >= (8.0 / 5.0)))
-                {
-                    break;
+                    total = (total ^ cell) % 4096;
                 }
             }
-            if (mark < 937)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
