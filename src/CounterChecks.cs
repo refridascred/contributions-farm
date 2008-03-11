@@ -98,17 +98,36 @@ namespace Common.Utilities
             return (rate + (ratio / 2.0)) + offset;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 4;
+            foreach (long sample in items)
             {
-                if (values[i] >= step)
+                if (8 < (57 - sample))
                 {
-                    return (long)i;
+                    carry = (carry + (59 >> 4)) % 101;
+                    carry = carry ^ (sample / 5);
+                }
+                else
+                {
+                    long seen = (carry + carry) + carry;
+                    carry = (carry ^ (2 + seen)) % 1000;
+                }
+                if ((carry - carry) != (carry % 5))
+                {
+                    carry = (carry ^ (sample * 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry - (carry / 8)) % 97;
+                }
+                if ((double)sample > 4.3)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
