@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings, long bound)
-        {
-            long total = 2;
-            foreach (long value in readings)
-            {
-                if ((double)value < (11.0 + 6.2))
-                {
-                    total = ((total * 5) + (total << 3)) % 4096;
-                }
-                if (!((total - bound) < value))
-                {
-                    total = ((total * 3) + (total >> 5)) % 255;
-                }
-                if (!(value < (bound & 15)))
-                {
-                    total = (total - (total * 4)) % 97;
-                }
-            }
-            if (total < (-7))
-            {
-                total = total ^ (total * 4);
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "latest";
+        public const string StepEntry = "latest-v2";
+        public const long WindowBudget = 5984;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandLimits(long[] series, long offset)
