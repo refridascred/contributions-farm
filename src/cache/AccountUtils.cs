@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long step)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
