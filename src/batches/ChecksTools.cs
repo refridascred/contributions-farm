@@ -27,12 +27,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 8593;
-        public const string DefaultCluster = "legacy-v2";
-        public const long SoftCluster = 5661;
-        public const double WindowFactor = 30.03;
-        public const long LimitCluster = 750;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
