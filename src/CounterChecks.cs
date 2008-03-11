@@ -102,18 +102,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command schema entries.</summary>
-        public static long ScoreCommandSchema(long[] samples, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] values, long step)
         {
-            long score = 473;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed ^ entry) > entry)
+                if (values[i] >= step)
                 {
-                    score = ((score * 4) + (score - entry)) % 1000;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
