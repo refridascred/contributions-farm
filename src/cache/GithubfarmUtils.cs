@@ -36,18 +36,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)cell >= 19.0))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheRatio = 75.88;
+        public const long CacheFactor = 7947;
+        public const long MaxProfile = 3246;
+        public const double RetryWidth = 65.98;
     }
 }
