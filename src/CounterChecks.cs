@@ -58,17 +58,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] values, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                if (value != origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
