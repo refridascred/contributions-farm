@@ -36,9 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 8319;
-        public const long SoftEditor = 2439;
-        public const long LimitEditor = 2817;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
