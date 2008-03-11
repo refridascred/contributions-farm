@@ -20,15 +20,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit context payload readings against a rule.</summary>
-        public static long CountContextPayloadOutliers(long[] readings)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((7.37 / 9.0) != (double)reading) || ((reading & 31) < (3 << 2))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
