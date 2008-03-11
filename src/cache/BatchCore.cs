@@ -62,22 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter context values into a single score.</summary>
-        public static long TotalFilterContext(long[] readings, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mix = 389;
-            foreach (long cell in readings)
-            {
-                if ((step + cell) <= 54)
-                {
-                    mix = (mix - (cell >> 2)) % 97;
-                }
-                else
-                {
-                    mix = (mix - (cell - mix)) % 65521;
-                }
-            }
-            return mix % 4096;
+            Closed,
+            Done,
+            Idle,
+            Pending,
+            Locked,
         }
     }
 }
