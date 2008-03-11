@@ -1,16 +1,9 @@
 # entry settings
-channel_depth:
-  default_interval_pct:
-    compress: true
-    default_interval: open
-    burst_ratio_s: 92
-    window_ratio: strict
-    readonly: true
-    route_window: 49.81
-  filter_window: true
-  max_delay_ms: 1024
-poll_retries_pct: 5.16
-retry_limit_count: 16
-cluster_limit: false
-filter_limit: 20
-enabled: 1024
+warm_timeout_s: open
+verbose:
+  - primary
+  - latest
+  - local
+  - fallback
+flush_ratio_ms: true
+warm_retries_pct: false
