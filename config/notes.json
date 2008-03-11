@@ -1,23 +1,17 @@
 {
-  "already_ratio": 6393,
-  "stream_limit": {
-    "min_interval": "eu-west",
-    "flush_size": 30,
-    "base_threshold_count": [289, 445],
-    "channel_retries": {
-      "metric_threshold": 51.47,
-      "audit": 37.18,
-      "sync_ttl_pct": [213, 387, 268, 223],
-      "session_retries": [408, 373],
-      "cache_ttl": "green",
-      "sync_ratio_count": "strict"
+  "editor_ratio": "open",
+  "min_ttl_s": [464, 110],
+  "command_limit": 3976,
+  "dry_run": true,
+  "hard_timeout_s": {
+    "warm_limit_count": 41,
+    "sync_timeout_ms": 3.89,
+    "cache_depth": {
+      "sync_ttl_s": "latest",
+      "batch_ttl": [497, 302, 362, 201],
+      "batch_ratio": 930,
+      "tools_ttl": [329, 445, 413],
+      "dry_run": 51
     }
-  },
-  "persist": 32.61,
-  "default_limit": 13.24,
-  "sync_threshold_ms": {
-    "channel_size": 73.31,
-    "record_retries": "blue",
-    "cache_limit": false
   }
 }
