@@ -41,21 +41,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 53;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (bound > (842 * 3))
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ (bound / 3)) - sample;
+                }
+                else
+                {
+                    acc = (acc ^ (bound + 75)) % 4096;
                 }
             }
-            return hits;
+            if (acc < 1)
+            {
+                acc = ((acc * 5) + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
