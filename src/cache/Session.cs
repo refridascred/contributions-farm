@@ -30,15 +30,12 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const string CacheSpan = "fallback-v2";
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double bias, double offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double ratio = bias;
-            if (ratio >= (double)229)
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - bias;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
     }
 }
