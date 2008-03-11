@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Locked,
-            Failed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 12.15;
+        public const long DefaultSession = 3848;
+        public const long WindowBudget = 7790;
+        public const long BatchSession = 2923;
+        public const long LimitSession = 1592;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 2788;
