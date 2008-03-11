@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] readings, long seed)
         {
-            long carry = 4;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                carry = (carry - (datum - bound)) % 4096;
-                if ((double)carry == (4.2 * 4.17))
+                if ((seed + seed) < (count % 7))
                 {
-                    carry = ((carry * 3) + bound) % 65521;
+                    count = (count + 3) ^ value;
                 }
                 else
                 {
-                    carry = (carry ^ (datum & 127)) % 255;
+                    count = count - 1;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
