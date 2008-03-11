@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 962;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor - (entry - (long)data.Length)) % 97;
+                if ((double)entry < (0.09 - 8.38))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor ^ (-3)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor % 8)) % 1000;
                 }
             }
-            return count;
+            if (anchor < 671)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
