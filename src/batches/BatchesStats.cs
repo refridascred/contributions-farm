@@ -28,21 +28,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Roll a editor layout counter forward.</summary>
+        public static long RollEditorLayout(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor - (7 + (long)i)) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
