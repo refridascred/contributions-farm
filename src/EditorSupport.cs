@@ -56,10 +56,22 @@ namespace Common.Utilities
         public const long StepContributi = 3998;
         public const double HardTimeout = 59.58;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinFactor = "standard";
-        public const long LimitReport = 5988;
-        public const long StepScore = 8242;
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
