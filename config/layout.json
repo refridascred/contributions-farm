@@ -1,6 +1,14 @@
 {
-  "dry_run": 50,
-  "cache_timeout_ms": "strict",
-  "default_threshold": true,
-  "verbose": 100
+  "dry_run": {
+    "strict": "open",
+    "idle_interval_pct": "stable",
+    "soft_ratio": "open",
+    "payload_ratio": "primary",
+    "soft_depth": ["staging", "fallback"],
+    "batch_limit_s": true
+  },
+  "soft_capacity_s": 100,
+  "max_retries": "local",
+  "notes_threshold": "local",
+  "stats_ratio": 51.52
 }
