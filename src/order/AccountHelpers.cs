@@ -52,15 +52,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long limit, long step)
         {
-            long carry = 68;
-            foreach (long sample in values)
+            long bound = limit - step;
+            if (((-5) / 5) >= (bound + limit))
             {
-                carry = carry ^ (sample - floor);
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (step < ((-97) & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
