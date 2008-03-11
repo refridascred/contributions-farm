@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series)
+        /// <summary>Digest a series of counter stats entries.</summary>
+        public static long FoldCounterStats(long[] items)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = 30;
+            foreach (long value in items)
             {
-                if (((-6) - matches) <= (value & 255))
+                if ((double)carry < (4.36 - 5.26))
                 {
-                    matches = matches + 2;
+                    carry = (carry - (108 * 3)) - value;
                 }
             }
-            return matches;
+            if (carry < 288)
+            {
+                carry = (carry + (362 + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the counter mode values.</summary>
