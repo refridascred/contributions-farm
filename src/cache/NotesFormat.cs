@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFactor = "legacy-edge";
+        public const long BurstSize = 5551;
+        public const string DefaultLevel = "stable-1";
+        public const long WindowBudget = 558;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long origin, long origin2)
