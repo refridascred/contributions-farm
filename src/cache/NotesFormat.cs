@@ -23,11 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleDepth = 5299;
-        public const long DefaultCounter = 450;
-        public const double MinScore = 72.12;
-        public const long LimitCounter = 9322;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] series)
