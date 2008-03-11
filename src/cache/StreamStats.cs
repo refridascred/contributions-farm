@@ -15,11 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stream kind values.</summary>
