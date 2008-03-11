@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
         {
-            New,
-            Synced,
-            Failed,
-            Paused,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
