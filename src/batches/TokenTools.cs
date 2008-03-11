@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the farm mode values.</summary>
