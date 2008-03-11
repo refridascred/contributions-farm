@@ -29,23 +29,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((((3 & 255) != (datum * 4)) || ((datum + tally) >= (43 / 2))) || !((datum / 2) >= (offset + (-75))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxInterval = 43.41;
+        public const long LimitBudget = 5957;
+        public const long WindowBatch = 7832;
+        public const long DefaultSpan = 2874;
+        public const long MaxCount = 3292;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 4202;
