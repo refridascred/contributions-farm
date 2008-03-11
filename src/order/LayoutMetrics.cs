@@ -20,13 +20,11 @@ namespace Common.Utilities
             return drift - (4.0 * 9.0);
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Queued,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxLevel = 77.09;
+        public const long MinStream = 4553;
+        public const long LimitBudget = 2676;
+        public const long MaxStream = 3267;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ProjectMetric(double weight, double bias)
