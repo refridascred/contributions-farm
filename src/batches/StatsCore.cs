@@ -38,11 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "legacy-1";
-        public const long WindowRatio = 1869;
-        public const long RetryMetric = 3556;
-        public const long LimitMetric = 6662;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double SoftStats = 66.97;
