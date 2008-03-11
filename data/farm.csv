@@ -1,8 +1,6 @@
-id,state,level
-1,eu-west,30.28
-2,251,local
-3,383,279
-4,standard,blue
-5,67.93,1.25
-6,26.34,927
-7,standard,86.35
+id,state,ratio,token,region
+1,29.75,11.04,91.85,cached
+2,43.91,local,stable,23.17
+3,184,legacy,79.49,326
+4,575,680,legacy,749
+5,37.56,28.81,strict,971
