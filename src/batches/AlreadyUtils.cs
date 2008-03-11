@@ -35,12 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Done,
-            Paused,
-            Failed,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
