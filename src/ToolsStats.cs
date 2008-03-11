@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = target - offset;
+            if ((offset >= (offset - target)) && (target < (offset & 63)))
             {
-                if ((data[i] <= seed) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (9.0 - 5.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (offset >= (6 & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + diff) >= (target * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
