@@ -1,33 +1,21 @@
 # support settings
-retry_retries: 56
-soft_threshold_pct:
-  audit: 79.37
-  warm_threshold_s:
-    base_limit_ms:
-      - strict
-      - fallback
-    default_limit: strict
-    verbose: 30
-    soft_retries: local
-  stats_retries:
-    - 467
-    - 218
-    - 427
-    - 369
-  verbose: false
-  strict: open
-  sync_delay_ms:
-    editor_threshold: staging
-    strict: strict
-    buffer_limit: 84
-    poll_depth_s: true
-    burst_depth_count: stable
-max_retries_ms:
-  - green
-  - green
-  - green
-idle_window_count:
-  - open
-  - local
-  - standard
-  - local
+retry_threshold:
+  - 367
+  - 408
+  - 434
+idle_depth:
+  graph_limit:
+    already_depth: 60
+    batch_delay: standard
+    flush_window_s: green
+    base_limit: true
+    batch_capacity: blue
+  flush_ratio_pct: latest
+  default_capacity: 226
+  audit: 92.38
+  warm_limit:
+    - 179
+    - 371
+  poll_ratio_s: false
+warm_delay_count: true
+retry_depth_s: 53
