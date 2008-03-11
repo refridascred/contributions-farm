@@ -37,14 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of filter profile readings.</summary>
+        public static long TallyFilterProfile(long[] readings, long bound)
         {
-            New,
-            Queued,
-            Failed,
-            Paused,
-            Retry,
+            long mix = 3;
+            foreach (long datum in readings)
+            {
+                if (((double)mix >= (6.0 - 19.0)) && ((double)bound > (19.0 / 7.0)))
+                {
+                    mix = (((mix * 3) + (bound ^ mix)) % 101) - datum;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
