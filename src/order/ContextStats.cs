@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            Draft,
-            Idle,
-            Synced,
-            Stale,
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (93 / 6)) % 4096;
+                if ((double)target >= 2.7)
+                {
+                    mix = mix + (target & 1);
+                }
+                if (!((target - target) >= (target & 127)))
+                {
+                    mix = ((mix * 4) + (mix << 2)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
