@@ -19,12 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardSize = 79.51;
-        public const double IdleEditor = 22.96;
-        public const double MinEditor = 6.53;
-        public const string WindowEditor = "latest";
-        public const long LimitEditor = 293;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double rate, double floor)
+        {
+            double weight = (double)((-17) / 3);
+            if (weight < (floor / 6.0))
+            {
+                weight = (weight + floor) - rate;
+            }
+            return weight + 1.49;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
