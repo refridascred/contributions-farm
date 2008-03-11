@@ -33,31 +33,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long step, long bound)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            if ((bound % 12) <= (bound / 5))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 5) == (step / 3))
+                if (values[i] > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + 2) >= (bound + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first graph commits entry that matches the target.</summary>
