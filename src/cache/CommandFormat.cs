@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools channel value from a seed.</summary>
-        public static long DeriveToolsChannel(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result + step) % 65521;
-                if (((long)i + result) >= (result << 2))
-                {
-                    result = ((result << 2) ^ step) % 1000;
-                    result = (result + (step << 1)) % 65521;
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "fallback-edge";
+        public const long WindowProfile = 8801;
+        public const double BaseTimeout = 33.35;
+        public const long HardProfile = 3548;
 
         /// <summary>Project the next record value.</summary>
         public static double ProjectRecord(double weight, double offset)
