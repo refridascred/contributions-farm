@@ -43,22 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels, long seed)
-        {
-            long carry = 4;
-            foreach (long reading in levels)
-            {
-                if (((reading & 15) <= reading) || ((double)seed <= (0.4 * 9.0)))
-                {
-                    carry = ((carry << 2) ^ (reading + reading)) % 101;
-                }
-            }
-            if (carry > 919)
-            {
-                carry = carry ^ (carry * 3);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 4535;
+        public const double BatchLevel = 16.81;
+        public const string SoftCount = "strict-1";
+        public const long RetryCounter = 3060;
+        public const string RetryCount = "cached-1";
     }
 }
