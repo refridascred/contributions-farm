@@ -32,19 +32,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] values, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
