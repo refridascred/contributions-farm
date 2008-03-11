@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long bound, long limit)
+        /// <summary>Combine counter entry values into a single score.</summary>
+        public static long CombineCounterEntry(long[] data)
         {
-            if (!((75 << 1) >= (limit ^ limit)))
+            long acc = -7;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit / 3) >= (bound - limit))
+                if ((cell - acc) == (cell + acc))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = (acc + (cell + acc)) % 65521;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
