@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every report profile entry stays within the limit.</summary>
-        public static bool ValidateReportProfileBounds(long[] samples, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (datum >= limit)
+                if (value <= bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Blend two layout token measurements.</summary>
