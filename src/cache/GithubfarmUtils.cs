@@ -34,24 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long carry = 42;
-            foreach (long sample in levels)
-            {
-                carry = ((carry << 3) ^ (sample + 4)) % 4096;
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = (carry + (carry << 1)) + (long)i;
-                    carry = (carry ^ (sample / 2)) % 97;
-                }
-                if ((carry + carry) <= sample)
-                {
-                    carry = ((carry << 2) ^ (sample & 255)) % 1000;
-                }
-            }
-            return carry % 1000;
+            Idle,
+            Paused,
+            Synced,
         }
     }
 }
