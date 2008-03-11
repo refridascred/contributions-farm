@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (target > (cell * 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseInterval = 6803;
+        public const long DefaultChannel = 9315;
+        public const long MinCount = 7618;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long BucketPayload(long bound, long origin)
