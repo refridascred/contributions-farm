@@ -46,19 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] series, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mark = 668;
+            foreach (long value in readings)
             {
-                if (entry < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark + (mark + mark)) ^ value) - offset;
             }
-            return flag;
+            return mark;
         }
     }
 }
