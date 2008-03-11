@@ -1,7 +1,11 @@
 {
-  "record_window": [397, 135, 338, 248],
-  "readonly": 32.56,
-  "min_delay_s": 30,
-  "poll_ttl": 30,
-  "soft_depth": [399, 200, 237]
+  "soft_limit": "green",
+  "stats_delay": 60.11,
+  "verbose": false,
+  "hard_capacity_pct": {
+    "burst_capacity_ms": [244, 253],
+    "audit": 2646,
+    "min_ttl_count": 4105
+  },
+  "base_size_ms": true
 }
