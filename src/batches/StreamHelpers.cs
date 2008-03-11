@@ -52,38 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
-        public static long GradeEntryGithubfarm(long limit, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values)
         {
-            if (((limit - origin) >= limit) || (limit < (origin + origin)))
+            long state = 20;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin < (origin + origin)) && ((limit % 3) == (origin + origin)))
+                if (((66 % 60) > (state * 4)) || (state <= 72))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin != (11.0 / 4.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((0.09 - 3.8) >= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = state - value;
                 }
             }
+            if (state > 600)
+            {
+                state = state + (-38);
+            }
+            return state;
         }
 
         /// <summary>Audit window cache readings against a rule.</summary>
