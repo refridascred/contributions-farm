@@ -32,22 +32,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long bound, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long bound2 = bound ^ target;
+            if (bound <= (bound << 2))
             {
-                if ((matches ^ limit) < value)
+                return 2;
+            }
+            else
+            {
+                if (((target / 6) == (target - bound2)) && ((92 + bound2) != (bound2 % 3)))
                 {
-                    matches = matches + 1;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((82 + target) <= (30 + 554))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
