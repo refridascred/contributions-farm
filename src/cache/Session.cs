@@ -32,12 +32,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxInterval = 43.41;
-        public const long LimitBudget = 5957;
-        public const long WindowBatch = 7832;
-        public const long DefaultSpan = 2874;
-        public const long MaxCount = 3292;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 4202;
