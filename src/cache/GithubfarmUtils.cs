@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7214;
-        public const double HardReport = 43.69;
-        public const long CacheDepth = 3789;
-        public const long HardSpan = 1477;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
