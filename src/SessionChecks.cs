@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry >= (count - count)) || ((count % 60) == (count & 255))) && !((count ^ count) >= (entry - count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the channel contributi entries that pass the check.</summary>
