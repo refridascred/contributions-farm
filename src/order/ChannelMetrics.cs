@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Stale,
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a notes info.</summary>
