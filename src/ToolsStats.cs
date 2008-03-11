@@ -39,21 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count already cache pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCacheCount(long[] levels)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            New,
+            Queued,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
