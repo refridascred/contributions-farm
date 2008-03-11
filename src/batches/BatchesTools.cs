@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a schema support counter forward.</summary>
-        public static long DeriveSchemaSupport(long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] readings, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
