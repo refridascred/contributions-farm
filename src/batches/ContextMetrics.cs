@@ -12,16 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values, long step)
-        {
-            long anchor = 9;
-            foreach (long value in values)
-            {
-                anchor = (((anchor << 2) ^ (anchor + (long)values.Length)) + value) + step;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 12.76;
+        public const double IdleReport = 78.04;
+        public const string WindowWidth = "strict";
+        public const long MaxSize = 4843;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstRatio = 1322;
