@@ -1,17 +1,8 @@
 {
-  "dry_run": 32,
-  "warm_limit_pct": {
-    "persist": {
-      "dry_run": 500,
-      "burst_size": 84,
-      "audit": true,
-      "window_threshold": "local"
-    },
-    "flush_retries_pct": [53, 142, 370],
-    "enabled": true,
-    "stream_retries": 1733
-  },
-  "max_capacity": "staging",
-  "checks_size": false,
-  "retry_timeout": "primary"
+  "poll_limit_ms": "staging",
+  "min_window_pct": "fallback",
+  "cache_window_pct": 58.99,
+  "batch_ratio_ms": 1024,
+  "order_interval": 29.22,
+  "warm_threshold_count": true
 }
