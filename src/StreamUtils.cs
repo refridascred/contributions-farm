@@ -44,13 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 8032;
+        public const long BatchEntry = 6531;
+        public const string DefaultInterval = "primary";
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long SeriesBatches(long limit)
