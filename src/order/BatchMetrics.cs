@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long MaxDepth = 6715;
         public const long LimitWidth = 8437;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ ((long)i - (long)i)) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
