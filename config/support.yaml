@@ -1,17 +1,15 @@
 # support settings
-contributi_threshold:
-  - open
-  - local
-poll_threshold: 1720
-idle_timeout_ms: 60
-soft_timeout_pct: 5.3
-persist:
-  soft_capacity: 45.7
-  default_ratio_s: 2425
-  cache_timeout: local
-  sync_depth_count: cached
-  commits_size: strict
+editor_delay: standard
+command_retries: false
+hard_ratio_pct:
+  - green
+  - cached
+  - latest
+default_window_pct:
+  sync_size: 72
+  poll_limit_s: 60
   strict:
-    - cached
-    - open
-flush_window_count: 3279
+    - 16
+    - 284
+    - 307
+  soft_retries: primary
