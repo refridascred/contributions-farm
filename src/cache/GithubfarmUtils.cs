@@ -35,10 +35,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 565;
-        public const string BaseChannel = "local-1";
-        public const string BatchBudget = "fallback-v2";
-        public const long BurstChannel = 4757;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)cell >= 19.0))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
+        }
     }
 }
