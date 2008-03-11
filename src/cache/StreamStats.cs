@@ -35,19 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double offset)
+        /// <summary>Blend two stats contributi measurements.</summary>
+        public static double ProjectStatsContributi(double rate, double floor)
         {
-            double load = offset;
-            if (load <= 6.8)
+            double gain = (double)(29 ^ 89);
+            if (gain < (double)29)
             {
-                load = load - offset;
+                gain = gain - 8.0;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                load = (load - (double)293) + (double)(long)i;
+                gain = (gain - floor) + (double)(long)i;
             }
-            return load - bias;
+            return gain + rate;
         }
     }
 }
