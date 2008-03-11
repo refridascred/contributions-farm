@@ -1,6 +1,6 @@
 {
-  "enabled": "local",
-  "payload_ratio": 5683,
-  "soft_timeout_s": 1024,
-  "max_interval_count": true
+  "burst_delay_count": 100,
+  "burst_ttl_count": 70.75,
+  "burst_interval_s": [108, 57, 461],
+  "base_depth_s": "latest"
 }
