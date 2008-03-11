@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long target)
         {
-            long anchor = 7;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 4; i++)
+                if (value > target)
                 {
-                    anchor = (((anchor + (anchor % 24)) % 101) + (long)i) + value;
-                    anchor = anchor + (-423);
+                    valid = false;
+                    break;
                 }
-                anchor = (anchor ^ (anchor / 5)) % 65521;
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 5) + (origin - 221);
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Rank metrics window input into a small class.</summary>
