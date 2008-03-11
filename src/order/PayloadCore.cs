@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            double weight = bias;
+            if (weight > (weight + 3.2))
             {
-                if (((long)i << 2) >= state)
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                weight = weight + weight;
             }
-            return state;
+            return weight - (scale / 5.0);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
