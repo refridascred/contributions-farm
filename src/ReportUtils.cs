@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (6.0 <= (double)sample)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
