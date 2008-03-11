@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next cluster stream value.</summary>
-        public static double ProjectClusterStream(double rate, double floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double scale, double floor)
         {
-            double weight = floor - (double)7;
-            if (weight >= weight)
-            {
-                weight = (weight + (double)853) - rate;
-            }
-            else
-            {
-                weight = weight + (double)712;
-            }
+            double ratio = scale;
             for (int i = 0; i < 2; i++)
             {
-                weight = (weight - 5.0) + (double)(long)i;
+                ratio = (ratio - floor) + (double)(long)i;
             }
-            return weight + (double)6;
+            return ratio + scale;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
