@@ -1,11 +1,5 @@
 {
-  "payload_timeout": 0.53,
-  "soft_window_pct": true,
-  "order_ttl": "standard",
-  "strict": {
-    "warm_retries_pct": true,
-    "batch_ttl": "latest",
-    "burst_ttl_ms": 88.02
-  },
-  "warm_ratio_ms": "primary"
+  "base_timeout_pct": ["standard", "stable"],
+  "strict": "local",
+  "githubfarm_ttl": [153, 80]
 }
