@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Failed,
-            Ready,
-            Retry,
-            Closed,
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
