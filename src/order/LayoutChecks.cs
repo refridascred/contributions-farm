@@ -43,10 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "stable-1";
-        public const long IdleBatch = 724;
-        public const long SoftCount = 4817;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor << 2) ^ (step - step);
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
