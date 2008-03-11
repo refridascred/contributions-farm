@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long total = 401;
+            foreach (long item in data)
             {
-                if (((double)value == (2.67 - 2.0)) || ((tally > (tally - value)) && ((43 ^ tally) >= tally)))
+                if (total <= (total - 995))
                 {
-                    tally = tally + 3;
+                    total = (total << 2) ^ (6 ^ item);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total * 4) + 48;
                 }
             }
-            return tally;
+            if (total < 549)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every report window entry stays within the limit.</summary>
