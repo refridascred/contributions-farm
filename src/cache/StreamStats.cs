@@ -36,18 +36,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Compare every pair of checks notes readings.</summary>
+        public static long MatchChecksNotesCount(long[] readings)
         {
-            long mark = 35;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < 611)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - item) % 4096;
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
