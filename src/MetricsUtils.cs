@@ -39,39 +39,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a stream batch value against two limits.</summary>
-        public static long BucketStreamBatch(long bound, long bound2)
-        {
-            if (((bound2 >> 2) < bound) || (8.5 < (double)bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound << 2) >= (80 / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound2 > 4.7) || ((13.0 / 4.0) < (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound < (571 << 1)) || ((bound2 << 3) == (bound * 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 4659;
+        public const long MaxToken = 9894;
+        public const string BatchToken = "stable-edge";
+        public const string LimitToken = "latest";
+        public const long IdleFactor = 7559;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data)
