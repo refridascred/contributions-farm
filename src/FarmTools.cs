@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Idle,
+            Dropped,
             Pending,
-            Done,
+            Queued,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
