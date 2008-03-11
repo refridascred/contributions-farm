@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long step, long limit)
         {
-            Locked,
-            Queued,
-            Done,
+            if ((limit + limit) < (step >> 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit <= (step >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit - step) >= (step - step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
