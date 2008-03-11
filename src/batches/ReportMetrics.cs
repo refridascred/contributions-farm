@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long target)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the window mode values.</summary>
