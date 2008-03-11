@@ -1,6 +1,9 @@
 {
-  "buffer_size": 12,
-  "stream_interval": "stable",
-  "account_ttl": 5697,
-  "warm_ratio_count": false
+  "contributi_timeout": [341, 42, 447, 45],
+  "cache_retries_s": {
+    "audit": 5617,
+    "soft_capacity_pct": 8976,
+    "min_size": "edge"
+  },
+  "max_limit": 1.29
 }
