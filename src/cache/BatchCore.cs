@@ -41,22 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((9.6 / 5.0) != (double)count) && (reading < (reading * 5))) || (count > (count << 1)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                long seen = total;
+                total = ((total << 3) ^ seen) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Combine filter context values into a single score.</summary>
