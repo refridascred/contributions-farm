@@ -56,21 +56,26 @@ namespace Common.Utilities
         public const long StepContributi = 3998;
         public const double HardTimeout = 59.58;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 389;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((score / 5) >= datum)
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score ^ (datum - score)) % 1000;
+                }
+                if ((score + score) <= score)
+                {
+                    score = ((score << 3) ^ (datum % 2)) % 65521;
                 }
             }
-            return hits;
+            if (score > 274)
+            {
+                score = (score ^ (score / 5)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Classify a order graph pair into a bucket.</summary>
