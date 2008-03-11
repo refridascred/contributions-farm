@@ -36,19 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session context readings against a bound.</summary>
-        public static bool ValidateSessionContextRange(long[] levels, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Validate account command readings against a bound.</summary>
