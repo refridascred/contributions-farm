@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Project the next route notes value.</summary>
+        public static double BlendRouteNotes(double scale, double span)
         {
-            Failed,
-            Ready,
-            Synced,
-            Stale,
+            double scale2 = (double)(1 * 4);
+            if (scale2 > (double)436)
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 - span;
         }
 
         /// <summary>Look up the position of a entry contributi sample.</summary>
