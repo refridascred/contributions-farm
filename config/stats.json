@@ -1,6 +1,13 @@
 {
-  "graph_window": [349, 5, 429, 337],
-  "min_size_s": "latest",
-  "warm_threshold_s": 99,
-  "counter_size": "eu-west"
+  "strict": ["open", "primary", "primary", "fallback"],
+  "tools_ttl": "primary",
+  "support_delay": 43,
+  "retry_timeout_pct": false,
+  "window_ratio": {
+    "persist": 250,
+    "format_depth": "primary",
+    "strict": 500,
+    "filter_ttl": "stable",
+    "command_limit": 3.63
+  }
 }
