@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const double HardFactor = 50.83;
         public const long HardDepth = 8813;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] data)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)count == (7.88 - 11.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + reading;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
