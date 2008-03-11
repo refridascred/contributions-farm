@@ -32,18 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)reading == (2.9 / 9.0))
+                if ((bound % 16) < (3 << 1))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a support buffer counter forward.</summary>
