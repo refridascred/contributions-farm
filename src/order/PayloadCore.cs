@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitScore = 5695;
-        public const double LimitReport = 72.15;
-        public const long MinReport = 4528;
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long TallyClusterGithubfarmHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((6.46 >= (double)seen) && ((value - 3) >= value))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string SoftMetrics = "open-edge";
