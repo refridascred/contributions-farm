@@ -82,17 +82,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of notes batches readings.</summary>
+        public static long CompareNotesBatchesCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
