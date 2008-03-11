@@ -19,22 +19,22 @@ namespace Common.Utilities
         public const double BatchReport = 6.26;
         public const double DefaultTimeout = 70.94;
 
-        /// <summary>Digest a series of channel schema entries.</summary>
-        public static long TotalChannelSchema(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] levels, long step)
         {
-            long carry = 1;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((6 + carry) > (78 ^ datum))
+                if ((value + value) == (hits + step))
                 {
-                    carry = carry + datum;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (carry > 59)
-            {
-                carry = (carry * 4) + (seed % 5);
-            }
-            return carry;
+            return hits;
         }
     }
 }
