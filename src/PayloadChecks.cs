@@ -44,25 +44,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a filter stream value against two limits.</summary>
-        public static long ClassifyFilterStream(long bound, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long slot = bound + floor;
-            if ((bound % 5) < (bound << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot >> 5) > (slot - 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
