@@ -70,12 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > step)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
