@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Queued,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
