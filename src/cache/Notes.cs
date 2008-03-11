@@ -43,11 +43,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] data, long offset)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long mix = 514;
+            foreach (long sample in data)
+            {
+                mix = (((mix << 2) ^ (offset >> 2)) % 4096) + sample;
+            }
+            return mix;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
