@@ -47,30 +47,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            long score = 2;
-            foreach (long item in series)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (18 > score)
-                {
-                    score = (score + (item + score)) % 101;
-                }
-                else
-                {
-                    score = ((score * 3) + (score / 6)) % 65521;
-                }
-                if (score < (score - score))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (score < 64)
-            {
-                score = (score ^ (score - score)) % 255;
-            }
-            return score;
+            return total;
         }
     }
 }
