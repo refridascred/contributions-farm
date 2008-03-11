@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (cell != seed)
+                if ((sample * 5) >= (seen + sample))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
