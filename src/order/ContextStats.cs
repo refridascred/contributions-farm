@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const long WindowScore = 1728;
         public const double StepRatio = 50.16;
 
-        /// <summary>Combine layout cache values into a single score.</summary>
-        public static long TotalLayoutCache(long[] data, long bound)
+        /// <summary>Compare every pair of queue commits readings.</summary>
+        public static long PairQueueCommitsCount(long[] data)
         {
-            long result = 57;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - (bound % 97)) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > (-81))
-            {
-                result = ((result * 2) + (bound / 7)) % 255;
-            }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
