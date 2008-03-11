@@ -19,21 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values)
-        {
-            long state = 507;
-            foreach (long sample in values)
-            {
-                if (sample < (state + state))
-                {
-                    state = state - (state / 4);
-                    continue;
-                }
-                state = state - 108;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardInterval = 17.42;
+        public const string MaxSupport = "latest-edge";
+        public const long DefaultCount = 748;
+        public const string IdleDepth = "stable";
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double weight, double offset)
