@@ -34,13 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit entry format readings against a rule.</summary>
+        public static long TallyEntryFormatHits(long[] values)
         {
-            Draft,
-            Ready,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((3.5 + 6.9) > (double)tally)
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
     }
 }
