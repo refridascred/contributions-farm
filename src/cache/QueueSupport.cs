@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] values, long offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((131 + offset) >= (318 - 16)))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit entry format readings against a rule.</summary>
