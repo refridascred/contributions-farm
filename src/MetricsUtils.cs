@@ -90,19 +90,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] readings, long seed)
         {
-            long total = 337;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 3) + (823 ^ total)) % 97) ^ entry;
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 61)
-            {
-                total = (total + total) % 255;
-            }
-            return total;
+            return -1;
         }
     }
 }
