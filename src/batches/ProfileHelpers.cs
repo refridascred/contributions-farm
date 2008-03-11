@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long target, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if (1.2 < (double)target)
             {
-                if (((49 - 918) >= (count + 671)) && ((sample * 2) < (459 << 3)))
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (7.0 + 12.0))
                 {
-                    count = count + 1;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)target <= (double)90)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - target) <= (target - (-5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
