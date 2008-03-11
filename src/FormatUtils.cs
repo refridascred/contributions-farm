@@ -28,17 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry ^ limit) % 1000;
-                carry = carry ^ (carry / 7);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
