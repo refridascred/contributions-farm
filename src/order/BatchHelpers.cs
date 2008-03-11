@@ -27,23 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] levels, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (((target * 4) >= (score ^ score)) && (10.0 >= (double)score))
+                if (reading > origin)
                 {
-                    score = (score ^ target) % 255;
+                    found = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score + (score << 1)) % 255) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return found;
         }
     }
 }
