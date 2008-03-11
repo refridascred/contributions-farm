@@ -26,11 +26,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next already filter value from a seed.</summary>
+        public static long RollAlreadyFilter(long target)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((target & 1) < (target % 10)) || ((sum << 2) < (sum + sum)))
+                {
+                    sum = sum + (sum & 3);
+                    sum = (sum ^ target) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (7 << 3)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
