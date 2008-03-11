@@ -1,5 +1,13 @@
 {
-  "batch_window_count": 46.27,
-  "flush_size_ms": [348, 373],
-  "payload_interval": 3782
+  "retry_ratio_s": 72.56,
+  "verbose": 1077,
+  "readonly": 38.34,
+  "max_depth_pct": {
+    "flush_interval": "primary",
+    "dry_run": false,
+    "burst_ratio_ms": 87.44,
+    "idle_timeout": 60.91
+  },
+  "command_depth": 2.56,
+  "persist": 60
 }
