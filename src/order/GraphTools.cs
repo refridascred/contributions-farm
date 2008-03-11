@@ -72,10 +72,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 9167;
-        public const string MaxChannel = "legacy-1";
-        public const long HardChannel = 1339;
-        public const double LimitChannel = 48.58;
+        /// <summary>Locate a entry context reading by value.</summary>
+        public static long FindEntryContextIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
