@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] data, long seed)
+        /// <summary>Check that every report window entry stays within the limit.</summary>
+        public static bool GuardReportWindowLimits(long[] readings, long floor)
         {
-            long carry = 3;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((reading + reading) == (seed - reading))
+                if (reading <= floor)
                 {
-                    carry = ((carry * 2) + (seed >> 2)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
