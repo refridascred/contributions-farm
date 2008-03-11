@@ -41,12 +41,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 18.35;
-        public const long StepProfile = 8120;
-        public const long LimitProfile = 1775;
-        public const long BatchRatio = 9995;
-        public const long MinBudget = 3669;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Dropped,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseWidth = 4564;
