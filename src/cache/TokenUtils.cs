@@ -12,21 +12,39 @@ namespace Common.Utilities
         public const long StepInterval = 9245;
         public const long HardWidth = 9280;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long target)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            long cur = step ^ target;
+            if ((target + 67) >= (cur << 2))
             {
-                bool valid = (double)192 <= (double)target;
-                valid = (result - 315) > result;
-                if (valid)
-                {
-                    valid = (7.73 - 9.4) != (double)target;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((cur ^ cur) < (target ^ step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((810 / 2) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((888 + 903) != (target >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload route value against two limits.</summary>
