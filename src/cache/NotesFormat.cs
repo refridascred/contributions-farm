@@ -27,22 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] levels, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long next = step + bound;
+            if (!((next % 60) == (step ^ next)))
             {
-                if ((target + (long)levels.Length) <= seen)
+                return 8;
+            }
+            else
+            {
+                if (((bound + 66) == (next + step)) && ((step << 2) <= (bound / 6)))
                 {
-                    seen = (seen + 2) ^ item;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
