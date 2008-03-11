@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Iterate the order batches series from a seed.</summary>
+        public static long DeriveOrderBatches(long target)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route kind values.</summary>
