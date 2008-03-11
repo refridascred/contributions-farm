@@ -61,15 +61,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long acc = 10;
-            foreach (long entry in data)
-            {
-                acc = (acc + (seed / 2)) + entry;
-            }
-            return acc % 4096;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
