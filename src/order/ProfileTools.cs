@@ -19,10 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardBudget = 7857;
-        public const long BurstWidth = 2057;
-        public const long BatchTimeout = 8675;
+        /// <summary>Rank notes token input into a small class.</summary>
+        public static long ClassifyNotesToken(long target, long step)
+        {
+            long gap = target - step;
+            if (((-69) <= gap) && ((target + step) <= target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target == (1.61 - 4.69))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
