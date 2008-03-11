@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 2297;
-        public const long RetryLevel = 3950;
-        public const long BaseBudget = 8523;
-        public const long MaxMetric = 9476;
-        public const string MinMetric = "cached";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 11.49;
+        public const double DefaultSize = 47.5;
+        public const double SoftBudget = 55.19;
+        public const double MinChannel = 66.52;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
