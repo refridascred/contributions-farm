@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] levels, long offset)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= offset)
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
