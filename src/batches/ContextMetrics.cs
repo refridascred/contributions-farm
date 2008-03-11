@@ -39,22 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long mark = 98;
-            foreach (long entry in series)
-            {
-                if (mark >= (mark % 16))
-                {
-                    mark = (mark - (entry % 16)) % 65521;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = mark - (mark * 4);
-            }
-            return mark % 1000;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
