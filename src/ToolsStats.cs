@@ -55,26 +55,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values, long bound)
+        /// <summary>Fold a list of channel layout readings.</summary>
+        public static long TotalChannelLayout(long[] levels, long origin)
         {
-            long mark = 93;
-            foreach (long cell in values)
+            long anchor = 579;
+            foreach (long entry in levels)
             {
-                if ((cell - cell) >= cell)
+                anchor = ((anchor << 2) ^ (origin % 12)) - entry;
+                if (anchor < (anchor - anchor))
                 {
-                    mark = (mark ^ 2) % 1000;
-                }
-                else
-                {
-                    mark = mark + (bound - cell);
+                    anchor = ((anchor << 2) ^ (anchor >> 1)) % 1000;
                 }
             }
-            if (mark > 8)
+            if (anchor > 42)
             {
-                mark = (mark ^ mark) % 97;
+                anchor = anchor ^ anchor;
             }
-            return mark % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
