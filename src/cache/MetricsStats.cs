@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Count the channel record entries that pass the check.</summary>
+        public static long MeasureChannelRecordHits(long[] values)
         {
-            double load = offset;
-            if (load > offset)
+            long hits = 0;
+            foreach (long value in values)
             {
-                load = load + offset;
+                if (((88 + 739) <= value) || (48 < value))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load - (rate / 3.0);
+            return hits;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
