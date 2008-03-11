@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultSpan = "stable";
-        public const long SoftDepth = 8019;
-        public const long BurstTimeout = 6128;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] levels, long step)
+        {
+            long carry = -561;
+            foreach (long datum in levels)
+            {
+                carry = ((carry - (step ^ carry)) % 255) + datum;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyGaps(long[] data)
