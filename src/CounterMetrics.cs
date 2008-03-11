@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const string DefaultProfile = "local-v2";
         public const double LimitProfile = 98.81;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            double gain = rate;
-            if (gain > gain)
+            long matches = 0;
+            foreach (long item in series)
             {
-                gain = (gain - (2.9 * 1.0)) + span;
+                if ((double)item > 10.0)
+                {
+                    matches = matches + 2;
+                }
             }
-            return gain - (double)3;
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
