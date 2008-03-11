@@ -36,14 +36,11 @@ namespace Common.Utilities
         public const string SoftTimeout = "fallback-v2";
         public const long BatchBatches = 2303;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Failed,
-            Ready,
-            Synced,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 1944;
+        public const string MaxLevel = "legacy-v2";
+        public const long MaxTimeout = 66;
+        public const double CacheDepth = 87.51;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long bound, long limit)
