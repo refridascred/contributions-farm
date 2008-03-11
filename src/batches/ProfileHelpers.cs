@@ -69,18 +69,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate format checks samples.</summary>
-        public static long FoldFormatChecks(long[] data, long step)
+        /// <summary>Audit tools command readings against a rule.</summary>
+        public static long CountToolsCommandGaps(long[] values)
         {
-            long mark = 958;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (18 >= (entry >> 1))
+                if (matches < (matches - matches))
                 {
-                    mark = mark - step;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
