@@ -40,21 +40,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of checks notes readings.</summary>
-        public static long MatchChecksNotesCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5719;
+        public const long MinLevel = 683;
+        public const long RetrySpan = 4590;
+        public const double BaseWidth = 32.41;
     }
 }
