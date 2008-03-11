@@ -38,19 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] data, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = rate;
+            return load + offset;
         }
     }
 }
