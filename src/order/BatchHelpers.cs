@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Paused,
-            Active,
-            Ready,
-            Queued,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
