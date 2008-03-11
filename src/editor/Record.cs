@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long DigestChannelCounter(long[] levels)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = -7;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) <= sample)
-                {
-                    total = ((total << 2) ^ (total % 5)) % 101;
-                }
-                if (66 > (total + sample))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a cache info.</summary>
