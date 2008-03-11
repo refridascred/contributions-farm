@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long ScoreStreamChannel(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 29;
-            foreach (long entry in levels)
-            {
-                if (!((entry + entry) > entry))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                else
-                {
-                    mix = (mix - (entry - mix)) % 65521;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
