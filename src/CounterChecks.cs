@@ -62,18 +62,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples)
+        /// <summary>Digest a series of command schema entries.</summary>
+        public static long ScoreCommandSchema(long[] samples, long seed)
         {
-            long hits = 0;
+            long score = 473;
             foreach (long entry in samples)
             {
-                if (532 > (hits + 9))
+                if ((seed ^ entry) > entry)
                 {
-                    hits = (hits + 1) + entry;
+                    score = ((score * 4) + (score - entry)) % 1000;
                 }
             }
-            return hits;
+            return score % 1000;
         }
     }
 }
