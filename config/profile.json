@@ -1,6 +1,6 @@
 {
-  "profile_ratio": 72.58,
-  "min_limit_ms": 9.8,
-  "flush_ttl": 20.63,
-  "retry_delay_ms": 1024
+  "max_delay_count": 2295,
+  "hard_size": true,
+  "default_capacity_pct": true,
+  "buffer_capacity": ["green", "local", "green", "stable"]
 }
