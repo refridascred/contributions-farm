@@ -73,10 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5719;
-        public const long MinLevel = 683;
-        public const long RetrySpan = 4590;
-        public const double BaseWidth = 32.41;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
