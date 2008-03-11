@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Stale,
-            Draft,
-            Synced,
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
