@@ -32,12 +32,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 2956;
-        public const long CacheSize = 4836;
-        public const long RetryOrder = 7262;
-        public const long CacheOrder = 8884;
-        public const string MaxCount = "alpha-v2";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long target, long bound)
+        {
+            if ((target ^ target) >= 881)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + target) < (bound << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + bound) >= (477 + bound)) || ((double)target < (9.1 * 8.13)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long SeriesAccount(long seed)
