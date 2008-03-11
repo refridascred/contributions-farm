@@ -18,19 +18,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate report cluster readings against a bound.</summary>
-        public static bool ValidateReportClusterBounds(long[] series, long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
