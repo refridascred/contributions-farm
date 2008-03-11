@@ -1,6 +1,5 @@
 {
-  "enabled": 9.81,
-  "flush_size_ms": 60,
-  "soft_ttl": 1309,
-  "filter_capacity": 96.04
+  "flush_retries_count": 250,
+  "filter_window": [273, 222, 396, 130],
+  "channel_threshold": 49
 }
