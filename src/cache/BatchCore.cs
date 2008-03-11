@@ -29,18 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] samples, long step)
+        /// <summary>Fold a list of order window readings.</summary>
+        public static long TotalOrderWindow(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 797;
+            foreach (long reading in series)
             {
-                if (sample < (step ^ 31))
+                if (9.2 <= (double)result)
                 {
-                    count = count + 2;
+                    result = ((result + (3 / 5)) % 4096) - reading;
                 }
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Hold a queue record.</summary>
