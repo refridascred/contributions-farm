@@ -1,15 +1,9 @@
 # support settings
-counter_ttl:
-  retry_interval: 97.67
-  dry_run: fallback
-  batches_ttl: false
-  cache_window_pct: latest
-  cache_depth: local
-enabled:
-  default_capacity:
-    soft_ttl_ms: fallback
-    schema_ratio: eu-west
-    poll_ratio_count: staging
-  retry_window_pct: 6477
-  filter_ttl: 6544
-route_limit: 33
+sync_retries_count:
+  account_interval: green
+  poll_capacity_pct: 67
+  max_ratio_s: 2384
+  idle_timeout_ms: true
+  max_threshold_count: false
+min_interval: legacy
+counter_timeout: eu-west
