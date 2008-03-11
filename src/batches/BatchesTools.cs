@@ -38,14 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long limit)
         {
-            Queued,
-            Locked,
-            New,
-            Synced,
-            Draft,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
