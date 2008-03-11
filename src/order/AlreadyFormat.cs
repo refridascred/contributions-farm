@@ -19,15 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((reading <= (anchor % 16)) && ((reading + anchor) == (reading & 63)))
+                {
+                    anchor = (anchor + (anchor << 3)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor + (0 >> 1);
+                }
             }
-            return result;
+            if (anchor > 50)
+            {
+                anchor = anchor + (anchor + 7);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
