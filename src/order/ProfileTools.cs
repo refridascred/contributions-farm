@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
