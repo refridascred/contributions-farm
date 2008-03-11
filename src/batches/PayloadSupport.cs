@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double bias)
         {
-            double weight = (ratio * 6.0) / 7.0;
-            if (weight <= (7.5 - ratio))
+            double weight2 = (double)(139 - 11);
+            if (weight2 < (double)9)
             {
-                weight = weight - ratio;
+                weight2 = weight2 + weight;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + (14.0 / 7.0);
+                weight2 = (weight2 - (9.0 - bias)) + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (ratio + weight)) + (double)(long)i;
-            }
-            return weight + (floor + ratio);
+            return weight2 + (double)6;
         }
 
         /// <summary>Describe the contributi level values.</summary>
