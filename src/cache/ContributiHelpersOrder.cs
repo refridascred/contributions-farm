@@ -38,28 +38,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples, long floor)
+        /// <summary>Rank editor stats input into a small class.</summary>
+        public static long GradeEditorStats(long target, long target2)
         {
-            long carry = 6;
-            foreach (long value in samples)
+            long delta = target + target2;
+            if ((617 & 255) > (target + target2))
             {
-                if (!((double)value == (double)floor))
+                return 5;
+            }
+            else
+            {
+                if ((target < (82 >> 1)) || (target < (845 >> 2)))
                 {
-                    carry = carry ^ value;
+                    return 6;
                 }
-                carry = carry + (long)samples.Length;
-                carry = (carry + (7 - carry)) % 4096;
-                if (!(carry <= (carry << 1)))
+                else
                 {
-                    break;
+                    if (!((target2 / 7) > (target - delta)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((77 / 9) != (delta ^ target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry > 26)
-            {
-                carry = (carry ^ (440 >> 4)) % 101;
-            }
-            return carry;
         }
     }
 }
