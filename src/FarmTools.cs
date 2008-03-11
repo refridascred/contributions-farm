@@ -25,12 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long MeasureToolsProfileHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 97) != (41 + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
