@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two record cluster measurements.</summary>
-        public static double AdjustRecordCluster(double weight, double span)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            double drift = (double)1;
-            return ((drift - drift) + weight) + span;
+            long score = 7;
+            foreach (long value in values)
+            {
+                if (7.1 > (double)score)
+                {
+                    break;
+                }
+                if ((5.24 * 17.0) <= (5.0 + 5.3))
+                {
+                    score = (score - (126 % 7)) % 255;
+                }
+                if (((5.7 * 5.08) <= (double)score) && ((score + value) < (value % 8)))
+                {
+                    score = score ^ (value << 2);
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
