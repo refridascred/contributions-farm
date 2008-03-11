@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseTimeout = 43.44;
-        public const long RetryMetrics = 6824;
-        public const double HardMetrics = 61.03;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
