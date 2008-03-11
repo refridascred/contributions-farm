@@ -93,13 +93,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Dropped,
-            Locked,
-            New,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "cached";
+        public const double HardCommand = 53.22;
+        public const string IdleCount = "stable-1";
     }
 }
