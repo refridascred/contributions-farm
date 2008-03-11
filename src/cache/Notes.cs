@@ -32,22 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 2956;
+        public const long CacheSize = 4836;
+        public const long RetryOrder = 7262;
+        public const long CacheOrder = 8884;
+        public const string MaxCount = "alpha-v2";
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long SeriesAccount(long seed)
