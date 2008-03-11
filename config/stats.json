@@ -1,24 +1,7 @@
 {
-  "min_limit_count": [315, 345],
-  "context_depth": 63,
-  "burst_timeout_ms": 7,
-  "default_capacity": {
-    "profile_interval": {
-      "persist": 250,
-      "cache_interval_s": 7697,
-      "base_capacity": 1024,
-      "verbose": false,
-      "default_timeout_s": 98.01
-    },
-    "cache_threshold": "stable",
-    "min_threshold_ms": {
-      "base_ttl_count": "cached",
-      "compress": 500,
-      "batch_limit": false,
-      "min_ratio_s": ["blue", "local", "edge"],
-      "idle_interval_pct": "stable"
-    }
-  },
-  "checks_limit": "edge",
-  "strict": "local"
+  "metric_ratio": 60,
+  "flush_window_pct": "green",
+  "max_delay_ms": "legacy",
+  "account_depth": [102, 428, 213],
+  "audit": 4082
 }
