@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 7260;
-        public const double MaxSpan = 36.19;
-        public const string StepWindow = "strict";
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] data)
