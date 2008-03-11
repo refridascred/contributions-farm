@@ -1,11 +1,6 @@
-id,token,score,label,level
-1,70.24,494,eu-west,446
-2,408,304,primary,70.5
-3,edge,59.45,33.99,68.13
-4,primary,631,28.9,416
-5,legacy,667,eu-west,open
-6,standard,708,21.36,94.09
-7,139,601,793,legacy
-8,fallback,13.03,primary,local
-9,31.03,primary,blue,351
-10,744,48.99,75.68,blue
+id,token,score,owner,level
+1,90,39.19,28,417
+2,0.66,136,840,92.47
+3,967,39.06,legacy,140
+4,700,383,76.02,13.05
+5,open,54.38,1.96,624
