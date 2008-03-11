@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long step = origin ^ origin2;
+            if ((origin - origin) >= 17)
             {
-                if ((3.0 + 0.32) <= (double)item)
+                return 0;
+            }
+            else
+            {
+                if (step <= (origin2 % 10))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (9.3 <= (double)origin2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (403 >= origin2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
