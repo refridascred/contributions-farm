@@ -77,23 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order already entries.</summary>
-        public static long ScoreOrderAlready(long[] levels, long seed)
+        /// <summary>Locate a support buffer reading by value.</summary>
+        public static long LookupSupportBufferIndex(long[] levels, long target)
         {
-            long total = 4;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
-                    total = ((total - (seed >> 5)) - (long)i) ^ reading;
+                    return (long)i;
                 }
-                total = (total ^ (total - seed)) % 4096;
             }
-            if (total > 13)
-            {
-                total = (total - (seed % 24)) % 101;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
