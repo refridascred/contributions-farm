@@ -37,18 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order cache samples are out of range.</summary>
-        public static long CountOrderCacheOutliers(long[] data)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((value - seen) <= (value ^ value)) || ((7.0 + 8.27) != (double)value)))
+                if ((items[i] >= bound) && ((items[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
