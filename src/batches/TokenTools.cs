@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 322;
-        public const long DefaultContributi = 6436;
-        public const long MinSize = 1557;
-        public const string StepDepth = "local-edge";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitDepth = 7176;
+        public const long DefaultSize = 5511;
+        public const long BaseLevel = 6493;
 
         /// <summary>Find the first context window entry that matches the target.</summary>
         public static long FindContextWindowIndex(long[] levels, long step)
