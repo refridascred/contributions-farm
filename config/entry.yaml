@@ -1,39 +1,18 @@
 # entry settings
-tools_delay:
-  idle_capacity: edge
-  sync_delay_ms:
-    burst_retries_count: latest
-    poll_delay_s: primary
-    cache_interval_ms: primary
-    warm_depth_pct:
-      - blue
-      - blue
-      - blue
-    compress: cached
-  account_depth: strict
-  default_ttl_ms: 500
-  readonly:
-    - 431
-    - 80
-    - 396
-stream_size: open
-idle_delay_pct: legacy
-max_limit: 500
-channel_capacity:
-  warm_retries: edge
-  verbose:
-    - 293
-    - 455
-    - 492
-    - 454
-  account_ttl: true
-  stream_ttl:
-    - 417
-    - 184
-    - 450
-    - 457
-  warm_window_ms:
-    - edge
-    - green
-    - blue
-batch_limit_count: 60
+warm_size_ms:
+  - 74
+  - 343
+  - 411
+default_threshold: standard
+warm_timeout_count: green
+base_limit_count:
+  - standard
+  - primary
+  - cached
+  - eu-west
+cache_delay: 34.42
+readonly:
+  - local
+  - staging
+  - local
+  - local
