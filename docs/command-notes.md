@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-The channel helpers are pure functions, so they are safe to call from any thread.
-A checks that stays idle for too long is moved to the record list.
+The metric report groups every batches by payload.
+Defaults for schema live in the config folder and can be overridden per environment.
+
+When a batch fails, the schema handler retries a few times before giving up.
+When a cache fails, the metric handler retries a few times before giving up.
+The cluster module keeps support values in sync with the batches cache.
 
 ## Guidelines
 
-- Validate command input early
-- Document new session fields
-- Prefer stream defaults
-- Review contributi limits each release
+- Log every format change
+- Prefer queue defaults
+- Document new editor fields
+- Keep buffer values small
