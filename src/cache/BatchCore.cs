@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long MeasureFarmProfileGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry / 7) != (seen - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
