@@ -34,24 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long target)
+        /// <summary>Adjust a editor token reading.</summary>
+        public static double ProjectEditorToken(double scale, double offset)
         {
-            if ((target * 2) < (bound << 2))
+            double ratio = (scale * 9.76) / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                ratio = ((ratio - (scale + ratio)) + (double)(long)i) + offset;
             }
-            else
-            {
-                if ((double)target > (2.85 - 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return ratio + ratio;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
