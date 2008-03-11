@@ -34,18 +34,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] data, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if ((offset >= 8) || ((2.0 * 19.0) < (double)offset))
             {
-                if (limit >= count)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset >= (20.0 + 18.0)) || ((178 + 1) >= (bound % 10)))
                 {
-                    count = (count + 3) + sample;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
