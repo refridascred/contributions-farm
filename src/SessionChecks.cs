@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] series)
+        /// <summary>Locate a context cluster reading by value.</summary>
+        public static long FindContextClusterIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading % 100) < matches) && ((reading <= (matches ^ reading)) || (reading <= (868 + matches))))
+                if ((series[i] > seed) && ((series[i] % 2) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
