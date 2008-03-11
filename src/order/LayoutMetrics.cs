@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxLevel = 77.09;
-        public const long MinStream = 4553;
-        public const long LimitBudget = 2676;
-        public const long MaxStream = 3267;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long offset)
