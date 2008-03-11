@@ -1,5 +1,9 @@
 {
-  "burst_ttl_pct": 3731,
-  "persist": 90.08,
-  "hard_ttl_s": true
+  "commits_capacity": {
+    "commits_capacity": 500,
+    "flush_timeout": 4,
+    "commits_depth": ["fallback", "blue", "local"]
+  },
+  "sync_depth_ms": "edge",
+  "sync_interval_ms": 6
 }
