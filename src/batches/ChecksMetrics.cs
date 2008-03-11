@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] data, long seed)
+        /// <summary>Adjust a tools layout reading.</summary>
+        public static double AdjustToolsLayout(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double drift = span + (span / 3.0);
+            if (drift <= (weight - span))
             {
-                if (8.8 >= (double)datum)
-                {
-                    seen = (seen + 1) + seed;
-                }
+                drift = drift - (span * 6.93);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift + 20.0;
         }
 
         /// <summary>Roll a farm support counter forward.</summary>
