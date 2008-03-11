@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long total = 401;
-            foreach (long item in data)
-            {
-                if (total <= (total - 995))
-                {
-                    total = (total << 2) ^ (6 ^ item);
-                }
-                else
-                {
-                    total = (total * 4) + 48;
-                }
-            }
-            if (total < 549)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 1000;
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every report window entry stays within the limit.</summary>
