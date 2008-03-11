@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((1.0 * 6.0) != (double)sample)
+                if (sample >= offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
