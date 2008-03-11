@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The commits module keeps stream values in sync with the entry cache.
+Defaults for account live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the already queue.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Prefer stats defaults
-- Keep cache values small
-- Log every context change
+- Prefer githubfarm defaults
+- Log every notes change
+- Review queue limits each release
+- Keep batch values small
