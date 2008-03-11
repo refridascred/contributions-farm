@@ -1,6 +1,27 @@
 # support settings
-default_limit_ms: 6831
-checks_ttl: blue
-base_depth_pct: green
-tools_interval: true
-poll_window_pct: 90
+metric_depth:
+  - 368
+  - 337
+  - 425
+  - 339
+support_limit: 133
+min_interval_ms:
+  compress:
+    burst_window_ms: edge
+    idle_interval_count: 250
+    sync_size_ms: fallback
+    layout_interval: latest
+  tools_capacity:
+    - 443
+    - 481
+    - 327
+    - 115
+  dry_run:
+    - 476
+    - 413
+    - 279
+report_threshold: 6932
+readonly: 15.62
+flush_ratio:
+  - 94
+  - 253
