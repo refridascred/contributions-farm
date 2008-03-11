@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum >= (26 - (-93)))
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "legacy-edge";
+        public const long MaxFormat = 6636;
+        public const long SoftInterval = 5811;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] data, long limit)
