@@ -83,17 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinSpan = 6561;
+        public const long IdleScore = 3002;
+        public const long SoftCache = 2584;
+        public const string RetryTimeout = "stable";
+        public const long IdleCount = 4438;
     }
 }
