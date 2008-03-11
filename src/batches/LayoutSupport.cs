@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel commits entries that pass the check.</summary>
-        public static long MeasureChannelCommitsMatches(long[] levels, long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally < (66 / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 2) + datum) - target;
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
