@@ -16,20 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((double)target >= (8.0 * 6.57)) && ((double)mix > (1.29 + 3.29)))
-                {
-                    mix = (mix ^ ((long)i - mix)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 1689;
+        public const string MaxBudget = "cached-v2";
+        public const long MinCache = 1687;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
