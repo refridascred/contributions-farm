@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double offset)
         {
-            long mix = 12;
-            foreach (long item in readings)
+            double rate = offset;
+            if (rate < (14.0 + weight))
             {
-                if (2 < (767 + mix))
-                {
-                    mix = (mix ^ (1 + mix)) + item;
-                }
+                rate = rate + weight;
             }
-            return mix % 1000;
+            else
+            {
+                rate = rate + (offset + offset);
+            }
+            return rate + (double)(-826);
         }
 
         /// <summary>Compare every pair of order readings.</summary>
