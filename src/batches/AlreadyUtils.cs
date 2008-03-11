@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] samples, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Failed,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a already snapshot.</summary>
