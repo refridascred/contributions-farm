@@ -49,9 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheInterval = "alpha-v2";
-        public const long BaseGraph = 4341;
-        public const long WindowGraph = 5717;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 697;
+        public const string BaseMetrics = "alpha-1";
+        public const long MinMetrics = 2949;
+        public const double LimitMetrics = 94.75;
+        public const long DefaultMetrics = 5804;
     }
 }
