@@ -37,38 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] data, long step)
         {
-            if (((floor << 3) < (408 + floor)) && ((offset + offset) > (floor + floor)))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3.6 < (double)offset) && ((double)offset >= (1.7 / 9.0)))
+                if (reading > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - 4) > (offset + (-490)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset > ((-1) % 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
