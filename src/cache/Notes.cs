@@ -47,15 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] data, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long mix = 514;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix << 2) ^ (offset >> 2)) % 4096) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
