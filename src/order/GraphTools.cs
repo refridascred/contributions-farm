@@ -44,11 +44,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 3507;
-        public const long HardContext = 6464;
-        public const long WindowContext = 2379;
-        public const long BurstScore = 9718;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total << 3) ^ ((long)i & 1)) % 4096;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long WindowChannel = 9167;
