@@ -1,9 +1,21 @@
 # support settings
-command_delay:
-  - open
-  - legacy
-  - primary
-readonly: 34.48
-burst_interval_s: 30
-graph_depth: staging
-audit: standard
+base_limit_ms: false
+burst_window_count:
+  - 299
+  - 456
+  - 402
+  - 16
+burst_threshold:
+  already_delay: 41.06
+  audit: 80.74
+  entry_size: 30
+channel_threshold: true
+metrics_depth:
+  cache_timeout: standard
+  idle_ttl_ms:
+    - primary
+    - blue
+    - fallback
+    - stable
+  buffer_limit: true
+  warm_ttl_count: 30
