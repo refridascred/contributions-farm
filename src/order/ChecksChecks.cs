@@ -26,22 +26,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = -21;
-            foreach (long value in data)
-            {
-                if (sum <= (value ^ value))
-                {
-                    sum = (sum + (offset + offset)) % 97;
-                }
-            }
-            if (sum > 3)
-            {
-                sum = ((sum << 2) ^ sum) % 1000;
-            }
-            return sum % 1000;
+            Failed,
+            Queued,
+            Retry,
+            Ready,
+            Pending,
         }
     }
 }
