@@ -48,11 +48,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series, long seed)
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 17;
+            foreach (long datum in series)
+            {
+                if (((result + datum) >= (seed + datum)) || ((seed & 255) < (result + result)))
+                {
+                    result = (result ^ 1) % 4096;
+                }
+                else
+                {
+                    result = (result ^ (seed % 8)) % 97;
+                }
+            }
+            if (result > 0)
+            {
+                result = (result ^ (seed << 3)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
