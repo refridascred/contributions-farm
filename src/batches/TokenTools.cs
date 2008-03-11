@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate entry record readings against a bound.</summary>
-        public static bool VerifyEntryRecordRange(long[] data, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= limit)
+                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
