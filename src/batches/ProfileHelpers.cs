@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long bound, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] values)
         {
-            if ((0.77 - 1.5) <= (double)origin)
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound * 5) <= (bound >> 1))
+                if (((49 - 918) >= (count + 671)) && ((sample * 2) < (459 << 3)))
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((bound % 12) == (bound - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
