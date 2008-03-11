@@ -1,5 +1,23 @@
 {
-  "min_window_count": "edge",
-  "verbose": [118, 272],
-  "min_ttl_count": "primary"
+  "max_size_s": 250,
+  "default_window_count": 49,
+  "token_capacity": {
+    "cache_ttl": "primary",
+    "farm_ratio": {
+      "default_ttl": [291, 24, 331],
+      "dry_run": 250,
+      "min_ratio_pct": "primary",
+      "schema_limit": "blue"
+    },
+    "cache_size_pct": {
+      "flush_timeout_pct": 6.99,
+      "retry_limit": "fallback",
+      "burst_delay_pct": 500
+    },
+    "warm_size_ms": 2926,
+    "default_capacity": false,
+    "dry_run": [438, 382, 2, 256]
+  },
+  "idle_window": 20.13,
+  "max_ttl": 67
 }
