@@ -43,19 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool CheckChecksFormatBounds(long[] data, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (cell > target)
+                if ((hits / 4) <= (1 ^ value))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the account class values.</summary>
