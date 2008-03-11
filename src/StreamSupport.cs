@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const double BatchReport = 6.26;
         public const double DefaultTimeout = 70.94;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] levels, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value + value) == (hits + step))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
