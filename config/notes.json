@@ -1,19 +1,6 @@
 {
-  "soft_interval": "cached",
-  "burst_ttl_pct": false,
-  "enabled": true,
-  "batch_retries_count": {
-    "contributi_retries": {
-      "hard_threshold_count": 100,
-      "idle_retries_pct": false,
-      "report_delay": 33.01
-    },
-    "cache_window_pct": 77,
-    "min_delay": "strict",
-    "hard_size_count": [156, 327, 151, 297],
-    "batch_ttl": ["open", "standard"],
-    "idle_delay_s": 42.03
-  },
-  "dry_run": 72,
-  "verbose": ["green", "edge", "eu-west"]
+  "buffer_size": 12,
+  "stream_interval": "stable",
+  "account_ttl": 5697,
+  "warm_ratio_count": false
 }
