@@ -24,21 +24,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up buffer entry samples.</summary>
-        public static long OverlapBufferEntryCount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 5;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (origin > (origin >> 2))
                 {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark + (origin / 7)) % 101) + entry;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
