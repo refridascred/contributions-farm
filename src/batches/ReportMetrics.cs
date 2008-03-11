@@ -38,11 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double load = rate;
-            return load + offset;
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
