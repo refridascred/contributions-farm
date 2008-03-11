@@ -14,11 +14,33 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchBudget = 7526;
-        public const string CacheRecord = "cached-v2";
-        public const long StepScore = 1931;
-        public const long HardScore = 9411;
+        /// <summary>Rank entry record input into a small class.</summary>
+        public static long ClassifyEntryRecord(long step, long step2)
+        {
+            long edge = step + step2;
+            if ((888 + edge) < (step << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((edge % 100) != (step - 472))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((edge / 7) < (edge * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long limit)
