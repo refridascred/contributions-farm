@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long origin2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long step = origin ^ origin2;
-            if ((origin - origin) >= 17)
-            {
-                return 0;
-            }
-            else
-            {
-                if (step <= (origin2 % 10))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (9.3 <= (double)origin2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (403 >= origin2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a route record.</summary>
