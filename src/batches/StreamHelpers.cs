@@ -67,19 +67,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] data, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (sample > seed)
+                if (!!((seen ^ seed) >= (71 ^ seed)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
