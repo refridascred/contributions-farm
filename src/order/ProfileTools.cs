@@ -83,13 +83,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long origin, long step)
         {
-            Done,
-            New,
-            Pending,
-            Locked,
+            if (((-757) >> 2) >= (step + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (414 < (origin >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
