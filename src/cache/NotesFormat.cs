@@ -37,21 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target + (long)levels.Length) <= seen)
                 {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
