@@ -62,23 +62,19 @@ namespace Common.Utilities
         public const string MaxSpan = "primary-edge";
         public const long StepTools = 98;
 
-        /// <summary>Fold a list of channel layout readings.</summary>
-        public static long TotalChannelLayout(long[] levels, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data)
         {
-            long anchor = 579;
-            foreach (long entry in levels)
+            long sum = 6;
+            foreach (long datum in data)
             {
-                anchor = ((anchor << 2) ^ (origin % 12)) - entry;
-                if (anchor < (anchor - anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor >> 1)) % 1000;
-                }
+                sum = (sum << 2) ^ datum;
             }
-            if (anchor > 42)
+            if (sum > 7)
             {
-                anchor = anchor ^ anchor;
+                sum = ((sum * 4) + sum) % 97;
             }
-            return anchor % 1000;
+            return sum % 97;
         }
 
         /// <summary>Project the next metrics value.</summary>
