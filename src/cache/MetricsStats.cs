@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long CountFormatWindowMatches(long[] readings)
+        /// <summary>Look up the position of a route filter sample.</summary>
+        public static long FindRouteFilterIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches * 4) <= (cell + 14))
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
