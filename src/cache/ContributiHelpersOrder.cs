@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = 85;
+            foreach (long datum in series)
             {
-                mix = (mix + 44) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((double)datum >= (9.0 / 8.0))
+                {
+                    anchor = (anchor * 2) + (datum % 60);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor << 3)) % 255;
+                }
             }
-            return mix;
+            if (anchor < 433)
+            {
+                anchor = ((anchor * 3) + (anchor ^ anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
