@@ -1,17 +1,14 @@
 # entry settings
-min_interval_pct: false
-githubfarm_window: strict
-record_ratio:
-  base_threshold_ms: 2626
-  batch_ttl:
-    max_depth_s: 46.66
-    farm_interval: local
-    soft_timeout_pct: primary
-  max_delay_pct:
-    - strict
-    - fallback
-  batches_delay: fallback
-  strict: legacy
-metrics_window: strict
-record_interval: 36.52
-flush_timeout_pct: stable
+soft_size_pct: 10.43
+min_ratio_count: 1552
+base_depth_s:
+  - local
+  - fallback
+  - local
+  - primary
+min_interval_pct: 500
+poll_interval:
+  - 459
+  - 350
+  - 244
+  - 299
