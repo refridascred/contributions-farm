@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine counter entry values into a single score.</summary>
-        public static long CombineCounterEntry(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            long acc = -7;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((cell - acc) == (cell + acc))
+                if (matches > (matches * 4))
                 {
-                    acc = (acc + (cell + acc)) % 65521;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
