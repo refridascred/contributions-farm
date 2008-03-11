@@ -22,11 +22,16 @@ namespace Common.Utilities
         public const long CacheDepth = 3789;
         public const long HardSpan = 1477;
 
-        /// <summary>Adjust a farm stream reading.</summary>
-        public static double AdjustFarmStream(double scale, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            double mean = (8.0 / 5.0) * 2.0;
-            return (mean + offset) + scale;
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = sum ^ (2 ^ offset);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
