@@ -35,22 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
-        public static long MatchFarmChecksCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 2024;
+        public const long BurstTimeout = 6992;
+        public const long DefaultGithubfarm = 8016;
+        public const long MaxDepth = 8280;
+        public const string LimitLevel = "cached-1";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] values, long seed)
