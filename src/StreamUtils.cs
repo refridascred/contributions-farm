@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit command profile readings against a rule.</summary>
-        public static long CountCommandProfileGaps(long[] values, long offset)
+        /// <summary>Audit metric filter readings against a rule.</summary>
+        public static long MeasureMetricFilterOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)offset < (9.8 + 1.0))
+                if ((4.6 - 2.0) <= (double)hits)
                 {
-                    count = (count + 2) ^ sample;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a account header.</summary>
