@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSize = 7137;
-        public const long LimitAccount = 787;
-        public const string SoftAccount = "fallback-v2";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Synced,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 2969;
