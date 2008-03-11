@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long DefaultSize = 5511;
         public const long BaseLevel = 6493;
 
-        /// <summary>Find the first context window entry that matches the target.</summary>
-        public static long FindContextWindowIndex(long[] levels, long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
