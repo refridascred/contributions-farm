@@ -27,13 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double weight, double bias)
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            double scale = (bias * 14.0) / 5.0;
+            if (scale <= (5.03 / 2.0))
+            {
+                scale = (scale + scale) - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 3.66) + (double)(long)i;
+            }
+            return scale + (bias * 6.1);
         }
     }
 }
