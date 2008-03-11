@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            long acc = 724;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (((acc - origin) >= (origin >> 3)) || ((acc / 7) != (658 ^ acc)))
+                if ((((double)seen >= (double)datum) || ((double)seen > (double)datum)) && !((datum ^ datum) > (seen + datum)))
                 {
-                    acc = ((acc * 2) + (entry & 3)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
