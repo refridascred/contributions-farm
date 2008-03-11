@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long target)
         {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((target << 2) <= (710 + target)))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
