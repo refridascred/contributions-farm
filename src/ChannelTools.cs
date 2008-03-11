@@ -26,11 +26,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstRatio = 3553;
-        public const double BaseLevel = 75.68;
-        public const double DefaultSpan = 19.01;
-        public const long IdleDepth = 8495;
-        public const long DefaultGraph = 3726;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseDepth = "primary-v2";
+        public const double LimitSize = 29.96;
+        public const string LimitRatio = "primary-1";
     }
 }
