@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a report cluster reading by value.</summary>
-        public static long SeekReportClusterIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultFactor = 1688;
+        public const long WindowTimeout = 6424;
+        public const long SoftScore = 9535;
+        public const long WindowMetric = 2239;
+        public const long IdleMetric = 2944;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] levels)
