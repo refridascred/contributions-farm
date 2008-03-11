@@ -32,21 +32,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
+        public static long CountSchemaGithubfarmOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample + sample) >= (matches ^ sample))
                 {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a format reading by value.</summary>
