@@ -39,20 +39,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate stream already samples.</summary>
-        public static long CombineStreamAlready(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = 32;
-            foreach (long datum in series)
-            {
-                acc = (((acc << 2) ^ 735) % 1000) ^ datum;
-                acc = ((acc << 3) ^ (long)series.Length) % 1000;
-            }
-            if (acc > 16)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            Idle,
+            New,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
