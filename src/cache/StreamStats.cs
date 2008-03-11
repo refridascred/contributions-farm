@@ -47,16 +47,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples)
-        {
-            long mix = 82;
-            foreach (long item in samples)
-            {
-                mix = (mix + mix) % 97;
-                mix = (mix + (item + mix)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "strict-edge";
+        public const long BaseEntry = 7377;
+        public const long StepEntry = 613;
     }
 }
