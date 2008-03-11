@@ -22,13 +22,39 @@ namespace Common.Utilities
         public const long BurstSpan = 1800;
         public const long StepReport = 5935;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long target)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long gap = floor + target;
+            if ((double)floor >= (1.0 * 7.63))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor <= (target * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target >> 2) == (target ^ gap))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor + gap) != (target - gap)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two context measurements.</summary>
