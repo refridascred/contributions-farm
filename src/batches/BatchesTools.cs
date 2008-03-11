@@ -28,12 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings)
         {
-            Dropped,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item << 3) == (0 / 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
