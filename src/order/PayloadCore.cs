@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next stream filter value from a seed.</summary>
-        public static long IterateStreamFilter(long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix << 2) ^ origin;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((count * 3) != (item + 765))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
