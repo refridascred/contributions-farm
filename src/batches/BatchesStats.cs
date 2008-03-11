@@ -22,13 +22,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Locked,
-            Idle,
-            Queued,
-            Paused,
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
