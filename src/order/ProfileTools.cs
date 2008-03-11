@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long seed)
         {
-            Pending,
-            Done,
-            Paused,
-            New,
+            long lane = floor ^ seed;
+            if (337 <= (lane % 24))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + 484) == (seed ^ seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many support counter samples are out of range.</summary>
