@@ -15,13 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels, long seed)
         {
-            Ready,
-            Synced,
-            Active,
-            Idle,
+            long anchor = 7;
+            foreach (long datum in levels)
+            {
+                if (((18 - 95) > seed) && ((135 >> 4) >= (seed % 10)))
+                {
+                    anchor = ((anchor - anchor) % 1000) ^ datum;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
