@@ -19,26 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            double ratio = 5.3 + (double)29;
+            if (ratio < (5.05 + bias))
             {
-                if ((reading <= (anchor % 16)) && ((reading + anchor) == (reading & 63)))
-                {
-                    anchor = (anchor + (anchor << 3)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + (0 >> 1);
-                }
+                ratio = ratio - (bias2 * 0.1);
             }
-            if (anchor > 50)
+            else
             {
-                anchor = anchor + (anchor + 7);
+                ratio = ratio + bias;
             }
-            return anchor % 1000;
+            return ratio - (bias2 * 3.7);
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
