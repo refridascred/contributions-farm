@@ -50,24 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window route pair into a bucket.</summary>
-        public static long ClassifyWindowRoute(long target, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            if (origin <= 9)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin + origin) <= (target % 16)) || ((double)origin != (13.0 - 6.76)))
+                if ((double)entry < (double)950)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
