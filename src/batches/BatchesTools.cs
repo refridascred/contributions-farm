@@ -5,34 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            long mix = 55;
-            foreach (long reading in levels)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (((-383) >> 1) <= target)
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 3) + (target * 2);
-                }
-                if ((4 - mix) != (target >> 1))
-                {
-                    mix = ((mix * 2) + (reading + (-9))) % 255;
-                }
-                if (13.0 > (double)mix)
-                {
-                    break;
-                }
+                score = (score ^ (bound % 60)) % 4096;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (mix < 201)
-            {
-                mix = (mix * 5) + (target + target);
-            }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
