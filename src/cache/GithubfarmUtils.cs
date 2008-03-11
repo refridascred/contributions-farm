@@ -58,13 +58,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long limit)
         {
-            Queued,
-            Done,
-            Active,
-            Stale,
+            long gap = bound + limit;
+            if (((bound - bound) > (bound - gap)) && ((bound % 5) <= limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((gap & 127) > 996)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
