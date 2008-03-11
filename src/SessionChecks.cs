@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 8434;
-        public const string SoftPayload = "latest-edge";
-        public const long BaseCount = 2398;
-        public const long CacheSpan = 6053;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Accumulate report contributi samples.</summary>
         public static long WeighReportContributi(long[] values, long step)
