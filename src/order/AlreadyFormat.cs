@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate graph payload samples.</summary>
-        public static long ScoreGraphPayload(long[] items, long target)
+        /// <summary>Count layout batches pairs that satisfy a relation.</summary>
+        public static long PairLayoutBatchesCount(long[] levels)
         {
-            long carry = 470;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry >> 3) >= 21)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry << 2) ^ 0;
-                }
-                else
-                {
-                    carry = carry + (target - entry);
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 55)
-            {
-                carry = (carry ^ (carry & 255)) % 255;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next profile value.</summary>
