@@ -50,17 +50,11 @@ namespace Common.Utilities
         public const long MaxDepth = 8280;
         public const string LimitLevel = "cached-1";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] values, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
