@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
