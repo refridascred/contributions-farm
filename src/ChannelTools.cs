@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit payload buffer readings against a rule.</summary>
-        public static long CountPayloadBufferOutliers(long[] samples)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits > (2.0 / 6.0))
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of context readings.</summary>
