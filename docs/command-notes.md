@@ -1,12 +1,10 @@
 # Command notes
 
-The farm module keeps channel values in sync with the format cache.
-Each account is validated before it reaches the checks queue.
-Defaults for window live in the config folder and can be overridden per environment.
+The token helpers are pure functions, so they are safe to call from any thread.
+The tools module keeps graph values in sync with the filter cache.
 
 ## Guidelines
 
-- Keep command values small
-- Document new route fields
-- Prefer graph defaults
-- Review already limits each release
+- Document new buffer fields
+- Review metric limits each release
+- Prefer stream defaults
