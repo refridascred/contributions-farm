@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Scale a metrics record figure with a bias.</summary>
+        public static double SmoothMetricsRecord(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = scale;
+            if (mean < (12.0 / 2.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - offset;
             }
-            return matches;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean - (offset * 9.7);
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
