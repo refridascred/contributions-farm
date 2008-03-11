@@ -1,4 +1,9 @@
 # support settings
-hard_limit: cached
-format_window: 25.89
-tools_depth: 30
+command_delay:
+  - open
+  - legacy
+  - primary
+readonly: 34.48
+burst_interval_s: 30
+graph_depth: staging
+audit: standard
