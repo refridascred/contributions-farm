@@ -30,18 +30,10 @@ namespace Common.Utilities
         public const string MinContext = "legacy";
         public const double RetryDepth = 88.78;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleWidth = "fallback-edge";
+        public const string BurstRatio = "staging";
+        public const double HardNotes = 71.74;
 
         /// <summary>Project the next support value.</summary>
         public static double BlendSupport(double gain, double floor)
