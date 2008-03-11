@@ -30,19 +30,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a metric layout figure with a bias.</summary>
-        public static double AdjustMetricLayout(double gain, double floor)
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long MeasureSchemaWindowHits(long[] items, long target)
         {
-            double load = (gain - floor) - gain;
-            if (load >= (gain + gain))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                load = load + (double)982;
+                if (!((3.92 * 14.0) == (double)hits))
+                {
+                    hits = ((hits + 2) + sample) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load + floor;
-            }
-            return load - (double)723;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
