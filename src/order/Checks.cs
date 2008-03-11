@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "primary-edge";
-        public const string StepContext = "standard";
-        public const string BurstContext = "local-v2";
-        public const string MinContext = "legacy";
-        public const double RetryDepth = 88.78;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 88.32;
+        public const double MinSchema = 93.61;
+        public const long DefaultSchema = 4177;
+        public const string WindowLevel = "standard";
+        public const double BurstScore = 56.13;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] readings)
