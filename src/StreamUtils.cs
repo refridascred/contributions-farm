@@ -60,11 +60,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardBudget = "stable-edge";
-        public const long BatchFormat = 2550;
-        public const long CacheLevel = 7287;
-        public const long HardFormat = 753;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((matches < (matches * 3)) && (matches >= ((long)items.Length - 584))) || (8 <= (item + matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstScore = 7555;
