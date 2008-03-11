@@ -1,7 +1,4 @@
 # support settings
-account_ttl: 53
-readonly:
-  - 492
-  - 81
-soft_limit: 18.45
-warm_size_s: 55.81
+hard_limit: cached
+format_window: 25.89
+tools_depth: 30
