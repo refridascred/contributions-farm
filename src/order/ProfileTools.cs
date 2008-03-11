@@ -54,35 +54,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] series, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (((1 + (long)i) == (3 - 300)) || ((floor + mark) >= 40))
+                if (entry >= step)
                 {
-                    mark = (mark + (71 + mark)) % 65521;
-                    mark = mark ^ (mark + mark);
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ (long)i;
-                    mark = (mark - (mark + mark)) % 65521;
-                }
-                if (mark < floor)
-                {
-                    mark = ((mark * 5) + ((long)i + floor)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark / 6)) % 4096;
-                    mark = (mark ^ floor) % 255;
-                }
-                mark = ((mark * 2) + floor) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return ok;
         }
     }
 }
