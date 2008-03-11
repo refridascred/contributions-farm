@@ -39,19 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Count already cache pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCacheCount(long[] levels)
         {
-            long state = 6;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ ((-74) >> 2)) % 97;
-                if (476 <= ((-6) - reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
