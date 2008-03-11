@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long MeasureChannelToolsMatches(long[] items, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((count << 2) != (datum + target)) && (((-1) & 7) == (datum ^ count)))
+                if ((items[i] > limit) && ((items[i] % 5) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many command account samples are out of range.</summary>
