@@ -71,13 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Retry,
-            Stale,
-            Paused,
-            Draft,
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
