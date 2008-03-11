@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Iterate the githubfarm route series from a seed.</summary>
+        public static long SeriesGithubfarmRoute(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long slot = 1;
+                if ((step / 2) > (step & 3))
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    slot = slot - ((long)i * 3);
+                    sum = ((sum * 2) + slot) % 65521;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
