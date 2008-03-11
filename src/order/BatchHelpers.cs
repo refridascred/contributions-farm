@@ -26,21 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 64;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((((total * 5) + (total - 750)) % 101) + entry) + offset;
             }
-            return count;
+            if (total < 5)
+            {
+                total = ((total * 3) + ((long)items.Length & 1)) % 255;
+            }
+            return total % 4096;
         }
     }
 }
