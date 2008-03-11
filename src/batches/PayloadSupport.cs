@@ -43,39 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] readings, long bound)
         {
-            long step2 = seed ^ step;
-            if ((seed / 8) != (0 >> 2))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((seed & 3) <= (step2 % 8)))
+                if (entry > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step < 3.17) || ((step2 - step) == (step % 16)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)step < (15.0 + 6.13)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
