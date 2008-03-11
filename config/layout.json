@@ -1,5 +1,6 @@
 {
-  "queue_retries": ["primary", "standard"],
-  "counter_limit": true,
-  "sync_limit_pct": [362, 249, 187, 181]
+  "default_delay": ["staging", "green", "local"],
+  "compress": 90.44,
+  "githubfarm_retries": 81,
+  "already_limit": 28
 }
