@@ -94,12 +94,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Validate already farm readings against a bound.</summary>
