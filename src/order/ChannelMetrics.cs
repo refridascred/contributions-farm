@@ -34,30 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long limit2)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long bound2)
         {
-            long edge = limit + limit2;
-            if ((0 >= (333 ^ edge)) && ((double)limit <= (6.72 + 3.8)))
+            if (bound2 < (bound2 + bound2))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (((limit ^ limit) <= 912) && ((double)limit < 0.9))
+                if (bound2 < (bound - bound2))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit2 - limit2) == (edge + limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
