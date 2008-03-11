@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a support context reading.</summary>
+        public static double BlendSupportContext(double rate, double span)
         {
-            Stale,
-            Locked,
-            Synced,
-            Queued,
+            double gain = (double)0 * 0.1;
+            if (gain < (span / 4.0))
+            {
+                gain = gain - 9.9;
+            }
+            else
+            {
+                gain = gain - (rate / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain + 2.0;
         }
 
         /// <summary>Hold a notes info.</summary>
