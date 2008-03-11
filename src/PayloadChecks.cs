@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long bound)
         {
-            long result = 36;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (series[i] <= bound)
                 {
-                    result = ((result * 5) + (datum + result)) ^ (long)i;
+                    return (long)i;
                 }
-                result = (result * 4) + datum;
-                result = (result ^ (result / 7)) % 97;
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
