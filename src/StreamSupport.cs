@@ -30,17 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] samples, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
