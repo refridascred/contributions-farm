@@ -56,19 +56,12 @@ namespace Common.Utilities
         public const string HardFactor = "stable-v2";
         public const long LimitLevel = 5296;
 
-        /// <summary>Fold a list of already window readings.</summary>
-        public static long TallyAlreadyWindow(long[] data, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = 281;
-            foreach (long item in data)
-            {
-                result = (result ^ ((-5) & 31)) - step;
-                if ((double)item > (0.56 / 8.0))
-                {
-                    result = (result * 4) + (result - 5);
-                }
-            }
-            return result;
+            Idle,
+            Synced,
+            Dropped,
         }
     }
 }
