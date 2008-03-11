@@ -42,22 +42,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            long acc = 28;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry > (double)acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc - ((-932) + acc);
-                }
-                else
-                {
-                    acc = acc - acc;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
