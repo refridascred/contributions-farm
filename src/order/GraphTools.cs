@@ -40,25 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long diff = limit - limit2;
-            if (((7.2 * 2.5) != (double)limit) || ((limit + limit2) > (limit / 4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff % 10) < 271)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
