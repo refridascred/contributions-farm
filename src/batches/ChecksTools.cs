@@ -41,38 +41,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long limit, long step)
+        /// <summary>Iterate the stream cache series from a seed.</summary>
+        public static long IterateStreamCache(long floor)
         {
-            if (((limit + 5) == (step + (-7))) && ((double)step < 7.7))
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                mix = (mix << 3) ^ ((long)i * 3);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step / 2) >= (limit ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 * 4) <= (limit / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)step == (5.0 - 9.41)) || ((limit * 3) < (limit & 63)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
