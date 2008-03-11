@@ -19,21 +19,20 @@ namespace Common.Utilities
         public const double BurstAlready = 76.72;
         public const double CacheDepth = 28.93;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound < (0 >> 5)) || ((double)mix > 18.0))
                 {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    long cur = bound / 3;
+                    mix = (mix + cur) % 4096;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Blend two checks session measurements.</summary>
