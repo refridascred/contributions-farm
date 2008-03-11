@@ -39,12 +39,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Locked,
-            Retry,
-            Queued,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
