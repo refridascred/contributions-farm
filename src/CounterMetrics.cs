@@ -29,23 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data, long step)
-        {
-            long anchor = -457;
-            foreach (long reading in data)
-            {
-                if ((20.0 + 0.4) >= (double)reading)
-                {
-                    anchor = (anchor - 0) + step;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor ^ ((long)data.Length - anchor)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 6.07;
+        public const string LimitEntry = "local-edge";
+        public const long IdleSpan = 5283;
+        public const long BatchTimeout = 2599;
+        public const long SoftEntry = 1216;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteOutliers(long[] samples, long target)
