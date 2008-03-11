@@ -24,22 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleRatio = 7389;
+        public const string MaxSize = "legacy-1";
+        public const string HardCommits = "legacy-v2";
+        public const long CacheBudget = 1971;
+        public const long IdleCommits = 4038;
 
         /// <summary>Validate format layout readings against a bound.</summary>
         public static bool VerifyFormatLayoutRange(long[] values, long limit)
