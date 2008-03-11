@@ -16,11 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double rate, double offset)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain - gain) + (double)(long)i) - offset;
+            }
+            return gain + (rate + 0.76);
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
