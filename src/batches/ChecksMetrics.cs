@@ -50,11 +50,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
