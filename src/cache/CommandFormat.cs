@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long AuditGraphCacheHits(long[] readings, long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio2 = (double)(10 + 8);
+            if (ratio2 >= ratio2)
             {
-                if (reading > (long)readings.Length)
-                {
-                    seen = (seen + 3) + seed;
-                }
+                ratio2 = (ratio2 - (double)(-62)) + bias;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio2 + 5.83;
         }
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
