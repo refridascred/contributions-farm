@@ -26,17 +26,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long floor)
+        /// <summary>Scale a layout tools figure with a bias.</summary>
+        public static double ScaleLayoutTools(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain2 = 1.6;
+            for (int i = 0; i < 5; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (((gain2 + (double)69) + (double)(long)i) + gain) - bias;
             }
-            return -1;
+            return gain2 - (0.48 * 0.68);
         }
     }
 }
