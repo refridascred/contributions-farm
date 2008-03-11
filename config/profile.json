@@ -1,7 +1,9 @@
 {
-  "max_limit_s": "strict",
-  "batch_window": 34.1,
-  "readonly": "strict",
-  "dry_run": 3718,
-  "context_ratio": "staging"
+  "account_size": "legacy",
+  "audit": {
+    "route_timeout": "legacy",
+    "account_depth": "staging",
+    "route_retries": 539
+  },
+  "hard_ttl_s": 3072
 }
