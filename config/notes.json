@@ -1,11 +1,5 @@
 {
-  "enabled": 1896,
-  "persist": 500,
-  "readonly": 21.67,
-  "soft_window_ms": {
-    "persist": "latest",
-    "burst_window": 17.92,
-    "soft_interval_pct": 5577,
-    "readonly": [62, 387, 118]
-  }
+  "warm_ttl_pct": [7, 34, 116, 470],
+  "soft_window": 10.94,
+  "max_retries_ms": ["fallback", "staging"]
 }
