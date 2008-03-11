@@ -1,14 +1,17 @@
 # entry settings
-default_ratio_pct:
-  order_timeout:
-    burst_ratio: false
-    retry_limit_ms: 13
-    compress: latest
-    batch_depth: false
-  warm_threshold: local
-  idle_delay: green
-route_size: true
-sync_size_ms: 57
-batch_depth: 71.13
-retry_window_count: 87
-notes_capacity: 100
+min_interval_pct: false
+githubfarm_window: strict
+record_ratio:
+  base_threshold_ms: 2626
+  batch_ttl:
+    max_depth_s: 46.66
+    farm_interval: local
+    soft_timeout_pct: primary
+  max_delay_pct:
+    - strict
+    - fallback
+  batches_delay: fallback
+  strict: legacy
+metrics_window: strict
+record_interval: 36.52
+flush_timeout_pct: stable
