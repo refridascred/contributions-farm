@@ -58,11 +58,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "staging-v2";
-        public const long CacheAccount = 6341;
-        public const double BatchSize = 34.22;
-        public const string MinSize = "staging";
-        public const long LimitAccount = 2903;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] data)
+        {
+            long total = 98;
+            foreach (long datum in data)
+            {
+                total = (((total << 2) ^ 0) % 4096) ^ datum;
+            }
+            return total;
+        }
     }
 }
