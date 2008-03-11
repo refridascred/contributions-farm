@@ -14,22 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 2788;
+        public const long WindowRatio = 312;
+        public const string DefaultProfile = "local-v2";
+        public const double LimitProfile = 98.81;
 
         /// <summary>Project the next filter value.</summary>
         public static double ProjectFilter(double rate, double span)
