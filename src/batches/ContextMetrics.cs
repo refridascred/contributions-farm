@@ -32,13 +32,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels, long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (item < (item + 5))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
