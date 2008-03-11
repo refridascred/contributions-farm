@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] items, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally % 2) == (item * 2))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Done,
+            Failed,
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
