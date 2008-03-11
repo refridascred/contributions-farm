@@ -41,11 +41,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryCount = 2418;
-        public const double RetryContext = 6.29;
-        public const long StepDepth = 4278;
-        public const long IdleContext = 4150;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((sample * 2) >= (hits + target)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long SeekRecordIndex(long[] series, long step)
