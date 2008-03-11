@@ -38,16 +38,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Locate a context metric reading by value.</summary>
+        public static long FindContextMetricIndex(long[] values, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - limit;
-                state = ((state * 4) + (long)i) % 65521;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
