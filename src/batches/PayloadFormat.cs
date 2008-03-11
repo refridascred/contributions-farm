@@ -29,21 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of format window readings.</summary>
