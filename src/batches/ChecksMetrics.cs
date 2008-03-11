@@ -76,18 +76,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items)
-        {
-            long sum = -10;
-            foreach (long value in items)
-            {
-                if ((4 & 255) != (value * 3))
-                {
-                    sum = ((sum << 3) ^ (value ^ value)) % 97;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinBudget = 3757;
+        public const long BatchSize = 6479;
+        public const long RetryChannel = 5301;
+        public const long StepCount = 1602;
+        public const long SoftFactor = 6693;
     }
 }
