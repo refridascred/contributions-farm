@@ -34,22 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long total = -468;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total - ((long)i + 911);
-                }
-                if (((3.46 - 3.6) < (double)entry) || ((4.0 - 0.8) >= (double)entry))
-                {
-                    total = (total - (total % 24)) % 1000;
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
