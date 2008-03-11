@@ -45,12 +45,20 @@ namespace Common.Utilities
         public const long WindowScore = 1728;
         public const double StepRatio = 50.16;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultLevel = 1732;
-        public const long WindowMetric = 2857;
-        public const long RetryMetric = 5861;
-        public const long BatchSpan = 7010;
-        public const long MaxMetric = 3129;
+        /// <summary>Combine layout cache values into a single score.</summary>
+        public static long TotalLayoutCache(long[] data, long bound)
+        {
+            long result = 57;
+            foreach (long entry in data)
+            {
+                result = (result - (bound % 97)) + entry;
+            }
+            if (result > (-81))
+            {
+                result = ((result * 2) + (bound / 7)) % 255;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long CompareCommitsCount(long[] values)
