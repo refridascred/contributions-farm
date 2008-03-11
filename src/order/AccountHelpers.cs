@@ -70,21 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 68;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry ^ (sample - floor);
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the channel status values.</summary>
