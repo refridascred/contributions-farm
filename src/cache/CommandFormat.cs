@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long MaxStats = 6444;
         public const string StepTimeout = "legacy-edge";
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every cluster support entry stays within the limit.</summary>
