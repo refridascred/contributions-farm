@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long carry = 2;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)values.Length > (4.45 + 8.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (((carry * 3) + (carry + 162)) % 255) ^ reading;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
