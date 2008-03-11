@@ -62,39 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long step2 = floor + step;
-            if ((floor + step) == (step2 + step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step2 <= (step2 + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step2 <= ((-82) % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + step2) > 564)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
