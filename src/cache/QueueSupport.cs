@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinScore = 7263;
+        public const double CacheDepth = 29.06;
+        public const string CacheCount = "legacy-v2";
+        public const long StepAccount = 8156;
+        public const long HardAccount = 5503;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] levels)
