@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of entry cluster entries.</summary>
-        public static long TallyEntryCluster(long[] series)
-        {
-            long total = 78;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length - entry) >= (total >> 1))
-                {
-                    total = (total - entry) % 97;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinWidth = 4959;
+        public const long LimitCount = 7874;
+        public const long CacheWidth = 2774;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultTimeout = 14.41;
