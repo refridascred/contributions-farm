@@ -1,5 +1,5 @@
 {
-  "layout_ratio": 250,
-  "poll_limit_ms": "primary",
-  "retry_interval": 64.93
+  "dry_run": 60,
+  "readonly": "strict",
+  "max_capacity": true
 }
