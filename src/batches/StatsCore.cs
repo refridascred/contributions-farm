@@ -58,22 +58,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count graph notes pairs that satisfy a relation.</summary>
-        public static long CompareGraphNotesCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "legacy-1";
+        public const long WindowRatio = 1869;
+        public const long RetryMetric = 3556;
+        public const long LimitMetric = 6662;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double SoftStats = 66.97;
