@@ -28,19 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate checks session readings against a bound.</summary>
-        public static bool VerifyChecksSessionRange(long[] readings, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
