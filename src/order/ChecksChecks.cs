@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] series, long step)
         {
-            long total = 55;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((double)cell > (5.5 / 8.0))
+                if (cell <= step)
                 {
-                    total = ((total * 3) + (68 >> 4)) % 97;
-                    continue;
-                }
-                if (((double)seed <= (double)total) || ((1.8 / 9.0) == (double)cell))
-                {
-                    total = ((total << 3) ^ (seed << 3)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
