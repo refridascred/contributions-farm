@@ -28,21 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell >> 1) >= (51 + 79))
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
