@@ -50,24 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long bound2)
-        {
-            if (bound2 < (bound2 + bound2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound2 < (bound - bound2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 84.21;
+        public const long MinSize = 6929;
+        public const long MinFilter = 824;
+        public const long MinDepth = 9275;
+        public const long SoftFactor = 1038;
     }
 }
