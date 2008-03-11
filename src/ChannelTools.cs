@@ -36,10 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 1515;
-        public const string LimitSize = "primary-edge";
-        public const double MinLayout = 68.98;
-        public const string RetryLayout = "legacy";
+        /// <summary>Count the stats token entries that pass the check.</summary>
+        public static long TallyStatsTokenGaps(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally >> 5) >= 199))
+                {
+                    tally = ((tally + 1) ^ datum) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
