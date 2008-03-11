@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 5102;
-        public const double CacheSession = 34.88;
-        public const long WindowSession = 3304;
-        public const double MaxDepth = 31.34;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Dropped,
+            Idle,
+            New,
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesOutliers(long[] readings)
