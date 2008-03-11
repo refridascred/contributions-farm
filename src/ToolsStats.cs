@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long offset)
+        /// <summary>Combine route already values into a single score.</summary>
+        public static long TotalRouteAlready(long[] levels)
         {
-            long diff = target - offset;
-            if ((offset >= (offset - target)) && (target < (offset & 63)))
+            long state = 12;
+            foreach (long entry in levels)
             {
-                return 0;
+                state = (((state << 2) ^ (state / 7)) % 255) ^ entry;
             }
-            else
-            {
-                if ((double)offset == (9.0 - 5.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (6 & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + diff) >= (target * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
