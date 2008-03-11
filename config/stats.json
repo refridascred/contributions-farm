@@ -1,17 +1,5 @@
 {
-  "verbose": 77.7,
-  "compress": "strict",
-  "warm_capacity": {
-    "default_capacity_ms": "fallback",
-    "notes_depth": 29,
-    "command_size": 30,
-    "base_threshold": ["blue", "latest", "local", "primary"]
-  },
-  "audit": [498, 12, 309, 105],
-  "enabled": {
-    "verbose": [80, 172, 155],
-    "flush_delay": [446, 349, 338],
-    "dry_run": true
-  },
-  "retry_timeout": false
+  "cache_timeout_count": "staging",
+  "readonly": true,
+  "batch_threshold": true
 }
