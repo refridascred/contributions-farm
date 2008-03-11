@@ -27,12 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every stream already entry stays within the limit.</summary>
+        public static bool GuardStreamAlreadyBounds(long[] samples, long offset)
         {
-            Dropped,
-            Locked,
-            Paused,
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
