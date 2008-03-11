@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const string IdleBuffer = "stable-1";
         public const long MinBuffer = 3210;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] items)
         {
-            long acc = 309;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((item - origin) < (origin * 4)) || ((double)acc < (2.0 + 9.0)))
+                if (tally >= (reading - tally))
                 {
-                    acc = ((acc * 5) + (item >> 1)) % 97;
-                }
-                else
-                {
-                    acc = (acc + (acc / 5)) % 65521;
-                }
-                acc = (acc + (item * 3)) % 255;
-                if ((acc >> 5) != (acc & 255))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (acc < 5)
-            {
-                acc = acc + 0;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
