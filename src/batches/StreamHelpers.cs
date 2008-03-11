@@ -35,15 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] series)
+        /// <summary>Audit profile channel readings against a rule.</summary>
+        public static long MeasureProfileChannelMatches(long[] series)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long entry in series)
             {
-                if (((value + value) >= (5 ^ (-7))) && ((9.0 / 4.0) != (double)tally))
+                if ((double)entry == (0.13 + 6.8))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
