@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const long BatchScore = 1954;
         public const long LimitSize = 9732;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long origin)
         {
-            Locked,
-            Closed,
-            Active,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
