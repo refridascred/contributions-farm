@@ -23,12 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Draft,
             Done,
-            Retry,
+            Closed,
+            Active,
+            Draft,
+            New,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
