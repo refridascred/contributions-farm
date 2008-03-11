@@ -31,15 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor contributi entries.</summary>
-        public static long CombineEditorContributi(long[] samples, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] values)
         {
-            long anchor = 649;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor + (reading % 8)) % 97) - origin;
+                if (sample < (seen ^ seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the batch phase values.</summary>
