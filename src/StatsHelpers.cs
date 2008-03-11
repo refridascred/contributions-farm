@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Grade a batches counter value against two limits.</summary>
+        public static long ClassifyBatchesCounter(long step, long seed)
         {
-            long mix = 545;
-            foreach (long cell in data)
+            if ((double)step <= (double)seed)
             {
-                if ((mix & 3) == (mix + mix))
+                return 1;
+            }
+            else
+            {
+                if (((step % 16) < (579 & 1)) && ((double)step >= 2.0))
                 {
-                    mix = ((mix * 2) + (long)data.Length) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix + mix) % 255;
-                    mix = mix + cell;
-                }
-                if ((33 & 255) >= mix)
-                {
-                    mix = (mix - mix) % 65521;
-                }
-                if (0.8 >= (double)mix)
-                {
-                    break;
+                    if (((double)seed != (18.0 - 5.07)) || ((double)step >= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Combine support values into a single score.</summary>
