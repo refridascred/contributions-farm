@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long step, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long seed)
         {
-            if ((double)limit != (double)317)
+            if ((origin - origin) <= (seed * 3))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (8 > (limit >> 1))
+                if ((origin + 5) <= (origin ^ origin))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if (((-6) << 2) == (seed ^ origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed + origin) >= seed) || ((seed ^ origin) != (origin & 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
