@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] == step)
+                if (seen < (434 / 8))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
