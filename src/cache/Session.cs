@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 9271;
-        public const long BurstWidth = 6261;
-        public const string DefaultFactor = "stable-1";
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            New,
+            Paused,
+            Retry,
+            Failed,
+            Active,
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
