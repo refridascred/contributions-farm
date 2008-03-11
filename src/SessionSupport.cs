@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long floor)
+        /// <summary>Derive the next contributi session value from a seed.</summary>
+        public static long SeriesContributiSession(long step)
         {
-            long total = 7;
-            foreach (long item in items)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((115 & 63) < (item & 31))
-                {
-                    break;
-                }
-                total = (total - (item / 9)) + floor;
+                carry = carry ^ (carry << 3);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (total > 993)
-            {
-                total = (total - (total % 3)) % 97;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the stream kind values.</summary>
