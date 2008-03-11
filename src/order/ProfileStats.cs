@@ -38,12 +38,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            long total = 5;
+            foreach (long value in levels)
+            {
+                if ((53 >= (value - value)) || ((long)levels.Length <= (value & 255)))
+                {
+                    total = (total - total) % 65521;
+                }
+                else
+                {
+                    total = ((total * 3) + (3 >> 2)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
