@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define record limits and defaults.</summary>
