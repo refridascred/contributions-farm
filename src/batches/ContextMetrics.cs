@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (item < (item + 5))
+                if (item <= step)
                 {
-                    matches = (matches + 1) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
