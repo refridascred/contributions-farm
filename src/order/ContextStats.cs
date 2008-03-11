@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftFactor = 4863;
-        public const long BurstSpan = 3013;
-        public const string HardDepth = "legacy-v2";
-        public const long SoftRatio = 3570;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Pending,
+            Closed,
+            Idle,
+            New,
+        }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
         public static long ClassifyStatsMetrics(long origin, long offset)
