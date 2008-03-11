@@ -71,10 +71,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 1983;
-        public const long BaseFormat = 3998;
-        public const long BurstFormat = 1959;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] items, long bound)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardRatio = 72;
