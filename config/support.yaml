@@ -1,8 +1,25 @@
 # support settings
-default_timeout_count: 12.26
-batch_threshold_count: false
-sync_threshold_ms: false
-max_depth:
-  - latest
-  - cached
-  - green
+idle_retries_ms: false
+batch_threshold: latest
+cache_interval_pct:
+  batch_ratio:
+    retry_window_count: cached
+    sync_interval_s: cached
+    max_capacity_pct: 76
+    poll_ratio: 78.27
+    retry_ttl_count: 60
+    cache_size: false
+  enabled:
+    burst_threshold_count: green
+    hard_size_pct: 90.22
+    burst_retries_s: 2176
+    metric_window: strict
+    counter_delay: staging
+  githubfarm_ttl: 34
+readonly:
+  batch_interval: 250
+  base_retries_pct: 91
+  base_limit_pct: 500
+  hard_interval: 66.13
+  metrics_size: true
+base_capacity_ms: green
