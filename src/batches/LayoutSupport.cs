@@ -57,24 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long offset, long offset2)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if (!(offset2 <= (offset - offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset2 < (offset2 + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the account class values.</summary>
