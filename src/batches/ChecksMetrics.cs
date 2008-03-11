@@ -57,19 +57,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] levels, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
