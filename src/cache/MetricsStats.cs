@@ -60,11 +60,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardFactor = "primary-edge";
-        public const long StepSession = 291;
-        public const long CacheSession = 4973;
-        public const double MinRatio = 75.72;
-        public const long BaseSession = 5868;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 3847;
+        public const string MaxCount = "latest";
+        public const long IdleTools = 1484;
+        public const double DefaultTools = 13.53;
+        public const string HardLevel = "latest";
     }
 }
