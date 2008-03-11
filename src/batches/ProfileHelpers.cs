@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Dropped,
-            Idle,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 8284;
+        public const double BaseFactor = 80.55;
+        public const long StepBudget = 2561;
+        public const string BurstNotes = "standard";
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
