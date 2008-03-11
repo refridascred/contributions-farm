@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardScore = 70.52;
-        public const double StepSupport = 29.73;
-        public const long WindowSupport = 3984;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Failed,
+            Done,
+            Dropped,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] series)
