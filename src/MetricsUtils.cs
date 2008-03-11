@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultWidth = 9772;
+        public const double BurstAlready = 76.72;
+        public const double CacheDepth = 28.93;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] readings)
