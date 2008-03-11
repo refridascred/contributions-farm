@@ -33,11 +33,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] levels, long origin)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long state = 80;
+            foreach (long cell in levels)
+            {
+                if ((cell - state) > (cell << 3))
+                {
+                    state = state + (origin % 8);
+                }
+                else
+                {
+                    state = state + 6;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate already samples.</summary>
