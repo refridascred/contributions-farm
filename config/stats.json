@@ -1,7 +1,5 @@
 {
-  "soft_depth_s": "green",
-  "soft_interval": 250,
-  "hard_ttl_pct": 250,
-  "cache_capacity_count": 36.36,
-  "route_ttl": 8643
+  "tools_window": "strict",
+  "counter_capacity": true,
+  "cache_window": "fallback"
 }
