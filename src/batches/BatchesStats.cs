@@ -46,21 +46,12 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const string DefaultCount = "staging-1";
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
