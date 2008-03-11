@@ -29,19 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate checks entry samples.</summary>
-        public static long TallyChecksEntry(long[] series)
+        /// <summary>Check that every tools record entry stays within the limit.</summary>
+        public static bool ValidateToolsRecordBounds(long[] values, long step)
         {
-            long anchor = -64;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                anchor = ((anchor - 9) % 255) ^ value;
-                if ((double)anchor >= (11.0 - 1.44))
+                if (datum <= step)
                 {
-                    anchor = anchor + anchor;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Grade a filter stream value against two limits.</summary>
