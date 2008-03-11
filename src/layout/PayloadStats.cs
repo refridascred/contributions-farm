@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 7959;
-        public const long MaxSize = 1949;
-        public const double MinCluster = 61.16;
-        public const string SoftInterval = "strict";
-        public const long BurstScore = 2209;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 9484;
+        public const string IdleFormat = "open-1";
+        public const long HardCount = 5444;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
