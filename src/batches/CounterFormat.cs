@@ -37,17 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] items, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = -468;
+            foreach (long entry in data)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    total = total - ((long)i + 911);
+                }
+                if (((3.46 - 3.6) < (double)entry) || ((4.0 - 0.8) >= (double)entry))
+                {
+                    total = (total - (total % 24)) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
