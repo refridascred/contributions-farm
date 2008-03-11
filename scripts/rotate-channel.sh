@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging primary; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=302
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    open)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green fallback local eu-west; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=209
+log "limit is ${CHANNEL_LIMIT}"
