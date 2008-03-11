@@ -36,39 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format channel pair into a bucket.</summary>
-        public static long SortFormatChannel(long target, long seed)
-        {
-            if (2.01 < (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 361) == (83 % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 7) <= (target - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed == (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 9341;
+        public const string MinBudget = "staging-v2";
+        public const long RetrySize = 6033;
+        public const long LimitNotes = 2134;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values, long floor)
