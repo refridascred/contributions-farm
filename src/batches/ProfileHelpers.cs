@@ -45,18 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (matches < (matches & 63))
+                if ((double)4 != (double)floor)
                 {
-                    matches = (matches + 3) + item;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the entry cluster series from a seed.</summary>
