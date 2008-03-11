@@ -25,17 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] series, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -8;
+            foreach (long datum in samples)
             {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                if (((3.39 + 9.76) < (double)carry) && ((18.0 - 5.7) < (double)(long)samples.Length))
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (carry + datum)) % 1000;
                 }
             }
-            return -1;
+            if (carry < 234)
+            {
+                carry = (carry - (origin << 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many route format samples are out of range.</summary>
