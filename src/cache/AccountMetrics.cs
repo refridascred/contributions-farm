@@ -22,22 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] samples, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.0 + 9.3) > (double)limit)
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
