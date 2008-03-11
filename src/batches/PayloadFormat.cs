@@ -36,19 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] readings, long offset)
+        /// <summary>Combine schema editor values into a single score.</summary>
+        public static long TallySchemaEditor(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long mix = 775;
+            foreach (long sample in items)
             {
-                if (sample >= offset)
+                if ((mix & 31) <= (mix + sample))
                 {
-                    ready = false;
-                    break;
+                    mix = mix + (sample & 127);
                 }
             }
-            return ready;
+            return mix;
         }
     }
 }
