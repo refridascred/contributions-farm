@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long TallyClusterGithubfarmHits(long[] series, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.46 >= (double)seen) && ((value - 3) >= value))
+                if ((values[i] >= origin) && ((values[i] % 2) != 0))
                 {
-                    seen = (seen + 2) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
