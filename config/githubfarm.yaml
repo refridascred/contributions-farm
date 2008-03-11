@@ -1,4 +1,17 @@
 # githubfarm settings
-compress: 7994
-payload_ratio: false
-retry_window_count: local
+checks_depth: standard
+verbose:
+  flush_threshold: 250
+  flush_limit: blue
+  route_interval: true
+  commits_timeout: 93
+poll_window_count: 62
+enabled:
+  default_size_s: cached
+  cache_ttl_s:
+    - legacy
+    - staging
+    - latest
+  cache_size_ms: 250
+  order_delay: primary
+  readonly: true
