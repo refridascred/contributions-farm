@@ -1,11 +1,17 @@
 {
-  "checks_threshold": true,
-  "max_retries_ms": {
-    "support_ttl": 5916,
-    "session_capacity": 72.09,
-    "tools_depth": 76.15,
-    "max_ratio": "blue",
-    "idle_interval_s": 1225
+  "context_window": 32.15,
+  "idle_retries_pct": "open",
+  "batch_depth_ms": {
+    "verbose": 72,
+    "retry_interval_pct": {
+      "enabled": 500,
+      "batch_ratio_ms": true,
+      "hard_depth_ms": "legacy"
+    },
+    "entry_threshold": 93.3,
+    "audit": 250,
+    "max_ratio": "strict"
   },
-  "readonly": false
+  "batch_ttl_ms": "blue",
+  "support_ratio": "legacy"
 }
