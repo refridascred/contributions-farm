@@ -1,8 +1,12 @@
 # entry settings
-strict:
-  - 492
-  - 475
-  - 161
-  - 481
-readonly: eu-west
-stats_size: 71.1
+order_ttl: 8894
+flush_capacity_s:
+  strict: 500
+  retry_interval_ms: latest
+  audit: true
+  tools_window: eu-west
+  cache_delay:
+    - edge
+    - latest
+stats_depth: 34
+min_size_pct: 34
