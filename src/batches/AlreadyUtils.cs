@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultWidth = 14.29;
-        public const double WindowSpan = 32.14;
-        public const long MinGithubfarm = 5032;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] readings)
