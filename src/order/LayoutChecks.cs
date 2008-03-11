@@ -59,10 +59,20 @@ namespace Common.Utilities
         public const string BurstScore = "latest-edge";
         public const string DefaultProfile = "latest";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 1357;
-        public const double DefaultRatio = 52.98;
-        public const long BatchCount = 187;
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double weight, double span)
+        {
+            double bias = span;
+            if (bias <= (span / 5.0))
+            {
+                bias = (bias - (bias * 10.0)) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (9.0 / 3.0)) + (double)(long)i;
+            }
+            return bias + (double)(-692);
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
