@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((1.0 / 7.0) > (double)seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((18.0 - 0.5) >= (4.4 + 0.9))
-                {
-                    acc = (acc + (acc & 3)) % 101;
-                    continue;
-                }
-                acc = acc ^ (seed - acc);
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
