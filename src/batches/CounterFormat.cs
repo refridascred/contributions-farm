@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 11.49;
-        public const double DefaultSize = 47.5;
-        public const double SoftBudget = 55.19;
-        public const double MinChannel = 66.52;
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool VerifyQueueNotesRange(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
