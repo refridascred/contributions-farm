@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine metric account values into a single score.</summary>
-        public static long FoldMetricAccount(long[] items, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] items, long seed)
         {
-            long total = 719;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (!((-562) >= (total << 1)))
+                if (sample > seed)
                 {
-                    total = (total ^ (bound << 1)) + cell;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    total = (total + (total % 64)) % 4096;
-                }
-                total = (total << 2) ^ total;
             }
-            if (total < 517)
-            {
-                total = (total - ((long)items.Length - bound)) % 4096;
-            }
-            return total % 4096;
+            return stale;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
