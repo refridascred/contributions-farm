@@ -29,15 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double offset)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long MeasureSupportNotesOutliers(long[] readings, long floor)
         {
-            double mean = (double)113 - offset;
-            if (mean >= offset)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mean = (mean + offset) - scale;
+                if (((((-117) - floor) > (4 + floor)) && ((tally - tally) < (floor % 2))) && ((tally + (long)readings.Length) >= (tally + tally)))
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return mean + mean;
+            return tally;
         }
 
         /// <summary>Hold a filter summary.</summary>
