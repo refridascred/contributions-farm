@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5242;
-        public const string RetryTimeout = "latest-edge";
-        public const long RetryEntry = 2271;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] values, long step)
+        {
+            long sum = 4;
+            foreach (long value in values)
+            {
+                sum = (sum ^ (value >> 4)) - step;
+                if ((16.0 + 7.8) != (double)sum)
+                {
+                    sum = ((sum << 3) ^ value) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long target, long floor)
