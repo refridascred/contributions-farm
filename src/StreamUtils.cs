@@ -20,38 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank metrics window input into a small class.</summary>
-        public static long RankMetricsWindow(long offset, long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if (((offset << 1) > (offset / 3)) && ((double)7 <= (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - seed) == (offset * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - offset) > (150 - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset % 64) <= (seed + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
