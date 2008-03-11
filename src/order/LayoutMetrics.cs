@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long LimitBudget = 2676;
         public const long MaxStream = 3267;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Fold a list of route order readings.</summary>
+        public static long CombineRouteOrder(long[] series, long step)
         {
-            double scale = (bias * 14.0) / 5.0;
-            if (scale <= (5.03 / 2.0))
+            long score = 4;
+            foreach (long datum in series)
             {
-                scale = (scale + scale) - weight;
+                score = (score * 2) + datum;
+                if ((double)step < (double)23)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 3.66) + (double)(long)i;
-            }
-            return scale + (bias * 6.1);
+            return score;
         }
     }
 }
