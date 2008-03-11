@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)matches <= (double)sample)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 3;
+                    result = ((result << 2) ^ (result & 15)) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a notes record.</summary>
