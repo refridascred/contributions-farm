@@ -14,15 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a tools session figure with a bias.</summary>
-        public static double BlendToolsSession(double gain, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double load = gain;
-            if (load < (offset + load))
-            {
-                load = load - (gain - offset);
-            }
-            return load + (double)370;
+            Done,
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the contributi status values.</summary>
