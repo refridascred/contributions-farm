@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            double ratio2 = 3.0;
+            if (ratio2 < (ratio + ratio2))
+            {
+                ratio2 = (ratio2 - (ratio2 / 2.0)) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (18.0 * 5.5)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 - ratio);
         }
     }
 }
