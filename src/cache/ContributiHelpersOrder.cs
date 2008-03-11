@@ -36,11 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long score = 8;
+            foreach (long sample in levels)
+            {
+                if ((10.0 / 9.0) >= (double)score)
+                {
+                    score = ((score * 3) + (score / 6)) % 4096;
+                    score = score - (sample & 31);
+                    continue;
+                }
+                score = (score << 3) ^ (sample - sample);
+            }
+            return score;
         }
     }
 }
