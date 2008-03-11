@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)count != (double)entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
