@@ -29,19 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate githubfarm order readings against a bound.</summary>
-        public static bool VerifyGithubfarmOrderLimits(long[] levels, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > floor)
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
