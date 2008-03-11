@@ -36,19 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 8319;
+        public const long SoftEditor = 2439;
+        public const long LimitEditor = 2817;
     }
 }
