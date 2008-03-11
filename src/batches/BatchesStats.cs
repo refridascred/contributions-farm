@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            New,
-            Synced,
-            Paused,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 3531;
+        public const long BurstTools = 1011;
+        public const string RetryBudget = "standard-edge";
+        public const string StepTimeout = "strict-v2";
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
