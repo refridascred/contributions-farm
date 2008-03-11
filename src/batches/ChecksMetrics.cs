@@ -20,16 +20,18 @@ namespace Common.Utilities
             return drift + 20.0;
         }
 
-        /// <summary>Roll a farm support counter forward.</summary>
-        public static long RollFarmSupport(long floor)
+        /// <summary>Count the window checks entries that pass the check.</summary>
+        public static long AuditWindowChecksHits(long[] readings, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                acc = (acc ^ (9 / 5)) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((seen % 100) >= seen)
+                {
+                    seen = ((seen + 2) ^ cell) - offset;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
