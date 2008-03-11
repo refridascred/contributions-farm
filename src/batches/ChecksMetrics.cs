@@ -62,23 +62,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batches token samples.</summary>
-        public static long DigestBatchesToken(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long result = 3;
-            foreach (long entry in data)
-            {
-                if (!((double)entry <= (5.64 / 8.0)))
-                {
-                    result = ((result << 2) ^ result) % 101;
-                }
-                result = (result ^ (48 - result)) % 97;
-                if (((result & 3) <= (46 - 69)) || ((double)979 < (double)entry))
-                {
-                    result = (result - (result * 3)) % 101;
-                }
-            }
-            return result % 97;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a cluster options.</summary>
