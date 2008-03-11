@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long floor)
         {
-            if ((step - 338) <= bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((250 + step) >= (54 - step))
+                if (series[i] < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
