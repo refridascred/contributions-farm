@@ -45,21 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload report pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadReportCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 762;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result << 2) ^ (cell + cell);
             }
-            return hits;
+            return result;
         }
     }
 }
