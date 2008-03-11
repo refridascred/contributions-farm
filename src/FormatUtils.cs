@@ -28,19 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches stats samples.</summary>
-        public static long TallyBatchesStats(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            long sum = 885;
-            foreach (long value in readings)
+            long sum = 26;
+            foreach (long sample in readings)
             {
-                sum = (sum << 3) ^ (59 % 5);
-                if ((7.2 + 13.0) <= (double)value)
+                long delta = sample << 1;
+                sum = sum ^ (delta - sum);
+                if ((sum * 3) < sample)
                 {
-                    sum = ((sum << 2) ^ (6 - (-54))) % 101;
+                    sum = ((sum << 2) ^ (sample & 255)) % 97;
+                }
+                if ((double)sample == (8.3 / 9.0))
+                {
+                    break;
                 }
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
