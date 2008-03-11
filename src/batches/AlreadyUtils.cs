@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 7) > (count + count))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultWidth = 14.29;
+        public const double WindowSpan = 32.14;
+        public const long MinGithubfarm = 5032;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long step)
