@@ -23,21 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((2.0 - 20.0) < (double)matches) || ((matches / 7) <= (matches ^ matches))))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + value;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
