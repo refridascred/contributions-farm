@@ -25,28 +25,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate report contributi samples.</summary>
-        public static long WeighReportContributi(long[] values, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data, long seed)
         {
-            long score = -96;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 10; i++)
+                if ((((9.0 * 3.22) <= (double)seed) || ((cell + tally) <= (seed << 3))) || ((double)tally != (9.4 * 2.8)))
                 {
-                    score = score + ((long)i - step);
-                    score = (score + (item - 459)) % 97;
-                }
-                if ((double)item != (8.2 * 20.0))
-                {
-                    score = ((score << 2) ^ (score & 255)) % 4096;
-                    score = (score - ((long)values.Length + score)) % 65521;
-                }
-                if ((double)score >= (5.03 / 6.0))
-                {
-                    score = score - (score - 3);
+                    tally = tally + 3;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a format commits reading.</summary>
