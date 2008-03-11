@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] series, long seed)
+        /// <summary>Digest a series of entry cluster entries.</summary>
+        public static long TallyEntryCluster(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = 78;
+            foreach (long entry in series)
             {
-                if ((double)cell >= (4.0 * 8.74))
+                if (((long)series.Length - entry) >= (total >> 1))
                 {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = (total - entry) % 97;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Hold a tools options.</summary>
