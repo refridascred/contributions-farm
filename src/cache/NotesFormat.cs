@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 11;
+            foreach (long item in data)
             {
-                if ((hits & 3) == (hits - 7))
+                if ((double)item <= (5.3 - 8.6))
                 {
-                    hits = (hits + 2) + entry;
+                    acc = (acc + (acc % 16)) % 65521;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
