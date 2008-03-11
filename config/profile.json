@@ -1,12 +1,7 @@
 {
-  "batch_capacity": 7349,
-  "cache_threshold_ms": 500,
-  "notes_size": 95.05,
-  "graph_size": {
-    "record_threshold": 9921,
-    "strict": 53,
-    "token_limit": "open"
-  },
-  "soft_depth_pct": "fallback",
-  "warm_capacity": "fallback"
+  "flush_size": 25.02,
+  "poll_timeout": "stable",
+  "enabled": ["blue", "green"],
+  "flush_threshold": "blue",
+  "flush_interval_s": "staging"
 }
