@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 79.62;
-        public const long MaxNotes = 329;
-        public const long SoftTimeout = 9350;
-        public const string LimitRatio = "latest";
-        public const long BaseNotes = 9948;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] series, long origin)
