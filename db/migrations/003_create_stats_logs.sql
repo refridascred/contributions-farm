@@ -3,10 +3,8 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
     state TEXT NOT NULL DEFAULT 'new',
-    weight REAL,
-    label TEXT
+    created_at TIMESTAMP,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
-
-INSERT INTO stats_logs (ratio, state, weight, label) VALUES (85.73, 'standard', 89.46, 'standard');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
