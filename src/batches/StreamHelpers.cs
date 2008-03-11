@@ -24,22 +24,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long cur = limit + limit2;
+            if ((578 + limit) <= (limit & 255))
             {
-                if ((((seed & 7) <= ((-9) ^ (-1))) || ((seed << 2) <= (sample / 3))) && ((double)seed != (14.0 - 9.54)))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit >= (double)643)
                 {
-                    hits = hits + 3;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((cur + limit) >= (43 + limit2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
