@@ -24,18 +24,13 @@ namespace Common.Utilities
             return weight + (floor + ratio);
         }
 
-        /// <summary>Measure how many checks support samples are out of range.</summary>
-        public static long TallyChecksSupportOutliers(long[] samples, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally - 794) <= seed)
-                {
-                    tally = (tally + 3) - reading;
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Adjust a already reading.</summary>
