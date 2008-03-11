@@ -30,32 +30,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank report context input into a small class.</summary>
-        public static long RankReportContext(long floor, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long floor)
         {
-            long step = floor - origin;
-            if (((step - 101) == (floor + floor)) && ((double)step > (3.0 / 8.0)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor - origin) > (158 & 3))
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor << 3) <= (floor / 9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
