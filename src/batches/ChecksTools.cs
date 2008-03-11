@@ -38,16 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream cache series from a seed.</summary>
-        public static long IterateStreamCache(long floor)
+        /// <summary>Count the command route entries that pass the check.</summary>
+        public static long MeasureCommandRouteMatches(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = (mix << 3) ^ ((long)i * 3);
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((3 % 2) <= (count * 2))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
