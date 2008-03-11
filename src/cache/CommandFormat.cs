@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate format command readings against a bound.</summary>
-        public static bool CheckFormatCommandRange(long[] levels, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long origin)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long step = bound + origin;
+            if ((origin << 1) < bound)
             {
-                if (entry != origin)
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 5) < (step + step))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step >> 1) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
