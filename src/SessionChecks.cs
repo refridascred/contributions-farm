@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((matches % 64) >= (2 ^ value))
+                if (value != offset)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
