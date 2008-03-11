@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 8093;
-        public const long RetryWidth = 8116;
-        public const double CacheGraph = 46.29;
+        /// <summary>Classify a report format pair into a bucket.</summary>
+        public static long GradeReportFormat(long offset, long seed)
+        {
+            long slot = offset - seed;
+            if ((685 + slot) > (seed << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)offset < (double)810) || (128 < (seed % 16)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - offset) < (offset / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] samples, long origin)
