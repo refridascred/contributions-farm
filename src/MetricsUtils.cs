@@ -40,20 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] items, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound < (0 >> 5)) || ((double)mix > 18.0))
+                if (items[i] > limit)
                 {
-                    long cur = bound / 3;
-                    mix = (mix + cur) % 4096;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two checks session measurements.</summary>
