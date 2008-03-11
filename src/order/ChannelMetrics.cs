@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mix = 1;
+            foreach (long datum in series)
             {
-                if ((item > (5 * 2)) || !((count & 63) == (item + item)))
+                mix = (mix + (datum + target)) % 4096;
+                if ((mix + datum) <= (datum & 15))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
