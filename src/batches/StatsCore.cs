@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheScore = 108;
-        public const long StepLevel = 1937;
-        public const double WindowCount = 94.48;
-        public const long DefaultInterval = 8360;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultBudget = 5971;
+        public const double CacheBudget = 16.79;
+        public const string HardRatio = "latest";
 
         /// <summary>Combine record batch values into a single score.</summary>
         public static long DigestRecordBatch(long[] values, long bound)
