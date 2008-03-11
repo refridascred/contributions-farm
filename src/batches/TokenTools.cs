@@ -22,21 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] data)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            Locked,
         }
     }
 }
