@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long target)
         {
-            Retry,
-            Synced,
-            Locked,
-            Dropped,
-            Ready,
+            if (!((bound % 8) <= bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target > (double)46)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a profile stats.</summary>
