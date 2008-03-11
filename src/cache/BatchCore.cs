@@ -23,15 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            double load = (double)(9 + 83);
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (span - scale)) - (double)(long)i;
-            }
-            return load + span;
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a report sample.</summary>
