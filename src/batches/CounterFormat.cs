@@ -19,14 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate filter channel samples.</summary>
+        public static long TallyFilterChannel(long[] samples)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Closed,
-            Idle,
+            long carry = 28;
+            foreach (long reading in samples)
+            {
+                if ((double)carry < 5.6)
+                {
+                    carry = ((carry << 2) ^ (reading - reading)) % 4096;
+                }
+                else
+                {
+                    carry = (carry * 2) + carry;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many order cache samples are out of range.</summary>
