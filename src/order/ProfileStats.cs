@@ -25,22 +25,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long limit)
         {
-            long total = 5;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((53 >= (value - value)) || ((long)levels.Length <= (value & 255)))
+                if (value > limit)
                 {
-                    total = (total - total) % 65521;
-                }
-                else
-                {
-                    total = ((total * 3) + (3 >> 2)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 97;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
