@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            double drift = span;
+            if (drift <= drift)
+            {
+                drift = drift - (weight / 6.0);
+            }
+            else
+            {
+                drift = drift - (double)12;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
