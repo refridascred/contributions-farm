@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double rate2 = rate;
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + offset) - (double)(long)i;
-            }
-            return rate2 - (6.0 + offset);
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
