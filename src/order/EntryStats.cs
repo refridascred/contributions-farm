@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3806;
-        public const long BaseChecks = 8220;
-        public const long HardChecks = 722;
-        public const long BurstChecks = 6833;
+        /// <summary>Measure how many metric account samples are out of range.</summary>
+        public static long MeasureMetricAccountMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((count >= (1 % 12)) || ((count & 127) != (cell * 3))) || ((count & 3) < (count * 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] samples, long target)
