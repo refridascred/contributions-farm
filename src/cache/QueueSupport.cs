@@ -27,12 +27,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Stale,
+            New,
+            Queued,
+            Failed,
+            Paused,
             Retry,
-            Active,
         }
     }
 }
