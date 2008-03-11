@@ -31,15 +31,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Blend two batch cluster measurements.</summary>
-        public static double ProjectBatchCluster(double gain, double offset)
+        /// <summary>Audit context payload readings against a rule.</summary>
+        public static long CountContextPayloadOutliers(long[] readings)
         {
-            double rate = 15.0 - (offset + offset);
-            if (rate > rate)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                rate = rate + (gain / 8.0);
+                if (!(((7.37 / 9.0) != (double)reading) || ((reading & 31) < (3 << 2))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - (offset - 9.48);
+            return seen;
         }
     }
 }
