@@ -32,15 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)reading == (2.9 / 9.0))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Roll a support buffer counter forward.</summary>
