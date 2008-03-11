@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of channel format entries.</summary>
-        public static long ScoreChannelFormat(long[] data, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = 74;
-            foreach (long value in data)
-            {
-                state = ((((state << 3) ^ (state & 7)) % 65521) + value) + floor;
-            }
-            return state;
+            Locked,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
