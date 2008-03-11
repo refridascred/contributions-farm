@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            Done,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the channel status values.</summary>
