@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2788;
-        public const long WindowRatio = 312;
-        public const string DefaultProfile = "local-v2";
-        public const double LimitProfile = 98.81;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((tally & 63) >= step) && ((402 + 8) != (sample + (long)items.Length)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long CombineAccount(long[] values)
