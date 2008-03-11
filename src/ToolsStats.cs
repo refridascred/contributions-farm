@@ -25,13 +25,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long floor)
         {
-            New,
-            Idle,
-            Draft,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
