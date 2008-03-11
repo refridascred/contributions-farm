@@ -42,13 +42,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of batch graph readings.</summary>
+        public static long FoldBatchGraph(long[] series, long offset)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long mark = 322;
+            foreach (long reading in series)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+                mark = mark + mark;
+                if (!((reading + reading) >= (offset + (long)series.Length)))
+                {
+                    mark = (mark - reading) % 255;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a stream header.</summary>
