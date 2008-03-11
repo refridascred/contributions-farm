@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine profile stats values into a single score.</summary>
-        public static long FoldProfileStats(long[] items, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long limit)
         {
-            long carry = 19;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (carry / 8)) % 65521;
-                carry = (carry ^ (59 - item)) % 255;
-                if ((target * 5) < item)
+                if (series[i] >= limit)
                 {
-                    carry = (carry << 3) ^ ((-115) % 97);
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
