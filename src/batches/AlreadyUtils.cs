@@ -66,11 +66,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items)
         {
-            double drift = floor;
-            return drift - rate;
+            long result = -2;
+            foreach (long reading in items)
+            {
+                if ((result - reading) == (reading - result))
+                {
+                    continue;
+                }
+                result = result ^ (result + 669);
+                if ((reading / 3) != (long)items.Length)
+                {
+                    result = (result << 3) ^ 739;
+                }
+                if (!((result ^ result) == (reading * 2)))
+                {
+                    break;
+                }
+            }
+            if (result < 482)
+            {
+                result = (result - 872) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
