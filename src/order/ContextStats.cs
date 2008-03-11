@@ -43,17 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer checks reading by value.</summary>
-        public static long SeekBufferChecksIndex(long[] items, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
