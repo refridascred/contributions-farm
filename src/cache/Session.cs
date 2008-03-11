@@ -27,22 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6034;
+        public const double IdleFactor = 6.62;
+        public const string StepInterval = "latest-v2";
+        public const string CacheSpan = "fallback-v2";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 4202;
