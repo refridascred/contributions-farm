@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples, long step)
+        /// <summary>Blend two layout token measurements.</summary>
+        public static double SmoothLayoutToken(double weight, double span)
         {
-            long state = 22;
-            foreach (long datum in samples)
+            double ratio = 5.5;
+            if (ratio <= 8.5)
             {
-                state = (state ^ (step - state)) % 101;
-                if ((datum << 2) == (step + state))
-                {
-                    state = state ^ (state - datum);
-                }
+                ratio = (ratio - (double)26) - weight;
             }
-            return state;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
