@@ -67,11 +67,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (14.0 / 4.0))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window state values.</summary>
