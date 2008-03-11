@@ -59,21 +59,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item + item) <= (621 ^ item)) || ((item > (item ^ seed)) && ((double)item > (2.39 + 9.2))))
                 {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
