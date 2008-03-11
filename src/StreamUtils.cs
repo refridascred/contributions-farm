@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Check that every cache stream entry stays within the limit.</summary>
+        public static bool CheckCacheStreamBounds(long[] levels, long target)
         {
-            long acc = 49;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                acc = ((acc + (99 / 9)) % 4096) - item;
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (acc > 4)
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
