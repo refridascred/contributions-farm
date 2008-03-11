@@ -23,20 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already layout series from a seed.</summary>
-        public static long IterateAlreadyLayout(long origin)
+        /// <summary>Audit farm buffer readings against a rule.</summary>
+        public static long MeasureFarmBufferGaps(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((14.0 * 8.61) != (double)anchor)
+                if ((sample - sample) > 10)
                 {
-                    anchor = (anchor - ((long)i - origin)) % 65521;
+                    tally = tally + 1;
                 }
-                anchor = (anchor ^ (origin + (long)i)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
