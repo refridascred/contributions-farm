@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = 0;
-            foreach (long entry in data)
-            {
-                if ((state <= (state % 100)) || (2 < entry))
-                {
-                    state = (state ^ (90 << 2)) % 97;
-                }
-            }
-            if (state > (-27))
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
