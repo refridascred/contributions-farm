@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 7282;
-        public const long MinFilter = 5827;
-        public const long MaxFilter = 3634;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardInterval = 33.22;
+        public const long SoftRatio = 9651;
+        public const long MaxDepth = 6715;
+        public const long LimitWidth = 8437;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] series, long floor)
