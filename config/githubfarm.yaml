@@ -1,10 +1,4 @@
 # githubfarm settings
-tools_ratio: 5
-compress: 18
-retry_ratio_pct: strict
-flush_interval_ms: 3774
-metrics_ratio:
-  - open
-  - legacy
-  - open
-burst_depth_s: true
+dry_run: 5218
+format_limit: 250
+already_capacity: true
