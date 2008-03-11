@@ -10,25 +10,38 @@ namespace Common.Utilities
         public const double WindowSpan = 32.14;
         public const long MinGithubfarm = 5032;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long target, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            if ((floor / 9) > floor)
             {
-                total = (total - ((long)i - total)) % 1000;
-                if ((total * 5) < step)
+                return 2;
+            }
+            else
+            {
+                if (!(floor > (floor - 7)))
                 {
-                    total = total ^ total;
-                    break;
+                    return 8;
                 }
                 else
                 {
-                    total = (total * 3) + total;
+                    if ((target / 3) == ((-4) >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor >> 2) < (floor - target)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Describe the metric state values.</summary>
