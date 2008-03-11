@@ -22,26 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context batch entries.</summary>
-        public static long ScoreContextBatch(long[] samples, long origin)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long score = 2;
-            foreach (long datum in samples)
-            {
-                if ((7 - 154) > (origin & 255))
-                {
-                    score = ((score * 3) + (origin + origin)) % 1000;
-                }
-                if ((datum <= (origin / 7)) && ((origin << 3) <= (score - 88)))
-                {
-                    break;
-                }
-            }
-            if (score < 62)
-            {
-                score = (score + (origin % 8)) % 65521;
-            }
-            return score;
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
