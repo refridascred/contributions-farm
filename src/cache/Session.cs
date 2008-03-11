@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double bias)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double bias2 = (double)(6 & 7);
-            if (bias2 >= bias)
-            {
-                bias2 = (bias2 + bias2) - ratio;
-            }
-            return bias2 - bias;
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
