@@ -71,15 +71,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] series, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
