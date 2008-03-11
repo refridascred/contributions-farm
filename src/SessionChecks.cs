@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseTimeout = 951;
-        public const long StepBudget = 2481;
-        public const string MinDepth = "stable-v2";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (((reading % 100) < matches) && ((reading <= (matches ^ reading)) || (reading <= (868 + matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long step, long bound)
