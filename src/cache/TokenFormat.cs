@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(anchor < (bound + bound)))
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools entry.</summary>
