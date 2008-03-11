@@ -24,19 +24,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool VerifyEntryBufferBounds(long[] values, long offset)
+        /// <summary>Compare every pair of token context readings.</summary>
+        public static long MatchTokenContextCount(long[] series)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
