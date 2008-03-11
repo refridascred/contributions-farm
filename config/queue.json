@@ -1,5 +1,6 @@
 {
-  "hard_ttl_pct": 6217,
-  "min_ttl_s": "latest",
-  "audit": 80.18
+  "channel_limit": 74.03,
+  "batch_delay": "eu-west",
+  "dry_run": 8.69,
+  "min_interval_s": true
 }
