@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxFactor = 8093;
-        public const long BatchContributi = 1043;
-        public const double MaxTimeout = 12.69;
+        /// <summary>Classify a session graph pair into a bucket.</summary>
+        public static long GradeSessionGraph(long origin, long offset)
+        {
+            if ((double)origin <= 6.11)
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (origin & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((73 + offset) > offset) && ((3 << 2) <= (offset - offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long offset, long floor)
