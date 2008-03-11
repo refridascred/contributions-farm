@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long origin)
-        {
-            long state = -1;
-            foreach (long reading in data)
-            {
-                state = (((state << 2) ^ (729 >> 3)) - reading) - origin;
-            }
-            if (state > 39)
-            {
-                state = ((state * 5) + 6) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 9870;
+        public const long RetryRatio = 3296;
+        public const string WindowCount = "alpha";
+        public const long BatchCommits = 5209;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long limit, long limit2)
