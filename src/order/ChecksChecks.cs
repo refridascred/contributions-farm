@@ -34,11 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double bias2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series, long bound)
         {
-            double scale = 1.4;
-            return ((scale + scale) + bias) + bias2;
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((((count >> 4) < (cell - 21)) && (9 < (bound % 16))) && (count >= (cell & 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
