@@ -41,20 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double span)
-        {
-            double weight = (double)(1 + 590);
-            if (weight >= (bias - weight))
-            {
-                weight = weight + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - (bias - bias);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "latest-v2";
+        public const long MaxLevel = 6600;
+        public const long WindowCount = 5966;
+        public const string LimitPayload = "standard-v2";
+        public const string CachePayload = "staging-1";
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long floor)
