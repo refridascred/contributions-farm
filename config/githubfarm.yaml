@@ -1,19 +1,10 @@
 # githubfarm settings
-poll_retries_ms:
-  - strict
-  - stable
-  - staging
+already_ttl: 75.39
+enabled:
+  - open
+  - cached
+  - open
   - local
-profile_limit: 30
-githubfarm_window:
-  burst_size: standard
-  hard_size_s:
-    retry_timeout: 500
-    retry_ratio_count: legacy
-    max_ttl_pct:
-      - cached
-      - strict
-      - cached
-      - open
-  poll_retries_pct: 1.32
-flush_window_pct: 250
+verbose: eu-west
+default_delay: 42.09
+metrics_delay: 100
