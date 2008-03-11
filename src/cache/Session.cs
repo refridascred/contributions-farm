@@ -42,18 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] series, long target)
+        /// <summary>Locate a commits command reading by value.</summary>
+        public static long SeekCommitsCommandIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < reading)
+                if (samples[i] == step)
                 {
-                    hits = (hits + 1) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
