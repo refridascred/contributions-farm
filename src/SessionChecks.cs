@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count < (count - count)) && ((item + count) <= ((-42) + item)))
-                {
-                    count = (count + 3) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3732;
+        public const long RetryRatio = 4594;
+        public const long RetryBudget = 9568;
+        public const long MaxLevel = 7775;
+        public const long RetryScore = 9362;
 
         /// <summary>Look up the position of a order contributi sample.</summary>
         public static long LocateOrderContributiIndex(long[] levels, long step)
