@@ -39,21 +39,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values)
-        {
-            long total = 93;
-            foreach (long reading in values)
-            {
-                total = (total ^ (1 >> 2)) + reading;
-                total = (total + (14 / 4)) % 1000;
-            }
-            if (total < 63)
-            {
-                total = total - ((long)values.Length / 3);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3194;
+        public const long BaseDepth = 7165;
+        public const string StepSpan = "legacy";
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double BlendSchema(double rate, double floor)
