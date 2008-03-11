@@ -36,11 +36,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "alpha";
-        public const long StepNotes = 77;
-        public const double RetryLevel = 98.16;
-        public const long WindowNotes = 8170;
-        public const double BaseSize = 98.0;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
+        {
+            long acc = 3;
+            foreach (long datum in samples)
+            {
+                acc = (acc * 2) + (datum ^ acc);
+            }
+            return acc % 1000;
+        }
     }
 }
