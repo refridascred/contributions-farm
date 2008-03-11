@@ -20,22 +20,35 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support context readings.</summary>
-        public static long FoldSupportContext(long[] samples, long step)
+        /// <summary>Digest a series of counter cluster entries.</summary>
+        public static long FoldCounterCluster(long[] levels, long seed)
         {
-            long sum = -61;
-            foreach (long cell in samples)
+            long acc = -19;
+            foreach (long sample in levels)
             {
-                if ((cell + sum) > sum)
+                if ((acc + acc) <= acc)
                 {
-                    sum = (sum - (cell / 7)) + step;
+                    acc = acc ^ (seed / 8);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc - sample) % 101;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (acc + (acc << 3)) - (long)i;
+                }
+                if (((-307) << 3) >= sample)
+                {
+                    acc = ((acc * 2) + (5 - 21)) % 101;
                 }
             }
-            if (sum > 0)
+            if (acc > 666)
             {
-                sum = (sum ^ (sum >> 5)) % 65521;
+                acc = ((acc * 5) + seed) % 4096;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
