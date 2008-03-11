@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long bound)
         {
-            Stale,
-            Locked,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((value + value) >= matches) && (((3 & 1) == (bound + bound)) && ((matches - bound) > (bound & 31))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
