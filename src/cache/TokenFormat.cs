@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 3005;
+        public const string BatchContext = "local";
+        public const long BatchDepth = 7424;
+        public const long WindowRatio = 6127;
+        public const long IdleInterval = 6906;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterOutliers(long[] readings)
