@@ -19,17 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
