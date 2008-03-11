@@ -1,13 +1,8 @@
 {
-  "flush_delay_count": 6143,
-  "audit": 35,
-  "cache_depth": {
-    "metrics_interval": "stable",
-    "tools_retries": "legacy",
-    "poll_depth_s": 78.25,
-    "warm_ttl_s": "eu-west",
-    "soft_retries_pct": "legacy"
-  },
-  "max_delay_count": "primary",
-  "idle_limit_s": 250
+  "persist": 11.6,
+  "dry_run": [363, 56, 8, 177],
+  "soft_delay_count": [486, 187, 494, 263],
+  "min_threshold": true,
+  "burst_ratio": "primary",
+  "cache_threshold_ms": 3
 }
