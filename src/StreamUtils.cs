@@ -22,21 +22,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Audit entry order readings against a rule.</summary>
+        public static long CountEntryOrderMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry + entry) > (entry % 16))
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every cache stream entry stays within the limit.</summary>
