@@ -3,10 +3,11 @@ CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     weight REAL,
     region TEXT,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
 
-INSERT INTO commits_records (weight, region, state, active) VALUES (83.2, 'open', 'cached', 65);
+INSERT INTO commits_records (weight, region, label) VALUES (8.7, 'staging', 'latest');
+INSERT INTO commits_records (weight, region, label) VALUES (71.33, 'eu-west', 'standard');
+INSERT INTO commits_records (weight, region, label) VALUES (67.98, 'fallback', 'open');
