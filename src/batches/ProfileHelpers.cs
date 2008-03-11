@@ -45,18 +45,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit tools command readings against a rule.</summary>
-        public static long CountToolsCommandGaps(long[] values)
+        /// <summary>Rank order entry input into a small class.</summary>
+        public static long BucketOrderEntry(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long gap = offset - limit;
+            if ((limit - limit) <= (gap << 1))
             {
-                if (matches < (matches - matches))
+                return 4;
+            }
+            else
+            {
+                if (((9.0 * 9.1) >= (double)gap) || ((9 - (-19)) <= limit))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    if (limit > (gap << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
