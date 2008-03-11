@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((matches / 4) >= (cell - matches))
+                if (item != offset)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
