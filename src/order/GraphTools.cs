@@ -47,18 +47,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((6.45 - 6.02) == (double)seen)
-                {
-                    seen = ((seen + 2) ^ cell) + target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 9167;
+        public const string MaxChannel = "legacy-1";
+        public const long HardChannel = 1339;
+        public const double LimitChannel = 48.58;
     }
 }
