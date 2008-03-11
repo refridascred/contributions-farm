@@ -1,11 +1,4 @@
 # support settings
-counter_size: blue
-batch_timeout: cached
-record_size: fallback
-layout_threshold:
-  poll_limit_pct: primary
-  batch_capacity: blue
-  readonly: 771
-  flush_limit_count: 43.35
-  account_ttl: false
-  contributi_limit: 67
+dry_run: 51.26
+default_ratio: false
+batch_limit_pct: green
