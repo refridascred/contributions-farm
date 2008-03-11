@@ -27,12 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1206;
-        public const double BatchSpan = 98.21;
-        public const long BatchContext = 5944;
-        public const long MinRatio = 9908;
-        public const double LimitContext = 41.99;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Done,
+            Stale,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] readings)
