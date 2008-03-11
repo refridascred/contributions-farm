@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Audit graph report readings against a rule.</summary>
+        public static long CountGraphReportOutliers(long[] data)
         {
-            double weight = 9.1;
-            return ((weight - (weight - weight)) + rate) + span;
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)matches == (0.51 + 13.0)))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
