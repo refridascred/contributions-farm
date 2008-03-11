@@ -1,7 +1,10 @@
-id,rank,label,weight,level
-1,897,251,edge,edge
-2,630,37.43,6.91,348
-3,728,31,651,primary
-4,919,primary,62.47,60
-5,primary,4.15,790,934
-6,36.39,eu-west,eu-west,96
+id,active,count
+1,36.16,401
+2,196,320
+3,68.23,legacy
+4,62.35,stable
+5,341,legacy
+6,616,83.99
+7,local,local
+8,blue,327
+9,26.36,280
