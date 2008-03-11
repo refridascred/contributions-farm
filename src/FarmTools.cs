@@ -31,12 +31,15 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
