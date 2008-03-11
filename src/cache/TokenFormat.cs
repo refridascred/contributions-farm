@@ -37,15 +37,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items)
         {
-            long mix = 383;
-            foreach (long value in values)
+            long score = 57;
+            foreach (long cell in items)
             {
-                mix = (mix ^ (mix + value)) - limit;
+                if ((cell ^ cell) < (cell >> 4))
+                {
+                    score = ((score * 2) + (score / 6)) % 255;
+                }
+                else
+                {
+                    score = (score * 4) + ((-501) % 3);
+                }
             }
-            return mix % 65521;
+            if (score < 316)
+            {
+                score = (score ^ (score % 64)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
