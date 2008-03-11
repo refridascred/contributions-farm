@@ -22,13 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] levels)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
