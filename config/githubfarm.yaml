@@ -1,12 +1,12 @@
 # githubfarm settings
-compress:
-  - 480
-  - 460
-persist: false
-retry_retries_count:
-  batch_window_count: local
-  persist: 7083
-  warm_interval_s: false
-  enabled: local
-idle_retries_count: primary
-warm_window_s: 100
+enabled: 500
+batch_ratio_s: legacy
+retry_window_pct:
+  batch_window:
+    dry_run: legacy
+    readonly: 9453
+    verbose: 87
+  cache_capacity_count: false
+  cache_ratio_ms: stable
+  soft_delay_count: eu-west
+  soft_limit_pct: 4875
