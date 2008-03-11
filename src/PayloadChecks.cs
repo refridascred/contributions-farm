@@ -40,13 +40,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count context schema pairs that satisfy a relation.</summary>
+        public static long CompareContextSchemaCount(long[] series)
         {
-            Synced,
-            Pending,
-            Locked,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
