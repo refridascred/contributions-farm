@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            Queued,
-            Closed,
-            Ready,
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
