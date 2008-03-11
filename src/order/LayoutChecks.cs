@@ -43,19 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples, long origin)
-        {
-            long mix = 7;
-            foreach (long datum in samples)
-            {
-                if ((origin + origin) > mix)
-                {
-                    mix = (mix + (845 + 620)) + datum;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "standard-edge";
+        public const long CacheCount = 3793;
+        public const string BurstGraph = "alpha-edge";
+        public const long MinSpan = 7336;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double AdjustMetric(double rate, double bias)
