@@ -92,11 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
