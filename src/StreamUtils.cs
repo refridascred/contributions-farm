@@ -60,18 +60,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] items)
+        /// <summary>Scale a support format figure with a bias.</summary>
+        public static double BlendSupportFormat(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double ratio = offset;
+            if (ratio <= (1.36 - offset))
             {
-                if (((matches < (matches * 3)) && (matches >= ((long)items.Length - 584))) || (8 <= (item + matches)))
-                {
-                    matches = matches + 1;
-                }
+                ratio = (ratio + (double)258) + rate;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)58) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define session limits and defaults.</summary>
