@@ -54,9 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSpan = 2814;
-        public const long MaxDepth = 3208;
-        public const long MaxFactor = 9952;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Failed,
+            New,
+            Retry,
+            Ready,
+            Idle,
+        }
     }
 }
