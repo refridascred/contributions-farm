@@ -25,23 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route command figure with a bias.</summary>
-        public static double BlendRouteCommand(double bias, double bias2)
+        /// <summary>Audit route record readings against a rule.</summary>
+        public static long MeasureRouteRecordOutliers(long[] readings, long limit)
         {
-            double rate = bias2;
-            if (rate > bias)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                rate = rate + bias2;
+                if ((double)limit < 5.0)
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            else
-            {
-                rate = rate + (bias2 + 16.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - bias) - (double)(long)i;
-            }
-            return rate + bias2;
+            return tally;
         }
 
         /// <summary>Describe the route state values.</summary>
