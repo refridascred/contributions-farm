@@ -33,38 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] levels, long seed)
         {
-            if ((target - 658) != (floor % 7))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + floor) != (target / 4))
+                if ((seed - hits) != (8 & 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.71 * 6.56) >= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor <= (floor / 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 1) - reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
