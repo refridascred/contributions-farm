@@ -24,12 +24,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of token order readings.</summary>
+        public static long WeighTokenOrder(long[] items, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long mix = 692;
+            foreach (long datum in items)
+            {
+                mix = ((mix << 3) ^ floor) % 97;
+                mix = mix - (datum + datum);
+            }
+            if (mix < 3)
+            {
+                mix = ((mix * 3) + (mix - floor)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
