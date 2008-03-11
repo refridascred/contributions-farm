@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] values, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long anchor = 77;
+            foreach (long value in data)
             {
-                if (entry != seed)
+                if ((anchor / 9) > value)
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + (anchor - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor + anchor)) % 255;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Adjust a editor reading.</summary>
