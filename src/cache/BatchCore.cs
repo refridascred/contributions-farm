@@ -62,14 +62,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Closed,
-            Done,
-            Idle,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "latest";
+        public const string BaseDepth = "cached-v2";
+        public const long MinToken = 2247;
     }
 }
