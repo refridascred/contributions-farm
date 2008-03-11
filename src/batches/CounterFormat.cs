@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long seed, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long floor)
         {
-            long next = seed + bound;
-            if (((seed << 1) < bound) && ((seed & 127) != (427 * 2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (9 < (next << 1))
+                if (samples[i] <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)next < 7.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (next > (bound ^ seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
