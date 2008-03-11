@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples, long bound)
+        /// <summary>Validate format command readings against a bound.</summary>
+        public static bool CheckFormatCommandRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (!((value + value) >= matches) && (((3 & 1) == (bound + bound)) && ((matches - bound) > (bound & 31))))
+                if (entry != origin)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
