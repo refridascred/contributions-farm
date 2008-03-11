@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const long MinAlready = 6122;
         public const long HardAlready = 7362;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] readings, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)floor <= (double)99)
+                if (tally < (reading - tally))
                 {
-                    matches = (matches + 3) ^ item;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
