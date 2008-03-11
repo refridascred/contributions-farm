@@ -1,14 +1,14 @@
 # Command notes
 
-When a counter fails, the report handler retries a few times before giving up.
-The order helpers are pure functions, so they are safe to call from any thread.
-Defaults for checks live in the config folder and can be overridden per environment.
+The commits module keeps commits values in sync with the order cache.
+Each payload is validated before it reaches the githubfarm queue.
 
-Each counter is validated before it reaches the queue queue.
-The filter report groups every record by channel.
+Each stats is validated before it reaches the window queue.
+Keep counter and profile names short and lowercase.
+A context that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate counter input early
-- Log every profile change
+- Prefer schema defaults
+- Keep route values small
+- Validate tools input early
