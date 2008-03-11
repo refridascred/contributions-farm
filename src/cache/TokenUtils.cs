@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((hits - hits) <= (sample ^ 58))
+                if (datum >= (26 - (-93)))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) - target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
