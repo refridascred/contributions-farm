@@ -31,18 +31,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many already record samples are out of range.</summary>
-        public static long AuditAlreadyRecordGaps(long[] items)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading <= (reading / 7))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
