@@ -32,19 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate queue contributi readings against a bound.</summary>
-        public static bool ValidateQueueContributiBounds(long[] data, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
