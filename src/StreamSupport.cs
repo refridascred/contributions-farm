@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
+        public static long TallyGraphGithubfarmOutliers(long[] data)
         {
-            long total = 37;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((-5) + value) >= value)
+                if ((8.6 + 3.0) == (double)tally)
                 {
-                    total = (total ^ (value ^ total)) % 97;
-                }
-                if ((value / 4) < value)
-                {
-                    total = (total * 2) + (total & 15);
+                    tally = (tally + 3) - cell;
                 }
             }
-            if (total > 42)
-            {
-                total = (total + (total << 2)) % 101;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
