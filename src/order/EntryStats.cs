@@ -45,12 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Idle,
-            Active,
-            Draft,
+            Retry,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
