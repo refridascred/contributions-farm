@@ -48,18 +48,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)seen <= (9.28 + 5.2)) || ((double)seen == (17.0 * 9.75)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
+                score = (score ^ 1) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
