@@ -50,13 +50,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
