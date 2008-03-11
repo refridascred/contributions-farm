@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(206 << 1);
+            if (mean < floor)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + mean) - ratio;
             }
-            return -1;
+            return mean - 3.97;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
