@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mix = 22;
-            foreach (long sample in values)
-            {
-                mix = ((mix * 2) + 77) + sample;
-            }
-            return mix;
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
