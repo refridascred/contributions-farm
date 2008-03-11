@@ -22,23 +22,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long bound)
         {
-            long lane = limit + target;
-            if (((lane / 7) <= (limit >> 1)) || ((7 << 1) <= (1 - lane)))
+            if ((bound % 60) > (898 % 10))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((limit * 4) < (lane * 2))
+                if (!(offset >= (offset / 7)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((16.0 - 6.69) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
