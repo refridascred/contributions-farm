@@ -36,18 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] samples, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long target)
         {
-            long anchor = 461;
-            foreach (long sample in samples)
+            long next = origin ^ target;
+            if ((origin * 3) < (target + 0))
             {
-                if ((sample >= (anchor * 5)) && ((bound - sample) <= bound))
+                return 6;
+            }
+            else
+            {
+                if ((target + target) >= (next + 5))
                 {
-                    anchor = (anchor ^ (anchor << 3)) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return anchor;
         }
     }
 }
