@@ -31,14 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Synced,
-            New,
+            long anchor = 2;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor - anchor) % 4096) + item;
+            }
+            return anchor;
         }
     }
 }
