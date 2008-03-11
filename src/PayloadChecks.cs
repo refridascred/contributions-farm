@@ -89,12 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
