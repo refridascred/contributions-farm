@@ -86,11 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit window cache readings against a rule.</summary>
+        public static long MeasureWindowCacheGaps(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((item < (item * 2)) || ((item + tally) <= item)))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
