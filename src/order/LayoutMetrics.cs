@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a entry account figure with a bias.</summary>
-        public static double AdjustEntryAccount(double gain, double span)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            double scale = gain + gain;
-            if (scale < (double)2)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                scale = (scale - 0.07) - span;
+                total = (total << 3) ^ (limit % 10);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return scale - 1.0;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
