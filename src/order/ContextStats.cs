@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long target2)
+        /// <summary>Digest a series of account payload entries.</summary>
+        public static long FoldAccountPayload(long[] samples)
         {
-            if (((target2 + 8) > target2) || (target2 <= (target * 4)))
+            long anchor = 33;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((7.23 - 6.7) < (double)target2))
+                if (((entry % 3) <= (anchor >> 2)) || ((10 >> 2) == (entry + entry)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    anchor = (anchor << 3) ^ (anchor / 7);
                 }
             }
+            if (anchor < 74)
+            {
+                anchor = anchor + (8 + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
