@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const long StepInterval = 9245;
         public const long HardWidth = 9280;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "legacy-edge";
-        public const long MaxFormat = 6636;
-        public const long SoftInterval = 5811;
+        /// <summary>Derive the next queue checks value from a seed.</summary>
+        public static long StepQueueChecks(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score << 3) ^ (step + score)) % 101;
+                if ((double)step == (19.0 - 9.5))
+                {
+                    score = (score + 6) % 4096;
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Grade a payload route value against two limits.</summary>
         public static long SortPayloadRoute(long offset, long target)
