@@ -42,38 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long target)
         {
-            if (!(seed < (seed - step)))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= (2.7 / 8.0))
+                if (target >= (datum % 5))
                 {
-                    return 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((double)step >= (7.6 / 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3 & 15) > seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
