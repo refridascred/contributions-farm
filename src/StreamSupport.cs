@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinRatio = 57.65;
-        public const long CacheBudget = 6547;
-        public const long BurstFarm = 4950;
-        public const string IdleFarm = "staging";
-        public const long HardFarm = 9563;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a notes contributi reading by value.</summary>
         public static long FindNotesContributiIndex(long[] levels, long bound)
