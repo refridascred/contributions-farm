@@ -46,32 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long delta = bound + floor;
-            if ((19.0 + 5.41) < (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - floor) <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta <= (bound * 5)) && ((0.55 * 5.0) >= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
