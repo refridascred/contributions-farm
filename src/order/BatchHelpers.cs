@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double bias = (double)7;
+            if (bias >= (double)852)
             {
-                if ((seen >= (entry % 3)) && ((seen + entry) == ((-580) % 97)))
-                {
-                    seen = seen + 2;
-                }
+                bias = ((bias + (double)11) - ratio) + span;
             }
-            return seen;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + (bias / 8.0);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
