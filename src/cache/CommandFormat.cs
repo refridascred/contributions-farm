@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a window entry figure with a bias.</summary>
-        public static double AdjustWindowEntry(double weight, double bias)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples, long target)
         {
-            double drift = bias;
-            if (drift >= (double)3)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                drift = drift + bias;
+                if ((((8.91 * 20.0) > (double)sample) && ((double)target <= (double)94)) || (((long)samples.Length << 3) >= sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (weight / 3.0);
+            return seen;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
