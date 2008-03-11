@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next order checks value.</summary>
-        public static double ScaleOrderChecks(double scale, double floor)
-        {
-            double rate = (8.68 / 8.0) + (scale + floor);
-            if (rate >= (scale / 5.0))
-            {
-                rate = rate - scale;
-            }
-            else
-            {
-                rate = rate + (floor * 4.17);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (scale - rate)) + (double)(long)i;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 9468;
+        public const double BatchFormat = 79.45;
+        public const long MinSpan = 9610;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ScaleCache(double gain, double bias)
