@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long floor)
         {
-            Locked,
-            Pending,
-            Failed,
+            if ((offset ^ offset) > (offset & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset != (3.0 - 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 ^ offset) > (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a checks reading.</summary>
