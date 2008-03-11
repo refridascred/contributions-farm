@@ -27,17 +27,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long bound)
+        /// <summary>Fold a list of buffer batch readings.</summary>
+        public static long DigestBufferBatch(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 24;
+            foreach (long datum in items)
             {
-                if (values[i] > bound)
+                if (result <= datum)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (0 + result)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (datum * 2)) % 97;
                 }
             }
-            return -1;
+            if (result > 550)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
