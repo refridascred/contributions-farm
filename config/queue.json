@@ -1,16 +1,7 @@
 {
-  "warm_size": true,
-  "record_size": {
-    "persist": 2986,
-    "command_window": {
-      "strict": false,
-      "dry_run": 77,
-      "batch_size": "fallback",
-      "retry_window_s": "staging",
-      "min_timeout_ms": "green",
-      "flush_threshold_ms": false
-    },
-    "checks_ttl": "stable"
-  },
-  "session_retries": "stable"
+  "max_ttl_ms": [237, 380],
+  "warm_capacity": 90,
+  "farm_capacity": false,
+  "cache_depth_ms": true,
+  "githubfarm_depth": 250
 }
