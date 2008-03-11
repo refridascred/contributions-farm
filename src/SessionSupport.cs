@@ -13,12 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            Synced,
-            Pending,
-            New,
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up already samples.</summary>
