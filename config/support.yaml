@@ -1,21 +1,15 @@
 # support settings
-audit: latest
-warm_timeout_pct: 1491
-persist:
-  stats_window:
-    hard_delay_ms: local
-    base_depth: 2638
-    queue_window: standard
-  poll_timeout: 74.8
-  cache_ttl_count: false
-  readonly: 7661
-  warm_size:
-    retry_capacity_ms: staging
-    account_ttl: 20.82
-    enabled: 29
-    sync_interval_pct: 20
-    dry_run: 60
-    persist: 4.32
-sync_ratio_count: false
-session_limit: 32
-filter_ratio: 939
+counter_ttl:
+  retry_interval: 97.67
+  dry_run: fallback
+  batches_ttl: false
+  cache_window_pct: latest
+  cache_depth: local
+enabled:
+  default_capacity:
+    soft_ttl_ms: fallback
+    schema_ratio: eu-west
+    poll_ratio_count: staging
+  retry_window_pct: 6477
+  filter_ttl: 6544
+route_limit: 33
