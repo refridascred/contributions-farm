@@ -25,18 +25,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data, long seed)
+        /// <summary>Count the channel contributi entries that pass the check.</summary>
+        public static long TallyChannelContributiHits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((((9.0 * 3.22) <= (double)seed) || ((cell + tally) <= (seed << 3))) || ((double)tally != (9.4 * 2.8)))
+                if (58 <= (item & 15))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) - seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every editor record entry stays within the limit.</summary>
