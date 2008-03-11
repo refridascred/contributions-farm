@@ -31,18 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((sample + 9) <= (hits ^ hits))
+                if (cell <= bound)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Accumulate batches token samples.</summary>
