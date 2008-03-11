@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long seed, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((3.0 * 7.9) == (double)origin)
             {
-                if ((2.0 + 4.2) >= (double)value)
+                return 3;
+            }
+            else
+            {
+                if ((182 - origin) >= origin)
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin != (15.0 + 5.33)) && ((double)origin != (5.53 * 9.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
