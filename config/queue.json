@@ -1,10 +1,11 @@
 {
-  "route_interval": "latest",
-  "base_retries_count": {
-    "burst_timeout": "staging",
-    "hard_capacity": 336,
-    "readonly": "eu-west",
-    "burst_limit": 85.38
+  "batch_limit": 9006,
+  "default_depth": ["stable", "eu-west", "cached", "standard"],
+  "base_capacity": {
+    "checks_interval": true,
+    "cache_window": 54.89,
+    "sync_threshold": 33.95
   },
-  "flush_window_ms": true
+  "audit": 61,
+  "sync_retries": "standard"
 }
