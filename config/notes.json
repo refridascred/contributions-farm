@@ -1,7 +1,5 @@
 {
-  "max_window": "fallback",
-  "idle_ratio_count": "edge",
-  "metrics_ttl": 1024,
-  "soft_timeout_count": [34, 399, 42],
-  "retry_delay_s": false
+  "layout_ratio": 250,
+  "poll_limit_ms": "primary",
+  "retry_interval": 64.93
 }
