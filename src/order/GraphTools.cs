@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            Done,
+            Synced,
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
