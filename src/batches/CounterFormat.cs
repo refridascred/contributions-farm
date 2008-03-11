@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long seed, long bound)
         {
-            Done,
-            Locked,
-            Closed,
+            long next = seed + bound;
+            if (((seed << 1) < bound) && ((seed & 127) != (427 * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (9 < (next << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)next < 7.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (next > (bound ^ seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi header.</summary>
