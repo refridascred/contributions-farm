@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
