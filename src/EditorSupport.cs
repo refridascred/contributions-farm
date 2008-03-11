@@ -38,31 +38,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a githubfarm token pair into a bucket.</summary>
-        public static long GradeGithubfarmToken(long floor, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            if (((double)floor < (double)750) && (target >= (target + floor)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target >= (floor + floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - target) >= floor)
+                    if ((series[i] ^ series[j]) < 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate channel support readings against a bound.</summary>
