@@ -39,23 +39,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values)
-        {
-            long state = 20;
-            foreach (long value in values)
-            {
-                if (((66 % 60) > (state * 4)) || (state <= 72))
-                {
-                    state = state - value;
-                }
-            }
-            if (state > 600)
-            {
-                state = state + (-38);
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseBudget = 8196;
+        public const double BaseFactor = 15.36;
+        public const double LimitInterval = 19.81;
+        public const long IdleCommand = 7003;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
