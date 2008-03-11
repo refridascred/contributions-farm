@@ -1,6 +1,18 @@
 {
-  "burst_delay_count": 100,
-  "burst_ttl_count": 70.75,
-  "burst_interval_s": [108, 57, 461],
-  "base_depth_s": "latest"
+  "stats_retries": [448, 271],
+  "default_retries_count": 100,
+  "route_capacity": "blue",
+  "readonly": {
+    "flush_limit_ms": 30,
+    "min_window": true,
+    "batches_threshold": {
+      "max_capacity": false,
+      "queue_size": 1611,
+      "enabled": 88.56,
+      "cache_capacity_ms": true,
+      "min_capacity": "green",
+      "batch_timeout": "green"
+    },
+    "metric_limit": 31.44
+  }
 }
