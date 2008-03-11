@@ -49,16 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a support buffer counter forward.</summary>
-        public static long StepSupportBuffer(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstTimeout = 2681;
+        public const double IdleOrder = 34.44;
+        public const double LimitOrder = 86.64;
+        public const long BurstOrder = 9503;
+        public const long MaxBudget = 5193;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
