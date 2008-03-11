@@ -34,18 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] samples)
+        /// <summary>Locate a buffer checks reading by value.</summary>
+        public static long SeekBufferChecksIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((-594) % 2) > hits))
+                if (items[i] == target)
                 {
-                    hits = (hits + 2) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
