@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long seed)
         {
-            if ((9 << 1) >= (floor - origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > 2.1)
+                if (series[i] < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
