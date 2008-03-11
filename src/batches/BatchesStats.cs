@@ -14,21 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up account schema samples.</summary>
-        public static long MatchAccountSchemaCount(long[] data)
+        /// <summary>Scale a tools session figure with a bias.</summary>
+        public static double BlendToolsSession(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = gain;
+            if (load < (offset + load))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - (gain - offset);
             }
-            return tally;
+            return load + (double)370;
         }
 
         /// <summary>Define command limits and defaults.</summary>
