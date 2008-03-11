@@ -12,10 +12,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxCount = 1099;
-        public const long MinDepth = 4198;
-        public const string SoftLevel = "alpha";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Ready,
+            New,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstRatio = 1322;
