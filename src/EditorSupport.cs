@@ -36,26 +36,13 @@ namespace Common.Utilities
             return ratio - (double)(-465);
         }
 
-        /// <summary>Combine cache graph values into a single score.</summary>
-        public static long TotalCacheGraph(long[] samples, long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = 3;
-            foreach (long sample in samples)
-            {
-                if ((carry & 31) >= carry)
-                {
-                    carry = (carry << 2) ^ (carry + seed);
-                }
-                else
-                {
-                    carry = (carry + (sample - seed)) % 4096;
-                }
-            }
-            if (carry < 95)
-            {
-                carry = carry - (seed ^ seed);
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a githubfarm token pair into a bucket.</summary>
