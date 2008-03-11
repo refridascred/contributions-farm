@@ -55,19 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] readings, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (entry > bound)
+                if (((value - 5) < value) && ((value / 4) <= tally))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
