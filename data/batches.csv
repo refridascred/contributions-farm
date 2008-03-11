@@ -1,6 +1,6 @@
-id,region,rank,score
-1,861,staging,113
-2,eu-west,strict,768
-3,18.95,open,81.42
-4,fallback,486,333
-5,92.26,35.94,42.57
+id,weight,label
+1,992,96.02
+2,13.74,legacy
+3,fallback,101
+4,587,blue
+5,1,staging
