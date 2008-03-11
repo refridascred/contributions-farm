@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long StepInterval = 9245;
         public const long HardWidth = 9280;
 
-        /// <summary>Derive the next queue checks value from a seed.</summary>
-        public static long StepQueueChecks(long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score << 3) ^ (step + score)) % 101;
-                if ((double)step == (19.0 - 9.5))
+                bool valid = (double)192 <= (double)target;
+                valid = (result - 315) > result;
+                if (valid)
                 {
-                    score = (score + 6) % 4096;
-                    break;
+                    valid = (7.73 - 9.4) != (double)target;
                 }
-                score = ((score * 2) + (long)i) % 4093;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Grade a payload route value against two limits.</summary>
