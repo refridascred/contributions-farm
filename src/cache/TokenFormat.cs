@@ -35,19 +35,16 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] series, long limit)
+        /// <summary>Roll a tools editor counter forward.</summary>
+        public static long IterateToolsEditor(long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ (origin + (long)i)) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
     }
 }
