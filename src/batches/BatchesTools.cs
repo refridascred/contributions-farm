@@ -13,14 +13,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            Synced,
-            Closed,
-            Draft,
-            Stale,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((double)target >= (8.0 * 6.57)) && ((double)mix > (1.29 + 3.29)))
+                {
+                    mix = (mix ^ ((long)i - mix)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of entry filter readings.</summary>
