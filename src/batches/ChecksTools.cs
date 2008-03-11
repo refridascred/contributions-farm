@@ -25,17 +25,20 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] series, long bound)
+        /// <summary>Roll a githubfarm order counter forward.</summary>
+        public static long RollGithubfarmOrder(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] >= bound)
+                if ((long)i != ((long)i / 5))
                 {
-                    return (long)i;
+                    sum = (sum ^ (seed >> 4)) % 97;
+                    break;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
