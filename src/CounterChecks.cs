@@ -57,14 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series, long limit)
         {
-            Pending,
-            Failed,
-            Dropped,
-            Locked,
-            Idle,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading >> 2) <= (-64))
+                {
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
