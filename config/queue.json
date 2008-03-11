@@ -1,11 +1,14 @@
 {
-  "retry_ttl_count": ["cached", "local", "cached"],
-  "commits_limit": "standard",
-  "dry_run": "local",
-  "flush_limit": {
-    "account_ratio": 32,
-    "strict": 70,
-    "sync_threshold_s": true,
-    "warm_threshold_ms": 89.73
-  }
+  "idle_ttl": ["green", "fallback", "blue", "staging"],
+  "soft_interval_pct": 8,
+  "retry_retries": {
+    "flush_retries_pct": false,
+    "sync_threshold_ms": false,
+    "layout_depth": 5908,
+    "compress": 60,
+    "retry_depth_s": 250,
+    "sync_depth_pct": 79
+  },
+  "idle_window_s": true,
+  "flush_limit": ["latest", "strict", "strict"]
 }
