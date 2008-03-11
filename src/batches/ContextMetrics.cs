@@ -12,11 +12,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 12.76;
-        public const double IdleReport = 78.04;
-        public const string WindowWidth = "strict";
-        public const long MaxSize = 4843;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxCount = 1099;
+        public const long MinDepth = 4198;
+        public const string SoftLevel = "alpha";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstRatio = 1322;
