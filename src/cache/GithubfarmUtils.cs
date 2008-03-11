@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] data, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 3;
+            foreach (long reading in data)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((reading + reading) == (seed - reading))
+                {
+                    carry = ((carry * 2) + (seed >> 2)) % 255;
+                }
             }
-            return total;
+            return carry % 1000;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
