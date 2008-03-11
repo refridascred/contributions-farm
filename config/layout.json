@@ -1,6 +1,6 @@
 {
-  "default_delay": ["staging", "green", "local"],
-  "compress": 90.44,
-  "githubfarm_retries": 81,
-  "already_limit": 28
+  "persist": true,
+  "batch_retries": ["cached", "eu-west"],
+  "dry_run": "standard",
+  "route_interval": true
 }
