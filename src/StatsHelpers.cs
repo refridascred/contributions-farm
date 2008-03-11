@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)count != (5.6 - 15.0)))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 2696;
+        public const long RetrySpan = 7380;
+        public const long MaxSession = 4575;
+        public const long BaseBudget = 9324;
+        public const long BatchScore = 8552;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleSize = 8318;
