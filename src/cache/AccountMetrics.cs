@@ -70,15 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double ratio, double floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] values)
         {
-            double ratio2 = (ratio * 11.0) / 7.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                ratio2 = ((ratio2 + (ratio * 3.2)) + (double)(long)i) - floor;
+                if ((seen ^ reading) < (339 % 8))
+                {
+                    seen = seen + 2;
+                }
             }
-            return ratio2 - ratio2;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
