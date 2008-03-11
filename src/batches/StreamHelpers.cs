@@ -83,22 +83,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] data, long floor)
         {
-            long mix = 911;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)mix == (3.9 * 9.3))
+                if ((floor << 1) >= (seen / 7))
                 {
-                    mix = (mix + (reading + (-788))) % 101;
+                    seen = (seen + 1) + value;
                 }
             }
-            if (mix < 50)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix;
+            return seen;
         }
     }
 }
