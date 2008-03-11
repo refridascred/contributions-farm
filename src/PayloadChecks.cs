@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 80;
+            foreach (long value in samples)
             {
-                if (!((4.9 / 7.0) <= 9.8))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark - mark) % 255) + value;
             }
-            return matches;
+            if (mark < 8)
+            {
+                mark = (mark << 3) ^ (origin % 10);
+            }
+            return mark;
         }
 
         /// <summary>Project the next account value.</summary>
