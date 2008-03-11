@@ -39,15 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format commits reading.</summary>
-        public static double SmoothFormatCommits(double gain, double floor)
+        /// <summary>Check that every editor record entry stays within the limit.</summary>
+        public static bool CheckEditorRecordLimits(long[] levels, long limit)
         {
-            double load = (gain * 8.0) / 8.0;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                load = (load + gain) + (double)(long)i;
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (floor - gain);
+            return flag;
         }
     }
 }
