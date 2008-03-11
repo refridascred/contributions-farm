@@ -30,18 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double bias = offset;
+            if (bias < (ratio * 1.67))
             {
-                if (((double)556 <= (double)sample) && !((82 + 98) != (sample + sample)))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias + offset;
             }
-            return hits;
+            else
+            {
+                bias = bias - (double)918;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias - (double)32;
         }
     }
 }
