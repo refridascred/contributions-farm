@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] readings, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (sample != offset)
+                if (((double)cell < (15.0 * 5.46)) || (seen < (cell % 2)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
