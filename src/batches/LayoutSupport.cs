@@ -43,12 +43,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool CheckChecksFormatBounds(long[] data, long target)
         {
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the account class values.</summary>
