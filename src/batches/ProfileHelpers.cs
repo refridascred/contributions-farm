@@ -18,19 +18,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate buffer githubfarm readings against a bound.</summary>
-        public static bool CheckBufferGithubfarmRange(long[] readings, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = (double)(396 % 10);
+            return (drift + scale) + offset;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
