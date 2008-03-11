@@ -14,19 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks format entry stays within the limit.</summary>
-        public static bool GuardChecksFormatLimits(long[] data, long step)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the contributi status values.</summary>
