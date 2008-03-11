@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((8.6 + 8.45) >= (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the channel kind values.</summary>
