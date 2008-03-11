@@ -25,15 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data, long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long acc = 5;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 3) ^ (seed + seed)) + entry;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
