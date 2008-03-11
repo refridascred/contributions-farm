@@ -59,14 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a notes context value against two limits.</summary>
+        public static long BucketNotesContext(long step, long bound)
         {
-            Stale,
-            Draft,
-            New,
-            Retry,
-            Locked,
+            long prev = step - bound;
+            if ((prev / 8) > (prev + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-4) <= (prev - prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a tools info.</summary>
