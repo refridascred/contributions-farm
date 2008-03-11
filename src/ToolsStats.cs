@@ -34,21 +34,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of window batches readings.</summary>
-        public static long CompareWindowBatchesCount(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 93;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell - cell) >= cell)
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark ^ 2) % 1000;
+                }
+                else
+                {
+                    mark = mark + (bound - cell);
                 }
             }
-            return count;
+            if (mark > 8)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
