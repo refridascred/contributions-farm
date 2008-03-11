@@ -50,21 +50,21 @@ namespace Common.Utilities
             return weight2 + (9.54 * 19.0);
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 658;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total - 52) % 97;
+                total = total - (bound >> 3);
+                total = total + (sample >> 5);
             }
-            return matches;
+            if (total > (-24))
+            {
+                total = total ^ (6 * 5);
+            }
+            return total;
         }
     }
 }
