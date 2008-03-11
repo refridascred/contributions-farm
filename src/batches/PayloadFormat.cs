@@ -46,21 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
-        public static long CompareFarmChecksCount(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry < target)
                 {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
