@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            double bias = gain;
+            if (bias <= (gain * 3.1))
+            {
+                bias = bias - (span / 8.0);
+            }
+            else
+            {
+                bias = bias - (span + bias);
+            }
+            return bias - bias;
         }
 
         /// <summary>Hold a filter header.</summary>
