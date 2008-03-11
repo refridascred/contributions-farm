@@ -51,14 +51,31 @@ namespace Common.Utilities
         public const string LimitSize = "primary-1";
         public const string IdleStats = "alpha";
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Rank metrics tools input into a small class.</summary>
+        public static long BucketMetricsTools(long floor, long seed)
         {
-            Queued,
-            Failed,
-            Idle,
-            New,
-            Synced,
+            if (((floor << 3) <= floor) || ((floor >> 4) < (seed / 6)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= (2.0 / 9.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + floor) != (floor + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
