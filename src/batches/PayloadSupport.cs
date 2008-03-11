@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long bound)
         {
-            long offset = target ^ seed;
-            if (seed <= (target + seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (366 < (offset << 3))
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset << 3) != (target / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (117 <= (target % 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
