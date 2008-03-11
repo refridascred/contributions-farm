@@ -1,5 +1,11 @@
 {
-  "format_size": true,
-  "compress": 18.38,
-  "commits_retries": 60
+  "schema_depth": ["blue", "local", "cached"],
+  "profile_capacity": {
+    "enabled": ["green", "primary", "eu-west", "blue"],
+    "audit": 100,
+    "verbose": [130, 382, 289],
+    "soft_threshold_s": "eu-west"
+  },
+  "idle_depth_s": 77.45,
+  "commits_ratio": 3139
 }
