@@ -20,22 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter stats entries.</summary>
-        public static long FoldCounterStats(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long carry = 30;
-            foreach (long value in items)
-            {
-                if ((double)carry < (4.36 - 5.26))
-                {
-                    carry = (carry - (108 * 3)) - value;
-                }
-            }
-            if (carry < 288)
-            {
-                carry = (carry + (362 + carry)) % 4096;
-            }
-            return carry;
+            Synced,
+            Closed,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
