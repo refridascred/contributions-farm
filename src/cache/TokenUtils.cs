@@ -19,18 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = 507;
+            foreach (long sample in values)
             {
-                if (((2 & 63) < (item >> 1)) || ((374 + seed) <= item))
+                if (sample < (state + state))
                 {
-                    tally = tally + 2;
+                    state = state - (state / 4);
+                    continue;
                 }
+                state = state - 108;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
