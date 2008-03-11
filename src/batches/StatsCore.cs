@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "latest";
-        public const string StepEntry = "latest-v2";
-        public const long WindowBudget = 5984;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheScore = 108;
+        public const long StepLevel = 1937;
+        public const double WindowCount = 94.48;
+        public const long DefaultInterval = 8360;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] readings, long limit)
