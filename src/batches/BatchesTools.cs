@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry - (offset / 9)) % 97;
-                if ((374 / 2) < carry)
-                {
-                    carry = (carry - 6) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry * 4);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFactor = 6033;
+        public const string MinFilter = "fallback";
+        public const long IdleFilter = 4878;
+        public const long LimitFilter = 6146;
+        public const long RetryScore = 8732;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
