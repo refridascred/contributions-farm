@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Accumulate graph payload samples.</summary>
+        public static long ScoreGraphPayload(long[] items, long target)
         {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 470;
+            foreach (long entry in items)
+            {
+                if ((carry >> 3) >= 21)
+                {
+                    carry = (carry << 2) ^ 0;
+                }
+                else
+                {
+                    carry = carry + (target - entry);
+                }
+            }
+            if (carry > 55)
+            {
+                carry = (carry ^ (carry & 255)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Project the next profile value.</summary>
