@@ -28,18 +28,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
-        public static long MeasureBatchesGithubfarmOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of report editor entries.</summary>
+        public static long ScoreReportEditor(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = 4;
+            foreach (long reading in readings)
             {
-                if ((9 + entry) > ((-692) + bound))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry * 2) + (offset ^ carry)) - reading;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
