@@ -41,12 +41,11 @@ namespace Common.Utilities
         public const long DefaultCount = 2701;
         public const long BaseNotes = 2530;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
