@@ -71,19 +71,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate already farm readings against a bound.</summary>
-        public static bool CheckAlreadyFarmRange(long[] values, long target)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxSize = "strict-1";
+        public const double MinSize = 92.77;
+        public const string BurstPayload = "cached-edge";
     }
 }
