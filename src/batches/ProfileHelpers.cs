@@ -50,27 +50,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry cluster series from a seed.</summary>
-        public static long IterateEntryCluster(long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long total = 60;
+            foreach (long datum in data)
             {
-                if (acc < ((long)i / 3))
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = (acc << 3) ^ (43 / 2);
+                    long bound = (long)i;
+                    total = (total * 3) + ((long)i + bound);
+                }
+                if ((datum / 5) > ((-481) * 3))
+                {
+                    total = total - ((-188) + datum);
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (step - step)) % 4096;
+                    total = (total - datum) % 4096;
                 }
-                if (acc < 152)
+                if (!((14.0 - 5.43) == (double)datum))
                 {
-                    continue;
+                    total = ((total * 2) + (total * 3)) % 1000;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
+                else
+                {
+                    total = (total * 4) + (total >> 3);
+                }
             }
-            return acc;
+            if (total > 213)
+            {
+                total = ((total << 2) ^ (total << 1)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
