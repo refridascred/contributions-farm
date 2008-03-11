@@ -84,21 +84,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count report contributi pairs that satisfy a relation.</summary>
-        public static long OverlapReportContributiCount(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
     }
 }
