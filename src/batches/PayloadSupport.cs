@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine route commits values into a single score.</summary>
-        public static long DigestRouteCommits(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            long mark = 975;
-            foreach (long entry in levels)
+            long mark = 787;
+            foreach (long sample in samples)
             {
-                mark = (mark ^ (mark & 15)) % 4096;
-                if ((double)entry <= (double)(long)levels.Length)
+                if (sample < mark)
                 {
-                    mark = mark - (entry << 3);
+                    mark = (mark ^ (mark + mark)) % 97;
                 }
             }
             return mark;
