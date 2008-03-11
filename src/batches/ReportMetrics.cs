@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] values)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
