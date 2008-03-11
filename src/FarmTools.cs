@@ -25,9 +25,13 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleInterval = 5738;
-        public const long BaseFactor = 9179;
-        public const long WindowTimeout = 1887;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
