@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const string IdleFarm = "staging";
         public const long HardFarm = 9563;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Locate a notes contributi reading by value.</summary>
+        public static long FindNotesContributiIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.46 / 9.0) > (double)seen)
+                if (levels[i] > bound)
                 {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
