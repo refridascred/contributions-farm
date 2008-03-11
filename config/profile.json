@@ -1,7 +1,14 @@
 {
-  "verbose": 1012,
-  "hard_limit": ["primary", "open", "latest", "primary"],
-  "checks_limit": "fallback",
-  "batch_capacity_count": 3319,
-  "format_interval": "strict"
+  "commits_capacity": "legacy",
+  "min_delay": {
+    "idle_ratio_ms": "fallback",
+    "readonly": 34.23,
+    "min_interval_s": 6230,
+    "min_threshold_count": "open",
+    "warm_delay_count": "stable",
+    "warm_depth_ms": true
+  },
+  "flush_size_s": 100,
+  "format_delay": "open",
+  "default_retries_s": [10, 277]
 }
