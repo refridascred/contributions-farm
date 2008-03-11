@@ -1,6 +1,17 @@
 # githubfarm settings
-context_size: latest
-min_depth_pct: 5349
-hard_ratio: strict
-flush_ttl: 73.87
-checks_retries: green
+batches_ratio: legacy
+compress:
+  cache_threshold_count:
+    record_size:
+      - 9
+      - 10
+    cache_capacity_s: 66
+    strict: 14.52
+    format_timeout: 3920
+  cache_timeout_pct: 30.43
+  flush_capacity_ms: false
+  burst_window_count:
+    - staging
+    - standard
+    - local
+default_delay: 250
