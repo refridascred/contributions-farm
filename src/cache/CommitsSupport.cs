@@ -27,11 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardTimeout = 1435;
-        public const long BurstSpan = 7722;
-        public const long WindowGithubfarm = 3126;
-        public const double LimitGithubfarm = 1.04;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 1206;
+        public const double BatchSpan = 98.21;
+        public const long BatchContext = 5944;
+        public const long MinRatio = 9908;
+        public const double LimitContext = 41.99;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
