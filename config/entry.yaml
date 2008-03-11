@@ -1,18 +1,5 @@
 # entry settings
-warm_size_ms:
-  - 74
-  - 343
-  - 411
-default_threshold: standard
-warm_timeout_count: green
-base_limit_count:
-  - standard
-  - primary
-  - cached
-  - eu-west
-cache_delay: 34.42
-readonly:
-  - local
-  - staging
-  - local
-  - local
+cache_capacity_ms: 95
+batch_ratio: green
+enabled: false
+poll_depth: 56
