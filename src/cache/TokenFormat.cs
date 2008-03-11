@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(anchor < (bound + bound)))
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 5607;
+        public const long RetryReport = 2859;
+        public const double MaxInterval = 12.41;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
