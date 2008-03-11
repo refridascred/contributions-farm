@@ -1,9 +1,9 @@
 # support settings
-warm_window: staging
-notes_ttl: strict
-session_timeout:
-  - 347
-  - 30
-already_window:
-  - latest
-  - latest
+verbose:
+  - standard
+  - legacy
+counter_ratio: 4809
+burst_size_count:
+  - stable
+  - legacy
+  - legacy
