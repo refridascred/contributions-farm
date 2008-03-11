@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the context schema series from a seed.</summary>
-        public static long SeriesContextSchema(long bound)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (bound ^ sum)) % 4096;
-                sum = (sum + (8 << 3)) % 255;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
