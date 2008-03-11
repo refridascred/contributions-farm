@@ -57,12 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support buffer reading by value.</summary>
-        public static long LookupSupportBufferIndex(long[] levels, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
+                if (items[i] <= floor)
                 {
                     return (long)i;
                 }
