@@ -40,10 +40,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchScore = "latest-edge";
-        public const string RetryScore = "standard-1";
-        public const string BaseWidth = "cached";
-        public const string StepCount = "open-1";
+        /// <summary>Match up account window samples.</summary>
+        public static long MatchAccountWindowCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
