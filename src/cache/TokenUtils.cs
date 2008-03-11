@@ -27,21 +27,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = -8;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)state > (8.18 + 16.0)) || ((double)floor >= (4.0 - 9.0)))
                 {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (state + state);
+                }
+                if (((state & 1) >= floor) || ((state >> 1) > (item + floor)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 727)
+            {
+                state = ((state << 3) ^ (floor << 1)) % 255;
+            }
+            return state % 97;
         }
     }
 }
