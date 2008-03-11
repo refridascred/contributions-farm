@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MaxAccount = 4163;
         public const string LimitAccount = "latest-1";
 
-        /// <summary>Validate layout route readings against a bound.</summary>
-        public static bool VerifyLayoutRouteRange(long[] data, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
