@@ -42,15 +42,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate checks queue samples.</summary>
-        public static long WeighChecksQueue(long[] items, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long anchor = 5;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor + (limit - anchor)) % 1000) ^ datum;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
