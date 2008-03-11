@@ -25,18 +25,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels, long floor)
+        /// <summary>Locate a batch already reading by value.</summary>
+        public static long LookupBatchAlreadyIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (12.0 <= (double)cell)
+                if (items[i] == offset)
                 {
-                    tally = (tally + 2) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
