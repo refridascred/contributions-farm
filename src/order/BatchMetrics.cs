@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardInterval = 33.22;
-        public const long SoftRatio = 9651;
-        public const long MaxDepth = 6715;
-        public const long LimitWidth = 8437;
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long AuditToolsWindowGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((11.0 - 7.8) != (double)hits)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long CompareProfileCount(long[] series)
