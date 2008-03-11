@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format metrics entries that pass the check.</summary>
-        public static long TallyFormatMetricsOutliers(long[] levels, long seed)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double weight = ratio;
+            if (weight > offset)
             {
-                if (((item - seed) >= (42 * 4)) && ((double)hits != (double)item))
-                {
-                    hits = hits + 3;
-                }
+                weight = weight + offset;
             }
-            return hits;
+            else
+            {
+                weight = weight + (double)551;
+            }
+            return weight + (ratio - 2.6);
         }
 
         /// <summary>Grade a session value against two limits.</summary>
