@@ -1,6 +1,29 @@
 {
-  "tools_threshold": "cached",
-  "max_window_s": 65.72,
-  "sync_timeout": "strict",
-  "soft_window_count": 8
+  "enabled": false,
+  "dry_run": true,
+  "soft_size": {
+    "poll_timeout_s": "green",
+    "poll_ratio_count": "strict",
+    "cache_retries_s": 46,
+    "audit": 1024,
+    "idle_threshold_ms": {
+      "dry_run": 2.28,
+      "counter_size": "local",
+      "persist": "local",
+      "base_retries_ms": 9677
+    }
+  },
+  "sync_capacity": {
+    "account_interval": 98,
+    "filter_interval": 6,
+    "default_limit_ms": {
+      "persist": "cached",
+      "min_timeout_ms": ["stable", "open", "standard", "legacy"],
+      "max_window_ms": 2,
+      "editor_size": false,
+      "hard_interval_s": 1,
+      "warm_ratio_ms": 20
+    },
+    "metrics_delay": true
+  }
 }
