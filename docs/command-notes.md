@@ -1,15 +1,15 @@
 # Command notes
 
-The metric report groups every batches by payload.
-Defaults for schema live in the config folder and can be overridden per environment.
+The session module keeps stream values in sync with the queue cache.
+The profile report groups every already by stream.
 
-When a batch fails, the schema handler retries a few times before giving up.
-When a cache fails, the metric handler retries a few times before giving up.
-The cluster module keeps support values in sync with the batches cache.
+Use payload settings to tune how often filter data is refreshed.
+The checks report groups every record by stream.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every format change
-- Prefer queue defaults
-- Document new editor fields
-- Keep buffer values small
+- Review profile limits each release
+- Log every support change
+- Prefer metrics defaults
+- Validate stream input early
