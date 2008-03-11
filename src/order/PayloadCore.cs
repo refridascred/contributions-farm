@@ -33,12 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Done,
-            Dropped,
-            Locked,
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
