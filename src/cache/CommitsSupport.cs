@@ -74,19 +74,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data)
         {
-            double gain = (bias * 7.0) / 9.0;
-            if (gain >= 4.57)
+            long result = 59;
+            foreach (long value in data)
             {
-                gain = (gain - (double)72) - span;
+                if ((result - 5) < (0 + value))
+                {
+                    result = (result + (result + value)) % 97;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (result > 4)
             {
-                gain = (gain - (double)(-9)) + (double)(long)i;
+                result = (result - (result + result)) % 1000;
             }
-            return gain - (bias * 1.0);
+            return result;
         }
 
         /// <summary>Compare every pair of account queue readings.</summary>
