@@ -40,20 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double floor)
-        {
-            double weight = 10.0 * 6.0;
-            if (weight > floor)
-            {
-                weight = (weight - 4.0) + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (weight / 5.0)) + (double)(long)i;
-            }
-            return weight - (double)836;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinLevel = 6445;
+        public const string MaxTimeout = "open-v2";
+        public const string SoftInterval = "fallback-1";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportOutliers(long[] series)
