@@ -39,19 +39,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double weight, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            double load = floor;
-            if (load <= (load + load))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                load = load - (3.5 - weight);
+                if (((-4) * 2) >= ((long)readings.Length - value))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                load = load + (3.57 - floor);
-            }
-            return load - 6.6;
+            return seen;
         }
     }
 }
