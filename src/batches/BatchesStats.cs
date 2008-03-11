@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long DefaultContributi = 4104;
         public const long LimitContributi = 3628;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((matches + cell) < (cell >> 4)) && !((cell >> 3) >= (cell & 7)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Active,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a editor layout counter forward.</summary>
