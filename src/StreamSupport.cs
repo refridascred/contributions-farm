@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const double BatchReport = 6.26;
         public const double DefaultTimeout = 70.94;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long total = 713;
+            foreach (long item in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                total = ((total * 3) + (item >> 4)) + bound;
             }
-            return mark;
+            return total;
         }
     }
 }
