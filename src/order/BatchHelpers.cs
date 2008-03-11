@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
