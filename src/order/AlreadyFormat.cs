@@ -18,20 +18,10 @@ namespace Common.Utilities
         public const long BaseScore = 4861;
         public const long BurstFarm = 3961;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 14.26;
+        public const long HardPayload = 3993;
+        public const long BatchPayload = 4075;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepContributi = 46.99;
