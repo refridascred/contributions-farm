@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 1144;
+        public const long IdleBudget = 9280;
+        public const long MinSession = 8549;
+        public const double DefaultSession = 33.49;
+        public const long CacheSession = 3787;
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double scale, double bias)
