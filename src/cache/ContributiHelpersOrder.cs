@@ -41,22 +41,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = 6;
+            foreach (long value in samples)
             {
-                if (cell < (cell << 3))
+                if (!((double)value == (double)floor))
                 {
-                    hits = hits + 2;
+                    carry = carry ^ value;
                 }
-                else
+                carry = carry + (long)samples.Length;
+                carry = (carry + (7 - carry)) % 4096;
+                if (!(carry <= (carry << 1)))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (carry > 26)
+            {
+                carry = (carry ^ (440 >> 4)) % 101;
+            }
+            return carry;
         }
     }
 }
