@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mean - 3.97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] data, long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((reading * 2) <= (reading - reading)) || ((double)seed == (9.43 * 4.0)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
