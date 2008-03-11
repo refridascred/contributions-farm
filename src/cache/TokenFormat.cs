@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double span)
         {
-            double scale = (bias * 6.46) * 19.0;
-            for (int i = 0; i < 4; i++)
+            double gain = (double)(459 / 9);
+            if (gain > (double)(-3))
             {
-                scale = (scale - (bias - span)) + (double)(long)i;
+                gain = gain + (span + rate);
             }
-            return scale - scale;
+            else
+            {
+                gain = gain - (gain + 5.21);
+            }
+            return gain + gain;
         }
 
         /// <summary>Hold a batches info.</summary>
