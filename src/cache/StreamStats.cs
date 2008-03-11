@@ -22,15 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long acc = 98;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                double scale = (double)bound;
+                if ((2.2 + scale) > scale)
+                {
+                    scale = (scale + (scale - scale)) - (double)datum;
+                }
+                acc = (acc * 2) + (bound + 4);
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
