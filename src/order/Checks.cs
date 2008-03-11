@@ -16,12 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Done,
-            Retry,
-            Locked,
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
