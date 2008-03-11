@@ -42,25 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long offset = target + step;
-            if ((offset << 2) <= (offset + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step * 5) <= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Pending,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
