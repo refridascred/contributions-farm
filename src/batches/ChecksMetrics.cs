@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
         {
-            long delta = seed ^ offset;
-            if (((delta - seed) != (seed + delta)) && ((seed - delta) == (offset - seed)))
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((37 ^ 8) > delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)delta == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the window checks entries that pass the check.</summary>
