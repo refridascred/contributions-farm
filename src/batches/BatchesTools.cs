@@ -22,13 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Failed,
-            Queued,
-            Done,
-            Closed,
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
