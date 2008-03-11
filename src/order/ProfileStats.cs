@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheCount = "fallback-edge";
-        public const long BatchMetric = 2030;
-        public const double SoftMetric = 89.59;
-        public const string BatchTimeout = "stable";
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate graph githubfarm samples.</summary>
         public static long TotalGraphGithubfarm(long[] series)
