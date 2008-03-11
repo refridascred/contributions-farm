@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data)
         {
-            Stale,
-            Ready,
-            Dropped,
-            Draft,
-            Active,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches % 64) >= (2 ^ value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
