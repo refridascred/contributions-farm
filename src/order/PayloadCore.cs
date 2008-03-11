@@ -18,23 +18,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = 4;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 6.0)
-                {
-                    mark = mark + (sample ^ mark);
-                }
-                mark = ((mark * 2) + (sample - mark)) % 255;
-            }
-            if (mark > 23)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
