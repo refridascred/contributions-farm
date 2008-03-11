@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a cache commits counter forward.</summary>
-        public static long StepCacheCommits(long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] data, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (!((double)sample < (double)bound) && (((-6) + sample) <= sample))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
