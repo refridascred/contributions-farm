@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = -5;
-            foreach (long sample in readings)
-            {
-                mix = (((mix << 3) ^ (mix * 4)) % 65521) - sample;
-            }
-            if (mix > 89)
-            {
-                mix = ((mix * 5) + (mix << 2)) % 255;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
