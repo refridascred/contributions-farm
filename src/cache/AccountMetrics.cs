@@ -85,21 +85,19 @@ namespace Common.Utilities
             return ratio2 - ratio2;
         }
 
-        /// <summary>Count payload counter pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCounterCount(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != seed)
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
