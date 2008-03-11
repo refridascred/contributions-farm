@@ -43,11 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "standard-edge";
-        public const long CacheCount = 3793;
-        public const string BurstGraph = "alpha-edge";
-        public const long MinSpan = 7336;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "stable-1";
+        public const long IdleBatch = 724;
+        public const long SoftCount = 4817;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double AdjustMetric(double rate, double bias)
