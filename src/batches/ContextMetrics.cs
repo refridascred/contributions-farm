@@ -12,16 +12,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double offset)
-        {
-            double ratio2 = offset / 2.0;
-            if (ratio2 <= ratio)
-            {
-                ratio2 = ratio2 - (ratio - offset);
-            }
-            return ratio2 - (ratio2 - 4.8);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 847;
+        public const string IdleCount = "latest-v2";
+        public const string MaxRatio = "primary-edge";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
