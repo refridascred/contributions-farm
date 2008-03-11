@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double bias)
-        {
-            double ratio2 = (double)(10 + 8);
-            if (ratio2 >= ratio2)
-            {
-                ratio2 = (ratio2 - (double)(-62)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio2 + 5.83;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 1861;
+        public const long BurstRoute = 4603;
+        public const long DefaultLevel = 8504;
+        public const long WindowRoute = 2735;
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
         public static long DeriveToolsChannel(long step)
