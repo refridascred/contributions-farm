@@ -22,18 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm report readings against a rule.</summary>
-        public static long AuditGithubfarmReportHits(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)reading <= 1.92)
+                if (cell > target)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
