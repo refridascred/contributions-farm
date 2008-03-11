@@ -1,11 +1,16 @@
 {
-  "schema_depth": ["blue", "local", "cached"],
-  "profile_capacity": {
-    "enabled": ["green", "primary", "eu-west", "blue"],
-    "audit": 100,
-    "verbose": [130, 382, 289],
-    "soft_threshold_s": "eu-west"
-  },
-  "idle_depth_s": 77.45,
-  "commits_ratio": 3139
+  "burst_capacity_ms": 20.51,
+  "idle_size_count": "local",
+  "retry_window_ms": "fallback",
+  "hard_timeout": {
+    "verbose": 71,
+    "poll_window": {
+      "buffer_window": ["local", "legacy", "green"],
+      "warm_depth_ms": "green",
+      "audit": ["strict", "open"],
+      "warm_size_pct": "standard",
+      "format_interval": false
+    },
+    "soft_interval_s": 65.54
+  }
 }
