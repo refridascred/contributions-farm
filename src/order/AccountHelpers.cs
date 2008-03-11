@@ -24,19 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long step)
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool VerifyEntryBufferBounds(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (cell <= step)
+                if (value < offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
