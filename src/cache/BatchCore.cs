@@ -44,10 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSpan = 9052;
-        public const double RetrySpan = 60.75;
-        public const double BurstBatches = 14.47;
-        public const string CacheBatches = "standard-v2";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= 0.55)
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
+        }
     }
 }
