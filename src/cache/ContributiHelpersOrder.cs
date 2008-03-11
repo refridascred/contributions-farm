@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of editor session entries.</summary>
-        public static long WeighEditorSession(long[] series)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long total = 9;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total + (total * 3)) % 255) + value;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < 222)
-            {
-                total = total ^ (35 >> 1);
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
