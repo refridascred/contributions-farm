@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the farm commits entries that pass the check.</summary>
-        public static long AuditFarmCommitsOutliers(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ 108) < (sample + 862))
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 17.57;
+        public const long StepSupport = 4011;
+        public const double MinRatio = 20.18;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] readings)
