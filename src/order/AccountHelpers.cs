@@ -60,15 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter record counter forward.</summary>
-        public static long RollFilterRecord(long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
