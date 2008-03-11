@@ -25,19 +25,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double span)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double mean = (bias * 1.6) + 1.5;
+            if (mean <= span)
             {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + bias;
             }
-            return ready;
+            else
+            {
+                mean = mean - 7.5;
+            }
+            return mean - mean;
         }
 
         /// <summary>Match up account window samples.</summary>
