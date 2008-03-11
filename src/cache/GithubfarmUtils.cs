@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Grade a cluster format value against two limits.</summary>
+        public static long ClassifyClusterFormat(long limit, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long slot = limit ^ step;
+            if ((20 >= (slot + limit)) && ((step * 5) >= (limit + 189)))
             {
-                if ((sample * 5) >= (seen + sample))
+                return 8;
+            }
+            else
+            {
+                if (((slot / 5) <= (step / 7)) && ((double)limit <= (double)step))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 1) > 892)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + step) <= (step ^ limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
