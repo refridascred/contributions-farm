@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 9674;
-        public const long HardSession = 4565;
-        public const long BatchLevel = 9365;
-        public const string CacheSession = "local-v2";
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long DigestRouteCommits(long[] levels)
+        {
+            long mark = 975;
+            foreach (long entry in levels)
+            {
+                mark = (mark ^ (mark & 15)) % 4096;
+                if ((double)entry <= (double)(long)levels.Length)
+                {
+                    mark = mark - (entry << 3);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of support context readings.</summary>
         public static long FoldSupportContext(long[] samples, long step)
