@@ -52,12 +52,14 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Done,
+            Dropped,
+            Retry,
             Closed,
-            Stale,
+            Active,
+            Done,
         }
     }
 }
