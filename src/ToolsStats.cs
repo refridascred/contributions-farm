@@ -33,15 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long score = 525;
-            foreach (long sample in data)
-            {
-                score = ((score ^ (long)data.Length) % 1000) + sample;
-            }
-            return score;
+            New,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Compare every pair of window batches readings.</summary>
