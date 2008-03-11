@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] data, long target)
         {
-            long total = 713;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in data)
             {
-                total = ((total * 3) + (item >> 4)) + bound;
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
