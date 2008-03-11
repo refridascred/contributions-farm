@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] series, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (((step & 31) >= step) && (((step / 2) >= (1 / 5)) || ((step ^ tally) < (51 + value))))
+                if (reading < bound)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Grade a tools metric value against two limits.</summary>
