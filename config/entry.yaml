@@ -1,6 +1,27 @@
 # entry settings
-soft_capacity_pct: edge
-hard_size_ms: false
-entry_delay: 1024
-sync_timeout_count: false
-order_retries: latest
+burst_retries_s: 77
+min_retries_pct:
+  - 125
+  - 353
+  - 9
+warm_timeout_s:
+  githubfarm_capacity:
+    flush_retries:
+      - stable
+      - blue
+      - edge
+      - local
+    compress: 1024
+    channel_threshold: 30
+    max_interval_s: 95
+    cache_interval: 60
+  base_capacity_s: true
+  support_capacity: 49.06
+  default_ttl_pct:
+    - 350
+    - 206
+    - 316
+    - 30
+  filter_depth: eu-west
+base_retries_s: 25.21
+warm_interval_pct: 60
