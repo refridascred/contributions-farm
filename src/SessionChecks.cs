@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const long MaxLevel = 7775;
         public const long RetryScore = 9362;
 
-        /// <summary>Look up the position of a order contributi sample.</summary>
-        public static long LocateOrderContributiIndex(long[] levels, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the command status values.</summary>
