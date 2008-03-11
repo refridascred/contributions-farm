@@ -38,23 +38,23 @@ namespace Common.Utilities
             return weight + (ratio - 2.6);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long seed, long offset)
         {
-            long next = origin ^ target;
-            if ((origin * 3) < (target + 0))
+            long step = seed - offset;
+            if ((seed >> 1) > (offset & 7))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((target + target) >= (next + 5))
+                if (!((seed / 9) == (offset + step)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    return 0;
                 }
             }
         }
