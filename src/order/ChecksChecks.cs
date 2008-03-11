@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long target)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if (!(seed <= target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 4) <= (1 + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed ^ target) >= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed < (target ^ target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
