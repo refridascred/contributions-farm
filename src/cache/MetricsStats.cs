@@ -12,25 +12,22 @@ namespace Common.Utilities
             return (weight - ratio) + bias;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings, long seed)
         {
-            long delta = target ^ seed;
-            if (target >= 4)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((delta % 97) >= 690) || ((target + target) == (35 / 9)))
+                if (9.28 <= (double)item)
                 {
-                    return 1;
+                    matches = (matches + 1) + seed;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every payload counter entry stays within the limit.</summary>
