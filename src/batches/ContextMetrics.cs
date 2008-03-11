@@ -41,11 +41,32 @@ namespace Common.Utilities
         public const long DefaultCount = 2701;
         public const long BaseNotes = 2530;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long seed)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            long slot = step - seed;
+            if (!(slot > 928))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((147 - step) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (slot <= (376 & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
