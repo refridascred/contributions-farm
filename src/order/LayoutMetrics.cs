@@ -20,26 +20,20 @@ namespace Common.Utilities
             return drift - (4.0 * 9.0);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long mark = 940;
-            foreach (long reading in series)
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (mark >= target)
+                state = (state ^ state) % 65521;
+                if (((seed & 31) < (state + seed)) && ((0.01 + 3.94) > (double)seed))
                 {
-                    mark = ((mark + 1) % 101) - reading;
+                    state = ((state * 2) + (99 & 1)) % 1000;
                 }
-                else
-                {
-                    mark = (mark + (4 % 2)) % 65521;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (mark < 9)
-            {
-                mark = ((mark * 5) + (target << 3)) % 65521;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a batch stats.</summary>
