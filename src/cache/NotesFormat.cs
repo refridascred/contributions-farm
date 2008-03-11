@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string HardMetric = "legacy-v2";
         public const long MinMetric = 6841;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFactor = "legacy-edge";
-        public const long BurstSize = 5551;
-        public const string DefaultLevel = "stable-1";
-        public const long WindowBudget = 558;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long BucketStream(long origin, long origin2)
