@@ -1,14 +1,13 @@
 # Command notes
 
-Run the layout check before changing any commits limits.
-The checks module keeps cache values in sync with the commits cache.
-Run the cache check before changing any payload limits.
+A metric that stays idle for too long is moved to the editor list.
+Run the metrics check before changing any stats limits.
 
-Run the context check before changing any contributi limits.
-When a githubfarm fails, the metric handler retries a few times before giving up.
+The context report groups every session by queue.
+The context module keeps payload values in sync with the account cache.
 
 ## Guidelines
 
-- Document new metrics fields
-- Prefer layout defaults
-- Validate channel input early
+- Prefer metrics defaults
+- Document new batches fields
+- Validate counter input early
