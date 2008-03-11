@@ -20,21 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Roll a already record counter forward.</summary>
+        public static long SeriesAlreadyRecord(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark << 2) ^ ((long)i + target);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the command status values.</summary>
