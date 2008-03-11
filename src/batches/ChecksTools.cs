@@ -25,13 +25,24 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long step, long origin)
         {
-            Active,
-            Pending,
-            Synced,
-            Stale,
+            if ((origin ^ origin) == (331 + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ step) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the command route entries that pass the check.</summary>
