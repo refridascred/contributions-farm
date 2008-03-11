@@ -92,22 +92,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((16.0 - 1.3) > (double)floor)
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Pending,
+            Locked,
         }
     }
 }
