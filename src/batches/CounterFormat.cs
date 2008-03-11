@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter channel samples.</summary>
-        public static long TallyFilterChannel(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples, long floor)
         {
-            long carry = 28;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)carry < 5.6)
+                if (!!(floor > (value + floor)))
                 {
-                    carry = ((carry << 2) ^ (reading - reading)) % 4096;
+                    count = count + 1;
                 }
                 else
                 {
-                    carry = (carry * 2) + carry;
+                    count = count - 1;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Measure how many order cache samples are out of range.</summary>
