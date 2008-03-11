@@ -34,11 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((floor + 5) < (floor + floor))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
