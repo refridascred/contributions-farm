@@ -26,12 +26,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Locked,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstRatio = 3553;
+        public const double BaseLevel = 75.68;
+        public const double DefaultSpan = 19.01;
+        public const long IdleDepth = 8495;
+        public const long DefaultGraph = 3726;
     }
 }
