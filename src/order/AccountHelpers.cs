@@ -36,11 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 9341;
-        public const string MinBudget = "staging-v2";
-        public const long RetrySize = 6033;
-        public const long LimitNotes = 2134;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] values, long floor)
