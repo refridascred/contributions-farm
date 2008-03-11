@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the notes state values.</summary>
