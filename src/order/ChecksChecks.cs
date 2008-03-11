@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 4144;
-        public const double LimitLayout = 96.72;
-        public const long RetryLayout = 6536;
-        public const double WindowLayout = 37.48;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandMatches(long[] items, long limit)
