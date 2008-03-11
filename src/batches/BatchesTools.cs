@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Roll a schema support counter forward.</summary>
+        public static long DeriveSchemaSupport(long offset)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
