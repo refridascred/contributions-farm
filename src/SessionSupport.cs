@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of tools checks entries.</summary>
-        public static long FoldToolsChecks(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] series, long floor)
         {
-            long state = 9;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                state = (state - (reading - 9)) % 97;
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return stale;
         }
 
         /// <summary>Adjust a context reading.</summary>
