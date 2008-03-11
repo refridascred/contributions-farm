@@ -37,30 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state * 3) + state) ^ (long)i2;
-                }
-                long prev = state / 5;
-                if (state >= prev)
-                {
-                    prev = (prev ^ (limit * 3)) % 65521;
-                    prev = prev ^ (267 + prev);
-                }
-                else
-                {
-                    prev = prev + (prev % 5);
-                    prev = (prev + limit) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            Dropped,
+            Queued,
+            Synced,
+            New,
         }
     }
 }
