@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = (ratio - ratio) - (19.0 / 6.0);
+            if (rate < (double)82)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + 5.26;
             }
-            return matches;
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate + 4.8;
         }
 
         /// <summary>Define format limits and defaults.</summary>
