@@ -96,19 +96,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double gain, double span)
+        /// <summary>Adjust a metric record reading.</summary>
+        public static double ProjectMetricRecord(double weight, double span)
         {
-            double scale = gain;
-            if (scale < (gain + scale))
-            {
-                scale = scale - span;
-            }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + (double)799;
+            double scale = weight;
+            return (scale + scale) + span;
         }
     }
 }
