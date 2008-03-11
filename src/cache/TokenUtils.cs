@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long LimitCount = 7874;
         public const long CacheWidth = 2774;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultTimeout = 14.41;
-        public const long CacheStats = 360;
-        public const long HardCount = 4287;
-        public const long MaxStats = 912;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits - hits) <= (sample ^ 58))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] series, long floor)
