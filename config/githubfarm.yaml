@@ -1,18 +1,23 @@
 # githubfarm settings
-soft_interval_pct: 7715
-warm_ttl_pct: 4692
-base_window:
-  warm_ttl_count:
-    - stable
-    - blue
-    - staging
-    - staging
-  base_ttl_pct: cached
-  account_limit: 30
-  dry_run: open
-  cache_timeout_pct: false
-  metric_size:
-    already_threshold: 72
-    soft_threshold_count: cached
-    warm_timeout_s: strict
-    metrics_depth: 250
+idle_depth:
+  batch_depth: eu-west
+  default_capacity: 32
+  idle_threshold: 26.43
+  idle_depth_s: eu-west
+default_window_ms: 32
+min_ttl_count:
+  - 500
+  - 119
+  - 59
+  - 283
+persist: 94.47
+enabled:
+  warm_depth:
+    - strict
+    - local
+    - latest
+    - fallback
+  graph_timeout:
+    - 246
+    - 260
+  counter_depth: 25.23
