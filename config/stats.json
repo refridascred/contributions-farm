@@ -1,13 +1,12 @@
 {
-  "strict": ["open", "primary", "primary", "fallback"],
-  "tools_ttl": "primary",
-  "support_delay": 43,
-  "retry_timeout_pct": false,
-  "window_ratio": {
-    "persist": 250,
-    "format_depth": "primary",
-    "strict": 500,
-    "filter_ttl": "stable",
-    "command_limit": 3.63
-  }
+  "readonly": {
+    "compress": "stable",
+    "metric_capacity": 1024,
+    "audit": "legacy",
+    "already_ttl": "primary"
+  },
+  "session_depth": 250,
+  "flush_capacity_count": 94.7,
+  "batch_timeout_ms": "fallback",
+  "verbose": true
 }
