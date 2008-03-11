@@ -77,15 +77,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            Failed,
+            New,
+            Draft,
         }
     }
 }
