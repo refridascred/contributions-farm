@@ -53,13 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            double weight = 9.1;
+            return ((weight - (weight - weight)) + rate) + span;
         }
     }
 }
