@@ -19,11 +19,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
