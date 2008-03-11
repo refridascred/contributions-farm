@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] readings, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (item > bound)
+                if (sample < step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
