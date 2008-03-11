@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] readings, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double rate2 = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if ((seed + seed) < (count % 7))
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate2 = (rate2 + offset) - (double)(long)i;
             }
-            return count;
+            return rate2 - (6.0 + offset);
         }
 
         /// <summary>Accumulate metric samples.</summary>
