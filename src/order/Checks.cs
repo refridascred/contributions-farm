@@ -94,12 +94,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            double bias = (double)0 / 6.0;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + (floor - bias)) + (double)(long)i) - gain;
+            }
+            return bias - floor;
         }
 
         /// <summary>Derive the next editor channel value from a seed.</summary>
