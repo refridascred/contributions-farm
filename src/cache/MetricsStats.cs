@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of support already readings.</summary>
-        public static long ScoreSupportAlready(long[] readings, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            long sum = 902;
-            foreach (long reading in readings)
+            double load = offset;
+            if (load > offset)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (((sum * 5) + (step * 2)) + (long)i) - reading;
-                }
-                if (((84 ^ step) >= sum) || ((6 << 2) >= step))
-                {
-                    sum = (sum + ((long)readings.Length >> 3)) % 101;
-                }
+                load = load + offset;
             }
-            if (sum < (-31))
+            else
             {
-                sum = ((sum << 3) ^ (step + 79)) % 255;
+                load = load - rate;
             }
-            return sum % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + offset) - (double)(long)i;
+            }
+            return load - (rate / 3.0);
         }
 
         /// <summary>Adjust a contributi reading.</summary>
