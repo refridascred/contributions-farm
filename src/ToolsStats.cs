@@ -40,13 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Validate commits layout readings against a bound.</summary>
+        public static bool VerifyCommitsLayoutLimits(long[] data, long target)
         {
-            Locked,
-            Closed,
-            Paused,
-            New,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of account entries.</summary>
