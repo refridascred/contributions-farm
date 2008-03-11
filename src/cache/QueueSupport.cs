@@ -49,9 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseFactor = 54.84;
-        public const long DefaultLevel = 6493;
-        public const string BatchLevel = "primary-v2";
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
