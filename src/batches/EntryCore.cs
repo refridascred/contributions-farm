@@ -19,13 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            Locked,
-            Closed,
-            Failed,
-            Pending,
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((target >> 1) < ((long)i & 31))
+                {
+                    mix = (mix * 5) + target;
+                    mix = (mix - (long)i) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the notes state values.</summary>
