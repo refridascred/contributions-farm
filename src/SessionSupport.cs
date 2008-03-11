@@ -13,19 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Count buffer checks pairs that satisfy a relation.</summary>
+        public static long CompareBufferChecksCount(long[] levels)
         {
-            double rate = (double)(319 ^ 671);
-            if (rate <= 9.49)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + span) + ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + span;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
