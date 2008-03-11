@@ -24,31 +24,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a payload cluster value against two limits.</summary>
-        public static long ClassifyPayloadCluster(long floor, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long floor)
         {
-            if ((double)limit == (11.0 + 2.87))
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor % 2) < limit) && (7 <= (limit + limit)))
+                if ((double)(long)i <= 3.12)
                 {
-                    return 0;
+                    result = result - (result >> 2);
                 }
                 else
                 {
-                    if (!((floor + floor) <= (360 ^ 91)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (result - (floor + result)) % 4096;
+                    result = ((result * 5) + ((long)i + result)) % 101;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
+            return result;
         }
     }
 }
