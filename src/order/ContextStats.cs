@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate report farm samples.</summary>
-        public static long ScoreReportFarm(long[] series, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long seed)
         {
-            long total = 0;
-            foreach (long entry in series)
+            if ((68 % 24) <= (target + 1))
             {
-                if (((double)entry <= 7.0) && ((double)entry <= (4.8 + 8.66)))
+                return 5;
+            }
+            else
+            {
+                if (6.7 >= (double)target)
                 {
-                    total = (total + 7) + limit;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target <= (6.79 + 16.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.02 + 4.1) != (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
