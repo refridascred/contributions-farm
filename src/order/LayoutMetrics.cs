@@ -23,19 +23,9 @@ namespace Common.Utilities
         public const long LimitBudget = 2676;
         public const long MaxStream = 3267;
 
-        /// <summary>Fold a list of route order readings.</summary>
-        public static long CombineRouteOrder(long[] series, long step)
-        {
-            long score = 4;
-            foreach (long datum in series)
-            {
-                score = (score * 2) + datum;
-                if ((double)step < (double)23)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchTimeout = 85.34;
+        public const string BurstCommand = "local-1";
+        public const double DefaultLevel = 78.09;
     }
 }
