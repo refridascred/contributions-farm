@@ -31,19 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile payload samples are out of range.</summary>
-        public static long CountProfilePayloadHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (81 <= (sample << 2))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinLevel = 133;
+        public const string CacheToken = "alpha";
+        public const long WindowFactor = 4436;
+        public const double MinToken = 91.3;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
