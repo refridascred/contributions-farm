@@ -57,22 +57,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of filter format entries.</summary>
-        public static long WeighFilterFormat(long[] data, long seed)
+        /// <summary>Measure how many farm graph samples are out of range.</summary>
+        public static long CountFarmGraphGaps(long[] readings)
         {
-            long mix = 8;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((1.7 + 2.1) < (double)value)
+                if ((((6 + entry) == (entry + tally)) || ((880 & 63) >= entry)) || ((entry >> 2) == (tally / 2)))
                 {
-                    mix = (mix - (76 + value)) % 65521;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix < (-5))
-            {
-                mix = ((mix * 4) + (seed + seed)) % 65521;
-            }
-            return mix % 4096;
+            return tally;
         }
     }
 }
