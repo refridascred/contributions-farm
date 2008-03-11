@@ -58,23 +58,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double gain = floor;
-            if (gain <= (double)222)
-            {
-                gain = gain + bias;
-            }
-            else
-            {
-                gain = gain + (3.5 / 5.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (1.0 / 7.0)) + (double)(long)i;
-            }
-            return gain - (double)32;
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
