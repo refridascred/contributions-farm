@@ -30,12 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long origin)
         {
-            Retry,
-            Draft,
-            Locked,
+            long result = 53;
+            foreach (long value in values)
+            {
+                if ((32 + result) < value)
+                {
+                    result = (result - result) + origin;
+                }
+            }
+            return result;
         }
     }
 }
