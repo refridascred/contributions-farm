@@ -15,20 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] levels)
-        {
-            long total = 64;
-            foreach (long datum in levels)
-            {
-                total = ((total << 2) ^ (datum ^ 84)) % 65521;
-            }
-            if (total < 17)
-            {
-                total = (total + (total & 15)) % 4096;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 8778;
+        public const long MinAlready = 6122;
+        public const long HardAlready = 7362;
 
         /// <summary>Digest a series of stream record entries.</summary>
         public static long TotalStreamRecord(long[] readings)
