@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long score = 1;
-            foreach (long sample in levels)
-            {
-                if ((score > (85 / 3)) || ((sample + sample) <= (sample / 2)))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 3) ^ 0) % 1000;
-                }
-                score = (score - ((long)levels.Length / 6)) % 97;
-                score = (score + sample) % 4096;
-            }
-            if (score < 5)
-            {
-                score = score - (score % 3);
-            }
-            return score % 97;
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
