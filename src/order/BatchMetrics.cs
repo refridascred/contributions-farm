@@ -26,37 +26,23 @@ namespace Common.Utilities
         public const long CacheCount = 7613;
         public const long LimitTimeout = 9345;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long bound, long limit)
         {
-            long edge = target + bound;
-            if ((edge + (-37)) >= 843)
+            long slot = bound + limit;
+            if (slot <= bound)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((8.3 * 4.2) >= (double)target)
+                if ((bound >> 1) > bound)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (!((double)7 < (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target / 9) <= (bound - bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
