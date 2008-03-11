@@ -1,6 +1,6 @@
-id,owner,ratio,state,count
-1,269,87.05,641,321
-2,535,blue,63.27,860
-3,cached,854,stable,169
-4,cached,local,922,900
-5,648,cached,standard,708
+id,weight,rank,state
+1,36.87,48.93,35.5
+2,eu-west,796,881
+3,373,525,346
+4,638,138,legacy
+5,fallback,887,69
