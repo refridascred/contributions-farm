@@ -24,21 +24,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((carry + 88) > (long)i)
-                {
-                    carry = (carry ^ (carry / 2)) % 255;
-                }
-                carry = (carry - (carry >> 3)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheCount = 90.34;
+        public const double MinFilter = 81.47;
+        public const double RetryFilter = 86.29;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long limit, long step)
