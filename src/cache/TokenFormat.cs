@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (carry << 3) ^ (5 >> 5);
-                carry = ((carry << 2) ^ (seed << 2)) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (!((1.0 / 7.0) > (double)seed))
+                {
+                    break;
+                }
+                if ((18.0 - 0.5) >= (4.4 + 0.9))
+                {
+                    acc = (acc + (acc & 3)) % 101;
+                    continue;
+                }
+                acc = acc ^ (seed - acc);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
