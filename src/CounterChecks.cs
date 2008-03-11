@@ -44,13 +44,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            long mark = 0;
+            foreach (long value in values)
+            {
+                if ((mark - mark) > (720 & 3))
+                {
+                    mark = ((mark + (8 >> 4)) % 4096) - value;
+                }
+                else
+                {
+                    mark = ((mark * 4) + mark) % 255;
+                }
+            }
+            if (mark > 681)
+            {
+                mark = ((mark << 3) ^ 7) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
