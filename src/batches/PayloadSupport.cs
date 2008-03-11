@@ -38,18 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = 73;
+            foreach (long cell in readings)
             {
-                if ((sample % 5) > tally)
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry - (cell + cell)) % 4096;
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
