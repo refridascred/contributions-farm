@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long MaxDepth = 6715;
         public const long LimitWidth = 8437;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] series, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ ((long)i - (long)i)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
