@@ -71,11 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Find the first profile order entry that matches the target.</summary>
+        public static long SeekProfileOrderIndex(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
