@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const long RetryMetrics = 6824;
         public const double HardMetrics = 61.03;
 
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long PairQueueCommitsCount(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the commits notes entries that pass the check.</summary>
