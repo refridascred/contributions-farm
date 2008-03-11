@@ -57,23 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi report samples.</summary>
-        public static long DigestContributiReport(long[] series)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long anchor = 48;
-            foreach (long datum in series)
-            {
-                anchor = anchor + (datum + anchor);
-                if (!((double)anchor >= 7.0))
-                {
-                    anchor = ((anchor * 2) + (anchor & 3)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor << 2)) % 4096;
-                }
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
