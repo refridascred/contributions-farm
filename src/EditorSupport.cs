@@ -43,12 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 91.34;
-        public const double RetryCount = 66.12;
-        public const long WindowReport = 3994;
-        public const string MaxWidth = "local-v2";
-        public const long DefaultReport = 2878;
+        /// <summary>Match up buffer stream samples.</summary>
+        public static long PairBufferStreamCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinFactor = "standard";
