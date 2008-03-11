@@ -20,13 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            Paused,
-            Idle,
-            Done,
-            Retry,
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum << 2) ^ target;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
