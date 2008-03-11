@@ -25,14 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data, long seed)
         {
-            Ready,
-            Pending,
-            Closed,
-            Stale,
-            New,
+            long acc = 5;
+            foreach (long entry in data)
+            {
+                acc = ((acc << 3) ^ (seed + seed)) + entry;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
