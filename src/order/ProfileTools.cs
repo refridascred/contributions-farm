@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string IdleBuffer = "stable-1";
         public const long MinBuffer = 3210;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Find the first buffer stream entry that matches the target.</summary>
+        public static long FindBufferStreamIndex(long[] samples, long target)
         {
-            Active,
-            Dropped,
-            Idle,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the already layout series from a seed.</summary>
