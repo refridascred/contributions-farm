@@ -57,19 +57,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double gain = (double)48 / 3.0;
-            if (gain >= (double)490)
-            {
-                gain = ((gain - (double)3) + bias) - span;
-            }
-            else
-            {
-                gain = gain + (double)(-75);
-            }
-            return gain + gain;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
