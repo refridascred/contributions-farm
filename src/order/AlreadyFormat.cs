@@ -12,19 +12,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((((-9) + datum) == (datum << 2)) || ((double)tally == (5.9 / 5.0)))
-                {
-                    tally = (tally + 1) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryTimeout = 2412;
+        public const long BaseScore = 4861;
+        public const long BurstFarm = 3961;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
