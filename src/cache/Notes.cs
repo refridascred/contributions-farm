@@ -71,22 +71,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((7.93 + 15.0) <= (double)entry)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 1451;
+        public const long DefaultTimeout = 9321;
+        public const long MinBatch = 4901;
+        public const string MaxSpan = "latest-v2";
     }
 }
