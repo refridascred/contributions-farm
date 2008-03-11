@@ -39,32 +39,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long limit, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long delta = limit - offset;
-            if ((offset << 1) > (delta + 722))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((delta ^ limit) <= (59 / 8)) && ((78 - limit) != (delta - delta)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((32 + delta) >= (limit + 78))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
