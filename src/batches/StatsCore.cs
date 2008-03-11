@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultBudget = 5971;
-        public const double CacheBudget = 16.79;
-        public const string HardRatio = "latest";
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Locked,
+            Failed,
+            Draft,
+            Closed,
+            New,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftTimeout = 9681;
