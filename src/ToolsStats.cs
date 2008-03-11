@@ -54,23 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            double weight = 3.03;
-            if (weight < rate)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                weight = weight + (bias - bias);
+                if (((double)seen <= (9.28 + 5.2)) || ((double)seen == (17.0 * 9.75)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            else
-            {
-                weight = weight + 2.96;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - bias;
+            return seen;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
