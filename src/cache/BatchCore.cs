@@ -31,19 +31,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] samples, long seed)
+        /// <summary>Measure how many already record samples are out of range.</summary>
+        public static long AuditAlreadyRecordGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (entry >= seed)
+                if (reading <= (reading / 7))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
