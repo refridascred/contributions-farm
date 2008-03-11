@@ -1,9 +1,8 @@
 # support settings
-sync_retries_count:
-  account_interval: green
-  poll_capacity_pct: 67
-  max_ratio_s: 2384
-  idle_timeout_ms: true
-  max_threshold_count: false
-min_interval: legacy
-counter_timeout: eu-west
+default_timeout_count: 12.26
+batch_threshold_count: false
+sync_threshold_ms: false
+max_depth:
+  - latest
+  - cached
+  - green
