@@ -1,6 +1,15 @@
 {
-  "retry_depth": [115, 387, 419, 29],
-  "batch_timeout_s": "primary",
-  "readonly": "staging",
-  "retry_ratio_count": 100
+  "retry_timeout_s": {
+    "warm_timeout": true,
+    "metric_interval": "green",
+    "report_delay": 225,
+    "idle_threshold": 250,
+    "enabled": 82,
+    "poll_window_ms": 28.8
+  },
+  "batch_ratio_ms": false,
+  "batch_size": false,
+  "strict": ["stable", "legacy"],
+  "soft_interval": true,
+  "idle_ttl": 1024
 }
