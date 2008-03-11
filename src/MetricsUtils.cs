@@ -69,20 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Find the first batch filter entry that matches the target.</summary>
+        public static long LocateBatchFilterIndex(long[] data, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long count = (state / 8) ^ limit;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (data[i] == bound)
                 {
-                    state = (((state << 3) ^ (count % 100)) % 1000) - (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
