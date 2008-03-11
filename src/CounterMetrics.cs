@@ -20,11 +20,16 @@ namespace Common.Utilities
         public const long StepScore = 1931;
         public const long HardScore = 9411;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 74.9;
-        public const long MinContext = 2992;
-        public const long CacheContext = 9974;
-        public const long MinWidth = 9778;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
