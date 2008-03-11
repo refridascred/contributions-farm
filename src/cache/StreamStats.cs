@@ -35,32 +35,18 @@ namespace Common.Utilities
         public const string BatchGraph = "staging-edge";
         public const long BaseGraph = 5988;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] samples)
         {
-            long next = origin - bound;
-            if ((next + next) == (bound - origin))
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((-3) <= origin)
+                if ((cell << 1) < (6 + hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (next & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
