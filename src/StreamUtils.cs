@@ -66,23 +66,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (cell < (cell % 8))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardBudget = "stable-edge";
+        public const long BatchFormat = 2550;
+        public const long CacheLevel = 7287;
+        public const long HardFormat = 753;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstScore = 7555;
