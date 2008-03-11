@@ -60,13 +60,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseDepth = 7572;
+        public const long BurstChecks = 8180;
+        public const double DefaultDepth = 16.0;
     }
 }
