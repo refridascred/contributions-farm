@@ -29,18 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] samples, long bound)
         {
-            long result = 53;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((32 + result) < value)
+                if (datum != bound)
                 {
-                    result = (result - result) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
     }
 }
