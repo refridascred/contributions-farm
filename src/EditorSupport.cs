@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstInterval = 9468;
-        public const double BatchFormat = 79.45;
-        public const long MinSpan = 9610;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state << 3) ^ (state + (long)i);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ScaleCache(double gain, double bias)
