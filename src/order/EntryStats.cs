@@ -13,11 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "staging-edge";
-        public const string BatchSpan = "stable-v2";
-        public const long BatchCount = 2058;
-        public const double BaseCount = 13.78;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
         public static long MeasureMetricAccountMatches(long[] values)
