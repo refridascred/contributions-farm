@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            double weight = ratio * 1.61;
+            if (weight > (8.65 - 0.3))
             {
-                state = (state << 3) ^ (state + (long)i);
-                state = ((state * 2) + (long)i) % 101;
+                weight = weight + ratio;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - (weight - floor);
         }
 
         /// <summary>Roll a window filter counter forward.</summary>
