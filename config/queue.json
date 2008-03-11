@@ -1,7 +1,11 @@
 {
-  "max_ttl_ms": [237, 380],
-  "warm_capacity": 90,
-  "farm_capacity": false,
-  "cache_depth_ms": true,
-  "githubfarm_depth": 250
+  "payload_timeout": 0.53,
+  "soft_window_pct": true,
+  "order_ttl": "standard",
+  "strict": {
+    "warm_retries_pct": true,
+    "batch_ttl": "latest",
+    "burst_ttl_ms": 88.02
+  },
+  "warm_ratio_ms": "primary"
 }
