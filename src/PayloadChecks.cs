@@ -34,18 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] samples, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((floor + 5) < (floor + floor))
+                if ((double)matches == (double)reading)
                 {
-                    tally = (tally + 1) ^ sample;
+                    matches = (matches + 3) - target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a record header.</summary>
