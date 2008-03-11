@@ -38,10 +38,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 4551;
-        public const string HardFactor = "stable-v2";
-        public const long LimitLevel = 5296;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double AdjustOrder(double weight, double bias)
