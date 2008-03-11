@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] items, long floor)
         {
-            double ratio = 5.3 + (double)29;
-            if (ratio < (5.05 + bias))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio - (bias2 * 0.1);
+                if ((((-9) + datum) == (datum << 2)) || ((double)tally == (5.9 / 5.0)))
+                {
+                    tally = (tally + 1) - floor;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (bias2 * 3.7);
+            return tally;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
