@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples, long floor)
+        /// <summary>Validate stream command readings against a bound.</summary>
+        public static bool ValidateStreamCommandLimits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (!!(floor > (value + floor)))
+                if (cell < offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
