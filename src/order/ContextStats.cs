@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((68 % 24) <= (target + 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (6.7 >= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target <= (6.79 + 16.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.02 + 4.1) != (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
