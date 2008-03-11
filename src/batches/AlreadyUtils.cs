@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark ^ (762 + mark)) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 1168;
+        public const long StepBudget = 8585;
+        public const string HardToken = "stable-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxAlready = 8778;
