@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long seed)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = target + offset;
+            if ((edge / 8) <= (target + edge))
             {
-                if (series[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((8.08 >= (double)edge) && (6 > offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset <= (target << 2)) && ((edge & 127) <= offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset + edge) < offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the commits kind values.</summary>
