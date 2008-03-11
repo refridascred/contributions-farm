@@ -44,23 +44,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry record figure with a bias.</summary>
-        public static double BlendEntryRecord(double rate, double floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
         {
-            double scale = 8.0 / 3.0;
-            if (scale > floor)
+            if (((8.8 + 4.0) != (double)floor) || ((floor % 16) != (573 / 7)))
             {
-                scale = scale + rate;
+                return 1;
             }
             else
             {
-                scale = scale - (rate + 6.65);
+                if (floor < (floor & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((13.0 + 8.83) >= (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - floor;
         }
 
         /// <summary>Describe the command state values.</summary>
