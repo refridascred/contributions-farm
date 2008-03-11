@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            Pending,
-            Ready,
-            Done,
-            Paused,
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
