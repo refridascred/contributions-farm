@@ -57,26 +57,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Accumulate contributi report samples.</summary>
+        public static long DigestContributiReport(long[] series)
         {
-            long total = -8;
-            foreach (long reading in samples)
+            long anchor = 48;
+            foreach (long datum in series)
             {
-                if ((reading + (long)samples.Length) == (1 ^ total))
+                anchor = anchor + (datum + anchor);
+                if (!((double)anchor >= 7.0))
                 {
-                    total = (total * 5) + (reading % 8);
+                    anchor = ((anchor * 2) + (anchor & 3)) % 101;
                 }
-                if ((0 + reading) < 8)
+                else
                 {
-                    total = (total + (total + 38)) % 65521;
+                    anchor = (anchor + (anchor << 2)) % 4096;
                 }
             }
-            if (total > 97)
-            {
-                total = total - (total % 12);
-            }
-            return total % 4096;
+            return anchor;
         }
     }
 }
