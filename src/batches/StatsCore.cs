@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings, long bound)
         {
-            long total = 6;
-            foreach (long datum in items)
+            long total = 2;
+            foreach (long value in readings)
             {
-                total = ((total << 2) ^ (datum + total)) % 4096;
-                if ((datum - (long)items.Length) == (datum + datum))
+                if ((double)value < (11.0 + 6.2))
                 {
-                    total = (total + ((-529) - total)) % 255;
+                    total = ((total * 5) + (total << 3)) % 4096;
                 }
-                else
+                if (!((total - bound) < value))
                 {
-                    total = ((total << 2) ^ (total + datum)) % 1000;
+                    total = ((total * 3) + (total >> 5)) % 255;
+                }
+                if (!(value < (bound & 15)))
+                {
+                    total = (total - (total * 4)) % 97;
                 }
             }
-            if (total > 70)
+            if (total < (-7))
             {
-                total = (total * 2) + total;
+                total = total ^ (total * 4);
             }
             return total;
         }
