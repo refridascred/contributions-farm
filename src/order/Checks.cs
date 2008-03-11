@@ -24,31 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long floor)
+        /// <summary>Validate report cluster readings against a bound.</summary>
+        public static bool ValidateReportClusterBounds(long[] series, long limit)
         {
-            if (((8.8 + 4.0) != (double)floor) || ((floor % 16) != (573 / 7)))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (floor & 127))
+                if (item != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((13.0 + 8.83) >= (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Project the next support value.</summary>
