@@ -31,15 +31,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Count graph schema pairs that satisfy a relation.</summary>
+        public static long MatchGraphSchemaCount(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
