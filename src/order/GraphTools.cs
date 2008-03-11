@@ -34,12 +34,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstScore = 6270;
-        public const long SoftSize = 5194;
-        public const string StepBudget = "alpha";
-        public const long BatchSession = 6583;
-        public const long StepSession = 5506;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftCount = 7766;
+        public const long BatchBatches = 1000;
+        public const long CacheBatches = 9656;
+        public const double RetryFactor = 51.29;
+        public const long BurstBatches = 7672;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 9276;
