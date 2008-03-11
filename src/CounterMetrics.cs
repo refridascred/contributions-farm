@@ -30,18 +30,23 @@ namespace Common.Utilities
         public const string DefaultProfile = "local-v2";
         public const double LimitProfile = 98.81;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 36;
+            foreach (long sample in values)
             {
-                if ((double)item > 10.0)
+                if ((result << 3) < sample)
                 {
-                    matches = matches + 2;
+                    result = (result - (313 & 3)) % 255;
                 }
+                else
+                {
+                    result = result - result;
+                }
+                result = (result - result) % 101;
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
