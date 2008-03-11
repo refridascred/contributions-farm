@@ -16,31 +16,21 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            if (((bound ^ step) <= step) || ((step >> 5) < step))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step >= (bound - bound)) && ((2.04 - 5.0) <= (double)bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.6 * 9.0) == (double)step)
+                    if ((data[i] ^ data[j]) < 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a window snapshot.</summary>
