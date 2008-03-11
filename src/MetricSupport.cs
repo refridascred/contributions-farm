@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 22;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 2) + 77) + sample;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
