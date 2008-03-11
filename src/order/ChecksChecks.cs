@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] samples, long bound)
+        /// <summary>Iterate the window stream series from a seed.</summary>
+        public static long RollWindowStream(long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (bound <= (hits ^ bound))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                acc = (acc ^ (long)i) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a format summary.</summary>
