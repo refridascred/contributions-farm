@@ -19,13 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many command cache samples are out of range.</summary>
+        public static long AuditCommandCacheMatches(long[] series)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (cell <= (462 + cell))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
