@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepDepth = 7557;
-        public const string WindowFactor = "strict";
-        public const long StepRatio = 2160;
-        public const long StepSize = 2973;
-        public const long BatchRatio = 4104;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double bias)
+        {
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - (scale / 4.0)) + (double)(long)i) - bias;
+            }
+            return mean - 13.0;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] data)
