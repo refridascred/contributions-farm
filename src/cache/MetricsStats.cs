@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the channel record entries that pass the check.</summary>
-        public static long MeasureChannelRecordHits(long[] values)
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long CountFormatWindowMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (((88 + 739) <= value) || (48 < value))
+                if ((matches * 4) <= (cell + 14))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
