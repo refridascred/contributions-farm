@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            Queued,
-            Ready,
-            Failed,
-            Draft,
-            Paused,
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
