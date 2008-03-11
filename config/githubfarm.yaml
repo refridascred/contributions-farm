@@ -1,17 +1,4 @@
 # githubfarm settings
-min_delay_s: eu-west
-compress:
-  batch_timeout_ms:
-    - standard
-    - blue
-  batch_delay_count: stable
-  base_retries_count: 97.87
-  warm_size_count:
-    - standard
-    - blue
-    - staging
-    - stable
-  audit: false
-  schema_threshold: 500
-poll_capacity_ms: 86
-min_depth_s: blue
+base_interval: 76
+min_interval_count: 500
+idle_threshold_ms: 1237
