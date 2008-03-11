@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
