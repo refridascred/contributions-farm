@@ -36,15 +36,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            long acc = 3;
-            foreach (long datum in samples)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc * 2) + (datum ^ acc);
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    state = ((state * 4) + (bound * 4)) + (long)i3;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
