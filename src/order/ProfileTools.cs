@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string IdleBuffer = "stable-1";
         public const long MinBuffer = 3210;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (tally >= (reading - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Iterate the already layout series from a seed.</summary>
