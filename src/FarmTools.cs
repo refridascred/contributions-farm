@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
         {
-            Paused,
-            New,
-            Done,
-            Closed,
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (1 < target)
+                {
+                    mix = mix + target;
+                    break;
+                }
+                else
+                {
+                    mix = mix + (target << 2);
+                }
+                if (!((double)target <= 10.0))
+                {
+                    mix = (mix + target) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
