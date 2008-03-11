@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] samples, long offset)
         {
-            Paused,
-            Queued,
-            Failed,
-            Stale,
-            Ready,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every entry graph entry stays within the limit.</summary>
