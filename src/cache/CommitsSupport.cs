@@ -92,14 +92,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Closed,
-            Done,
-            Draft,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultScore = 3101;
+        public const string StepTools = "staging-edge";
+        public const double BaseTools = 59.13;
+        public const long RetryTools = 9723;
     }
 }
