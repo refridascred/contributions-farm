@@ -70,18 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] values)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen ^ reading) < (339 % 8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
