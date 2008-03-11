@@ -104,26 +104,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine filter already values into a single score.</summary>
-        public static long WeighFilterAlready(long[] levels, long bound)
+        /// <summary>Validate already farm readings against a bound.</summary>
+        public static bool CheckAlreadyFarmRange(long[] values, long target)
         {
-            long mix = 510;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((datum * 5) <= (bound & 7))
+                if (value != target)
                 {
-                    mix = (mix ^ (631 ^ bound)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (datum % 5)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix < 676)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) % 97;
-            }
-            return mix;
+            return valid;
         }
     }
 }
