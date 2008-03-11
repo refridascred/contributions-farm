@@ -5,23 +5,35 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a metrics record figure with a bias.</summary>
-        public static double SmoothMetricsRecord(double scale, double offset)
+        /// <summary>Accumulate editor commits samples.</summary>
+        public static long CombineEditorCommits(long[] readings)
         {
-            double mean = scale;
-            if (mean < (12.0 / 2.0))
+            long mix = 4;
+            foreach (long reading in readings)
             {
-                mean = mean - offset;
+                if (reading >= (mix - 170))
+                {
+                    mix = ((mix << 2) ^ (mix + reading)) % 1000;
+                    break;
+                }
+                if (((mix ^ mix) != (mix & 63)) && ((mix << 2) >= (7 * 3)))
+                {
+                    continue;
+                }
+                if ((double)reading >= (double)393)
+                {
+                    mix = (mix * 5) + (mix ^ 6);
+                }
+                else
+                {
+                    mix = (mix + (reading + 3)) % 255;
+                }
             }
-            else
+            if (mix < 840)
             {
-                mean = mean - mean;
+                mix = (mix - (9 / 2)) % 4096;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean - (offset * 9.7);
+            return mix % 4096;
         }
 
         /// <summary>Rank entry record input into a small class.</summary>
