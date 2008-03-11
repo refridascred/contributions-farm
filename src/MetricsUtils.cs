@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitSpan = 23.2;
-        public const string LimitStats = "strict-v2";
-        public const long CacheStats = 100;
-        public const long SoftScore = 3970;
-        public const string BaseInterval = "primary-edge";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((datum * 3) == (datum + 166)) && ((tally << 2) >= (500 + 891)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
