@@ -14,14 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit session schema readings against a rule.</summary>
+        public static long MeasureSessionSchemaHits(long[] items, long bound)
         {
-            Retry,
-            Draft,
-            Closed,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!((count + reading) > (bound >> 5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batches stats samples.</summary>
