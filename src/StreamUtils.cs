@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseInterval = 6803;
-        public const long DefaultChannel = 9315;
-        public const long MinCount = 7618;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)item != (2.1 - 19.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank metric support input into a small class.</summary>
         public static long ClassifyMetricSupport(long step, long bound)
