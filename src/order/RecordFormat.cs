@@ -46,17 +46,22 @@ namespace Common.Utilities
             return gain - (double)80;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long bound)
+        /// <summary>Count the channel session entries that pass the check.</summary>
+        public static long CountChannelSessionGaps(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (items[i] == bound)
+                if (!((0.82 / 5.0) < (double)offset))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
