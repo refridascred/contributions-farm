@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long MinSize = 1557;
         public const string StepDepth = "local-edge";
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Find the first context window entry that matches the target.</summary>
+        public static long FindContextWindowIndex(long[] levels, long step)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
