@@ -1,11 +1,5 @@
 {
-  "burst_interval": "cached",
-  "soft_ratio_s": {
-    "audit": 88.39,
-    "cluster_threshold": 11.47,
-    "window_depth": "eu-west",
-    "default_timeout_ms": 7499,
-    "cluster_limit": 45.22
-  },
-  "stats_capacity": 61.83
+  "channel_window": "latest",
+  "idle_size": 3644,
+  "batch_ratio": 250
 }
