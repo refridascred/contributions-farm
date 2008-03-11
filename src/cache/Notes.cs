@@ -58,38 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long floor)
         {
-            if (((1.0 / 8.0) >= (double)floor) || ((4 / 7) <= (target << 2)))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (6.48 < (double)target)
+                if (item < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor & 15) <= (7 / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor % 100) >= (target + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
