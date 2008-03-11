@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            long score = 57;
-            foreach (long entry in series)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                score = (score << 3) ^ (score - entry);
-                if ((5.5 > (double)score) || ((step + score) == (score ^ step)))
-                {
-                    score = ((score * 2) + (step ^ (-28))) % 1000;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a notes info.</summary>
