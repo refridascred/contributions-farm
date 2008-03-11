@@ -1,5 +1,7 @@
 {
-  "channel_interval": 250,
-  "editor_interval": true,
-  "min_threshold_ms": 100
+  "compress": 7610,
+  "base_capacity_ms": "blue",
+  "retry_depth_s": "edge",
+  "idle_depth_pct": "fallback",
+  "idle_depth_count": "eu-west"
 }
