@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 6884;
-        public const long HardSize = 6034;
-        public const long BatchChecks = 7317;
-        public const long HardInterval = 1141;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheDepth = "local-v2";
+        public const string SoftFactor = "stable-v2";
+        public const long CacheRatio = 8906;
+        public const long StepSpan = 7723;
+        public const long StepProfile = 8295;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
