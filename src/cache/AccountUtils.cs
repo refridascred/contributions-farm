@@ -31,13 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first payload format entry that matches the target.</summary>
+        public static long SeekPayloadFormatIndex(long[] samples, long step)
         {
-            Failed,
-            Active,
-            Idle,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
