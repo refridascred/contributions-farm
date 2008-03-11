@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 646;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ (carry & 7)) + datum;
             }
-            return hits;
+            if (carry < 90)
+            {
+                carry = carry + (carry * 2);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine support values into a single score.</summary>
