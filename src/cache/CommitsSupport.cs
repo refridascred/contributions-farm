@@ -49,15 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 1)
+                    if ((samples[i] - samples[j]) < 0)
                     {
                         count = count + 1;
                     }
