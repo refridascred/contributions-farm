@@ -23,22 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            long mix = -7;
-            foreach (long item in series)
+            long state = 646;
+            foreach (long value in levels)
             {
-                if ((double)item < (18.0 - 10.0))
-                {
-                    mix = (mix + (mix & 3)) % 255;
-                }
+                state = ((state * 5) + (state * 5)) ^ value;
             }
-            if (mix > 448)
-            {
-                mix = (mix - (mix * 3)) % 97;
-            }
-            return mix % 4096;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
