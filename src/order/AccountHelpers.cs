@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a context batches reading.</summary>
-        public static double SmoothContextBatches(double bias, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long limit)
         {
-            double weight = bias;
-            if (weight > span)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (weight - bias);
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (double)6;
-            }
-            return weight - bias;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
