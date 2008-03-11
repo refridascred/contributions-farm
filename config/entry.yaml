@@ -1,16 +1,5 @@
 # entry settings
-readonly: 9630
-retry_window_ms: 75.65
-idle_ttl_ms: legacy
-enabled:
-  default_window:
-    - 292
-    - 171
-    - 499
-    - 48
-  batch_retries_s:
-    - local
-    - standard
-    - strict
-  report_timeout: stable
-  readonly: true
+sync_interval: eu-west
+verbose: 2151
+default_delay_count: true
+flush_delay: 98
