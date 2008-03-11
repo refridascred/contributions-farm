@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] data, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            long state = 435;
-            foreach (long reading in data)
+            double gain = rate;
+            if (gain > gain)
             {
-                state = ((state << 3) ^ (limit - limit)) + reading;
+                gain = (gain - (2.9 * 1.0)) + span;
             }
-            return state;
+            return gain - (double)3;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
