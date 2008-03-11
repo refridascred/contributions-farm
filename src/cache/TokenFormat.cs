@@ -13,10 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowSpan = "primary-1";
-        public const long BatchScore = 1954;
-        public const long LimitSize = 9732;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] samples, long origin)
