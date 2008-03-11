@@ -22,21 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long CombineStreamStats(long[] readings, long step)
+        /// <summary>Digest a series of context batch entries.</summary>
+        public static long ScoreContextBatch(long[] samples, long origin)
         {
-            long total = -39;
-            foreach (long sample in readings)
+            long score = 2;
+            foreach (long datum in samples)
             {
-                total = ((((total * 5) + ((-530) - 234)) % 65521) + sample) + step;
-                total = ((total << 2) ^ (4 ^ 0)) % 1000;
-                total = (total << 2) ^ (total % 16);
+                if ((7 - 154) > (origin & 255))
+                {
+                    score = ((score * 3) + (origin + origin)) % 1000;
+                }
+                if ((datum <= (origin / 7)) && ((origin << 3) <= (score - 88)))
+                {
+                    break;
+                }
             }
-            if (total < 465)
+            if (score < 62)
             {
-                total = ((total * 3) + (754 + (-3))) % 1000;
+                score = (score + (origin % 8)) % 65521;
             }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
