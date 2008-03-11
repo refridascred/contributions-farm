@@ -73,9 +73,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 45.4;
-        public const long HardInterval = 4188;
-        public const string BatchGithubfarm = "alpha-v2";
+        /// <summary>Audit command payload readings against a rule.</summary>
+        public static long CountCommandPayloadHits(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((52 + 49) >= count) && ((count >= (count / 9)) || ((count >> 1) < (count + item))))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
     }
 }
