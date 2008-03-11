@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultCount = 6416;
-        public const long StepSupport = 3178;
-        public const long SoftSupport = 8528;
-        public const long CacheSupport = 4381;
+        /// <summary>Digest a series of graph metric entries.</summary>
+        public static long DigestGraphMetric(long[] levels, long floor)
+        {
+            long result = 2;
+            foreach (long item in levels)
+            {
+                if ((item ^ floor) >= floor)
+                {
+                    result = (result ^ (result % 16)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result ^ (-8))) % 101;
+                }
+            }
+            if (result > 67)
+            {
+                result = result ^ (result / 6);
+            }
+            return result;
+        }
 
         /// <summary>Grade a notes already value against two limits.</summary>
         public static long ClassifyNotesAlready(long offset, long origin)
