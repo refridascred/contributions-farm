@@ -24,10 +24,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheCount = 90.34;
-        public const double MinFilter = 81.47;
-        public const double RetryFilter = 86.29;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long limit, long step)
