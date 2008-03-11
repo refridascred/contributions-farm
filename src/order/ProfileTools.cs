@@ -43,39 +43,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a metrics report pair into a bucket.</summary>
-        public static long SortMetricsReport(long origin, long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long step = origin + target;
-            if ((target - target) > 608)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((950 - target) >= (origin >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - target) > (target << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2 + origin) >= (step & 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
