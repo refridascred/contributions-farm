@@ -22,12 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long offset)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
