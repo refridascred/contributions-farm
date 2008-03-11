@@ -57,38 +57,19 @@ namespace Common.Utilities
         public const string BaseChannel = "staging-edge";
         public const long MinScore = 651;
 
-        /// <summary>Grade a order filter value against two limits.</summary>
-        public static long RankOrderFilter(long origin, long target)
+        /// <summary>Fold a list of already window readings.</summary>
+        public static long TallyAlreadyWindow(long[] data, long step)
         {
-            if (!((665 >> 4) <= (origin + target)))
+            long result = 281;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((72 + 6) >= (origin + origin)) && ((origin / 7) < (origin / 4)))
+                result = (result ^ ((-5) & 31)) - step;
+                if ((double)item > (0.56 / 8.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin ^ (-6)) != (origin - target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= (771 + 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = (result * 4) + (result - 5);
                 }
             }
+            return result;
         }
     }
 }
