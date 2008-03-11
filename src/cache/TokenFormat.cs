@@ -13,13 +13,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowSpan = "primary-1";
+        public const long BatchScore = 1954;
+        public const long LimitSize = 9732;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
