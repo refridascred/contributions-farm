@@ -35,19 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((7.78 + 6.7) > (7.34 * 0.3))
-                {
-                    acc = (acc + (82 - offset)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
