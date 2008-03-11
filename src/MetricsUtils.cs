@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(((double)seen < 9.0) || (reading < (reading - reading))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up token samples.</summary>
