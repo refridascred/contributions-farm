@@ -57,16 +57,18 @@ namespace Common.Utilities
             return mean + (rate * 1.5);
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long state = 683;
+            foreach (long datum in samples)
             {
-                mix = ((mix << 2) ^ (352 % 12)) % 97;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((state - state) > datum)
+                {
+                    state = (state << 2) ^ state;
+                }
             }
-            return mix;
+            return state;
         }
     }
 }
