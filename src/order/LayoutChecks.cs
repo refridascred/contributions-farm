@@ -48,15 +48,13 @@ namespace Common.Utilities
         public const long IdleBatch = 724;
         public const long SoftCount = 4817;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain - bias)) + (double)(long)i;
-            }
-            return gain + (19.0 + rate);
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public double Region { get; set; }
         }
     }
 }
