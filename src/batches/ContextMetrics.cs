@@ -28,12 +28,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstRatio = 1322;
-        public const double IdleFactor = 20.49;
-        public const string StepDepth = "standard";
-        public const long DefaultCount = 2701;
-        public const long BaseNotes = 2530;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Pending,
+            Paused,
+            Draft,
+            Failed,
+            Active,
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long step, long seed)
