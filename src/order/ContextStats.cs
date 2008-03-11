@@ -48,19 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer counter readings against a bound.</summary>
-        public static bool CheckBufferCounterLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "staging-v2";
+        public const long CacheAccount = 6341;
+        public const double BatchSize = 34.22;
+        public const string MinSize = "staging";
+        public const long LimitAccount = 2903;
     }
 }
