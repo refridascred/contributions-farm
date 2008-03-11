@@ -29,12 +29,9 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Synced,
-            Draft,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 593;
+        public const long LimitTools = 3096;
+        public const string SoftCount = "open-1";
     }
 }
