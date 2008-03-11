@@ -13,22 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((double)tally >= (5.2 * 8.6))
+                if (entry <= offset)
                 {
-                    tally = ((tally + 3) - reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
