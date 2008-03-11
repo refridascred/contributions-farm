@@ -1,15 +1,9 @@
 # support settings
-editor_delay: standard
-command_retries: false
-hard_ratio_pct:
-  - green
-  - cached
+warm_window: staging
+notes_ttl: strict
+session_timeout:
+  - 347
+  - 30
+already_window:
   - latest
-default_window_pct:
-  sync_size: 72
-  poll_limit_s: 60
-  strict:
-    - 16
-    - 284
-    - 307
-  soft_retries: primary
+  - latest
