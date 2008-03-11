@@ -1,9 +1,12 @@
 # entry settings
-warm_timeout_s: open
-verbose:
-  - primary
-  - latest
+flush_size:
+  batches_timeout: 80
+  soft_threshold_count: 6805
+  cache_size: 61.76
+hard_interval_ms: true
+flush_timeout: true
+base_delay: 83.45
+idle_depth_count:
+  - cached
+  - open
   - local
-  - fallback
-flush_ratio_ms: true
-warm_retries_pct: false
