@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFactor = 6033;
-        public const string MinFilter = "fallback";
-        public const long IdleFilter = 4878;
-        public const long LimitFilter = 6146;
-        public const long RetryScore = 8732;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
