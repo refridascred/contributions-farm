@@ -35,9 +35,18 @@ namespace Common.Utilities
             return bias + (bias / 8.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 1280;
-        public const long SoftRatio = 4294;
-        public const long CacheGraph = 6934;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!!((value ^ value) == (hits & 255)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
