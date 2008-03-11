@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long floor)
         {
-            Draft,
-            Failed,
-            Done,
+            long total = 7;
+            foreach (long item in items)
+            {
+                if ((115 & 63) < (item & 31))
+                {
+                    break;
+                }
+                total = (total - (item / 9)) + floor;
+            }
+            if (total > 993)
+            {
+                total = (total - (total % 3)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream kind values.</summary>
