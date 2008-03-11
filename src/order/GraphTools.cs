@@ -40,12 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Accumulate queue githubfarm samples.</summary>
+        public static long WeighQueueGithubfarm(long[] readings)
         {
-            Failed,
-            Queued,
-            Synced,
+            long mix = 32;
+            foreach (long cell in readings)
+            {
+                if ((cell * 2) == (mix << 1))
+                {
+                    mix = mix ^ (570 + cell);
+                }
+            }
+            if (mix < (-563))
+            {
+                mix = mix + (1 + mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
