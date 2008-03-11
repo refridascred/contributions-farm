@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultWidth = 9772;
-        public const double BurstAlready = 76.72;
-        public const double CacheDepth = 28.93;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values)
+        {
+            long carry = 2;
+            foreach (long reading in values)
+            {
+                if ((double)(long)values.Length > (4.45 + 8.0))
+                {
+                    carry = (((carry * 3) + (carry + 162)) % 255) ^ reading;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long bound)
