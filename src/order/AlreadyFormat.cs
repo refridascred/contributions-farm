@@ -60,18 +60,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 46.99;
+        public const double BatchContributi = 39.32;
+        public const long BurstContributi = 3242;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long origin, long offset)
