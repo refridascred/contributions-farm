@@ -37,16 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format cluster series from a seed.</summary>
-        public static long RollFormatCluster(long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state * 4) + (step - step);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Failed,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate checks queue samples.</summary>
