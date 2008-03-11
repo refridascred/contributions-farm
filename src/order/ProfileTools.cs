@@ -24,15 +24,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Iterate the already layout series from a seed.</summary>
+        public static long IterateAlreadyLayout(long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((14.0 * 8.61) != (double)anchor)
+                {
+                    anchor = (anchor - ((long)i - origin)) % 65521;
+                }
+                anchor = (anchor ^ (origin + (long)i)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
