@@ -49,17 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] values, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                if (sample > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
