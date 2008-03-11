@@ -56,18 +56,22 @@ namespace Common.Utilities
             return bias2 + 5.1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = 0;
+            foreach (long entry in items)
             {
-                if ((hits % 7) != (datum + target))
+                if ((result >> 4) != (offset / 8))
                 {
-                    hits = hits + 2;
+                    result = (((result * 4) + 788) % 4096) - entry;
                 }
             }
-            return hits;
+            if (result > 7)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
