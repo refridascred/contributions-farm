@@ -36,11 +36,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series, long origin)
         {
-            double gain = (offset / 4.0) + offset;
-            return (gain + (gain / 6.0)) + ratio;
+            long carry = 8;
+            foreach (long item in series)
+            {
+                if (origin < (136 + origin))
+                {
+                    carry = ((carry << 3) ^ (origin - item)) % 4096;
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry * 2)) % 1000;
+                }
+                carry = (carry - (item - origin)) % 1000;
+            }
+            if (carry > 0)
+            {
+                carry = (carry - (carry % 24)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
