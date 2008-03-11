@@ -25,19 +25,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double span)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double mean = (bias * 1.6) + 1.5;
-            if (mean <= span)
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean - 7.5;
-            }
-            return mean - mean;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up account window samples.</summary>
