@@ -1,12 +1,6 @@
 {
-  "cache_limit": {
-    "idle_capacity_pct": 4834,
-    "min_retries": "staging",
-    "idle_capacity": true,
-    "base_interval": 98.99,
-    "retry_ratio_pct": false,
-    "channel_ttl": 3375
-  },
-  "compress": "blue",
-  "batch_retries_ms": 100
+  "default_ttl": 100,
+  "flush_interval": 3151,
+  "base_retries_ms": ["cached", "legacy", "local", "green"],
+  "verbose": ["stable", "eu-west"]
 }
