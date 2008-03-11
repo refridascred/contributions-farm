@@ -17,17 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] items, long limit)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
