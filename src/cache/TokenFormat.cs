@@ -24,11 +24,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
+            public bool Score { get; set; }
             public long Total { get; set; }
-            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
