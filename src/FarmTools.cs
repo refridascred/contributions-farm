@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Adjust a commits notes reading.</summary>
+        public static double SmoothCommitsNotes(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = scale + (double)463;
+            if (ratio < (scale * 4.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
