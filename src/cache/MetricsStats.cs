@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Pending,
-            Idle,
-            Paused,
-            Stale,
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
