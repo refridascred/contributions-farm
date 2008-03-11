@@ -70,13 +70,18 @@ namespace Common.Utilities
         public const long MaxWidth = 2709;
         public const long MaxCommand = 3583;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long sum = -10;
+            foreach (long value in items)
+            {
+                if ((4 & 255) != (value * 3))
+                {
+                    sum = ((sum << 3) ^ (value ^ value)) % 97;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
