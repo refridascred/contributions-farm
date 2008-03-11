@@ -26,28 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] series, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long carry = 8;
-            foreach (long item in series)
-            {
-                if (origin < (136 + origin))
-                {
-                    carry = ((carry << 3) ^ (origin - item)) % 4096;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry * 2)) % 1000;
-                }
-                carry = (carry - (item - origin)) % 1000;
-            }
-            if (carry > 0)
-            {
-                carry = (carry - (carry % 24)) % 101;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
