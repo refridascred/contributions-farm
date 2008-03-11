@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long MaxLevel = 7775;
         public const long RetryScore = 9362;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Pending,
-            Draft,
-            Idle,
             Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the command status values.</summary>
