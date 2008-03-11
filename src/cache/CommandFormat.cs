@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Derive the next tools channel value from a seed.</summary>
+        public static long DeriveToolsChannel(long step)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                result = (result + step) % 65521;
+                if (((long)i + result) >= (result << 2))
+                {
+                    result = ((result << 2) ^ step) % 1000;
+                    result = (result + (step << 1)) % 65521;
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Check that every cluster support entry stays within the limit.</summary>
