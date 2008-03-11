@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const long BaseScore = 4861;
         public const long BurstFarm = 3961;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] values, long offset)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
