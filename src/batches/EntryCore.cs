@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long CountCommandAccountHits(long[] readings, long seed)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally % 10) <= (seed - seed))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the notes state values.</summary>
