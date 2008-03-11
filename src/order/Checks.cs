@@ -63,12 +63,13 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            Retry,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the schema phase values.</summary>
