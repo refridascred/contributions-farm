@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate metrics stats readings against a bound.</summary>
-        public static bool CheckMetricsStatsRange(long[] readings, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long score = 1;
+            foreach (long sample in levels)
             {
-                if (value > step)
+                if ((score > (85 / 3)) || ((sample + sample) <= (sample / 2)))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    score = ((score << 3) ^ 0) % 1000;
+                }
+                score = (score - ((long)levels.Length / 6)) % 97;
+                score = (score + sample) % 4096;
             }
-            return found;
+            if (score < 5)
+            {
+                score = score - (score % 3);
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
