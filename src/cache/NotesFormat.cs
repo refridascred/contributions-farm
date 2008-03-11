@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batches counter value against two limits.</summary>
-        public static long SortBatchesCounter(long step, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long step)
         {
-            long span = step + offset;
-            if (((9.7 * 16.0) <= (double)offset) && ((double)1 != (double)span))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset < (3.67 - 17.0))
+                if (series[i] == step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((-54) % 24) != (step * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
