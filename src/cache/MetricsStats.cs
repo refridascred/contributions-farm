@@ -39,25 +39,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Grade a batch session value against two limits.</summary>
-        public static long RankBatchSession(long bound, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long step = bound + offset;
-            if ((bound & 15) < (step << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step + step) <= step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
