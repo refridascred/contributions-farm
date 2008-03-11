@@ -91,18 +91,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) < (hits % 100))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
