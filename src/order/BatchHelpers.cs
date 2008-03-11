@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long anchor = 105;
-            foreach (long item in items)
-            {
-                if ((anchor + anchor) >= (item + anchor))
-                {
-                    anchor = anchor + ((long)items.Length >> 5);
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor * 2) + (anchor ^ anchor);
-            }
-            return anchor % 65521;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
