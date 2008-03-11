@@ -43,18 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor << 2) ^ (step - step);
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 1357;
+        public const double DefaultRatio = 52.98;
+        public const long BatchCount = 187;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
