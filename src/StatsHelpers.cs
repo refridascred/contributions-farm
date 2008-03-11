@@ -42,19 +42,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next checks token value.</summary>
-        public static double AdjustChecksToken(double gain, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            double bias2 = gain;
-            if (bias2 >= (double)9)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                bias2 = (bias2 - (bias2 - 2.14)) + bias;
+                if (!((double)count != (5.6 - 15.0)))
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (bias2 / 6.0)) + (double)(long)i;
-            }
-            return bias2 + 5.1;
+            return count;
         }
 
         /// <summary>Count the editor channel entries that pass the check.</summary>
