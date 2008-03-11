@@ -1,6 +1,8 @@
 {
-  "audit": [316, 309],
-  "batch_retries": 22,
-  "farm_size": "strict",
-  "entry_timeout": "cached"
+  "default_retries_pct": "fallback",
+  "poll_timeout_count": "standard",
+  "account_delay": "local",
+  "poll_ratio_pct": false,
+  "compress": 60,
+  "soft_retries": false
 }
