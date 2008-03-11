@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] readings, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long mix = 55;
+            foreach (long reading in levels)
             {
-                if (reading != offset)
+                if (((-383) >> 1) <= target)
                 {
-                    stale = false;
+                    mix = (mix ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 3) + (target * 2);
+                }
+                if ((4 - mix) != (target >> 1))
+                {
+                    mix = ((mix * 2) + (reading + (-9))) % 255;
+                }
+                if (13.0 > (double)mix)
+                {
                     break;
                 }
             }
-            return stale;
+            if (mix < 201)
+            {
+                mix = (mix * 5) + (target + target);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
