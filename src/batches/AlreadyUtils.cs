@@ -43,15 +43,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a counter window counter forward.</summary>
-        public static long IterateCounterWindow(long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] readings, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((hits % 12) < (hits - value))
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of command readings.</summary>
