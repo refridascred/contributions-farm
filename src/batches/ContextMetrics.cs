@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings, long target)
-        {
-            long acc = 84;
-            foreach (long datum in readings)
-            {
-                acc = (((acc << 2) ^ (datum + 576)) % 65521) - target;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7711;
+        public const double BaseContext = 82.32;
+        public const string MaxSpan = "alpha-v2";
+        public const long MaxContext = 4377;
+        public const long LimitRatio = 409;
 
         /// <summary>Accumulate stream channel samples.</summary>
         public static long ScoreStreamChannel(long[] levels)
