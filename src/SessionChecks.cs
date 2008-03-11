@@ -33,31 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long BucketProfileBuffer(long target, long target2)
+        /// <summary>Look up the position of a order contributi sample.</summary>
+        public static long LocateOrderContributiIndex(long[] levels, long step)
         {
-            if ((target2 & 127) <= target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(488 < (target2 + target)))
+                if (levels[i] >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(8.0 >= (double)target2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command status values.</summary>
