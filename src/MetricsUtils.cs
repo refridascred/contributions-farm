@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Failed,
-            Idle,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
