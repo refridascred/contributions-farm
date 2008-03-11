@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Blend two commits checks measurements.</summary>
+        public static double AdjustCommitsChecks(double bias, double floor)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            double weight = 1.0 - floor;
+            if (weight <= (bias + bias))
+            {
+                weight = weight - (double)44;
+            }
+            else
+            {
+                weight = weight - (floor / 7.0);
+            }
+            return weight - bias;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
