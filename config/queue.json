@@ -1,17 +1,12 @@
 {
-  "context_window": 32.15,
-  "idle_retries_pct": "open",
-  "batch_depth_ms": {
-    "verbose": 72,
-    "retry_interval_pct": {
-      "enabled": 500,
-      "batch_ratio_ms": true,
-      "hard_depth_ms": "legacy"
-    },
-    "entry_threshold": 93.3,
-    "audit": 250,
-    "max_ratio": "strict"
+  "cache_limit": {
+    "idle_capacity_pct": 4834,
+    "min_retries": "staging",
+    "idle_capacity": true,
+    "base_interval": 98.99,
+    "retry_ratio_pct": false,
+    "channel_ttl": 3375
   },
-  "batch_ttl_ms": "blue",
-  "support_ratio": "legacy"
+  "compress": "blue",
+  "batch_retries_ms": 100
 }
