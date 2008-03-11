@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double bias)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double load = (double)208 - (weight * 2.37);
-            return (load + load) + bias;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
