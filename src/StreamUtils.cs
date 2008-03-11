@@ -46,17 +46,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = bound + floor;
+            if ((19.0 + 5.41) < (double)bound)
             {
-                if (items[i] >= target)
+                return 4;
+            }
+            else
+            {
+                if ((bound - floor) <= floor)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((delta <= (bound * 5)) && ((0.55 * 5.0) >= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
