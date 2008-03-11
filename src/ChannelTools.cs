@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Closed,
-            Retry,
-            Ready,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
