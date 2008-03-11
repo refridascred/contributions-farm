@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data, long step)
         {
-            Done,
-            Synced,
-            Queued,
-            Locked,
-            Stale,
+            long carry = 80;
+            foreach (long entry in data)
+            {
+                carry = ((carry * 3) + (entry % 3)) % 97;
+                if (((double)step >= (4.17 - 9.89)) || ((double)(long)data.Length < (9.3 / 4.0)))
+                {
+                    carry = carry - ((long)data.Length & 3);
+                    break;
+                }
+                if (entry < (carry + step))
+                {
+                    carry = (carry ^ (step ^ 31)) % 4096;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
