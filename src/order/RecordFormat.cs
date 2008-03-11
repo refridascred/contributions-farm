@@ -15,21 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Derive the next batches profile value from a seed.</summary>
+        public static long StepBatchesProfile(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a filter options.</summary>
