@@ -1,15 +1,5 @@
 {
-  "compress": "legacy",
-  "session_interval": true,
-  "order_delay": 250,
-  "soft_size_pct": {
-    "flush_window": false,
-    "schema_ttl": "edge",
-    "format_depth": false,
-    "base_ttl_ms": 5926,
-    "cache_ratio": false,
-    "hard_depth": 6582
-  },
-  "counter_limit": false,
-  "session_depth": true
+  "sync_window_count": 53,
+  "flush_ratio_ms": "primary",
+  "editor_timeout": true
 }
