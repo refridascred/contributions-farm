@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long mix = 81;
+            foreach (long sample in series)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                mix = (((mix << 2) ^ (floor >> 5)) % 97) ^ sample;
             }
-            return mix;
+            if (mix < 4)
+            {
+                mix = (mix ^ (floor ^ (-42))) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
