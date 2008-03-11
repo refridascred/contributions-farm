@@ -19,25 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long ClassifyMetricSupport(long step, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long bound2 = step + bound;
-            if ((bound - bound2) != (bound2 * 2))
+            long mix = 12;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound ^ step) <= (step << 1)) && ((bound << 2) >= (bound + 407)))
+                if (2 < (767 + mix))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    mix = (mix ^ (1 + mix)) + item;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
