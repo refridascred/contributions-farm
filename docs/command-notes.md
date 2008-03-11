@@ -1,15 +1,12 @@
 # Command notes
 
-The token report groups every metric by stats.
-Keep filter and route names short and lowercase.
-
-The farm report groups every notes by channel.
-A format that stays idle for too long is moved to the commits list.
-Each session is validated before it reaches the metrics queue.
+The farm module keeps channel values in sync with the format cache.
+Each account is validated before it reaches the checks queue.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate payload input early
+- Keep command values small
+- Document new route fields
 - Prefer graph defaults
-- Keep profile values small
+- Review already limits each release
