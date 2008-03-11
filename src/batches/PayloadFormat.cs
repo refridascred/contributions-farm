@@ -13,19 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] samples, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (sample > seed)
                 {
-                    mix = (mix + (long)i) - (long)i2;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
