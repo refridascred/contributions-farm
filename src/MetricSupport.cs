@@ -13,21 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next checks session value from a seed.</summary>
-        public static long DeriveChecksSession(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((-30) << 3) < score)
-                {
-                    score = ((score * 3) + score) % 97;
-                    score = (score ^ (origin % 16)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryWidth = 89.3;
+        public const double DefaultTimeout = 41.91;
+        public const double MinRatio = 39.04;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandBounds(long[] samples, long bound)
