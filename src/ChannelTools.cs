@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] items, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = 2;
+            foreach (long datum in items)
             {
-                if (tally > 7)
+                if (datum < acc)
                 {
-                    tally = ((tally + 3) + cell) - seed;
+                    acc = acc + ((-78) << 2);
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Hold a counter stats.</summary>
