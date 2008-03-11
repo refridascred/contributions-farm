@@ -65,10 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 9671;
-        public const double BaseBatch = 29.12;
-        public const long RetryBatch = 3859;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data)
