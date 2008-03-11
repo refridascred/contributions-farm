@@ -1,6 +1,8 @@
 {
-  "record_size": 3130,
-  "compress": "legacy",
-  "support_ratio": false,
-  "audit": "legacy"
+  "batch_ttl": "local",
+  "hard_delay_ms": 41,
+  "contributi_timeout": "stable",
+  "max_size": ["strict", "blue"],
+  "hard_retries_pct": "standard",
+  "sync_size_pct": "open"
 }
