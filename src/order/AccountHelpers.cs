@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleFactor = 8196;
-        public const string DefaultContributi = "latest-1";
-        public const long MaxContributi = 8011;
-        public const string HardSize = "stable-1";
-        public const long IdleCount = 9071;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] readings, long target)
