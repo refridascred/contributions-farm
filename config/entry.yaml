@@ -1,23 +1,8 @@
 # entry settings
-burst_threshold_ms:
-  already_size: eu-west
-  contributi_size: 61
-  poll_capacity_pct: open
-  commits_window: true
-  hard_window_ms: blue
-  min_threshold_ms:
-    retry_ratio_ms: 16.03
-    sync_delay_count: 250
-    readonly:
-      - 46
-      - 319
-    farm_ttl: 65.01
-    order_window: 250
-    cache_capacity_pct: true
-soft_ttl_s: eu-west
-soft_interval_count:
-  - latest
-  - strict
-cache_retries: cached
-already_delay: true
-route_delay: true
+strict:
+  - 492
+  - 475
+  - 161
+  - 481
+readonly: eu-west
+stats_size: 71.1
