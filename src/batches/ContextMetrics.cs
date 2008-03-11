@@ -14,12 +14,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings, long target)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long acc = 84;
+            foreach (long datum in readings)
+            {
+                acc = (((acc << 2) ^ (datum + 576)) % 65521) - target;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
