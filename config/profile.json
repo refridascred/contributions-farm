@@ -1,7 +1,8 @@
 {
-  "commits_delay": "staging",
-  "compress": "staging",
-  "sync_retries_s": 2698,
-  "readonly": "fallback",
-  "idle_interval_pct": "standard"
+  "poll_window": 1902,
+  "support_retries": 32,
+  "strict": 5.42,
+  "default_limit_count": "eu-west",
+  "verbose": [421, 417],
+  "dry_run": ["edge", "open", "eu-west", "latest"]
 }
