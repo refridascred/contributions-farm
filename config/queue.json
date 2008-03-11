@@ -1,9 +1,26 @@
 {
-  "commits_capacity": {
-    "commits_capacity": 500,
-    "flush_timeout": 4,
-    "commits_depth": ["fallback", "blue", "local"]
+  "flush_capacity_pct": "staging",
+  "batch_retries_pct": "blue",
+  "flush_interval_ms": {
+    "verbose": 9798,
+    "audit": {
+      "enabled": ["stable", "eu-west", "latest"],
+      "batch_interval": ["open", "cached", "eu-west", "strict"],
+      "sync_size_pct": 5060,
+      "dry_run": "blue",
+      "min_ttl_s": "staging",
+      "default_size": "legacy"
+    },
+    "max_ttl_count": ["blue", "open"],
+    "payload_depth": {
+      "poll_size_count": 1,
+      "min_size_ms": 84.59,
+      "strict": 3916,
+      "audit": 250
+    },
+    "base_timeout": [497, 102, 292],
+    "max_depth_count": 50
   },
-  "sync_depth_ms": "edge",
-  "sync_interval_ms": 6
+  "base_window_ms": false,
+  "compress": "staging"
 }
