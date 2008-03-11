@@ -24,21 +24,23 @@ namespace Common.Utilities
         public const long CacheContext = 5953;
         public const double BurstRatio = 49.89;
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long OverlapQueueStreamCount(long[] levels)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor >= (limit << 3)) || (((long)i + (long)i) > anchor))
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 2) ^ limit) % 1000;
                 }
+                else
+                {
+                    anchor = (anchor ^ (limit % 24)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
