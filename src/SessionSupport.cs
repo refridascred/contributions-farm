@@ -13,21 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
