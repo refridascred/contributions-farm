@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((matches / 4) >= (cell - matches))
                 {
-                    anchor = ((anchor * 4) + (offset % 97)) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
