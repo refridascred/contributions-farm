@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long DefaultCount = 2701;
         public const long BaseNotes = 2530;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] values, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
