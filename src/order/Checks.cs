@@ -47,14 +47,24 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] samples, long step)
         {
-            Dropped,
-            Retry,
-            Closed,
-            Active,
-            Done,
+            long total = 9;
+            foreach (long value in samples)
+            {
+                total = (total << 3) ^ total;
+                total = (total + (616 - 664)) % 65521;
+                if (value < (step + total))
+                {
+                    total = (total << 3) ^ (long)samples.Length;
+                }
+                else
+                {
+                    total = total - (step + 62);
+                }
+            }
+            return total;
         }
     }
 }
