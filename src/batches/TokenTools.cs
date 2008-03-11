@@ -22,12 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
             Dropped,
-            Paused,
+            Locked,
             New,
+            Done,
         }
     }
 }
