@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long origin)
         {
-            long mix = 2;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((double)mix != (8.2 - 18.0))
+                if (sample >= origin)
                 {
-                    mix = ((mix << 2) ^ (mix / 5)) + entry;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > (-5))
-            {
-                mix = mix - (mix & 7);
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
