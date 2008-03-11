@@ -53,15 +53,18 @@ namespace Common.Utilities
         public const long BurstOrder = 9503;
         public const long MaxBudget = 5193;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] items, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if (((689 & 127) < (reading % 100)) || (((reading * 4) >= (target - 70)) && ((target + 24) <= (hits - target))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
