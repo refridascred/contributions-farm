@@ -1,25 +1,17 @@
 # support settings
-idle_retries_ms: false
-batch_threshold: latest
-cache_interval_pct:
-  batch_ratio:
-    retry_window_count: cached
-    sync_interval_s: cached
-    max_capacity_pct: 76
-    poll_ratio: 78.27
-    retry_ttl_count: 60
-    cache_size: false
-  enabled:
-    burst_threshold_count: green
-    hard_size_pct: 90.22
-    burst_retries_s: 2176
-    metric_window: strict
-    counter_delay: staging
-  githubfarm_ttl: 34
-readonly:
-  batch_interval: 250
-  base_retries_pct: 91
-  base_limit_pct: 500
-  hard_interval: 66.13
-  metrics_size: true
-base_capacity_ms: green
+contributi_threshold:
+  - open
+  - local
+poll_threshold: 1720
+idle_timeout_ms: 60
+soft_timeout_pct: 5.3
+persist:
+  soft_capacity: 45.7
+  default_ratio_s: 2425
+  cache_timeout: local
+  sync_depth_count: cached
+  commits_size: strict
+  strict:
+    - cached
+    - open
+flush_window_count: 3279
