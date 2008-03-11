@@ -47,38 +47,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long floor, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples)
         {
-            if ((double)floor == (0.7 * 6.5))
+            long mix = 82;
+            foreach (long item in samples)
             {
-                return 2;
+                mix = (mix + mix) % 97;
+                mix = (mix + (item + mix)) % 65521;
             }
-            else
-            {
-                if ((step << 2) > (step ^ step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step * 4) == (floor / 2)) || ((26 - step) != ((-174) - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor == (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
