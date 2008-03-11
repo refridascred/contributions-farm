@@ -45,13 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            Failed,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
