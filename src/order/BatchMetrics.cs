@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every queue already entry stays within the limit.</summary>
+        public static bool CheckQueueAlreadyRange(long[] levels, long offset)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Draft,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
