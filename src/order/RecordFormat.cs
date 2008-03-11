@@ -90,22 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel session entries that pass the check.</summary>
-        public static long CountChannelSessionGaps(long[] series, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (!((0.82 / 5.0) < (double)offset))
+                if (item != target)
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
