@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of layout route readings.</summary>
+        public static long TotalLayoutRoute(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long score = 4;
+            foreach (long reading in readings)
+            {
+                if (((1.08 * 1.3) >= (double)reading) || ((reading >> 3) < (score >> 3)))
+                {
+                    score = (score + score) % 65521;
+                }
+                else
+                {
+                    score = (score - (score ^ score)) % 65521;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit profile filter readings against a rule.</summary>
