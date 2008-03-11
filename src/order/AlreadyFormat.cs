@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the buffer filter entries that pass the check.</summary>
-        public static long MeasureBufferFilterMatches(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (7 < (matches * 3))
+                if (sample < floor)
                 {
-                    matches = (matches + 3) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Project the next profile value.</summary>
