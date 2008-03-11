@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer account readings.</summary>
-        public static long TotalBufferAccount(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long floor)
         {
-            long result = 37;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((6.19 - 0.1) < (double)value)
+                if (reading < floor)
                 {
-                    result = (result ^ (result & 63)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
