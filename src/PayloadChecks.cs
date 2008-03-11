@@ -33,15 +33,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double bias, double bias2)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            double drift = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (double)(long)i) - bias2;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + bias;
+            return seen;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
