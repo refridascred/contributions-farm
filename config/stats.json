@@ -1,5 +1,15 @@
 {
-  "buffer_delay": 33.5,
-  "cache_delay": "primary",
-  "base_delay_ms": 5394
+  "soft_window_count": {
+    "poll_capacity": 1.64,
+    "default_interval_count": 100,
+    "dry_run": ["strict", "staging", "edge", "open"],
+    "persist": {
+      "verbose": 100,
+      "soft_window_ms": false,
+      "report_retries": true
+    },
+    "verbose": "green"
+  },
+  "burst_threshold": "primary",
+  "hard_ttl_count": 60
 }
