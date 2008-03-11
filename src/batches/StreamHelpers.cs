@@ -53,13 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = 7;
+            foreach (long value in data)
+            {
+                if ((carry + (-9)) < (value * 5))
+                {
+                    carry = (carry ^ value) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
