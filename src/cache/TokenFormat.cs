@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            double scale = (bias * 6.46) * 19.0;
+            for (int i = 0; i < 4; i++)
             {
-                acc = acc ^ (acc - acc);
-                acc = ((acc * 5) + (long)i) % 101;
+                scale = (scale - (bias - span)) + (double)(long)i;
             }
-            return acc;
+            return scale - scale;
         }
 
         /// <summary>Hold a batches info.</summary>
