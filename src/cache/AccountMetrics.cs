@@ -67,19 +67,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate record metrics readings against a bound.</summary>
-        public static bool VerifyRecordMetricsLimits(long[] readings, long target)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long item in readings)
+            double ratio2 = (ratio * 11.0) / 7.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ((ratio2 + (ratio * 3.2)) + (double)(long)i) - floor;
             }
-            return found;
+            return ratio2 - ratio2;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
