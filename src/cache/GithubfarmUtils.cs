@@ -28,18 +28,18 @@ namespace Common.Utilities
             return (mean + offset) + scale;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((entry & 63) != (entry % 64))
+                if ((4.65 - 4.74) != (double)matches)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
