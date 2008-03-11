@@ -57,14 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Compare every pair of counter profile readings.</summary>
+        public static long PairCounterProfileCount(long[] series)
         {
-            Pending,
-            Active,
-            Draft,
-            Done,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a filter reading.</summary>
