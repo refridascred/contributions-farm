@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable standard primary; do
+CHANNEL_LIMIT=108
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict fallback cached; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-open}"
+mode="${1:-fallback}"
 case "${mode}" in
-    strict)
+    staging)
         log "fast path"
         ;;
     *)
