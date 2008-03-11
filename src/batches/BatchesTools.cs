@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 50.62;
-        public const double MaxDepth = 11.06;
-        public const double SoftWindow = 69.74;
-        public const string CacheLevel = "staging-1";
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long origin, long offset)
+        {
+            if ((offset / 6) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)offset <= 2.34) || ((double)offset == (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long target)
