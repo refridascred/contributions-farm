@@ -32,14 +32,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Fold a list of record already readings.</summary>
+        public static long FoldRecordAlready(long[] readings)
         {
-            Stale,
-            Synced,
-            Pending,
-            Idle,
-            Dropped,
+            long carry = 635;
+            foreach (long value in readings)
+            {
+                if ((7.0 < (double)value) && ((carry - carry) <= 863))
+                {
+                    carry = (carry ^ (25 * 2)) % 65521;
+                }
+                else
+                {
+                    carry = carry + value;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next graph value.</summary>
