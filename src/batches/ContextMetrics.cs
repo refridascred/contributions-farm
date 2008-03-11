@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long anchor = 9;
+            foreach (long value in values)
             {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor << 2) ^ (anchor + (long)values.Length)) + value) + step;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
