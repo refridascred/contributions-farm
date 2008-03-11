@@ -19,26 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long state = -823;
-            foreach (long entry in readings)
-            {
-                if ((double)origin == (double)(long)readings.Length)
-                {
-                    state = (state - (entry % 16)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (entry ^ state)) % 1000;
-                }
-            }
-            if (state > 5)
-            {
-                state = (state - (state & 31)) % 97;
-            }
-            return state;
+            Active,
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
