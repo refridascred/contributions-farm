@@ -67,23 +67,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of editor context entries.</summary>
-        public static long TallyEditorContext(long[] items)
-        {
-            long mark = 5;
-            foreach (long datum in items)
-            {
-                if (((double)mark >= (9.5 - 19.0)) && (((long)items.Length << 1) < datum))
-                {
-                    mark = (mark * 3) + (datum ^ 31);
-                }
-                else
-                {
-                    mark = mark - datum;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 35.77;
+        public const string CacheScore = "alpha-edge";
+        public const long RetryMetrics = 2756;
+        public const long MaxSpan = 5834;
+        public const double MinSpan = 21.63;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 1008;
