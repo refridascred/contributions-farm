@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long score = 7;
-            foreach (long value in values)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (7.1 > (double)score)
-                {
-                    break;
-                }
-                if ((5.24 * 17.0) <= (5.0 + 5.3))
-                {
-                    score = (score - (126 % 7)) % 255;
-                }
-                if (((5.7 * 5.08) <= (double)score) && ((score + value) < (value % 8)))
-                {
-                    score = score ^ (value << 2);
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a session options.</summary>
