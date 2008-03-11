@@ -36,16 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools editor counter forward.</summary>
-        public static long IterateToolsEditor(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry << 2) ^ (origin + (long)i)) % 97;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (((double)556 <= (double)sample) && !((82 + 98) != (sample + sample)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
