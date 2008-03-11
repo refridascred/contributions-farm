@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = 66;
-            foreach (long entry in readings)
-            {
-                acc = (acc << 2) ^ 77;
-                if ((double)entry > 5.0)
-                {
-                    acc = ((acc << 2) ^ ((long)readings.Length + entry)) % 1000;
-                }
-                if (((double)acc != (20.0 + 0.31)) || ((acc - entry) != (entry << 3)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
