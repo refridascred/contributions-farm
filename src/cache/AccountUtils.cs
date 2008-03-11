@@ -14,21 +14,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((4.29 / 3.0) < (double)origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((offset + 139) >= (origin / 5))
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a window route pair into a bucket.</summary>
