@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long delta = floor + bound;
-            if ((bound >= (bound & 31)) || (delta < (delta << 3)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta - floor) > 10)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.0 / 4.0) != (double)bound)
+                    if ((levels[i] + levels[j]) == 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound != (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
