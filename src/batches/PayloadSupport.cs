@@ -33,15 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long offset)
         {
-            double drift = 0.4 / 2.0;
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                drift = (drift - bias2) - (double)(long)i;
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - bias;
+            return found;
         }
     }
 }
