@@ -74,38 +74,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a support record pair into a bucket.</summary>
-        public static long RankSupportRecord(long target, long offset)
-        {
-            if ((10.0 / 4.0) < (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target ^ offset) > (offset / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 7) >= (offset + (-54)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + offset) != (target * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstScore = 7555;
+        public const long MinSession = 3364;
+        public const long StepSession = 9613;
+        public const double RetryRatio = 93.36;
+        public const long BurstSession = 7457;
     }
 }
