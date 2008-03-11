@@ -42,15 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
