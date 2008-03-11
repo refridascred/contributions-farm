@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] values, long bound)
+        /// <summary>Combine profile stats values into a single score.</summary>
+        public static long FoldProfileStats(long[] items, long target)
         {
-            long acc = 5;
-            foreach (long reading in values)
+            long carry = 19;
+            foreach (long item in items)
             {
-                if (((reading >> 4) >= reading) && ((reading ^ bound) < acc))
+                carry = (carry - (carry / 8)) % 65521;
+                carry = (carry ^ (59 - item)) % 255;
+                if ((target * 5) < item)
                 {
-                    acc = acc - acc;
+                    carry = (carry << 3) ^ ((-115) % 97);
                 }
             }
-            return acc % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
