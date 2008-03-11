@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] series)
         {
-            double ratio2 = (ratio / 7.0) + ratio;
-            if (ratio2 < (ratio - 6.14))
+            long count = 0;
+            foreach (long entry in series)
             {
-                ratio2 = ratio2 + (double)6;
+                if ((count + entry) > (entry * 2))
+                {
+                    count = count + 1;
+                }
             }
-            return ratio2 - (bias - bias);
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
