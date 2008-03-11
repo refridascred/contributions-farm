@@ -74,32 +74,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a order graph pair into a bucket.</summary>
-        public static long RankOrderGraph(long offset, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
         {
-            long span = offset + bound;
-            if (((bound % 24) <= offset) || ((offset - bound) != (8 / 5)))
+            double rate2 = offset;
+            if (rate2 >= rate2)
             {
-                return 3;
+                rate2 = (rate2 - (5.2 / 4.0)) + rate;
             }
-            else
-            {
-                if ((bound << 2) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((774 / 2) < (76 - bound)) && (offset > (span / 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return rate2 + (double)1;
         }
     }
 }
