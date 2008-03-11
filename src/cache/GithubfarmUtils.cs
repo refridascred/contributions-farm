@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a cluster format value against two limits.</summary>
-        public static long ClassifyClusterFormat(long limit, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long slot = limit ^ step;
-            if ((20 >= (slot + limit)) && ((step * 5) >= (limit + 189)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((slot / 5) <= (step / 7)) && ((double)limit <= (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 1) > 892)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + step) <= (step ^ limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
