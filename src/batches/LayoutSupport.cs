@@ -27,19 +27,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stream already entry stays within the limit.</summary>
-        public static bool GuardStreamAlreadyBounds(long[] samples, long offset)
+        /// <summary>Look up the position of a entry contributi sample.</summary>
+        public static long SeekEntryContributiIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= offset)
+                if ((series[i] == origin) && ((series[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
