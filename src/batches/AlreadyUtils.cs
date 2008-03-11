@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            Done,
-            Failed,
-            Active,
-            Retry,
-            Ready,
+            long mark = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark ^ (762 + mark)) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
