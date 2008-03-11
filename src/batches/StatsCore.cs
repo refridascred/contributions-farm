@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const double WindowCount = 94.48;
         public const long DefaultInterval = 8360;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long limit)
+        /// <summary>Combine record batch values into a single score.</summary>
+        public static long DigestRecordBatch(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 78;
+            foreach (long sample in values)
             {
-                if (readings[i] <= limit)
+                state = ((state + (bound >> 3)) % 4096) + sample;
+                if ((double)state >= 4.0)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 2)
+            {
+                state = (state * 2) + (5 << 3);
+            }
+            return state % 4096;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
