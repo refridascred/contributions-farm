@@ -42,19 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] data, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum > limit)
+                if (matches <= (816 + matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
