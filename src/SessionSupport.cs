@@ -22,11 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 79.12;
-        public const long StepDepth = 1455;
-        public const string BurstSize = "open";
-        public const string CacheLevel = "open-1";
-        public const long WindowPayload = 6954;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
