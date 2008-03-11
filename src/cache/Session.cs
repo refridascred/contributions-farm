@@ -42,15 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] series, long target)
         {
-            long mark = 676;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark - (limit - 82)) % 65521) - datum;
+                if (hits < reading)
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
