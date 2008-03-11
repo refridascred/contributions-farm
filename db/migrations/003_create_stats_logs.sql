@@ -2,14 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
+    state TEXT NOT NULL DEFAULT 'new',
     label TEXT,
-    token TEXT,
-    region TEXT,
-    ratio REAL
+    count INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (label, token, region, ratio) VALUES ('staging', 'cached', 'standard', 41.05);
-INSERT INTO stats_logs (label, token, region, ratio) VALUES ('edge', 'staging', 'latest', 10.36);
-INSERT INTO stats_logs (label, token, region, ratio) VALUES ('eu-west', 'staging', 'edge', 67.99);
+INSERT INTO stats_logs (state, label, count, active) VALUES ('eu-west', 'stable', 69, 6);
