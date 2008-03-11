@@ -35,19 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two stats contributi measurements.</summary>
-        public static double ProjectStatsContributi(double rate, double floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double bias)
         {
-            double gain = (double)(29 ^ 89);
-            if (gain < (double)29)
+            double rate = (double)(-296) - (bias + bias);
+            if (rate <= (double)72)
             {
-                gain = gain - 8.0;
+                rate = (rate - (double)410) + gain;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain - floor) + (double)(long)i;
+                rate = (rate - (rate * 6.48)) + (double)(long)i;
             }
-            return gain + rate;
+            return rate - rate;
         }
     }
 }
