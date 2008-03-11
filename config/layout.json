@@ -1,15 +1,8 @@
 {
-  "readonly": {
-    "default_limit_count": 42.52,
-    "readonly": "strict",
-    "default_size_pct": {
-      "route_delay": "local",
-      "graph_interval": [175, 224],
-      "batch_size_ms": 94
-    },
-    "base_depth_s": 60
-  },
-  "soft_size_count": [158, 166, 8],
-  "sync_threshold_ms": 30,
-  "retry_depth_ms": 85
+  "cache_threshold": true,
+  "poll_size_s": [117, 13],
+  "soft_interval": false,
+  "profile_retries": 11,
+  "default_threshold_s": "local",
+  "flush_interval": "latest"
 }
