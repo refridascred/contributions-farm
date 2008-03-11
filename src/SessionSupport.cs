@@ -29,22 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] series, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((595 + cell) != (target >> 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
