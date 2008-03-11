@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next profile value.</summary>
