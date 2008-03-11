@@ -53,13 +53,10 @@ namespace Common.Utilities
         public const long SoftRecord = 4506;
         public const long MinRecord = 5347;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Paused,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 2687;
+        public const long MaxWidth = 2709;
+        public const long MaxCommand = 3583;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
