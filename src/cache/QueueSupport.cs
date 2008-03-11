@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinScore = 7263;
-        public const double CacheDepth = 29.06;
-        public const string CacheCount = "legacy-v2";
-        public const long StepAccount = 8156;
-        public const long HardAccount = 5503;
+        /// <summary>Check that every context command entry stays within the limit.</summary>
+        public static bool ValidateContextCommandRange(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] levels)
