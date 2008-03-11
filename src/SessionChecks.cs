@@ -25,14 +25,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a format commits reading.</summary>
+        public static double SmoothFormatCommits(double gain, double floor)
         {
-            Synced,
-            Retry,
-            Queued,
-            New,
-            Failed,
+            double load = (gain * 8.0) / 8.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - (floor - gain);
         }
     }
 }
