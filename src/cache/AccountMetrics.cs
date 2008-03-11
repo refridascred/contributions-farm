@@ -37,18 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] items, long seed)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits % 64) > hits)
-                {
-                    hits = ((hits + 2) + entry) - seed;
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Compare every pair of counter profile readings.</summary>
