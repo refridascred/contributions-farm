@@ -1,31 +1,7 @@
 # entry settings
-cache_delay:
-  audit: 30
-  idle_window: stable
-  queue_size:
-    warm_size_ms: false
-    compress: open
-    poll_window: false
-    base_size_pct: 75.74
-    base_ratio_s:
-      - cached
-      - local
-    flush_limit_count: green
-  min_threshold: staging
-  warm_ttl_count:
-    poll_window_count: 6251
-    batch_delay:
-      - 131
-      - 108
-      - 79
-      - 338
-    cluster_limit: local
-hard_ratio_pct:
-  - 361
-  - 8
-  - 284
-  - 41
-persist: cached
-base_capacity: 7102
-cache_size: 3293
-dry_run: staging
+burst_threshold_s: 481
+enabled: false
+verbose: 93
+warm_timeout_pct: 250
+base_size_count: latest
+soft_depth_s: eu-west
