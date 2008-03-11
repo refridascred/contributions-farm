@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long target)
+        /// <summary>Scale a route command figure with a bias.</summary>
+        public static double BlendRouteCommand(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double rate = bias2;
+            if (rate > bias)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate + bias2;
             }
-            return stale;
+            else
+            {
+                rate = rate + (bias2 + 16.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - bias) - (double)(long)i;
+            }
+            return rate + bias2;
         }
 
         /// <summary>Describe the route state values.</summary>
