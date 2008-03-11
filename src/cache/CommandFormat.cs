@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples, long target)
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long AuditGraphCacheHits(long[] readings, long seed)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long reading in readings)
             {
-                if ((((8.91 * 20.0) > (double)sample) && ((double)target <= (double)94)) || (((long)samples.Length << 3) >= sample))
+                if (reading > (long)readings.Length)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + seed;
                 }
             }
             return seen;
