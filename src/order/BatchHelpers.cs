@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long offset)
         {
-            if (((double)88 <= (double)origin) || ((double)target == (2.6 * 0.15)))
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (3.25 < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
