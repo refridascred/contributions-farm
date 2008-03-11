@@ -38,29 +38,35 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long bound, long target)
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long RankGraphCounter(long origin, long floor)
         {
-            long bound2 = bound ^ target;
-            if (bound <= (bound << 2))
+            if ((floor + origin) >= (origin + floor))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (((target / 6) == (target - bound2)) && ((92 + bound2) != (bound2 % 3)))
+                if (((-58) - origin) < floor)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((82 + target) <= (30 + 554))
+                    if (origin >= (origin - origin))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        if ((double)origin < (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
