@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every report window entry stays within the limit.</summary>
-        public static bool GuardReportWindowLimits(long[] readings, long floor)
+        /// <summary>Locate a report cluster reading by value.</summary>
+        public static long SeekReportClusterIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= floor)
+                if ((items[i] <= origin) && ((items[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
