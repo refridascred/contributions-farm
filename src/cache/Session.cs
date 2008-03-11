@@ -29,18 +29,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "standard-edge";
+        public const double RetryFactor = 69.06;
+        public const long HardLevel = 9417;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 4202;
