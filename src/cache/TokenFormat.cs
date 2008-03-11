@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= bound)
+                if (samples[i] == bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Blend two layout token measurements.</summary>
