@@ -31,12 +31,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 5811;
-        public const string RetryBudget = "latest-1";
-        public const string MaxSize = "staging-v2";
-        public const string MaxSpan = "primary-edge";
-        public const long StepTools = 98;
+        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
+        public static long MeasureBatchesGithubfarmOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((9 + entry) > ((-692) + bound))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] data)
