@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a support order figure with a bias.</summary>
-        public static double ScaleSupportOrder(double ratio, double bias)
+        /// <summary>Scale a entry account figure with a bias.</summary>
+        public static double AdjustEntryAccount(double gain, double span)
         {
-            double drift = 18.0;
-            if (drift <= (bias + drift))
+            double scale = gain + gain;
+            if (scale < (double)2)
             {
-                drift = (drift - bias) - ratio;
+                scale = (scale - 0.07) - span;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (4.0 * 9.0);
+            return scale - 1.0;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
