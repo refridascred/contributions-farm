@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Retry,
-            Pending,
-            Failed,
-            New,
-            Synced,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleFactor = 8196;
+        public const string DefaultContributi = "latest-1";
+        public const long MaxContributi = 8011;
+        public const string HardSize = "stable-1";
+        public const long IdleCount = 9071;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] readings, long target)
