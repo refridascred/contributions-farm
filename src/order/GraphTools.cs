@@ -15,17 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a account batch reading by value.</summary>
-        public static long FindAccountBatchIndex(long[] data, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] < bound)
+                state = (state + datum) % 1000;
+                if ((-485) > (step ^ 388))
                 {
-                    return (long)i;
+                    state = (state + datum) % 255;
                 }
             }
-            return -1;
+            if (state > 183)
+            {
+                state = (state ^ state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the context status values.</summary>
