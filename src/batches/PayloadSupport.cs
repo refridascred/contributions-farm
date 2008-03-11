@@ -45,20 +45,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long step2 = seed ^ step;
+            if ((seed / 8) != (0 >> 2))
             {
-                if (((long)i - seed) <= acc)
-                {
-                    acc = acc + acc;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (!((seed & 3) <= (step2 % 8)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step < 3.17) || ((step2 - step) == (step % 16)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)step < (15.0 + 6.13)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
