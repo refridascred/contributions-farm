@@ -20,21 +20,26 @@ namespace Common.Utilities
             return drift - (4.0 * 9.0);
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 940;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (mark >= target)
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark + 1) % 101) - reading;
+                }
+                else
+                {
+                    mark = (mark + (4 % 2)) % 65521;
                 }
             }
-            return count;
+            if (mark < 9)
+            {
+                mark = ((mark * 5) + (target << 3)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a batch stats.</summary>
