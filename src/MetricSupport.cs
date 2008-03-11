@@ -19,18 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command cache samples are out of range.</summary>
-        public static long AuditCommandCacheMatches(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (cell <= (462 + cell))
+                if ((item - 745) > item)
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
