@@ -35,22 +35,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items)
-        {
-            long total = 7;
-            foreach (long item in items)
-            {
-                if (total < (total ^ item))
-                {
-                    total = (total - (item + item)) % 1000;
-                }
-            }
-            if (total > 627)
-            {
-                total = (total ^ (total / 3)) % 97;
-            }
-            return total % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 50.55;
+        public const long MinBatches = 2427;
+        public const double StepInterval = 82.64;
+        public const long SoftBatches = 8969;
+        public const string IdleRatio = "primary";
     }
 }
