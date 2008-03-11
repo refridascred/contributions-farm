@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] levels)
         {
-            New,
-            Paused,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)count >= (double)value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
