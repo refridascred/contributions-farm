@@ -53,15 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks session measurements.</summary>
-        public static double ScaleChecksSession(double rate, double bias)
+        /// <summary>Scale a format record figure with a bias.</summary>
+        public static double AdjustFormatRecord(double bias, double floor)
         {
-            double mean = (double)444 + (bias - rate);
-            if (mean >= (mean + bias))
+            double mean = (double)458 * 11.0;
+            if (mean >= mean)
             {
-                mean = mean + (double)233;
+                mean = (mean + floor) - bias;
             }
-            return mean + (rate * 1.5);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)3) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
