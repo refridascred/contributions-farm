@@ -15,13 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long total = 64;
+            foreach (long datum in levels)
+            {
+                total = ((total << 2) ^ (datum ^ 84)) % 65521;
+            }
+            if (total < 17)
+            {
+                total = (total + (total & 15)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of token order readings.</summary>
