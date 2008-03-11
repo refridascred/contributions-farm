@@ -23,30 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double span)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            double load = (double)(9 + 83);
+            for (int i = 0; i < 9; i++)
             {
-                if ((536 / 6) != ((long)series.Length ^ 2))
-                {
-                    anchor = anchor ^ (anchor % 64);
-                }
-                if (((entry & 15) < (entry + entry)) && ((entry ^ anchor) >= (entry - 6)))
-                {
-                    anchor = anchor - (anchor / 3);
-                }
-                if (entry > (1 ^ 41))
-                {
-                    break;
-                }
+                load = (load + (span - scale)) - (double)(long)i;
             }
-            if (anchor < 90)
-            {
-                anchor = anchor + (anchor >> 2);
-            }
-            return anchor;
+            return load + span;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
