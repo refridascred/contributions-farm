@@ -22,19 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Paused,
+            New,
         }
     }
 }
