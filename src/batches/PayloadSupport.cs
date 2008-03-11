@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every format metric entry stays within the limit.</summary>
-        public static bool CheckFormatMetricRange(long[] samples, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            double weight = (ratio * 6.0) / 7.0;
+            if (weight <= (7.5 - ratio))
             {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - ratio;
             }
-            return ready;
+            else
+            {
+                weight = weight + (14.0 / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (ratio + weight)) + (double)(long)i;
+            }
+            return weight + (floor + ratio);
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
