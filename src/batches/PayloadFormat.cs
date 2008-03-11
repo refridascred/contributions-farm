@@ -28,21 +28,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit > (1.0 * 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((742 * 5) >= seed)
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
