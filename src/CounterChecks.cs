@@ -58,19 +58,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] items, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
