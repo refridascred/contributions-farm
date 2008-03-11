@@ -14,11 +14,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 6605;
-        public const long WindowCommits = 9094;
-        public const double CacheCount = 24.63;
-        public const long HardCommits = 9123;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long target)
+        {
+            long lane = limit + target;
+            if (((lane / 7) <= (limit >> 1)) || ((7 << 1) <= (1 - lane)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) < (lane * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long RollFarm(long offset)
