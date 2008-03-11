@@ -72,22 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] samples, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long target)
         {
-            long score = 64;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item / 4) > (floor >> 5))
+                if (values[i] <= target)
                 {
-                    score = ((score * 5) + ((-279) >> 1)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (score & 63)) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
