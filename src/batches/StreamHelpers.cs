@@ -70,18 +70,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit window cache readings against a rule.</summary>
-        public static long MeasureWindowCacheGaps(long[] values, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double gain = (double)48 / 3.0;
+            if (gain >= (double)490)
             {
-                if (!((item < (item * 2)) || ((item + tally) <= item)))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                gain = ((gain - (double)3) + bias) - span;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)(-75);
+            }
+            return gain + gain;
         }
 
         /// <summary>Blend two command measurements.</summary>
