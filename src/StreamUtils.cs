@@ -57,24 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long acc = 49;
+            foreach (long item in levels)
             {
-                if (anchor <= (4 + anchor))
-                {
-                    anchor = (anchor + 82) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (long)i;
-                    anchor = anchor - (694 << 1);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = ((acc + (99 / 9)) % 4096) - item;
             }
-            return anchor;
+            if (acc > 4)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a channel entry.</summary>
