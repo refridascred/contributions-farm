@@ -63,31 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long origin2)
+        /// <summary>Locate a support profile reading by value.</summary>
+        public static long LookupSupportProfileIndex(long[] data, long origin)
         {
-            if ((origin2 * 4) <= (origin + origin2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin2 + origin) > (origin2 - origin2)))
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin2 >= 2.2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
