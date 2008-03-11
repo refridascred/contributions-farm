@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order batches series from a seed.</summary>
-        public static long DeriveOrderBatches(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((reading + reading) < seen)
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the route kind values.</summary>
