@@ -1,7 +1,7 @@
-id,token,level,score
-1,local,6.79,425
-2,786,733,cached
-3,6.21,latest,local
-4,117,60.11,28.03
-5,412,189,standard
-6,173,17.47,98.0
+id,score,region,owner
+1,449,60.03,75.44
+2,green,28.86,45.46
+3,275,75.74,local
+4,61.92,local,206
+5,fallback,16.38,local
+6,85.79,637,eu-west
