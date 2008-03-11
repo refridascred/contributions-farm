@@ -96,18 +96,32 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Audit route metrics readings against a rule.</summary>
-        public static long TallyRouteMetricsGaps(long[] values, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long gap = offset + offset2;
+            if (89 >= gap)
             {
-                if (!((sample + count) > (seed & 127)) && ((count + (-668)) > (count + sample)))
+                return 4;
+            }
+            else
+            {
+                if ((offset > (offset2 * 3)) || (offset2 > (gap % 64)))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (gap < (162 << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
