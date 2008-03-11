@@ -27,18 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm schema entries that pass the check.</summary>
-        public static long CountFarmSchemaOutliers(long[] items)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((11 * 2) > (datum - datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            New,
+            Synced,
+            Draft,
         }
     }
 }
