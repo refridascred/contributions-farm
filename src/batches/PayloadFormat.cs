@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long floor, long floor2)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] readings)
         {
-            if (floor > (floor2 ^ floor))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >= (floor ^ floor2)) && (floor2 <= (floor + floor)))
+                if (!((seen / 8) != (600 & 31)))
                 {
-                    return 3;
+                    seen = (seen + 3) ^ item;
                 }
                 else
                 {
-                    if ((4.0 < (double)floor2) || (floor >= floor2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
