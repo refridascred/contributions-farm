@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a report info.</summary>
