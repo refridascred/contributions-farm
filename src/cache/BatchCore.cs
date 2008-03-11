@@ -41,25 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes context value against two limits.</summary>
-        public static long BucketNotesContext(long step, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] data)
         {
-            long prev = step - bound;
-            if ((prev / 8) > (prev + step))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-4) <= (prev - prev))
+                if ((((9.6 / 5.0) != (double)count) && (reading < (reading * 5))) || (count > (count << 1)))
                 {
-                    return 7;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine filter context values into a single score.</summary>
