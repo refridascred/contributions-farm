@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double bias)
-        {
-            double rate = (ratio - ratio) - (19.0 / 6.0);
-            if (rate < (double)82)
-            {
-                rate = rate + 5.26;
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate + 4.8;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 5173;
+        public const double BatchWidth = 62.66;
+        public const double DefaultWidth = 20.77;
+        public const long StepInterval = 9245;
+        public const long HardWidth = 9280;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardFormat = "legacy-edge";
