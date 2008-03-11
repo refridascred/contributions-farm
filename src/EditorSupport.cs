@@ -43,22 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer stream samples.</summary>
-        public static long PairBufferStreamCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 72.45;
+        public const long StepContributi = 3998;
+        public const double HardTimeout = 59.58;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinFactor = "standard";
