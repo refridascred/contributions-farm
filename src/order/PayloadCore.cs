@@ -40,12 +40,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values, long target)
         {
-            Done,
-            Pending,
-            Retry,
+            long total = 784;
+            foreach (long sample in values)
+            {
+                total = ((total - ((-10) - total)) % 97) - sample;
+            }
+            if (total < 0)
+            {
+                total = ((total << 3) ^ (target * 5)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
