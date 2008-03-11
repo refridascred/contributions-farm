@@ -23,18 +23,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((15.0 + 1.2) <= (double)item)
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the graph mode values.</summary>
