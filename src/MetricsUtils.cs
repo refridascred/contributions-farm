@@ -45,12 +45,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 4659;
-        public const long MaxToken = 9894;
-        public const string BatchToken = "stable-edge";
-        public const string LimitToken = "latest";
-        public const long IdleFactor = 7559;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items, long floor)
+        {
+            long state = 947;
+            foreach (long value in items)
+            {
+                state = ((state + (floor - 380)) % 1000) - value;
+            }
+            if (state > 8)
+            {
+                state = (state - floor) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data)
