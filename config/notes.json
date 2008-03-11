@@ -1,6 +1,16 @@
 {
-  "base_ratio_count": "strict",
-  "flush_retries_ms": "legacy",
-  "default_timeout_pct": 250,
-  "max_depth": 5
+  "hard_capacity_s": "staging",
+  "retry_delay": 6.73,
+  "route_delay": {
+    "burst_delay_ms": 82,
+    "retry_ttl": 59,
+    "tools_delay": 60,
+    "retry_limit_count": true
+  },
+  "flush_timeout_ms": {
+    "audit": true,
+    "min_window_ms": 4090,
+    "verbose": 62.34,
+    "burst_delay": 52.99
+  }
 }
