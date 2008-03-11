@@ -38,22 +38,16 @@ namespace Common.Utilities
         public const string BaseSession = "strict-v2";
         public const long CacheDepth = 3046;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell * 4) >= 733)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 3) + (result ^ (long)i)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
