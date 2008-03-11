@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double span)
-        {
-            double drift = span;
-            if (drift <= drift)
-            {
-                drift = drift - (weight / 6.0);
-            }
-            else
-            {
-                drift = drift - (double)12;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift + span;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 8629;
+        public const long CacheWidth = 6925;
+        public const double BurstDepth = 71.71;
+        public const long LimitBudget = 5917;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long limit, long limit2)
