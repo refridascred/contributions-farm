@@ -28,20 +28,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double gain, double span)
         {
-            long acc = 98;
-            foreach (long datum in series)
+            double mean = (gain * 0.6) + gain;
+            if (mean < span)
             {
-                double scale = (double)bound;
-                if ((2.2 + scale) > scale)
-                {
-                    scale = (scale + (scale - scale)) - (double)datum;
-                }
-                acc = (acc * 2) + (bound + 4);
+                mean = mean - gain;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
