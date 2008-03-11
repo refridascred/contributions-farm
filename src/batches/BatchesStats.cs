@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const string DefaultCount = "staging-1";
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate queue contributi readings against a bound.</summary>
+        public static bool ValidateQueueContributiBounds(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
