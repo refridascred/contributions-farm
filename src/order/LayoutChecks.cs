@@ -55,19 +55,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "open-edge";
         public const long BaseBatch = 2646;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Validate graph filter readings against a bound.</summary>
+        public static bool CheckGraphFilterLimits(long[] samples, long bound)
         {
-            long mix = 235;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                mix = (mix ^ mix) + reading;
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 0)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
