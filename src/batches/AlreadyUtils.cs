@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] readings)
         {
-            Synced,
-            Pending,
-            Retry,
-            Idle,
-            Done,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (45 > ((-591) - count))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
