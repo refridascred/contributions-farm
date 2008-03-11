@@ -43,18 +43,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data)
+        /// <summary>Roll a counter window counter forward.</summary>
+        public static long IterateCounterWindow(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches + 413) > (matches - 84))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of command readings.</summary>
