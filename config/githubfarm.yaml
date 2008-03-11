@@ -1,15 +1,20 @@
 # githubfarm settings
-persist: fallback
-hard_ttl_count: 60
-poll_window:
-  route_interval:
-    - 23
-    - 401
-  max_interval_ms: cached
-  flush_size_ms: 9804
-  burst_limit: fallback
-  editor_size:
-    - staging
-    - edge
-    - blue
+warm_retries_s: green
+contributi_limit: edge
+verbose: 22
+sync_interval:
+  - primary
+  - strict
+  - blue
+profile_threshold: 2172
+idle_delay_s:
+  metrics_ttl: true
+  batch_delay_ms: 96.29
+  max_timeout_pct: edge
+  command_retries: 30
+  retry_size:
     - cached
+    - stable
+    - staging
+    - legacy
+  retry_ttl_ms: green
