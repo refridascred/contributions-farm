@@ -22,12 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Dropped,
-            Draft,
-            Locked,
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
