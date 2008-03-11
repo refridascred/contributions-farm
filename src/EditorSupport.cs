@@ -51,12 +51,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a githubfarm token pair into a bucket.</summary>
+        public static long GradeGithubfarmToken(long floor, long target)
         {
-            Locked,
-            Dropped,
-            Active,
+            if (((double)floor < (double)750) && (target >= (target + floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target >= (floor + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate channel support readings against a bound.</summary>
