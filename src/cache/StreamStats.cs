@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
-        {
-            long anchor = 962;
-            foreach (long entry in data)
-            {
-                anchor = (anchor - (entry - (long)data.Length)) % 97;
-                if ((double)entry < (0.09 - 8.38))
-                {
-                    anchor = (anchor ^ (-3)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor % 8)) % 1000;
-                }
-            }
-            if (anchor < 671)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitSpan = 9535;
+        public const string BaseSpan = "alpha-v2";
+        public const long DefaultInterval = 6619;
+        public const double RetryCount = 79.31;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultGraph = 2957;
