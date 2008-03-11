@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
-        public static long TallyGraphGithubfarmOutliers(long[] data)
+        /// <summary>Iterate the window record series from a seed.</summary>
+        public static long SeriesWindowRecord(long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((8.6 + 3.0) == (double)tally)
-                {
-                    tally = (tally + 3) - cell;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
