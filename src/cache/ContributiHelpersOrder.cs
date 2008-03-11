@@ -36,22 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] levels, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((target >= ((long)levels.Length + cell)) || ((double)seen < 5.9))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
