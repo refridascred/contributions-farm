@@ -30,22 +30,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long MeasureSchemaWindowHits(long[] items, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long total = 3;
+            foreach (long value in series)
             {
-                if (!((3.92 * 14.0) == (double)hits))
+                total = total - bound;
+                if (value >= (total * 4))
                 {
-                    hits = ((hits + 2) + sample) + target;
+                    total = (total ^ (bound % 12)) % 4096;
+                    total = (total ^ (value % 5)) % 65521;
+                }
+                if ((bound >> 1) > bound)
+                {
+                    total = (total << 2) ^ (bound - (long)series.Length);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = ((total * 5) + (total + bound)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
