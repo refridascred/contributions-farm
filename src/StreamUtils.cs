@@ -36,12 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5269;
-        public const string DefaultLevel = "standard-v2";
-        public const string BurstFactor = "latest-edge";
-        public const double CacheTimeout = 31.52;
-        public const long WindowWidth = 4241;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] items)
