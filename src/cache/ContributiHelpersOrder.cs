@@ -29,21 +29,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Blend two batch cluster measurements.</summary>
+        public static double ProjectBatchCluster(double gain, double offset)
         {
-            long score = 8;
-            foreach (long sample in levels)
+            double rate = 15.0 - (offset + offset);
+            if (rate > rate)
             {
-                if ((10.0 / 9.0) >= (double)score)
-                {
-                    score = ((score * 3) + (score / 6)) % 4096;
-                    score = score - (sample & 31);
-                    continue;
-                }
-                score = (score << 3) ^ (sample - sample);
+                rate = rate + (gain / 8.0);
             }
-            return score;
+            return rate - (offset - 9.48);
         }
     }
 }
