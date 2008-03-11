@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            long score = -3;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin - (-70)) > (score ^ score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 2) ^ (cell >> 5)) % 97;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 24)
-            {
-                score = (score - ((long)series.Length << 3)) % 255;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
