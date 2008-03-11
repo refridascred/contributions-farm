@@ -66,10 +66,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 2687;
-        public const long MaxWidth = 2709;
-        public const long MaxCommand = 3583;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] items)
