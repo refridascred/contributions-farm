@@ -16,19 +16,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] series, long floor)
         {
-            long acc = 7;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc + (limit + limit)) % 97) ^ entry;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 57)
-            {
-                acc = (acc + (acc + acc)) % 101;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
