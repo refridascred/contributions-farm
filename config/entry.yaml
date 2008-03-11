@@ -1,11 +1,6 @@
 # entry settings
-already_threshold: 45.81
-flush_interval_s:
-  - 324
-  - 197
-persist:
-  - 119
-  - 129
-route_size:
-  - 240
-  - 106
+burst_threshold_ms: 30
+report_capacity: true
+contributi_capacity: 30
+enabled: 40.2
+retry_ttl_count: 87
