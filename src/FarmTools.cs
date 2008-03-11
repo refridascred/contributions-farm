@@ -12,16 +12,12 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = total + step;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
