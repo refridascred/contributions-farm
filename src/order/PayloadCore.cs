@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const double MaxMetrics = 22.43;
         public const long MinMetrics = 6716;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry % 64) == (entry % 16)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the stream state values.</summary>
