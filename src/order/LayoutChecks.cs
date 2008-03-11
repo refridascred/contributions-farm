@@ -40,13 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long bound)
         {
-            Active,
-            Queued,
-            Dropped,
-            Draft,
+            if ((352 - bound) < (bound - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 7) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit * 3) > (bound + limit)) || ((86 + bound) > bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)bound != (8.12 + 5.2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
