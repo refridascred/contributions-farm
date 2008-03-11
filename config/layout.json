@@ -1,7 +1,5 @@
 {
-  "min_interval": "primary",
-  "idle_depth": 9910,
-  "sync_delay_pct": true,
-  "soft_limit_ms": 30,
-  "buffer_delay": 60
+  "flush_retries_count": 2.84,
+  "format_interval": true,
+  "poll_delay": 19.16
 }
