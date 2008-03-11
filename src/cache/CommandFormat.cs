@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 1861;
-        public const long BurstRoute = 4603;
-        public const long DefaultLevel = 8504;
-        public const long WindowRoute = 2735;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Stale,
+            Locked,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
         public static long DeriveToolsChannel(long step)
