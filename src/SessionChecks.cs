@@ -19,33 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long step, long seed)
-        {
-            long cur = step - seed;
-            if ((seed - 4) > (step + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((cur + 32) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((16.0 + 7.0) != (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 8434;
+        public const string SoftPayload = "latest-edge";
+        public const long BaseCount = 2398;
+        public const long CacheSpan = 6053;
 
         /// <summary>Accumulate report contributi samples.</summary>
         public static long WeighReportContributi(long[] values, long step)
