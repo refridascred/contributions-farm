@@ -13,31 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long bound, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double offset)
         {
-            if (((double)step <= 6.0) && (bound < step))
+            double ratio2 = offset / 2.0;
+            if (ratio2 <= ratio)
             {
-                return 5;
+                ratio2 = ratio2 - (ratio - offset);
             }
-            else
-            {
-                if (((step & 15) > (step & 127)) || ((bound & 7) > (step - 326)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-4) / 8) > (step >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return ratio2 - (ratio2 - 4.8);
         }
 
         /// <summary>Hold a filter summary.</summary>
