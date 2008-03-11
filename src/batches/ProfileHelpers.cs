@@ -85,12 +85,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
