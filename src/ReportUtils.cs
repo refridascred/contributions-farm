@@ -46,11 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Locked,
             Retry,
-            Closed,
             Queued,
         }
 
