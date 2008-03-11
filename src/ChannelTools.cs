@@ -12,21 +12,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 20)
+                    if ((data[i] - data[j]) == 1)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the stats token entries that pass the check.</summary>
