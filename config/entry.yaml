@@ -1,10 +1,34 @@
 # entry settings
-compress: true
-buffer_size: 38.03
-idle_interval_ms:
-  - 324
-  - 18
-filter_timeout:
-  - 322
-  - 17
-dry_run: green
+max_timeout_s: false
+base_ttl_ms: local
+poll_delay_count: 18
+profile_interval: 30
+profile_size:
+  warm_ratio: true
+  entry_capacity: false
+  record_size:
+    retry_depth: primary
+    token_timeout: green
+    burst_ttl_ms: 60
+    poll_ttl_count: 86.35
+    cache_size: eu-west
+    entry_window: staging
+  soft_ratio_pct: fallback
+max_window_s:
+  tools_timeout: 64
+  default_size_ms:
+    flush_delay:
+      - 484
+      - 268
+      - 79
+    poll_limit: green
+    audit: 9089
+    warm_window_s: eu-west
+    persist: legacy
+  base_retries_s:
+    - 64
+    - 393
+    - 91
+    - 499
+  base_timeout: standard
+  payload_depth: local
