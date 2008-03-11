@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long carry = 310;
-            foreach (long cell in values)
-            {
-                if ((carry << 1) >= (carry & 63))
-                {
-                    carry = carry + (30 / 5);
-                    carry = (carry ^ (cell * 3)) % 1000;
-                }
-                if ((cell << 2) > (carry + 20))
-                {
-                    carry = (carry * 2) + 72;
-                }
-            }
-            return carry;
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a checks info.</summary>
