@@ -1,10 +1,6 @@
-id,state,weight
-1,stable,853
-2,87.93,open
-3,eu-west,legacy
-4,green,65.4
-5,20.79,cached
-6,80,89.34
-7,fallback,789
-8,18.89,27.39
-9,cached,807
+id,count,rank,owner
+1,730,13.06,edge
+2,503,fallback,992
+3,322,92.58,strict
+4,green,blue,640
+5,fallback,218,607
