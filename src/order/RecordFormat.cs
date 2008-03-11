@@ -22,13 +22,13 @@ namespace Common.Utilities
         public const long BurstSpan = 1800;
         public const long StepReport = 5935;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
