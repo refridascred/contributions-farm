@@ -19,25 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank notes token input into a small class.</summary>
-        public static long ClassifyNotesToken(long target, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings, long origin)
         {
-            long gap = target - step;
-            if (((-69) <= gap) && ((target + step) <= target))
+            long acc = 309;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target == (1.61 - 4.69))
+                if (((item - origin) < (origin * 4)) || ((double)acc < (2.0 + 9.0)))
                 {
-                    return 0;
+                    acc = ((acc * 5) + (item >> 1)) % 97;
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc + (acc / 5)) % 65521;
+                }
+                acc = (acc + (item * 3)) % 255;
+                if ((acc >> 5) != (acc & 255))
+                {
+                    break;
                 }
             }
+            if (acc < 5)
+            {
+                acc = acc + 0;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
