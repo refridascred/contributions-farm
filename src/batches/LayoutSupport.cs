@@ -42,19 +42,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits / 4) <= (1 ^ value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 6621;
+        public const double StepBudget = 13.23;
+        public const double WindowLayout = 52.29;
+        public const string BurstLayout = "alpha-1";
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
