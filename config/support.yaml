@@ -1,12 +1,7 @@
 # support settings
-warm_ratio_ms: open
-notes_timeout: fallback
-support_ratio: 100
-idle_interval: 100
-hard_ttl: primary
-max_interval:
-  retry_size: 90
-  dry_run: 500
-  stats_depth: true
-  sync_capacity: 6.96
-  warm_delay_count: 60
+account_ttl: 53
+readonly:
+  - 492
+  - 81
+soft_limit: 18.45
+warm_size_s: 55.81
