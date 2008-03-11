@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] series, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double span)
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double load = rate * 2.5;
+            return (load + (rate / 8.0)) + span;
         }
     }
 }
