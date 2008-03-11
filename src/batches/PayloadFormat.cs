@@ -26,17 +26,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 26;
+            foreach (long sample in readings)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
+                anchor = (anchor << 3) ^ (anchor ^ sample);
+                anchor = anchor + (sample << 2);
+                if ((sample + anchor) > sample)
                 {
-                    return (long)i;
+                    anchor = (anchor - (sample + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (8 % 16)) % 65521;
                 }
             }
-            return -1;
+            if (anchor > 306)
+            {
+                anchor = anchor - (2 / 4);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
