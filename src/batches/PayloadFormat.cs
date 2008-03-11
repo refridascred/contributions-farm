@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] samples, long seed)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if ((seed <= seed2) || ((seed2 - 23) > (seed >> 4)))
             {
-                if (sample > seed)
+                return 2;
+            }
+            else
+            {
+                if (seed <= (seed - 66))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed2 % 3) != (seed2 << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
