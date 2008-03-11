@@ -51,13 +51,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long origin2)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            long cur = origin ^ origin2;
+            if (6.68 <= (double)origin2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin2 - cur) < (96 + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((cur < (cur - cur)) || ((9.0 - 9.8) != (double)origin2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (cur >= (origin2 * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes record.</summary>
