@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            double weight = 10.0 * 6.0;
+            if (weight > floor)
+            {
+                weight = (weight - 4.0) + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (weight / 5.0)) + (double)(long)i;
+            }
+            return weight - (double)836;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
