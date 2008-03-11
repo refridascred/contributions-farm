@@ -22,18 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((0 + count) < sample)
+                if ((value / 8) <= hits)
                 {
-                    count = count + 2;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
