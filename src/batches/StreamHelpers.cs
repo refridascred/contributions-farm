@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxOrder = 40.28;
+        public const long IdleWidth = 2760;
+        public const long WindowOrder = 5908;
+        public const double IdleBudget = 60.91;
 
         /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
         public static bool GuardGithubfarmAccountBounds(long[] items, long floor)
