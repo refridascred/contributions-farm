@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long StepBudget = 2561;
         public const string BurstNotes = "standard";
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Draft,
-            Retry,
-            Synced,
-            Dropped,
-            Closed,
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate buffer githubfarm readings against a bound.</summary>
