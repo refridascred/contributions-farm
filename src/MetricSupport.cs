@@ -33,18 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] data)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits < (2 / 9)) || ((double)hits <= (double)7))
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
                 {
-                    hits = (hits + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
