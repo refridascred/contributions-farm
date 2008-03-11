@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 847;
-        public const string IdleCount = "latest-v2";
-        public const string MaxRatio = "primary-edge";
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstRatio = 1322;
