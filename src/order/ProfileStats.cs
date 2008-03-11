@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 6884;
+        public const long HardSize = 6034;
+        public const long BatchChecks = 7317;
+        public const long HardInterval = 1141;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
