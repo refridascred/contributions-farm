@@ -54,10 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 72.45;
-        public const long StepContributi = 3998;
-        public const double HardTimeout = 59.58;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!!(count <= (datum + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] samples)
