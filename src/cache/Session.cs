@@ -37,9 +37,19 @@ namespace Common.Utilities
         public const long RetryToken = 40;
         public const long BatchBudget = 8662;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchLevel = 1666;
-        public const long DefaultDepth = 6309;
-        public const long IdleProfile = 5783;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double span)
+        {
+            double ratio = span;
+            if (ratio > (ratio * 1.0))
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - ratio;
+        }
     }
 }
