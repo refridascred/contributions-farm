@@ -29,21 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Check that every entry graph entry stays within the limit.</summary>
+        public static bool CheckEntryGraphRange(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item <= seed)
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
