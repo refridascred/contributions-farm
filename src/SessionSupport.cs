@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double bias = gain;
-            if (bias <= (gain * 3.1))
-            {
-                bias = bias - (span / 8.0);
-            }
-            else
-            {
-                bias = bias - (span + bias);
-            }
-            return bias - bias;
+            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a filter header.</summary>
