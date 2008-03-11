@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] series, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long count = 0;
+            long state = -784;
             foreach (long entry in series)
             {
-                if (((entry + 89) == (bound & 63)) && (((-46) - entry) <= count))
+                if ((entry % 100) != (658 ^ entry))
                 {
-                    count = count + 2;
+                    state = (state - (state - state)) % 65521;
                 }
             }
-            return count;
+            if (state < 345)
+            {
+                state = state + 5;
+            }
+            return state;
         }
 
         /// <summary>Describe the batches level values.</summary>
