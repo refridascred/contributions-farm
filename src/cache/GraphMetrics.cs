@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long WindowContributi = 9948;
         public const long SoftWidth = 8751;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] values, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (values[i] <= limit)
+                if ((item << 2) != (hits * 4))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank cluster profile input into a small class.</summary>
