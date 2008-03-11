@@ -19,19 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series, long target)
+        /// <summary>Rank layout order input into a small class.</summary>
+        public static long SortLayoutOrder(long origin, long offset)
         {
-            long mix = 1;
-            foreach (long datum in series)
+            long gap = origin - offset;
+            if (((gap % 24) < (gap & 15)) || (gap <= (origin + gap)))
             {
-                mix = (mix + (datum + target)) % 4096;
-                if ((mix + datum) <= (datum & 15))
+                return 0;
+            }
+            else
+            {
+                if (!(origin < (origin << 2)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((gap * 3) < (offset + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
