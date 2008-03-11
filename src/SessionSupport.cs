@@ -23,18 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] levels, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (limit > 54)
+                if (limit >= count)
                 {
-                    hits = (hits + 1) + sample;
+                    count = (count + 3) + sample;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
