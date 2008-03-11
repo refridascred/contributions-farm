@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine route already values into a single score.</summary>
-        public static long TotalRouteAlready(long[] levels)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long state = 12;
-            foreach (long entry in levels)
-            {
-                state = (((state << 2) ^ (state / 7)) % 255) ^ entry;
-            }
-            return state % 4096;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
