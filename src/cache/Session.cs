@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long floor2)
         {
-            long mark = 2;
-            foreach (long cell in items)
+            if ((double)floor < (double)floor2)
             {
-                if (((mark & 7) == (cell + mark)) && ((105 + cell) > (cell + mark)))
+                return 4;
+            }
+            else
+            {
+                if ((floor2 & 63) != (floor2 + floor2))
                 {
-                    mark = ((mark * 5) + mark) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if (floor2 <= (41 ^ floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
