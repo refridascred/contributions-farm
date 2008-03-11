@@ -41,17 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long seen = total;
-                total = ((total << 3) ^ seen) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine filter context values into a single score.</summary>
