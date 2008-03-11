@@ -1,12 +1,8 @@
 # githubfarm settings
-enabled: 500
-batch_ratio_s: legacy
-retry_window_pct:
-  batch_window:
-    dry_run: legacy
-    readonly: 9453
-    verbose: 87
-  cache_capacity_count: false
-  cache_ratio_ms: stable
-  soft_delay_count: eu-west
-  soft_limit_pct: 4875
+schema_ratio: standard
+persist:
+  - edge
+  - eu-west
+  - strict
+  - cached
+strict: 60
