@@ -1,12 +1,11 @@
 # support settings
-entry_limit: true
-strict: 55
-idle_delay_ms: 1644
-farm_limit: 5.84
-default_ratio:
-  entry_ttl: blue
-  readonly: 5934
-  hard_timeout_pct: staging
-  sync_window_s: 10
-  editor_size: true
-retry_delay: eu-west
+audit:
+  - 262
+  - 356
+  - 490
+  - 86
+retry_window_count:
+  - 403
+  - 65
+  - 397
+cache_retries_s: strict
