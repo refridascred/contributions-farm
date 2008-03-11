@@ -49,14 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
+            Pending,
+            Active,
+            Draft,
             Done,
-            Ready,
-            Queued,
             Synced,
-            Retry,
         }
 
         /// <summary>Digest a series of editor context entries.</summary>
