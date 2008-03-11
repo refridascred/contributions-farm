@@ -33,27 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels, long origin)
         {
-            long sum = 406;
-            foreach (long value in samples)
+            long acc = 724;
+            foreach (long entry in levels)
             {
-                if (((sum + sum) != (limit + sum)) && (sum >= 92))
+                if (((acc - origin) >= (origin >> 3)) || ((acc / 7) != (658 ^ acc)))
                 {
-                    sum = (sum * 3) + (limit ^ limit);
-                    break;
-                }
-                if ((long)samples.Length > sum)
-                {
-                    sum = (sum ^ (value & 7)) % 97;
+                    acc = ((acc * 2) + (entry & 3)) % 255;
                 }
             }
-            if (sum < (-1))
-            {
-                sum = (sum << 3) ^ limit;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a notes summary.</summary>
