@@ -19,16 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double rate, double floor)
-        {
-            double weight = (double)((-17) / 3);
-            if (weight < (floor / 6.0))
-            {
-                weight = (weight + floor) - rate;
-            }
-            return weight + 1.49;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardBudget = 7857;
+        public const long BurstWidth = 2057;
+        public const long BatchTimeout = 8675;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
