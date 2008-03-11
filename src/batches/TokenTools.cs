@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long MinSize = 1557;
         public const string StepDepth = "local-edge";
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] values, long bound)
+        /// <summary>Digest a series of order commits entries.</summary>
+        public static long ScoreOrderCommits(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 73;
+            foreach (long item in levels)
             {
-                if (values[i] > bound)
+                if ((item - score) == (item & 3))
                 {
-                    return (long)i;
+                    score = (score ^ (offset & 31)) % 255;
+                }
+                if (8.8 >= (double)score)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many stats queue samples are out of range.</summary>
