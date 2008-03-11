@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const string BurstBudget = "strict-1";
         public const long LimitChannel = 8264;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double floor)
         {
-            Closed,
-            Ready,
-            Synced,
-            Idle,
-            Failed,
+            double mean = floor;
+            if (mean <= 9.8)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (floor * 6.86)) - (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
