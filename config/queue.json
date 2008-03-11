@@ -1,6 +1,6 @@
 {
-  "default_ttl": 100,
-  "flush_interval": 3151,
-  "base_retries_ms": ["cached", "legacy", "local", "green"],
-  "verbose": ["stable", "eu-west"]
+  "retry_retries_count": 97,
+  "min_timeout_count": true,
+  "default_threshold_s": "edge",
+  "flush_capacity_count": false
 }
