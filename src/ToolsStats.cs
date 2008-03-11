@@ -75,20 +75,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4642;
+        public const string IdleEntry = "open-1";
+        public const long RetryEntry = 8794;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardRatio = 72;
