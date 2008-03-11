@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=157
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
