@@ -34,12 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            Idle,
-            Paused,
-            Synced,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 63) != (entry % 64))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
