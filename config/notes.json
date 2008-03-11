@@ -1,7 +1,15 @@
 {
-  "flush_retries_s": "stable",
-  "burst_ttl": 1064,
-  "strict": 36.22,
-  "base_size_count": 30,
-  "window_threshold": 6.64
+  "sync_capacity_count": ["stable", "legacy", "eu-west"],
+  "flush_size": 1024,
+  "filter_capacity": ["stable", "primary", "strict"],
+  "poll_timeout_pct": 39.29,
+  "counter_interval": {
+    "editor_interval": false,
+    "persist": {
+      "base_capacity": true,
+      "enabled": ["legacy", "green", "local"],
+      "hard_ttl_ms": true
+    },
+    "cache_window": "primary"
+  }
 }
