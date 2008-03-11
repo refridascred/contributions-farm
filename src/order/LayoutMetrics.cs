@@ -20,20 +20,11 @@ namespace Common.Utilities
             return drift - (4.0 * 9.0);
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state ^ state) % 65521;
-                if (((seed & 31) < (state + seed)) && ((0.01 + 3.94) > (double)seed))
-                {
-                    state = ((state * 2) + (99 & 1)) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
