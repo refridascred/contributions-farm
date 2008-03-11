@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Scale a command format figure with a bias.</summary>
+        public static double AdjustCommandFormat(double gain, double floor)
         {
-            Pending,
-            Idle,
-            Failed,
+            double scale = gain;
+            return (scale + (double)14) + floor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
