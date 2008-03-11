@@ -1,4 +1,18 @@
 # githubfarm settings
-dry_run: 5218
-format_limit: 250
-already_capacity: true
+soft_interval_pct: 7715
+warm_ttl_pct: 4692
+base_window:
+  warm_ttl_count:
+    - stable
+    - blue
+    - staging
+    - staging
+  base_ttl_pct: cached
+  account_limit: 30
+  dry_run: open
+  cache_timeout_pct: false
+  metric_size:
+    already_threshold: 72
+    soft_threshold_count: cached
+    warm_timeout_s: strict
+    metrics_depth: 250
