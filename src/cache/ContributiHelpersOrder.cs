@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Blend two batch cluster measurements.</summary>
