@@ -12,15 +12,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double bias)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long origin)
         {
-            double gain = bias * 7.04;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + 2.93) + (double)(long)i;
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (rate * 9.5);
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
