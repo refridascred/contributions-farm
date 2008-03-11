@@ -58,13 +58,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
