@@ -19,21 +19,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                total = total - total;
-                if (total > (total % 7))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultTimeout = 14.41;
+        public const long CacheStats = 360;
+        public const long HardCount = 4287;
+        public const long MaxStats = 912;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] series, long floor)
