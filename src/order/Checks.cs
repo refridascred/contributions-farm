@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 6475;
-        public const double LimitSize = 37.58;
-        public const string MinSession = "strict-edge";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples)
+        {
+            long anchor = 0;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor << 3) ^ (anchor + reading)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
