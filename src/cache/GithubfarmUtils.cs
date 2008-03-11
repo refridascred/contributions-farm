@@ -31,18 +31,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] readings)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = 7;
+            foreach (long item in items)
             {
-                if ((4.65 - 4.74) != (double)matches)
+                if (total < (total ^ item))
                 {
-                    matches = (matches + 3) ^ reading;
+                    total = (total - (item + item)) % 1000;
                 }
             }
-            return matches;
+            if (total > 627)
+            {
+                total = (total ^ (total / 3)) % 97;
+            }
+            return total % 97;
         }
     }
 }
