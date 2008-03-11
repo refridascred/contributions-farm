@@ -37,15 +37,30 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state * 3) + state) ^ (long)i2;
+                }
+                long prev = state / 5;
+                if (state >= prev)
+                {
+                    prev = (prev ^ (limit * 3)) % 65521;
+                    prev = prev ^ (267 + prev);
+                }
+                else
+                {
+                    prev = prev + (prev % 5);
+                    prev = (prev + limit) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
     }
 }
