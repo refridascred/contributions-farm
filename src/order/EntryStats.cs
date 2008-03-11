@@ -24,18 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric account samples are out of range.</summary>
-        public static long MeasureMetricAccountMatches(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((count >= (1 % 12)) || ((count & 127) != (cell * 3))) || ((count & 3) < (count * 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Accumulate order samples.</summary>
