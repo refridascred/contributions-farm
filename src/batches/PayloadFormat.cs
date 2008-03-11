@@ -46,24 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long seed, long limit)
+        /// <summary>Compare every pair of format window readings.</summary>
+        public static long MatchFormatWindowCount(long[] levels)
         {
-            if ((double)limit > (1.0 * 5.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((742 * 5) >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
