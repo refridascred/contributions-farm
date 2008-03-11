@@ -34,18 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] values)
         {
-            long anchor = 829;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (67 < (anchor + 77))
+                if ((4 + 901) == (matches + 91))
                 {
-                    anchor = ((((anchor * 3) + (anchor / 5)) % 4096) + value) - limit;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
     }
 }
