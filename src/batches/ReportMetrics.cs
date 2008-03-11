@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] series, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long anchor = 461;
+            foreach (long sample in samples)
             {
-                if (!(((0.13 - 8.55) < (double)target) || ((5.8 * 9.76) < (double)target)))
+                if ((sample >= (anchor * 5)) && ((bound - sample) <= bound))
                 {
-                    tally = (tally + 2) + cell;
+                    anchor = (anchor ^ (anchor << 3)) % 4096;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
