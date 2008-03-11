@@ -19,19 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window batches readings against a bound.</summary>
-        public static bool CheckWindowBatchesRange(long[] items, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if (95 > bound)
             {
-                if (entry <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (0.69 * 9.13))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((0 < (origin + origin)) && (origin < bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound > origin) && ((bound - origin) == (397 * 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a route snapshot.</summary>
