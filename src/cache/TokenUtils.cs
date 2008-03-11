@@ -16,13 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long seed)
         {
-            Queued,
-            Stale,
-            Retry,
-            Draft,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((2 & 63) < (item >> 1)) || ((374 + seed) <= item))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
