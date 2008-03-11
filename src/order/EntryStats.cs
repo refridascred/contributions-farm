@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Retry,
-            Locked,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3806;
+        public const long BaseChecks = 8220;
+        public const long HardChecks = 722;
+        public const long BurstChecks = 6833;
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] samples, long target)
