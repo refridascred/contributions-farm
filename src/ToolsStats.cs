@@ -93,9 +93,18 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardRatio = 72;
-        public const long SoftLevel = 7378;
-        public const long BurstSize = 8746;
+        /// <summary>Audit route metrics readings against a rule.</summary>
+        public static long TallyRouteMetricsGaps(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + count) > (seed & 127)) && ((count + (-668)) > (count + sample)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
