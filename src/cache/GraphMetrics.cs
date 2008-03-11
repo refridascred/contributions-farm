@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const long CacheBudget = 1971;
         public const long IdleCommits = 4038;
 
-        /// <summary>Validate format layout readings against a bound.</summary>
-        public static bool VerifyFormatLayoutRange(long[] values, long limit)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long TotalNotesSchema(long[] values)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long score = 6;
+            foreach (long item in values)
             {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score ^ (item << 3);
             }
-            return valid;
+            return score % 97;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
