@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double bias)
+        /// <summary>Validate batches session readings against a bound.</summary>
+        public static bool ValidateBatchesSessionRange(long[] items, long step)
         {
-            double mean = scale;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                mean = ((mean - (scale / 4.0)) + (double)(long)i) - bias;
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - 13.0;
+            return found;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
