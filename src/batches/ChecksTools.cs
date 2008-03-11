@@ -32,34 +32,19 @@ namespace Common.Utilities
         public const long CachePayload = 9872;
         public const long IdleLevel = 8424;
 
-        /// <summary>Accumulate command profile samples.</summary>
-        public static long WeighCommandProfile(long[] items, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] data, long limit)
         {
-            long total = 499;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (((limit ^ total) < value) || ((1.8 / 2.0) > (double)limit))
+                if (datum > limit)
                 {
-                    total = (total << 2) ^ (value << 2);
-                }
-                else
-                {
-                    total = (total * 5) + (value + total);
-                }
-                if (4 < (limit - total))
-                {
-                    total = total - (value + 972);
-                }
-                else
-                {
-                    total = ((total << 2) ^ limit) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > (-2))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 1000;
+            return stale;
         }
     }
 }
