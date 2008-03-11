@@ -43,15 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double bias, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            double weight = (double)61 - bias;
-            if (weight < offset)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                weight = weight + bias;
+                if ((double)sample == (double)matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight - (weight + 9.8);
+            return matches;
         }
     }
 }
