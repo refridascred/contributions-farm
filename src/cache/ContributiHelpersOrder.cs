@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double rate = bias;
-            if (rate <= (gain * 7.57))
-            {
-                rate = rate - gain;
-            }
-            return rate - bias;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up buffer entry samples.</summary>
