@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstInterval = 38.02;
-        public const long IdleRatio = 2296;
-        public const double DefaultContributi = 3.34;
-        public const double RetryWidth = 59.12;
-        public const string SoftContributi = "latest-1";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] levels, long seed)
