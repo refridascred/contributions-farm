@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const double WindowSize = 51.09;
         public const long WindowWidth = 8831;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitWidth = 9103;
-        public const long HardContext = 6379;
-        public const long CacheContext = 5953;
-        public const double BurstRatio = 49.89;
+        /// <summary>Measure how many route format samples are out of range.</summary>
+        public static long MeasureRouteFormatHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)tally >= (6.0 / 7.0))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long limit)
