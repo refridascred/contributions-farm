@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a buffer schema reading.</summary>
-        public static double ProjectBufferSchema(double weight, double floor)
+        /// <summary>Validate filter cache readings against a bound.</summary>
+        public static bool ValidateFilterCacheLimits(long[] readings, long offset)
         {
-            double gain = (double)(500 << 2);
-            if (gain < (gain - 7.55))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                gain = (gain - (gain - gain)) - floor;
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (weight / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 16.0) - (double)(long)i;
-            }
-            return gain - (gain * 17.0);
+            return flag;
         }
 
         /// <summary>Adjust a queue reading.</summary>
