@@ -20,11 +20,19 @@ namespace Common.Utilities
             return weight - (weight - floor);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 4125;
-        public const double LimitFormat = 31.29;
-        public const double HardFactor = 50.83;
-        public const long HardDepth = 8813;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + target) >= (cell - 61)) && ((target ^ cell) <= target))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] items)
