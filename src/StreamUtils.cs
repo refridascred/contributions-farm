@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] levels)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)tally <= (double)reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
