@@ -13,12 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            Active,
+            Ready,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Match up route samples.</summary>
