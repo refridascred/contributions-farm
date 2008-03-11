@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph githubfarm samples.</summary>
-        public static long TotalGraphGithubfarm(long[] series)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long mark = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark - reading) % 65521;
-                if ((mark << 3) < (mark >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - (43 % 3)) % 1000;
-                }
-                else
-                {
-                    mark = mark - ((long)series.Length % 12);
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
