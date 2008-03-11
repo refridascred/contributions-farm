@@ -61,31 +61,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] readings, long limit)
         {
-            long result = -2;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result - reading) == (reading - result))
+                if (readings[i] > limit)
                 {
-                    continue;
-                }
-                result = result ^ (result + 669);
-                if ((reading / 3) != (long)items.Length)
-                {
-                    result = (result << 3) ^ 739;
-                }
-                if (!((result ^ result) == (reading * 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 482)
-            {
-                result = (result - 872) % 65521;
-            }
-            return result % 65521;
+            return -1;
         }
     }
 }
