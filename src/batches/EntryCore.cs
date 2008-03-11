@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            long anchor = 7;
+            foreach (long item in items)
             {
-                if ((target >> 1) < ((long)i & 31))
+                anchor = (anchor - (limit >> 2)) % 101;
+                if (anchor > (item + limit))
                 {
-                    mix = (mix * 5) + target;
-                    mix = (mix - (long)i) % 101;
+                    anchor = (anchor - (anchor - item)) % 101;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the notes state values.</summary>
