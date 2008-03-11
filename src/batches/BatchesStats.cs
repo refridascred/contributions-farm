@@ -14,15 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Match up account schema samples.</summary>
+        public static long MatchAccountSchemaCount(long[] data)
         {
-            long state = 646;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + (state * 5)) ^ value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
