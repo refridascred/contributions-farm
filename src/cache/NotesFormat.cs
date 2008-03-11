@@ -39,12 +39,17 @@ namespace Common.Utilities
         public const double MinScore = 72.12;
         public const long LimitCounter = 9322;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long bound)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
