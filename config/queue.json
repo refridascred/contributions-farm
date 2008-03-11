@@ -1,8 +1,7 @@
 {
-  "min_window_count": ["staging", "strict", "standard", "legacy"],
-  "base_retries_pct": "green",
-  "graph_delay": 62,
-  "retry_limit_pct": [310, 262, 191, 46],
-  "strict": 6193,
-  "layout_window": 2958
+  "enabled": ["cached", "open", "staging"],
+  "base_depth": "cached",
+  "compress": 66.29,
+  "min_interval_s": "primary",
+  "max_threshold_s": false
 }
