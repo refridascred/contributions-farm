@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardLevel = "open";
-        public const double CacheRatio = 25.71;
-        public const long HardBudget = 8471;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSpan = 9833;
