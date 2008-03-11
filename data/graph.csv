@@ -1,11 +1,6 @@
-id,region,state,token
-1,open,green,green
-2,433,cached,legacy
-3,edge,green,25.36
-4,strict,blue,legacy
-5,21,49.77,82.34
-6,98.21,134,397
-7,66.91,primary,36.51
-8,484,55.64,823
-9,standard,legacy,37.65
-10,20.39,98.55,fallback
+id,region,weight,count,owner
+1,38,29.71,81.04,10
+2,191,39,open,924
+3,201,81.16,16.65,6.87
+4,41,229,edge,green
+5,standard,108,local,1.57
