@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long SoftDepth = 8019;
         public const long BurstTimeout = 6128;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (sample < origin)
+                if (!((entry % 64) == (entry % 16)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the notes kind values.</summary>
