@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate cache stats samples.</summary>
-        public static long CombineCacheStats(long[] values, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = 6;
-            foreach (long cell in values)
-            {
-                score = (((score - 51) % 1000) - cell) - origin;
-            }
-            return score;
+            Active,
+            Idle,
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
