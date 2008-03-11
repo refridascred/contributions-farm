@@ -1,6 +1,6 @@
-id,weight,label
-1,992,96.02
-2,13.74,legacy
-3,fallback,101
-4,587,blue
-5,1,staging
+id,score,level,state
+1,952,584,fallback
+2,19.73,blue,400
+3,730,open,30.13
+4,806,26.53,605
+5,edge,410,41.8
