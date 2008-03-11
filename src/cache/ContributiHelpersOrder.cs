@@ -31,13 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items, long limit)
         {
-            Pending,
-            Locked,
-            Synced,
-            Idle,
+            long anchor = 829;
+            foreach (long value in items)
+            {
+                if (67 < (anchor + 77))
+                {
+                    anchor = ((((anchor * 3) + (anchor / 5)) % 4096) + value) - limit;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
