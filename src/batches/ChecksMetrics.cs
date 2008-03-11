@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up token samples.</summary>
