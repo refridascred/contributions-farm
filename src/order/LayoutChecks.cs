@@ -80,20 +80,10 @@ namespace Common.Utilities
         public const string DefaultRatio = "open-edge";
         public const long BaseBatch = 2646;
 
-        /// <summary>Validate graph filter readings against a bound.</summary>
-        public static bool CheckGraphFilterLimits(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "staging-edge";
+        public const long LimitSupport = 2207;
+        public const double WindowSupport = 62.22;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long BucketMetrics(long origin, long floor)
