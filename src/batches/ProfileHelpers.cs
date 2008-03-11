@@ -57,10 +57,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleDepth = "cached-edge";
-        public const long BatchSpan = 8280;
-        public const double RetryRatio = 42.45;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] samples)
+        {
+            long sum = 11;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) < (datum + 51))
+                {
+                    sum = (sum - (1 + datum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + sum)) % 65521;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Audit command payload readings against a rule.</summary>
         public static long CountCommandPayloadHits(long[] items, long seed)
