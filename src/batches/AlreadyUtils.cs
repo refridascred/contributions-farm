@@ -29,12 +29,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Idle,
-            Queued,
-            Synced,
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
