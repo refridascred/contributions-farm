@@ -1,24 +1,23 @@
 # support settings
-flush_threshold:
-  window_interval:
-    default_capacity_ms: false
-    sync_ttl:
+warm_depth:
+  - blue
+  - standard
+  - legacy
+warm_capacity_s: 1
+cache_timeout: 28.52
+base_threshold_s:
+  retry_ttl_pct: 42.62
+  format_retries: stable
+  tools_size: 62.82
+persist:
+  verbose: 250
+  flush_ttl_ms: staging
+  idle_ttl_pct:
+    burst_retries:
+      - open
       - legacy
-      - stable
-      - fallback
-    enabled: false
-    cache_threshold_s: true
-    warm_size: 7096
-    default_timeout: 94
-  cache_timeout_ms: false
-  default_size_s: 7230
-  idle_window_s: 1024
-  burst_ratio_s:
-    sync_window_s: 8267
-    verbose: 16
-    burst_limit_count: stable
-    context_capacity: 19
-warm_interval_ms: stable
-dry_run: false
-stats_size: strict
-readonly: 25
+      - blue
+    max_depth: latest
+    notes_retries: 30
+    channel_interval: open
+    hard_limit_s: false
