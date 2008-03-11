@@ -57,22 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long score = 87;
+            foreach (long sample in items)
             {
-                if ((reading >> 2) <= (-64))
+                if (score > (score - score))
                 {
-                    count = (count + 1) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score ^ (76 >> 5)) % 65521) ^ sample;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
