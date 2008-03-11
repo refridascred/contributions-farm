@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next contributi session value from a seed.</summary>
-        public static long SeriesContributiSession(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry ^ (carry << 3);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 4343;
+        public const long BatchSize = 7718;
+        public const long SoftChannel = 2727;
+        public const string BurstBudget = "strict-1";
+        public const long LimitChannel = 8264;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
