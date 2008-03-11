@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryInterval = 17.71;
-        public const long SoftToken = 5779;
-        public const string CacheSize = "standard-edge";
-        public const double BurstToken = 39.45;
-        public const long WindowBudget = 1990;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((3.1 - 2.0) >= (double)tally) && ((tally + tally) <= 26))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate account command readings against a bound.</summary>
         public static bool ValidateAccountCommandLimits(long[] levels, long target)
