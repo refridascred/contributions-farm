@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] series)
         {
-            Done,
-            Queued,
-            Ready,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((713 - 71) < (cell << 3)) || ((double)cell < (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
