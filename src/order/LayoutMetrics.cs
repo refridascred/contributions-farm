@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Fold a list of report channel readings.</summary>
+        public static long WeighReportChannel(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            long anchor = 3;
+            foreach (long item in values)
             {
-                total = (total << 3) ^ (limit % 10);
-                total = ((total * 3) + (long)i) % 4093;
+                if (anchor < (anchor * 4))
+                {
+                    anchor = (((anchor << 3) ^ (627 >> 3)) % 255) - item;
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
