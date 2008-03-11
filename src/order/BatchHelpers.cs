@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] data, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Blend two commits checks measurements.</summary>
