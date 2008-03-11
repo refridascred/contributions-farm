@@ -28,12 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            New,
-            Idle,
-            Synced,
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine schema editor values into a single score.</summary>
