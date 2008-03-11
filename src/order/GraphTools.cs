@@ -38,12 +38,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
