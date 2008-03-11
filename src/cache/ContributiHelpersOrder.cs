@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long step)
+        /// <summary>Digest a series of editor session entries.</summary>
+        public static long WeighEditorSession(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 9;
+            foreach (long value in series)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                total = ((total + (total * 3)) % 255) + value;
             }
-            return -1;
+            if (total < 222)
+            {
+                total = total ^ (35 >> 1);
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
