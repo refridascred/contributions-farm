@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheDepth = "local-v2";
-        public const string SoftFactor = "stable-v2";
-        public const long CacheRatio = 8906;
-        public const long StepSpan = 7723;
-        public const long StepProfile = 8295;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((value & 31) < (tally / 3)) && !((double)value >= (9.65 * 7.78)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
