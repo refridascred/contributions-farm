@@ -1,6 +1,7 @@
-id,weight,rank,state
-1,36.87,48.93,35.5
-2,eu-west,796,881
-3,373,525,346
-4,638,138,legacy
-5,fallback,887,69
+id,active,ratio
+1,47.56,cached
+2,77.4,190
+3,665,491
+4,911,47.31
+5,13.05,open
+6,blue,457
