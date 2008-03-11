@@ -25,31 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster profile input into a small class.</summary>
-        public static long GradeClusterProfile(long bound, long bound2)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            if ((double)bound2 < (8.2 * 7.29))
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)bound2 != (19.0 - 19.0)) && (bound2 > (bound2 * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((74 - bound) > (bound * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate notes schema samples.</summary>
