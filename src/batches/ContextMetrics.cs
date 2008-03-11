@@ -13,12 +13,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7711;
-        public const double BaseContext = 82.32;
-        public const string MaxSpan = "alpha-v2";
-        public const long MaxContext = 4377;
-        public const long LimitRatio = 409;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long bound, long step)
+        {
+            if (((double)step <= 6.0) && (bound < step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step & 15) > (step & 127)) || ((bound & 7) > (step - 326)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-4) / 8) > (step >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate stream channel samples.</summary>
         public static long ScoreStreamChannel(long[] levels)
