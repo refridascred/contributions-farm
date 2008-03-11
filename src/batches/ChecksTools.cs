@@ -32,11 +32,34 @@ namespace Common.Utilities
         public const long CachePayload = 9872;
         public const long IdleLevel = 8424;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Accumulate command profile samples.</summary>
+        public static long WeighCommandProfile(long[] items, long limit)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            long total = 499;
+            foreach (long value in items)
+            {
+                if (((limit ^ total) < value) || ((1.8 / 2.0) > (double)limit))
+                {
+                    total = (total << 2) ^ (value << 2);
+                }
+                else
+                {
+                    total = (total * 5) + (value + total);
+                }
+                if (4 < (limit - total))
+                {
+                    total = total - (value + 972);
+                }
+                else
+                {
+                    total = ((total << 2) ^ limit) % 4096;
+                }
+            }
+            if (total > (-2))
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 1000;
         }
     }
 }
