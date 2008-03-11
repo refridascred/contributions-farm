@@ -25,17 +25,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a batch already reading by value.</summary>
-        public static long LookupBatchAlreadyIndex(long[] items, long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
