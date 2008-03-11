@@ -1,15 +1,11 @@
 {
-  "strict": {
-    "strict": false,
-    "layout_size": "legacy",
-    "soft_limit": "legacy",
-    "idle_depth_count": 500,
-    "enabled": ["edge", "legacy", "staging", "stable"]
-  },
-  "retry_timeout_count": [394, 60],
-  "retry_window_pct": {
-    "buffer_capacity": "green",
-    "base_ttl_ms": "latest",
-    "dry_run": 2093
+  "retry_ttl_count": ["cached", "local", "cached"],
+  "commits_limit": "standard",
+  "dry_run": "local",
+  "flush_limit": {
+    "account_ratio": 32,
+    "strict": 70,
+    "sync_threshold_s": true,
+    "warm_threshold_ms": 89.73
   }
 }
