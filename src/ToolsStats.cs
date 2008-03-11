@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 6778;
-        public const long CacheCluster = 4098;
-        public const long WindowScore = 4238;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long target)
+        {
+            if (((double)target < (15.0 - 8.0)) && (target > (limit * 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((target + limit) >= (limit / 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelRange(long[] data, long target)
