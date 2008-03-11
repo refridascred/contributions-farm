@@ -1,17 +1,7 @@
 {
-  "editor_ratio": "open",
-  "min_ttl_s": [464, 110],
-  "command_limit": 3976,
-  "dry_run": true,
-  "hard_timeout_s": {
-    "warm_limit_count": 41,
-    "sync_timeout_ms": 3.89,
-    "cache_depth": {
-      "sync_ttl_s": "latest",
-      "batch_ttl": [497, 302, 362, 201],
-      "batch_ratio": 930,
-      "tools_ttl": [329, 445, 413],
-      "dry_run": 51
-    }
-  }
+  "max_window": "fallback",
+  "idle_ratio_count": "edge",
+  "metrics_ttl": 1024,
+  "soft_timeout_count": [34, 399, 42],
+  "retry_delay_s": false
 }
