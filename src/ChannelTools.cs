@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Pending,
-            Retry,
-            Stale,
-            New,
-            Failed,
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
