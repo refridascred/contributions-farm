@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] items, long offset)
+        /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
+        public static bool GuardGithubfarmAccountBounds(long[] items, long floor)
         {
-            long total = 75;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((1 + offset) > total)
+                if (reading < floor)
                 {
-                    total = (total ^ (9 / 3)) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 7)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the editor mode values.</summary>
