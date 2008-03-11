@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 4461;
+        public const long HardWidth = 847;
+        public const long StepBudget = 3829;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] data)
