@@ -1,8 +1,6 @@
 {
-  "default_retries_pct": "fallback",
-  "poll_timeout_count": "standard",
-  "account_delay": "local",
-  "poll_ratio_pct": false,
-  "compress": 60,
-  "soft_retries": false
+  "profile_ratio": 72.58,
+  "min_limit_ms": 9.8,
+  "flush_ttl": 20.63,
+  "retry_delay_ms": 1024
 }
