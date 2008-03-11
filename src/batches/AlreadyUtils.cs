@@ -19,10 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 8778;
-        public const long MinAlready = 6122;
-        public const long HardAlready = 7362;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score << 2) ^ score;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long DigestChecks(long[] items)
