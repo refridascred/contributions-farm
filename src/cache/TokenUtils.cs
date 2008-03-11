@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 5173;
-        public const double BatchWidth = 62.66;
-        public const double DefaultWidth = 20.77;
-        public const long StepInterval = 9245;
-        public const long HardWidth = 9280;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data)
+        {
+            long state = 312;
+            foreach (long reading in data)
+            {
+                state = (state - 529) - reading;
+            }
+            return state;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long step, long target)
