@@ -45,22 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command route entries that pass the check.</summary>
-        public static long MeasureCommandRouteMatches(long[] data)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((3 % 2) <= (count * 2))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
