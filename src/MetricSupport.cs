@@ -28,24 +28,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long limit2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] data)
         {
-            if (limit2 >= limit)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.0 + 9.26) > (double)limit2)
+                if ((hits < (2 / 9)) || ((double)hits <= (double)7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 1) ^ entry;
                 }
             }
+            return hits;
         }
     }
 }
