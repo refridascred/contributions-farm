@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double mean = scale * 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)87) - (double)(long)i;
-            }
-            return mean - (bias * 8.0);
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
