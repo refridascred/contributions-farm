@@ -33,24 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values)
-        {
-            long result = 36;
-            foreach (long sample in values)
-            {
-                if ((result << 3) < sample)
-                {
-                    result = (result - (313 & 3)) % 255;
-                }
-                else
-                {
-                    result = result - result;
-                }
-                result = (result - result) % 101;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 74.9;
+        public const long MinContext = 2992;
+        public const long CacheContext = 9974;
+        public const long MinWidth = 9778;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
