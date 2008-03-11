@@ -1,6 +1,5 @@
 {
-  "persist": true,
-  "batch_retries": ["cached", "eu-west"],
-  "dry_run": "standard",
-  "route_interval": true
+  "sync_window": 6238,
+  "route_limit": 95.87,
+  "batch_delay_count": 80.86
 }
