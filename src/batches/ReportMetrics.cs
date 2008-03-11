@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] levels)
         {
-            long score = 52;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (score >= (score / 4))
+                if (7.3 > (double)cell)
                 {
-                    score = (score - score) + item;
+                    hits = hits + 2;
                 }
             }
-            if (score < 465)
-            {
-                score = (score - score) % 101;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
