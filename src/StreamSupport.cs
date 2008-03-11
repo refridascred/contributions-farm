@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] > limit)
+                if ((reading * 2) <= (bound >> 2))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
