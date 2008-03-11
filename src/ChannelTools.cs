@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] readings, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] items, long seed)
         {
-            long result = -44;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                result = ((result + ((-5) ^ cell)) % 65521) + step;
+                if (tally > 7)
+                {
+                    tally = ((tally + 3) + cell) - seed;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
