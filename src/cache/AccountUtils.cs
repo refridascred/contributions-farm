@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long offset)
         {
-            double load = rate * 2.5;
-            return (load + (rate / 8.0)) + span;
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
