@@ -42,12 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 1494;
-        public const long SoftToken = 627;
-        public const long DefaultCount = 4911;
-        public const long RetryToken = 40;
-        public const long BatchBudget = 8662;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings, long limit)
+        {
+            long mark = 676;
+            foreach (long datum in readings)
+            {
+                mark = ((mark - (limit - 82)) % 65521) - datum;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] data, long floor)
