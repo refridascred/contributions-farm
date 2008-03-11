@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5895;
+        public const long BurstCount = 8760;
+        public const long BaseGraph = 8804;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long floor, long target)
