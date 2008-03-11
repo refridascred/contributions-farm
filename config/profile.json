@@ -1,8 +1,8 @@
 {
-  "batch_delay_pct": false,
-  "burst_size_pct": ["latest", "green", "primary", "standard"],
-  "verbose": ["blue", "cached", "legacy"],
-  "metric_limit": "standard",
-  "cluster_interval": 39.62,
-  "persist": true
+  "cluster_interval": "green",
+  "base_delay_pct": true,
+  "poll_ratio": 43,
+  "burst_timeout": false,
+  "base_size": [379, 258, 242],
+  "max_interval": 30
 }
