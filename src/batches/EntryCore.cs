@@ -44,10 +44,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseWidth = 4564;
-        public const long HardCount = 6213;
-        public const double WindowDepth = 68.21;
-        public const string LimitSpan = "alpha-1";
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
