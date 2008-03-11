@@ -84,19 +84,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] readings, long seed)
+        /// <summary>Count report contributi pairs that satisfy a relation.</summary>
+        public static long OverlapReportContributiCount(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
