@@ -1,7 +1,15 @@
 # githubfarm settings
-batch_retries_count: latest
-default_retries_s: 35
-support_timeout: false
-max_ratio_count:
-  - 347
-  - 386
+persist: fallback
+hard_ttl_count: 60
+poll_window:
+  route_interval:
+    - 23
+    - 401
+  max_interval_ms: cached
+  flush_size_ms: 9804
+  burst_limit: fallback
+  editor_size:
+    - staging
+    - edge
+    - blue
+    - cached
