@@ -72,17 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile order entry that matches the target.</summary>
-        public static long SeekProfileOrderIndex(long[] values, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 64;
+            foreach (long item in samples)
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                if ((item / 4) > (floor >> 5))
                 {
-                    return (long)i;
+                    score = ((score * 5) + ((-279) >> 1)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (score & 63)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
