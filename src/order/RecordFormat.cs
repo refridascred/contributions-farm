@@ -27,19 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] samples, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= floor)
+                if (1.4 >= (double)(long)i)
                 {
-                    stale = false;
+                    acc = ((acc << 2) ^ (acc + acc)) % 255;
+                    acc = (acc - (seed + seed)) % 101;
                     break;
                 }
+                acc = ((acc * 5) + ((long)i & 127)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Blend two context measurements.</summary>
