@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long seed)
-        {
-            if ((origin - origin) <= (seed * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin + 5) <= (origin ^ origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-6) << 2) == (seed ^ origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed + origin) >= seed) || ((seed ^ origin) != (origin & 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 7260;
+        public const double MaxSpan = 36.19;
+        public const string StepWindow = "strict";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportOutliers(long[] series, long limit)
