@@ -48,12 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Locked,
+            Pending,
+            New,
+            Stale,
+            Paused,
             Active,
-            Queued,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
