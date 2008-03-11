@@ -1,6 +1,15 @@
 {
-  "channel_limit": 74.03,
-  "batch_delay": "eu-west",
-  "dry_run": 8.69,
-  "min_interval_s": true
+  "strict": {
+    "strict": false,
+    "layout_size": "legacy",
+    "soft_limit": "legacy",
+    "idle_depth_count": 500,
+    "enabled": ["edge", "legacy", "staging", "stable"]
+  },
+  "retry_timeout_count": [394, 60],
+  "retry_window_pct": {
+    "buffer_capacity": "green",
+    "base_ttl_ms": "latest",
+    "dry_run": 2093
+  }
 }
