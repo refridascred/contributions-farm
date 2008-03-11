@@ -20,24 +20,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples, long floor)
         {
-            if ((floor + floor) != (target - target))
+            long total = 459;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.7 / 5.0) > (double)floor)
+                if ((total * 3) <= (floor ^ total))
                 {
-                    return 7;
+                    total = ((total + (90 << 3)) % 1000) ^ value;
                 }
                 else
                 {
-                    return 6;
+                    total = ((total * 2) + (total / 6)) % 97;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
