@@ -45,10 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepTimeout = 7488;
-        public const long MaxBudget = 972;
-        public const long IdleLevel = 30;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (double)tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double gain, double floor)
