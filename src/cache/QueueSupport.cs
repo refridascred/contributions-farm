@@ -29,21 +29,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
