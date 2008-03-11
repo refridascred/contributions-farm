@@ -1,23 +1,12 @@
 # support settings
-warm_depth:
-  - blue
-  - standard
-  - legacy
-warm_capacity_s: 1
-cache_timeout: 28.52
-base_threshold_s:
-  retry_ttl_pct: 42.62
-  format_retries: stable
-  tools_size: 62.82
-persist:
-  verbose: 250
-  flush_ttl_ms: staging
-  idle_ttl_pct:
-    burst_retries:
-      - open
-      - legacy
-      - blue
-    max_depth: latest
-    notes_retries: 30
-    channel_interval: open
-    hard_limit_s: false
+warm_ratio_ms: open
+notes_timeout: fallback
+support_ratio: 100
+idle_interval: 100
+hard_ttl: primary
+max_interval:
+  retry_size: 90
+  dry_run: 500
+  stats_depth: true
+  sync_capacity: 6.96
+  warm_delay_count: 60
