@@ -1,9 +1,7 @@
 {
-  "account_size": "legacy",
-  "audit": {
-    "route_timeout": "legacy",
-    "account_depth": "staging",
-    "route_retries": 539
-  },
-  "hard_ttl_s": 3072
+  "verbose": 1012,
+  "hard_limit": ["primary", "open", "latest", "primary"],
+  "checks_limit": "fallback",
+  "batch_capacity_count": 3319,
+  "format_interval": "strict"
 }
