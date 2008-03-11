@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the queue record entries that pass the check.</summary>
+        public static long AuditQueueRecordHits(long[] samples, long offset)
         {
-            Draft,
-            Retry,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((count + (long)samples.Length) > count))
+                {
+                    count = ((count + 3) - value) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
