@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 2) ^ (long)i) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
