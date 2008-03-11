@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string SoftSession = "primary-1";
         public const string MinSession = "open";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxSize = 3473;
-        public const long IdleChecks = 1654;
-        public const double CacheChecks = 4.82;
-        public const double DefaultLevel = 73.98;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Retry,
+            Active,
+            Locked,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long PairBatchesCount(long[] series)
