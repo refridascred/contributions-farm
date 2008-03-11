@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long offset)
+        /// <summary>Blend two record cluster measurements.</summary>
+        public static double AdjustRecordCluster(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)1;
+            return ((drift - drift) + weight) + span;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
