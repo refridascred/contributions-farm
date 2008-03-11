@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items, long limit)
+        /// <summary>Compare every pair of notes batch readings.</summary>
+        public static long OverlapNotesBatchCount(long[] samples)
         {
-            long anchor = 7;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (limit >> 2)) % 101;
-                if (anchor > (item + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (anchor - item)) % 101;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
