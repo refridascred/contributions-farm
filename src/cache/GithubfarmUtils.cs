@@ -22,16 +22,13 @@ namespace Common.Utilities
         public const long CacheDepth = 3789;
         public const long HardSpan = 1477;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum ^ (2 ^ offset);
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
