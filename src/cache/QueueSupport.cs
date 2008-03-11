@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every context command entry stays within the limit.</summary>
-        public static bool ValidateContextCommandRange(long[] samples, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (entry >= floor)
+                if (datum < floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
