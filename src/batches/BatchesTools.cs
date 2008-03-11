@@ -20,17 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the checks status values.</summary>
