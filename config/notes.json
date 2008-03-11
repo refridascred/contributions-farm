@@ -1,5 +1,7 @@
 {
-  "warm_ttl_pct": 91.88,
-  "default_size_count": 10.71,
-  "batch_delay": 100
+  "enabled": ["primary", "local", "green", "strict"],
+  "dry_run": 60,
+  "sync_size": true,
+  "retry_interval": 70.97,
+  "context_timeout": [298, 145, 477]
 }
