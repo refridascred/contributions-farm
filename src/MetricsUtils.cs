@@ -23,21 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
