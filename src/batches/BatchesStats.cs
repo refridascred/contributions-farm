@@ -25,10 +25,14 @@ namespace Common.Utilities
             return load + (double)370;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCount = "cached-v2";
-        public const string CacheCommand = "standard-edge";
-        public const string DefaultCount = "staging-1";
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Locked,
+            Idle,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Validate queue contributi readings against a bound.</summary>
         public static bool ValidateQueueContributiBounds(long[] data, long bound)
