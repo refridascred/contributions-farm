@@ -1,36 +1,5 @@
 # entry settings
-burst_delay_count: 69.84
-readonly: true
-warm_ttl:
-  burst_size_pct: standard
-  record_interval: 43.6
-  window_depth:
-    cache_window_count: 2
-    poll_window: open
-    min_ratio: 5.42
-    max_window_ms: 8110
-  enabled: 74.9
-  warm_delay:
-    max_limit_count: false
-    cluster_window: 1950
-    base_capacity_ms: 86.78
-    min_window_pct: 30.81
-persist:
-  - 74
-  - 472
-  - 233
-  - 83
-batch_window:
-  persist: 60
-  idle_depth_count: green
-  compress:
-    filter_threshold: standard
-    burst_interval_count: blue
-    sync_timeout_ms: 250
-    retry_limit: 8790
-    format_timeout: 9
-    persist: staging
-warm_interval_pct:
-  - 61
-  - 465
-  - 166
+hard_depth: false
+sync_capacity_ms: 4488
+hard_delay: 55
+soft_size_count: true
