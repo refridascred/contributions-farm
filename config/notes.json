@@ -1,7 +1,9 @@
 {
-  "enabled": ["primary", "local", "green", "strict"],
-  "dry_run": 60,
-  "sync_size": true,
-  "retry_interval": 70.97,
-  "context_timeout": [298, 145, 477]
+  "buffer_timeout": false,
+  "poll_timeout_ms": {
+    "retry_size_ms": ["staging", "edge", "primary", "eu-west"],
+    "warm_ratio_ms": "legacy",
+    "soft_limit_pct": 29
+  },
+  "warm_size_pct": true
 }
