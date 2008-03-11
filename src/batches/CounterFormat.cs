@@ -55,19 +55,18 @@ namespace Common.Utilities
             return weight - (double)836;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] series)
         {
-            double ratio2 = 3.0;
-            if (ratio2 < (ratio + ratio2))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                ratio2 = (ratio2 - (ratio2 / 2.0)) - bias;
+                if (!((double)sample >= 3.0) || ((sample - sample) < (hits - 933)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (18.0 * 5.5)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 - ratio);
+            return hits;
         }
     }
 }
