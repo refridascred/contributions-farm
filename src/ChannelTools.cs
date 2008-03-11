@@ -13,17 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Grade a payload cluster value against two limits.</summary>
