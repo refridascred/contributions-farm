@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] values)
-        {
-            long mark = 69;
-            foreach (long item in values)
-            {
-                if ((mark <= (mark & 1)) || ((item - 8) < (mark - 70)))
-                {
-                    mark = (mark + mark) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 7282;
+        public const long MinFilter = 5827;
+        public const long MaxFilter = 3634;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] series, long floor)
