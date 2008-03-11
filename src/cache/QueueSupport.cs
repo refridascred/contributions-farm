@@ -20,21 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = floor ^ step;
+            if (((step + floor) < (diff & 3)) && (9 < floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step / 5) <= diff) || ((diff - 33) <= (step * 2)))
                 {
-                    if ((levels[i] + levels[j]) < 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((diff + step) > (27 % 64))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
