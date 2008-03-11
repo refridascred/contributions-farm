@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinRatio = 57.65;
+        public const long CacheBudget = 6547;
+        public const long BurstFarm = 4950;
+        public const string IdleFarm = "staging";
+        public const long HardFarm = 9563;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] data)
