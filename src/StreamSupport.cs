@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((reading * 2) <= (bound >> 2))
+                if (reading >= step)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
