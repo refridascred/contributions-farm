@@ -30,10 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 5342;
-        public const double SoftOrder = 13.09;
-        public const long MinOrder = 2184;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 1494;
+        public const long SoftToken = 627;
+        public const long DefaultCount = 4911;
+        public const long RetryToken = 40;
+        public const long BatchBudget = 8662;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchLevel = 1666;
