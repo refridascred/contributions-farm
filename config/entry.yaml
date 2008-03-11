@@ -1,4 +1,13 @@
 # entry settings
-editor_retries: true
-poll_window: 4730
-hard_threshold_pct: 21.45
+persist:
+  - 365
+  - 100
+  - 195
+  - 350
+batch_threshold: 24.73
+dry_run: open
+batch_threshold_s:
+  enabled: 100
+  entry_size: 1294
+  batches_threshold: 8119
+  batch_depth_ms: legacy
