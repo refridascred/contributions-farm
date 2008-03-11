@@ -29,12 +29,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a window route pair into a bucket.</summary>
+        public static long ClassifyWindowRoute(long target, long origin)
         {
-            Dropped,
-            Synced,
-            Ready,
+            if (origin <= 9)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin + origin) <= (target % 16)) || ((double)origin != (13.0 - 6.76)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
