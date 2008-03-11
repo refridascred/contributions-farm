@@ -25,18 +25,11 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Count the batches record entries that pass the check.</summary>
-        public static long AuditBatchesRecordOutliers(long[] items)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!((double)seen != (4.3 + 1.9)))
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
