@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowDepth = 4444;
-        public const double MaxChannel = 67.16;
-        public const long WindowChannel = 4428;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Ready,
+            Locked,
+            Done,
+            Draft,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinCommits = 6605;
