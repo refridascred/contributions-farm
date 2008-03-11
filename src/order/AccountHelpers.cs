@@ -71,19 +71,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] levels, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            if ((double)origin >= (0.76 / 2.0))
             {
-                if (value >= limit)
+                return 5;
+            }
+            else
+            {
+                if ((4.0 + 8.2) < (double)origin)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + 520) < (362 ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
