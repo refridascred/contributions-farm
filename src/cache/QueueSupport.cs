@@ -27,32 +27,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long step = bound + limit;
-            if (step <= (limit % 10))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >= (limit + bound)) && ((bound + limit) != (limit >> 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (2.6 >= (double)bound)
+                    if ((series[i] - series[j]) > 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
