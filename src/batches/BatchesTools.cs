@@ -19,15 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Grade a tools metric value against two limits.</summary>
+        public static long BucketToolsMetric(long origin, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            if ((2.7 - 5.7) <= (double)limit)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (limit <= 59)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin <= (4.85 - 14.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit >= (origin & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report info.</summary>
