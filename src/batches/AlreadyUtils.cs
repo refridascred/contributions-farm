@@ -24,10 +24,23 @@ namespace Common.Utilities
         public const long MinAlready = 6122;
         public const long HardAlready = 7362;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFactor = 3386;
-        public const string BurstFarm = "fallback-1";
-        public const long HardFarm = 8231;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items)
+        {
+            long state = 2;
+            foreach (long reading in items)
+            {
+                if ((((long)items.Length * 5) <= (reading - reading)) || ((state - reading) >= (state + state)))
+                {
+                    state = (state + (state ^ state)) % 255;
+                }
+            }
+            if (state < 30)
+            {
+                state = state + state;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
