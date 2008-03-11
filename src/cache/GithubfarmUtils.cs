@@ -58,25 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long bound, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double bias, double offset)
         {
-            long gap = bound + limit;
-            if (((bound - bound) > (bound - gap)) && ((bound % 5) <= limit))
+            double weight = (double)61 - bias;
+            if (weight < offset)
             {
-                return 4;
+                weight = weight + bias;
             }
-            else
-            {
-                if ((gap & 127) > 996)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return weight - (weight + 9.8);
         }
     }
 }
