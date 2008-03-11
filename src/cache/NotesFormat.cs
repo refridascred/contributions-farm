@@ -15,19 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] levels, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
