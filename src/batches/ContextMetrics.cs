@@ -24,20 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long ScoreStreamChannel(long[] levels)
         {
-            long state = 65;
-            foreach (long reading in readings)
+            long mix = 29;
+            foreach (long entry in levels)
             {
-                state = ((state << 2) ^ (26 % 16)) % 4096;
-                state = (state + (state + reading)) % 4096;
-                if ((9.0 * 18.0) > (double)state)
+                if (!((entry + entry) > entry))
                 {
-                    state = (state + (state & 255)) % 65521;
+                    mix = (mix ^ mix) % 101;
+                }
+                else
+                {
+                    mix = (mix - (entry - mix)) % 65521;
                 }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a buffer entry.</summary>
