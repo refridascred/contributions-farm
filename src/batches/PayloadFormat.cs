@@ -27,22 +27,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long total = 459;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total * 3) <= (floor ^ total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total + (90 << 3)) % 1000) ^ value;
-                }
-                else
-                {
-                    total = ((total * 2) + (total / 6)) % 97;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
