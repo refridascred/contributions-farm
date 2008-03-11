@@ -1,17 +1,5 @@
 {
-  "command_timeout": true,
-  "cache_size_ms": {
-    "verbose": "latest",
-    "min_timeout": "legacy",
-    "default_delay_pct": "eu-west"
-  },
-  "burst_capacity": ["latest", "latest", "standard"],
-  "window_window": {
-    "checks_retries": 9007,
-    "session_limit": 71,
-    "poll_interval": "standard",
-    "layout_delay": "blue",
-    "min_depth": 30
-  },
-  "default_threshold_s": true
+  "base_threshold_ms": "primary",
+  "max_ttl": 71,
+  "idle_limit": "open"
 }
