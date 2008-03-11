@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Paused,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 1958;
+        public const double BaseEntry = 90.09;
+        public const long IdleEntry = 2726;
 
         /// <summary>Blend two commits checks measurements.</summary>
         public static double AdjustCommitsChecks(double bias, double floor)
