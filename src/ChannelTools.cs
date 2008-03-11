@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long acc = 2;
-            foreach (long datum in items)
+            long acc = -7;
+            foreach (long value in levels)
             {
-                if (datum < acc)
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = acc + ((-78) << 2);
+                    acc = ((acc + (value + value)) % 101) + (long)i;
+                }
+                if (!(acc < (value * 3)))
+                {
+                    acc = acc - (acc * 4);
+                }
+                if (((value ^ acc) != (value * 2)) && ((0.75 - 4.79) > (double)acc))
+                {
+                    break;
                 }
             }
-            return acc % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Hold a counter stats.</summary>
