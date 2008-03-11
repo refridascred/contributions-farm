@@ -65,15 +65,16 @@ namespace Common.Utilities
         public const long BurstInterval = 7305;
         public const long WindowToken = 8896;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Iterate the entry tools series from a seed.</summary>
+        public static long StepEntryTools(long limit)
         {
-            double bias = (double)(6 >> 1);
-            if (bias <= (9.3 * 18.0))
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                bias = ((bias - (double)531) + weight) + span;
+                acc = (acc ^ limit) % 4096;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return bias + (1.3 * 3.2);
+            return acc;
         }
     }
 }
