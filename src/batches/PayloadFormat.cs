@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const long IdleWidth = 7557;
         public const string LimitLevel = "staging-1";
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long seed2)
+        /// <summary>Validate layout route readings against a bound.</summary>
+        public static bool VerifyLayoutRouteRange(long[] data, long limit)
         {
-            if ((seed <= seed2) || ((seed2 - 23) > (seed >> 4)))
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed - 66))
+                if (value >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed2 % 3) != (seed2 << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
