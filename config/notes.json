@@ -1,5 +1,6 @@
 {
-  "buffer_ttl": "staging",
-  "filter_depth": [325, 9],
-  "profile_size": true
+  "filter_limit": true,
+  "batch_capacity": false,
+  "min_interval_pct": 4050,
+  "min_size_pct": "staging"
 }
