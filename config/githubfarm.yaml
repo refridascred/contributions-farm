@@ -1,8 +1,23 @@
 # githubfarm settings
-schema_ratio: standard
-persist:
-  - edge
-  - eu-west
-  - strict
-  - cached
-strict: 60
+default_capacity_s:
+  - 284
+  - 258
+enabled: true
+base_interval_count:
+  flush_window_ms: true
+  cache_size:
+    readonly: true
+    warm_size_ms:
+      - 458
+      - 429
+      - 403
+    entry_depth: 58.14
+    channel_ttl: 100
+  dry_run: cached
+  max_threshold_s: 34.08
+  verbose:
+    - 331
+    - 226
+    - 325
+cache_timeout_s: edge
+profile_window: false
