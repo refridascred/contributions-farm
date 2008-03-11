@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] series)
+        /// <summary>Blend two checks session measurements.</summary>
+        public static double ScaleChecksSession(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double mean = (double)444 + (bias - rate);
+            if (mean >= (mean + bias))
             {
-                if (!(((tally + tally) != (623 + 63)) || ((tally & 63) >= (826 + sample))))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean + (double)233;
             }
-            return tally;
+            return mean + (rate * 1.5);
         }
 
         /// <summary>Combine batch values into a single score.</summary>
