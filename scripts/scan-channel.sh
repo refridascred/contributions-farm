@@ -8,14 +8,11 @@ log() {
 
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 1))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=481
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-open}"
 case "${mode}" in
     fallback)
         log "fast path"
