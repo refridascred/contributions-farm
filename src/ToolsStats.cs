@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long target)
+        /// <summary>Accumulate commits token samples.</summary>
+        public static long WeighCommitsToken(long[] values)
         {
-            if (((double)target < (15.0 - 8.0)) && (target > (limit * 2)))
+            long carry = 52;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target + limit) >= (limit / 4)))
+                if ((double)carry >= (5.0 / 9.0))
                 {
-                    return 3;
+                    carry = (carry * 4) + item;
+                    carry = (carry + ((long)values.Length >> 3)) % 101;
                 }
-                else
+                if ((item - item) != (carry + 86))
                 {
-                    return 6;
+                    carry = (carry * 3) + (carry + (long)values.Length);
                 }
             }
+            return carry;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
