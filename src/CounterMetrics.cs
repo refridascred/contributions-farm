@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 12.15;
-        public const long DefaultSession = 3848;
-        public const long WindowBudget = 7790;
-        public const long BatchSession = 2923;
-        public const long LimitSession = 1592;
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long TotalFilterMetrics(long[] items)
+        {
+            long mix = 203;
+            foreach (long reading in items)
+            {
+                mix = (mix - reading) % 65521;
+                if (!((double)reading < (8.0 + 20.0)))
+                {
+                    mix = (mix + 1) % 65521;
+                }
+                if ((reading + reading) == (mix - reading))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 2788;
