@@ -17,27 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] samples, long limit)
         {
-            long total = 756;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                double drift = (4.9 + 8.9) * 18.0;
-                if ((((-283) + total) > (total ^ reading)) && (drift >= (9.5 / 9.0)))
+                if ((9.0 + 9.3) > (double)limit)
                 {
-                    drift = drift + drift;
-                }
-                if ((reading + total) < reading)
-                {
-                    total = total + (total - 645);
+                    count = (count + 3) ^ reading;
                 }
                 else
                 {
-                    total = (total + (-9)) % 101;
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
