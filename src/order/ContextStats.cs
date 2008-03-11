@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long target2)
         {
-            Pending,
-            Closed,
-            Idle,
-            New,
+            if (((target2 + 8) > target2) || (target2 <= (target * 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.23 - 6.7) < (double)target2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Rank stats metrics input into a small class.</summary>
