@@ -26,11 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 154;
-        public const long MinRatio = 5306;
-        public const double BurstEditor = 10.23;
-        public const double CacheWidth = 47.47;
-        public const long BaseScore = 3818;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
