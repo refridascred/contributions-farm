@@ -1,7 +1,8 @@
 {
-  "compress": false,
-  "profile_depth": false,
-  "record_ttl": "latest",
-  "max_capacity": true,
-  "retry_threshold_ms": 100
+  "order_timeout": ["staging", "edge", "eu-west", "eu-west"],
+  "sync_ratio_s": 6224,
+  "retry_limit_s": "stable",
+  "flush_delay_pct": 50.66,
+  "channel_capacity": 27.19,
+  "burst_timeout_pct": 41
 }
