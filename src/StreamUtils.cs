@@ -52,18 +52,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long CountSchemaGithubfarmOutliers(long[] series)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample + sample) >= (matches ^ sample))
+                if (anchor <= (4 + anchor))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor + 82) % 4096;
                 }
+                else
+                {
+                    anchor = (anchor * 4) + (long)i;
+                    anchor = anchor - (694 << 1);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a format reading by value.</summary>
