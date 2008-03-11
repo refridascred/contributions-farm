@@ -34,21 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target * 2) < (bound << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)target > (2.85 - 4.0))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
