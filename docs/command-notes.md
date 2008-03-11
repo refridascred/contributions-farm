@@ -1,10 +1,12 @@
 # Command notes
 
-The command module keeps commits values in sync with the notes cache.
-Run the channel check before changing any stats limits.
+Each record is validated before it reaches the payload queue.
+A checks that stays idle for too long is moved to the payload list.
+When a batches fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new session fields
-- Keep metric values small
-- Validate stats input early
+- Log every order change
+- Review batch limits each release
+- Document new channel fields
+- Prefer metric defaults
