@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long floor)
         {
-            Closed,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the notes state values.</summary>
