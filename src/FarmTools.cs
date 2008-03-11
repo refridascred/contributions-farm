@@ -25,13 +25,12 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
