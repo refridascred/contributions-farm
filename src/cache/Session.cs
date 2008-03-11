@@ -56,19 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] data, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (value < floor)
+                if ((18.0 * 11.0) <= (double)item)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
