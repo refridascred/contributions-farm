@@ -58,18 +58,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] data, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 2) < (seed % 16))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Synced,
+            Ready,
+            Dropped,
         }
     }
 }
