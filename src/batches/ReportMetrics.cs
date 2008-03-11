@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many already context samples are out of range.</summary>
+        public static long MeasureAlreadyContextMatches(long[] samples)
         {
-            Closed,
-            Idle,
-            Ready,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((1.0 < (double)item) && ((seen ^ seen) > (88 + seen))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks info.</summary>
