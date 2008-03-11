@@ -29,18 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] items, long limit)
+        /// <summary>Match up profile format samples.</summary>
+        public static long MatchProfileFormatCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((4.0 < (double)474) || ((281 + matches) > (8 + matches))) && ((limit + datum) <= (datum << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
