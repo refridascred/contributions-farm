@@ -28,10 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 4528;
-        public const long BaseGithubfarm = 5;
-        public const double BatchGithubfarm = 1.88;
-        public const long CacheRatio = 2525;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double bias2)
+        {
+            double scale = 1.4;
+            return ((scale + scale) + bias) + bias2;
+        }
     }
 }
