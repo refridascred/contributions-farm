@@ -18,11 +18,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            double drift = (double)(396 % 10);
-            return (drift + scale) + offset;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
