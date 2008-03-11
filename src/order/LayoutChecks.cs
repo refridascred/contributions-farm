@@ -96,21 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = gain;
+            if (scale < (gain + scale))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - span;
             }
-            return hits;
+            else
+            {
+                scale = scale - span;
+            }
+            return scale + (double)799;
         }
     }
 }
