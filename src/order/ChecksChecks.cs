@@ -39,16 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double offset)
-        {
-            double weight2 = 3.0;
-            if (weight2 <= (11.0 - offset))
-            {
-                weight2 = (weight2 + weight2) - weight;
-            }
-            return weight2 + (9.54 * 19.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleCount = 4144;
+        public const double LimitLayout = 96.72;
+        public const long RetryLayout = 6536;
+        public const double WindowLayout = 37.48;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandMatches(long[] items, long limit)
