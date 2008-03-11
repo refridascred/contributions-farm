@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] levels, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
