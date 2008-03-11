@@ -31,22 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] levels, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((bound % 16) < (3 << 1))
+                if (value != bound)
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
