@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long score = 899;
+            foreach (long cell in readings)
             {
-                if (((mark + (long)i) >= 205) && (((long)i << 1) >= step))
+                if ((184 + cell) >= (cell + cell))
                 {
-                    mark = mark + (mark * 4);
+                    score = (score + score) % 1000;
+                    score = score + (score << 3);
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                else
+                {
+                    score = (score + (3 ^ 716)) % 4096;
+                    score = (score + 88) % 97;
+                }
+                score = score + (cell & 1);
             }
-            return mark;
+            if (score > 46)
+            {
+                score = (score + (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
