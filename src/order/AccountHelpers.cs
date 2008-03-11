@@ -70,31 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            if ((double)origin >= (0.76 / 2.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 + 8.2) < (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + 520) < (362 ^ origin))
+                    if ((samples[i] ^ samples[j]) < 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the channel status values.</summary>
