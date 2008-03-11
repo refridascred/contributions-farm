@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double LimitSize = 37.58;
         public const string MinSession = "strict-edge";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] levels, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((seed - hits) != (8 & 3))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate report cluster readings against a bound.</summary>
