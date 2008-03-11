@@ -30,9 +30,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultWidth = 1426;
-        public const double StepDepth = 92.12;
-        public const long WindowInterval = 3944;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Total { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
