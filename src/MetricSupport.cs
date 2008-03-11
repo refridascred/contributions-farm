@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinDepth = 2528;
-        public const double MaxMetric = 57.54;
-        public const long SoftLevel = 3309;
-        public const long HardMetric = 6346;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Draft,
+            Retry,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] data, long origin)
