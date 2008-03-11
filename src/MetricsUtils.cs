@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items)
+        /// <summary>Measure how many order already samples are out of range.</summary>
+        public static long TallyOrderAlreadyGaps(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!(((double)seen < 9.0) || (reading < (reading - reading))))
+                if ((double)hits > (double)step)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) + item;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up token samples.</summary>
