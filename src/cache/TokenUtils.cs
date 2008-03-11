@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardInterval = 17.42;
-        public const string MaxSupport = "latest-edge";
-        public const long DefaultCount = 748;
-        public const string IdleDepth = "stable";
+        /// <summary>Look up the position of a entry checks sample.</summary>
+        public static long FindEntryChecksIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double weight, double offset)
