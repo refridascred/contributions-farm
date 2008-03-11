@@ -23,39 +23,18 @@ namespace Common.Utilities
         public const long BurstCount = 8760;
         public const long BaseGraph = 8804;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] samples)
         {
-            long diff = floor - target;
-            if (((4.4 * 5.0) == (double)floor) && (target >= (target >> 4)))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-191) ^ diff) > (diff * 5))
+                if ((0 + count) < sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + diff) < floor) && ((249 % 16) == (4 + diff)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((diff - diff) <= (diff + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
