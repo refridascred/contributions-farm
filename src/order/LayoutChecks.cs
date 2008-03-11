@@ -45,20 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate channel entry readings against a bound.</summary>
-        public static bool CheckChannelEntryRange(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "staging";
+        public const double CacheBatch = 10.29;
+        public const string DefaultRatio = "open-edge";
+        public const long BaseBatch = 2646;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteGaps(long[] readings, long bound)
