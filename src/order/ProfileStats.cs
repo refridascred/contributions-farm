@@ -37,21 +37,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up account window samples.</summary>
-        public static long MatchAccountWindowCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3867;
+        public const double LimitGithubfarm = 79.0;
+        public const double BurstGithubfarm = 94.2;
+        public const double BatchSize = 26.14;
+        public const long BatchGithubfarm = 7023;
     }
 }
