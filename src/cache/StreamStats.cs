@@ -51,14 +51,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            Synced,
-            Locked,
-            Closed,
-            Dropped,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
