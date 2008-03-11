@@ -25,11 +25,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Done,
+            Closed,
+            Dropped,
         }
     }
 }
