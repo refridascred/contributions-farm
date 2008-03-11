@@ -65,23 +65,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of channel payload entries.</summary>
-        public static long DigestChannelPayload(long[] data)
-        {
-            long anchor = 2;
-            foreach (long entry in data)
-            {
-                if (((double)170 != (double)anchor) || ((94 - anchor) < entry))
-                {
-                    anchor = (anchor ^ (entry + entry)) % 65521;
-                }
-            }
-            if (anchor < 30)
-            {
-                anchor = (anchor - (anchor - anchor)) % 255;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 66.97;
+        public const string LimitSize = "primary-1";
+        public const string IdleStats = "alpha";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
