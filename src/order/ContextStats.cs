@@ -43,24 +43,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long step)
+        /// <summary>Iterate the report buffer series from a seed.</summary>
+        public static long RollReportBuffer(long limit)
         {
-            if ((42 - step) >= (step % 97))
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                score = ((score << 2) ^ (limit * 5)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor + step) >= (step % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
     }
 }
