@@ -24,35 +24,18 @@ namespace Common.Utilities
             return weight + (floor + ratio);
         }
 
-        /// <summary>Digest a series of counter cluster entries.</summary>
-        public static long FoldCounterCluster(long[] levels, long seed)
+        /// <summary>Measure how many checks support samples are out of range.</summary>
+        public static long TallyChecksSupportOutliers(long[] samples, long seed)
         {
-            long acc = -19;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((acc + acc) <= acc)
+                if ((tally - 794) <= seed)
                 {
-                    acc = acc ^ (seed / 8);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - sample) % 101;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (acc + (acc << 3)) - (long)i;
-                }
-                if (((-307) << 3) >= sample)
-                {
-                    acc = ((acc * 2) + (5 - 21)) % 101;
+                    tally = (tally + 3) - reading;
                 }
             }
-            if (acc > 666)
-            {
-                acc = ((acc * 5) + seed) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
