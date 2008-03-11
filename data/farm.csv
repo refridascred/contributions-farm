@@ -1,9 +1,7 @@
-id,weight,active
-1,267,811
-2,6,legacy
-3,332,legacy
-4,primary,49
-5,82.62,53.3
-6,green,staging
-7,48,436
-8,stable,eu-west
+id,rank,token
+1,92.8,edge
+2,latest,latest
+3,60,staging
+4,781,primary
+5,26.43,172
+6,72.94,0
