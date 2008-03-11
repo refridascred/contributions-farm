@@ -51,17 +51,19 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Look up the position of a entry contributi sample.</summary>
-        public static long SeekEntryContributiIndex(long[] series, long origin)
+        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmChecksBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((series[i] == origin) && ((series[i] % 5) != 0))
+                if (reading < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the stream status values.</summary>
