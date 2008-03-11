@@ -16,18 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session schema readings against a rule.</summary>
-        public static long MeasureSessionSchemaHits(long[] items, long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((count + reading) > (bound >> 5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
