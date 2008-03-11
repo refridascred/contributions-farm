@@ -23,14 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Blend two account buffer measurements.</summary>
+        public static double ScaleAccountBuffer(double weight, double bias)
         {
-            Done,
-            Closed,
-            Active,
-            Draft,
-            New,
+            double bias2 = (double)(-2);
+            return (bias2 - bias) + weight;
         }
 
         /// <summary>Rank queue entry input into a small class.</summary>
