@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((double)value == (2.67 - 2.0)) || ((tally > (tally - value)) && ((43 ^ tally) >= tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
