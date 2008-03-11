@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples, long floor)
+        /// <summary>Iterate the context schema series from a seed.</summary>
+        public static long SeriesContextSchema(long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count * 3) != (item + 765))
-                {
-                    count = (count + 3) - floor;
-                }
+                sum = (sum + (bound ^ sum)) % 4096;
+                sum = (sum + (8 << 3)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
