@@ -24,13 +24,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            public long Region { get; set; }
             public long Total { get; set; }
-            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
