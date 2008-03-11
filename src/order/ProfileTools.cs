@@ -61,12 +61,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long floor)
         {
-            Locked,
-            Paused,
-            Draft,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((16.0 - 1.3) > (double)floor)
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
