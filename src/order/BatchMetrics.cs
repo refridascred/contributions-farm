@@ -28,26 +28,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long edge = target + bound;
+            if ((edge + (-37)) >= 843)
             {
-                if (acc < 435)
-                {
-                    acc = acc + ((long)i >> 4);
-                    acc = ((acc * 2) + (acc & 3)) % 65521;
-                }
-                if ((seed & 1) < acc)
-                {
-                    acc = (acc ^ (acc & 127)) % 255;
-                    acc = ((acc << 3) ^ (acc + acc)) % 255;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((8.3 * 4.2) >= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)7 < (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target / 9) <= (bound - bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
