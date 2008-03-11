@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] items, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long delta = seed ^ offset;
+            if (((delta - seed) != (seed + delta)) && ((seed - delta) == (offset - seed)))
             {
-                if ((entry % 12) > (matches ^ entry))
+                return 4;
+            }
+            else
+            {
+                if ((37 ^ 8) > delta)
                 {
-                    matches = (matches + 3) + target;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)delta == (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the window checks entries that pass the check.</summary>
