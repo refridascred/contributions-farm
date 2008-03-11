@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            Paused,
-            Ready,
-            Active,
-            Stale,
-            Locked,
+            double rate = bias;
+            if (rate <= (gain * 7.57))
+            {
+                rate = rate - gain;
+            }
+            return rate - bias;
         }
 
         /// <summary>Match up buffer entry samples.</summary>
