@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double scale, double floor)
-        {
-            double ratio = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + scale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleScore = 9485;
+        public const long MaxStats = 6444;
+        public const string StepTimeout = "legacy-edge";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long MatchContextCount(long[] data)
