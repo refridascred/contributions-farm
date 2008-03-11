@@ -52,12 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 3065;
-        public const long StepProfile = 7906;
-        public const long IdleProfile = 1055;
-        public const string BurstScore = "latest-edge";
-        public const string DefaultProfile = "latest";
+        /// <summary>Digest a series of layout already entries.</summary>
+        public static long TallyLayoutAlready(long[] levels, long seed)
+        {
+            long carry = 882;
+            foreach (long datum in levels)
+            {
+                if ((double)carry < (5.6 + 17.0))
+                {
+                    carry = (carry + (datum + seed)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 2) + 79;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double ScaleStream(double weight, double span)
