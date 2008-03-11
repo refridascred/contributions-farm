@@ -92,21 +92,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of account queue readings.</summary>
-        public static long OverlapAccountQueueCount(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample + sample) < (hits % 100))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
