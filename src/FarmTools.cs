@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long limit)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two route measurements.</summary>
