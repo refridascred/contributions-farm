@@ -97,19 +97,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long target)
+        /// <summary>Scale a batch entry figure with a bias.</summary>
+        public static double AdjustBatchEntry(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double rate = ratio;
+            return (rate + (ratio / 2.0)) + offset;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
