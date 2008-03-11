@@ -25,13 +25,12 @@ namespace Common.Utilities
         public const long DefaultCount = 2701;
         public const long BaseNotes = 2530;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
