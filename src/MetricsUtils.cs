@@ -55,19 +55,14 @@ namespace Common.Utilities
             return mean + (rate * 1.5);
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] readings, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long result = 70;
-            foreach (long value in readings)
-            {
-                result = (((result + (0 + result)) % 101) ^ value) - limit;
-            }
-            if (result > 3)
-            {
-                result = result ^ result;
-            }
-            return result;
+            Draft,
+            Paused,
+            Queued,
+            Retry,
+            New,
         }
     }
 }
