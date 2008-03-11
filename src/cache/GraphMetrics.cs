@@ -56,11 +56,16 @@ namespace Common.Utilities
             return weight - (bias - bias);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 48.0;
-        public const long CacheContext = 3126;
-        public const string DefaultDepth = "alpha";
-        public const string RetryContext = "standard";
-        public const double BatchContext = 28.9;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state - ((long)i >> 1)) % 97;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
