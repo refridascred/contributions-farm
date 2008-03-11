@@ -1,13 +1,16 @@
 # Command notes
 
-Use commits settings to tune how often cache data is refreshed.
-The payload report groups every cache by githubfarm.
+The context module keeps cache values in sync with the filter cache.
+When a format fails, the batch handler retries a few times before giving up.
+Keep profile and account names short and lowercase.
 
-Defaults for editor live in the config folder and can be overridden per environment.
-When a route fails, the cache handler retries a few times before giving up.
+The command module keeps notes values in sync with the payload cache.
+When a stream fails, the report handler retries a few times before giving up.
+Each already is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every batches change
-- Prefer batch defaults
-- Keep token values small
+- Document new counter fields
+- Validate profile input early
+- Prefer token defaults
+- Log every farm change
