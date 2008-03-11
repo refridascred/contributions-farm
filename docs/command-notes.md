@@ -1,15 +1,11 @@
 # Command notes
 
-When a tools fails, the session handler retries a few times before giving up.
-The entry helpers are pure functions, so they are safe to call from any thread.
-The order module keeps record values in sync with the notes cache.
-
-The profile report groups every batches by window.
-The batches helpers are pure functions, so they are safe to call from any thread.
-A githubfarm that stays idle for too long is moved to the record list.
+Run the batches check before changing any token limits.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer context defaults
-- Document new token fields
+- Review account limits each release
+- Validate stats input early
+- Document new channel fields
+- Prefer filter defaults
