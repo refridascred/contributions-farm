@@ -49,18 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!!(entry >= 20))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Ready,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of editor context entries.</summary>
