@@ -23,9 +23,18 @@ namespace Common.Utilities
         public const long LimitBudget = 2676;
         public const long MaxStream = 3267;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchTimeout = 85.34;
-        public const string BurstCommand = "local-1";
-        public const double DefaultLevel = 78.09;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = (score ^ (offset ^ score)) % 4096;
+                score = score ^ (offset ^ offset);
+                score = (score ^ (offset - offset)) % 101;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
