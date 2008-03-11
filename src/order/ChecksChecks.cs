@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (sample < offset)
+                if (bound <= (hits ^ bound))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
