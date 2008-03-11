@@ -1,7 +1,10 @@
-id,rank,token
-1,92.8,edge
-2,latest,latest
-3,60,staging
-4,781,primary
-5,26.43,172
-6,72.94,0
+id,state,score,token,ratio
+1,standard,latest,4.46,23.06
+2,223,open,15.17,293
+3,766,91.1,edge,55.53
+4,local,stable,417,10.85
+5,strict,21.21,104,296
+6,cached,blue,26.69,53
+7,521,775,46.36,24.87
+8,482,12.63,stable,cached
+9,0,3.16,408,55.18
