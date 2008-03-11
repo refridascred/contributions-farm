@@ -38,11 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a payload githubfarm reading.</summary>
-        public static double AdjustPayloadGithubfarm(double scale, double floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            double mean = scale * 6.3;
-            return (mean - (mean + mean)) + floor;
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count account order pairs that satisfy a relation.</summary>
