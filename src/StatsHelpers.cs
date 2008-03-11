@@ -32,26 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data)
         {
-            long mix = 6;
-            foreach (long cell in items)
+            long state = 0;
+            foreach (long entry in data)
             {
-                if ((origin / 5) > mix)
+                if ((state <= (state % 100)) || (2 < entry))
                 {
-                    mix = mix - (cell + mix);
-                }
-                else
-                {
-                    mix = mix ^ (long)items.Length;
+                    state = (state ^ (90 << 2)) % 97;
                 }
             }
-            if (mix < 13)
+            if (state > (-27))
             {
-                mix = (mix << 2) ^ (origin - origin);
+                state = state ^ state;
             }
-            return mix % 65521;
+            return state % 97;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
