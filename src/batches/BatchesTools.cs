@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score ^ (bound % 60)) % 4096;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 50.62;
+        public const double MaxDepth = 11.06;
+        public const double SoftWindow = 69.74;
+        public const string CacheLevel = "staging-1";
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long target)
