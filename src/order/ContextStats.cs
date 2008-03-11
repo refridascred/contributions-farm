@@ -40,16 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the report buffer series from a seed.</summary>
-        public static long RollReportBuffer(long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score << 2) ^ (limit * 5)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
