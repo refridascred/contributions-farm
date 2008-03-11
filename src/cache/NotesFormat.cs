@@ -15,13 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
