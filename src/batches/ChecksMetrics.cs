@@ -47,19 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long origin)
+        /// <summary>Locate a editor command reading by value.</summary>
+        public static long LookupEditorCommandIndex(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= origin)
+                if ((samples[i] == floor) && ((samples[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
