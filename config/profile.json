@@ -1,6 +1,6 @@
 {
-  "batch_capacity_s": true,
-  "format_delay": 89.46,
-  "min_size_ms": 250,
-  "batches_threshold": 38
+  "max_threshold_count": 1057,
+  "profile_threshold": 56,
+  "retry_retries": 5437,
+  "idle_delay": false
 }
