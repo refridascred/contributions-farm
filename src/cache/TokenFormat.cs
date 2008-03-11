@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const long BatchScore = 1954;
         public const long LimitSize = 9732;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            Locked,
+            Closed,
+            Active,
+            Done,
         }
     }
 }
