@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 6619;
         public const double RetryCount = 79.31;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 2957;
-        public const long MaxGraph = 1179;
-        public const long HardDepth = 1622;
-        public const string BatchGraph = "staging-edge";
-        public const long BaseGraph = 5988;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((15.0 + 1.2) <= (double)item)
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
