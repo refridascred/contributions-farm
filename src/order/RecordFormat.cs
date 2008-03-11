@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (datum != target)
+                if (entry >= floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
