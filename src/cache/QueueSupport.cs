@@ -48,19 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats layout readings against a bound.</summary>
-        public static bool VerifyStatsLayoutRange(long[] items, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Draft,
+            Synced,
+            New,
         }
     }
 }
