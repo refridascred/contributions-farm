@@ -37,19 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long floor)
+        /// <summary>Check that every stats route entry stays within the limit.</summary>
+        public static bool VerifyStatsRouteRange(long[] samples, long origin)
         {
-            long sum = 748;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                sum = (sum ^ (item + (-76))) - floor;
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < 808)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
+            return found;
         }
     }
 }
