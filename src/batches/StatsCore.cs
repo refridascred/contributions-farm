@@ -47,10 +47,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 66.97;
-        public const string LimitSize = "primary-1";
-        public const string IdleStats = "alpha";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank metrics tools input into a small class.</summary>
         public static long BucketMetricsTools(long floor, long seed)
