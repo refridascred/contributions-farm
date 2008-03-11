@@ -66,11 +66,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSpan = 5625;
-        public const double MaxScore = 38.77;
-        public const long RetryLevel = 3881;
-        public const double BatchInterval = 77.57;
-        public const string DefaultChecks = "primary";
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
