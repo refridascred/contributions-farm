@@ -1,5 +1,16 @@
 # entry settings
-hard_depth: false
-sync_capacity_ms: 4488
-hard_delay: 55
-soft_size_count: true
+retry_window_pct:
+  cache_size_ms:
+    checks_size: 55
+    enabled: 21
+    account_delay: edge
+    min_retries_ms: false
+    cache_interval_ms:
+      - 93
+      - 314
+      - 443
+    schema_threshold: green
+  strict: strict
+  readonly: 0.11
+soft_size_ms: fallback
+retry_threshold: eu-west
