@@ -57,17 +57,28 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Locate a entry context reading by value.</summary>
-        public static long FindEntryContextIndex(long[] levels, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 65;
+            foreach (long item in series)
             {
-                if (levels[i] >= seed)
+                mix = (mix + (item % 2)) % 255;
+                if (!((74 ^ 9) > item))
                 {
-                    return (long)i;
+                    long slot = mix;
+                    mix = (mix + slot) % 1000;
+                }
+                if ((item - item) >= item)
+                {
+                    mix = ((mix << 2) ^ 72) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ item) % 97;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
