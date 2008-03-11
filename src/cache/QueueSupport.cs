@@ -32,21 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((131 + offset) >= (318 - 16)))
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
