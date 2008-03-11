@@ -24,17 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a tools entry reading by value.</summary>
-        public static long LookupToolsEntryIndex(long[] series, long step)
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long TallyBatchesStats(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 885;
+            foreach (long value in readings)
             {
-                if (series[i] < step)
+                sum = (sum << 3) ^ (59 % 5);
+                if ((7.2 + 13.0) <= (double)value)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (6 - (-54))) % 101;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
