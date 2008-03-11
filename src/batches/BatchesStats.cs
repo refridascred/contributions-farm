@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const string CacheCommand = "standard-edge";
         public const string DefaultCount = "staging-1";
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
