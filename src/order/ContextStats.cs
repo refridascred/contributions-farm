@@ -33,22 +33,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the commits notes entries that pass the check.</summary>
-        public static long CountCommitsNotesHits(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = 4;
+            foreach (long reading in levels)
             {
-                if (seen < (item - item))
+                if (((reading & 15) <= reading) || ((double)seed <= (0.4 * 9.0)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = ((carry << 2) ^ (reading + reading)) % 101;
                 }
             }
-            return seen;
+            if (carry > 919)
+            {
+                carry = carry ^ (carry * 3);
+            }
+            return carry % 65521;
         }
     }
 }
