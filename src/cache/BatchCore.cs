@@ -80,11 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Combine filter context values into a single score.</summary>
+        public static long TotalFilterContext(long[] readings, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = 389;
+            foreach (long cell in readings)
+            {
+                if ((step + cell) <= 54)
+                {
+                    mix = (mix - (cell >> 2)) % 97;
+                }
+                else
+                {
+                    mix = (mix - (cell - mix)) % 65521;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
