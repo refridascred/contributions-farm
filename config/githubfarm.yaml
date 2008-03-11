@@ -1,15 +1,19 @@
 # githubfarm settings
-sync_ratio: true
-soft_delay_pct:
-  - 5
-  - 44
-  - 86
-  - 174
-batches_ratio:
-  - 167
-  - 142
-  - 383
-default_timeout:
+poll_retries_ms:
   - strict
   - stable
-retry_depth_pct: 50.23
+  - staging
+  - local
+profile_limit: 30
+githubfarm_window:
+  burst_size: standard
+  hard_size_s:
+    retry_timeout: 500
+    retry_ratio_count: legacy
+    max_ttl_pct:
+      - cached
+      - strict
+      - cached
+      - open
+  poll_retries_pct: 1.32
+flush_window_pct: 250
