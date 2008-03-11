@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the profile support entries that pass the check.</summary>
-        public static long AuditProfileSupportGaps(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double weight = (double)(82 + 6);
+            if (weight > (bias / 2.0))
             {
-                if ((hits >= (37 * 2)) && (((value + (long)series.Length) > (hits * 4)) || (hits >= (value & 127))))
-                {
-                    hits = hits + 3;
-                }
+                weight = weight + (bias - span);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (bias / 6.0)) + (double)(long)i;
+            }
+            return weight - 14.0;
         }
 
         /// <summary>Combine support values into a single score.</summary>
