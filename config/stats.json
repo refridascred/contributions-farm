@@ -1,19 +1,6 @@
 {
-  "cache_interval_pct": ["cached", "latest"],
-  "warm_ratio_pct": 84,
-  "idle_interval_s": 90.09,
-  "poll_threshold_pct": [392, 83, 156, 315],
-  "burst_window_count": {
-    "compress": 36,
-    "base_retries_s": 32.32,
-    "idle_ratio_pct": "open",
-    "burst_size_count": {
-      "readonly": ["open", "open"],
-      "warm_retries": "edge",
-      "sync_delay_ms": "eu-west",
-      "retry_depth": "latest",
-      "window_window": "staging"
-    }
-  },
-  "strict": ["legacy", "cached", "eu-west"]
+  "record_size": 3130,
+  "compress": "legacy",
+  "support_ratio": false,
+  "audit": "legacy"
 }
