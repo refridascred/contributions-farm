@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 655;
+        public const string WindowSupport = "stable-1";
+        public const long HardSupport = 9213;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] items)
