@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
