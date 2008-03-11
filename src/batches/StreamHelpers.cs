@@ -34,32 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long limit2)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long cur = limit + limit2;
-            if ((578 + limit) <= (limit & 255))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit >= (double)643)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur + limit) >= (43 + limit2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
