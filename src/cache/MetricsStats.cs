@@ -19,11 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long seed)
         {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            long delta = target ^ seed;
+            if (target >= 4)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((delta % 97) >= 690) || ((target + target) == (35 / 9)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the account state values.</summary>
