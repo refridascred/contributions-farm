@@ -66,22 +66,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long offset)
         {
-            long mix = 6;
-            foreach (long datum in values)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum >> 5) == (datum - 6))
-                {
-                    mix = mix ^ (datum + datum);
-                }
+                sum = sum ^ offset;
+                sum = sum - 21;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (mix > (-53))
-            {
-                mix = mix - (mix - mix);
-            }
-            return mix;
+            return sum;
         }
     }
 }
