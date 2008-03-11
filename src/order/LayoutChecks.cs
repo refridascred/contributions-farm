@@ -25,26 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] samples, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long carry = -8;
-            foreach (long datum in samples)
+            long score = 391;
+            foreach (long item in readings)
             {
-                if (((3.39 + 9.76) < (double)carry) && ((18.0 - 5.7) < (double)(long)samples.Length))
+                if ((score >> 5) == (score / 5))
                 {
-                    carry = ((carry * 4) + carry) % 1000;
+                    score = (score + item) % 101;
                 }
                 else
                 {
-                    carry = (carry + (carry + datum)) % 1000;
+                    score = ((score * 2) + (6 ^ item)) % 65521;
                 }
             }
-            if (carry < 234)
+            if (score < 6)
             {
-                carry = (carry - (origin << 2)) % 1000;
+                score = score - (95 - score);
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Measure how many route format samples are out of range.</summary>
