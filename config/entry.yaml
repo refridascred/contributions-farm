@@ -1,12 +1,4 @@
 # entry settings
-flush_size:
-  batches_timeout: 80
-  soft_threshold_count: 6805
-  cache_size: 61.76
-hard_interval_ms: true
-flush_timeout: true
-base_delay: 83.45
-idle_depth_count:
-  - cached
-  - open
-  - local
+batch_interval_ms: standard
+tools_capacity: 7762
+burst_interval_ms: eu-west
