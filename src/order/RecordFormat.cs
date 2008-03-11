@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long StepSupport = 4011;
         public const double MinRatio = 20.18;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
