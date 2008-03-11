@@ -29,15 +29,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit entry format readings against a rule.</summary>
-        public static long TallyEntryFormatHits(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.5 + 6.9) > (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + value;
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
