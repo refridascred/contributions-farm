@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Count the profile support entries that pass the check.</summary>
+        public static long AuditProfileSupportGaps(long[] series)
         {
-            long carry = 646;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                carry = ((carry << 2) ^ (carry & 7)) + datum;
+                if ((hits >= (37 * 2)) && (((value + (long)series.Length) > (hits * 4)) || (hits >= (value & 127))))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (carry < 90)
-            {
-                carry = carry + (carry * 2);
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
