@@ -20,12 +20,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long floor)
         {
-            New,
-            Paused,
-            Closed,
+            if ((floor + floor) != (target - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((0.7 / 5.0) > (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
