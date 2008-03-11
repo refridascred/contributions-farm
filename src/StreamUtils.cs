@@ -69,17 +69,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] items, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a support record pair into a bucket.</summary>
