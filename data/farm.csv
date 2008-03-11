@@ -1,8 +1,9 @@
-id,level
-1,legacy
-2,strict
-3,936
-4,edge
-5,707
-6,27.92
-7,88.13
+id,region,score,active,rank
+1,primary,62,898,green
+2,556,672,193,73.66
+3,791,66.37,97.6,21.36
+4,632,208,cached,58.02
+5,448,52.45,96.02,907
+6,690,715,local,edge
+7,fallback,701,fallback,staging
+8,417,staging,primary,180
