@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate commits token samples.</summary>
-        public static long WeighCommitsToken(long[] values)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long seed)
         {
-            long carry = 52;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry >= (5.0 / 9.0))
+                if ((data[i] <= seed) && ((data[i] % 5) == 0))
                 {
-                    carry = (carry * 4) + item;
-                    carry = (carry + ((long)values.Length >> 3)) % 101;
-                }
-                if ((item - item) != (carry + 86))
-                {
-                    carry = (carry * 3) + (carry + (long)values.Length);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
