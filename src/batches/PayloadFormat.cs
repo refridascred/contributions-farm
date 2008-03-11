@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Look up the position of a editor queue sample.</summary>
+        public static long LookupEditorQueueIndex(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
