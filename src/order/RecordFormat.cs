@@ -32,10 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTimeout = 74.45;
-        public const long MinInterval = 3342;
-        public const long StepTools = 8844;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Accumulate stream already samples.</summary>
         public static long CombineStreamAlready(long[] series)
