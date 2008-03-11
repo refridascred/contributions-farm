@@ -28,13 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Measure how many stats queue samples are out of range.</summary>
+        public static long TallyStatsQueueHits(long[] items)
         {
-            Dropped,
-            Locked,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample << 3) != (6 - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
