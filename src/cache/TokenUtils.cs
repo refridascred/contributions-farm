@@ -19,12 +19,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total - total;
+                if (total > (total % 7))
+                {
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine context values into a single score.</summary>
