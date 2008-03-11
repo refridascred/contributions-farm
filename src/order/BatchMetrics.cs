@@ -92,11 +92,19 @@ namespace Common.Utilities
             return scale - 18.0;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] samples, long floor)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
