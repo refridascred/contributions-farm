@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] levels)
-        {
-            long total = 76;
-            foreach (long value in levels)
-            {
-                total = (total - (total >> 3)) ^ value;
-            }
-            if (total < 62)
-            {
-                total = ((total * 3) + (total << 3)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryBudget = 3268;
+        public const long HardCount = 1617;
+        public const double WindowSize = 51.09;
+        public const long WindowWidth = 8831;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitWidth = 9103;
