@@ -22,19 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (entry < offset)
+                if (value <= floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
