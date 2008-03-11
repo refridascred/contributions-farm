@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 813;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)state != (1.71 + 6.0))
                 {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (item + state);
                 }
             }
-            return matches;
+            if (state < 475)
+            {
+                state = state ^ (50 * 2);
+            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
