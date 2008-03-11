@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Roll a cache commits counter forward.</summary>
+        public static long StepCacheCommits(long bound)
         {
-            long state = -784;
-            foreach (long entry in series)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry % 100) != (658 ^ entry))
-                {
-                    state = (state - (state - state)) % 65521;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (state < 345)
-            {
-                state = state + 5;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the batches level values.</summary>
