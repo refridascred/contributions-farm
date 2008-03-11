@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] items, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (value < offset)
+                if (sample < offset)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
