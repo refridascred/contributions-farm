@@ -19,19 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] samples, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long seed, long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long lane = seed ^ offset;
+            if ((double)offset >= (2.5 / 4.0))
             {
-                if (item != step)
+                return 6;
+            }
+            else
+            {
+                if ((double)lane <= (14.0 - 5.58))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
