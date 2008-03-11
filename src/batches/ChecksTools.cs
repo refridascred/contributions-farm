@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data, long seed)
+        /// <summary>Check that every report layout entry stays within the limit.</summary>
+        public static bool CheckReportLayoutBounds(long[] values, long limit)
         {
-            long acc = -349;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (((double)item <= (9.25 - 8.9)) || (9.94 > (double)seed))
+                if (datum <= limit)
                 {
-                    acc = (acc - acc) % 4096;
-                }
-                if (!(item >= (item + 73)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (acc > (-387))
-            {
-                acc = (acc + (862 + acc)) % 97;
-            }
-            return acc % 97;
+            return found;
         }
 
         /// <summary>Locate a window reading by value.</summary>
