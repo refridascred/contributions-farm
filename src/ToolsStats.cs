@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route record readings against a rule.</summary>
-        public static long MeasureRouteRecordOutliers(long[] readings, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((double)limit < 5.0)
+                if (datum <= step)
                 {
-                    tally = (tally + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the route state values.</summary>
