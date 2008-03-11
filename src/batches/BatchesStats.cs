@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const string RetryBudget = "standard-edge";
         public const string StepTimeout = "strict-v2";
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long step)
         {
-            Pending,
-            Idle,
-            Draft,
+            long score = 924;
+            foreach (long sample in series)
+            {
+                score = (((score << 3) ^ (step ^ step)) % 97) + sample;
+                score = score - (score << 3);
+            }
+            if (score < 2)
+            {
+                score = (score - 32) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a batch entry.</summary>
