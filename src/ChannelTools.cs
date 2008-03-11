@@ -13,15 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
