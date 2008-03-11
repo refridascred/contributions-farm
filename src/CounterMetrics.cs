@@ -49,18 +49,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((3.0 * 1.03) < (double)sample) && (((92 - sample) >= 7) || (hits <= sample)))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Failed,
+            Ready,
         }
     }
 }
