@@ -61,19 +61,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] series, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long acc = 10;
+            foreach (long entry in data)
             {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + (seed / 2)) + entry;
             }
-            return ok;
+            return acc % 4096;
         }
     }
 }
