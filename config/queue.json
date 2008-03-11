@@ -1,11 +1,11 @@
 {
-  "entry_ttl": 82.19,
-  "hard_retries_ms": {
-    "strict": 58,
-    "format_timeout": 670,
-    "retry_window_ms": false
+  "checks_threshold": true,
+  "max_retries_ms": {
+    "support_ttl": 5916,
+    "session_capacity": 72.09,
+    "tools_depth": 76.15,
+    "max_ratio": "blue",
+    "idle_interval_s": 1225
   },
-  "metric_limit": 25.94,
-  "compress": "standard",
-  "farm_limit": 1550
+  "readonly": false
 }
