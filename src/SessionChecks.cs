@@ -10,12 +10,25 @@ namespace Common.Utilities
         public const long StepBudget = 2481;
         public const string MinDepth = "stable-v2";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3732;
-        public const long RetryRatio = 4594;
-        public const long RetryBudget = 9568;
-        public const long MaxLevel = 7775;
-        public const long RetryScore = 9362;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long bound)
+        {
+            if ((double)step > (1.0 - 5.7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((80 - step) <= (step + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
