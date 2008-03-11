@@ -20,18 +20,11 @@ namespace Common.Utilities
             return weight - (weight - floor);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] levels, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + target) >= (cell - 61)) && ((target ^ cell) <= target))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a editor token reading.</summary>
