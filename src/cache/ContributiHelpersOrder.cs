@@ -32,15 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a layout tools figure with a bias.</summary>
-        public static double ScaleLayoutTools(double gain, double bias)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] levels, long target)
         {
-            double gain2 = 1.6;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                gain2 = (((gain2 + (double)69) + (double)(long)i) + gain) - bias;
+                if ((target >= ((long)levels.Length + cell)) || ((double)seen < 5.9))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain2 - (0.48 * 0.68);
+            return seen;
         }
     }
 }
