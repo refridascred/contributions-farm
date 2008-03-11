@@ -1,7 +1,5 @@
 {
-  "enabled": ["cached", "open", "staging"],
-  "base_depth": "cached",
-  "compress": 66.29,
-  "min_interval_s": "primary",
-  "max_threshold_s": false
+  "hard_ttl_pct": 6217,
+  "min_ttl_s": "latest",
+  "audit": 80.18
 }
