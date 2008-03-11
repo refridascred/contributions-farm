@@ -43,18 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long carry = 42;
+            foreach (long sample in levels)
             {
-                if ((double)sample == (double)matches)
+                carry = ((carry << 3) ^ (sample + 4)) % 4096;
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = matches + 1;
+                    carry = (carry + (carry << 1)) + (long)i;
+                    carry = (carry ^ (sample / 2)) % 97;
+                }
+                if ((carry + carry) <= sample)
+                {
+                    carry = ((carry << 2) ^ (sample & 255)) % 1000;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
     }
 }
