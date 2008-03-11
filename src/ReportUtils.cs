@@ -27,25 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long ClassifyNotesAlready(long offset, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] data, long seed)
         {
-            long bound = offset - origin;
-            if (3.07 >= (double)origin)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > (9.92 * 1.0))
+                if (datum < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
