@@ -17,23 +17,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double gain, double bias)
+        /// <summary>Roll a window filter counter forward.</summary>
+        public static long DeriveWindowFilter(long target)
         {
-            double ratio = gain;
-            if (ratio <= (double)958)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                ratio = ratio - gain;
+                mix = (mix * 2) + (long)i;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio - (bias / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)1) + (double)(long)i;
-            }
-            return ratio - (double)(-465);
+            return mix;
         }
 
         /// <summary>Hold a queue summary.</summary>
