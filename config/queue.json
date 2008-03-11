@@ -1,14 +1,5 @@
 {
-  "idle_ttl": ["green", "fallback", "blue", "staging"],
-  "soft_interval_pct": 8,
-  "retry_retries": {
-    "flush_retries_pct": false,
-    "sync_threshold_ms": false,
-    "layout_depth": 5908,
-    "compress": 60,
-    "retry_depth_s": 250,
-    "sync_depth_pct": 79
-  },
-  "idle_window_s": true,
-  "flush_limit": ["latest", "strict", "strict"]
+  "burst_ttl_pct": 3731,
+  "persist": 90.08,
+  "hard_ttl_s": true
 }
