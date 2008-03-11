@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] readings, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] items, long offset)
         {
             bool found = true;
-            foreach (long datum in readings)
+            foreach (long reading in items)
             {
-                if (datum < floor)
+                if (reading <= offset)
                 {
                     found = false;
                     break;
