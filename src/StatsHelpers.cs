@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of schema checks readings.</summary>
-        public static long OverlapSchemaChecksCount(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < count)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
