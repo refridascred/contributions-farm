@@ -25,14 +25,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long floor)
         {
-            Ready,
-            Stale,
-            New,
-            Pending,
-            Closed,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
