@@ -32,31 +32,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long bound)
+        /// <summary>Measure how many payload context samples are out of range.</summary>
+        public static long TallyPayloadContextGaps(long[] levels)
         {
-            if ((target ^ target) >= 881)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + target) < (bound << 2))
+                if (!(sample < (sample + tally)))
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if (((bound + bound) >= (477 + bound)) || ((double)target < (9.1 * 8.13)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two tools measurements.</summary>
