@@ -29,11 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftCount = 5525;
-        public const long BatchRatio = 1287;
-        public const string RetryToken = "standard-1";
-        public const long WindowToken = 318;
-        public const string MinSpan = "alpha-1";
+        /// <summary>Validate githubfarm order readings against a bound.</summary>
+        public static bool VerifyGithubfarmOrderLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
