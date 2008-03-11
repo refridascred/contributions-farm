@@ -28,22 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm buffer readings against a rule.</summary>
-        public static long MeasureFarmBufferGaps(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((sample - sample) > 10)
+                if (entry >= step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Classify a metrics report pair into a bucket.</summary>
