@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Done,
             Failed,
-            Dropped,
+            New,
             Retry,
-            Queued,
+            Paused,
         }
 
         /// <summary>Define record limits and defaults.</summary>
