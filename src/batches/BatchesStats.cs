@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 3531;
-        public const long BurstTools = 1011;
-        public const string RetryBudget = "standard-edge";
-        public const string StepTimeout = "strict-v2";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] series, long step)
