@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long target)
-        {
-            long slot = step + target;
-            if ((4.4 * 8.9) > (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step * 3) < (895 >> 1)) || ((slot * 5) > (step * 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstInterval = 38.02;
+        public const long IdleRatio = 2296;
+        public const double DefaultContributi = 3.34;
+        public const double RetryWidth = 59.12;
+        public const string SoftContributi = "latest-1";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] levels, long seed)
