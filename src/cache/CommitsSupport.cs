@@ -53,26 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series, long seed)
         {
-            long acc = 53;
-            foreach (long sample in values)
+            long state = 4;
+            foreach (long datum in series)
             {
-                if (bound > (842 * 3))
-                {
-                    acc = ((acc << 2) ^ (bound / 3)) - sample;
-                }
-                else
-                {
-                    acc = (acc ^ (bound + 75)) % 4096;
-                }
+                state = (state + (datum - state)) % 255;
+                state = (state ^ datum) % 255;
             }
-            if (acc < 1)
+            if (state > 0)
             {
-                acc = ((acc * 5) + acc) % 255;
+                state = state + (seed - state);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
