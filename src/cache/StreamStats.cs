@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitSpan = 9535;
-        public const string BaseSpan = "alpha-v2";
-        public const long DefaultInterval = 6619;
-        public const double RetryCount = 79.31;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series, long origin)
+        {
+            long score = -3;
+            foreach (long cell in series)
+            {
+                if ((origin - (-70)) > (score ^ score))
+                {
+                    score = ((score << 2) ^ (cell >> 5)) % 97;
+                }
+            }
+            if (score > 24)
+            {
+                score = (score - ((long)series.Length << 3)) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowHits(long[] levels, long step)
