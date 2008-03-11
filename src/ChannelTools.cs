@@ -27,11 +27,29 @@ namespace Common.Utilities
             return (bias2 - bias) + weight;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long sum = 40;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum - (sum + sum)) % 1000) - (long)i;
+                    sum = (sum * 2) + 2;
+                }
+                if ((item / 4) == (sum + item))
+                {
+                    sum = (sum + (sum + sum)) % 255;
+                    continue;
+                }
+                sum = sum - 235;
+            }
+            if (sum < 494)
+            {
+                sum = (sum - (offset * 4)) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
