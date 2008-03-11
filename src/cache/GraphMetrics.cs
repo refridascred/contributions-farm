@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 7595;
+        public const long LimitInterval = 8825;
+        public const long WindowContributi = 9948;
+        public const long SoftWidth = 8751;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long LocateSessionIndex(long[] values, long limit)
