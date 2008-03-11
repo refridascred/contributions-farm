@@ -32,13 +32,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Failed,
-            Active,
-            Paused,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
