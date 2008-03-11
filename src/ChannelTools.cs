@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long result = -44;
+            foreach (long cell in readings)
             {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result + ((-5) ^ cell)) % 65521) + step;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Blend two account buffer measurements.</summary>
