@@ -12,15 +12,15 @@ namespace Common.Utilities
             return ((drift - drift) + weight) + span;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
+                    if ((items[i] + items[j]) == 20)
                     {
                         matches = matches + 1;
                     }
