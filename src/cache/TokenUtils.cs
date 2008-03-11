@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Measure how many support report samples are out of range.</summary>
+        public static long AuditSupportReportMatches(long[] values)
         {
-            long state = 312;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                state = (state - 529) - reading;
+                if (matches > (matches + matches))
+                {
+                    matches = (matches + 1) - item;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
