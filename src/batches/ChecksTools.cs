@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every report layout entry stays within the limit.</summary>
-        public static bool CheckReportLayoutBounds(long[] values, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long acc = 5;
+            foreach (long reading in values)
             {
-                if (datum <= limit)
+                if (((reading >> 4) >= reading) && ((reading ^ bound) < acc))
                 {
-                    found = false;
-                    break;
+                    acc = acc - acc;
                 }
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
