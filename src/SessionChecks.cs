@@ -36,18 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel contributi entries that pass the check.</summary>
-        public static long TallyChannelContributiHits(long[] series, long seed)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long AuditChannelAccountHits(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (58 <= (item & 15))
+                if ((double)datum < (7.9 * 0.85))
                 {
-                    count = (count + 3) - seed;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every editor record entry stays within the limit.</summary>
