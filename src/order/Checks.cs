@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Combine stats channel values into a single score.</summary>
+        public static long ScoreStatsChannel(long[] items, long offset)
         {
-            long anchor = 77;
-            foreach (long value in data)
+            long carry = 272;
+            foreach (long datum in items)
             {
-                if ((anchor / 9) > value)
-                {
-                    anchor = (anchor + (anchor - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor + anchor)) % 255;
-                }
+                carry = (carry - (datum << 2)) - offset;
             }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
