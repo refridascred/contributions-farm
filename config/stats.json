@@ -1,8 +1,5 @@
 {
-  "batch_ttl": "local",
-  "hard_delay_ms": 41,
-  "contributi_timeout": "stable",
-  "max_size": ["strict", "blue"],
-  "hard_retries_pct": "standard",
-  "sync_size_pct": "open"
+  "format_size": true,
+  "compress": 18.38,
+  "commits_retries": 60
 }
