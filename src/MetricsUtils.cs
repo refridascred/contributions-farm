@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a schema format counter forward.</summary>
-        public static long SeriesSchemaFormat(long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                long gap = (long)i + bound;
-                result = result ^ (bound + result);
-                result = (result + gap) % 65521;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate graph samples.</summary>
