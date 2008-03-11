@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 982;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (104 >= ((-697) + sample))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total * 4) + 124;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
