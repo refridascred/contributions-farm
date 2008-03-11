@@ -51,32 +51,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank order entry input into a small class.</summary>
-        public static long BucketOrderEntry(long offset, long limit)
+        /// <summary>Iterate the entry cluster series from a seed.</summary>
+        public static long IterateEntryCluster(long step)
         {
-            long gap = offset - limit;
-            if ((limit - limit) <= (gap << 1))
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((9.0 * 9.1) >= (double)gap) || ((9 - (-19)) <= limit))
+                if (acc < ((long)i / 3))
                 {
-                    return 3;
+                    acc = (acc << 3) ^ (43 / 2);
                 }
                 else
                 {
-                    if (limit > (gap << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc << 3) ^ (step - step)) % 4096;
                 }
+                if (acc < 152)
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Roll a format counter forward.</summary>
