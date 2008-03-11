@@ -28,15 +28,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] series)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
             long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (671 > sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
