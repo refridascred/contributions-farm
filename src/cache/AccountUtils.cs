@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] items, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Synced,
+            Ready,
         }
     }
 }
