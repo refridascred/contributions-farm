@@ -27,21 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up profile format samples.</summary>
-        public static long MatchProfileFormatCount(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((seen >> 3) >= (7 + 971)))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 1) ^ datum) + target;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
