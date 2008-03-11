@@ -16,20 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result << 2) ^ (result & 15)) ^ (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowReport = "staging-edge";
+        public const string LimitRatio = "stable-v2";
+        public const double HardReport = 90.45;
+        public const double BatchReport = 6.26;
+        public const double DefaultTimeout = 70.94;
 
         /// <summary>Digest a series of channel schema entries.</summary>
         public static long TotalChannelSchema(long[] values, long seed)
