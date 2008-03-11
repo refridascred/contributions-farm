@@ -27,11 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "staging";
-        public const double CacheBatch = 10.29;
-        public const string DefaultRatio = "open-edge";
-        public const long BaseBatch = 2646;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
