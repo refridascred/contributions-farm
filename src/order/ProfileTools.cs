@@ -28,19 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] values, long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
