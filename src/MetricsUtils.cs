@@ -45,20 +45,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items, long floor)
-        {
-            long state = 947;
-            foreach (long value in items)
-            {
-                state = ((state + (floor - 380)) % 1000) - value;
-            }
-            if (state > 8)
-            {
-                state = (state - floor) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9671;
+        public const double BaseBatch = 29.12;
+        public const long RetryBatch = 3859;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] data)
