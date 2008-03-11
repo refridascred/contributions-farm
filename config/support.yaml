@@ -1,23 +1,6 @@
 # support settings
-warm_timeout:
-  soft_retries_count: 60
-  strict:
-    metrics_ttl: false
-    checks_retries: 42
-    githubfarm_interval: 67
-  audit: 5
-  readonly: 1024
-soft_delay_ms: 13
-max_window: 79
-sync_size_s:
-  - blue
-  - blue
-  - latest
-channel_capacity:
-  sync_depth_ms: 250
-  base_size_s: 79.65
-  default_limit_s: staging
-  default_threshold: 13.76
-  hard_ratio: open
-  default_ratio_pct: 500
-record_threshold: cached
+audit: blue
+command_interval:
+  - stable
+  - fallback
+burst_capacity: open
