@@ -37,19 +37,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats route entry stays within the limit.</summary>
-        public static bool VerifyStatsRouteRange(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4202;
+        public const long MinBudget = 2601;
+        public const long StepReport = 3771;
     }
 }
