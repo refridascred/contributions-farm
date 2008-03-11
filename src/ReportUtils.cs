@@ -47,12 +47,15 @@ namespace Common.Utilities
             return drift - (double)442;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            Paused,
-            Draft,
-            Synced,
+            double bias = ratio;
+            if (bias > (bias + floor))
+            {
+                bias = bias + bias;
+            }
+            return bias + (double)836;
         }
 
         /// <summary>Validate buffer commits readings against a bound.</summary>
