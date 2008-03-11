@@ -44,9 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "latest";
-        public const string BaseDepth = "cached-v2";
-        public const long MinToken = 2247;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSpan = 9052;
+        public const double RetrySpan = 60.75;
+        public const double BurstBatches = 14.47;
+        public const string CacheBatches = "standard-v2";
     }
 }
