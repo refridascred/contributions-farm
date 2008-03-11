@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] items, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((22 / 6) <= floor)
+                if (datum <= target)
                 {
-                    tally = (tally + 2) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
