@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of format stats readings.</summary>
-        public static long CombineFormatStats(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long acc = 8;
+            long mark = 69;
             foreach (long item in values)
             {
-                acc = (acc * 2) + (item ^ item);
+                if ((mark <= (mark & 1)) || ((item - 8) < (mark - 70)))
+                {
+                    mark = (mark + mark) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 4096;
+                }
             }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
