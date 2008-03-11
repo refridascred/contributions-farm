@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up order report samples.</summary>
-        public static long OverlapOrderReportCount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] values, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((46 >> 5) > (sample / 6)))
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + floor;
                 }
             }
             return seen;
