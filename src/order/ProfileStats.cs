@@ -51,14 +51,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftWidth = 529;
+        public const double BatchChannel = 85.45;
+        public const string BaseChannel = "staging-edge";
+        public const long MinScore = 651;
 
         /// <summary>Grade a order filter value against two limits.</summary>
         public static long RankOrderFilter(long origin, long target)
