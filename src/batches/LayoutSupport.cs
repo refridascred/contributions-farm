@@ -48,26 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = 17;
-            foreach (long datum in series)
-            {
-                if (((result + datum) >= (seed + datum)) || ((seed & 255) < (result + result)))
-                {
-                    result = (result ^ 1) % 4096;
-                }
-                else
-                {
-                    result = (result ^ (seed % 8)) % 97;
-                }
-            }
-            if (result > 0)
-            {
-                result = (result ^ (seed << 3)) % 97;
-            }
-            return result % 97;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
