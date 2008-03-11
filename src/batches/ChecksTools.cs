@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 6453;
         public const double MaxCache = 90.82;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] levels, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count the command route entries that pass the check.</summary>
