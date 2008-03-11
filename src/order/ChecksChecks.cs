@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate route window samples.</summary>
+        public static long FoldRouteWindow(long[] series, long target)
         {
-            Queued,
-            Draft,
-            Closed,
-            Ready,
+            long sum = 324;
+            foreach (long cell in series)
+            {
+                if (((sum << 2) <= (target + cell)) || ((2.01 / 4.0) != (double)(long)series.Length))
+                {
+                    sum = sum + (cell & 7);
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum * 4) + (target + sum);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
