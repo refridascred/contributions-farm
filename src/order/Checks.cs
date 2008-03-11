@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine stats channel values into a single score.</summary>
-        public static long ScoreStatsChannel(long[] items, long offset)
+        /// <summary>Scale a schema githubfarm figure with a bias.</summary>
+        public static double SmoothSchemaGithubfarm(double ratio, double span)
         {
-            long carry = 272;
-            foreach (long datum in items)
+            double bias = span;
+            if (bias <= (bias / 8.0))
             {
-                carry = (carry - (datum << 2)) - offset;
+                bias = bias + (ratio - ratio);
             }
-            return carry % 1000;
+            else
+            {
+                bias = bias + span;
+            }
+            return bias - (span - bias);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
