@@ -74,10 +74,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4642;
-        public const string IdleEntry = "open-1";
-        public const long RetryEntry = 8794;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double bias)
+        {
+            double weight = 3.03;
+            if (weight < rate)
+            {
+                weight = weight + (bias - bias);
+            }
+            else
+            {
+                weight = weight + 2.96;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardRatio = 72;
