@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values, long origin)
+        /// <summary>Derive the next stream filter value from a seed.</summary>
+        public static long IterateStreamFilter(long origin)
         {
-            long mix = 46;
-            foreach (long item in values)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (58 >= (item + item))
-                {
-                    mix = ((mix ^ (item + 71)) % 255) - origin;
-                }
-            }
-            if (mix > 356)
-            {
-                mix = (mix + mix) % 65521;
+                mix = (mix << 2) ^ origin;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
             return mix;
         }
