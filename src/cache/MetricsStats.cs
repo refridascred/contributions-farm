@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
-        {
-            long anchor = 8;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor * 3) + (anchor - sample)) % 97;
-            }
-            if (anchor < (-17))
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 4645;
+        public const long IdleAccount = 4590;
+        public const long SoftAccount = 9713;
+        public const long MaxLevel = 3851;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ProjectContributi(double scale, double bias)
