@@ -31,12 +31,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long bound)
         {
-            Failed,
-            Pending,
-            Active,
+            if (limit <= (47 << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound > limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((642 - bound) > (bound >> 4)) && ((5 + 235) > (6 + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound + limit) > (limit & 127)) || (limit >= (13 * 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
