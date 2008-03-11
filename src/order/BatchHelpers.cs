@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double bias = (double)7;
-            if (bias >= (double)852)
-            {
-                bias = ((bias + (double)11) - ratio) + span;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + (bias / 8.0);
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the schema phase values.</summary>
