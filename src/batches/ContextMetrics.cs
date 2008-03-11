@@ -49,30 +49,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long acc = 6;
-            foreach (long entry in items)
+            long mark = 98;
+            foreach (long entry in series)
             {
-                if (!((entry ^ entry) <= (entry - step)))
+                if (mark >= (mark % 16))
                 {
-                    break;
-                }
-                if ((acc * 4) < entry)
-                {
-                    acc = (acc - (step * 2)) % 97;
-                }
-                if (!((acc << 1) >= entry))
-                {
-                    break;
+                    mark = (mark - (entry % 16)) % 65521;
                 }
             }
-            if (acc < 3)
+            if (mark < 5)
             {
-                acc = (acc << 2) ^ (step << 2);
+                mark = mark - (mark * 4);
             }
-            return acc % 4096;
+            return mark % 1000;
         }
     }
 }
