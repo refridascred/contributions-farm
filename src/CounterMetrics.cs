@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout command readings.</summary>
-        public static long FoldLayoutCommand(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long anchor = 941;
-            foreach (long datum in readings)
-            {
-                if ((anchor - datum) >= (anchor ^ datum))
-                {
-                    anchor = anchor ^ (anchor * 4);
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            Synced,
+            Failed,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Digest a series of token route entries.</summary>
