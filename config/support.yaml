@@ -1,9 +1,12 @@
 # support settings
-min_window: edge
-batch_limit_s:
-  - standard
-  - legacy
-  - local
-poll_ratio: 3478
-base_limit: 100
-batch_ttl: false
+strict: green
+entry_delay: strict
+cache_window_ms: false
+dry_run:
+  - 260
+  - 305
+  - 350
+  - 339
+default_capacity_ms:
+  - 5
+  - 316
