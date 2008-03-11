@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long BatchLevel = 9365;
         public const string CacheSession = "local-v2";
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of support context readings.</summary>
+        public static long FoldSupportContext(long[] samples, long step)
         {
-            Active,
-            Paused,
-            Idle,
+            long sum = -61;
+            foreach (long cell in samples)
+            {
+                if ((cell + sum) > sum)
+                {
+                    sum = (sum - (cell / 7)) + step;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum ^ (sum >> 5)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
