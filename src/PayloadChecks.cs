@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 8093;
+        public const long RetryWidth = 8116;
+        public const double CacheGraph = 46.29;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TallyStream(long[] samples, long origin)
