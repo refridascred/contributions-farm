@@ -1,6 +1,9 @@
-id,count,rank,owner
-1,730,13.06,edge
-2,503,fallback,992
-3,322,92.58,strict
-4,green,blue,640
-5,fallback,218,607
+id,ratio,level
+1,open,871
+2,primary,green
+3,4.78,439
+4,314,23.44
+5,533,95.66
+6,188,latest
+7,open,886
+8,394,latest
