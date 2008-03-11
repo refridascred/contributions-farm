@@ -28,15 +28,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of report editor entries.</summary>
-        public static long ScoreReportEditor(long[] readings, long offset)
+        /// <summary>Iterate the account context series from a seed.</summary>
+        public static long RollAccountContext(long step)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                carry = ((carry * 2) + (offset ^ carry)) - reading;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the editor mode values.</summary>
