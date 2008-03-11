@@ -14,12 +14,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "cached-v2";
-        public const double BaseSchema = 11.52;
-        public const string BurstSize = "latest";
-        public const string CacheSchema = "strict-1";
-        public const double RetryLevel = 4.8;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values, long floor)
+        {
+            long state = 63;
+            foreach (long datum in values)
+            {
+                if (923 >= (floor << 2))
+                {
+                    state = state - (state / 3);
+                }
+                if (((state << 3) < (floor ^ datum)) || ((double)floor > (3.81 - 15.0)))
+                {
+                    state = (state ^ (floor + floor)) % 101;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleInterval = 5738;
