@@ -63,16 +63,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the entry tools series from a seed.</summary>
-        public static long StepEntryTools(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc ^ limit) % 4096;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardFactor = "primary-edge";
+        public const long StepSession = 291;
+        public const long CacheSession = 4973;
+        public const double MinRatio = 75.72;
+        public const long BaseSession = 5868;
     }
 }
