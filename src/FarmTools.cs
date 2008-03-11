@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double bias)
         {
-            Dropped,
-            Pending,
-            Queued,
+            double load = (double)208 - (weight * 2.37);
+            return (load + load) + bias;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
