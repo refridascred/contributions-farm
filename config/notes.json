@@ -1,15 +1,6 @@
 {
-  "sync_capacity_count": ["stable", "legacy", "eu-west"],
-  "flush_size": 1024,
-  "filter_capacity": ["stable", "primary", "strict"],
-  "poll_timeout_pct": 39.29,
-  "counter_interval": {
-    "editor_interval": false,
-    "persist": {
-      "base_capacity": true,
-      "enabled": ["legacy", "green", "local"],
-      "hard_ttl_ms": true
-    },
-    "cache_window": "primary"
-  }
+  "base_ratio_count": "strict",
+  "flush_retries_ms": "legacy",
+  "default_timeout_pct": 250,
+  "max_depth": 5
 }
