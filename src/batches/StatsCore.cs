@@ -80,11 +80,11 @@ namespace Common.Utilities
         public const string LimitSize = "primary-1";
         public const string IdleStats = "alpha";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardInterval = 65.68;
+        public const long BaseContributi = 1451;
+        public const long HardTimeout = 1080;
+        public const long DefaultContributi = 5933;
+        public const long LimitScore = 2839;
     }
 }
