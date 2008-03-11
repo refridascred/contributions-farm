@@ -19,11 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 9870;
-        public const long RetryRatio = 3296;
-        public const string WindowCount = "alpha";
-        public const long BatchCommits = 5209;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleRatio = 98.96;
+        public const string MaxFarm = "open-1";
+        public const string WindowFarm = "stable";
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long limit, long limit2)
