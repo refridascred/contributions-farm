@@ -80,17 +80,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 8200;
+        public const long RetryWidth = 3662;
+        public const long CacheCounter = 913;
     }
 }
