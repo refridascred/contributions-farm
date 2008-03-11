@@ -21,13 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Ready,
-            New,
-            Draft,
-            Synced,
+            public double Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
