@@ -22,15 +22,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] values, long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
             long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value / 8) <= hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - bound;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
