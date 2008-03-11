@@ -1,6 +1,15 @@
 # support settings
-audit: blue
-command_interval:
-  - stable
-  - fallback
-burst_capacity: open
+batch_capacity_count: green
+hard_limit_pct:
+  soft_interval:
+    poll_retries: eu-west
+    soft_threshold_count:
+      - fallback
+      - blue
+    farm_window: 1867
+  persist: cached
+  schema_size: 60.1
+  dry_run: open
+sync_depth: legacy
+min_limit_s: eu-west
+readonly: false
