@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally > (double)entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi class values.</summary>
