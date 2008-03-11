@@ -1,5 +1,18 @@
 {
-  "warm_ttl_pct": [7, 34, 116, 470],
-  "soft_window": 10.94,
-  "max_retries_ms": ["fallback", "staging"]
+  "retry_depth": false,
+  "base_ratio_pct": ["local", "latest", "standard"],
+  "queue_interval": false,
+  "batch_window_pct": {
+    "hard_limit": 250,
+    "counter_depth": 56,
+    "strict": [473, 27],
+    "idle_ttl_pct": [151, 282, 410],
+    "burst_limit": {
+      "base_delay": 7778,
+      "readonly": true,
+      "verbose": "staging"
+    },
+    "cache_window": "blue"
+  },
+  "soft_interval": 44
 }
