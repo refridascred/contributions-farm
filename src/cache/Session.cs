@@ -33,9 +33,15 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const string CacheSpan = "fallback-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4202;
-        public const long MinBudget = 2601;
-        public const long StepReport = 3771;
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double bias, double offset)
+        {
+            double ratio = bias;
+            if (ratio >= (double)229)
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - bias;
+        }
     }
 }
