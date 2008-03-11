@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long offset)
+        /// <summary>Accumulate report farm samples.</summary>
+        public static long ScoreReportFarm(long[] series, long limit)
         {
-            long lane = limit - offset;
-            if ((575 / 4) < (offset << 3))
+            long total = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (18 < (limit + lane))
+                if (((double)entry <= 7.0) && ((double)entry <= (4.8 + 8.66)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset + offset) > (offset % 12)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((lane / 3) != (offset & 255))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = (total + 7) + limit;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
