@@ -73,13 +73,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double scale, double bias)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Done,
+            double mean = scale + (double)15;
+            if (mean < (scale * 3.74))
+            {
+                mean = mean - (scale / 8.0);
+            }
+            return mean - (scale - bias);
         }
     }
 }
