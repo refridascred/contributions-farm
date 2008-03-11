@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const string DefaultRatio = "open-edge";
         public const long BaseBatch = 2646;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] readings, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mix = 235;
+            foreach (long reading in data)
             {
-                if ((hits & 127) < hits)
-                {
-                    hits = ((hits + 3) + sample) - bound;
-                }
+                mix = (mix ^ mix) + reading;
             }
-            return hits;
+            if (mix > 0)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
