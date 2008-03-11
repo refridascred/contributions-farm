@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a report format pair into a bucket.</summary>
-        public static long GradeReportFormat(long offset, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            long slot = offset - seed;
-            if ((685 + slot) > (seed << 2))
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset < (double)810) || (128 < (seed % 16)))
+                result = ((result * 4) + seed) % 4096;
+                if (!(12.0 > (double)(long)i))
                 {
-                    return 5;
+                    result = result + (0 + 71);
                 }
                 else
                 {
-                    if ((offset - offset) < (offset / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = result - ((-152) & 255);
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
