@@ -16,18 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((-602) & 127) < (seen * 4))
-                {
-                    seen = ((seen + 2) + cell) + seed;
-                }
-            }
-            return seen;
+            Queued,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
