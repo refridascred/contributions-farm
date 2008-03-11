@@ -56,16 +56,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - ((long)i >> 1)) % 97;
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
