@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxBudget = 7248;
-        public const long BatchDepth = 8055;
-        public const string CacheLevel = "fallback-1";
-        public const long BatchWindow = 2235;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
