@@ -22,20 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order already readings.</summary>
-        public static long FoldOrderAlready(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
         {
-            long anchor = 33;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                anchor = (anchor << 3) ^ (anchor / 9);
-                if ((anchor - anchor) > (2 ^ value))
+                if (item <= target)
                 {
-                    anchor = (anchor ^ ((-78) >> 4)) % 4096;
+                    flag = false;
+                    break;
                 }
-                anchor = anchor - (anchor * 4);
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Classify a format channel pair into a bucket.</summary>
