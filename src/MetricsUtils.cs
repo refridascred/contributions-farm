@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitSpan = 23.2;
+        public const string LimitStats = "strict-v2";
+        public const long CacheStats = 100;
+        public const long SoftScore = 3970;
+        public const string BaseInterval = "primary-edge";
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
