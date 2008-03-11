@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 947;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.8 / 2.0) > (double)item)
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (score + score)) % 4096;
+                }
+                if (((item * 2) != (item & 63)) && ((item >> 5) > (score + score)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a session info.</summary>
