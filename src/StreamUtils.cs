@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] samples, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Synced,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a profile stats.</summary>
