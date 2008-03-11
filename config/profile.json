@@ -1,7 +1,6 @@
 {
-  "flush_size": 25.02,
-  "poll_timeout": "stable",
-  "enabled": ["blue", "green"],
-  "flush_threshold": "blue",
-  "flush_interval_s": "staging"
+  "audit": [316, 309],
+  "batch_retries": 22,
+  "farm_size": "strict",
+  "entry_timeout": "cached"
 }
