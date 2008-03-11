@@ -1,6 +1,18 @@
 # entry settings
-soft_ratio_count: 87.97
-sync_ttl_ms: latest
-idle_depth_pct: legacy
-format_threshold: 77.79
-queue_timeout: edge
+min_interval_count: 98
+persist: 36.18
+cache_ttl:
+  cache_depth: 60
+  retry_retries_count: 77.28
+  sync_timeout_ms: standard
+hard_ttl_count:
+  - local
+  - eu-west
+  - legacy
+  - cached
+warm_limit_ms: 88.89
+default_window:
+  - primary
+  - local
+  - latest
+  - green
