@@ -39,18 +39,25 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long AuditFilterCacheGaps(long[] series, long seed)
+        /// <summary>Grade a batch session value against two limits.</summary>
+        public static long RankBatchSession(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long step = bound + offset;
+            if ((bound & 15) < (step << 3))
             {
-                if (((long)series.Length + seed) != (seed & 3))
+                return 3;
+            }
+            else
+            {
+                if (!((step + step) <= step))
                 {
-                    matches = (matches + 1) - datum;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
