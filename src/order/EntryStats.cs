@@ -24,22 +24,11 @@ namespace Common.Utilities
         public const double CacheCount = 24.63;
         public const long HardCommits = 9123;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] levels)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits >> 5) <= hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = bias;
+            return load - (gain / 6.0);
         }
 
         /// <summary>Count farm checks pairs that satisfy a relation.</summary>
