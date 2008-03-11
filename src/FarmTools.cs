@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a command format figure with a bias.</summary>
-        public static double AdjustCommandFormat(double gain, double floor)
-        {
-            double scale = gain;
-            return (scale + (double)14) + floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "cached-v2";
+        public const double BaseSchema = 11.52;
+        public const string BurstSize = "latest";
+        public const string CacheSchema = "strict-1";
+        public const double RetryLevel = 4.8;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleInterval = 5738;
