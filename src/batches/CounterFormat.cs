@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] samples)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((8.12 * 12.0) == (double)reading) && (reading < (reading - 9)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate stream command readings against a bound.</summary>
