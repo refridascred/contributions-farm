@@ -40,22 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate queue githubfarm samples.</summary>
-        public static long WeighQueueGithubfarm(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long limit)
         {
-            long mix = 32;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((cell * 2) == (mix << 1))
+                if (sample <= limit)
                 {
-                    mix = mix ^ (570 + cell);
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < (-563))
-            {
-                mix = mix + (1 + mix);
-            }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
