@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            if ((3.0 * 7.9) == (double)origin)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((182 - origin) >= origin)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 1;
+                    anchor = ((anchor * 4) + (offset % 97)) ^ (long)i2;
                 }
-                else
-                {
-                    if (((double)origin != (15.0 + 5.33)) && ((double)origin != (5.53 * 9.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
