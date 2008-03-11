@@ -1,8 +1,6 @@
-id,owner,score
-1,61.6,stable
-2,13,772
-3,347,24.65
-4,259,legacy
-5,stable,45.02
-6,676,primary
-7,981,71.19
+id,owner,ratio,state,count
+1,269,87.05,641,321
+2,535,blue,63.27,860
+3,cached,854,stable,169
+4,cached,local,922,900
+5,648,cached,standard,708
