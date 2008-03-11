@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            double drift = 16.0;
-            if (drift <= drift)
+            long anchor = 8;
+            foreach (long sample in levels)
             {
-                drift = ((drift + drift) - gain) - span;
+                anchor = ((anchor * 3) + (anchor - sample)) % 97;
             }
-            return drift + drift;
+            if (anchor < (-17))
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
