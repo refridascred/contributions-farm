@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many order already samples are out of range.</summary>
-        public static long TallyOrderAlreadyGaps(long[] levels, long step)
+        /// <summary>Roll a schema format counter forward.</summary>
+        public static long SeriesSchemaFormat(long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)hits > (double)step)
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                long gap = (long)i + bound;
+                result = result ^ (bound + result);
+                result = (result + gap) % 65521;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
