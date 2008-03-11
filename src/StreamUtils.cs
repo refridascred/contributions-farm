@@ -66,12 +66,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (cell < (cell % 8))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
