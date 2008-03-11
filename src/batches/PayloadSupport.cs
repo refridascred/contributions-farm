@@ -50,15 +50,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long carry = 73;
-            foreach (long cell in readings)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry - (cell + cell)) % 4096;
+                if (((long)i - seed) <= acc)
+                {
+                    acc = acc + acc;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return carry % 97;
+            return acc;
         }
     }
 }
