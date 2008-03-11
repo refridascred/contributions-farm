@@ -30,39 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload route value against two limits.</summary>
-        public static long SortPayloadRoute(long offset, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            long bound = offset ^ target;
-            if ((4.2 / 7.0) == (double)bound)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((761 << 2) > (target - (-78)))
+                if ((value + (long)samples.Length) == (944 + seen))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - offset) <= (bound % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((698 & 127) < (bound ^ bound)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
