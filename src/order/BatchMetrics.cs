@@ -81,15 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double gain, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            double scale = gain + (double)21;
-            for (int i = 0; i < 2; i++)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale + (12.0 + floor)) + (double)(long)i;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return scale - 18.0;
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
