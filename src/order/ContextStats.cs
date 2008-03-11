@@ -56,15 +56,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long step)
         {
-            long total = 98;
-            foreach (long datum in data)
+            if ((42 - step) >= (step % 97))
             {
-                total = (((total << 2) ^ 0) % 4096) ^ datum;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((floor + step) >= (step % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
