@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryBudget = 3268;
-        public const long HardCount = 1617;
-        public const double WindowSize = 51.09;
-        public const long WindowWidth = 8831;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many route format samples are out of range.</summary>
         public static long MeasureRouteFormatHits(long[] samples)
