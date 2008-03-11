@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long MinAlready = 6122;
         public const long HardAlready = 7362;
 
-        /// <summary>Locate a route commits reading by value.</summary>
-        public static long LocateRouteCommitsIndex(long[] levels, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                if (data[i] == step)
                 {
                     return (long)i;
                 }
