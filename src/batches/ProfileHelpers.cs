@@ -73,9 +73,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 8200;
-        public const long RetryWidth = 3662;
-        public const long CacheCounter = 913;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 45.4;
+        public const long HardInterval = 4188;
+        public const string BatchGithubfarm = "alpha-v2";
     }
 }
