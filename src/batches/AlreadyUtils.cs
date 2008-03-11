@@ -40,22 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] readings, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits % 12) < (hits - value))
-                {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
