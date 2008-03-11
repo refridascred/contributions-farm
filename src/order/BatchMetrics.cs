@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Pending,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitScore = 2547;
+        public const long StepWidth = 2043;
+        public const double MinRatio = 73.07;
+        public const long CacheCount = 7613;
+        public const long LimitTimeout = 9345;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long target, long bound)
