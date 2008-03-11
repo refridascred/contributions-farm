@@ -19,10 +19,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstCount = 4323;
-        public const long BurstScore = 5116;
-        public const long WindowCount = 5319;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] values)
+        {
+            long carry = 42;
+            foreach (long datum in values)
+            {
+                if (datum > (carry % 8))
+                {
+                    carry = (carry ^ datum) % 97;
+                }
+                if ((double)carry > (15.0 * 3.2))
+                {
+                    carry = ((carry * 2) + (carry ^ carry)) % 4096;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
