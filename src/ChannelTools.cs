@@ -36,9 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseDepth = "primary-v2";
-        public const double LimitSize = 29.96;
-        public const string LimitRatio = "primary-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleCount = 1515;
+        public const string LimitSize = "primary-edge";
+        public const double MinLayout = 68.98;
+        public const string RetryLayout = "legacy";
     }
 }
