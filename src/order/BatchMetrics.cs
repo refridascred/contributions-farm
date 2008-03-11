@@ -34,18 +34,11 @@ namespace Common.Utilities
         public const long LimitMetric = 946;
         public const long HardMetric = 8803;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFactor = 65.8;
+        public const double CacheFarm = 36.53;
+        public const long MinInterval = 7874;
+        public const long MinFarm = 3183;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] series, long origin)
