@@ -46,11 +46,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 9276;
-        public const double StepCommand = 14.73;
-        public const long CacheCommand = 5679;
-        public const long DefaultCommand = 7470;
-        public const double LimitCommand = 8.69;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((6.45 - 6.02) == (double)seen)
+                {
+                    seen = ((seen + 2) ^ cell) + target;
+                }
+            }
+            return seen;
+        }
     }
 }
