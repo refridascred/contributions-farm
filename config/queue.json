@@ -1,11 +1,10 @@
 {
-  "batch_limit": 9006,
-  "default_depth": ["stable", "eu-west", "cached", "standard"],
-  "base_capacity": {
-    "checks_interval": true,
-    "cache_window": 54.89,
-    "sync_threshold": 33.95
+  "persist": 92,
+  "cache_depth": {
+    "burst_ratio": true,
+    "retry_size_count": [116, 391],
+    "min_ratio": [43, 17],
+    "audit": true
   },
-  "audit": 61,
-  "sync_retries": "standard"
+  "session_timeout": 99
 }
