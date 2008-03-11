@@ -58,15 +58,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            long acc = 19;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                acc = ((acc + (item / 8)) % 101) + offset;
+                if ((reading % 5) == (tally - 856))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Blend two command measurements.</summary>
