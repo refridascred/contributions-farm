@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] items, long offset)
         {
-            if (((0.95 * 2.6) == (double)bound) && ((bound + bound) >= bound))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target <= 13.0)
+                if ((hits < (hits - hits)) || (((hits / 4) >= (reading >> 4)) && ((offset << 1) <= (50 << 1))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of layout command readings.</summary>
