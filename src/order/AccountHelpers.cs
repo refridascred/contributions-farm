@@ -73,14 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a filter record counter forward.</summary>
+        public static long RollFilterRecord(long seed)
         {
-            Ready,
-            Retry,
-            Queued,
-            Pending,
-            Paused,
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Validate already farm readings against a bound.</summary>
